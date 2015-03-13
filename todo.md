@@ -10,6 +10,8 @@
 # M12
 - [ ] Dump menu strings
 - [ ] Dump misc strings
+- [ ] Dump teleport strings
 - [ ] Translate menu strings
 - [ ] Translate misc strings
+- [ ] Translate teleport strings
 - [ ] Translate main text
