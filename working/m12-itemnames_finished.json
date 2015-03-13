@@ -7,1771 +7,1771 @@
       "OffsetLocation": 0xB1AF98,
       "OldPointer": 0xB1A694,
       "Old": "          [00 FF]",
-      "New": "          [00 FF]"
+      "New": "[00 FF]"
     },
     {
       "Index": 0x1,
       "OffsetLocation": 0xB1AF9C,
       "OldPointer": 0xB1A6A0,
       "Old": "ボロのバット[00 FF]",
-      "New": "ボロのバット[00 FF]"
+      "New": "Cracked bat[00 FF]"
     },
     {
       "Index": 0x2,
       "OffsetLocation": 0xB1AFA0,
       "OldPointer": 0xB1A6A8,
       "Old": "ふつうのバット[00 FF]",
-      "New": "ふつうのバット[00 FF]"
+      "New": "Tee ball bat[00 FF]"
     },
     {
       "Index": 0x3,
       "OffsetLocation": 0xB1AFA4,
       "OldPointer": 0xB1A6B1,
       "Old": "いいバット[00 FF]",
-      "New": "いいバット[00 FF]"
+      "New": "Sand lot bat[00 FF]"
     },
     {
       "Index": 0x4,
       "OffsetLocation": 0xB1AFA8,
       "OldPointer": 0xB1A6B8,
       "Old": "とてもいいバット[00 FF]",
-      "New": "とてもいいバット[00 FF]"
+      "New": "Minor league bat[00 FF]"
     },
     {
       "Index": 0x5,
       "OffsetLocation": 0xB1AFAC,
       "OldPointer": 0xB1A6C2,
       "Old": "ミスターのバット[00 FF]",
-      "New": "ミスターのバット[00 FF]"
+      "New": "Mr. Baseball bat[00 FF]"
     },
     {
       "Index": 0x6,
       "OffsetLocation": 0xB1AFB0,
       "OldPointer": 0xB1A6CC,
       "Old": "ゴヂラのバット[00 FF]",
-      "New": "ゴヂラのバット[00 FF]"
+      "New": "T-rex's bat[00 FF]"
     },
     {
       "Index": 0x7,
       "OffsetLocation": 0xB1AFB4,
       "OldPointer": 0xB1A6D5,
       "Old": "ゴージャスなバット[00 FF]",
-      "New": "ゴージャスなバット[00 FF]"
+      "New": "Big league bat[00 FF]"
     },
     {
       "Index": 0x8,
       "OffsetLocation": 0xB1AFB8,
       "OldPointer": 0xB1A6E0,
       "Old": "さいこうのバット[00 FF]",
-      "New": "さいこうのバット[00 FF]"
+      "New": "Hall of fame bat[00 FF]"
     },
     {
       "Index": 0x9,
       "OffsetLocation": 0xB1AFBC,
       "OldPointer": 0xB1A6EA,
       "Old": "きゅうきょくバット[00 FF]",
-      "New": "きゅうきょくバット[00 FF]"
+      "New": "Ultimate bat[00 FF]"
     },
     {
       "Index": 0xA,
       "OffsetLocation": 0xB1AFC0,
       "OldPointer": 0xB1A6F5,
       "Old": "マジカントバット[00 FF]",
-      "New": "マジカントバット[00 FF]"
+      "New": "Magicant bat[00 FF]"
     },
     {
       "Index": 0xB,
       "OffsetLocation": 0xB1AFC4,
       "OldPointer": 0xB1A6FF,
       "Old": "でんせつのバット[00 FF]",
-      "New": "でんせつのバット[00 FF]"
+      "New": "Legendary bat[00 FF]"
     },
     {
       "Index": 0xC,
       "OffsetLocation": 0xB1AFC8,
       "OldPointer": 0xB1A709,
       "Old": "ガッツのバット[00 FF]",
-      "New": "ガッツのバット[00 FF]"
+      "New": "Gutsy bat[00 FF]"
     },
     {
       "Index": 0xD,
       "OffsetLocation": 0xB1AFCC,
       "OldPointer": 0xB1A712,
       "Old": "かたにちからバット[00 FF]",
-      "New": "かたにちからバット[00 FF]"
+      "New": "Casey bat[00 FF]"
     },
     {
       "Index": 0xE,
       "OffsetLocation": 0xB1AFD0,
       "OldPointer": 0xB1A71D,
       "Old": "フライパン[00 FF]",
-      "New": "フライパン[00 FF]"
+      "New": "Fry pan[00 FF]"
     },
     {
       "Index": 0xF,
       "OffsetLocation": 0xB1AFD4,
       "OldPointer": 0xB1A724,
       "Old": "あつめのフライパン[00 FF]",
-      "New": "あつめのフライパン[00 FF]"
+      "New": "Thick fry pan[00 FF]"
     },
     {
       "Index": 0x10,
       "OffsetLocation": 0xB1AFD8,
       "OldPointer": 0xB1A72F,
       "Old": "いいフライパン[00 FF]",
-      "New": "いいフライパン[00 FF]"
+      "New": "Deluxe fry pan[00 FF]"
     },
     {
       "Index": 0x11,
       "OffsetLocation": 0xB1AFDC,
       "OldPointer": 0xB1A738,
       "Old": "シェフのフライパン[00 FF]",
-      "New": "シェフのフライパン[00 FF]"
+      "New": "Chef's fry pan[00 FF]"
     },
     {
       "Index": 0x12,
       "OffsetLocation": 0xB1AFE0,
       "OldPointer": 0xB1A743,
       "Old": "たのしいフライパン[00 FF]",
-      "New": "たのしいフライパン[00 FF]"
+      "New": "Non-stick fry pan[00 FF]"
     },
     {
       "Index": 0x13,
       "OffsetLocation": 0xB1AFE4,
       "OldPointer": 0xB1A74E,
       "Old": "すてきなフライパン[00 FF]",
-      "New": "すてきなフライパン[00 FF]"
+      "New": "French fry pan[00 FF]"
     },
     {
       "Index": 0x14,
       "OffsetLocation": 0xB1AFE8,
       "OldPointer": 0xB1A759,
       "Old": "ふしぎなフライパン[00 FF]",
-      "New": "ふしぎなフライパン[00 FF]"
+      "New": "Magic fry pan[00 FF]"
     },
     {
       "Index": 0x15,
       "OffsetLocation": 0xB1AFEC,
       "OldPointer": 0xB1A764,
       "Old": "てんしのフライパン[00 FF]",
-      "New": "てんしのフライパン[00 FF]"
+      "New": "Holy fry pan[00 FF]"
     },
     {
       "Index": 0x16,
       "OffsetLocation": 0xB1AFF0,
       "OldPointer": 0xB1A76F,
       "Old": "おうじゃのつるぎ[00 FF]",
-      "New": "おうじゃのつるぎ[00 FF]"
+      "New": "Sword of kings[00 FF]"
     },
     {
       "Index": 0x17,
       "OffsetLocation": 0xB1AFF4,
       "OldPointer": 0xB1A779,
       "Old": "バンバンガン[00 FF]",
-      "New": "バンバンガン[00 FF]"
+      "New": "Pop gun[00 FF]"
     },
     {
       "Index": 0x18,
       "OffsetLocation": 0xB1AFF8,
       "OldPointer": 0xB1A781,
       "Old": "ショックガン[00 FF]",
-      "New": "ショックガン[00 FF]"
+      "New": "Stun gun[00 FF]"
     },
     {
       "Index": 0x19,
       "OffsetLocation": 0xB1AFFC,
       "OldPointer": 0xB1A789,
       "Old": "エアガン[00 FF]",
-      "New": "エアガン[00 FF]"
+      "New": "Toy air gun[00 FF]"
     },
     {
       "Index": 0x1A,
       "OffsetLocation": 0xB1B000,
       "OldPointer": 0xB1A78F,
       "Old": "スーパーエアガン[00 FF]",
-      "New": "スーパーエアガン[00 FF]"
+      "New": "Magnum air gun[00 FF]"
     },
     {
       "Index": 0x1B,
       "OffsetLocation": 0xB1B004,
       "OldPointer": 0xB1A799,
       "Old": "アストロマシンガン[00 FF]",
-      "New": "アストロマシンガン[00 FF]"
+      "New": "Zip gun[00 FF]"
     },
     {
       "Index": 0x1C,
       "OffsetLocation": 0xB1B008,
       "OldPointer": 0xB1A7A4,
       "Old": "レーザービーム[00 FF]",
-      "New": "レーザービーム[00 FF]"
+      "New": "Laser gun[00 FF]"
     },
     {
       "Index": 0x1D,
       "OffsetLocation": 0xB1B00C,
       "OldPointer": 0xB1A7AD,
       "Old": "ハイパービーム[00 FF]",
-      "New": "ハイパービーム[00 FF]"
+      "New": "Hyper beam[00 FF]"
     },
     {
       "Index": 0x1E,
       "OffsetLocation": 0xB1B010,
       "OldPointer": 0xB1A7B6,
       "Old": "ダブルビーム[00 FF]",
-      "New": "ダブルビーム[00 FF]"
+      "New": "Double beam[00 FF]"
     },
     {
       "Index": 0x1F,
       "OffsetLocation": 0xB1B014,
       "OldPointer": 0xB1A7BE,
       "Old": "クラッシュビーム[00 FF]",
-      "New": "クラッシュビーム[00 FF]"
+      "New": "Crusher beam[00 FF]"
     },
     {
       "Index": 0x20,
       "OffsetLocation": 0xB1B018,
       "OldPointer": 0xB1A7C8,
       "Old": "にじいろビーム[00 FF]",
-      "New": "にじいろビーム[00 FF]"
+      "New": "Spectrum beam[00 FF]"
     },
     {
       "Index": 0x21,
       "OffsetLocation": 0xB1B01C,
       "OldPointer": 0xB1A7D1,
       "Old": "デスビーム[00 FF]",
-      "New": "デスビーム[00 FF]"
+      "New": "Baddest beam[00 FF]"
     },
     {
       "Index": 0x22,
       "OffsetLocation": 0xB1B020,
       "OldPointer": 0xB1A7D8,
       "Old": "さいあくビーム[00 FF]",
-      "New": "さいあくビーム[00 FF]"
+      "New": "Death ray[00 FF]"
     },
     {
       "Index": 0x23,
       "OffsetLocation": 0xB1B024,
       "OldPointer": 0xB1A7E1,
       "Old": "ムーンビーム[00 FF]",
-      "New": "ムーンビーム[00 FF]"
+      "New": "Moon beam gun[00 FF]"
     },
     {
       "Index": 0x24,
       "OffsetLocation": 0xB1B028,
       "OldPointer": 0xB1A7E9,
       "Old": "ガイアビーム[00 FF]",
-      "New": "ガイアビーム[00 FF]"
+      "New": "Gaia beam[00 FF]"
     },
     {
       "Index": 0x25,
       "OffsetLocation": 0xB1B02C,
       "OldPointer": 0xB1A7F1,
       "Old": "ヨーヨー[00 FF]",
-      "New": "ヨーヨー[00 FF]"
+      "New": "Yo-yo[00 FF]"
     },
     {
       "Index": 0x26,
       "OffsetLocation": 0xB1B030,
       "OldPointer": 0xB1A7F7,
       "Old": "スリングショット[00 FF]",
-      "New": "スリングショット[00 FF]"
+      "New": "Slingshot[00 FF]"
     },
     {
       "Index": 0x27,
       "OffsetLocation": 0xB1B034,
       "OldPointer": 0xB1A801,
       "Old": "スーパースリング[00 FF]",
-      "New": "スーパースリング[00 FF]"
+      "New": "Bionic slingshot[00 FF]"
     },
     {
       "Index": 0x28,
       "OffsetLocation": 0xB1B038,
       "OldPointer": 0xB1A80B,
       "Old": "すっごいヨーヨー[00 FF]",
-      "New": "すっごいヨーヨー[00 FF]"
+      "New": "Trick yo-yo[00 FF]"
     },
     {
       "Index": 0x29,
       "OffsetLocation": 0xB1B03C,
       "OldPointer": 0xB1A815,
       "Old": "コンバットヨーヨー[00 FF]",
-      "New": "コンバットヨーヨー[00 FF]"
+      "New": "Combat yo-yo[00 FF]"
     },
     {
       "Index": 0x2A,
       "OffsetLocation": 0xB1B040,
       "OldPointer": 0xB1A820,
       "Old": "たびのおまもり[00 FF]",
-      "New": "たびのおまもり[00 FF]"
+      "New": "Travel charm[00 FF]"
     },
     {
       "Index": 0x2B,
       "OffsetLocation": 0xB1B044,
       "OldPointer": 0xB1A829,
       "Old": "おおきなおまもり[00 FF]",
-      "New": "おおきなおまもり[00 FF]"
+      "New": "Great charm[00 FF]"
     },
     {
       "Index": 0x2C,
       "OffsetLocation": 0xB1B048,
       "OldPointer": 0xB1A833,
       "Old": "かがやくおまもり[00 FF]",
-      "New": "かがやくおまもり[00 FF]"
+      "New": "Crystal charm[00 FF]"
     },
     {
       "Index": 0x2D,
       "OffsetLocation": 0xB1B04C,
       "OldPointer": 0xB1A83D,
       "Old": "うさぎのおまもり[00 FF]",
-      "New": "うさぎのおまもり[00 FF]"
+      "New": "Rabbit's foot[00 FF]"
     },
     {
       "Index": 0x2E,
       "OffsetLocation": 0xB1B050,
       "OldPointer": 0xB1A847,
       "Old": "ほのおのペンダント[00 FF]",
-      "New": "ほのおのペンダント[00 FF]"
+      "New": "Flame pendant[00 FF]"
     },
     {
       "Index": 0x2F,
       "OffsetLocation": 0xB1B054,
       "OldPointer": 0xB1A852,
       "Old": "しずくのペンダント[00 FF]",
-      "New": "しずくのペンダント[00 FF]"
+      "New": "Rain pendant[00 FF]"
     },
     {
       "Index": 0x30,
       "OffsetLocation": 0xB1B058,
       "OldPointer": 0xB1A85D,
       "Old": "やみのペンダント[00 FF]",
-      "New": "やみのペンダント[00 FF]"
+      "New": "Night pendant[00 FF]"
     },
     {
       "Index": 0x31,
       "OffsetLocation": 0xB1B05C,
       "OldPointer": 0xB1A867,
       "Old": "うみのペンダント[00 FF]",
-      "New": "うみのペンダント[00 FF]"
+      "New": "Sea pendant[00 FF]"
     },
     {
       "Index": 0x32,
       "OffsetLocation": 0xB1B060,
       "OldPointer": 0xB1A871,
       "Old": "だいちのペンダント[00 FF]",
-      "New": "だいちのペンダント[00 FF]"
+      "New": "Earth pendant[00 FF]"
     },
     {
       "Index": 0x33,
       "OffsetLocation": 0xB1B064,
       "OldPointer": 0xB1A87C,
       "Old": "ほしのペンダント[00 FF]",
-      "New": "ほしのペンダント[00 FF]"
+      "New": "Star pendant[00 FF]"
     },
     {
       "Index": 0x34,
       "OffsetLocation": 0xB1B068,
       "OldPointer": 0xB1A886,
       "Old": "おうじゃのマント[00 FF]",
-      "New": "おうじゃのマント[00 FF]"
+      "New": "Cloak of kings[00 FF]"
     },
     {
       "Index": 0x35,
       "OffsetLocation": 0xB1B06C,
       "OldPointer": 0xB1A890,
       "Old": "やすもののうでわ[00 FF]",
-      "New": "やすもののうでわ[00 FF]"
+      "New": "Cheap bracelet[00 FF]"
     },
     {
       "Index": 0x36,
       "OffsetLocation": 0xB1B070,
       "OldPointer": 0xB1A89A,
       "Old": "どうのうでわ[00 FF]",
-      "New": "どうのうでわ[00 FF]"
+      "New": "Copper bracelet[00 FF]"
     },
     {
       "Index": 0x37,
       "OffsetLocation": 0xB1B074,
       "OldPointer": 0xB1A8A2,
       "Old": "ぎんのうでわ[00 FF]",
-      "New": "ぎんのうでわ[00 FF]"
+      "New": "Silver bracelet[00 FF]"
     },
     {
       "Index": 0x38,
       "OffsetLocation": 0xB1B078,
       "OldPointer": 0xB1A8AA,
       "Old": "きんのうでわ[00 FF]",
-      "New": "きんのうでわ[00 FF]"
+      "New": "Gold bracelet[00 FF]"
     },
     {
       "Index": 0x39,
       "OffsetLocation": 0xB1B07C,
       "OldPointer": 0xB1A8B2,
       "Old": "プラチナのうでわ[00 FF]",
-      "New": "プラチナのうでわ[00 FF]"
+      "New": "Platinum band[00 FF]"
     },
     {
       "Index": 0x3A,
       "OffsetLocation": 0xB1B080,
       "OldPointer": 0xB1A8BC,
       "Old": "ダイヤのうでわ[00 FF]",
-      "New": "ダイヤのうでわ[00 FF]"
+      "New": "Diamond band[00 FF]"
     },
     {
       "Index": 0x3B,
       "OffsetLocation": 0xB1B084,
       "OldPointer": 0xB1A8C5,
       "Old": "ようせいのうでわ[00 FF]",
-      "New": "ようせいのうでわ[00 FF]"
+      "New": "Pixie's bracelet[00 FF]"
     },
     {
       "Index": 0x3C,
       "OffsetLocation": 0xB1B088,
       "OldPointer": 0xB1A8CF,
       "Old": "てんしのうでわ[00 FF]",
-      "New": "てんしのうでわ[00 FF]"
+      "New": "Cherub's band[00 FF]"
     },
     {
       "Index": 0x3D,
       "OffsetLocation": 0xB1B08C,
       "OldPointer": 0xB1A8D8,
       "Old": "めがみのうでわ[00 FF]",
-      "New": "めがみのうでわ[00 FF]"
+      "New": "Goddess band[00 FF]"
     },
     {
       "Index": 0x3E,
       "OffsetLocation": 0xB1B090,
       "OldPointer": 0xB1A8E1,
       "Old": "おうじゃのうでわ[00 FF]",
-      "New": "おうじゃのうでわ[00 FF]"
+      "New": "Bracer of kings[00 FF]"
     },
     {
       "Index": 0x3F,
       "OffsetLocation": 0xB1B094,
       "OldPointer": 0xB1A8EB,
       "Old": "やきゅうぼう[00 FF]",
-      "New": "やきゅうぼう[00 FF]"
+      "New": "Baseball cap[00 FF]"
     },
     {
       "Index": 0x40,
       "OffsetLocation": 0xB1B098,
       "OldPointer": 0xB1A8F3,
       "Old": "ホームズキャップ[00 FF]",
-      "New": "ホームズキャップ[00 FF]"
+      "New": "Holmes hat[00 FF]"
     },
     {
       "Index": 0x41,
       "OffsetLocation": 0xB1B09C,
       "OldPointer": 0xB1A8FD,
       "Old": "ミスターのぼうし[00 FF]",
-      "New": "ミスターのぼうし[00 FF]"
+      "New": "Mr. Baseball cap[00 FF]"
     },
     {
       "Index": 0x42,
       "OffsetLocation": 0xB1B0A0,
       "OldPointer": 0xB1A907,
       "Old": "ぼうしヘルメット[00 FF]",
-      "New": "ぼうしヘルメット[00 FF]"
+      "New": "Hard hat[00 FF]"
     },
     {
       "Index": 0x43,
       "OffsetLocation": 0xB1B0A4,
       "OldPointer": 0xB1A911,
       "Old": "リボン[00 FF]",
-      "New": "リボン[00 FF]"
+      "New": "Ribbon[00 FF]"
     },
     {
       "Index": 0x44,
       "OffsetLocation": 0xB1B0A8,
       "OldPointer": 0xB1A916,
       "Old": "まっかなリボン[00 FF]",
-      "New": "まっかなリボン[00 FF]"
+      "New": "Red ribbon[00 FF]"
     },
     {
       "Index": 0x45,
       "OffsetLocation": 0xB1B0AC,
       "OldPointer": 0xB1A91F,
       "Old": "まもりのリボン[00 FF]",
-      "New": "まもりのリボン[00 FF]"
+      "New": "Defense ribbon[00 FF]"
     },
     {
       "Index": 0x46,
       "OffsetLocation": 0xB1B0B0,
       "OldPointer": 0xB1A928,
       "Old": "まふうじのリボン[00 FF]",
-      "New": "まふうじのリボン[00 FF]"
+      "New": "Talisman ribbon[00 FF]"
     },
     {
       "Index": 0x47,
       "OffsetLocation": 0xB1B0B4,
       "OldPointer": 0xB1A932,
       "Old": "どせいさんのリボン[00 FF]",
-      "New": "どせいさんのリボン[00 FF]"
+      "New": "Mr. Saturn ribbon[00 FF]"
     },
     {
       "Index": 0x48,
       "OffsetLocation": 0xB1B0B8,
       "OldPointer": 0xB1A93D,
       "Old": "めがみのリボン[00 FF]",
-      "New": "めがみのリボン[00 FF]"
+      "New": "Goddess ribbon[00 FF]"
     },
     {
       "Index": 0x49,
       "OffsetLocation": 0xB1B0BC,
       "OldPointer": 0xB1A946,
       "Old": "やすらぎのコイン[00 FF]",
-      "New": "やすらぎのコイン[00 FF]"
+      "New": "Coin of slumber[00 FF]"
     },
     {
       "Index": 0x4A,
       "OffsetLocation": 0xB1B0C0,
       "OldPointer": 0xB1A950,
       "Old": "まもりのコイン[00 FF]",
-      "New": "まもりのコイン[00 FF]"
+      "New": "Coin of defense[00 FF]"
     },
     {
       "Index": 0x4B,
       "OffsetLocation": 0xB1B0C4,
       "OldPointer": 0xB1A959,
       "Old": "しずけさのコイン[00 FF]",
-      "New": "しずけさのコイン[00 FF]"
+      "New": "Coin of silence[00 FF]"
     },
     {
       "Index": 0x4C,
       "OffsetLocation": 0xB1B0C8,
       "OldPointer": 0xB1A963,
       "Old": "どせいさんのコイン[00 FF]",
-      "New": "どせいさんのコイン[00 FF]"
+      "New": "Mr. Saturn coin[00 FF]"
     },
     {
       "Index": 0x4D,
       "OffsetLocation": 0xB1B0CC,
       "OldPointer": 0xB1A96E,
       "Old": "まよけのコイン[00 FF]",
-      "New": "まよけのコイン[00 FF]"
+      "New": "Charm coin[00 FF]"
     },
     {
       "Index": 0x4E,
       "OffsetLocation": 0xB1B0D0,
       "OldPointer": 0xB1A977,
       "Old": "まふうじのコイン[00 FF]",
-      "New": "まふうじのコイン[00 FF]"
+      "New": "Talisman coin[00 FF]"
     },
     {
       "Index": 0x4F,
       "OffsetLocation": 0xB1B0D4,
       "OldPointer": 0xB1A981,
       "Old": "かがやきのコイン[00 FF]",
-      "New": "かがやきのコイン[00 FF]"
+      "New": "Shiny coin[00 FF]"
     },
     {
       "Index": 0x50,
       "OffsetLocation": 0xB1B0D8,
       "OldPointer": 0xB1A98B,
       "Old": "おみやげのコイン[00 FF]",
-      "New": "おみやげのコイン[00 FF]"
+      "New": "Souvenir coin[00 FF]"
     },
     {
       "Index": 0x51,
       "OffsetLocation": 0xB1B0DC,
       "OldPointer": 0xB1A995,
       "Old": "おうじゃのバンダナ[00 FF]",
-      "New": "おうじゃのバンダナ[00 FF]"
+      "New": "Diadem of kings[00 FF]"
     },
     {
       "Index": 0x52,
       "OffsetLocation": 0xB1B0E0,
       "OldPointer": 0xB1A9A0,
       "Old": "オレンジジュース[00 FF]",
-      "New": "オレンジジュース[00 FF]"
+      "New": "Can of fruit juice[00 FF]"
     },
     {
       "Index": 0x53,
       "OffsetLocation": 0xB1B0E4,
       "OldPointer": 0xB1A9AA,
       "Old": "クッキー[00 FF]",
-      "New": "クッキー[00 FF]"
+      "New": "Cookie[00 FF]"
     },
     {
       "Index": 0x54,
       "OffsetLocation": 0xB1B0E8,
       "OldPointer": 0xB1A9B0,
       "Old": "コーヒー[00 FF]",
-      "New": "コーヒー[00 FF]"
+      "New": "Cup of coffee[00 FF]"
     },
     {
       "Index": 0x55,
       "OffsetLocation": 0xB1B0EC,
       "OldPointer": 0xB1A9B6,
       "Old": "アイスキャンデー[00 FF]",
-      "New": "アイスキャンデー[00 FF]"
+      "New": "Popsicle[00 FF]"
     },
     {
       "Index": 0x56,
       "OffsetLocation": 0xB1B0F0,
       "OldPointer": 0xB1A9C0,
       "Old": "ポテトフライ[00 FF]",
-      "New": "ポテトフライ[00 FF]"
+      "New": "Bag of fries[00 FF]"
     },
     {
       "Index": 0x57,
       "OffsetLocation": 0xB1B0F4,
       "OldPointer": 0xB1A9C8,
       "Old": "そまつなパン[00 FF]",
-      "New": "そまつなパン[00 FF]"
+      "New": "Plain roll[00 FF]"
     },
     {
       "Index": 0x58,
       "OffsetLocation": 0xB1B0F8,
       "OldPointer": 0xB1A9D0,
       "Old": "バターロール[00 FF]",
-      "New": "バターロール[00 FF]"
+      "New": "Bread roll[00 FF]"
     },
     {
       "Index": 0x59,
       "OffsetLocation": 0xB1B0FC,
       "OldPointer": 0xB1A9D8,
       "Old": "ひしょちのジェラート[00 FF]",
-      "New": "ひしょちのジェラート[00 FF]"
+      "New": "Gelato de resort[00 FF]"
     },
     {
       "Index": 0x5A,
       "OffsetLocation": 0xB1B100,
       "OldPointer": 0xB1A9E4,
       "Old": "ゆでたまご[00 FF]",
-      "New": "ゆでたまご[00 FF]"
+      "New": "Fresh egg[00 FF]"
     },
     {
       "Index": 0x5B,
       "OffsetLocation": 0xB1B104,
       "OldPointer": 0xB1A9EB,
       "Old": "まめのコロッケ[00 FF]",
-      "New": "まめのコロッケ[00 FF]"
+      "New": "Bean croquette[00 FF]"
     },
     {
       "Index": 0x5C,
       "OffsetLocation": 0xB1B108,
       "OldPointer": 0xB1A9F4,
       "Old": "カップめん[00 FF]",
-      "New": "カップめん[00 FF]"
+      "New": "Cup of noodles[00 FF]"
     },
     {
       "Index": 0x5D,
       "OffsetLocation": 0xB1B10C,
       "OldPointer": 0xB1A9FB,
       "Old": "ハンバーガー[00 FF]",
-      "New": "ハンバーガー[00 FF]"
+      "New": "Hamburger[00 FF]"
     },
     {
       "Index": 0x5E,
       "OffsetLocation": 0xB1B110,
       "OldPointer": 0xB1AA03,
       "Old": "クロワッサン[00 FF]",
-      "New": "クロワッサン[00 FF]"
+      "New": "Croissant[00 FF]"
     },
     {
       "Index": 0x5F,
       "OffsetLocation": 0xB1B114,
       "OldPointer": 0xB1AA0B,
       "Old": "カロリーブロック[00 FF]",
-      "New": "カロリーブロック[00 FF]"
+      "New": "Calorie stick[00 FF]"
     },
     {
       "Index": 0x60,
       "OffsetLocation": 0xB1B118,
       "OldPointer": 0xB1AA15,
       "Old": "ロイヤルアイスティー[00 FF]",
-      "New": "ロイヤルアイスティー[00 FF]"
+      "New": "Royal iced tea[00 FF]"
     },
     {
       "Index": 0x61,
       "OffsetLocation": 0xB1B11C,
       "OldPointer": 0xB1AA21,
       "Old": "うみたてたまご[00 FF]",
-      "New": "うみたてたまご[00 FF]"
+      "New": "Boiled egg[00 FF]"
     },
     {
       "Index": 0x62,
       "OffsetLocation": 0xB1B120,
       "OldPointer": 0xB1AA2A,
       "Old": "モロヘイヤスープ[00 FF]",
-      "New": "モロヘイヤスープ[00 FF]"
+      "New": "Molokheiya soup[00 FF]"
     },
     {
       "Index": 0x63,
       "OffsetLocation": 0xB1B124,
       "OldPointer": 0xB1AA34,
       "Old": "えんそくランチ[00 FF]",
-      "New": "えんそくランチ[00 FF]"
+      "New": "Picnic lunch[00 FF]"
     },
     {
       "Index": 0x64,
       "OffsetLocation": 0xB1B128,
       "OldPointer": 0xB1AA3D,
       "Old": "おとなのドリンク[00 FF]",
-      "New": "おとなのドリンク[00 FF]"
+      "New": "Protein drink[00 FF]"
     },
     {
       "Index": 0x65,
       "OffsetLocation": 0xB1B12C,
       "OldPointer": 0xB1AA47,
       "Old": "ダブルバーガー[00 FF]",
-      "New": "ダブルバーガー[00 FF]"
+      "New": "Double burger[00 FF]"
     },
     {
       "Index": 0x66,
       "OffsetLocation": 0xB1B130,
       "OldPointer": 0xB1AA50,
       "Old": "アーモンドもなか[00 FF]",
-      "New": "アーモンドもなか[00 FF]"
+      "New": "Peanut cheese bar[00 FF]"
     },
     {
       "Index": 0x67,
       "OffsetLocation": 0xB1B134,
       "OldPointer": 0xB1AA5A,
       "Old": "サマーズふうパスタ[00 FF]",
-      "New": "サマーズふうパスタ[00 FF]"
+      "New": "Pasta di Summers[00 FF]"
     },
     {
       "Index": 0x68,
       "OffsetLocation": 0xB1B138,
       "OldPointer": 0xB1AA65,
       "Old": "ピザ[00 FF]",
-      "New": "ピザ[00 FF]"
+      "New": "Pizza[00 FF]"
     },
     {
       "Index": 0x69,
       "OffsetLocation": 0xB1B13C,
       "OldPointer": 0xB1AA69,
       "Old": "コンガリくしやき[00 FF]",
-      "New": "コンガリくしやき[00 FF]"
+      "New": "Kabob[00 FF]"
     },
     {
       "Index": 0x6A,
       "OffsetLocation": 0xB1B140,
       "OldPointer": 0xB1AA73,
       "Old": "ほしにく[00 FF]",
-      "New": "ほしにく[00 FF]"
+      "New": "Beef jerky[00 FF]"
     },
     {
       "Index": 0x6B,
       "OffsetLocation": 0xB1B144,
       "OldPointer": 0xB1AA79,
       "Old": "そぼくなヨーグルト[00 FF]",
-      "New": "そぼくなヨーグルト[00 FF]"
+      "New": "Plain yogurt[00 FF]"
     },
     {
       "Index": 0x6C,
       "OffsetLocation": 0xB1B148,
       "OldPointer": 0xB1AA84,
       "Old": "マンモスバーガー[00 FF]",
-      "New": "マンモスバーガー[00 FF]"
+      "New": "Mammoth burger[00 FF]"
     },
     {
       "Index": 0x6D,
       "OffsetLocation": 0xB1B14C,
       "OldPointer": 0xB1AA8E,
       "Old": "やぎバターがゆ[00 FF]",
-      "New": "やぎバターがゆ[00 FF]"
+      "New": "Bowl of rice gruel[00 FF]"
     },
     {
       "Index": 0x6E,
       "OffsetLocation": 0xB1B150,
       "OldPointer": 0xB1AA97,
       "Old": "シェフのおすすめ[00 FF]",
-      "New": "シェフのおすすめ[00 FF]"
+      "New": "Chef's special[00 FF]"
     },
     {
       "Index": 0x6F,
       "OffsetLocation": 0xB1B154,
       "OldPointer": 0xB1AAA1,
       "Old": "スパイシーほしにく[00 FF]",
-      "New": "スパイシーほしにく[00 FF]"
+      "New": "Spicy jerky[00 FF]"
     },
     {
       "Index": 0x70,
       "OffsetLocation": 0xB1B158,
       "OldPointer": 0xB1AAAC,
       "Old": "ゼイタクほしにく[00 FF]",
-      "New": "ゼイタクほしにく[00 FF]"
+      "New": "Luxury jerky[00 FF]"
     },
     {
       "Index": 0x71,
       "OffsetLocation": 0xB1B15C,
       "OldPointer": 0xB1AAB6,
       "Old": "ブタようかん[00 FF]",
-      "New": "ブタようかん[00 FF]"
+      "New": "Piggy jelly[00 FF]"
     },
     {
       "Index": 0x72,
       "OffsetLocation": 0xB1B160,
       "OldPointer": 0xB1AABE,
       "Old": "クラーケンのスープ[00 FF]",
-      "New": "クラーケンのスープ[00 FF]"
+      "New": "Kraken soup[00 FF]"
     },
     {
       "Index": 0x73,
       "OffsetLocation": 0xB1B164,
       "OldPointer": 0xB1AAC9,
       "Old": "ピザ(Lサイズ)[00 FF]",
-      "New": "ピザ(Lサイズ)[00 FF]"
+      "New": "Large pizza[00 FF]"
     },
     {
       "Index": 0x74,
       "OffsetLocation": 0xB1B168,
       "OldPointer": 0xB1AAD3,
       "Old": "さとりのべんとう[00 FF]",
-      "New": "さとりのべんとう[00 FF]"
+      "New": "Brain food lunch[00 FF]"
     },
     {
       "Index": 0x75,
       "OffsetLocation": 0xB1B16C,
       "OldPointer": 0xB1AADD,
       "Old": "みず[00 FF]",
-      "New": "みず[00 FF]"
+      "New": "Bottle of water[00 FF]"
     },
     {
       "Index": 0x76,
       "OffsetLocation": 0xB1B170,
       "OldPointer": 0xB1AAE1,
       "Old": "たかいみず[00 FF]",
-      "New": "たかいみず[00 FF]"
+      "New": "Bottle of DX water[00 FF]"
     },
     {
       "Index": 0x77,
       "OffsetLocation": 0xB1B174,
       "OldPointer": 0xB1AAE8,
       "Old": "サイコキャラメル[00 FF]",
-      "New": "サイコキャラメル[00 FF]"
+      "New": "PSI caramel[00 FF]"
     },
     {
       "Index": 0x78,
       "OffsetLocation": 0xB1B178,
       "OldPointer": 0xB1AAF2,
       "Old": "マジックタルト[00 FF]",
-      "New": "マジックタルト[00 FF]"
+      "New": "Magic tart[00 FF]"
     },
     {
       "Index": 0x79,
       "OffsetLocation": 0xB1B17C,
       "OldPointer": 0xB1AAFB,
       "Old": "マジックトリフ[00 FF]",
-      "New": "マジックトリフ[00 FF]"
+      "New": "Magic truffle[00 FF]"
     },
     {
       "Index": 0x7A,
       "OffsetLocation": 0xB1B180,
       "OldPointer": 0xB1AB04,
       "Old": "マジックプリン[00 FF]",
-      "New": "マジックプリン[00 FF]"
+      "New": "Magic pudding[00 FF]"
     },
     {
       "Index": 0x7B,
       "OffsetLocation": 0xB1B184,
       "OldPointer": 0xB1AB0D,
       "Old": "スキップサンド[00 FF]",
-      "New": "スキップサンド[00 FF]"
+      "New": "Skip sandwich[00 FF]"
     },
     {
       "Index": 0x7C,
       "OffsetLocation": 0xB1B188,
       "OldPointer": 0xB1AB16,
       "Old": "ダブルスキップサンド[00 FF]",
-      "New": "ダブルスキップサンド[00 FF]"
+      "New": "Skip sandwich DX[00 FF]"
     },
     {
       "Index": 0x7D,
       "OffsetLocation": 0xB1B18C,
       "OldPointer": 0xB1AB22,
       "Old": "ラッキーサンド[00 FF]",
-      "New": "ラッキーサンド[00 FF]"
+      "New": "Lucky sandwich[00 FF]"
     },
     {
       "Index": 0x7E,
       "OffsetLocation": 0xB1B190,
       "OldPointer": 0xB1AB2B,
       "Old": "あおのり[00 FF]",
-      "New": "あおのり[00 FF]"
+      "New": "Sprig of parsley[00 FF]"
     },
     {
       "Index": 0x7F,
       "OffsetLocation": 0xB1B194,
       "OldPointer": 0xB1AB31,
       "Old": "ケチャップ[00 FF]",
-      "New": "ケチャップ[00 FF]"
+      "New": "Ketchup packet[00 FF]"
     },
     {
       "Index": 0x80,
       "OffsetLocation": 0xB1B198,
       "OldPointer": 0xB1AB38,
       "Old": "こなざとう[00 FF]",
-      "New": "こなざとう[00 FF]"
+      "New": "Sugar packet[00 FF]"
     },
     {
       "Index": 0x81,
       "OffsetLocation": 0xB1B19C,
       "OldPointer": 0xB1AB3F,
       "Old": "コンデンスミルク[00 FF]",
-      "New": "コンデンスミルク[00 FF]"
+      "New": "Carton of cream[00 FF]"
     },
     {
       "Index": 0x82,
       "OffsetLocation": 0xB1B1A0,
       "OldPointer": 0xB1AB49,
       "Old": "しお[00 FF]",
-      "New": "しお[00 FF]"
+      "New": "Salt packet[00 FF]"
     },
     {
       "Index": 0x83,
       "OffsetLocation": 0xB1B1A4,
       "OldPointer": 0xB1AB4D,
       "Old": "タバスコ[00 FF]",
-      "New": "タバスコ[00 FF]"
+      "New": "Jar of hot sauce[00 FF]"
     },
     {
       "Index": 0x84,
       "OffsetLocation": 0xB1B1A8,
       "OldPointer": 0xB1AB53,
       "Old": "チョコチップ[00 FF]",
-      "New": "チョコチップ[00 FF]"
+      "New": "Tin of cocoa[00 FF]"
     },
     {
       "Index": 0x85,
       "OffsetLocation": 0xB1B1AC,
       "OldPointer": 0xB1AB5B,
       "Old": "マンダラふりかけ[00 FF]",
-      "New": "マンダラふりかけ[00 FF]"
+      "New": "Jar of delisauce[00 FF]"
     },
     {
       "Index": 0x86,
       "OffsetLocation": 0xB1B1B0,
       "OldPointer": 0xB1AB65,
       "Old": "あなぬけネズミ[00 FF]",
-      "New": "あなぬけネズミ[00 FF]"
+      "New": "Exit mouse[00 FF]"
     },
     {
       "Index": 0x87,
       "OffsetLocation": 0xB1B1B4,
       "OldPointer": 0xB1AB6E,
       "Old": "アンチPSIマシン[00 FF]",
-      "New": "アンチPSIマシン[00 FF]"
+      "New": "Counter-PSI unit[00 FF]"
     },
     {
       "Index": 0x88,
       "OffsetLocation": 0xB1B1B8,
       "OldPointer": 0xB1AB79,
       "Old": "いちごとうふ[00 FF]",
-      "New": "いちごとうふ[00 FF]"
+      "New": "Trout yogurt[00 FF]"
     },
     {
       "Index": 0x89,
       "OffsetLocation": 0xB1B1BC,
       "OldPointer": 0xB1AB81,
       "Old": "いのちのうどん[00 FF]",
-      "New": "いのちのうどん[00 FF]"
+      "New": "Cup of lifenoodles[00 FF]"
     },
     {
       "Index": 0x8A,
       "OffsetLocation": 0xB1B1C0,
       "OldPointer": 0xB1AB8A,
       "Old": "インスタントガッツ[00 FF]",
-      "New": "インスタントガッツ[00 FF]"
+      "New": "Sudden guts pill[00 FF]"
     },
     {
       "Index": 0x8B,
       "OffsetLocation": 0xB1B1C4,
       "OldPointer": 0xB1AB95,
       "Old": "いんせきのかけら[00 FF]",
-      "New": "いんせきのかけら[00 FF]"
+      "New": "Meteorite piece[00 FF]"
     },
     {
       "Index": 0x8C,
       "OffsetLocation": 0xB1B1C8,
       "OldPointer": 0xB1AB9F,
       "Old": "うさぎごのみニンジン[00 FF]",
-      "New": "うさぎごのみニンジン[00 FF]"
+      "New": "Carrot key[00 FF]"
     },
     {
       "Index": 0x8D,
       "OffsetLocation": 0xB1B1CC,
       "OldPointer": 0xB1ABAB,
       "Old": "えはがき[00 FF]",
-      "New": "えはがき[00 FF]"
+      "New": "Picture postcard[00 FF]"
     },
     {
       "Index": 0x8E,
       "OffsetLocation": 0xB1B1D0,
       "OldPointer": 0xB1ABB1,
       "Old": "おとのいし[00 FF]",
-      "New": "おとのいし[00 FF]"
+      "New": "Sound stone[00 FF]"
     },
     {
       "Index": 0x8F,
       "OffsetLocation": 0xB1B1D4,
       "OldPointer": 0xB1ABB8,
       "Old": "キャッシュカード[00 FF]",
-      "New": "キャッシュカード[00 FF]"
+      "New": "ATM card[00 FF]"
     },
     {
       "Index": 0x90,
       "OffsetLocation": 0xB1B1D8,
       "OldPointer": 0xB1ABC2,
       "Old": "キングバナナ[00 FF]",
-      "New": "キングバナナ[00 FF]"
+      "New": "King banana[00 FF]"
     },
     {
       "Index": 0x91,
       "OffsetLocation": 0xB1B1DC,
       "OldPointer": 0xB1ABCA,
       "Old": "グミドリアン[00 FF]",
-      "New": "グミドリアン[00 FF]"
+      "New": "Tendakraut[00 FF]"
     },
     {
       "Index": 0x92,
       "OffsetLocation": 0xB1B1E0,
       "OldPointer": 0xB1ABD2,
       "Old": "ぐるめとうふマシン[00 FF]",
-      "New": "ぐるめとうふマシン[00 FF]"
+      "New": "Yogurt dispenser[00 FF]"
     },
     {
       "Index": 0x93,
       "OffsetLocation": 0xB1B1E4,
       "OldPointer": 0xB1ABDD,
       "Old": "グレオレマシーン[00 FF]",
-      "New": "グレオレマシーン[00 FF]"
+      "New": "Suporma[00 FF]"
     },
     {
       "Index": 0x94,
       "OffsetLocation": 0xB1B1E8,
       "OldPointer": 0xB1ABE7,
       "Old": "くわがたむし[00 FF]",
-      "New": "くわがたむし[00 FF]"
+      "New": "Stag beetle[00 FF]"
     },
     {
       "Index": 0x95,
       "OffsetLocation": 0xB1B1EC,
       "OldPointer": 0xB1ABEF,
       "Old": "こけしけしマシン[00 FF]",
-      "New": "こけしけしマシン[00 FF]"
+      "New": "Eraser eraser[00 FF]"
     },
     {
       "Index": 0x96,
       "OffsetLocation": 0xB1B1F0,
       "OldPointer": 0xB1ABF9,
       "Old": "コンタクトレンズ[00 FF]",
-      "New": "コンタクトレンズ[00 FF]"
+      "New": "Contact lens[00 FF]"
     },
     {
       "Index": 0x97,
       "OffsetLocation": 0xB1B1F4,
       "OldPointer": 0xB1AC03,
       "Old": "サインいりバナナ[00 FF]",
-      "New": "サインいりバナナ[00 FF]"
+      "New": "Signed banana[00 FF]"
     },
     {
       "Index": 0x98,
       "OffsetLocation": 0xB1B1F8,
       "OldPointer": 0xB1AC0D,
       "Old": "さつたば[00 FF]",
-      "New": "さつたば[00 FF]"
+      "New": "Wad of bills[00 FF]"
     },
     {
       "Index": 0x99,
       "OffsetLocation": 0xB1B1FC,
       "OldPointer": 0xB1AC13,
       "Old": "さっちゅうスプレー[00 FF]",
-      "New": "さっちゅうスプレー[00 FF]"
+      "New": "Insecticide spray[00 FF]"
     },
     {
       "Index": 0x9A,
       "OffsetLocation": 0xB1B200,
       "OldPointer": 0xB1AC1E,
       "Old": "さとりのいし[00 FF]",
-      "New": "さとりのいし[00 FF]"
+      "New": "Brain stone[00 FF]"
     },
     {
       "Index": 0x9B,
       "OffsetLocation": 0xB1B204,
       "OldPointer": 0xB1AC26,
       "Old": "さびのもと[00 FF]",
-      "New": "さびのもと[00 FF]"
+      "New": "Rust promoter[00 FF]"
     },
     {
       "Index": 0x9C,
       "OffsetLocation": 0xB1B208,
       "OldPointer": 0xB1AC2D,
       "Old": "さびのもとスーパー[00 FF]",
-      "New": "さびのもとスーパー[00 FF]"
+      "New": "Rust promoter DX[00 FF]"
     },
     {
       "Index": 0x9D,
       "OffsetLocation": 0xB1B20C,
       "OldPointer": 0xB1AC38,
       "Old": "サルのきもち[00 FF]",
-      "New": "サルのきもち[00 FF]"
+      "New": "Monkey's love[00 FF]"
     },
     {
       "Index": 0x9E,
       "OffsetLocation": 0xB1B210,
       "OldPointer": 0xB1AC40,
       "Old": "シールドキラー[00 FF]",
-      "New": "シールドキラー[00 FF]"
+      "New": "Shield killer[00 FF]"
     },
     {
       "Index": 0x9F,
       "OffsetLocation": 0xB1B214,
       "OldPointer": 0xB1AC49,
       "Old": "じてんしゃ[00 FF]",
-      "New": "じてんしゃ[00 FF]"
+      "New": "Bicycle[00 FF]"
     },
     {
       "Index": 0xA0,
       "OffsetLocation": 0xB1B218,
       "OldPointer": 0xB1AC50,
       "Old": "じゅしんでんわ[00 FF]",
-      "New": "じゅしんでんわ[00 FF]"
+      "New": "Receiver phone[00 FF]"
     },
     {
       "Index": 0xA1,
       "OffsetLocation": 0xB1B21C,
       "OldPointer": 0xB1AC59,
       "Old": "スーパースプレー[00 FF]",
-      "New": "スーパースプレー[00 FF]"
+      "New": "Xterminator spray[00 FF]"
     },
     {
       "Index": 0xA2,
       "OffsetLocation": 0xB1B220,
       "OldPointer": 0xB1AC63,
       "Old": "スーパーチューチュー[00 FF]",
-      "New": "スーパーチューチュー[00 FF]"
+      "New": "Hungry HP-sucker[00 FF]"
     },
     {
       "Index": 0xA3,
       "OffsetLocation": 0xB1B224,
       "OldPointer": 0xB1AC6F,
       "Old": "スーパーバズーカ[00 FF]",
-      "New": "スーパーバズーカ[00 FF]"
+      "New": "Heavy bazooka[00 FF]"
     },
     {
       "Index": 0xA4,
       "OffsetLocation": 0xB1B228,
       "OldPointer": 0xB1AC79,
       "Old": "スーパーボム[00 FF]",
-      "New": "スーパーボム[00 FF]"
+      "New": "Super bomb[00 FF]"
     },
     {
       "Index": 0xA5,
       "OffsetLocation": 0xB1B22C,
       "OldPointer": 0xB1AC81,
       "Old": "ゾンビホイホイ[00 FF]",
-      "New": "ゾンビホイホイ[00 FF]"
+      "New": "Zombie paper[00 FF]"
     },
     {
       "Index": 0xA6,
       "OffsetLocation": 0xB1B230,
       "OldPointer": 0xB1AC8A,
       "Old": "たいしたことないもの[00 FF]",
-      "New": "たいしたことないもの[00 FF]"
+      "New": "Insignificant item[00 FF]"
     },
     {
       "Index": 0xA7,
       "OffsetLocation": 0xB1B234,
       "OldPointer": 0xB1AC96,
       "Old": "ダイヤモンド[00 FF]",
-      "New": "ダイヤモンド[00 FF]"
+      "New": "Diamond[00 FF]"
     },
     {
       "Index": 0xA8,
       "OffsetLocation": 0xB1B238,
       "OldPointer": 0xB1AC9E,
       "Old": "タカのめ[00 FF]",
-      "New": "タカのめ[00 FF]"
+      "New": "Hawk eye[00 FF]"
     },
     {
       "Index": 0xA9,
       "OffsetLocation": 0xB1B23C,
       "OldPointer": 0xB1ACA4,
       "Old": "タコけしマシン[00 FF]",
-      "New": "タコけしマシン[00 FF]"
+      "New": "Pencil eraser[00 FF]"
     },
     {
       "Index": 0xAA,
       "OffsetLocation": 0xB1B240,
       "OldPointer": 0xB1ACAD,
       "Old": "たびごやのカギ[00 FF]",
-      "New": "たびごやのカギ[00 FF]"
+      "New": "Key to the shack[00 FF]"
     },
     {
       "Index": 0xAB,
       "OffsetLocation": 0xB1B244,
       "OldPointer": 0xB1ACB6,
       "Old": "ちいさなルビー[00 FF]",
-      "New": "ちいさなルビー[00 FF]"
+      "New": "Tiny ruby[00 FF]"
     },
     {
       "Index": 0xAC,
       "OffsetLocation": 0xB1B248,
       "OldPointer": 0xB1ACBF,
       "Old": "チケット[00 FF]",
-      "New": "チケット[00 FF]"
+      "New": "Show ticket[00 FF]"
     },
     {
       "Index": 0xAD,
       "OffsetLocation": 0xB1B24C,
       "OldPointer": 0xB1ACC5,
       "Old": "チューチューマシン[00 FF]",
-      "New": "チューチューマシン[00 FF]"
+      "New": "HP-sucker[00 FF]"
     },
     {
       "Index": 0xAE,
       "OffsetLocation": 0xB1B250,
       "OldPointer": 0xB1ACD0,
       "Old": "ちゅうわマシン[00 FF]",
-      "New": "ちゅうわマシン[00 FF]"
+      "New": "Neutralizer[00 FF]"
     },
     {
       "Index": 0xAF,
       "OffsetLocation": 0xB1B254,
       "OldPointer": 0xB1ACD9,
       "Old": "ちょっとカギマシン[00 FF]",
-      "New": "ちょっとカギマシン[00 FF]"
+      "New": "Bad key machine[00 FF]"
     },
     {
       "Index": 0xB0,
       "OffsetLocation": 0xB1B258,
       "OldPointer": 0xB1ACE4,
       "Old": "つよいぬいぐるみ[00 FF]",
-      "New": "つよいぬいぐるみ[00 FF]"
+      "New": "Super plush bear[00 FF]"
     },
     {
       "Index": 0xB1,
       "OffsetLocation": 0xB1B25C,
       "OldPointer": 0xB1ACEE,
       "Old": "ディフェンスシャワー[00 FF]",
-      "New": "ディフェンスシャワー[00 FF]"
+      "New": "Defense shower[00 FF]"
     },
     {
       "Index": 0xB2,
       "OffsetLocation": 0xB1B260,
       "OldPointer": 0xB1ACFA,
       "Old": "ディフェンススプレー[00 FF]",
-      "New": "ディフェンススプレー[00 FF]"
+      "New": "Defense spray[00 FF]"
     },
     {
       "Index": 0xB3,
       "OffsetLocation": 0xB1B264,
       "OldPointer": 0xB1AD06,
       "Old": "どうぐやのかんばん[00 FF]",
-      "New": "どうぐやのかんばん[00 FF]"
+      "New": "For Sale sign[00 FF]"
     },
     {
       "Index": 0xB4,
       "OffsetLocation": 0xB1B268,
       "OldPointer": 0xB1AD11,
       "Old": "とうのカギ[00 FF]",
-      "New": "とうのカギ[00 FF]"
+      "New": "Key to the tower[00 FF]"
     },
     {
       "Index": 0xB5,
       "OffsetLocation": 0xB1B26C,
       "OldPointer": 0xB1AD18,
       "Old": "どくへび[00 FF]",
-      "New": "どくへび[00 FF]"
+      "New": "Viper[00 FF]"
     },
     {
       "Index": 0xB6,
       "OffsetLocation": 0xB1B270,
       "OldPointer": 0xB1AD1E,
       "Old": "ドラゴンパウダー[00 FF]",
-      "New": "ドラゴンパウダー[00 FF]"
+      "New": "Bag of dragonite[00 FF]"
     },
     {
       "Index": 0xB7,
       "OffsetLocation": 0xB1B274,
       "OldPointer": 0xB1AD28,
       "Old": "にわとり[00 FF]",
-      "New": "にわとり[00 FF]"
+      "New": "Chicken[00 FF]"
     },
     {
       "Index": 0xB8,
       "OffsetLocation": 0xB1B278,
       "OldPointer": 0xB1AD2E,
       "Old": "ぬいぐるみ[00 FF]",
-      "New": "ぬいぐるみ[00 FF]"
+      "New": "Teddy bear[00 FF]"
     },
     {
       "Index": 0xB9,
       "OffsetLocation": 0xB1B27C,
       "OldPointer": 0xB1AD35,
       "Old": "ねばねばマシン[00 FF]",
-      "New": "ねばねばマシン[00 FF]"
+      "New": "Slime generator[00 FF]"
     },
     {
       "Index": 0xBA,
       "OffsetLocation": 0xB1B280,
       "OldPointer": 0xB1AD3E,
       "Old": "はえみつ[00 FF]",
-      "New": "はえみつ[00 FF]"
+      "New": "Jar of fly honey[00 FF]"
     },
     {
       "Index": 0xBB,
       "OffsetLocation": 0xB1B284,
       "OldPointer": 0xB1AD44,
       "Old": "バズーカほう[00 FF]",
-      "New": "バズーカほう[00 FF]"
+      "New": "Bazooka[00 FF]"
     },
     {
       "Index": 0xBC,
       "OffsetLocation": 0xB1B288,
       "OldPointer": 0xB1AD4C,
       "Old": "バックステージパス[00 FF]",
-      "New": "バックステージパス[00 FF]"
+      "New": "Backstage pass[00 FF]"
     },
     {
       "Index": 0xBD,
       "OffsetLocation": 0xB1B28C,
       "OldPointer": 0xB1AD57,
       "Old": "ハブラシ[00 FF]",
-      "New": "ハブラシ[00 FF]"
+      "New": "Toothbrush[00 FF]"
     },
     {
       "Index": 0xBE,
       "OffsetLocation": 0xB1B290,
       "OldPointer": 0xB1AD5D,
       "Old": "ハンドエイド[00 FF]",
-      "New": "ハンドエイド[00 FF]"
+      "New": "Hand-Aid[00 FF]"
     },
     {
       "Index": 0xBF,
       "OffsetLocation": 0xB1B294,
       "OldPointer": 0xB1AD65,
       "Old": "ハンドバッグのベルト[00 FF]",
-      "New": "ハンドバッグのベルト[00 FF]"
+      "New": "Handbag strap[00 FF]"
     },
     {
       "Index": 0xC0,
       "OffsetLocation": 0xB1B298,
       "OldPointer": 0xB1AD71,
       "Old": "ヒエログリフのうつし[00 FF]",
-      "New": "ヒエログリフのうつし[00 FF]"
+      "New": "Hieroglyph copy[00 FF]"
     },
     {
       "Index": 0xC1,
       "OffsetLocation": 0xB1B29C,
       "OldPointer": 0xB1AD7D,
       "Old": "ヒヨコ[00 FF]",
-      "New": "ヒヨコ[00 FF]"
+      "New": "Chick[00 FF]"
     },
     {
       "Index": 0xC2,
       "OffsetLocation": 0xB1B2A0,
       "OldPointer": 0xB1AD82,
       "Old": "ファラオののろい[00 FF]",
-      "New": "ファラオののろい[00 FF]"
+      "New": "Pharaoh's curse[00 FF]"
     },
     {
       "Index": 0xC3,
       "OffsetLocation": 0xB1B2A4,
       "OldPointer": 0xB1AD8C,
       "Old": "フーセンガム[00 FF]",
-      "New": "フーセンガム[00 FF]"
+      "New": "Pak of bubble gum[00 FF]"
     },
     {
       "Index": 0xC4,
       "OffsetLocation": 0xB1B2A8,
       "OldPointer": 0xB1AD94,
       "Old": "ブタのはな[00 FF]",
-      "New": "ブタのはな[00 FF]"
+      "New": "Piggy nose[00 FF]"
     },
     {
       "Index": 0xC5,
       "OffsetLocation": 0xB1B2AC,
       "OldPointer": 0xB1AD9B,
       "Old": "フランクリンバッジ[00 FF]",
-      "New": "フランクリンバッジ[00 FF]"
+      "New": "Franklin badge[00 FF]"
     },
     {
       "Index": 0xC6,
       "OffsetLocation": 0xB1B2B0,
       "OldPointer": 0xB1ADA6,
       "Old": "ぶんどき[00 FF]",
-      "New": "ぶんどき[00 FF]"
+      "New": "Protractor[00 FF]"
     },
     {
       "Index": 0xC7,
       "OffsetLocation": 0xB1B2B4,
       "OldPointer": 0xB1ADAC,
       "Old": "ペテネラのくつした[00 FF]",
-      "New": "ペテネラのくつした[00 FF]"
+      "New": "Pair of dirty socks[00 FF]"
     },
     {
       "Index": 0xC8,
       "OffsetLocation": 0xB1B2B8,
       "OldPointer": 0xB1ADB7,
       "Old": "へび[00 FF]",
-      "New": "へび[00 FF]"
+      "New": "Snake[00 FF]"
     },
     {
       "Index": 0xC9,
       "OffsetLocation": 0xB1B2BC,
       "OldPointer": 0xB1ADBB,
       "Old": "へびぶくろ[00 FF]",
-      "New": "へびぶくろ[00 FF]"
+      "New": "Snake bag[00 FF]"
     },
     {
       "Index": 0xCA,
       "OffsetLocation": 0xB1B2C0,
       "OldPointer": 0xB1ADC2,
       "Old": "ペンシルロケット[00 FF]",
-      "New": "ペンシルロケット[00 FF]"
+      "New": "Bottle rocket[00 FF]"
     },
     {
       "Index": 0xCB,
       "OffsetLocation": 0xB1B2C4,
       "OldPointer": 0xB1ADCC,
       "Old": "ペンシルロケット5[00 FF]",
-      "New": "ペンシルロケット5[00 FF]"
+      "New": "Big bottle rocket[00 FF]"
     },
     {
       "Index": 0xCC,
       "OffsetLocation": 0xB1B2C8,
       "OldPointer": 0xB1ADD7,
       "Old": "ペンシルロケット20[00 FF]",
-      "New": "ペンシルロケット20[00 FF]"
+      "New": "Multi bottle rocket[00 FF]"
     },
     {
       "Index": 0xCD,
       "OffsetLocation": 0xB1B2CC,
       "OldPointer": 0xB1ADE3,
       "Old": "ボム[00 FF]",
-      "New": "ボム[00 FF]"
+      "New": "Bomb[00 FF]"
     },
     {
       "Index": 0xCE,
       "OffsetLocation": 0xB1B2D0,
       "OldPointer": 0xB1ADE7,
       "Old": "まちのちず[00 FF]",
-      "New": "まちのちず[00 FF]"
+      "New": "Town map[00 FF]"
     },
     {
       "Index": 0xCF,
       "OffsetLocation": 0xB1B2D4,
       "OldPointer": 0xB1ADEE,
       "Old": "ミイラのほうたい[00 FF]",
-      "New": "ミイラのほうたい[00 FF]"
+      "New": "Mummy wrap[00 FF]"
     },
     {
       "Index": 0xD0,
       "OffsetLocation": 0xB1B2D8,
       "OldPointer": 0xB1ADF8,
       "Old": "むくちをなおすほん[00 FF]",
-      "New": "むくちをなおすほん[00 FF]"
+      "New": "Shyness book[00 FF]"
     },
     {
       "Index": 0xD1,
       "OffsetLocation": 0xB1B2DC,
       "OldPointer": 0xB1AE03,
       "Old": "メテオタイト[00 FF]",
-      "New": "メテオタイト[00 FF]"
+      "New": "Meteotite[00 FF]"
     },
     {
       "Index": 0xD2,
       "OffsetLocation": 0xB1B2E0,
       "OldPointer": 0xB1AE0B,
       "Old": "メテオニウム[00 FF]",
-      "New": "メテオニウム[00 FF]"
+      "New": "Meteornium[00 FF]"
     },
     {
       "Index": 0xD3,
       "OffsetLocation": 0xB1B2E4,
       "OldPointer": 0xB1AE13,
       "Old": "ものさし[00 FF]",
-      "New": "ものさし[00 FF]"
+      "New": "Ruler[00 FF]"
     },
     {
       "Index": 0xD4,
       "OffsetLocation": 0xB1B2E8,
       "OldPointer": 0xB1AE19,
       "Old": "ろうやのカギ[00 FF]",
-      "New": "ろうやのカギ[00 FF]"
+      "New": "Key to the cabin[00 FF]"
     },
     {
       "Index": 0xD5,
       "OffsetLocation": 0xB1B2EC,
       "OldPointer": 0xB1AE21,
       "Old": "ロッカーのカギ[00 FF]",
-      "New": "ロッカーのカギ[00 FF]"
+      "New": "Key to the locker[00 FF]"
     },
     {
       "Index": 0xD6,
       "OffsetLocation": 0xB1B2F0,
       "OldPointer": 0xB1AE2A,
       "Old": "かぜぐすり[00 FF]",
-      "New": "かぜぐすり[00 FF]"
+      "New": "Cold remedy[00 FF]"
     },
     {
       "Index": 0xD7,
       "OffsetLocation": 0xB1B2F4,
       "OldPointer": 0xB1AE31,
       "Old": "ぬれタオル[00 FF]",
-      "New": "ぬれタオル[00 FF]"
+      "New": "Wet towel[00 FF]"
     },
     {
       "Index": 0xD8,
       "OffsetLocation": 0xB1B2F8,
       "OldPointer": 0xB1AE38,
       "Old": "けっせい[00 FF]",
-      "New": "けっせい[00 FF]"
+      "New": "Vial of serum[00 FF]"
     },
     {
       "Index": 0xD9,
       "OffsetLocation": 0xB1B2FC,
       "OldPointer": 0xB1AE3E,
       "Old": "すっきりハーブ[00 FF]",
-      "New": "すっきりハーブ[00 FF]"
+      "New": "Refreshing herb[00 FF]"
     },
     {
       "Index": 0xDA,
       "OffsetLocation": 0xB1B300,
       "OldPointer": 0xB1AE47,
       "Old": "うらカンポー[00 FF]",
-      "New": "うらカンポー[00 FF]"
+      "New": "Secret herb[00 FF]"
     },
     {
       "Index": 0xDB,
       "OffsetLocation": 0xB1B304,
       "OldPointer": 0xB1AE4F,
       "Old": "いのちのつのぶえ[00 FF]",
-      "New": "いのちのつのぶえ[00 FF]"
+      "New": "Horn of life[00 FF]"
     },
     {
       "Index": 0xDC,
       "OffsetLocation": 0xB1B308,
       "OldPointer": 0xB1AE59,
       "Old": "IQカプセル[00 FF]",
-      "New": "IQカプセル[00 FF]"
+      "New": "IQ capsule[00 FF]"
     },
     {
       "Index": 0xDD,
       "OffsetLocation": 0xB1B30C,
       "OldPointer": 0xB1AE61,
       "Old": "ガッツカプセル[00 FF]",
-      "New": "ガッツカプセル[00 FF]"
+      "New": "Guts capsule[00 FF]"
     },
     {
       "Index": 0xDE,
       "OffsetLocation": 0xB1B310,
       "OldPointer": 0xB1AE6A,
       "Old": "スピードカプセル[00 FF]",
-      "New": "スピードカプセル[00 FF]"
+      "New": "Speed capsule[00 FF]"
     },
     {
       "Index": 0xDF,
       "OffsetLocation": 0xB1B314,
       "OldPointer": 0xB1AE74,
       "Old": "バイタルカプセル[00 FF]",
-      "New": "バイタルカプセル[00 FF]"
+      "New": "Vitality capsule[00 FF]"
     },
     {
       "Index": 0xE0,
       "OffsetLocation": 0xB1B318,
       "OldPointer": 0xB1AE7E,
       "Old": "ラックカプセル[00 FF]",
-      "New": "ラックカプセル[00 FF]"
+      "New": "Luck capsule[00 FF]"
     },
     {
       "Index": 0xE1,
       "OffsetLocation": 0xB1B31C,
       "OldPointer": 0xB1AE87,
       "Old": "ふしぎなキャンディ[00 FF]",
-      "New": "ふしぎなキャンディ[00 FF]"
+      "New": "Rock candy[00 FF]"
     },
     {
       "Index": 0xE2,
       "OffsetLocation": 0xB1B320,
       "OldPointer": 0xB1AE92,
       "Old": "バナナ[00 FF]",
-      "New": "バナナ[00 FF]"
+      "New": "Banana[00 FF]"
     },
     {
       "Index": 0xE3,
       "OffsetLocation": 0xB1B324,
       "OldPointer": 0xB1AE97,
       "Old": "こわれたきかい[00 FF]",
-      "New": "こわれたきかい[00 FF]"
+      "New": "Broken machine[00 FF]"
     },
     {
       "Index": 0xE4,
       "OffsetLocation": 0xB1B328,
       "OldPointer": 0xB1AEA0,
       "Old": "こわれたメカ[00 FF]",
-      "New": "こわれたメカ[00 FF]"
+      "New": "Broken gadget[00 FF]"
     },
     {
       "Index": 0xE5,
       "OffsetLocation": 0xB1B32C,
       "OldPointer": 0xB1AEA8,
       "Old": "こわれたエアガン[00 FF]",
-      "New": "こわれたエアガン[00 FF]"
+      "New": "Broken air gun[00 FF]"
     },
     {
       "Index": 0xE6,
       "OffsetLocation": 0xB1B330,
       "OldPointer": 0xB1AEB2,
       "Old": "こわれたスプレー[00 FF]",
-      "New": "こわれたスプレー[00 FF]"
+      "New": "Broken spray can[00 FF]"
     },
     {
       "Index": 0xE7,
       "OffsetLocation": 0xB1B334,
       "OldPointer": 0xB1AEBC,
       "Old": "こわれたレーザー[00 FF]",
-      "New": "こわれたレーザー[00 FF]"
+      "New": "Broken laser[00 FF]"
     },
     {
       "Index": 0xE8,
       "OffsetLocation": 0xB1B338,
       "OldPointer": 0xB1AEC6,
       "Old": "こわれたアイロン[00 FF]",
-      "New": "こわれたアイロン[00 FF]"
+      "New": "Broken iron[00 FF]"
     },
     {
       "Index": 0xE9,
       "OffsetLocation": 0xB1B33C,
       "OldPointer": 0xB1AED0,
       "Old": "こわれたすいどうかん[00 FF]",
-      "New": "こわれたすいどうかん[00 FF]"
+      "New": "Broken pipe[00 FF]"
     },
     {
       "Index": 0xEA,
       "OffsetLocation": 0xB1B340,
       "OldPointer": 0xB1AEDC,
       "Old": "こわれたビームほう[00 FF]",
-      "New": "こわれたビームほう[00 FF]"
+      "New": "Broken cannon[00 FF]"
     },
     {
       "Index": 0xEB,
       "OffsetLocation": 0xB1B344,
       "OldPointer": 0xB1AEE7,
       "Old": "こわれたつつ[00 FF]",
-      "New": "こわれたつつ[00 FF]"
+      "New": "Broken tube[00 FF]"
     },
     {
       "Index": 0xEC,
       "OffsetLocation": 0xB1B348,
       "OldPointer": 0xB1AEEF,
       "Old": "こわれたバズーカ[00 FF]",
-      "New": "こわれたバズーカ[00 FF]"
+      "New": "Broken bazooka[00 FF]"
     },
     {
       "Index": 0xED,
       "OffsetLocation": 0xB1B34C,
       "OldPointer": 0xB1AEF9,
       "Old": "こわれたラッパ[00 FF]",
-      "New": "こわれたラッパ[00 FF]"
+      "New": "Broken trumpet[00 FF]"
     },
     {
       "Index": 0xEE,
       "OffsetLocation": 0xB1B350,
       "OldPointer": 0xB1AF02,
       "Old": "こわれたハーモニカ[00 FF]",
-      "New": "こわれたハーモニカ[00 FF]"
+      "New": "Broken harmonica[00 FF]"
     },
     {
       "Index": 0xEF,
       "OffsetLocation": 0xB1B354,
       "OldPointer": 0xB1AF0D,
       "Old": "こわれたパラボラ[00 FF]",
-      "New": "こわれたパラボラ[00 FF]"
+      "New": "Broken antenna[00 FF]"
     },
     {
       "Index": 0xF0,
       "OffsetLocation": 0xB1B358,
       "OldPointer": 0xB1AF17,
       "Old": "ラッキーサンド[00 FF]",
-      "New": "ラッキーサンド[00 FF]"
+      "New": "Lucky sandwich[00 FF]"
     },
     {
       "Index": 0xF1,
       "OffsetLocation": 0xB1B35C,
       "OldPointer": 0xB1AF20,
       "Old": "ラッキーサンド[00 FF]",
-      "New": "ラッキーサンド[00 FF]"
+      "New": "Lucky sandwich[00 FF]"
     },
     {
       "Index": 0xF2,
       "OffsetLocation": 0xB1B360,
       "OldPointer": 0xB1AF29,
       "Old": "ラッキーサンド[00 FF]",
-      "New": "ラッキーサンド[00 FF]"
+      "New": "Lucky sandwich[00 FF]"
     },
     {
       "Index": 0xF3,
       "OffsetLocation": 0xB1B364,
       "OldPointer": 0xB1AF32,
       "Old": "ラッキーサンド[00 FF]",
-      "New": "ラッキーサンド[00 FF]"
+      "New": "Lucky sandwich[00 FF]"
     },
     {
       "Index": 0xF4,
       "OffsetLocation": 0xB1B368,
       "OldPointer": 0xB1AF3B,
       "Old": "ラッキーサンド[00 FF]",
-      "New": "ラッキーサンド[00 FF]"
+      "New": "Lucky sandwich[00 FF]"
     },
     {
       "Index": 0xF5,
       "OffsetLocation": 0xB1B36C,
       "OldPointer": 0xB1AF44,
       "Old": "ラッキーサンド[00 FF]",
-      "New": "ラッキーサンド[00 FF]"
+      "New": "Lucky sandwich[00 FF]"
     },
     {
       "Index": 0xF6,
       "OffsetLocation": 0xB1B370,
       "OldPointer": 0xB1AF4D,
       "Old": "ママのてがみ[00 FF]",
-      "New": "ママのてがみ[00 FF]"
+      "New": "Letter from mom[00 FF]"
     },
     {
       "Index": 0xF7,
       "OffsetLocation": 0xB1B374,
       "OldPointer": 0xB1AF55,
       "Old": "トニーのてがみ[00 FF]",
-      "New": "トニーのてがみ[00 FF]"
+      "New": "Letter from Tony[00 FF]"
     },
     {
       "Index": 0xF8,
       "OffsetLocation": 0xB1B378,
       "OldPointer": 0xB1AF5E,
       "Old": "ようちえんじのてがみ[00 FF]",
-      "New": "ようちえんじのてがみ[00 FF]"
+      "New": "Letter from kids[00 FF]"
     },
     {
       "Index": 0xF9,
       "OffsetLocation": 0xB1B37C,
       "OldPointer": 0xB1AF6A,
       "Old": "ゴージャスなバット[00 FF]",
-      "New": "ゴージャスなバット[00 FF]"
+      "New": "Big league bat[00 FF]"
     },
     {
       "Index": 0xFA,
       "OffsetLocation": 0xB1B380,
       "OldPointer": 0xB1AF75,
       "Old": "プラチナのうでわ[00 FF]",
-      "New": "プラチナのうでわ[00 FF]"
+      "New": "Platinum band[00 FF]"
     },
     {
       "Index": 0xFB,
       "OffsetLocation": 0xB1B384,
       "OldPointer": 0xB1AF7F,
       "Old": "ダイヤのうでわ[00 FF]",
-      "New": "ダイヤのうでわ[00 FF]"
+      "New": "Diamond band[00 FF]"
     },
     {
       "Index": 0xFC,
       "OffsetLocation": 0xB1B388,
       "OldPointer": 0xB1AF88,
       "Old": "まよけのコイン[00 FF]",
-      "New": "まよけのコイン[00 FF]"
+      "New": "Charm coin[00 FF]"
     }
   ]
 }
