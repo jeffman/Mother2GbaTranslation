@@ -225,6 +225,21 @@ namespace ScriptTool
             return miscStrings;
         }
 
+        public static MiscStringCollection ReadDadText(byte[] rom)
+        {
+            return ReadPointerTable(rom, 0xB18310, 0xB18160);
+        }
+
+        public static MiscStringCollection ReadPsiText(byte[] rom)
+        {
+            return ReadPointerTable(rom, 0xB194BC, 0xB18344);
+        }
+
+        public static MiscStringCollection ReadEnemyNames(byte[] rom)
+        {
+            return ReadPointerTable(rom, 0xB1A2F0, 0xB19AD0);
+        }
+
         public static FixedStringCollection ReadPsiNames(byte[] rom)
         {
             return ReadFixedStringTable(rom, 0xB1B916, 0x12, 0xD);

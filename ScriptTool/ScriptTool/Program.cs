@@ -178,6 +178,7 @@ namespace ScriptTool
             // Pull all string refs from the ROM
             var allRefs = new List<Tuple<string, MainStringRef[]>>();
             allRefs.Add(Tuple.Create("m12-tpt", M12TextTables.ReadTptRefs(m12Rom)));
+            // TODO: small pointer table at B1B3B0
 
             // Decompile
             var allPointers = allRefs.SelectMany(rl => rl.Item2).Select(r => r.OldPointer).ToArray();
@@ -209,6 +210,18 @@ namespace ScriptTool
             // Misc text
             var miscText = M12TextTables.ReadMiscText(m12Rom);
             DecompileM12MiscStringCollection(m12Rom, workingDirectory, "m12-misctext", miscText);
+
+            // Dad
+            var dadText = M12TextTables.ReadDadText(m12Rom);
+            DecompileM12MiscStringCollection(m12Rom, workingDirectory, "m12-dadtext", dadText);
+
+            // PSI text
+            var psiText = M12TextTables.ReadPsiText(m12Rom);
+            DecompileM12MiscStringCollection(m12Rom, workingDirectory, "m12-psitext", psiText);
+
+            // Enemy names
+            var enemyNames = M12TextTables.ReadEnemyNames(m12Rom);
+            DecompileM12MiscStringCollection(m12Rom, workingDirectory, "m12-enemynames", enemyNames);
 
             // PSI names
             var psiNames = M12TextTables.ReadPsiNames(m12Rom);

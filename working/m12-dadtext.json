@@ -1,0 +1,83 @@
+{
+  "OffsetTableLocation": 0xB18310,
+  "StringsLocation": 0xB18160,
+  "StringRefs": [
+    {
+      "Index": 0x0,
+      "OffsetLocation": 0xB18314,
+      "OldPointer": 0xB18160,
+      "Old": "[0C FF]は じゅわきをとった｡[00 FF]",
+      "New": "[0C FF]は じゅわきをとった｡[00 FF]"
+    },
+    {
+      "Index": 0x1,
+      "OffsetLocation": 0xB18318,
+      "OldPointer": 0xB1816F,
+      "Old": "パパ[00 FF]",
+      "New": "パパ[00 FF]"
+    },
+    {
+      "Index": 0x2,
+      "OffsetLocation": 0xB1831C,
+      "OldPointer": 0xB18173,
+      "Old": "ママ[00 FF]",
+      "New": "ママ[00 FF]"
+    },
+    {
+      "Index": 0x3,
+      "OffsetLocation": 0xB18320,
+      "OldPointer": 0xB18177,
+      "Old": "エスカルゴうんそう[00 FF]",
+      "New": "エスカルゴうんそう[00 FF]"
+    },
+    {
+      "Index": 0x4,
+      "OffsetLocation": 0xB18324,
+      "OldPointer": 0xB18182,
+      "Old": "マッハピザ[00 FF]",
+      "New": "マッハピザ[00 FF]"
+    },
+    {
+      "Index": 0x5,
+      "OffsetLocation": 0xB18328,
+      "OldPointer": 0xB18189,
+      "Old": "ストイッククラブ[00 FF]",
+      "New": "ストイッククラブ[00 FF]"
+    },
+    {
+      "Index": 0x6,
+      "OffsetLocation": 0xB1832C,
+      "OldPointer": 0xB18193,
+      "Old": "◆あ パパだ｡[02 FF]◆おまえの ぎんこうこうざに[01 FF]ドル[01 FF] ふりこんでおいたからね｡[02 FF]◆つかったぶんと さしひきで[01 FF]ドル[01 FF] ぎんこうに はいっているはずだ｡[02 FF]◆えーと つぎのレベルまで··[01 FF][0D FF]は｡[01 FF]◆それはそうと なんのようだい?[01 FF][18 FF 00 00]",
+      "New": "◆あ パパだ｡[02 FF]◆おまえの ぎんこうこうざに[01 FF]ドル[01 FF] ふりこんでおいたからね｡[02 FF]◆つかったぶんと さしひきで[01 FF]ドル[01 FF] ぎんこうに はいっているはずだ｡[02 FF]◆えーと つぎのレベルまで··[01 FF][0D FF]は｡[01 FF]◆それはそうと なんのようだい?[01 FF][18 FF 00 00]"
+    },
+    {
+      "Index": 0x7,
+      "OffsetLocation": 0xB18330,
+      "OldPointer": 0xB18227,
+      "Old": "◆そうか｡[01 FF] パパも もう きょうは[01 FF] やすもうと おもっていたところだ｡[02 FF]◆ぼうけんのきろくは[01 FF] つけといたよ｡[02 FF]◆おやすみ··[01 FF][18 FF 00 00]",
+      "New": "◆そうか｡[01 FF] パパも もう きょうは[01 FF] やすもうと おもっていたところだ｡[02 FF]◆ぼうけんのきろくは[01 FF] つけといたよ｡[02 FF]◆おやすみ··[01 FF][18 FF 00 00]"
+    },
+    {
+      "Index": 0x8,
+      "OffsetLocation": 0xB18334,
+      "OldPointer": 0xB18286,
+      "Old": "◆がんばれよ｡[02 FF]◆ガチャン ツーツーツー[00 FF]",
+      "New": "◆がんばれよ｡[02 FF]◆ガチャン ツーツーツー[00 FF]"
+    },
+    {
+      "Index": 0x9,
+      "OffsetLocation": 0xB18338,
+      "OldPointer": 0xB1829D,
+      "Old": "◆[0D FF]も ママににて[01 FF] がんばりやだなぁ｡[02 FF]◆むりするなよ｡[02 FF]◆ガチャン ツーツーツー[00 FF]",
+      "New": "◆[0D FF]も ママににて[01 FF] がんばりやだなぁ｡[02 FF]◆むりするなよ｡[02 FF]◆ガチャン ツーツーツー[00 FF]"
+    },
+    {
+      "Index": 0xA,
+      "OffsetLocation": 0xB1833C,
+      "OldPointer": 0xB182CD,
+      "Old": "◆おたがい よくやったよな｡[02 FF]◆それじゃ リセットボタンを[01 FF] おさないで でんげんを OFFに[01 FF] しなさい｡ わかったね｡[00 FF]",
+      "New": "◆おたがい よくやったよな｡[02 FF]◆それじゃ リセットボタンを[01 FF] おさないで でんげんを OFFに[01 FF] しなさい｡ わかったね｡[00 FF]"
+    }
+  ]
+}

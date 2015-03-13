@@ -1,0 +1,1770 @@
+{
+  "OffsetTableLocation": 0xB194BC,
+  "StringsLocation": 0xB18344,
+  "StringRefs": [
+    {
+      "Index": 0x0,
+      "OffsetLocation": 0xB194C0,
+      "OldPointer": 0xB18344,
+      "Old": "                 [00 FF]",
+      "New": "                 [00 FF]"
+    },
+    {
+      "Index": 0x1,
+      "OffsetLocation": 0xB194C4,
+      "OldPointer": 0xB18357,
+      "Old": "PK[12 FF][00 FF]",
+      "New": "PK[12 FF][00 FF]"
+    },
+    {
+      "Index": 0x2,
+      "OffsetLocation": 0xB194C8,
+      "OldPointer": 0xB1835D,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x3,
+      "OffsetLocation": 0xB194CC,
+      "OldPointer": 0xB18366,
+      "Old": "α β    [00 FF]",
+      "New": "α β    [00 FF]"
+    },
+    {
+      "Index": 0x4,
+      "OffsetLocation": 0xB194D0,
+      "OldPointer": 0xB1836F,
+      "Old": "α β γ  [00 FF]",
+      "New": "α β γ  [00 FF]"
+    },
+    {
+      "Index": 0x5,
+      "OffsetLocation": 0xB194D4,
+      "OldPointer": 0xB18378,
+      "Old": "α β γ Σ[00 FF]",
+      "New": "α β γ Σ[00 FF]"
+    },
+    {
+      "Index": 0x6,
+      "OffsetLocation": 0xB194D8,
+      "OldPointer": 0xB18381,
+      "Old": "PKファイアー[00 FF]",
+      "New": "PKファイアー[00 FF]"
+    },
+    {
+      "Index": 0x7,
+      "OffsetLocation": 0xB194DC,
+      "OldPointer": 0xB1838A,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x8,
+      "OffsetLocation": 0xB194E0,
+      "OldPointer": 0xB18393,
+      "Old": "α β    [00 FF]",
+      "New": "α β    [00 FF]"
+    },
+    {
+      "Index": 0x9,
+      "OffsetLocation": 0xB194E4,
+      "OldPointer": 0xB1839C,
+      "Old": "α β γ  [00 FF]",
+      "New": "α β γ  [00 FF]"
+    },
+    {
+      "Index": 0xA,
+      "OffsetLocation": 0xB194E8,
+      "OldPointer": 0xB183A5,
+      "Old": "α β γ Σ[00 FF]",
+      "New": "α β γ Σ[00 FF]"
+    },
+    {
+      "Index": 0xB,
+      "OffsetLocation": 0xB194EC,
+      "OldPointer": 0xB183AE,
+      "Old": "PKフリーズ[00 FF]",
+      "New": "PKフリーズ[00 FF]"
+    },
+    {
+      "Index": 0xC,
+      "OffsetLocation": 0xB194F0,
+      "OldPointer": 0xB183B6,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0xD,
+      "OffsetLocation": 0xB194F4,
+      "OldPointer": 0xB183BF,
+      "Old": "α β    [00 FF]",
+      "New": "α β    [00 FF]"
+    },
+    {
+      "Index": 0xE,
+      "OffsetLocation": 0xB194F8,
+      "OldPointer": 0xB183C8,
+      "Old": "α β γ  [00 FF]",
+      "New": "α β γ  [00 FF]"
+    },
+    {
+      "Index": 0xF,
+      "OffsetLocation": 0xB194FC,
+      "OldPointer": 0xB183D1,
+      "Old": "α β γ Σ[00 FF]",
+      "New": "α β γ Σ[00 FF]"
+    },
+    {
+      "Index": 0x10,
+      "OffsetLocation": 0xB19500,
+      "OldPointer": 0xB183DA,
+      "Old": "PKサンダー[00 FF]",
+      "New": "PKサンダー[00 FF]"
+    },
+    {
+      "Index": 0x11,
+      "OffsetLocation": 0xB19504,
+      "OldPointer": 0xB183E2,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x12,
+      "OffsetLocation": 0xB19508,
+      "OldPointer": 0xB183EB,
+      "Old": "α β    [00 FF]",
+      "New": "α β    [00 FF]"
+    },
+    {
+      "Index": 0x13,
+      "OffsetLocation": 0xB1950C,
+      "OldPointer": 0xB183F4,
+      "Old": "α β γ  [00 FF]",
+      "New": "α β γ  [00 FF]"
+    },
+    {
+      "Index": 0x14,
+      "OffsetLocation": 0xB19510,
+      "OldPointer": 0xB183FD,
+      "Old": "α β γ Σ[00 FF]",
+      "New": "α β γ Σ[00 FF]"
+    },
+    {
+      "Index": 0x15,
+      "OffsetLocation": 0xB19514,
+      "OldPointer": 0xB18406,
+      "Old": "PKフラッシュ[00 FF]",
+      "New": "PKフラッシュ[00 FF]"
+    },
+    {
+      "Index": 0x16,
+      "OffsetLocation": 0xB19518,
+      "OldPointer": 0xB1840F,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x17,
+      "OffsetLocation": 0xB1951C,
+      "OldPointer": 0xB18418,
+      "Old": "α β    [00 FF]",
+      "New": "α β    [00 FF]"
+    },
+    {
+      "Index": 0x18,
+      "OffsetLocation": 0xB19520,
+      "OldPointer": 0xB18421,
+      "Old": "α β γ  [00 FF]",
+      "New": "α β γ  [00 FF]"
+    },
+    {
+      "Index": 0x19,
+      "OffsetLocation": 0xB19524,
+      "OldPointer": 0xB1842A,
+      "Old": "α β γ Σ[00 FF]",
+      "New": "α β γ Σ[00 FF]"
+    },
+    {
+      "Index": 0x1A,
+      "OffsetLocation": 0xB19528,
+      "OldPointer": 0xB18433,
+      "Old": "PKスターストーム[00 FF]",
+      "New": "PKスターストーム[00 FF]"
+    },
+    {
+      "Index": 0x1B,
+      "OffsetLocation": 0xB1952C,
+      "OldPointer": 0xB1843E,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x1C,
+      "OffsetLocation": 0xB19530,
+      "OldPointer": 0xB18447,
+      "Old": "α Σ    [00 FF]",
+      "New": "α Σ    [00 FF]"
+    },
+    {
+      "Index": 0x1D,
+      "OffsetLocation": 0xB19534,
+      "OldPointer": 0xB18450,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x1E,
+      "OffsetLocation": 0xB19538,
+      "OldPointer": 0xB18453,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x1F,
+      "OffsetLocation": 0xB1953C,
+      "OldPointer": 0xB18456,
+      "Old": "ライフアップ[00 FF]",
+      "New": "ライフアップ[00 FF]"
+    },
+    {
+      "Index": 0x20,
+      "OffsetLocation": 0xB19540,
+      "OldPointer": 0xB1845E,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x21,
+      "OffsetLocation": 0xB19544,
+      "OldPointer": 0xB18467,
+      "Old": "α β    [00 FF]",
+      "New": "α β    [00 FF]"
+    },
+    {
+      "Index": 0x22,
+      "OffsetLocation": 0xB19548,
+      "OldPointer": 0xB18470,
+      "Old": "α β γ  [00 FF]",
+      "New": "α β γ  [00 FF]"
+    },
+    {
+      "Index": 0x23,
+      "OffsetLocation": 0xB1954C,
+      "OldPointer": 0xB18479,
+      "Old": "α β γ Σ[00 FF]",
+      "New": "α β γ Σ[00 FF]"
+    },
+    {
+      "Index": 0x24,
+      "OffsetLocation": 0xB19550,
+      "OldPointer": 0xB18482,
+      "Old": "ヒーリング[00 FF]",
+      "New": "ヒーリング[00 FF]"
+    },
+    {
+      "Index": 0x25,
+      "OffsetLocation": 0xB19554,
+      "OldPointer": 0xB18489,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x26,
+      "OffsetLocation": 0xB19558,
+      "OldPointer": 0xB18492,
+      "Old": "α β    [00 FF]",
+      "New": "α β    [00 FF]"
+    },
+    {
+      "Index": 0x27,
+      "OffsetLocation": 0xB1955C,
+      "OldPointer": 0xB1849B,
+      "Old": "α β γ  [00 FF]",
+      "New": "α β γ  [00 FF]"
+    },
+    {
+      "Index": 0x28,
+      "OffsetLocation": 0xB19560,
+      "OldPointer": 0xB184A4,
+      "Old": "α β γ Σ[00 FF]",
+      "New": "α β γ Σ[00 FF]"
+    },
+    {
+      "Index": 0x29,
+      "OffsetLocation": 0xB19564,
+      "OldPointer": 0xB184AD,
+      "Old": "シールド[00 FF]",
+      "New": "シールド[00 FF]"
+    },
+    {
+      "Index": 0x2A,
+      "OffsetLocation": 0xB19568,
+      "OldPointer": 0xB184B3,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x2B,
+      "OffsetLocation": 0xB1956C,
+      "OldPointer": 0xB184BC,
+      "Old": "α β    [00 FF]",
+      "New": "α β    [00 FF]"
+    },
+    {
+      "Index": 0x2C,
+      "OffsetLocation": 0xB19570,
+      "OldPointer": 0xB184C5,
+      "Old": "α β Ω  [00 FF]",
+      "New": "α β Ω  [00 FF]"
+    },
+    {
+      "Index": 0x2D,
+      "OffsetLocation": 0xB19574,
+      "OldPointer": 0xB184CE,
+      "Old": "α β Ω Σ[00 FF]",
+      "New": "α β Ω Σ[00 FF]"
+    },
+    {
+      "Index": 0x2E,
+      "OffsetLocation": 0xB19578,
+      "OldPointer": 0xB184D7,
+      "Old": "サイコシールド[00 FF]",
+      "New": "サイコシールド[00 FF]"
+    },
+    {
+      "Index": 0x2F,
+      "OffsetLocation": 0xB1957C,
+      "OldPointer": 0xB184E0,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x30,
+      "OffsetLocation": 0xB19580,
+      "OldPointer": 0xB184E9,
+      "Old": "α β    [00 FF]",
+      "New": "α β    [00 FF]"
+    },
+    {
+      "Index": 0x31,
+      "OffsetLocation": 0xB19584,
+      "OldPointer": 0xB184F2,
+      "Old": "α β Ω  [00 FF]",
+      "New": "α β Ω  [00 FF]"
+    },
+    {
+      "Index": 0x32,
+      "OffsetLocation": 0xB19588,
+      "OldPointer": 0xB184FB,
+      "Old": "α β Ω Σ[00 FF]",
+      "New": "α β Ω Σ[00 FF]"
+    },
+    {
+      "Index": 0x33,
+      "OffsetLocation": 0xB1958C,
+      "OldPointer": 0xB18504,
+      "Old": "オフェンスアップ[00 FF]",
+      "New": "オフェンスアップ[00 FF]"
+    },
+    {
+      "Index": 0x34,
+      "OffsetLocation": 0xB19590,
+      "OldPointer": 0xB1850E,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x35,
+      "OffsetLocation": 0xB19594,
+      "OldPointer": 0xB18517,
+      "Old": "α Σ    [00 FF]",
+      "New": "α Σ    [00 FF]"
+    },
+    {
+      "Index": 0x36,
+      "OffsetLocation": 0xB19598,
+      "OldPointer": 0xB18520,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x37,
+      "OffsetLocation": 0xB1959C,
+      "OldPointer": 0xB18523,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x38,
+      "OffsetLocation": 0xB195A0,
+      "OldPointer": 0xB18526,
+      "Old": "ディフェンスダウン[00 FF]",
+      "New": "ディフェンスダウン[00 FF]"
+    },
+    {
+      "Index": 0x39,
+      "OffsetLocation": 0xB195A4,
+      "OldPointer": 0xB18531,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x3A,
+      "OffsetLocation": 0xB195A8,
+      "OldPointer": 0xB1853A,
+      "Old": "α Σ    [00 FF]",
+      "New": "α Σ    [00 FF]"
+    },
+    {
+      "Index": 0x3B,
+      "OffsetLocation": 0xB195AC,
+      "OldPointer": 0xB18543,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x3C,
+      "OffsetLocation": 0xB195B0,
+      "OldPointer": 0xB18546,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x3D,
+      "OffsetLocation": 0xB195B4,
+      "OldPointer": 0xB18549,
+      "Old": "さいみんじゅつ[00 FF]",
+      "New": "さいみんじゅつ[00 FF]"
+    },
+    {
+      "Index": 0x3E,
+      "OffsetLocation": 0xB195B8,
+      "OldPointer": 0xB18552,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x3F,
+      "OffsetLocation": 0xB195BC,
+      "OldPointer": 0xB1855B,
+      "Old": "α Σ    [00 FF]",
+      "New": "α Σ    [00 FF]"
+    },
+    {
+      "Index": 0x40,
+      "OffsetLocation": 0xB195C0,
+      "OldPointer": 0xB18564,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x41,
+      "OffsetLocation": 0xB195C4,
+      "OldPointer": 0xB18567,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x42,
+      "OffsetLocation": 0xB195C8,
+      "OldPointer": 0xB1856A,
+      "Old": "サイマグネット[00 FF]",
+      "New": "サイマグネット[00 FF]"
+    },
+    {
+      "Index": 0x43,
+      "OffsetLocation": 0xB195CC,
+      "OldPointer": 0xB18573,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x44,
+      "OffsetLocation": 0xB195D0,
+      "OldPointer": 0xB1857C,
+      "Old": "α Σ    [00 FF]",
+      "New": "α Σ    [00 FF]"
+    },
+    {
+      "Index": 0x45,
+      "OffsetLocation": 0xB195D4,
+      "OldPointer": 0xB18585,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x46,
+      "OffsetLocation": 0xB195D8,
+      "OldPointer": 0xB18588,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x47,
+      "OffsetLocation": 0xB195DC,
+      "OldPointer": 0xB1858B,
+      "Old": "パラライシス[00 FF]",
+      "New": "パラライシス[00 FF]"
+    },
+    {
+      "Index": 0x48,
+      "OffsetLocation": 0xB195E0,
+      "OldPointer": 0xB18593,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x49,
+      "OffsetLocation": 0xB195E4,
+      "OldPointer": 0xB1859C,
+      "Old": "α Σ    [00 FF]",
+      "New": "α Σ    [00 FF]"
+    },
+    {
+      "Index": 0x4A,
+      "OffsetLocation": 0xB195E8,
+      "OldPointer": 0xB185A5,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x4B,
+      "OffsetLocation": 0xB195EC,
+      "OldPointer": 0xB185A8,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x4C,
+      "OffsetLocation": 0xB195F0,
+      "OldPointer": 0xB185AB,
+      "Old": "ブレインショック[00 FF]",
+      "New": "ブレインショック[00 FF]"
+    },
+    {
+      "Index": 0x4D,
+      "OffsetLocation": 0xB195F4,
+      "OldPointer": 0xB185B5,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x4E,
+      "OffsetLocation": 0xB195F8,
+      "OldPointer": 0xB185BE,
+      "Old": "α Σ    [00 FF]",
+      "New": "α Σ    [00 FF]"
+    },
+    {
+      "Index": 0x4F,
+      "OffsetLocation": 0xB195FC,
+      "OldPointer": 0xB185C7,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x50,
+      "OffsetLocation": 0xB19600,
+      "OldPointer": 0xB185CA,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x51,
+      "OffsetLocation": 0xB19604,
+      "OldPointer": 0xB185CD,
+      "Old": "テレポート[00 FF]",
+      "New": "テレポート[00 FF]"
+    },
+    {
+      "Index": 0x52,
+      "OffsetLocation": 0xB19608,
+      "OldPointer": 0xB185D4,
+      "Old": "α      [00 FF]",
+      "New": "α      [00 FF]"
+    },
+    {
+      "Index": 0x53,
+      "OffsetLocation": 0xB1960C,
+      "OldPointer": 0xB185DD,
+      "Old": "α β    [00 FF]",
+      "New": "α β    [00 FF]"
+    },
+    {
+      "Index": 0x54,
+      "OffsetLocation": 0xB19610,
+      "OldPointer": 0xB185E6,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x55,
+      "OffsetLocation": 0xB19614,
+      "OldPointer": 0xB185E9,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x56,
+      "OffsetLocation": 0xB19618,
+      "OldPointer": 0xB185EC,
+      "Old": "PK[12 FF]α[00 FF]",
+      "New": "PK[12 FF]α[00 FF]"
+    },
+    {
+      "Index": 0x57,
+      "OffsetLocation": 0xB1961C,
+      "OldPointer": 0xB185F3,
+      "Old": "PK[12 FF]β[00 FF]",
+      "New": "PK[12 FF]β[00 FF]"
+    },
+    {
+      "Index": 0x58,
+      "OffsetLocation": 0xB19620,
+      "OldPointer": 0xB185FA,
+      "Old": "PK[12 FF]γ[00 FF]",
+      "New": "PK[12 FF]γ[00 FF]"
+    },
+    {
+      "Index": 0x59,
+      "OffsetLocation": 0xB19624,
+      "OldPointer": 0xB18601,
+      "Old": "PK[12 FF]Σ[00 FF]",
+      "New": "PK[12 FF]Σ[00 FF]"
+    },
+    {
+      "Index": 0x5A,
+      "OffsetLocation": 0xB19628,
+      "OldPointer": 0xB18608,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x5B,
+      "OffsetLocation": 0xB1962C,
+      "OldPointer": 0xB1860B,
+      "Old": "PKファイアーα[00 FF]",
+      "New": "PKファイアーα[00 FF]"
+    },
+    {
+      "Index": 0x5C,
+      "OffsetLocation": 0xB19630,
+      "OldPointer": 0xB18615,
+      "Old": "PKファイアーβ[00 FF]",
+      "New": "PKファイアーβ[00 FF]"
+    },
+    {
+      "Index": 0x5D,
+      "OffsetLocation": 0xB19634,
+      "OldPointer": 0xB1861F,
+      "Old": "PKファイアーγ[00 FF]",
+      "New": "PKファイアーγ[00 FF]"
+    },
+    {
+      "Index": 0x5E,
+      "OffsetLocation": 0xB19638,
+      "OldPointer": 0xB18629,
+      "Old": "PKファイアーΣ[00 FF]",
+      "New": "PKファイアーΣ[00 FF]"
+    },
+    {
+      "Index": 0x5F,
+      "OffsetLocation": 0xB1963C,
+      "OldPointer": 0xB18633,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x60,
+      "OffsetLocation": 0xB19640,
+      "OldPointer": 0xB18636,
+      "Old": "PKフリーズα[00 FF]",
+      "New": "PKフリーズα[00 FF]"
+    },
+    {
+      "Index": 0x61,
+      "OffsetLocation": 0xB19644,
+      "OldPointer": 0xB1863F,
+      "Old": "PKフリーズβ[00 FF]",
+      "New": "PKフリーズβ[00 FF]"
+    },
+    {
+      "Index": 0x62,
+      "OffsetLocation": 0xB19648,
+      "OldPointer": 0xB18648,
+      "Old": "PKフリーズγ[00 FF]",
+      "New": "PKフリーズγ[00 FF]"
+    },
+    {
+      "Index": 0x63,
+      "OffsetLocation": 0xB1964C,
+      "OldPointer": 0xB18651,
+      "Old": "PKフリーズΣ[00 FF]",
+      "New": "PKフリーズΣ[00 FF]"
+    },
+    {
+      "Index": 0x64,
+      "OffsetLocation": 0xB19650,
+      "OldPointer": 0xB1865A,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x65,
+      "OffsetLocation": 0xB19654,
+      "OldPointer": 0xB1865D,
+      "Old": "PKサンダーα[00 FF]",
+      "New": "PKサンダーα[00 FF]"
+    },
+    {
+      "Index": 0x66,
+      "OffsetLocation": 0xB19658,
+      "OldPointer": 0xB18666,
+      "Old": "PKサンダーβ[00 FF]",
+      "New": "PKサンダーβ[00 FF]"
+    },
+    {
+      "Index": 0x67,
+      "OffsetLocation": 0xB1965C,
+      "OldPointer": 0xB1866F,
+      "Old": "PKサンダーγ[00 FF]",
+      "New": "PKサンダーγ[00 FF]"
+    },
+    {
+      "Index": 0x68,
+      "OffsetLocation": 0xB19660,
+      "OldPointer": 0xB18678,
+      "Old": "PKサンダーΣ[00 FF]",
+      "New": "PKサンダーΣ[00 FF]"
+    },
+    {
+      "Index": 0x69,
+      "OffsetLocation": 0xB19664,
+      "OldPointer": 0xB18681,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x6A,
+      "OffsetLocation": 0xB19668,
+      "OldPointer": 0xB18684,
+      "Old": "PKフラッシュα[00 FF]",
+      "New": "PKフラッシュα[00 FF]"
+    },
+    {
+      "Index": 0x6B,
+      "OffsetLocation": 0xB1966C,
+      "OldPointer": 0xB1868E,
+      "Old": "PKフラッシュβ[00 FF]",
+      "New": "PKフラッシュβ[00 FF]"
+    },
+    {
+      "Index": 0x6C,
+      "OffsetLocation": 0xB19670,
+      "OldPointer": 0xB18698,
+      "Old": "PKフラッシュγ[00 FF]",
+      "New": "PKフラッシュγ[00 FF]"
+    },
+    {
+      "Index": 0x6D,
+      "OffsetLocation": 0xB19674,
+      "OldPointer": 0xB186A2,
+      "Old": "PKフラッシュΣ[00 FF]",
+      "New": "PKフラッシュΣ[00 FF]"
+    },
+    {
+      "Index": 0x6E,
+      "OffsetLocation": 0xB19678,
+      "OldPointer": 0xB186AC,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x6F,
+      "OffsetLocation": 0xB1967C,
+      "OldPointer": 0xB186AF,
+      "Old": "PKスターストームα[00 FF]",
+      "New": "PKスターストームα[00 FF]"
+    },
+    {
+      "Index": 0x70,
+      "OffsetLocation": 0xB19680,
+      "OldPointer": 0xB186BB,
+      "Old": "PKスターストームΣ[00 FF]",
+      "New": "PKスターストームΣ[00 FF]"
+    },
+    {
+      "Index": 0x71,
+      "OffsetLocation": 0xB19684,
+      "OldPointer": 0xB186C7,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x72,
+      "OffsetLocation": 0xB19688,
+      "OldPointer": 0xB186CA,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x73,
+      "OffsetLocation": 0xB1968C,
+      "OldPointer": 0xB186CD,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x74,
+      "OffsetLocation": 0xB19690,
+      "OldPointer": 0xB186D0,
+      "Old": "ライフアップα[00 FF]",
+      "New": "ライフアップα[00 FF]"
+    },
+    {
+      "Index": 0x75,
+      "OffsetLocation": 0xB19694,
+      "OldPointer": 0xB186D9,
+      "Old": "ライフアップβ[00 FF]",
+      "New": "ライフアップβ[00 FF]"
+    },
+    {
+      "Index": 0x76,
+      "OffsetLocation": 0xB19698,
+      "OldPointer": 0xB186E2,
+      "Old": "ライフアップγ[00 FF]",
+      "New": "ライフアップγ[00 FF]"
+    },
+    {
+      "Index": 0x77,
+      "OffsetLocation": 0xB1969C,
+      "OldPointer": 0xB186EB,
+      "Old": "ライフアップΣ[00 FF]",
+      "New": "ライフアップΣ[00 FF]"
+    },
+    {
+      "Index": 0x78,
+      "OffsetLocation": 0xB196A0,
+      "OldPointer": 0xB186F4,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x79,
+      "OffsetLocation": 0xB196A4,
+      "OldPointer": 0xB186F7,
+      "Old": "ヒーリングα[00 FF]",
+      "New": "ヒーリングα[00 FF]"
+    },
+    {
+      "Index": 0x7A,
+      "OffsetLocation": 0xB196A8,
+      "OldPointer": 0xB186FF,
+      "Old": "ヒーリングβ[00 FF]",
+      "New": "ヒーリングβ[00 FF]"
+    },
+    {
+      "Index": 0x7B,
+      "OffsetLocation": 0xB196AC,
+      "OldPointer": 0xB18707,
+      "Old": "ヒーリングγ[00 FF]",
+      "New": "ヒーリングγ[00 FF]"
+    },
+    {
+      "Index": 0x7C,
+      "OffsetLocation": 0xB196B0,
+      "OldPointer": 0xB1870F,
+      "Old": "ヒーリングΣ[00 FF]",
+      "New": "ヒーリングΣ[00 FF]"
+    },
+    {
+      "Index": 0x7D,
+      "OffsetLocation": 0xB196B4,
+      "OldPointer": 0xB18717,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x7E,
+      "OffsetLocation": 0xB196B8,
+      "OldPointer": 0xB1871A,
+      "Old": "シールドα[00 FF]",
+      "New": "シールドα[00 FF]"
+    },
+    {
+      "Index": 0x7F,
+      "OffsetLocation": 0xB196BC,
+      "OldPointer": 0xB18721,
+      "Old": "シールドβ[00 FF]",
+      "New": "シールドβ[00 FF]"
+    },
+    {
+      "Index": 0x80,
+      "OffsetLocation": 0xB196C0,
+      "OldPointer": 0xB18728,
+      "Old": "シールドΩ[00 FF]",
+      "New": "シールドΩ[00 FF]"
+    },
+    {
+      "Index": 0x81,
+      "OffsetLocation": 0xB196C4,
+      "OldPointer": 0xB1872F,
+      "Old": "シールドΣ[00 FF]",
+      "New": "シールドΣ[00 FF]"
+    },
+    {
+      "Index": 0x82,
+      "OffsetLocation": 0xB196C8,
+      "OldPointer": 0xB18736,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x83,
+      "OffsetLocation": 0xB196CC,
+      "OldPointer": 0xB18739,
+      "Old": "サイコシールドα[00 FF]",
+      "New": "サイコシールドα[00 FF]"
+    },
+    {
+      "Index": 0x84,
+      "OffsetLocation": 0xB196D0,
+      "OldPointer": 0xB18743,
+      "Old": "サイコシールドβ[00 FF]",
+      "New": "サイコシールドβ[00 FF]"
+    },
+    {
+      "Index": 0x85,
+      "OffsetLocation": 0xB196D4,
+      "OldPointer": 0xB1874D,
+      "Old": "サイコシールドΩ[00 FF]",
+      "New": "サイコシールドΩ[00 FF]"
+    },
+    {
+      "Index": 0x86,
+      "OffsetLocation": 0xB196D8,
+      "OldPointer": 0xB18757,
+      "Old": "サイコシールドΣ[00 FF]",
+      "New": "サイコシールドΣ[00 FF]"
+    },
+    {
+      "Index": 0x87,
+      "OffsetLocation": 0xB196DC,
+      "OldPointer": 0xB18761,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x88,
+      "OffsetLocation": 0xB196E0,
+      "OldPointer": 0xB18764,
+      "Old": "オフェンスアップα[00 FF]",
+      "New": "オフェンスアップα[00 FF]"
+    },
+    {
+      "Index": 0x89,
+      "OffsetLocation": 0xB196E4,
+      "OldPointer": 0xB1876F,
+      "Old": "オフェンスアップΣ[00 FF]",
+      "New": "オフェンスアップΣ[00 FF]"
+    },
+    {
+      "Index": 0x8A,
+      "OffsetLocation": 0xB196E8,
+      "OldPointer": 0xB1877A,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x8B,
+      "OffsetLocation": 0xB196EC,
+      "OldPointer": 0xB1877D,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x8C,
+      "OffsetLocation": 0xB196F0,
+      "OldPointer": 0xB18780,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x8D,
+      "OffsetLocation": 0xB196F4,
+      "OldPointer": 0xB18783,
+      "Old": "ディフェンスダウンα[00 FF]",
+      "New": "ディフェンスダウンα[00 FF]"
+    },
+    {
+      "Index": 0x8E,
+      "OffsetLocation": 0xB196F8,
+      "OldPointer": 0xB1878F,
+      "Old": "ディフェンスダウンΣ[00 FF]",
+      "New": "ディフェンスダウンΣ[00 FF]"
+    },
+    {
+      "Index": 0x8F,
+      "OffsetLocation": 0xB196FC,
+      "OldPointer": 0xB1879B,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x90,
+      "OffsetLocation": 0xB19700,
+      "OldPointer": 0xB1879E,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x91,
+      "OffsetLocation": 0xB19704,
+      "OldPointer": 0xB187A1,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x92,
+      "OffsetLocation": 0xB19708,
+      "OldPointer": 0xB187A4,
+      "Old": "さいみんじゅつα[00 FF]",
+      "New": "さいみんじゅつα[00 FF]"
+    },
+    {
+      "Index": 0x93,
+      "OffsetLocation": 0xB1970C,
+      "OldPointer": 0xB187AE,
+      "Old": "さいみんじゅつΣ[00 FF]",
+      "New": "さいみんじゅつΣ[00 FF]"
+    },
+    {
+      "Index": 0x94,
+      "OffsetLocation": 0xB19710,
+      "OldPointer": 0xB187B8,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x95,
+      "OffsetLocation": 0xB19714,
+      "OldPointer": 0xB187BB,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x96,
+      "OffsetLocation": 0xB19718,
+      "OldPointer": 0xB187BE,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x97,
+      "OffsetLocation": 0xB1971C,
+      "OldPointer": 0xB187C1,
+      "Old": "サイマグネットα[00 FF]",
+      "New": "サイマグネットα[00 FF]"
+    },
+    {
+      "Index": 0x98,
+      "OffsetLocation": 0xB19720,
+      "OldPointer": 0xB187CB,
+      "Old": "サイマグネットΣ[00 FF]",
+      "New": "サイマグネットΣ[00 FF]"
+    },
+    {
+      "Index": 0x99,
+      "OffsetLocation": 0xB19724,
+      "OldPointer": 0xB187D5,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x9A,
+      "OffsetLocation": 0xB19728,
+      "OldPointer": 0xB187D8,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x9B,
+      "OffsetLocation": 0xB1972C,
+      "OldPointer": 0xB187DB,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x9C,
+      "OffsetLocation": 0xB19730,
+      "OldPointer": 0xB187DE,
+      "Old": "パラライシスα[00 FF]",
+      "New": "パラライシスα[00 FF]"
+    },
+    {
+      "Index": 0x9D,
+      "OffsetLocation": 0xB19734,
+      "OldPointer": 0xB187E7,
+      "Old": "パラライシスΣ[00 FF]",
+      "New": "パラライシスΣ[00 FF]"
+    },
+    {
+      "Index": 0x9E,
+      "OffsetLocation": 0xB19738,
+      "OldPointer": 0xB187F0,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0x9F,
+      "OffsetLocation": 0xB1973C,
+      "OldPointer": 0xB187F3,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xA0,
+      "OffsetLocation": 0xB19740,
+      "OldPointer": 0xB187F6,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xA1,
+      "OffsetLocation": 0xB19744,
+      "OldPointer": 0xB187F9,
+      "Old": "ブレインショックα[00 FF]",
+      "New": "ブレインショックα[00 FF]"
+    },
+    {
+      "Index": 0xA2,
+      "OffsetLocation": 0xB19748,
+      "OldPointer": 0xB18804,
+      "Old": "ブレインショックΣ[00 FF]",
+      "New": "ブレインショックΣ[00 FF]"
+    },
+    {
+      "Index": 0xA3,
+      "OffsetLocation": 0xB1974C,
+      "OldPointer": 0xB1880F,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xA4,
+      "OffsetLocation": 0xB19750,
+      "OldPointer": 0xB18812,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xA5,
+      "OffsetLocation": 0xB19754,
+      "OldPointer": 0xB18815,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xA6,
+      "OffsetLocation": 0xB19758,
+      "OldPointer": 0xB18818,
+      "Old": "テレポートα[00 FF]",
+      "New": "テレポートα[00 FF]"
+    },
+    {
+      "Index": 0xA7,
+      "OffsetLocation": 0xB1975C,
+      "OldPointer": 0xB18820,
+      "Old": "テレポートβ[00 FF]",
+      "New": "テレポートβ[00 FF]"
+    },
+    {
+      "Index": 0xA8,
+      "OffsetLocation": 0xB19760,
+      "OldPointer": 0xB18828,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xA9,
+      "OffsetLocation": 0xB19764,
+      "OldPointer": 0xB1882B,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xAA,
+      "OffsetLocation": 0xB19768,
+      "OldPointer": 0xB1882E,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xAB,
+      "OffsetLocation": 0xB1976C,
+      "OldPointer": 0xB18831,
+      "Old": " ◆[0D FF]だけがつかいこなせる ひっさつPK｡[01 FF] ◆せいしんしゅうちゅうによる ねんどうは が[01 FF]  てきぜんいんに[01 FF]  やく50ポイントずつ ダメージをあたえる｡[00 FF]",
+      "New": " ◆[0D FF]だけがつかいこなせる ひっさつPK｡[01 FF] ◆せいしんしゅうちゅうによる ねんどうは が[01 FF]  てきぜんいんに[01 FF]  やく50ポイントずつ ダメージをあたえる｡[00 FF]"
+    },
+    {
+      "Index": 0xAC,
+      "OffsetLocation": 0xB19770,
+      "OldPointer": 0xB18886,
+      "Old": " ◆[0D FF]だけがつかいこなせる ひっさつPK｡[01 FF] ◆せいしんしゅうちゅうによる ねんどうは が[01 FF]  てきぜんいんに[01 FF]  やく180ポイントずつ ダメージをあたえる｡[00 FF]",
+      "New": " ◆[0D FF]だけがつかいこなせる ひっさつPK｡[01 FF] ◆せいしんしゅうちゅうによる ねんどうは が[01 FF]  てきぜんいんに[01 FF]  やく180ポイントずつ ダメージをあたえる｡[00 FF]"
+    },
+    {
+      "Index": 0xAD,
+      "OffsetLocation": 0xB19774,
+      "OldPointer": 0xB188DC,
+      "Old": " ◆[0D FF]だけがつかいこなせる ひっさつPK｡[01 FF] ◆せいしんしゅうちゅうによる ねんどうは が[01 FF]  てきぜんいんに[01 FF]  やく320ポイントずつ ダメージをあたえる｡[00 FF]",
+      "New": " ◆[0D FF]だけがつかいこなせる ひっさつPK｡[01 FF] ◆せいしんしゅうちゅうによる ねんどうは が[01 FF]  てきぜんいんに[01 FF]  やく320ポイントずつ ダメージをあたえる｡[00 FF]"
+    },
+    {
+      "Index": 0xAE,
+      "OffsetLocation": 0xB19778,
+      "OldPointer": 0xB18932,
+      "Old": " ◆[0D FF]だけがつかいこなせる ひっさつPK｡[01 FF] ◆せいしんしゅうちゅうによる ねんどうは が[01 FF]  てきぜんいんに[01 FF]  やく640ポイントずつ ダメージをあたえる｡[00 FF]",
+      "New": " ◆[0D FF]だけがつかいこなせる ひっさつPK｡[01 FF] ◆せいしんしゅうちゅうによる ねんどうは が[01 FF]  てきぜんいんに[01 FF]  やく640ポイントずつ ダメージをあたえる｡[00 FF]"
+    },
+    {
+      "Index": 0xAF,
+      "OffsetLocation": 0xB1977C,
+      "OldPointer": 0xB18988,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xB0,
+      "OffsetLocation": 0xB19780,
+      "OldPointer": 0xB1898B,
+      "Old": " ◆ゆびさきから ほのおがとびだし[01 FF]  いちれつにならんだ てき ぜんいんに[01 FF]  それぞれ やく80ポイントのダメージを あたえる｡[00 FF]",
+      "New": " ◆ゆびさきから ほのおがとびだし[01 FF]  いちれつにならんだ てき ぜんいんに[01 FF]  それぞれ やく80ポイントのダメージを あたえる｡[00 FF]"
+    },
+    {
+      "Index": 0xB1,
+      "OffsetLocation": 0xB19784,
+      "OldPointer": 0xB189D1,
+      "Old": " ◆ゆびさきから ほのおがとびだし[01 FF]  いちれつにならんだ てき ぜんいんに[01 FF]  それぞれ やく160ポイントのダメージを あたえる｡[00 FF]",
+      "New": " ◆ゆびさきから ほのおがとびだし[01 FF]  いちれつにならんだ てき ぜんいんに[01 FF]  それぞれ やく160ポイントのダメージを あたえる｡[00 FF]"
+    },
+    {
+      "Index": 0xB2,
+      "OffsetLocation": 0xB19788,
+      "OldPointer": 0xB18A18,
+      "Old": " ◆ゆびさきから ほのおがとびだし[01 FF]  いちれつにならんだ てき ぜんいんに[01 FF]  それぞれ やく240ポイントのダメージを あたえる｡[00 FF]",
+      "New": " ◆ゆびさきから ほのおがとびだし[01 FF]  いちれつにならんだ てき ぜんいんに[01 FF]  それぞれ やく240ポイントのダメージを あたえる｡[00 FF]"
+    },
+    {
+      "Index": 0xB3,
+      "OffsetLocation": 0xB1978C,
+      "OldPointer": 0xB18A5F,
+      "Old": " ◆ゆびさきから ほのおがとびだし[01 FF]  いちれつにならんだ てき ぜんいんに[01 FF]  それぞれ やく240ポイントのダメージを あたえる｡[00 FF]",
+      "New": " ◆ゆびさきから ほのおがとびだし[01 FF]  いちれつにならんだ てき ぜんいんに[01 FF]  それぞれ やく240ポイントのダメージを あたえる｡[00 FF]"
+    },
+    {
+      "Index": 0xB4,
+      "OffsetLocation": 0xB19790,
+      "OldPointer": 0xB18AA6,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xB5,
+      "OffsetLocation": 0xB19794,
+      "OldPointer": 0xB18AA9,
+      "Old": " ◆てきのまわりに つめたいかぜをまきおこし[01 FF]  やく180ポイントのダメージを あたえる｡[01 FF] ◆てきをこおりづけにして かたまらせることもある｡[01 FF] ◆あまり こうかのない てきもいる｡[00 FF]",
+      "New": " ◆てきのまわりに つめたいかぜをまきおこし[01 FF]  やく180ポイントのダメージを あたえる｡[01 FF] ◆てきをこおりづけにして かたまらせることもある｡[01 FF] ◆あまり こうかのない てきもいる｡[00 FF]"
+    },
+    {
+      "Index": 0xB6,
+      "OffsetLocation": 0xB19798,
+      "OldPointer": 0xB18B0B,
+      "Old": " ◆てきのまわりに つめたいかぜをまきおこし[01 FF]  やく360ポイントのダメージを あたえる｡[01 FF] ◆てきをこおりづけにして かたまらせることもある｡[01 FF] ◆あまり こうかのない てきもいる｡[00 FF]",
+      "New": " ◆てきのまわりに つめたいかぜをまきおこし[01 FF]  やく360ポイントのダメージを あたえる｡[01 FF] ◆てきをこおりづけにして かたまらせることもある｡[01 FF] ◆あまり こうかのない てきもいる｡[00 FF]"
+    },
+    {
+      "Index": 0xB7,
+      "OffsetLocation": 0xB1979C,
+      "OldPointer": 0xB18B6D,
+      "Old": " ◆てきのまわりに つめたいかぜをまきおこし[01 FF]  やく540ポイントのダメージを あたえる｡[01 FF] ◆てきをこおりづけにして かたまらせることもある｡[01 FF] ◆あまり こうかのない てきもいる｡[00 FF]",
+      "New": " ◆てきのまわりに つめたいかぜをまきおこし[01 FF]  やく540ポイントのダメージを あたえる｡[01 FF] ◆てきをこおりづけにして かたまらせることもある｡[01 FF] ◆あまり こうかのない てきもいる｡[00 FF]"
+    },
+    {
+      "Index": 0xB8,
+      "OffsetLocation": 0xB197A0,
+      "OldPointer": 0xB18BCF,
+      "Old": " ◆てきのまわりに つめたいかぜをまきおこし[01 FF]  やく720ポイントのダメージを あたえる｡[01 FF] ◆てきをこおりづけにして かたまらせることもある｡[01 FF] ◆あまり こうかのない てきもいる｡[00 FF]",
+      "New": " ◆てきのまわりに つめたいかぜをまきおこし[01 FF]  やく720ポイントのダメージを あたえる｡[01 FF] ◆てきをこおりづけにして かたまらせることもある｡[01 FF] ◆あまり こうかのない てきもいる｡[00 FF]"
+    },
+    {
+      "Index": 0xB9,
+      "OffsetLocation": 0xB197A4,
+      "OldPointer": 0xB18C31,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xBA,
+      "OffsetLocation": 0xB197A8,
+      "OldPointer": 0xB18C34,
+      "Old": " ◆ダメージ やく120ポイントの[01 FF]  かみなりを おとす｡[01 FF] ◆てきのかずがすくないと はずれてしまう｡[01 FF] ◆サイコシールドや はんげきのサイコシールドをひきさく｡[00 FF]",
+      "New": " ◆ダメージ やく120ポイントの[01 FF]  かみなりを おとす｡[01 FF] ◆てきのかずがすくないと はずれてしまう｡[01 FF] ◆サイコシールドや はんげきのサイコシールドをひきさく｡[00 FF]"
+    },
+    {
+      "Index": 0xBB,
+      "OffsetLocation": 0xB197AC,
+      "OldPointer": 0xB18C8C,
+      "Old": " ◆ダメージ やく120ポイントの[01 FF]  かみなりを 2はつ おとす｡[01 FF] ◆てきのかずがすくないと はずれてしまう｡[01 FF] ◆サイコシールドや はんげきのサイコシールドをひきさく｡[00 FF]",
+      "New": " ◆ダメージ やく120ポイントの[01 FF]  かみなりを 2はつ おとす｡[01 FF] ◆てきのかずがすくないと はずれてしまう｡[01 FF] ◆サイコシールドや はんげきのサイコシールドをひきさく｡[00 FF]"
+    },
+    {
+      "Index": 0xBC,
+      "OffsetLocation": 0xB197B0,
+      "OldPointer": 0xB18CE8,
+      "Old": " ◆ダメージ やく200ポイントの[01 FF]  かみなりを 3はつ おとす｡[01 FF] ◆てきのかずがすくないと はずれてしまう｡[01 FF] ◆サイコシールドや はんげきのサイコシールドをひきさく｡[00 FF]",
+      "New": " ◆ダメージ やく200ポイントの[01 FF]  かみなりを 3はつ おとす｡[01 FF] ◆てきのかずがすくないと はずれてしまう｡[01 FF] ◆サイコシールドや はんげきのサイコシールドをひきさく｡[00 FF]"
+    },
+    {
+      "Index": 0xBD,
+      "OffsetLocation": 0xB197B4,
+      "OldPointer": 0xB18D44,
+      "Old": " ◆ダメージ やく200ポイントの[01 FF]  かみなりを 4はつ おとす｡[01 FF] ◆てきのかずがすくないと はずれてしまう｡[01 FF] ◆サイコシールドや はんげきのサイコシールドをひきさく｡[00 FF]",
+      "New": " ◆ダメージ やく200ポイントの[01 FF]  かみなりを 4はつ おとす｡[01 FF] ◆てきのかずがすくないと はずれてしまう｡[01 FF] ◆サイコシールドや はんげきのサイコシールドをひきさく｡[00 FF]"
+    },
+    {
+      "Index": 0xBE,
+      "OffsetLocation": 0xB197B8,
+      "OldPointer": 0xB18DA0,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xBF,
+      "OffsetLocation": 0xB197BC,
+      "OldPointer": 0xB18DA3,
+      "Old": " ◆はげしいひかりを はなち てきぜんいんを[01 FF]  “なみだがとまらない”じょうたいにする｡[01 FF] ◆“へん”にするときも まれに ある｡[00 FF]",
+      "New": " ◆はげしいひかりを はなち てきぜんいんを[01 FF]  “なみだがとまらない”じょうたいにする｡[01 FF] ◆“へん”にするときも まれに ある｡[00 FF]"
+    },
+    {
+      "Index": 0xC0,
+      "OffsetLocation": 0xB197C0,
+      "OldPointer": 0xB18DE9,
+      "Old": " ◆はげしいひかりを はなち てきぜんいんを[01 FF]  “なみだがとまらない”じょうたいにする｡[01 FF] ◆そのほかにも “へん”にしたり “しびれ”させたり[01 FF]  いちげきで たおすことも ある｡[00 FF]",
+      "New": " ◆はげしいひかりを はなち てきぜんいんを[01 FF]  “なみだがとまらない”じょうたいにする｡[01 FF] ◆そのほかにも “へん”にしたり “しびれ”させたり[01 FF]  いちげきで たおすことも ある｡[00 FF]"
+    },
+    {
+      "Index": 0xC1,
+      "OffsetLocation": 0xB197C4,
+      "OldPointer": 0xB18E4A,
+      "Old": " ◆はげしいひかりを はなち てきぜんいんを[01 FF]  “なみだがとまらない”じょうたいにする｡[01 FF] ◆いちげきで たおすことも かなりある｡[00 FF]",
+      "New": " ◆はげしいひかりを はなち てきぜんいんを[01 FF]  “なみだがとまらない”じょうたいにする｡[01 FF] ◆いちげきで たおすことも かなりある｡[00 FF]"
+    },
+    {
+      "Index": 0xC2,
+      "OffsetLocation": 0xB197C8,
+      "OldPointer": 0xB18E91,
+      "Old": " ◆はげしいひかりを はなち[01 FF]  てきぜんいんを かなりの かくりつで[01 FF]  いちげきで たおすことができる｡[00 FF]",
+      "New": " ◆はげしいひかりを はなち[01 FF]  てきぜんいんを かなりの かくりつで[01 FF]  いちげきで たおすことができる｡[00 FF]"
+    },
+    {
+      "Index": 0xC3,
+      "OffsetLocation": 0xB197CC,
+      "OldPointer": 0xB18ECB,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xC4,
+      "OffsetLocation": 0xB197D0,
+      "OldPointer": 0xB18ECE,
+      "Old": " ◆[10 FF]が しゅぎょうによりおぼえた[01 FF] “ほしを おとす ほうほう”｡[01 FF] ◆てきぜんいんに[01 FF]  やく360ポイントずつ ダメージをあたえる｡[00 FF]",
+      "New": " ◆[10 FF]が しゅぎょうによりおぼえた[01 FF] “ほしを おとす ほうほう”｡[01 FF] ◆てきぜんいんに[01 FF]  やく360ポイントずつ ダメージをあたえる｡[00 FF]"
+    },
+    {
+      "Index": 0xC5,
+      "OffsetLocation": 0xB197D4,
+      "OldPointer": 0xB18F19,
+      "Old": " ◆[10 FF]が しゅぎょうによりおぼえた[01 FF] “ほしを おとす ほうほう”｡[01 FF] ◆てきぜんいんに[01 FF]  やく720ポイントずつ ダメージをあたえる｡[00 FF]",
+      "New": " ◆[10 FF]が しゅぎょうによりおぼえた[01 FF] “ほしを おとす ほうほう”｡[01 FF] ◆てきぜんいんに[01 FF]  やく720ポイントずつ ダメージをあたえる｡[00 FF]"
+    },
+    {
+      "Index": 0xC6,
+      "OffsetLocation": 0xB197D8,
+      "OldPointer": 0xB18F64,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xC7,
+      "OffsetLocation": 0xB197DC,
+      "OldPointer": 0xB18F67,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xC8,
+      "OffsetLocation": 0xB197E0,
+      "OldPointer": 0xB18F6A,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xC9,
+      "OffsetLocation": 0xB197E4,
+      "OldPointer": 0xB18F6D,
+      "Old": " ◆なかまひとりのHPを[01 FF]  やく100ポイント かいふくする｡[00 FF]",
+      "New": " ◆なかまひとりのHPを[01 FF]  やく100ポイント かいふくする｡[00 FF]"
+    },
+    {
+      "Index": 0xCA,
+      "OffsetLocation": 0xB197E8,
+      "OldPointer": 0xB18F90,
+      "Old": " ◆なかまひとりのHPを[01 FF]  やく300ポイント かいふくする｡[00 FF]",
+      "New": " ◆なかまひとりのHPを[01 FF]  やく300ポイント かいふくする｡[00 FF]"
+    },
+    {
+      "Index": 0xCB,
+      "OffsetLocation": 0xB197EC,
+      "OldPointer": 0xB18FB3,
+      "Old": " ◆なかまひとりのHPを[01 FF]  かんぜんに かいふくする｡[00 FF]",
+      "New": " ◆なかまひとりのHPを[01 FF]  かんぜんに かいふくする｡[00 FF]"
+    },
+    {
+      "Index": 0xCC,
+      "OffsetLocation": 0xB197F0,
+      "OldPointer": 0xB18FD2,
+      "Old": " ◆なかまぜんいんのHPを[01 FF]  やく400ずつ かいふくする｡[00 FF]",
+      "New": " ◆なかまぜんいんのHPを[01 FF]  やく400ずつ かいふくする｡[00 FF]"
+    },
+    {
+      "Index": 0xCD,
+      "OffsetLocation": 0xB197F4,
+      "OldPointer": 0xB18FF4,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xCE,
+      "OffsetLocation": 0xB197F8,
+      "OldPointer": 0xB18FF7,
+      "Old": " ◆なかまの“かぜ“にっしゃびょう”[01 FF]  “ねむり”じょうたいを かいふくする｡[00 FF]",
+      "New": " ◆なかまの“かぜ“にっしゃびょう”[01 FF]  “ねむり”じょうたいを かいふくする｡[00 FF]"
+    },
+    {
+      "Index": 0xCF,
+      "OffsetLocation": 0xB197FC,
+      "OldPointer": 0xB19022,
+      "Old": " ◆ヒーリングαのこうかにくわえ[01 FF]  “どく”“きもちわるい”“へん”[01 FF]  “なみだがとまらない”じょうたいを かいふくする｡[00 FF]",
+      "New": " ◆ヒーリングαのこうかにくわえ[01 FF]  “どく”“きもちわるい”“へん”[01 FF]  “なみだがとまらない”じょうたいを かいふくする｡[00 FF]"
+    },
+    {
+      "Index": 0xD0,
+      "OffsetLocation": 0xB19800,
+      "OldPointer": 0xB19065,
+      "Old": " ◆ヒーリングβのこうかにくわえ[01 FF]  “ダイヤ”“しびれ”じょうたいを かいふくする[01 FF] ◆“きぜつ”しているなかまを カムバックさせる[01 FF]  こともあるが そのときHPはまんタンにならない｡[00 FF]",
+      "New": " ◆ヒーリングβのこうかにくわえ[01 FF]  “ダイヤ”“しびれ”じょうたいを かいふくする[01 FF] ◆“きぜつ”しているなかまを カムバックさせる[01 FF]  こともあるが そのときHPはまんタンにならない｡[00 FF]"
+    },
+    {
+      "Index": 0xD1,
+      "OffsetLocation": 0xB19804,
+      "OldPointer": 0xB190C8,
+      "Old": " ◆ヒーリングγのこうかにくわえ[01 FF]  “きぜつ”しているなかまを かくじつに[01 FF]  HPまんタンで カムバックさせる｡[00 FF]",
+      "New": " ◆ヒーリングγのこうかにくわえ[01 FF]  “きぜつ”しているなかまを かくじつに[01 FF]  HPまんタンで カムバックさせる｡[00 FF]"
+    },
+    {
+      "Index": 0xD2,
+      "OffsetLocation": 0xB19808,
+      "OldPointer": 0xB19106,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xD3,
+      "OffsetLocation": 0xB1980C,
+      "OldPointer": 0xB19109,
+      "Old": " ◆なかまひとりに“ひかりのシールド”をかける｡[01 FF] ◆てきからうける だげきこうげきのダメージが[01 FF]  はんぶんになる｡[01 FF] ◆べつのシールドをかけると うちけされてしまう｡[00 FF]",
+      "New": " ◆なかまひとりに“ひかりのシールド”をかける｡[01 FF] ◆てきからうける だげきこうげきのダメージが[01 FF]  はんぶんになる｡[01 FF] ◆べつのシールドをかけると うちけされてしまう｡[00 FF]"
+    },
+    {
+      "Index": 0xD4,
+      "OffsetLocation": 0xB19810,
+      "OldPointer": 0xB19163,
+      "Old": " ◆なかまひとりに“はんげきのシールド”をかける｡[01 FF] ◆だげきこうげきのダメージが[01 FF]  はんぶんになる のこりを はねかえす｡[01 FF] ◆べつのシールドをかけると うちけされてしまう｡[00 FF]",
+      "New": " ◆なかまひとりに“はんげきのシールド”をかける｡[01 FF] ◆だげきこうげきのダメージが[01 FF]  はんぶんになる のこりを はねかえす｡[01 FF] ◆べつのシールドをかけると うちけされてしまう｡[00 FF]"
+    },
+    {
+      "Index": 0xD5,
+      "OffsetLocation": 0xB19814,
+      "OldPointer": 0xB191C1,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xD6,
+      "OffsetLocation": 0xB19818,
+      "OldPointer": 0xB191C4,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xD7,
+      "OffsetLocation": 0xB1981C,
+      "OldPointer": 0xB191C7,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xD8,
+      "OffsetLocation": 0xB19820,
+      "OldPointer": 0xB191CA,
+      "Old": " ◆みかたひとりに“サイコシールド”をかける｡[01 FF] ◆てきからうける PSIこうげきを[01 FF]  むこうにする｡[01 FF] ◆べつのシールドをかけると うちけされてしまう｡[00 FF]",
+      "New": " ◆みかたひとりに“サイコシールド”をかける｡[01 FF] ◆てきからうける PSIこうげきを[01 FF]  むこうにする｡[01 FF] ◆べつのシールドをかけると うちけされてしまう｡[00 FF]"
+    },
+    {
+      "Index": 0xD9,
+      "OffsetLocation": 0xB19824,
+      "OldPointer": 0xB1921D,
+      "Old": " ◆みかたぜんいんに“サイコシールド”をかける｡[01 FF] ◆てきからうける PSIこうげきを[01 FF]  むこうにする｡[01 FF] ◆べつのシールドをかけると うちけされてしまう｡[00 FF]",
+      "New": " ◆みかたぜんいんに“サイコシールド”をかける｡[01 FF] ◆てきからうける PSIこうげきを[01 FF]  むこうにする｡[01 FF] ◆べつのシールドをかけると うちけされてしまう｡[00 FF]"
+    },
+    {
+      "Index": 0xDA,
+      "OffsetLocation": 0xB19828,
+      "OldPointer": 0xB19271,
+      "Old": " ◆みかたひとりに“サイコシールド”をかける｡[01 FF] ◆てきからうける PSIこうげきを[01 FF]  そのままはねかえす｡[01 FF] ◆べつのシールドをかけると うちけされてしまう｡[00 FF]",
+      "New": " ◆みかたひとりに“サイコシールド”をかける｡[01 FF] ◆てきからうける PSIこうげきを[01 FF]  そのままはねかえす｡[01 FF] ◆べつのシールドをかけると うちけされてしまう｡[00 FF]"
+    },
+    {
+      "Index": 0xDB,
+      "OffsetLocation": 0xB1982C,
+      "OldPointer": 0xB192C7,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xDC,
+      "OffsetLocation": 0xB19830,
+      "OldPointer": 0xB192CA,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xDD,
+      "OffsetLocation": 0xB19834,
+      "OldPointer": 0xB192CD,
+      "Old": " ◆みかたひとりの こうげきりょくを[01 FF]  せんとうじにかぎって アップする｡[01 FF] ◆かさねて つかうと こうかてき｡[00 FF]",
+      "New": " ◆みかたひとりの こうげきりょくを[01 FF]  せんとうじにかぎって アップする｡[01 FF] ◆かさねて つかうと こうかてき｡[00 FF]"
+    },
+    {
+      "Index": 0xDE,
+      "OffsetLocation": 0xB19838,
+      "OldPointer": 0xB1930A,
+      "Old": " ◆みかたぜんいんの こうげきりょくを[01 FF]  せんとうじにかぎって アップする｡[01 FF] ◆かさねて つかうと こうかてき｡[00 FF]",
+      "New": " ◆みかたぜんいんの こうげきりょくを[01 FF]  せんとうじにかぎって アップする｡[01 FF] ◆かさねて つかうと こうかてき｡[00 FF]"
+    },
+    {
+      "Index": 0xDF,
+      "OffsetLocation": 0xB1983C,
+      "OldPointer": 0xB19348,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xE0,
+      "OffsetLocation": 0xB19840,
+      "OldPointer": 0xB1934B,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xE1,
+      "OffsetLocation": 0xB19844,
+      "OldPointer": 0xB1934E,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xE2,
+      "OffsetLocation": 0xB19848,
+      "OldPointer": 0xB19351,
+      "Old": " ◆てきひとりの しゅびりょくを[01 FF]  せんとうじにかぎって ダウンさせる｡[01 FF] ◆かさねて つかうと こうかてきめん｡[00 FF]",
+      "New": " ◆てきひとりの しゅびりょくを[01 FF]  せんとうじにかぎって ダウンさせる｡[01 FF] ◆かさねて つかうと こうかてきめん｡[00 FF]"
+    },
+    {
+      "Index": 0xE3,
+      "OffsetLocation": 0xB1984C,
+      "OldPointer": 0xB1938F,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xE4,
+      "OffsetLocation": 0xB19850,
+      "OldPointer": 0xB19392,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xE5,
+      "OffsetLocation": 0xB19854,
+      "OldPointer": 0xB19395,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xE6,
+      "OffsetLocation": 0xB19858,
+      "OldPointer": 0xB19398,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xE7,
+      "OffsetLocation": 0xB1985C,
+      "OldPointer": 0xB1939B,
+      "Old": " ◆てきひとりを ねむらせる｡[00 FF]",
+      "New": " ◆てきひとりを ねむらせる｡[00 FF]"
+    },
+    {
+      "Index": 0xE8,
+      "OffsetLocation": 0xB19860,
+      "OldPointer": 0xB193AC,
+      "Old": " ◆てきぜんいんを ねむらせる｡[00 FF]",
+      "New": " ◆てきぜんいんを ねむらせる｡[00 FF]"
+    },
+    {
+      "Index": 0xE9,
+      "OffsetLocation": 0xB19864,
+      "OldPointer": 0xB193BE,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xEA,
+      "OffsetLocation": 0xB19868,
+      "OldPointer": 0xB193C1,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xEB,
+      "OffsetLocation": 0xB1986C,
+      "OldPointer": 0xB193C4,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xEC,
+      "OffsetLocation": 0xB19870,
+      "OldPointer": 0xB193C7,
+      "Old": " ◆てきひとりの PPを[01 FF]  2~8ポイント うばいとり[01 FF]  じぶんのものにする｡[00 FF]",
+      "New": " ◆てきひとりの PPを[01 FF]  2~8ポイント うばいとり[01 FF]  じぶんのものにする｡[00 FF]"
+    },
+    {
+      "Index": 0xED,
+      "OffsetLocation": 0xB19874,
+      "OldPointer": 0xB193F4,
+      "Old": " ◆てきひとりの PPを[01 FF]  それぞれ 2~8ポイント うばいとり[01 FF]  じぶんのものにする｡[00 FF]",
+      "New": " ◆てきひとりの PPを[01 FF]  それぞれ 2~8ポイント うばいとり[01 FF]  じぶんのものにする｡[00 FF]"
+    },
+    {
+      "Index": 0xEE,
+      "OffsetLocation": 0xB19878,
+      "OldPointer": 0xB19426,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xEF,
+      "OffsetLocation": 0xB1987C,
+      "OldPointer": 0xB19429,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xF0,
+      "OffsetLocation": 0xB19880,
+      "OldPointer": 0xB1942C,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xF1,
+      "OffsetLocation": 0xB19884,
+      "OldPointer": 0xB1942F,
+      "Old": " ◆てきひとりを[01 FF]  “しびれ”じょうたいにする｡[00 FF]",
+      "New": " ◆てきひとりを[01 FF]  “しびれ”じょうたいにする｡[00 FF]"
+    },
+    {
+      "Index": 0xF2,
+      "OffsetLocation": 0xB19888,
+      "OldPointer": 0xB1944B,
+      "Old": " ◆てきぜんいんを[01 FF]  “しびれ”じょうたいにする｡[00 FF]",
+      "New": " ◆てきぜんいんを[01 FF]  “しびれ”じょうたいにする｡[00 FF]"
+    },
+    {
+      "Index": 0xF3,
+      "OffsetLocation": 0xB1988C,
+      "OldPointer": 0xB19468,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xF4,
+      "OffsetLocation": 0xB19890,
+      "OldPointer": 0xB1946B,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xF5,
+      "OffsetLocation": 0xB19894,
+      "OldPointer": 0xB1946E,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xF6,
+      "OffsetLocation": 0xB19898,
+      "OldPointer": 0xB19471,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xF7,
+      "OffsetLocation": 0xB1989C,
+      "OldPointer": 0xB19474,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xF8,
+      "OffsetLocation": 0xB198A0,
+      "OldPointer": 0xB19477,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xF9,
+      "OffsetLocation": 0xB198A4,
+      "OldPointer": 0xB1947A,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xFA,
+      "OffsetLocation": 0xB198A8,
+      "OldPointer": 0xB1947D,
+      "Old": " [00 FF]",
+      "New": " [00 FF]"
+    },
+    {
+      "Index": 0xFB,
+      "OffsetLocation": 0xB198AC,
+      "OldPointer": 0xB19480,
+      "Old": " ◆いままでに いったことがあるばしょへ[01 FF]  しゅんかんに いどうできる｡[01 FF] ◆ながいじょそうが ひつようだ｡[00 FF]",
+      "New": " ◆いままでに いったことがあるばしょへ[01 FF]  しゅんかんに いどうできる｡[01 FF] ◆ながいじょそうが ひつようだ｡[00 FF]"
+    }
+  ]
+}

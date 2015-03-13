@@ -3,15 +3,12 @@
 - [ ] Dump enemy names
 - [ ] Dump PSI names
 - [ ] Dump main text
-- [ ] Translate item names
-- [ ] Translate enemy names
-- [ ] Translate PSI names
 
 # M12
-- [ ] Dump menu strings
-- [ ] Dump misc strings
-- [ ] Dump teleport strings
-- [ ] Translate menu strings
-- [ ] Translate misc strings
-- [ ] Translate teleport strings
-- [ ] Translate main text
+- [ ] Translate dad text
+- [ ] Translate enemy names
+- [X] Translate item names
+- [ ] Translate menu choices
+- [ ] Translate misc text
+- [ ] Translate PSI names
+- [ ] Translate PSI text
