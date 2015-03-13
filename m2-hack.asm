@@ -8,7 +8,7 @@ arch gba.thumb
 org $80B3274; dd m2_font_relocate
 
 // Ness mom test
-org $808F6B0; dd m2_nessmom
+//org $808F6B0; dd m2_nessmom
 
 //==============================================================================
 // Font hacks
@@ -166,23 +166,6 @@ incbin m2-widths-main.bin
 
 m2_widths_saturn:
 // tba
-
-// Ness mom test
-m2_nessmom:
-print "m2-nessmom: $", pc
-incbin m2-nessmom.bin
-
-// Misc text
-org $8B17EE4; incbin m2-misctext-offsets.bin
-org $8B40000; incbin m2-misctext.bin
-
-// Menu choices
-org $8B19A64; incbin m2-menuchoices-offsets.bin
-org $8B41000; incbin m2-menuchoices.bin
-
-// PSI names
-incsrc m2-psinames.asm
-org $8B42000; incbin m2-psinames.bin
 
 //==============================================================================
 // Misc
