@@ -167,7 +167,9 @@ namespace ScriptTool
 
         static void DecompileEbMisc(byte[] ebRom, string workingDirectory)
         {
-
+            // Enemy names
+            var enemyNames = EbTextTables.ReadEnemyNames(ebRom);
+            DecompileFixedStringCollection(ebDecompiler, ebRom, workingDirectory, "eb-enemynames", enemyNames);
         }
 
         static void DecompileM12(byte[] m12Rom, string workingDirectory)
@@ -201,57 +203,59 @@ namespace ScriptTool
         {
             // Item names
             var itemNames = M12TextTables.ReadItemNames(m12Rom);
-            DecompileM12MiscStringCollection(m12Rom, workingDirectory, "m12-itemnames", itemNames);
+            DecompileMiscStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-itemnames", itemNames);
 
             // Menu choices
             var menuChoices = M12TextTables.ReadMenuChoices(m12Rom);
-            DecompileM12MiscStringCollection(m12Rom, workingDirectory, "m12-menuchoices", menuChoices);
+            DecompileMiscStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-menuchoices", menuChoices);
 
             // Misc text
             var miscText = M12TextTables.ReadMiscText(m12Rom);
-            DecompileM12MiscStringCollection(m12Rom, workingDirectory, "m12-misctext", miscText);
+            DecompileMiscStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-misctext", miscText);
 
             // Dad
             var dadText = M12TextTables.ReadDadText(m12Rom);
-            DecompileM12MiscStringCollection(m12Rom, workingDirectory, "m12-dadtext", dadText);
+            DecompileMiscStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-dadtext", dadText);
 
             // PSI text
             var psiText = M12TextTables.ReadPsiText(m12Rom);
-            DecompileM12MiscStringCollection(m12Rom, workingDirectory, "m12-psitext", psiText);
+            DecompileMiscStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-psitext", psiText);
 
             // Enemy names
             var enemyNames = M12TextTables.ReadEnemyNames(m12Rom);
-            DecompileM12MiscStringCollection(m12Rom, workingDirectory, "m12-enemynames", enemyNames);
+            DecompileMiscStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-enemynames", enemyNames);
 
             // PSI names
             var psiNames = M12TextTables.ReadPsiNames(m12Rom);
-            DecompileM12FixedStringCollection(m12Rom, workingDirectory, "m12-psinames", psiNames);
+            DecompileFixedStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-psinames", psiNames);
         }
 
-        static void DecompileM12MiscStringCollection(byte[] rom, string workingDirectory, string name, MiscStringCollection miscStringCollection)
+        static void DecompileMiscStringCollection(IDecompiler decompiler, byte[] rom,
+            string workingDirectory, string name, MiscStringCollection miscStringCollection)
         {
             // Decompile the strings
             foreach (var miscStringRef in miscStringCollection.StringRefs)
             {
                 miscStringRef.Old =
                     miscStringRef.New =
-                    m12Decompiler.ReadString(rom, miscStringRef.OldPointer, -1, miscStringRef.BasicMode);
+                    decompiler.ReadString(rom, miscStringRef.OldPointer, -1, miscStringRef.BasicMode);
             }
 
             // Write JSON
             File.WriteAllText(Path.Combine(workingDirectory, name + ".json"), JsonConvert.SerializeObject(miscStringCollection, Formatting.Indented));
         }
 
-        static void DecompileM12FixedStringCollection(byte[] rom, string workingDirectory, string name, FixedStringCollection fixedStringCollection)
+        static void DecompileFixedStringCollection(IDecompiler decompiler, byte[] rom,
+            string workingDirectory, string name, FixedStringCollection fixedStringCollection)
         {
             // Decompile the strings
             foreach (var fixedStringRef in fixedStringCollection.StringRefs)
             {
                 fixedStringRef.Old =
                     fixedStringRef.New =
-                    m12Decompiler.ReadString(rom, fixedStringRef.OldPointer,
+                    decompiler.ReadString(rom, fixedStringRef.OldPointer,
                     fixedStringRef.OldPointer + fixedStringCollection.EntryLength,
-                    false);
+                    true);
             }
 
             // Write JSON

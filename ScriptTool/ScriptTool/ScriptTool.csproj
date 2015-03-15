@@ -50,6 +50,7 @@
     <Compile Include="ControlCode.cs" />
     <Compile Include="DecompileContext.cs" />
     <Compile Include="FixedStringCollection.cs" />
+    <Compile Include="IDecompiler.cs" />
     <Compile Include="M12TextTables.cs" />
     <Compile Include="M12TextDecompiler.cs" />
     <Compile Include="EbTextDecompiler.cs" />

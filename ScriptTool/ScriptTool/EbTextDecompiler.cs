@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace ScriptTool
 {
-    class EbTextDecompiler
+    class EbTextDecompiler : IDecompiler
     {
         private IList<ControlCode> _controlCodes;
         public IList<ControlCode> ControlCodes
@@ -66,15 +66,21 @@ namespace ScriptTool
             foreach (var address in addresses)
                 context.LabelMap.Append(address);
 
-            foreach(var range in textRanges)
-                ScanAt(rom, range[0], range[1], context, ScanMode.FirstPass);
+            foreach (var range in textRanges)
+                ScanAt(rom, range[0], range[1], context, ScanMode.FirstPass, false, false, false);
 
             // Second pass -- decompile the strings
             foreach (var range in textRanges)
-                ScanAt(rom, range[0], range[1], context, ScanMode.SecondPass);
+                ScanAt(rom, range[0], range[1], context, ScanMode.SecondPass, false, false, true);
         }
 
-        private void ScanAt(byte[] rom, int startAddress, int endAddress, DecompileContext context, ScanMode mode, bool newLines = true)
+        public string ReadString(byte[] rom, int address, int endAddress, bool basicMode)
+        {
+            return ScanAt(rom, address, endAddress, null, ScanMode.ReadOnce, true, basicMode, false);
+        }
+
+        private string ScanAt(byte[] rom, int startAddress, int endAddress, DecompileContext context,
+            ScanMode mode, bool stopOnEnd, bool basicMode, bool newLines)
         {
             bool ended = false;
             bool foundMatch = false;
@@ -107,6 +113,13 @@ namespace ScriptTool
                 // No codes begin with a value above 0x1F, so check for that first
                 if (rom[address] < 0x20)
                 {
+                    // Check for basic mode null-terminator
+                    if (basicMode && rom[address] == 0)
+                    {
+                        ended = true;
+                        continue;
+                    }
+
                     // Loop through each control code until we find a match
                     foundMatch = false;
                     foreach (var code in ControlCodes)
@@ -115,7 +128,7 @@ namespace ScriptTool
                         {
                             foundMatch = true;
 
-                            if (mode == ScanMode.SecondPass && !IsCompressedCode(code))
+                            if ((mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce) && !IsCompressedCode(code))
                             {
                                 // Output the start of the code block
                                 sb.Append('[');
@@ -135,7 +148,7 @@ namespace ScriptTool
                                 {
                                     int count = rom[address++];
 
-                                    if (mode == ScanMode.SecondPass)
+                                    if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                                     {
                                         sb.Append(' ');
                                         sb.Append(count.ToString("X2"));
@@ -148,7 +161,7 @@ namespace ScriptTool
 
                                         context.LabelMap.Append(jump);
 
-                                        if (mode == ScanMode.SecondPass)
+                                        if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                                         {
                                             sb.Append(" _");
                                             sb.Append(context.LabelMap[jump]);
@@ -171,7 +184,7 @@ namespace ScriptTool
 
                                     context.LabelMap.Append(jump);
 
-                                    if (mode == ScanMode.SecondPass)
+                                    if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                                     {
                                         sb.Append(" _");
                                         sb.Append(context.LabelMap[jump]);
@@ -187,7 +200,7 @@ namespace ScriptTool
 
                                     context.LabelMap.Append(jump);
 
-                                    if (mode == ScanMode.SecondPass)
+                                    if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                                     {
                                         sb.Append(' ');
                                         sb.Append(rom[address].ToString("X2"));
@@ -207,7 +220,7 @@ namespace ScriptTool
                                     // Check
                                 }
 
-                                else if (mode == ScanMode.SecondPass &&
+                                else if ((mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce) &&
                                     (code.BeginsWith(0x15) ||
                                     code.BeginsWith(0x16) ||
                                     code.BeginsWith(0x17)))
@@ -221,7 +234,7 @@ namespace ScriptTool
                                 else
                                 {
                                     // Regular control code -- output the rest of the bytes
-                                    if (mode == ScanMode.SecondPass)
+                                    if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                                     {
                                         for (int i = 0; i < (code.Length - code.Identifier.Count); i++)
                                         {
@@ -235,20 +248,20 @@ namespace ScriptTool
                                 address += code.Length - code.Identifier.Count;
                             }
 
-                            if (mode == ScanMode.SecondPass && !IsCompressedCode(code))
+                            if ((mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce) && !IsCompressedCode(code))
                             {
                                 // Output the end of the code block
                                 sb.Append(']');
                             }
 
                             // End the block if necessary
-                            if (address >= endAddress)
+                            if (stopOnEnd && code.End)
                             {
                                 ended = true;
                             }
 
                             // Insert a newline after each end code for readibility
-                            if (mode == ScanMode.SecondPass && code.End && !prev1902)
+                            if (newLines && (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce) && code.End && !prev1902)
                             {
                                 sb.AppendLine();
                                 /*sb.Append('(');
@@ -275,17 +288,23 @@ namespace ScriptTool
                 else
                 {
                     // It's not a control code -- just skip it
-                    if (mode == ScanMode.SecondPass)
+                    if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                         sb.Append(CharLookup(rom[address]));
 
                     address++;
                 }
+
+                if ((endAddress != -1) && (address >= endAddress))
+                    ended = true;
             }
 
             if (mode == ScanMode.SecondPass)
                 context.Strings.Add(sb.ToString());
 
-            return;
+            else if (mode == ScanMode.ReadOnce)
+                return sb.ToString();
+
+            return null;
         }
 
         private string CharLookup(byte value)
@@ -318,7 +337,8 @@ namespace ScriptTool
         private enum ScanMode
         {
             FirstPass,
-            SecondPass
+            SecondPass,
+            ReadOnce
         }
     }
 }

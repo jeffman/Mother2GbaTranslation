@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace ScriptTool
 {
-    class M12TextDecompiler
+    class M12TextDecompiler : IDecompiler
     {
         public IList<ControlCode> ControlCodes { get; set; }
         private static string[] charMap;

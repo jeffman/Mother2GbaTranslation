@@ -123,5 +123,28 @@ namespace ScriptTool
             }
             return refs.ToArray();
         }
+
+        public static FixedStringCollection ReadEnemyNames(byte[] rom)
+        {
+            var refs = new List<FixedStringRef>();
+            int address = 0x159589;
+            for (int i = 0; i < 0xE7; i++)
+            {
+                refs.Add(new FixedStringRef
+                {
+                    Index = i,
+                    OldPointer = address + 1
+                });
+                address += 94;
+            }
+
+            return new FixedStringCollection
+            {
+                EntryLength = 25,
+                NumEntries = 0xE7,
+                StringRefs = refs,
+                StringsLocation = 0x159589
+            };
+        }
     }
 }
