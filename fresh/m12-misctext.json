@@ -7,35 +7,35 @@
       "OffsetLocation": 0xB17EE8,
       "OldPointer": 0xB17424,
       "Old": " はなす  グッズ[01 FF] PSI  そうび[01 FF] チェック つよさ[00 FF]",
-      "New": "[5F FF 08]Talk[5F FF 30]Goods[01 FF][5F FF 08]PSI[5F FF 30]Equip[01 FF][5F FF 08]Check[5F FF 30]Status[00 FF]"
+      "New": " はなす  グッズ[01 FF] PSI  そうび[01 FF] チェック つよさ[00 FF]"
     },
     {
       "Index": 0x1,
       "OffsetLocation": 0xB17EEC,
       "OldPointer": 0xB17445,
       "Old": " はなす  グッズ[01 FF]      そうび[01 FF] チェック つよさ[00 FF]",
-      "New": "[5F FF 08]Talk[5F FF 30]Goods[01 FF][5F FF 30]Equip[01 FF][5F FF 08]Check[5F FF 30]Status[00 FF]"
+      "New": " はなす  グッズ[01 FF]      そうび[01 FF] チェック つよさ[00 FF]"
     },
     {
       "Index": 0x2,
       "OffsetLocation": 0xB17EF0,
       "OldPointer": 0xB17466,
       "Old": "       [00 FF]",
-      "New": "misc2[00 FF]"
+      "New": "       [00 FF]"
     },
     {
       "Index": 0x3,
       "OffsetLocation": 0xB17EF4,
       "OldPointer": 0xB1746F,
       "Old": "はなす[00 FF]",
-      "New": "Talk[00 FF]"
+      "New": "はなす[00 FF]"
     },
     {
       "Index": 0x4,
       "OffsetLocation": 0xB17EF8,
       "OldPointer": 0xB17474,
       "Old": "グッズ[00 FF]",
-      "New": "Goods[00 FF]"
+      "New": "グッズ[00 FF]"
     },
     {
       "Index": 0x5,
@@ -49,476 +49,476 @@
       "OffsetLocation": 0xB17F00,
       "OldPointer": 0xB1747E,
       "Old": "そうび[00 FF]",
-      "New": "Equip[00 FF]"
+      "New": "そうび[00 FF]"
     },
     {
       "Index": 0x7,
       "OffsetLocation": 0xB17F04,
       "OldPointer": 0xB17483,
       "Old": "チェック[00 FF]",
-      "New": "Check[00 FF]"
+      "New": "チェック[00 FF]"
     },
     {
       "Index": 0x8,
       "OffsetLocation": 0xB17F08,
       "OldPointer": 0xB17489,
       "Old": "つよさ[00 FF]",
-      "New": "Status[00 FF]"
+      "New": "つよさ[00 FF]"
     },
     {
       "Index": 0x9,
       "OffsetLocation": 0xB17F0C,
       "OldPointer": 0xB1748E,
       "Old": "  はい  いいえ[00 FF]",
-      "New": "[5F FF 08]Yes[5F FF 20]No[00 FF]"
+      "New": "  はい  いいえ[00 FF]"
     },
     {
       "Index": 0xA,
       "OffsetLocation": 0xB17F10,
       "OldPointer": 0xB17499,
       "Old": "だれが?[00 FF]",
-      "New": "Who?[00 FF]"
+      "New": "だれが?[00 FF]"
     },
     {
       "Index": 0xB,
       "OffsetLocation": 0xB17F14,
       "OldPointer": 0xB1749F,
       "Old": "なにを?[00 FF]",
-      "New": "Which?[00 FF]"
+      "New": "なにを?[00 FF]"
     },
     {
       "Index": 0xC,
       "OffsetLocation": 0xB17F18,
       "OldPointer": 0xB174A5,
       "Old": " つかう[01 FF] わたす[01 FF] すてる[01 FF] せつめい[00 FF]",
-      "New": "[5F FF 08]Use[01 FF][5F FF 08]Give[01 FF][5F FF 08]Drop[01 FF][5F FF 08]Help![00 FF]"
+      "New": " つかう[01 FF] わたす[01 FF] すてる[01 FF] せつめい[00 FF]"
     },
     {
       "Index": 0xD,
       "OffsetLocation": 0xB17F1C,
       "OldPointer": 0xB174BE,
       "Old": "つかう[00 FF]",
-      "New": "Use[00 FF]"
+      "New": "つかう[00 FF]"
     },
     {
       "Index": 0xE,
       "OffsetLocation": 0xB17F20,
       "OldPointer": 0xB174C3,
       "Old": "わたす[00 FF]",
-      "New": "Give[00 FF]"
+      "New": "わたす[00 FF]"
     },
     {
       "Index": 0xF,
       "OffsetLocation": 0xB17F24,
       "OldPointer": 0xB174C8,
       "Old": "すてる[00 FF]",
-      "New": "Drop[00 FF]"
+      "New": "すてる[00 FF]"
     },
     {
       "Index": 0x10,
       "OffsetLocation": 0xB17F28,
       "OldPointer": 0xB174CD,
       "Old": "せつめい[00 FF]",
-      "New": "Help![00 FF]"
+      "New": "せつめい[00 FF]"
     },
     {
       "Index": 0x11,
       "OffsetLocation": 0xB17F2C,
       "OldPointer": 0xB174D3,
       "Old": " レベル:              オフェンス:   [01 FF]                  ディフェンス:   [01 FF]                    スピード:   [01 FF] ヒットポイント:   /        ガッツ:   [01 FF] サイコポイント:   /     バイタリティ:   [01 FF]   けいけんち:             IQ:   [01 FF]つぎのレベルまで:            ラック:   [01 FF]                            [00 FF]",
-      "New": "[5F FF 08]Level:[5F FF 9C]Offense:[01 FF][5F FF 9B]Defense:[01 FF][5F FF A4]Speed:[01 FF][5F FF 2C]Hit Points:[5F FF 71]/[5F FF AA]Guts:[01 FF][5F FF 17]Psychic Points:[5F FF 71]/[5F FF 9F]Vitality:[01 FF][5F FF 0A]Experience Points:[5F FF B6]IQ:[01 FF][5F FF 39]Exp. for next level.[5F FF AA]Luck:[00 FF]"
+      "New": " レベル:              オフェンス:   [01 FF]                  ディフェンス:   [01 FF]                    スピード:   [01 FF] ヒットポイント:   /        ガッツ:   [01 FF] サイコポイント:   /     バイタリティ:   [01 FF]   けいけんち:             IQ:   [01 FF]つぎのレベルまで:            ラック:   [01 FF]                            [00 FF]"
     },
     {
       "Index": 0x12,
       "OffsetLocation": 0xB17F30,
       "OldPointer": 0xB175C3,
       "Old": "                            [00 FF]",
-      "New": "misc12[00 FF]"
+      "New": "                            [00 FF]"
     },
     {
       "Index": 0x13,
       "OffsetLocation": 0xB17F34,
       "OldPointer": 0xB175E1,
       "Old": " ◆Aボタンで PSIのせつめいを みることができます｡[00 FF]",
-      "New": "@Press the -A- Button for PSI info.[00 FF]"
+      "New": " ◆Aボタンで PSIのせつめいを みることができます｡[00 FF]"
     },
     {
       "Index": 0x14,
       "OffsetLocation": 0xB17F38,
       "OldPointer": 0xB175FF,
       "Old": " こうげき[01 FF] かいふく[01 FF] アシスト[01 FF] そのほか[00 FF]",
-      "New": "[5F FF 08]Offense[01 FF][5F FF 08]Recover[01 FF][5F FF 08]Assist[01 FF][5F FF 08]Other[00 FF]"
+      "New": " こうげき[01 FF] かいふく[01 FF] アシスト[01 FF] そのほか[00 FF]"
     },
     {
       "Index": 0x15,
       "OffsetLocation": 0xB17F3C,
       "OldPointer": 0xB1761B,
       "Old": "こうげき[00 FF]",
-      "New": "Offense[00 FF]"
+      "New": "こうげき[00 FF]"
     },
     {
       "Index": 0x16,
       "OffsetLocation": 0xB17F40,
       "OldPointer": 0xB17621,
       "Old": "かいふく[00 FF]",
-      "New": "Recover[00 FF]"
+      "New": "かいふく[00 FF]"
     },
     {
       "Index": 0x17,
       "OffsetLocation": 0xB17F44,
       "OldPointer": 0xB17627,
       "Old": "アシスト[00 FF]",
-      "New": "Assist[00 FF]"
+      "New": "アシスト[00 FF]"
     },
     {
       "Index": 0x18,
       "OffsetLocation": 0xB17F48,
       "OldPointer": 0xB1762D,
       "Old": "そのほか[00 FF]",
-      "New": "Other[00 FF]"
+      "New": "そのほか[00 FF]"
     },
     {
       "Index": 0x19,
       "OffsetLocation": 0xB17F4C,
       "OldPointer": 0xB17633,
       "Old": " こうげき[01 FF] かいふく[01 FF] アシスト[00 FF]",
-      "New": "[5F FF 08]Offense[01 FF][5F FF 08]Recover[01 FF][5F FF 08]Assist[00 FF]"
+      "New": " こうげき[01 FF] かいふく[01 FF] アシスト[00 FF]"
     },
     {
       "Index": 0x1A,
       "OffsetLocation": 0xB17F50,
       "OldPointer": 0xB17648,
       "Old": "とうろくなし   [00 FF]",
-      "New": "misc1A[00 FF]"
+      "New": "とうろくなし   [00 FF]"
     },
     {
       "Index": 0x1B,
       "OffsetLocation": 0xB17F54,
       "OldPointer": 0xB17653,
       "Old": "しょうひPP:[00 FF]",
-      "New": "PP cost:[00 FF]"
+      "New": "しょうひPP:[00 FF]"
     },
     {
       "Index": 0x1C,
       "OffsetLocation": 0xB17F58,
       "OldPointer": 0xB1765C,
       "Old": "てきに      [00 FF]",
-      "New": "To enemy[00 FF]"
+      "New": "てきに      [00 FF]"
     },
     {
       "Index": 0x1D,
       "OffsetLocation": 0xB17F5C,
       "OldPointer": 0xB17667,
       "Old": "てき ひとりに  [00 FF]",
-      "New": "To one enemy[00 FF]"
+      "New": "てき ひとりに  [00 FF]"
     },
     {
       "Index": 0x1E,
       "OffsetLocation": 0xB17F60,
       "OldPointer": 0xB17672,
       "Old": "てき ぜんいんに [00 FF]",
-      "New": "To all enemies[00 FF]"
+      "New": "てき ぜんいんに [00 FF]"
     },
     {
       "Index": 0x1F,
       "OffsetLocation": 0xB17F64,
       "OldPointer": 0xB1767D,
       "Old": "てき いちれつに [00 FF]",
-      "New": "To row of foes[00 FF]"
+      "New": "てき いちれつに [00 FF]"
     },
     {
       "Index": 0x20,
       "OffsetLocation": 0xB17F68,
       "OldPointer": 0xB17688,
       "Old": "みかた ひとりに [00 FF]",
-      "New": "To one of us[00 FF]"
+      "New": "みかた ひとりに [00 FF]"
     },
     {
       "Index": 0x21,
       "OffsetLocation": 0xB17F6C,
       "OldPointer": 0xB17693,
       "Old": "みかた ぜんいんに[00 FF]",
-      "New": "To all of us[00 FF]"
+      "New": "みかた ぜんいんに[00 FF]"
     },
     {
       "Index": 0x22,
       "OffsetLocation": 0xB17F70,
       "OldPointer": 0xB1769E,
       "Old": "だれが?[00 FF]",
-      "New": "Who?[00 FF]"
+      "New": "だれが?[00 FF]"
     },
     {
       "Index": 0x23,
       "OffsetLocation": 0xB17F74,
       "OldPointer": 0xB176A4,
       "Old": "どこ? [00 FF]",
-      "New": "Where? [00 FF]"
+      "New": "どこ? [00 FF]"
     },
     {
       "Index": 0x24,
       "OffsetLocation": 0xB17F78,
       "OldPointer": 0xB176AA,
       "Old": "なにを?[00 FF]",
-      "New": "Which?[00 FF]"
+      "New": "なにを?[00 FF]"
     },
     {
       "Index": 0x25,
       "OffsetLocation": 0xB17F7C,
       "OldPointer": 0xB176B0,
       "Old": " ぶき :[01 FF] ボディ:[01 FF] うで :[01 FF] そのた:[00 FF]",
-      "New": "[5F FF 08]Weapon:[01 FF][5F FF 08]Body:[01 FF][5F FF 08]Arms:[01 FF][5F FF 08]Other:[00 FF]"
+      "New": " ぶき :[01 FF] ボディ:[01 FF] うで :[01 FF] そのた:[00 FF]"
     },
     {
       "Index": 0x26,
       "OffsetLocation": 0xB17F80,
       "OldPointer": 0xB176CC,
       "Old": "ぶき[00 FF]",
-      "New": "Weapon[00 FF]"
+      "New": "ぶき[00 FF]"
     },
     {
       "Index": 0x27,
       "OffsetLocation": 0xB17F84,
       "OldPointer": 0xB176D0,
       "Old": "ボディ[00 FF]",
-      "New": "Body[00 FF]"
+      "New": "ボディ[00 FF]"
     },
     {
       "Index": 0x28,
       "OffsetLocation": 0xB17F88,
       "OldPointer": 0xB176D5,
       "Old": "うで[00 FF]",
-      "New": "Arms[00 FF]"
+      "New": "うで[00 FF]"
     },
     {
       "Index": 0x29,
       "OffsetLocation": 0xB17F8C,
       "OldPointer": 0xB176D9,
       "Old": "そのた[00 FF]",
-      "New": "Other[00 FF]"
+      "New": "そのた[00 FF]"
     },
     {
       "Index": 0x2A,
       "OffsetLocation": 0xB17F90,
       "OldPointer": 0xB176DE,
       "Old": "(なし)      [00 FF]",
-      "New": "(None)[00 FF]"
+      "New": "(なし)      [00 FF]"
     },
     {
       "Index": 0x2B,
       "OffsetLocation": 0xB17F94,
       "OldPointer": 0xB176EA,
       "Old": " オフェンス:[01 FF]ディフェンス:[00 FF]",
-      "New": "[5F FF 08]Offense:[01 FF][5F FF 08]Defense:[00 FF]"
+      "New": " オフェンス:[01 FF]ディフェンス:[00 FF]"
     },
     {
       "Index": 0x2C,
       "OffsetLocation": 0xB17F98,
       "OldPointer": 0xB176FC,
       "Old": "そうびしない[00 FF]",
-      "New": "None[00 FF]"
+      "New": "そうびしない[00 FF]"
     },
     {
       "Index": 0x2D,
       "OffsetLocation": 0xB17F9C,
       "OldPointer": 0xB17704,
       "Old": "[0C FF]は じゅわきをとった｡[00 FF]",
-      "New": "[0C FF] picked up the receiver.[00 FF]"
+      "New": "[0C FF]は じゅわきをとった｡[00 FF]"
     },
     {
       "Index": 0x2E,
       "OffsetLocation": 0xB17FA0,
       "OldPointer": 0xB17713,
       "Old": "パパ[00 FF]",
-      "New": "Mom[00 FF]"
+      "New": "パパ[00 FF]"
     },
     {
       "Index": 0x2F,
       "OffsetLocation": 0xB17FA4,
       "OldPointer": 0xB17717,
       "Old": "ママ[00 FF]",
-      "New": "Dad[00 FF]"
+      "New": "ママ[00 FF]"
     },
     {
       "Index": 0x30,
       "OffsetLocation": 0xB17FA8,
       "OldPointer": 0xB1771B,
       "Old": "エスカルゴうんそう[00 FF]",
-      "New": "Escargo Express[00 FF]"
+      "New": "エスカルゴうんそう[00 FF]"
     },
     {
       "Index": 0x31,
       "OffsetLocation": 0xB17FAC,
       "OldPointer": 0xB17726,
       "Old": "マッハピザ[00 FF]",
-      "New": "Mach Pizza[00 FF]"
+      "New": "マッハピザ[00 FF]"
     },
     {
       "Index": 0x32,
       "OffsetLocation": 0xB17FB0,
       "OldPointer": 0xB1772D,
       "Old": "ストイッククラブ[00 FF]",
-      "New": "Stoic Club[00 FF]"
+      "New": "ストイッククラブ[00 FF]"
     },
     {
       "Index": 0x33,
       "OffsetLocation": 0xB17FB4,
       "OldPointer": 0xB17737,
       "Old": "◆イラッシャイマセ[03 FF 01 00][7F FF]へぁ[7E FF 38 00]◆アリガトウゴザイマシタ[00 FF]",
-      "New": "misc33"
+      "New": "◆イラッシャイマセ[03 FF 01 00][7F FF]へぁ[7E FF 38 00]◆アリガトウゴザイマシタ[00 FF]"
     },
     {
       "Index": 0x34,
       "OffsetLocation": 0xB17FB8,
       "OldPointer": 0xB17744,
       "Old": "[7F FF]へぁ[7E FF 38 00]◆アリガトウゴザイマシタ[00 FF]",
-      "New": "misc34"
+      "New": "[7F FF]へぁ[7E FF 38 00]◆アリガトウゴザイマシタ[00 FF]"
     },
     {
       "Index": 0x35,
       "OffsetLocation": 0xB17FBC,
       "OldPointer": 0xB17748,
       "Old": "[7E FF 38 00]◆アリガトウゴザイマシタ[00 FF]",
-      "New": "misc35"
+      "New": "[7E FF 38 00]◆アリガトウゴザイマシタ[00 FF]"
     },
     {
       "Index": 0x36,
       "OffsetLocation": 0xB17FC0,
       "OldPointer": 0xB1774C,
       "Old": "◆アリガトウゴザイマシタ[00 FF]",
-      "New": "misc36"
+      "New": "◆アリガトウゴザイマシタ[00 FF]"
     },
     {
       "Index": 0x37,
       "OffsetLocation": 0xB17FC4,
       "OldPointer": 0xB1775A,
       "Old": "◆ゲンザイノ[01 FF] オアズカリキンガクハ[01 FF] $[1A FF 00 00]デス[02 FF]◆オヒキダシ キンガクハ?[01 FF][18 FF 00 00]",
-      "New": "misc37"
+      "New": "◆ゲンザイノ[01 FF] オアズカリキンガクハ[01 FF] $[1A FF 00 00]デス[02 FF]◆オヒキダシ キンガクハ?[01 FF][18 FF 00 00]"
     },
     {
       "Index": 0x38,
       "OffsetLocation": 0xB17FC8,
       "OldPointer": 0xB17799,
       "Old": "◆ゲンザイノ[01 FF] オアズカリキンガクハ[01 FF] $[1A FF 00 00]デス[02 FF]◆オアズケ キンガクハ?[01 FF][18 FF 00 00]",
-      "New": "misc38"
+      "New": "◆ゲンザイノ[01 FF] オアズカリキンガクハ[01 FF] $[1A FF 00 00]デス[02 FF]◆オアズケ キンガクハ?[01 FF][18 FF 00 00]"
     },
     {
       "Index": 0x39,
       "OffsetLocation": 0xB17FCC,
       "OldPointer": 0xB177D7,
       "Old": "◆ゲンザイ オアズカリキンハ アリマセン[02 FF]◆アリガトウゴザイマシタ[00 FF]",
-      "New": "misc39"
+      "New": "◆ゲンザイ オアズカリキンハ アリマセン[02 FF]◆アリガトウゴザイマシタ[00 FF]"
     },
     {
       "Index": 0x3A,
       "OffsetLocation": 0xB17FD0,
       "OldPointer": 0xB177FB,
       "Old": "◆$99999[01 FF] イジョウノモチアルキハ[01 FF] キンジラレテイマス[02 FF]◆アリガトウゴザイマシタ[00 FF]",
-      "New": "misc3A"
+      "New": "◆$99999[01 FF] イジョウノモチアルキハ[01 FF] キンジラレテイマス[02 FF]◆アリガトウゴザイマシタ[00 FF]"
     },
     {
       "Index": 0x3B,
       "OffsetLocation": 0xB17FD4,
       "OldPointer": 0xB1782C,
       "Old": "◆アズカリキンガクヲ[01 FF] コエテイマス[02 FF]◆アリガトウゴザイマシタ[00 FF]",
-      "New": "misc3B"
+      "New": "◆アズカリキンガクヲ[01 FF] コエテイマス[02 FF]◆アリガトウゴザイマシタ[00 FF]"
     },
     {
       "Index": 0x3C,
       "OffsetLocation": 0xB17FD8,
       "OldPointer": 0xB1784F,
       "Old": " たたく[00 FF]",
-      "New": "[5F FF 08]Bash[00 FF]"
+      "New": " たたく[00 FF]"
     },
     {
       "Index": 0x3D,
       "OffsetLocation": 0xB17FDC,
       "OldPointer": 0xB17855,
       "Old": " グッズ[00 FF]",
-      "New": "[5F FF 08]Goods[00 FF]"
+      "New": " グッズ[00 FF]"
     },
     {
       "Index": 0x3E,
       "OffsetLocation": 0xB17FE0,
       "OldPointer": 0xB1785B,
       "Old": " オート[00 FF]",
-      "New": "[5F FF 08]Auto Fight[00 FF]"
+      "New": " オート[00 FF]"
     },
     {
       "Index": 0x3F,
       "OffsetLocation": 0xB17FE4,
       "OldPointer": 0xB17861,
       "Old": " PSI[00 FF]",
-      "New": "[5F FF 08]PSI[00 FF]"
+      "New": " PSI[00 FF]"
     },
     {
       "Index": 0x40,
       "OffsetLocation": 0xB17FE8,
       "OldPointer": 0xB17867,
       "Old": " ガード[00 FF]",
-      "New": "[5F FF 08]Defend[00 FF]"
+      "New": " ガード[00 FF]"
     },
     {
       "Index": 0x41,
       "OffsetLocation": 0xB17FEC,
       "OldPointer": 0xB1786D,
       "Old": " いのる[00 FF]",
-      "New": "[5F FF 08]Pray[00 FF]"
+      "New": " いのる[00 FF]"
     },
     {
       "Index": 0x42,
       "OffsetLocation": 0xB17FF0,
       "OldPointer": 0xB17873,
       "Old": " うつ[00 FF]",
-      "New": "[5F FF 08]Shoot[00 FF]"
+      "New": " うつ[00 FF]"
     },
     {
       "Index": 0x43,
       "OffsetLocation": 0xB17FF4,
       "OldPointer": 0xB17878,
       "Old": " チェック[00 FF]",
-      "New": "[5F FF 08]Spy[00 FF]"
+      "New": " チェック[00 FF]"
     },
     {
       "Index": 0x44,
       "OffsetLocation": 0xB17FF8,
       "OldPointer": 0xB1787F,
       "Old": " にげる[00 FF]",
-      "New": "[5F FF 08]Run Away[00 FF]"
+      "New": " にげる[00 FF]"
     },
     {
       "Index": 0x45,
       "OffsetLocation": 0xB17FFC,
       "OldPointer": 0xB17885,
       "Old": " へんしん[00 FF]",
-      "New": "[5F FF 08]Mirror[00 FF]"
+      "New": " へんしん[00 FF]"
     },
     {
       "Index": 0x46,
       "OffsetLocation": 0xB18000,
       "OldPointer": 0xB1788C,
       "Old": " なにもしない[00 FF]",
-      "New": "[5F FF 08]Do Nothing[00 FF]"
+      "New": " なにもしない[00 FF]"
     },
     {
       "Index": 0x47,
       "OffsetLocation": 0xB18004,
       "OldPointer": 0xB17895,
       "Old": "どのてきに?:[00 FF]",
-      "New": "To [00 FF]"
+      "New": "どのてきに?:[00 FF]"
     },
     {
       "Index": 0x48,
       "OffsetLocation": 0xB18008,
       "OldPointer": 0xB1789E,
       "Old": " スモール[01 FF] ミディアム[01 FF] ラージ[00 FF]",
-      "New": "[5F FF 08]Small[01 FF][5F FF 08]Medium[01 FF][5F FF 08]Large[00 FF]"
+      "New": " スモール[01 FF] ミディアム[01 FF] ラージ[00 FF]"
     },
     {
       "Index": 0x49,
       "OffsetLocation": 0xB1800C,
       "OldPointer": 0xB178B3,
       "Old": " やわらかくする[01 FF] ビリビリをとる[01 FF] おはらいをする[00 FF]",
-      "New": "[5F FF 08]Soften[01 FF][5F FF 08]Restore feeling[01 FF][5F FF 08]Purify[00 FF]"
+      "New": " やわらかくする[01 FF] ビリビリをとる[01 FF] おはらいをする[00 FF]"
     },
     {
       "Index": 0x4A,
@@ -526,7 +526,7 @@
       "OldPointer": 0xB178D1,
       "BasicMode": true,
       "Old": "オネット[00 FF]",
-      "New": "Onett[00 FF]"
+      "New": "オネット[00 FF]"
     },
     {
       "Index": 0x4B,
@@ -534,7 +534,7 @@
       "OldPointer": 0xB178F1,
       "BasicMode": true,
       "Old": "ツーソン[00 FF]",
-      "New": "Twoson[00 FF]"
+      "New": "ツーソン[00 FF]"
     },
     {
       "Index": 0x4C,
@@ -542,7 +542,7 @@
       "OldPointer": 0xB17911,
       "BasicMode": true,
       "Old": "スリーク[00 FF]",
-      "New": "Threed[00 FF]"
+      "New": "スリーク[00 FF]"
     },
     {
       "Index": 0x4D,
@@ -550,7 +550,7 @@
       "OldPointer": 0xB17931,
       "BasicMode": true,
       "Old": "サターンバレー[00 FF]",
-      "New": "Saturn Valley[00 FF]"
+      "New": "サターンバレー[00 FF]"
     },
     {
       "Index": 0x4E,
@@ -558,7 +558,7 @@
       "OldPointer": 0xB1794E,
       "BasicMode": true,
       "Old": "フォーサイド[00 FF]",
-      "New": "Fourside[00 FF]"
+      "New": "フォーサイド[00 FF]"
     },
     {
       "Index": 0x4F,
@@ -566,7 +566,7 @@
       "OldPointer": 0xB1796C,
       "BasicMode": true,
       "Old": "ウィンターズ[00 FF]",
-      "New": "Winters[00 FF]"
+      "New": "ウィンターズ[00 FF]"
     },
     {
       "Index": 0x50,
@@ -574,7 +574,7 @@
       "OldPointer": 0xB1798A,
       "BasicMode": true,
       "Old": "サマーズ[00 FF]",
-      "New": "Summers[00 FF]"
+      "New": "サマーズ[00 FF]"
     },
     {
       "Index": 0x51,
@@ -582,7 +582,7 @@
       "OldPointer": 0xB179AA,
       "BasicMode": true,
       "Old": "スカラビ[00 FF]",
-      "New": "Scaraba[00 FF]"
+      "New": "スカラビ[00 FF]"
     },
     {
       "Index": 0x52,
@@ -590,7 +590,7 @@
       "OldPointer": 0xB179CA,
       "BasicMode": true,
       "Old": "ランマ[00 FF]",
-      "New": "Dalaam[00 FF]"
+      "New": "ランマ[00 FF]"
     },
     {
       "Index": 0x53,
@@ -598,7 +598,7 @@
       "OldPointer": 0xB179EB,
       "BasicMode": true,
       "Old": "まきょう[00 FF]",
-      "New": "Deep Darkness[00 FF]"
+      "New": "まきょう[00 FF]"
     },
     {
       "Index": 0x54,
@@ -606,7 +606,7 @@
       "OldPointer": 0xB17A0B,
       "BasicMode": true,
       "Old": "グミぞくのむら[00 FF]",
-      "New": "Tenda Village[00 FF]"
+      "New": "グミぞくのむら[00 FF]"
     },
     {
       "Index": 0x55,
@@ -614,497 +614,497 @@
       "OldPointer": 0xB17A28,
       "BasicMode": true,
       "Old": "ちていたいりく[00 FF]",
-      "New": "Underworld[00 FF]"
+      "New": "ちていたいりく[00 FF]"
     },
     {
       "Index": 0x56,
       "OffsetLocation": 0xB18040,
       "OldPointer": 0xB17A45,
       "Old": "ドコドコさばく[00 FF]",
-      "New": "Dusty Dunes Desert[00 FF]"
+      "New": "ドコドコさばく[00 FF]"
     },
     {
       "Index": 0x57,
       "OffsetLocation": 0xB18044,
       "OldPointer": 0xB17A4E,
       "Old": "だれに?[00 FF]",
-      "New": "Who?[00 FF]"
+      "New": "だれに?[00 FF]"
     },
     {
       "Index": 0x58,
       "OffsetLocation": 0xB18048,
       "OldPointer": 0xB17A54,
       "Old": "ぜんれつ[00 FF]",
-      "New": "Front row[00 FF]"
+      "New": "ぜんれつ[00 FF]"
     },
     {
       "Index": 0x59,
       "OffsetLocation": 0xB1804C,
       "OldPointer": 0xB17A5A,
       "Old": "こうれつ[00 FF]",
-      "New": "Back row[00 FF]"
+      "New": "こうれつ[00 FF]"
     },
     {
       "Index": 0x5A,
       "OffsetLocation": 0xB18050,
       "OldPointer": 0xB17A60,
       "Old": "ばしょ(1)へ[00 FF]",
-      "New": "To:(1)[00 FF]"
+      "New": "ばしょ(1)へ[00 FF]"
     },
     {
       "Index": 0x5B,
       "OffsetLocation": 0xB18054,
       "OldPointer": 0xB17A69,
       "Old": "ばしょ(2)へ[00 FF]",
-      "New": "To:(2)[00 FF]"
+      "New": "ばしょ(2)へ[00 FF]"
     },
     {
       "Index": 0x5C,
       "OffsetLocation": 0xB18058,
       "OldPointer": 0xB17A72,
       "Old": "ばしょ(3)へ[00 FF]",
-      "New": "To:(3)[00 FF]"
+      "New": "ばしょ(3)へ[00 FF]"
     },
     {
       "Index": 0x5D,
       "OffsetLocation": 0xB1805C,
       "OldPointer": 0xB17A7B,
       "Old": "あずかりもの(1)[00 FF]",
-      "New": "Stored Goods(1)[00 FF]"
+      "New": "あずかりもの(1)[00 FF]"
     },
     {
       "Index": 0x5E,
       "OffsetLocation": 0xB18060,
       "OldPointer": 0xB17A86,
       "Old": "あずかりもの(2)[00 FF]",
-      "New": "Stored Goods(2)[00 FF]"
+      "New": "あずかりもの(2)[00 FF]"
     },
     {
       "Index": 0x5F,
       "OffsetLocation": 0xB18064,
       "OldPointer": 0xB17A91,
       "Old": "あずかりもの(3)[00 FF]",
-      "New": "Stored Goods(3)[00 FF]"
+      "New": "あずかりもの(3)[00 FF]"
     },
     {
       "Index": 0x60,
       "OffsetLocation": 0xB18068,
       "OldPointer": 0xB17A9C,
       "Old": "プレーヤーの なまえ:[00 FF]",
-      "New": "misc60[00 FF]"
+      "New": "プレーヤーの なまえ:[00 FF]"
     },
     {
       "Index": 0x61,
       "OffsetLocation": 0xB1806C,
       "OldPointer": 0xB17AA9,
       "Old": " あ か さ た な は ま や ら わ ぁ っ ~ ·[01 FF] い き し ち に ひ み   り   ぃ     ··[01 FF] う く す つ ぬ ふ む ゆ る を ぅ ゃ   /[01 FF] え け せ て ね へ め   れ   ぇ ゅ \" ♪[01 FF] お こ そ と の ほ も よ ろ ん ぉ ょ ° ◯[00 FF]",
-      "New": "misc61[00 FF]"
+      "New": " あ か さ た な は ま や ら わ ぁ っ ~ ·[01 FF] い き し ち に ひ み   り   ぃ     ··[01 FF] う く す つ ぬ ふ む ゆ る を ぅ ゃ   /[01 FF] え け せ て ね へ め   れ   ぇ ゅ \" ♪[01 FF] お こ そ と の ほ も よ ろ ん ぉ ょ ° ◯[00 FF]"
     },
     {
       "Index": 0x62,
       "OffsetLocation": 0xB18070,
       "OldPointer": 0xB17B3F,
       "Old": " ア カ サ タ ナ ハ マ ヤ ラ ワ ァ ッ ー ·[01 FF] イ キ シ チ ニ ヒ ミ   リ   ィ     ··[01 FF] ウ ク ス ツ ヌ フ ム ユ ル ヲ ゥ ャ   /[01 FF] エ ケ セ テ ネ ヘ メ   レ   ェ ュ \" ♪[01 FF] オ コ ソ ト ノ ホ モ ヨ ロ ン ォ ョ ° ◯[00 FF]",
-      "New": "misc62[00 FF]"
+      "New": " ア カ サ タ ナ ハ マ ヤ ラ ワ ァ ッ ー ·[01 FF] イ キ シ チ ニ ヒ ミ   リ   ィ     ··[01 FF] ウ ク ス ツ ヌ フ ム ユ ル ヲ ゥ ャ   /[01 FF] エ ケ セ テ ネ ヘ メ   レ   ェ ュ \" ♪[01 FF] オ コ ソ ト ノ ホ モ ヨ ロ ン ォ ョ ° ◯[00 FF]"
     },
     {
       "Index": 0x63,
       "OffsetLocation": 0xB18074,
       "OldPointer": 0xB17BD5,
       "Old": " A B C D E F G H I       ー ·[01 FF] J K L M N O P Q R         ··[01 FF] S T U V W X Y Z           /[01 FF]                         \" ♪[01 FF] 0 1 2 3 4 5 6 7 8 9     ° ◯[00 FF]",
-      "New": "misc63[00 FF]"
+      "New": " A B C D E F G H I       ー ·[01 FF] J K L M N O P Q R         ··[01 FF] S T U V W X Y Z           /[01 FF]                         \" ♪[01 FF] 0 1 2 3 4 5 6 7 8 9     ° ◯[00 FF]"
     },
     {
       "Index": 0x64,
       "OffsetLocation": 0xB18078,
       "OldPointer": 0xB17C6B,
       "Old": "ひらがな  カタカナ[00 FF]",
-      "New": "misc64[00 FF]"
+      "New": "ひらがな  カタカナ[00 FF]"
     },
     {
       "Index": 0x65,
       "OffsetLocation": 0xB1807C,
       "OldPointer": 0xB17C77,
       "Old": "もどる   おわり[00 FF]",
-      "New": "misc65[00 FF]"
+      "New": "もどる   おわり[00 FF]"
     },
     {
       "Index": 0x66,
       "OffsetLocation": 0xB18080,
       "OldPointer": 0xB17C82,
       "Old": "     [00 FF]",
-      "New": "misc66[00 FF]"
+      "New": "     [00 FF]"
     },
     {
       "Index": 0x67,
       "OffsetLocation": 0xB18084,
       "OldPointer": 0xB17C89,
       "Old": " ぼ ば び ぶ べ[00 FF]",
-      "New": "misc67[00 FF]"
+      "New": " ぼ ば び ぶ べ[00 FF]"
     },
     {
       "Index": 0x68,
       "OffsetLocation": 0xB18088,
       "OldPointer": 0xB17C95,
       "Old": " か し く せ こ[00 FF]",
-      "New": "misc68[00 FF]"
+      "New": " か し く せ こ[00 FF]"
     },
     {
       "Index": 0x69,
       "OffsetLocation": 0xB1808C,
       "OldPointer": 0xB17CA1,
       "Old": " で でぃ でゅ ど だ[00 FF]",
-      "New": "misc69[00 FF]"
+      "New": " で でぃ でゅ ど だ[00 FF]"
     },
     {
       "Index": 0x6A,
       "OffsetLocation": 0xB18090,
       "OldPointer": 0xB17CAF,
       "Old": "     [01 FF] ふぁ ふぃ ふ ふぇ ふぉ[00 FF]",
-      "New": "misc6A[00 FF]"
+      "New": "     [01 FF] ふぁ ふぃ ふ ふぇ ふぉ[00 FF]"
     },
     {
       "Index": 0x6B,
       "OffsetLocation": 0xB18094,
       "OldPointer": 0xB17CC6,
       "Old": " げ ご が ぎ ぐ[00 FF]",
-      "New": "misc6B[00 FF]"
+      "New": " げ ご が ぎ ぐ[00 FF]"
     },
     {
       "Index": 0x6C,
       "OffsetLocation": 0xB18098,
       "OldPointer": 0xB17CD2,
       "Old": " ふ ふ ふ ふ ふ[00 FF]",
-      "New": "misc6C[00 FF]"
+      "New": " ふ ふ ふ ふ ふ[00 FF]"
     },
     {
       "Index": 0x6D,
       "OffsetLocation": 0xB1809C,
       "OldPointer": 0xB17CDE,
       "Old": "     [00 FF]",
-      "New": "misc6D[00 FF]"
+      "New": "     [00 FF]"
     },
     {
       "Index": 0x6E,
       "OffsetLocation": 0xB180A0,
       "OldPointer": 0xB17CE5,
       "Old": " じゃ じ じゅ じぇ じょ[00 FF]",
-      "New": "misc6E[00 FF]"
+      "New": " じゃ じ じゅ じぇ じょ[00 FF]"
     },
     {
       "Index": 0x6F,
       "OffsetLocation": 0xB180A4,
       "OldPointer": 0xB17CF5,
       "Old": " が ぎ ぐ げ ご[00 FF]",
-      "New": "6F[00 FF]"
+      "New": " が ぎ ぐ げ ご[00 FF]"
     },
     {
       "Index": 0x70,
       "OffsetLocation": 0xB180A8,
       "OldPointer": 0xB17D01,
       "Old": " り る れ ろ ら[00 FF]",
-      "New": "misc70[00 FF]"
+      "New": " り る れ ろ ら[00 FF]"
     },
     {
       "Index": 0x71,
       "OffsetLocation": 0xB180AC,
       "OldPointer": 0xB17D0D,
       "Old": " も め め も め[00 FF]",
-      "New": "misc71[00 FF]"
+      "New": " も め め も め[00 FF]"
     },
     {
       "Index": 0x72,
       "OffsetLocation": 0xB180B0,
       "OldPointer": 0xB17D19,
       "Old": " ま み む め も[00 FF]",
-      "New": "misc72[00 FF]"
+      "New": " ま み む め も[00 FF]"
     },
     {
       "Index": 0x73,
       "OffsetLocation": 0xB180B4,
       "OldPointer": 0xB17D25,
       "Old": "     [00 FF]",
-      "New": "misc73[00 FF]"
+      "New": "     [00 FF]"
     },
     {
       "Index": 0x74,
       "OffsetLocation": 0xB180B8,
       "OldPointer": 0xB17D2C,
       "Old": " ぱ ぴ ぷ ぺ ぽ[00 FF]",
-      "New": "misc74[00 FF]"
+      "New": " ぱ ぴ ぷ ぺ ぽ[00 FF]"
     },
     {
       "Index": 0x75,
       "OffsetLocation": 0xB180BC,
       "OldPointer": 0xB17D38,
       "Old": " くぁ くぃ くぅ くぇ くぉ[00 FF]",
-      "New": "misc75[00 FF]"
+      "New": " くぁ くぃ くぅ くぇ くぉ[00 FF]"
     },
     {
       "Index": 0x76,
       "OffsetLocation": 0xB180C0,
       "OldPointer": 0xB17D49,
       "Old": " れ れ れ れ れ[00 FF]",
-      "New": "misc76[00 FF]"
+      "New": " れ れ れ れ れ[00 FF]"
     },
     {
       "Index": 0x77,
       "OffsetLocation": 0xB180C4,
       "OldPointer": 0xB17D55,
       "Old": " せ そ さ し す[00 FF]",
-      "New": "misc77[00 FF]"
+      "New": " せ そ さ し す[00 FF]"
     },
     {
       "Index": 0x78,
       "OffsetLocation": 0xB180C8,
       "OldPointer": 0xB17D61,
       "Old": " て てぃ とぅ てぃ たぅ[00 FF]",
-      "New": "misc78[00 FF]"
+      "New": " て てぃ とぅ てぃ たぅ[00 FF]"
     },
     {
       "Index": 0x79,
       "OffsetLocation": 0xB180CC,
       "OldPointer": 0xB17D71,
       "Old": "     [00 FF]",
-      "New": "misc79[00 FF]"
+      "New": "     [00 FF]"
     },
     {
       "Index": 0x7A,
       "OffsetLocation": 0xB180D0,
       "OldPointer": 0xB17D78,
       "Old": " ば び ぶ べ ぼ[00 FF]",
-      "New": "misc7A[00 FF]"
+      "New": " ば び ぶ べ ぼ[00 FF]"
     },
     {
       "Index": 0x7B,
       "OffsetLocation": 0xB180D4,
       "OldPointer": 0xB17D84,
       "Old": " うぃ うぃ う うぇ うぃ[00 FF]",
-      "New": "misc7B[00 FF]"
+      "New": " うぃ うぃ う うぇ うぃ[00 FF]"
     },
     {
       "Index": 0x7C,
       "OffsetLocation": 0xB180D8,
       "OldPointer": 0xB17D94,
       "Old": " ざ ずぃ じ ぜ ぞ[00 FF]",
-      "New": "misc7C[00 FF]"
+      "New": " ざ ずぃ じ ぜ ぞ[00 FF]"
     },
     {
       "Index": 0x7D,
       "OffsetLocation": 0xB180DC,
       "OldPointer": 0xB17DA1,
       "Old": " わ い う いぇ を[00 FF]",
-      "New": "misc7D[00 FF]"
+      "New": " わ い う いぇ を[00 FF]"
     },
     {
       "Index": 0x7E,
       "OffsetLocation": 0xB180E0,
       "OldPointer": 0xB17DAE,
       "Old": " ぞ ざ じ ず ぜ[00 FF]",
-      "New": "7E[00 FF]"
+      "New": " ぞ ざ じ ず ぜ[00 FF]"
     },
     {
       "Index": 0x7F,
       "OffsetLocation": 0xB180E4,
       "OldPointer": 0xB17DBA,
       "Old": "◆·······················[00 FF]",
-      "New": "@.....[00 FF]"
+      "New": "◆·······················[00 FF]"
     },
     {
       "Index": 0x80,
       "OffsetLocation": 0xB180E8,
       "OldPointer": 0xB17DD4,
       "Old": "きぜつしている[00 FF]",
-      "New": "misc80[00 FF]"
+      "New": "きぜつしている[00 FF]"
     },
     {
       "Index": 0x81,
       "OffsetLocation": 0xB180EC,
       "OldPointer": 0xB17DDD,
       "Old": "ダイヤになっている[00 FF]",
-      "New": "misc81[00 FF]"
+      "New": "ダイヤになっている[00 FF]"
     },
     {
       "Index": 0x82,
       "OffsetLocation": 0xB180F0,
       "OldPointer": 0xB17DE8,
       "Old": "しびれている[00 FF]",
-      "New": "misc82[00 FF]"
+      "New": "しびれている[00 FF]"
     },
     {
       "Index": 0x83,
       "OffsetLocation": 0xB180F4,
       "OldPointer": 0xB17DF0,
       "Old": "きもちがわるい[00 FF]",
-      "New": "misc83[00 FF]"
+      "New": "きもちがわるい[00 FF]"
     },
     {
       "Index": 0x84,
       "OffsetLocation": 0xB180F8,
       "OldPointer": 0xB17DF9,
       "Old": "どくにくるしんでる[00 FF]",
-      "New": "misc84[00 FF]"
+      "New": "どくにくるしんでる[00 FF]"
     },
     {
       "Index": 0x85,
       "OffsetLocation": 0xB180FC,
       "OldPointer": 0xB17E04,
       "Old": "にっしゃびょう[00 FF]",
-      "New": "misc85[00 FF]"
+      "New": "にっしゃびょう[00 FF]"
     },
     {
       "Index": 0x86,
       "OffsetLocation": 0xB18100,
       "OldPointer": 0xB17E0D,
       "Old": "かぜをひいている[00 FF]",
-      "New": "misc86[00 FF]"
+      "New": "かぜをひいている[00 FF]"
     },
     {
       "Index": 0x87,
       "OffsetLocation": 0xB18104,
       "OldPointer": 0xB17E17,
       "Old": "きのこがはえている[00 FF]",
-      "New": "misc87[00 FF]"
+      "New": "きのこがはえている[00 FF]"
     },
     {
       "Index": 0x88,
       "OffsetLocation": 0xB18108,
       "OldPointer": 0xB17E22,
       "Old": "とりつかれている[00 FF]",
-      "New": "misc88[00 FF]"
+      "New": "とりつかれている[00 FF]"
     },
     {
       "Index": 0x89,
       "OffsetLocation": 0xB1810C,
       "OldPointer": 0xB17E2C,
       "Old": "ホームシック[00 FF]",
-      "New": "misc89[00 FF]"
+      "New": "ホームシック[00 FF]"
     },
     {
       "Index": 0x8A,
       "OffsetLocation": 0xB18110,
       "OldPointer": 0xB17E34,
       "Old": "          [00 FF]",
-      "New": "misc8A[00 FF]"
+      "New": "          [00 FF]"
     },
     {
       "Index": 0x8B,
       "OffsetLocation": 0xB18114,
       "OldPointer": 0xB17E40,
       "Old": "     [01 FF] わたす [01 FF] すてる [01 FF] せつめい[00 FF]",
-      "New": "misc8B[00 FF]"
+      "New": "     [01 FF] わたす [01 FF] すてる [01 FF] せつめい[00 FF]"
     },
     {
       "Index": 0x8C,
       "OffsetLocation": 0xB18118,
       "OldPointer": 0xB17E5C,
       "Old": "(1)へ[00 FF]",
-      "New": "To:(1)[00 FF]"
+      "New": "(1)へ[00 FF]"
     },
     {
       "Index": 0x8D,
       "OffsetLocation": 0xB1811C,
       "OldPointer": 0xB17E62,
       "Old": "(2)へ[00 FF]",
-      "New": "To:(2)[00 FF]"
+      "New": "(2)へ[00 FF]"
     },
     {
       "Index": 0x8E,
       "OffsetLocation": 0xB18120,
       "OldPointer": 0xB17E68,
       "Old": "(3)へ[00 FF]",
-      "New": "To:(3)[00 FF]"
+      "New": "(3)へ[00 FF]"
     },
     {
       "Index": 0x8F,
       "OffsetLocation": 0xB18124,
       "OldPointer": 0xB17E6E,
       "Old": "かけさき[00 FF]",
-      "New": "misc8F[00 FF]"
+      "New": "かけさき[00 FF]"
     },
     {
       "Index": 0x90,
       "OffsetLocation": 0xB18128,
       "OldPointer": 0xB17E74,
       "Old": "どこに?[00 FF]",
-      "New": "misc90[00 FF]"
+      "New": "どこに?[00 FF]"
     },
     {
       "Index": 0x91,
       "OffsetLocation": 0xB1812C,
       "OldPointer": 0xB17E7A,
       "Old": "[1A FF 02 00] さんですねおかねいる?[03 FF 00 00]チビ[00 FF]",
-      "New": "misc91[00 FF]"
+      "New": "[1A FF 02 00] さんですねおかねいる?[03 FF 00 00]チビ[00 FF]"
     },
     {
       "Index": 0x92,
       "OffsetLocation": 0xB18130,
       "OldPointer": 0xB17E8E,
       "Old": "チビ[00 FF]",
-      "New": "misc92[00 FF]"
+      "New": "チビ[00 FF]"
     },
     {
       "Index": 0x93,
       "OffsetLocation": 0xB18134,
       "OldPointer": 0xB17E92,
       "Old": "ネス[00 FF]",
-      "New": "misc93[00 FF]"
+      "New": "ネス[00 FF]"
     },
     {
       "Index": 0x94,
       "OffsetLocation": 0xB18138,
       "OldPointer": 0xB17E96,
       "Old": "ポーラ[00 FF]",
-      "New": "misc94[00 FF]"
+      "New": "ポーラ[00 FF]"
     },
     {
       "Index": 0x95,
       "OffsetLocation": 0xB1813C,
       "OldPointer": 0xB17E9B,
       "Old": "ジェフ[00 FF]",
-      "New": "misc95[00 FF]"
+      "New": "ジェフ[00 FF]"
     },
     {
       "Index": 0x96,
       "OffsetLocation": 0xB18140,
       "OldPointer": 0xB17EA0,
       "Old": "ぷー[00 FF]",
-      "New": "misc96[00 FF]"
+      "New": "ぷー[00 FF]"
     },
     {
       "Index": 0x97,
       "OffsetLocation": 0xB18144,
       "OldPointer": 0xB17EA4,
       "Old": "たくあん[00 FF]",
-      "New": "misc97[00 FF]"
+      "New": "たくあん[00 FF]"
     },
     {
       "Index": 0x98,
       "OffsetLocation": 0xB18148,
       "OldPointer": 0xB17EAA,
       "Old": "たち[00 FF]",
-      "New": "misc98[00 FF]"
+      "New": "たち[00 FF]"
     },
     {
       "Index": 0x99,
       "OffsetLocation": 0xB1814C,
       "OldPointer": 0xB17EAE,
       "Old": "ネスは[01 FF]0の けいけんちをえた[02 FF] [00 FF]",
-      "New": "misc99[00 FF]"
+      "New": "ネスは[01 FF]0の けいけんちをえた[02 FF] [00 FF]"
     },
     {
       "Index": 0x9A,
       "OffsetLocation": 0xB18150,
       "OldPointer": 0xB17EC3,
       "Old": "ハンバーグ[00 FF]",
-      "New": "misc9A[00 FF]"
+      "New": "ハンバーグ[00 FF]"
     },
     {
       "Index": 0x9B,
       "OffsetLocation": 0xB18154,
       "OldPointer": 0xB17ECA,
       "Old": "きあい[00 FF]",
-      "New": "misc9B[00 FF]"
+      "New": "きあい[00 FF]"
     },
     {
       "Index": 0x9C,
