@@ -15,7 +15,8 @@
 12 FF,Favorite thing (1C 01 05)
 14 FF XX XX,Teleport to entry {0:X} (1F 21)
 15 FF,King's name (1C 02 07)
-!18 FF XX XX,Unknown
+18 FF XX XX,Unknown
+19 FF XX XX,Unknown
 1A FF XX XX,Display string {0:X}? (Appears after 90 FF)
 1B FF XX XX,Pause for {0:X} frames (10)
 1C FF XX XX YY YY YY YY,If flag {0:X} is set, jump to offset {1:X} and return (06)
