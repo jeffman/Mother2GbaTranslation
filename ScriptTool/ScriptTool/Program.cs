@@ -186,7 +186,16 @@ namespace ScriptTool
             // Pull all string refs from the ROM
             var allRefs = new List<Tuple<string, MainStringRef[]>>();
             allRefs.Add(Tuple.Create("m12-tpt", M12TextTables.ReadTptRefs(m12Rom)));
-            // TODO: small pointer table at B1B3B0
+            allRefs.Add(Tuple.Create("m12-psihelp", M12TextTables.ReadPsiHelpRefs(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-battle-actions", M12TextTables.ReadBattleActionRefs(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-itemhelp", M12TextTables.ReadItemHelpRefs(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-movements", M12TextTables.ReadMovementRefs(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-objects", M12TextTables.ReadObjectRefs(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-phonelist", M12TextTables.ReadPhoneRefs(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-unknown", M12TextTables.ReadUnknownRefs(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-asmrefs", M12TextTables.ReadAsmRefs(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-enemy-encounters", M12TextTables.ReadEnemyEncounters(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-prayers", M12TextTables.ReadPrayerRefs(m12Rom)));
 
             // Decompile
             var allPointers = allRefs.SelectMany(rl => rl.Item2).Select(r => r.OldPointer);
@@ -294,6 +303,9 @@ namespace ScriptTool
 
             // PSI text
             CompileM12MiscStringCollection("m12-psitext", ref referenceAddress);
+
+            // Enemy names
+            CompileM12MiscStringCollection("m12-enemynames", ref referenceAddress);
         }
 
         static void CompileM12MiscStringCollection(string name, ref int referenceAddress)
