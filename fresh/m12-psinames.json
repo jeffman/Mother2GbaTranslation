@@ -12,104 +12,104 @@
     {
       "Index": 0x1,
       "OldPointer": 0xB1B923,
-      "Old": "PK[00 FF]",
-      "New": "PK[00 FF]"
+      "Old": "PK[00 FF]ぁぁぁぁぁぁぁぁぁ",
+      "New": "PK[00 FF]ぁぁぁぁぁぁぁぁぁ"
     },
     {
       "Index": 0x2,
       "OldPointer": 0xB1B930,
-      "Old": "PKファイアー[00 FF]",
-      "New": "PKファイアー[00 FF]"
+      "Old": "PKファイアー[00 FF]ぁぁぁぁ",
+      "New": "PKファイアー[00 FF]ぁぁぁぁ"
     },
     {
       "Index": 0x3,
       "OldPointer": 0xB1B93D,
-      "Old": "PKフリーズ[00 FF]",
-      "New": "PKフリーズ[00 FF]"
+      "Old": "PKフリーズ[00 FF]ぁぁぁぁぁ",
+      "New": "PKフリーズ[00 FF]ぁぁぁぁぁ"
     },
     {
       "Index": 0x4,
       "OldPointer": 0xB1B94A,
-      "Old": "PKサンダー[00 FF]",
-      "New": "PKサンダー[00 FF]"
+      "Old": "PKサンダー[00 FF]ぁぁぁぁぁ",
+      "New": "PKサンダー[00 FF]ぁぁぁぁぁ"
     },
     {
       "Index": 0x5,
       "OldPointer": 0xB1B957,
-      "Old": "PKフラッシュ[00 FF]",
-      "New": "PKフラッシュ[00 FF]"
+      "Old": "PKフラッシュ[00 FF]ぁぁぁぁ",
+      "New": "PKフラッシュ[00 FF]ぁぁぁぁ"
     },
     {
       "Index": 0x6,
       "OldPointer": 0xB1B964,
-      "Old": "PKスターストーム[00 FF]",
-      "New": "PKスターストーム[00 FF]"
+      "Old": "PKスターストーム[00 FF]ぁぁ",
+      "New": "PKスターストーム[00 FF]ぁぁ"
     },
     {
       "Index": 0x7,
       "OldPointer": 0xB1B971,
-      "Old": "ライフアップ[00 FF]",
-      "New": "ライフアップ[00 FF]"
+      "Old": "ライフアップ[00 FF]ぁぁぁぁぁ",
+      "New": "ライフアップ[00 FF]ぁぁぁぁぁ"
     },
     {
       "Index": 0x8,
       "OldPointer": 0xB1B97E,
-      "Old": "ヒーリング[00 FF]",
-      "New": "ヒーリング[00 FF]"
+      "Old": "ヒーリング[00 FF]ぁぁぁぁぁぁ",
+      "New": "ヒーリング[00 FF]ぁぁぁぁぁぁ"
     },
     {
       "Index": 0x9,
       "OldPointer": 0xB1B98B,
-      "Old": "シールド[00 FF]",
-      "New": "シールド[00 FF]"
+      "Old": "シールド[00 FF]ぁぁぁぁぁぁぁ",
+      "New": "シールド[00 FF]ぁぁぁぁぁぁぁ"
     },
     {
       "Index": 0xA,
       "OldPointer": 0xB1B998,
-      "Old": "サイコシールド[00 FF]",
-      "New": "サイコシールド[00 FF]"
+      "Old": "サイコシールド[00 FF]ぁぁぁぁ",
+      "New": "サイコシールド[00 FF]ぁぁぁぁ"
     },
     {
       "Index": 0xB,
       "OldPointer": 0xB1B9A5,
-      "Old": "オフェンスアップ[00 FF]",
-      "New": "オフェンスアップ[00 FF]"
+      "Old": "オフェンスアップ[00 FF]ぁぁぁ",
+      "New": "オフェンスアップ[00 FF]ぁぁぁ"
     },
     {
       "Index": 0xC,
       "OldPointer": 0xB1B9B2,
-      "Old": "ディフェンスダウン[00 FF]",
-      "New": "ディフェンスダウン[00 FF]"
+      "Old": "ディフェンスダウン[00 FF]ぁぁ",
+      "New": "ディフェンスダウン[00 FF]ぁぁ"
     },
     {
       "Index": 0xD,
       "OldPointer": 0xB1B9BF,
-      "Old": "さいみんじゅつ[00 FF]",
-      "New": "さいみんじゅつ[00 FF]"
+      "Old": "さいみんじゅつ[00 FF]ぁぁぁぁ",
+      "New": "さいみんじゅつ[00 FF]ぁぁぁぁ"
     },
     {
       "Index": 0xE,
       "OldPointer": 0xB1B9CC,
-      "Old": "サイマグネット[00 FF]",
-      "New": "サイマグネット[00 FF]"
+      "Old": "サイマグネット[00 FF]ぁぁぁぁ",
+      "New": "サイマグネット[00 FF]ぁぁぁぁ"
     },
     {
       "Index": 0xF,
       "OldPointer": 0xB1B9D9,
-      "Old": "パラライシス[00 FF]",
-      "New": "パラライシス[00 FF]"
+      "Old": "パラライシス[00 FF]ぁぁぁぁぁ",
+      "New": "パラライシス[00 FF]ぁぁぁぁぁ"
     },
     {
       "Index": 0x10,
       "OldPointer": 0xB1B9E6,
-      "Old": "ブレインショック[00 FF]",
-      "New": "ブレインショック[00 FF]"
+      "Old": "ブレインショック[00 FF]ぁぁぁ",
+      "New": "ブレインショック[00 FF]ぁぁぁ"
     },
     {
       "Index": 0x11,
       "OldPointer": 0xB1B9F3,
-      "Old": "テレポート[00 FF]",
-      "New": "テレポート[00 FF]"
+      "Old": "テレポート[00 FF]ぁぁぁぁぁぁ",
+      "New": "テレポート[00 FF]ぁぁぁぁぁぁ"
     }
   ]
 }
