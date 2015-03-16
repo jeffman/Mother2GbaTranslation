@@ -120,7 +120,7 @@ dw      $E801                // Break by means of invalid opcode
 ldrb    r0,[r1,#0]
 sub     r0,#0x50
 bpl     +
-mov     r0,#0x1F
+mov     r0,#0x1F			// Replace char with ? if it's invalid
 b       .char_custom
 +
 cmp     r0,#0x60
@@ -496,7 +496,7 @@ pop     {r1-r7,pc}
 // [r0+13]: <unused> (3 bytes)
 
 .print_left:
-print   "m2vwf.print_left:             $", pc
+print   "m2vwf.print_left:             $",pc
 
 push    {r0-r7,lr}
 mov     r7,r0
@@ -1234,7 +1234,7 @@ pop     {r0-r7,pc}
 //==============================================================================
 
 .main:
-print   "m2vwf.status:                 $",pc
+print   "m2vwf.main:                   $",pc
 
 push    {r5,lr}
 ldr     r5,[sp,#8]

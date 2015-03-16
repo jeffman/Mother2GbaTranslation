@@ -17,6 +17,7 @@ org $80B3274; dd m2_font_relocate
 org $8AFED84; incbin m2-mainfont1-empty.bin
 org $8B0F424; incbin m2-mainfont2-empty.bin
 org $8B13424; incbin m2-mainfont3-empty.bin
+org $8B088A4; incbin m2-shifted-cursor.bin
 
 //==============================================================================
 // Control code hacks
