@@ -1,0 +1,1166 @@
+[
+  {
+    "Index": 0x0,
+    "PointerLocation": 0x72E40C,
+    "OldPointer": 0x87EE9,
+    "Label": "L1929"
+  },
+  {
+    "Index": 0x1,
+    "PointerLocation": 0x72E41C,
+    "OldPointer": 0x864AE,
+    "Label": "L1930"
+  },
+  {
+    "Index": 0x2,
+    "PointerLocation": 0x72E42C,
+    "OldPointer": 0x86759,
+    "Label": "L1931"
+  },
+  {
+    "Index": 0x3,
+    "PointerLocation": 0x72E43C,
+    "OldPointer": 0x864E8,
+    "Label": "L1932"
+  },
+  {
+    "Index": 0x4,
+    "PointerLocation": 0x72E44C,
+    "OldPointer": 0x86538,
+    "Label": "L1933"
+  },
+  {
+    "Index": 0x5,
+    "PointerLocation": 0x72E45C,
+    "OldPointer": 0x86629,
+    "Label": "L1934"
+  },
+  {
+    "Index": 0x6,
+    "PointerLocation": 0x72E46C,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x7,
+    "PointerLocation": 0x72E47C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x8,
+    "PointerLocation": 0x72E48C,
+    "OldPointer": 0x86657,
+    "Label": "L1936"
+  },
+  {
+    "Index": 0x9,
+    "PointerLocation": 0x72E49C,
+    "OldPointer": 0x879B4,
+    "Label": "L1937"
+  },
+  {
+    "Index": 0xA,
+    "PointerLocation": 0x72E4AC,
+    "OldPointer": 0x8665D,
+    "Label": "L1938"
+  },
+  {
+    "Index": 0xB,
+    "PointerLocation": 0x72E4BC,
+    "OldPointer": 0x87DCE,
+    "Label": "L1939"
+  },
+  {
+    "Index": 0xC,
+    "PointerLocation": 0x72E4CC,
+    "OldPointer": 0x86745,
+    "Label": "L1940"
+  },
+  {
+    "Index": 0xD,
+    "PointerLocation": 0x72E4DC,
+    "OldPointer": 0x8692F,
+    "Label": "L1941"
+  },
+  {
+    "Index": 0xE,
+    "PointerLocation": 0x72E4EC,
+    "OldPointer": 0x87BD0,
+    "Label": "L1942"
+  },
+  {
+    "Index": 0xF,
+    "PointerLocation": 0x72E4FC,
+    "OldPointer": 0x87BC4,
+    "Label": "L1943"
+  },
+  {
+    "Index": 0x10,
+    "PointerLocation": 0x72E50C,
+    "OldPointer": 0x5F3D7,
+    "Label": "L128"
+  },
+  {
+    "Index": 0x11,
+    "PointerLocation": 0x72E51C,
+    "OldPointer": 0x8674B,
+    "Label": "L1944"
+  },
+  {
+    "Index": 0x12,
+    "PointerLocation": 0x72E52C,
+    "OldPointer": 0x86819,
+    "Label": "L1945"
+  },
+  {
+    "Index": 0x14,
+    "PointerLocation": 0x72E54C,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x15,
+    "PointerLocation": 0x72E55C,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x16,
+    "PointerLocation": 0x72E56C,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x17,
+    "PointerLocation": 0x72E57C,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x18,
+    "PointerLocation": 0x72E58C,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x19,
+    "PointerLocation": 0x72E59C,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x1A,
+    "PointerLocation": 0x72E5AC,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x1B,
+    "PointerLocation": 0x72E5BC,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x1C,
+    "PointerLocation": 0x72E5CC,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x1D,
+    "PointerLocation": 0x72E5DC,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x1E,
+    "PointerLocation": 0x72E5EC,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x1F,
+    "PointerLocation": 0x72E5FC,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x20,
+    "PointerLocation": 0x72E60C,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x21,
+    "PointerLocation": 0x72E61C,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x22,
+    "PointerLocation": 0x72E62C,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x23,
+    "PointerLocation": 0x72E63C,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x24,
+    "PointerLocation": 0x72E64C,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x25,
+    "PointerLocation": 0x72E65C,
+    "OldPointer": 0x87EC9,
+    "Label": "L1935"
+  },
+  {
+    "Index": 0x27,
+    "PointerLocation": 0x72E67C,
+    "OldPointer": 0x86D83,
+    "Label": "L1946"
+  },
+  {
+    "Index": 0x28,
+    "PointerLocation": 0x72E68C,
+    "OldPointer": 0x869E9,
+    "Label": "L1947"
+  },
+  {
+    "Index": 0x2B,
+    "PointerLocation": 0x72E6BC,
+    "OldPointer": 0x86965,
+    "Label": "L1948"
+  },
+  {
+    "Index": 0x2C,
+    "PointerLocation": 0x72E6CC,
+    "OldPointer": 0x86A01,
+    "Label": "L1949"
+  },
+  {
+    "Index": 0x2D,
+    "PointerLocation": 0x72E6DC,
+    "OldPointer": 0x86A31,
+    "Label": "L1950"
+  },
+  {
+    "Index": 0x2E,
+    "PointerLocation": 0x72E6EC,
+    "OldPointer": 0x866A5,
+    "Label": "L1951"
+  },
+  {
+    "Index": 0x2F,
+    "PointerLocation": 0x72E6FC,
+    "OldPointer": 0x86C8D,
+    "Label": "L1952"
+  },
+  {
+    "Index": 0x30,
+    "PointerLocation": 0x72E70C,
+    "OldPointer": 0x86C3B,
+    "Label": "L1953"
+  },
+  {
+    "Index": 0x31,
+    "PointerLocation": 0x72E71C,
+    "OldPointer": 0x86941,
+    "Label": "L1954"
+  },
+  {
+    "Index": 0x32,
+    "PointerLocation": 0x72E72C,
+    "OldPointer": 0x86B5B,
+    "Label": "L1955"
+  },
+  {
+    "Index": 0x33,
+    "PointerLocation": 0x72E73C,
+    "OldPointer": 0x86B83,
+    "Label": "L1956"
+  },
+  {
+    "Index": 0x34,
+    "PointerLocation": 0x72E74C,
+    "OldPointer": 0x8683B,
+    "Label": "L1957"
+  },
+  {
+    "Index": 0x35,
+    "PointerLocation": 0x72E75C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x37,
+    "PointerLocation": 0x72E77C,
+    "OldPointer": 0x86EB1,
+    "Label": "L1958"
+  },
+  {
+    "Index": 0x38,
+    "PointerLocation": 0x72E78C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x39,
+    "PointerLocation": 0x72E79C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x3B,
+    "PointerLocation": 0x72E7BC,
+    "OldPointer": 0x86D85,
+    "Label": "L1959"
+  },
+  {
+    "Index": 0x3C,
+    "PointerLocation": 0x72E7CC,
+    "OldPointer": 0x87C02,
+    "Label": "L1960"
+  },
+  {
+    "Index": 0x3D,
+    "PointerLocation": 0x72E7DC,
+    "OldPointer": 0x87BC4,
+    "Label": "L1943"
+  },
+  {
+    "Index": 0x3E,
+    "PointerLocation": 0x72E7EC,
+    "OldPointer": 0x86E08,
+    "Label": "L1961"
+  },
+  {
+    "Index": 0x3F,
+    "PointerLocation": 0x72E7FC,
+    "OldPointer": 0x86DEE,
+    "Label": "L1962"
+  },
+  {
+    "Index": 0x40,
+    "PointerLocation": 0x72E80C,
+    "OldPointer": 0x86EA1,
+    "Label": "L1963"
+  },
+  {
+    "Index": 0x41,
+    "PointerLocation": 0x72E81C,
+    "OldPointer": 0x86E9B,
+    "Label": "L1964"
+  },
+  {
+    "Index": 0x42,
+    "PointerLocation": 0x72E82C,
+    "OldPointer": 0x87DCE,
+    "Label": "L1939"
+  },
+  {
+    "Index": 0x43,
+    "PointerLocation": 0x72E83C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x44,
+    "PointerLocation": 0x72E84C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x45,
+    "PointerLocation": 0x72E85C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x47,
+    "PointerLocation": 0x72E87C,
+    "OldPointer": 0x879A2,
+    "Label": "L1965"
+  },
+  {
+    "Index": 0x48,
+    "PointerLocation": 0x72E88C,
+    "OldPointer": 0x5F6B0,
+    "Label": "L368"
+  },
+  {
+    "Index": 0x49,
+    "PointerLocation": 0x72E89C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x4A,
+    "PointerLocation": 0x72E8AC,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x4B,
+    "PointerLocation": 0x72E8BC,
+    "OldPointer": 0x86B6F,
+    "Label": "L1966"
+  },
+  {
+    "Index": 0x4C,
+    "PointerLocation": 0x72E8CC,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x4D,
+    "PointerLocation": 0x72E8DC,
+    "OldPointer": 0x86B35,
+    "Label": "L1967"
+  },
+  {
+    "Index": 0x4E,
+    "PointerLocation": 0x72E8EC,
+    "OldPointer": 0x87DCE,
+    "Label": "L1939"
+  },
+  {
+    "Index": 0x50,
+    "PointerLocation": 0x72E90C,
+    "OldPointer": 0x86B23,
+    "Label": "L1968"
+  },
+  {
+    "Index": 0x51,
+    "PointerLocation": 0x72E91C,
+    "OldPointer": 0x86711,
+    "Label": "L1969"
+  },
+  {
+    "Index": 0x52,
+    "PointerLocation": 0x72E92C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x53,
+    "PointerLocation": 0x72E93C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x54,
+    "PointerLocation": 0x72E94C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x55,
+    "PointerLocation": 0x72E95C,
+    "OldPointer": 0x87BC4,
+    "Label": "L1943"
+  },
+  {
+    "Index": 0x56,
+    "PointerLocation": 0x72E96C,
+    "OldPointer": 0x87C34,
+    "Label": "L1970"
+  },
+  {
+    "Index": 0x57,
+    "PointerLocation": 0x72E97C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x58,
+    "PointerLocation": 0x72E98C,
+    "OldPointer": 0x86737,
+    "Label": "L1971"
+  },
+  {
+    "Index": 0x59,
+    "PointerLocation": 0x72E99C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0x5A,
+    "PointerLocation": 0x72E9AC,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0x5B,
+    "PointerLocation": 0x72E9BC,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0x5C,
+    "PointerLocation": 0x72E9CC,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0x5D,
+    "PointerLocation": 0x72E9DC,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0x5E,
+    "PointerLocation": 0x72E9EC,
+    "OldPointer": 0x87DCE,
+    "Label": "L1939"
+  },
+  {
+    "Index": 0x5F,
+    "PointerLocation": 0x72E9FC,
+    "OldPointer": 0x879D2,
+    "Label": "L1973"
+  },
+  {
+    "Index": 0x60,
+    "PointerLocation": 0x72EA0C,
+    "OldPointer": 0x879D2,
+    "Label": "L1973"
+  },
+  {
+    "Index": 0x61,
+    "PointerLocation": 0x72EA1C,
+    "OldPointer": 0x879D2,
+    "Label": "L1973"
+  },
+  {
+    "Index": 0x62,
+    "PointerLocation": 0x72EA2C,
+    "OldPointer": 0x879D2,
+    "Label": "L1973"
+  },
+  {
+    "Index": 0x64,
+    "PointerLocation": 0x72EA4C,
+    "OldPointer": 0x87634,
+    "Label": "L1974"
+  },
+  {
+    "Index": 0x65,
+    "PointerLocation": 0x72EA5C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x66,
+    "PointerLocation": 0x72EA6C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x67,
+    "PointerLocation": 0x72EA7C,
+    "OldPointer": 0x86841,
+    "Label": "L1975"
+  },
+  {
+    "Index": 0x69,
+    "PointerLocation": 0x72EA9C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x6A,
+    "PointerLocation": 0x72EAAC,
+    "OldPointer": 0x87DCE,
+    "Label": "L1939"
+  },
+  {
+    "Index": 0x6B,
+    "PointerLocation": 0x72EABC,
+    "OldPointer": 0x87C66,
+    "Label": "L1976"
+  },
+  {
+    "Index": 0x6C,
+    "PointerLocation": 0x72EACC,
+    "OldPointer": 0x87BC4,
+    "Label": "L1943"
+  },
+  {
+    "Index": 0x6D,
+    "PointerLocation": 0x72EADC,
+    "OldPointer": 0x8768F,
+    "Label": "L1977"
+  },
+  {
+    "Index": 0x6E,
+    "PointerLocation": 0x72EAEC,
+    "OldPointer": 0x8768F,
+    "Label": "L1977"
+  },
+  {
+    "Index": 0x6F,
+    "PointerLocation": 0x72EAFC,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x70,
+    "PointerLocation": 0x72EB0C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x71,
+    "PointerLocation": 0x72EB1C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x72,
+    "PointerLocation": 0x72EB2C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x82,
+    "PointerLocation": 0x72EC2C,
+    "OldPointer": 0x86B35,
+    "Label": "L1967"
+  },
+  {
+    "Index": 0x83,
+    "PointerLocation": 0x72EC3C,
+    "OldPointer": 0x86B35,
+    "Label": "L1967"
+  },
+  {
+    "Index": 0x84,
+    "PointerLocation": 0x72EC4C,
+    "OldPointer": 0x86B35,
+    "Label": "L1967"
+  },
+  {
+    "Index": 0x85,
+    "PointerLocation": 0x72EC5C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x86,
+    "PointerLocation": 0x72EC6C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x87,
+    "PointerLocation": 0x72EC7C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x88,
+    "PointerLocation": 0x72EC8C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x89,
+    "PointerLocation": 0x72EC9C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x8A,
+    "PointerLocation": 0x72ECAC,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x8B,
+    "PointerLocation": 0x72ECBC,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0x8C,
+    "PointerLocation": 0x72ECCC,
+    "OldPointer": 0x86847,
+    "Label": "L1978"
+  },
+  {
+    "Index": 0x8D,
+    "PointerLocation": 0x72ECDC,
+    "OldPointer": 0x86863,
+    "Label": "L1979"
+  },
+  {
+    "Index": 0x90,
+    "PointerLocation": 0x72ED0C,
+    "OldPointer": 0x869DF,
+    "Label": "L1980"
+  },
+  {
+    "Index": 0x92,
+    "PointerLocation": 0x72ED2C,
+    "OldPointer": 0x86CD1,
+    "Label": "L1981"
+  },
+  {
+    "Index": 0x93,
+    "PointerLocation": 0x72ED3C,
+    "OldPointer": 0x878AB,
+    "Label": "L1982"
+  },
+  {
+    "Index": 0x94,
+    "PointerLocation": 0x72ED4C,
+    "OldPointer": 0x86CEB,
+    "Label": "L1983"
+  },
+  {
+    "Index": 0x96,
+    "PointerLocation": 0x72ED6C,
+    "OldPointer": 0x869B9,
+    "Label": "L1984"
+  },
+  {
+    "Index": 0x97,
+    "PointerLocation": 0x72ED7C,
+    "OldPointer": 0x86983,
+    "Label": "L1985"
+  },
+  {
+    "Index": 0x98,
+    "PointerLocation": 0x72ED8C,
+    "OldPointer": 0x86CAD,
+    "Label": "L1986"
+  },
+  {
+    "Index": 0x99,
+    "PointerLocation": 0x72ED9C,
+    "OldPointer": 0x8797E,
+    "Label": "L1987"
+  },
+  {
+    "Index": 0x9A,
+    "PointerLocation": 0x72EDAC,
+    "OldPointer": 0x86D49,
+    "Label": "L1988"
+  },
+  {
+    "Index": 0x9B,
+    "PointerLocation": 0x72EDBC,
+    "OldPointer": 0x86D65,
+    "Label": "L1989"
+  },
+  {
+    "Index": 0x9C,
+    "PointerLocation": 0x72EDCC,
+    "OldPointer": 0x8793E,
+    "Label": "L1990"
+  },
+  {
+    "Index": 0x9D,
+    "PointerLocation": 0x72EDDC,
+    "OldPointer": 0x4F0D1,
+    "Label": "L1991"
+  },
+  {
+    "Index": 0x9E,
+    "PointerLocation": 0x72EDEC,
+    "OldPointer": 0x4F0EB,
+    "Label": "L1992"
+  },
+  {
+    "Index": 0x9F,
+    "PointerLocation": 0x72EDFC,
+    "OldPointer": 0x4FA7A,
+    "Label": "L1993"
+  },
+  {
+    "Index": 0xA0,
+    "PointerLocation": 0x72EE0C,
+    "OldPointer": 0x87912,
+    "Label": "L1994"
+  },
+  {
+    "Index": 0xA2,
+    "PointerLocation": 0x72EE2C,
+    "OldPointer": 0x87DCE,
+    "Label": "L1939"
+  },
+  {
+    "Index": 0xA3,
+    "PointerLocation": 0x72EE3C,
+    "OldPointer": 0x87C98,
+    "Label": "L1995"
+  },
+  {
+    "Index": 0xA4,
+    "PointerLocation": 0x72EE4C,
+    "OldPointer": 0x87BC4,
+    "Label": "L1943"
+  },
+  {
+    "Index": 0xA5,
+    "PointerLocation": 0x72EE5C,
+    "OldPointer": 0x8799C,
+    "Label": "L1996"
+  },
+  {
+    "Index": 0xA6,
+    "PointerLocation": 0x72EE6C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0xA7,
+    "PointerLocation": 0x72EE7C,
+    "OldPointer": 0x86873,
+    "Label": "L1997"
+  },
+  {
+    "Index": 0xA9,
+    "PointerLocation": 0x72EE9C,
+    "OldPointer": 0x87DCE,
+    "Label": "L1939"
+  },
+  {
+    "Index": 0xAC,
+    "PointerLocation": 0x72EECC,
+    "OldPointer": 0x87DF8,
+    "Label": "L1998"
+  },
+  {
+    "Index": 0xAD,
+    "PointerLocation": 0x72EEDC,
+    "OldPointer": 0x87E20,
+    "Label": "L1999"
+  },
+  {
+    "Index": 0xAE,
+    "PointerLocation": 0x72EEEC,
+    "OldPointer": 0x87DDE,
+    "Label": "L2000"
+  },
+  {
+    "Index": 0xAF,
+    "PointerLocation": 0x72EEFC,
+    "OldPointer": 0x87E42,
+    "Label": "L2001"
+  },
+  {
+    "Index": 0xB0,
+    "PointerLocation": 0x72EF0C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xB1,
+    "PointerLocation": 0x72EF1C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xB2,
+    "PointerLocation": 0x72EF2C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xB3,
+    "PointerLocation": 0x72EF3C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xB4,
+    "PointerLocation": 0x72EF4C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xB5,
+    "PointerLocation": 0x72EF5C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xB6,
+    "PointerLocation": 0x72EF6C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xB7,
+    "PointerLocation": 0x72EF7C,
+    "OldPointer": 0x87DE4,
+    "Label": "L2003"
+  },
+  {
+    "Index": 0xB8,
+    "PointerLocation": 0x72EF8C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xB9,
+    "PointerLocation": 0x72EF9C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xBA,
+    "PointerLocation": 0x72EFAC,
+    "OldPointer": 0x8799C,
+    "Label": "L1996"
+  },
+  {
+    "Index": 0xBB,
+    "PointerLocation": 0x72EFBC,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xBC,
+    "PointerLocation": 0x72EFCC,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xBE,
+    "PointerLocation": 0x72EFEC,
+    "OldPointer": 0x87CCA,
+    "Label": "L2004"
+  },
+  {
+    "Index": 0xBF,
+    "PointerLocation": 0x72EFFC,
+    "OldPointer": 0x87BC4,
+    "Label": "L1943"
+  },
+  {
+    "Index": 0xC0,
+    "PointerLocation": 0x72F00C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0xC1,
+    "PointerLocation": 0x72F01C,
+    "OldPointer": 0x87DCE,
+    "Label": "L1939"
+  },
+  {
+    "Index": 0xC2,
+    "PointerLocation": 0x72F02C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xC3,
+    "PointerLocation": 0x72F03C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xC4,
+    "PointerLocation": 0x72F04C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xC5,
+    "PointerLocation": 0x72F05C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xC6,
+    "PointerLocation": 0x72F06C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xC7,
+    "PointerLocation": 0x72F07C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xC8,
+    "PointerLocation": 0x72F08C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xC9,
+    "PointerLocation": 0x72F09C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xCB,
+    "PointerLocation": 0x72F0BC,
+    "OldPointer": 0x87A4E,
+    "Label": "L2005"
+  },
+  {
+    "Index": 0xCE,
+    "PointerLocation": 0x72F0EC,
+    "OldPointer": 0x87B35,
+    "Label": "L2006"
+  },
+  {
+    "Index": 0xCF,
+    "PointerLocation": 0x72F0FC,
+    "OldPointer": 0x87A6C,
+    "Label": "L2007"
+  },
+  {
+    "Index": 0xD0,
+    "PointerLocation": 0x72F10C,
+    "OldPointer": 0x87B79,
+    "Label": "L2008"
+  },
+  {
+    "Index": 0xD1,
+    "PointerLocation": 0x72F11C,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0xD2,
+    "PointerLocation": 0x72F12C,
+    "OldPointer": 0x87AEE,
+    "Label": "L2009"
+  },
+  {
+    "Index": 0xD3,
+    "PointerLocation": 0x72F13C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xD4,
+    "PointerLocation": 0x72F14C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xD5,
+    "PointerLocation": 0x72F15C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xD6,
+    "PointerLocation": 0x72F16C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xD8,
+    "PointerLocation": 0x72F18C,
+    "OldPointer": 0x86883,
+    "Label": "L2010"
+  },
+  {
+    "Index": 0xD9,
+    "PointerLocation": 0x72F19C,
+    "OldPointer": 0x8689D,
+    "Label": "L2011"
+  },
+  {
+    "Index": 0xDB,
+    "PointerLocation": 0x72F1BC,
+    "OldPointer": 0x868CB,
+    "Label": "L2012"
+  },
+  {
+    "Index": 0xDC,
+    "PointerLocation": 0x72F1CC,
+    "OldPointer": 0x87CFC,
+    "Label": "L2013"
+  },
+  {
+    "Index": 0xDD,
+    "PointerLocation": 0x72F1DC,
+    "OldPointer": 0x868E1,
+    "Label": "L2014"
+  },
+  {
+    "Index": 0xDF,
+    "PointerLocation": 0x72F1FC,
+    "OldPointer": 0x87D96,
+    "Label": "L1914"
+  },
+  {
+    "Index": 0xE0,
+    "PointerLocation": 0x72F20C,
+    "OldPointer": 0x87D26,
+    "Label": "L2015"
+  },
+  {
+    "Index": 0xE2,
+    "PointerLocation": 0x72F22C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xE3,
+    "PointerLocation": 0x72F23C,
+    "OldPointer": 0x87DCE,
+    "Label": "L1939"
+  },
+  {
+    "Index": 0xE4,
+    "PointerLocation": 0x72F24C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xE5,
+    "PointerLocation": 0x72F25C,
+    "OldPointer": 0x87EDD,
+    "Label": "L1972"
+  },
+  {
+    "Index": 0xE6,
+    "PointerLocation": 0x72F26C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xE7,
+    "PointerLocation": 0x72F27C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xE8,
+    "PointerLocation": 0x72F28C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xE9,
+    "PointerLocation": 0x72F29C,
+    "OldPointer": 0x87EE3,
+    "Label": "L2002"
+  },
+  {
+    "Index": 0xEB,
+    "PointerLocation": 0x72F2BC,
+    "OldPointer": 0x87B67,
+    "Label": "L2016"
+  }
+]
