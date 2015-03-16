@@ -7,7 +7,7 @@
       "OffsetLocation": 0xB17EE8,
       "OldPointer": 0xB17424,
       "Old": " はなす  グッズ[01 FF] PSI  そうび[01 FF] チェック つよさ[00 FF]",
-      "New": "[5F FF 08]Walk[5F FF 30]Goods[01 FF][5F FF 08]PSI[5F FF 30]Equip[01 FF][5F FF 08]Check[5F FF 30]Status[00 FF]"
+      "New": "[5F FF 08]Talk[5F FF 30]Goods[01 FF][5F FF 08]PSI[5F FF 30]Equip[01 FF][5F FF 08]Check[5F FF 30]Status[00 FF]"
     },
     {
       "Index": 0x1,
