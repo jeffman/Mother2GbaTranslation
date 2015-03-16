@@ -8,14 +8,14 @@ using Newtonsoft.Json;
 
 namespace ScriptTool
 {
-    class M12TextDecompiler : IDecompiler
+    class M12TextDecompiler2 : IDecompiler2
     {
         public IList<ControlCode> ControlCodes { get; set; }
         private static string[] charMap;
         private static IList<int[]> textRanges = new List<int[]>();
         private static DecompileContext staticContext = new DecompileContext();
 
-        static M12TextDecompiler()
+        static M12TextDecompiler2()
         {
             // Load strings
             charMap = File.ReadAllLines("m12-text-table.txt");
@@ -31,7 +31,7 @@ namespace ScriptTool
 
             // First pass -- define labels
             foreach (var address in addresses)
-                context.LabelMap.Append(address);
+                context.LabelMap.Add(address);
 
             foreach(var range in textRanges)
                 ScanAt(rom, range[0], range[1], context, ScanMode.FirstPass, false, false, false);
@@ -62,7 +62,7 @@ namespace ScriptTool
 
             if (mode == ScanMode.FirstPass)
             {
-                context.LabelMap.Append(address);
+                context.LabelMap.Add(address);
             }
 
             while (!ended)
@@ -119,7 +119,7 @@ namespace ScriptTool
 
                                         address += 4;
 
-                                        context.LabelMap.Append(jump);
+                                        context.LabelMap.Add(jump);
 
                                         if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                                         {
@@ -144,7 +144,7 @@ namespace ScriptTool
                                     int jump = rom.ReadInt(address);
                                     jump += address;
 
-                                    context.LabelMap.Append(jump);
+                                    context.LabelMap.Add(jump);
 
                                     if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                                     {
@@ -160,7 +160,7 @@ namespace ScriptTool
                                     int jump = rom.ReadInt(address + 2);
                                     jump += address + 2;
 
-                                    context.LabelMap.Append(jump);
+                                    context.LabelMap.Add(jump);
 
                                     if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                                     {
@@ -180,7 +180,7 @@ namespace ScriptTool
                                     // Skip two bytes; single absolute address afterwards
                                     int jump = rom.ReadGbaPointer(address + 2);
 
-                                    context.LabelMap.Append(jump);
+                                    context.LabelMap.Add(jump);
 
                                     if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                                     {
@@ -200,7 +200,7 @@ namespace ScriptTool
                                     // Single absolute address at next byte
                                     int jump = rom.ReadGbaPointer(address);
 
-                                    context.LabelMap.Append(jump);
+                                    context.LabelMap.Add(jump);
 
                                     if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                                     {

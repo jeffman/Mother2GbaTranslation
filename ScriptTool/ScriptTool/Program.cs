@@ -10,50 +10,65 @@ namespace ScriptTool
 {
     class Program
     {
-        static IList<ControlCode> EbControlCodes = new List<ControlCode>();
-        static IList<ControlCode> M12ControlCodes = new List<ControlCode>();
+        // Options
+        static CommandOptions options;
+
+        // ROMs
+        static byte[] ebRom;
+        static byte[] m12Rom;
 
         // Decompiler setup
-        static EbTextDecompiler ebDecompiler;
-        static M12TextDecompiler m12Decompiler;
+        static M12Decompiler m12Decompiler;
+
+        // Compiler setup
+        static M12Compiler m12Compiler;
+        static StreamWriter IncludeFile;
 
         static void Main(string[] args)
         {
-            CommandOptions options = ParseCommandLine(args);
+            options = ParseCommandLine(args);
             if (options == null)
             {
                 Usage();
                 return;
             }
 
-            LoadControlCodes();
-
             if (options.Command == CommandType.Decompile)
             {
-                ebDecompiler = new EbTextDecompiler() { ControlCodes = EbControlCodes };
-                m12Decompiler = new M12TextDecompiler() { ControlCodes = M12ControlCodes };
+                m12Decompiler = new M12Decompiler();
 
                 // Load ROMs
-                byte[] ebRom = File.ReadAllBytes(options.EbRom);
-                byte[] m12Rom = File.ReadAllBytes(options.M12Rom);
+                ebRom = File.ReadAllBytes(options.EbRom);
+                m12Rom = File.ReadAllBytes(options.M12Rom);
 
                 // Decompile misc string tables
                 if (options.DoMiscText)
                 {
-                    DecompileEbMisc(ebRom, options.WorkingDirectory);
-                    DecompileM12Misc(m12Rom, options.WorkingDirectory);
+                    //DecompileEbMisc();
+                    DecompileM12Misc();
                 }
 
                 // Decompile main string tables
                 if (options.DoMainText)
                 {
-                    DecompileEb(ebRom, options.WorkingDirectory);
-                    DecompileM12(m12Rom, options.WorkingDirectory);
+                    //DecompileEb();
+                    DecompileM12();
                 }
             }
             else if (options.Command == CommandType.Compile)
             {
-                // TBD
+                m12Compiler = new M12Compiler();
+
+                using (IncludeFile = File.CreateText(Path.Combine(options.WorkingDirectory, "m12-includes.asm")))
+                {
+                    IncludeFile.WriteLine("arch gba.thumb");
+
+                    // Compile misc string tables
+                    if (options.DoMiscText)
+                    {
+                        CompileM12Misc();
+                    }
+                }
             }
         }
 
@@ -128,13 +143,7 @@ namespace ScriptTool
             };
         }
 
-        static void LoadControlCodes()
-        {
-            EbControlCodes = ControlCode.LoadEbControlCodes("eb-codelist.txt");
-            M12ControlCodes = ControlCode.LoadM12ControlCodes("m12-codelist.txt");
-        }
-
-        static void DecompileEb(byte[] ebRom, string workingDirectory)
+        /*static void DecompileEb(byte[] ebRom, string workingDirectory)
         {
             var context = new DecompileContext();
 
@@ -170,98 +179,155 @@ namespace ScriptTool
             // Enemy names
             var enemyNames = EbTextTables.ReadEnemyNames(ebRom);
             DecompileFixedStringCollection(ebDecompiler, ebRom, workingDirectory, "eb-enemynames", enemyNames);
-        }
+        }*/
 
-        static void DecompileM12(byte[] m12Rom, string workingDirectory)
+        static void DecompileM12()
         {
-            
-            var context = new DecompileContext();
-
             // Pull all string refs from the ROM
             var allRefs = new List<Tuple<string, MainStringRef[]>>();
             allRefs.Add(Tuple.Create("m12-tpt", M12TextTables.ReadTptRefs(m12Rom)));
             // TODO: small pointer table at B1B3B0
 
             // Decompile
-            var allPointers = allRefs.SelectMany(rl => rl.Item2).Select(r => r.OldPointer).ToArray();
-            m12Decompiler.Decompile(m12Rom, allPointers, context);
+            var allPointers = allRefs.SelectMany(rl => rl.Item2).Select(r => r.OldPointer);
+            m12Decompiler.LabelMap.AddRange(allPointers);
+
+            var strings = new List<string>();
+            m12Decompiler.ScanRange(m12Rom, 0x3697F, 0x8C4B0);
+            strings.Add(m12Decompiler.DecompileRange(m12Rom, 0x3697F, 0x8C4B0, true));
 
             // Update labels for all refs and write to JSON
             foreach (var refList in allRefs)
             {
                 foreach (var stringRef in refList.Item2)
-                    stringRef.Label = context.LabelMap[stringRef.OldPointer];
+                    stringRef.Label = m12Decompiler.LabelMap.Labels[stringRef.OldPointer];
 
-                File.WriteAllText(Path.Combine(workingDirectory, refList.Item1 + ".json"), JsonConvert.SerializeObject(refList.Item2, Formatting.Indented));
+                File.WriteAllText(Path.Combine(options.WorkingDirectory, refList.Item1 + ".json"),
+                    JsonConvert.SerializeObject(refList.Item2, Formatting.Indented));
             }
 
             // Write the strings
-            File.WriteAllText(Path.Combine(workingDirectory, "m12-strings.txt"), String.Join(Environment.NewLine, context.Strings));
+            File.WriteAllText(Path.Combine(options.WorkingDirectory, "m12-strings.txt"), String.Join(Environment.NewLine, strings));
         }
 
-        static void DecompileM12Misc(byte[] m12Rom, string workingDirectory)
+        static void DecompileM12Misc()
         {
             // Item names
             var itemNames = M12TextTables.ReadItemNames(m12Rom);
-            DecompileMiscStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-itemnames", itemNames);
+            DecompileM12MiscStringCollection("m12-itemnames", itemNames);
 
             // Menu choices
             var menuChoices = M12TextTables.ReadMenuChoices(m12Rom);
-            DecompileMiscStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-menuchoices", menuChoices);
+            DecompileM12MiscStringCollection("m12-menuchoices", menuChoices);
 
             // Misc text
             var miscText = M12TextTables.ReadMiscText(m12Rom);
-            DecompileMiscStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-misctext", miscText);
+            DecompileM12MiscStringCollection("m12-misctext", miscText);
 
             // Dad
             var dadText = M12TextTables.ReadDadText(m12Rom);
-            DecompileMiscStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-dadtext", dadText);
+            DecompileM12MiscStringCollection("m12-dadtext", dadText);
 
             // PSI text
             var psiText = M12TextTables.ReadPsiText(m12Rom);
-            DecompileMiscStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-psitext", psiText);
+            DecompileM12MiscStringCollection("m12-psitext", psiText);
 
             // Enemy names
             var enemyNames = M12TextTables.ReadEnemyNames(m12Rom);
-            DecompileMiscStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-enemynames", enemyNames);
+            DecompileM12MiscStringCollection("m12-enemynames", enemyNames);
 
             // PSI names
             var psiNames = M12TextTables.ReadPsiNames(m12Rom);
-            DecompileFixedStringCollection(m12Decompiler, m12Rom, workingDirectory, "m12-psinames", psiNames);
+            DecompileFixedStringCollection(m12Decompiler, m12Rom, "m12-psinames", psiNames);
         }
 
-        static void DecompileMiscStringCollection(IDecompiler decompiler, byte[] rom,
-            string workingDirectory, string name, MiscStringCollection miscStringCollection)
+        static void DecompileM12MiscStringCollection(string name, MiscStringCollection miscStringCollection)
         {
             // Decompile the strings
             foreach (var miscStringRef in miscStringCollection.StringRefs)
             {
+                string decompiledString;
+
+                if (miscStringRef.BasicMode)
+                {
+                    decompiledString = m12Decompiler.ReadFFString(m12Rom, miscStringRef.OldPointer);
+                }
+                else
+                {
+                    decompiledString = m12Decompiler.DecompileString(m12Rom, miscStringRef.OldPointer, false);
+                }
+
                 miscStringRef.Old =
-                    miscStringRef.New =
-                    decompiler.ReadString(rom, miscStringRef.OldPointer, -1, miscStringRef.BasicMode);
+                    miscStringRef.New = decompiledString;
             }
 
             // Write JSON
-            File.WriteAllText(Path.Combine(workingDirectory, name + ".json"), JsonConvert.SerializeObject(miscStringCollection, Formatting.Indented));
+            File.WriteAllText(Path.Combine(options.WorkingDirectory, name + ".json"),
+                JsonConvert.SerializeObject(miscStringCollection, Formatting.Indented));
         }
 
-        static void DecompileFixedStringCollection(IDecompiler decompiler, byte[] rom,
-            string workingDirectory, string name, FixedStringCollection fixedStringCollection)
+        static void DecompileFixedStringCollection(IDecompiler decompiler, byte[] rom, string name, FixedStringCollection fixedStringCollection)
         {
             // Decompile the strings
             foreach (var fixedStringRef in fixedStringCollection.StringRefs)
             {
                 fixedStringRef.Old =
                     fixedStringRef.New =
-                    decompiler.ReadString(rom, fixedStringRef.OldPointer,
-                    fixedStringRef.OldPointer + fixedStringCollection.EntryLength,
-                    true);
+                    decompiler.DecompileRange(rom, fixedStringRef.OldPointer,
+                    fixedStringRef.OldPointer + fixedStringCollection.EntryLength, false);
             }
 
             // Write JSON
-            File.WriteAllText(Path.Combine(workingDirectory, name + ".json"), JsonConvert.SerializeObject(fixedStringCollection, Formatting.Indented));
+            File.WriteAllText(Path.Combine(options.WorkingDirectory, name + ".json"),
+                JsonConvert.SerializeObject(fixedStringCollection, Formatting.Indented));
         }
 
-        //static void CompileM12Misc()
+        static void CompileM12Misc()
+        {
+            int referenceAddress = 0xB3C000;
+
+            // Item names
+            CompileM12MiscStringCollection("m12-itemnames", ref referenceAddress);
+            
+            // Misc text
+            CompileM12MiscStringCollection("m12-misctext", ref referenceAddress);
+
+            // PSI text
+            CompileM12MiscStringCollection("m12-psitext", ref referenceAddress);
+        }
+
+        static void CompileM12MiscStringCollection(string name, ref int referenceAddress)
+        {
+            int baseAddress = referenceAddress;
+            var buffer = new List<byte>();
+            
+            // Read the JSON
+            MiscStringCollection stringCollection = JsonConvert.DeserializeObject<MiscStringCollection>(
+                File.ReadAllText(Path.Combine(options.WorkingDirectory, name + ".json")));
+
+            // Open the offset ASM file
+            using (var offsetFile = File.CreateText(Path.Combine(options.WorkingDirectory, name + ".asm")))
+            {
+                // Include the binfile
+                offsetFile.WriteLine(String.Format("org ${0:X}; incbin {1}.bin",
+                    baseAddress | 0x8000000, name));
+                offsetFile.WriteLine();
+
+                // Compile all strings
+                foreach (var str in stringCollection.StringRefs)
+                {
+                    offsetFile.WriteLine(String.Format("org ${0:X}; dd ${1:X8}",
+                        str.OffsetLocation | 0x8000000, referenceAddress - stringCollection.StringsLocation));
+
+                    m12Compiler.CompileString(str.New, buffer, ref referenceAddress);
+                }
+            }
+
+            // Write the buffer
+            File.WriteAllBytes(Path.Combine(options.WorkingDirectory, name + ".bin"), buffer.ToArray());
+
+            // Add to the include file
+            IncludeFile.WriteLine("incsrc " + name + ".asm");
+        }
     }
 }

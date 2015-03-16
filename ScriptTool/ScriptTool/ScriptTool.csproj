@@ -46,14 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeByte.cs" />
+    <Compile Include="CodeReference.cs" />
+    <Compile Include="CodeString.cs" />
     <Compile Include="CommandOptions.cs" />
-    <Compile Include="ControlCode.cs" />
-    <Compile Include="DecompileContext.cs" />
     <Compile Include="FixedStringCollection.cs" />
+    <Compile Include="ICompiler.cs" />
+    <Compile Include="IControlCode.cs" />
     <Compile Include="IDecompiler.cs" />
+    <Compile Include="M12ControlCode.cs" />
+    <Compile Include="M12Compiler.cs" />
+    <Compile Include="M12Decompiler.cs" />
     <Compile Include="M12TextTables.cs" />
-    <Compile Include="M12TextDecompiler.cs" />
-    <Compile Include="EbTextDecompiler.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="JsonHexConverter.cs" />
     <Compile Include="LabelMap.cs" />
@@ -67,6 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="m12-codelist.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -76,13 +83,11 @@
     <Content Include="eb-compressed-strings.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="m12-codelist.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="m12-text-table.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

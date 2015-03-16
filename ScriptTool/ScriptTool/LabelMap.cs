@@ -9,6 +9,7 @@ namespace ScriptTool
     class LabelMap
     {
         public IDictionary<int, string> Labels { get; private set; }
+
         private int counter = 0;
 
         public LabelMap()
@@ -16,19 +17,7 @@ namespace ScriptTool
             Labels = new Dictionary<int, string>();
         }
 
-        public string this[int address]
-        {
-            get
-            {
-                return Labels[address];
-            }
-            set
-            {
-                Labels[address] = value;
-            }
-        }
-
-        public void Append(int address)
+        public void Add(int address)
         {
             if (!Labels.ContainsKey(address))
             {
@@ -37,16 +26,11 @@ namespace ScriptTool
                 counter++;
             }
         }
-
-        public void Reset()
+        
+        public void AddRange(IEnumerable<int> addresses)
         {
-            counter = 0;
-        }
-
-        public void Clear()
-        {
-            Reset();
-            Labels.Clear();
+            foreach (int address in addresses)
+                Add(address);
         }
     }
 }

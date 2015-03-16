@@ -30,5 +30,13 @@ namespace ScriptTool
             if (offset == 0) return 0;
             return offset & 0x1FFFFFF;
         }
+
+        public static void AddInt(this IList<byte> list, int value)
+        {
+            list.Add((byte)(value & 0xFF));
+            list.Add((byte)((value >> 8) & 0xFF));
+            list.Add((byte)((value >> 16) & 0xFF));
+            list.Add((byte)((value >> 24) & 0xFF));
+        }
     }
 }

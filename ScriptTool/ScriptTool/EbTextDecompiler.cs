@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace ScriptTool
 {
-    class EbTextDecompiler : IDecompiler
+    class EbTextDecompiler : IDecompiler2
     {
         private IList<ControlCode> _controlCodes;
         public IList<ControlCode> ControlCodes
@@ -64,7 +64,7 @@ namespace ScriptTool
 
             // First pass -- define labels
             foreach (var address in addresses)
-                context.LabelMap.Append(address);
+                context.LabelMap.Add(address);
 
             foreach (var range in textRanges)
                 ScanAt(rom, range[0], range[1], context, ScanMode.FirstPass, false, false, false);
@@ -97,7 +97,7 @@ namespace ScriptTool
 
             if (mode == ScanMode.FirstPass)
             {
-                context.LabelMap.Append(address);
+                context.LabelMap.Add(address);
             }
 
             while (!ended)
@@ -159,7 +159,7 @@ namespace ScriptTool
                                         int jump = rom.ReadSnesPointer(address);
                                         address += 4;
 
-                                        context.LabelMap.Append(jump);
+                                        context.LabelMap.Add(jump);
 
                                         if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                                         {
@@ -182,7 +182,7 @@ namespace ScriptTool
                                     // Single address at next byte
                                     int jump = rom.ReadSnesPointer(address);
 
-                                    context.LabelMap.Append(jump);
+                                    context.LabelMap.Add(jump);
 
                                     if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                                     {
@@ -198,7 +198,7 @@ namespace ScriptTool
                                     // Skip two bytes; single address afterwards
                                     int jump = rom.ReadSnesPointer(address + 2);
 
-                                    context.LabelMap.Append(jump);
+                                    context.LabelMap.Add(jump);
 
                                     if (mode == ScanMode.SecondPass || mode == ScanMode.ReadOnce)
                                     {

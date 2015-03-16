@@ -8,6 +8,9 @@ namespace ScriptTool
 {
     interface IDecompiler
     {
-        string ReadString(byte[] rom, int address, int endAddress, bool basicMode);
+        void ScanRange(byte[] rom, int startAddress, int endAddress);
+        string DecompileRange(byte[] rom, int startAddress, int endAddress, bool newLines);
+        string DecompileString(byte[] rom, int address, bool newLines);
+        string CharLookup(byte value);
     }
 }
