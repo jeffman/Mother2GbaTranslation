@@ -14,10 +14,6 @@ namespace ScriptTool
 
         public LabelMap LabelMap { get; set; }
 
-        private int missingCount = 0;
-        private int totalCount = 0;
-        public List<string> missingStrings = new List<string>();
-
         static M12Decompiler()
         {
             controlCodes = M12ControlCode.Codes;
@@ -105,29 +101,10 @@ namespace ScriptTool
 
                     address += code.ComputeLength(rom, address);
 
-                    if (code.IsEnd)
+                    /*if (code.IsEnd)
                     {
-                        //builder.Append("(" + address.ToString("X") + ")");
-                        totalCount++;
-                        if (!LabelMap.Labels.ContainsKey(address))
-                        {
-                            missingCount++;
-
-                            // Try to find the pointer
-                            /*for (int i = 0; i < (rom.Length - 3); i += 4)
-                            {
-                                int ptr = rom.ReadInt(i);
-                                if (ptr == (address | 0x8000000))
-                                {
-                                    missingStrings.Add("            AddAsmRef(rom, refs, index++, 0x" + i.ToString("X") + "); // 0x"
-                                        + address.ToString("X"));
-                                }
-
-                                if (i == 0xB2BB08)
-                                    i = 0xF00000;
-                            }*/
-                        }
-                    }
+                        builder.Append("(" + address.ToString("X") + ")");
+                    }*/
 
                     if (readUntilEnd && code.IsEnd)
                         ended = true;
