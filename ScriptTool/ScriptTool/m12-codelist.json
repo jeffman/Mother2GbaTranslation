@@ -24,15 +24,15 @@
     "Identifier": 0x4,
     "Description": "Jump to offset {0:X} if first choice selected",
     "Length": 6,
-	"HasReferences": true,
-	"ReferenceOffset": 2
+    "HasReferences": true,
+    "ReferenceOffset": 2
   },
   {
     "Identifier": 0x5,
     "Description": "Jump to offset {0:X} if second choice selected",
     "Length": 6,
-	"HasReferences": true,
-	"ReferenceOffset": 2
+    "HasReferences": true,
+    "ReferenceOffset": 2
   },
   {
     "Identifier": 0x8,
@@ -113,8 +113,8 @@
     "Identifier": 0x1C,
     "Description": "If flag {0:X} is set, jump to offset {1:X} and return (06)",
     "Length": 8,
-	"HasReferences": true,
-	"ReferenceOffset": 4
+    "HasReferences": true,
+    "ReferenceOffset": 4
   },
   {
     "Identifier": 0x1D,
@@ -371,22 +371,22 @@
     "Description": "Jump to offset {0:X} and don't return (0A)",
     "IsEnd": true,
     "Length": 6,
-	"HasReferences": true,
-	"ReferenceOffset": 2
+    "HasReferences": true,
+    "ReferenceOffset": 2
   },
   {
     "Identifier": 0x81,
     "Description": "If binary flag is set, jump to offset {0:X} and return (1B 03)",
     "Length": 6,
-	"HasReferences": true,
-	"ReferenceOffset": 2
+    "HasReferences": true,
+    "ReferenceOffset": 2
   },
   {
     "Identifier": 0x82,
     "Description": "If binary flag is unset, jump to offset {0:X} and return (1B 02)",
     "Length": 6,
-	"HasReferences": true,
-	"ReferenceOffset": 2
+    "HasReferences": true,
+    "ReferenceOffset": 2
   },
   {
     "Identifier": 0x83,
@@ -484,8 +484,8 @@
     "Identifier": 0x95,
     "Description": "Jump table with return (09)",
     "IsVariableLength": true,
-	"HasReferences": true,
-	"ReferenceOffset": 3
+    "HasReferences": true,
+    "ReferenceOffset": 3
   },
   {
     "Identifier": 0x96,
@@ -526,9 +526,9 @@
     "Identifier": 0x9D,
     "Description": "Activate hotspot {0:X} with address ${2:X} (1F 66)",
     "Length": 8,
-	"HasReferences": true,
-	"ReferenceOffset": 4,
-	"AbsoluteAddressing": true
+    "HasReferences": true,
+    "ReferenceOffset": 4,
+    "AbsoluteAddressing": true
   },
   {
     "Identifier": 0x9E,
@@ -554,7 +554,7 @@
     "Identifier": 0xA2,
     "Description": "After finishing this text block, close all other windows, jump to offset {0:X} and don't return (?)",
     "Length": 6,
-	"HasReferences": true,
+    "HasReferences": true,
     "ReferenceOffset": 2,
     "AbsoluteAddressing":  true
   },
@@ -692,8 +692,8 @@
     "Identifier": 0xBD,
     "Description": "Jump table with return (1F C0)",
     "IsVariableLength": true,
-	"HasReferences": true,
-	"ReferenceOffset": 3
+    "HasReferences": true,
+    "ReferenceOffset": 3
   },
   {
     "Identifier": 0xBE,
