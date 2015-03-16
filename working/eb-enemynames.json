@@ -1,0 +1,1393 @@
+{
+  "StringsLocation": 0x159589,
+  "NumEntries": 231,
+  "EntryLength": 25,
+  "StringRefs": [
+    {
+      "Index": 0x0,
+      "OldPointer": 0x15958A,
+      "Old": "null",
+      "New": "null"
+    },
+    {
+      "Index": 0x1,
+      "OldPointer": 0x1595E8,
+      "Old": "Insane Cultist",
+      "New": "Insane Cultist"
+    },
+    {
+      "Index": 0x2,
+      "OldPointer": 0x159646,
+      "Old": "Dept. Store Spook",
+      "New": "Dept. Store Spook"
+    },
+    {
+      "Index": 0x3,
+      "OldPointer": 0x1596A4,
+      "Old": "Armored Frog",
+      "New": "Armored Frog"
+    },
+    {
+      "Index": 0x4,
+      "OldPointer": 0x159702,
+      "Old": "Bad Buffalo",
+      "New": "Bad Buffalo"
+    },
+    {
+      "Index": 0x5,
+      "OldPointer": 0x159760,
+      "Old": "Black Antoid",
+      "New": "Black Antoid"
+    },
+    {
+      "Index": 0x6,
+      "OldPointer": 0x1597BE,
+      "Old": "Red Antoid",
+      "New": "Red Antoid"
+    },
+    {
+      "Index": 0x7,
+      "OldPointer": 0x15981C,
+      "Old": "Ramblin' Evil Mushroom",
+      "New": "Ramblin' Evil Mushroom"
+    },
+    {
+      "Index": 0x8,
+      "OldPointer": 0x15987A,
+      "Old": "Struttin' Evil Mushroom",
+      "New": "Struttin' Evil Mushroom"
+    },
+    {
+      "Index": 0x9,
+      "OldPointer": 0x1598D8,
+      "Old": "Mobile Sprout",
+      "New": "Mobile Sprout"
+    },
+    {
+      "Index": 0xA,
+      "OldPointer": 0x159936,
+      "Old": "Tough Mobile Sprout",
+      "New": "Tough Mobile Sprout"
+    },
+    {
+      "Index": 0xB,
+      "OldPointer": 0x159994,
+      "Old": "Enraged Fire Plug",
+      "New": "Enraged Fire Plug"
+    },
+    {
+      "Index": 0xC,
+      "OldPointer": 0x1599F2,
+      "Old": "Mystical Record",
+      "New": "Mystical Record"
+    },
+    {
+      "Index": 0xD,
+      "OldPointer": 0x159A50,
+      "Old": "Atomic Power Robot",
+      "New": "Atomic Power Robot"
+    },
+    {
+      "Index": 0xE,
+      "OldPointer": 0x159AAE,
+      "Old": "Nuclear Reactor Robot",
+      "New": "Nuclear Reactor Robot"
+    },
+    {
+      "Index": 0xF,
+      "OldPointer": 0x159B0C,
+      "Old": "Guardian Hieroglyph",
+      "New": "Guardian Hieroglyph"
+    },
+    {
+      "Index": 0x10,
+      "OldPointer": 0x159B6A,
+      "Old": "Lethal Asp Hieroglyph",
+      "New": "Lethal Asp Hieroglyph"
+    },
+    {
+      "Index": 0x11,
+      "OldPointer": 0x159BC8,
+      "Old": "Electro Swoosh",
+      "New": "Electro Swoosh"
+    },
+    {
+      "Index": 0x12,
+      "OldPointer": 0x159C26,
+      "Old": "Conducting Menace",
+      "New": "Conducting Menace"
+    },
+    {
+      "Index": 0x13,
+      "OldPointer": 0x159C84,
+      "Old": "Conducting Spirit",
+      "New": "Conducting Spirit"
+    },
+    {
+      "Index": 0x14,
+      "OldPointer": 0x159CE2,
+      "Old": "Evil Elemental",
+      "New": "Evil Elemental"
+    },
+    {
+      "Index": 0x15,
+      "OldPointer": 0x159D40,
+      "Old": "|'s Nightmare",
+      "New": "|'s Nightmare"
+    },
+    {
+      "Index": 0x16,
+      "OldPointer": 0x159D9E,
+      "Old": "Annoying Old Party Man",
+      "New": "Annoying Old Party Man"
+    },
+    {
+      "Index": 0x17,
+      "OldPointer": 0x159DFC,
+      "Old": "Annoying Reveler",
+      "New": "Annoying Reveler"
+    },
+    {
+      "Index": 0x18,
+      "OldPointer": 0x159E5A,
+      "Old": "Unassuming Local Guy",
+      "New": "Unassuming Local Guy"
+    },
+    {
+      "Index": 0x19,
+      "OldPointer": 0x159EB8,
+      "Old": "New Age Retro Hippie",
+      "New": "New Age Retro Hippie"
+    },
+    {
+      "Index": 0x1A,
+      "OldPointer": 0x159F16,
+      "Old": "Mr. Carpainter",
+      "New": "Mr. Carpainter"
+    },
+    {
+      "Index": 0x1B,
+      "OldPointer": 0x159F74,
+      "Old": "Carbon Dog",
+      "New": "Carbon Dog"
+    },
+    {
+      "Index": 0x1C,
+      "OldPointer": 0x159FD2,
+      "Old": "Mighty Bear",
+      "New": "Mighty Bear"
+    },
+    {
+      "Index": 0x1D,
+      "OldPointer": 0x15A030,
+      "Old": "Mighty Bear Seven",
+      "New": "Mighty Bear Seven"
+    },
+    {
+      "Index": 0x1E,
+      "OldPointer": 0x15A08E,
+      "Old": "Putrid Moldyman",
+      "New": "Putrid Moldyman"
+    },
+    {
+      "Index": 0x1F,
+      "OldPointer": 0x15A0EC,
+      "Old": "Thunder Mite",
+      "New": "Thunder Mite"
+    },
+    {
+      "Index": 0x20,
+      "OldPointer": 0x15A14A,
+      "Old": "Cranky Lady",
+      "New": "Cranky Lady"
+    },
+    {
+      "Index": 0x21,
+      "OldPointer": 0x15A1A8,
+      "Old": "Extra Cranky Lady",
+      "New": "Extra Cranky Lady"
+    },
+    {
+      "Index": 0x22,
+      "OldPointer": 0x15A206,
+      "Old": "Giygas",
+      "New": "Giygas"
+    },
+    {
+      "Index": 0x23,
+      "OldPointer": 0x15A264,
+      "Old": "Wetnosaur",
+      "New": "Wetnosaur"
+    },
+    {
+      "Index": 0x24,
+      "OldPointer": 0x15A2C2,
+      "Old": "Chomposaur",
+      "New": "Chomposaur"
+    },
+    {
+      "Index": 0x25,
+      "OldPointer": 0x15A320,
+      "Old": "Titanic Ant",
+      "New": "Titanic Ant"
+    },
+    {
+      "Index": 0x26,
+      "OldPointer": 0x15A37E,
+      "Old": "Gigantic Ant",
+      "New": "Gigantic Ant"
+    },
+    {
+      "Index": 0x27,
+      "OldPointer": 0x15A3DC,
+      "Old": "Shrooom!",
+      "New": "Shrooom!"
+    },
+    {
+      "Index": 0x28,
+      "OldPointer": 0x15A43A,
+      "Old": "Plague Rat of Doom",
+      "New": "Plague Rat of Doom"
+    },
+    {
+      "Index": 0x29,
+      "OldPointer": 0x15A498,
+      "Old": "Mondo Mole",
+      "New": "Mondo Mole"
+    },
+    {
+      "Index": 0x2A,
+      "OldPointer": 0x15A4F6,
+      "Old": "Guardian Digger",
+      "New": "Guardian Digger"
+    },
+    {
+      "Index": 0x2B,
+      "OldPointer": 0x15A554,
+      "Old": "Scalding Coffee Cup",
+      "New": "Scalding Coffee Cup"
+    },
+    {
+      "Index": 0x2C,
+      "OldPointer": 0x15A5B2,
+      "Old": "Loaded Dice",
+      "New": "Loaded Dice"
+    },
+    {
+      "Index": 0x2D,
+      "OldPointer": 0x15A610,
+      "Old": "Slimy Little Pile",
+      "New": "Slimy Little Pile"
+    },
+    {
+      "Index": 0x2E,
+      "OldPointer": 0x15A66E,
+      "Old": "Even Slimier Little Pile",
+      "New": "Even Slimier Little Pile"
+    },
+    {
+      "Index": 0x2F,
+      "OldPointer": 0x15A6CC,
+      "Old": "Arachnid!",
+      "New": "Arachnid!"
+    },
+    {
+      "Index": 0x30,
+      "OldPointer": 0x15A72A,
+      "Old": "Arachnid!!!",
+      "New": "Arachnid!!!"
+    },
+    {
+      "Index": 0x31,
+      "OldPointer": 0x15A788,
+      "Old": "Kraken",
+      "New": "Kraken"
+    },
+    {
+      "Index": 0x32,
+      "OldPointer": 0x15A7E6,
+      "Old": "Bionic Kraken",
+      "New": "Bionic Kraken"
+    },
+    {
+      "Index": 0x33,
+      "OldPointer": 0x15A844,
+      "Old": "Spinning Robo",
+      "New": "Spinning Robo"
+    },
+    {
+      "Index": 0x34,
+      "OldPointer": 0x15A8A2,
+      "Old": "Whirling Robo",
+      "New": "Whirling Robo"
+    },
+    {
+      "Index": 0x35,
+      "OldPointer": 0x15A900,
+      "Old": "Hyper Spinning Robo",
+      "New": "Hyper Spinning Robo"
+    },
+    {
+      "Index": 0x36,
+      "OldPointer": 0x15A95E,
+      "Old": "Cop",
+      "New": "Cop"
+    },
+    {
+      "Index": 0x37,
+      "OldPointer": 0x15A9BC,
+      "Old": "Coil Snake",
+      "New": "Coil Snake"
+    },
+    {
+      "Index": 0x38,
+      "OldPointer": 0x15AA1A,
+      "Old": "Thirsty Coil Snake",
+      "New": "Thirsty Coil Snake"
+    },
+    {
+      "Index": 0x39,
+      "OldPointer": 0x15AA78,
+      "Old": "Mr. Batty",
+      "New": "Mr. Batty"
+    },
+    {
+      "Index": 0x3A,
+      "OldPointer": 0x15AAD6,
+      "Old": "Elder Batty",
+      "New": "Elder Batty"
+    },
+    {
+      "Index": 0x3B,
+      "OldPointer": 0x15AB34,
+      "Old": "Violent Roach",
+      "New": "Violent Roach"
+    },
+    {
+      "Index": 0x3C,
+      "OldPointer": 0x15AB92,
+      "Old": "Filthy Attack Roach",
+      "New": "Filthy Attack Roach"
+    },
+    {
+      "Index": 0x3D,
+      "OldPointer": 0x15ABF0,
+      "Old": "Crazed Sign",
+      "New": "Crazed Sign"
+    },
+    {
+      "Index": 0x3E,
+      "OldPointer": 0x15AC4E,
+      "Old": "Wooly Shambler",
+      "New": "Wooly Shambler"
+    },
+    {
+      "Index": 0x3F,
+      "OldPointer": 0x15ACAC,
+      "Old": "Wild 'n Wooly Shambler",
+      "New": "Wild 'n Wooly Shambler"
+    },
+    {
+      "Index": 0x40,
+      "OldPointer": 0x15AD0A,
+      "Old": "Skate Punk",
+      "New": "Skate Punk"
+    },
+    {
+      "Index": 0x41,
+      "OldPointer": 0x15AD68,
+      "Old": "Skelpion",
+      "New": "Skelpion"
+    },
+    {
+      "Index": 0x42,
+      "OldPointer": 0x15ADC6,
+      "Old": "Dread Skelpion",
+      "New": "Dread Skelpion"
+    },
+    {
+      "Index": 0x43,
+      "OldPointer": 0x15AE24,
+      "Old": "Starman",
+      "New": "Starman"
+    },
+    {
+      "Index": 0x44,
+      "OldPointer": 0x15AE82,
+      "Old": "Starman Super",
+      "New": "Starman Super"
+    },
+    {
+      "Index": 0x45,
+      "OldPointer": 0x15AEE0,
+      "Old": "Ghost of Starman",
+      "New": "Ghost of Starman"
+    },
+    {
+      "Index": 0x46,
+      "OldPointer": 0x15AF3E,
+      "Old": "Smilin' Sphere",
+      "New": "Smilin' Sphere"
+    },
+    {
+      "Index": 0x47,
+      "OldPointer": 0x15AF9C,
+      "Old": "Uncontrollable Sphere",
+      "New": "Uncontrollable Sphere"
+    },
+    {
+      "Index": 0x48,
+      "OldPointer": 0x15AFFA,
+      "Old": "Petrified Royal Guard",
+      "New": "Petrified Royal Guard"
+    },
+    {
+      "Index": 0x49,
+      "OldPointer": 0x15B058,
+      "Old": "Guardian General",
+      "New": "Guardian General"
+    },
+    {
+      "Index": 0x4A,
+      "OldPointer": 0x15B0B6,
+      "Old": "Starman Deluxe",
+      "New": "Starman Deluxe"
+    },
+    {
+      "Index": 0x4B,
+      "OldPointer": 0x15B114,
+      "Old": "Final Starman",
+      "New": "Final Starman"
+    },
+    {
+      "Index": 0x4C,
+      "OldPointer": 0x15B172,
+      "Old": "Urban Zombie",
+      "New": "Urban Zombie"
+    },
+    {
+      "Index": 0x4D,
+      "OldPointer": 0x15B1D0,
+      "Old": "Zombie Possessor",
+      "New": "Zombie Possessor"
+    },
+    {
+      "Index": 0x4E,
+      "OldPointer": 0x15B22E,
+      "Old": "Zombie Dog",
+      "New": "Zombie Dog"
+    },
+    {
+      "Index": 0x4F,
+      "OldPointer": 0x15B28C,
+      "Old": "Crooked Cop",
+      "New": "Crooked Cop"
+    },
+    {
+      "Index": 0x50,
+      "OldPointer": 0x15B2EA,
+      "Old": "Over Zealous Cop",
+      "New": "Over Zealous Cop"
+    },
+    {
+      "Index": 0x51,
+      "OldPointer": 0x15B348,
+      "Old": "Territorial Oak",
+      "New": "Territorial Oak"
+    },
+    {
+      "Index": 0x52,
+      "OldPointer": 0x15B3A6,
+      "Old": "Hostile Elder Oak",
+      "New": "Hostile Elder Oak"
+    },
+    {
+      "Index": 0x53,
+      "OldPointer": 0x15B404,
+      "Old": "Diamond Dog",
+      "New": "Diamond Dog"
+    },
+    {
+      "Index": 0x54,
+      "OldPointer": 0x15B462,
+      "Old": "Marauder Octobot",
+      "New": "Marauder Octobot"
+    },
+    {
+      "Index": 0x55,
+      "OldPointer": 0x15B4C0,
+      "Old": "Military Octobot",
+      "New": "Military Octobot"
+    },
+    {
+      "Index": 0x56,
+      "OldPointer": 0x15B51E,
+      "Old": "Mechanical Octobot",
+      "New": "Mechanical Octobot"
+    },
+    {
+      "Index": 0x57,
+      "OldPointer": 0x15B57C,
+      "Old": "Ultimate Octobot",
+      "New": "Ultimate Octobot"
+    },
+    {
+      "Index": 0x58,
+      "OldPointer": 0x15B5DA,
+      "Old": "Mad Duck",
+      "New": "Mad Duck"
+    },
+    {
+      "Index": 0x59,
+      "OldPointer": 0x15B638,
+      "Old": "Dali's Clock",
+      "New": "Dali's Clock"
+    },
+    {
+      "Index": 0x5A,
+      "OldPointer": 0x15B696,
+      "Old": "Trillionage Sprout",
+      "New": "Trillionage Sprout"
+    },
+    {
+      "Index": 0x5B,
+      "OldPointer": 0x15B6F4,
+      "Old": "Musica",
+      "New": "Musica"
+    },
+    {
+      "Index": 0x5C,
+      "OldPointer": 0x15B752,
+      "Old": "Desert Wolf",
+      "New": "Desert Wolf"
+    },
+    {
+      "Index": 0x5D,
+      "OldPointer": 0x15B7B0,
+      "Old": "Master Belch",
+      "New": "Master Belch"
+    },
+    {
+      "Index": 0x5E,
+      "OldPointer": 0x15B80E,
+      "Old": "Big Pile of Puke",
+      "New": "Big Pile of Puke"
+    },
+    {
+      "Index": 0x5F,
+      "OldPointer": 0x15B86C,
+      "Old": "Master Barf",
+      "New": "Master Barf"
+    },
+    {
+      "Index": 0x60,
+      "OldPointer": 0x15B8CA,
+      "Old": "Kiss of Death",
+      "New": "Kiss of Death"
+    },
+    {
+      "Index": 0x61,
+      "OldPointer": 0x15B928,
+      "Old": "French Kiss of Death",
+      "New": "French Kiss of Death"
+    },
+    {
+      "Index": 0x62,
+      "OldPointer": 0x15B986,
+      "Old": "Foppy",
+      "New": "Foppy"
+    },
+    {
+      "Index": 0x63,
+      "OldPointer": 0x15B9E4,
+      "Old": "Fobby",
+      "New": "Fobby"
+    },
+    {
+      "Index": 0x64,
+      "OldPointer": 0x15BA42,
+      "Old": "Zap Eel",
+      "New": "Zap Eel"
+    },
+    {
+      "Index": 0x65,
+      "OldPointer": 0x15BAA0,
+      "Old": "Tangoo",
+      "New": "Tangoo"
+    },
+    {
+      "Index": 0x66,
+      "OldPointer": 0x15BAFE,
+      "Old": "Boogey Tent",
+      "New": "Boogey Tent"
+    },
+    {
+      "Index": 0x67,
+      "OldPointer": 0x15BB5C,
+      "Old": "Squatter Demon",
+      "New": "Squatter Demon"
+    },
+    {
+      "Index": 0x68,
+      "OldPointer": 0x15BBBA,
+      "Old": "Crested Booka",
+      "New": "Crested Booka"
+    },
+    {
+      "Index": 0x69,
+      "OldPointer": 0x15BC18,
+      "Old": "Great Crested Booka",
+      "New": "Great Crested Booka"
+    },
+    {
+      "Index": 0x6A,
+      "OldPointer": 0x15BC76,
+      "Old": "Lesser Mook",
+      "New": "Lesser Mook"
+    },
+    {
+      "Index": 0x6B,
+      "OldPointer": 0x15BCD4,
+      "Old": "Mook Senior",
+      "New": "Mook Senior"
+    },
+    {
+      "Index": 0x6C,
+      "OldPointer": 0x15BD32,
+      "Old": "Smelly Ghost",
+      "New": "Smelly Ghost"
+    },
+    {
+      "Index": 0x6D,
+      "OldPointer": 0x15BD90,
+      "Old": "Stinky Ghost",
+      "New": "Stinky Ghost"
+    },
+    {
+      "Index": 0x6E,
+      "OldPointer": 0x15BDEE,
+      "Old": "Everdred",
+      "New": "Everdred"
+    },
+    {
+      "Index": 0x6F,
+      "OldPointer": 0x15BE4C,
+      "Old": "Attack Slug",
+      "New": "Attack Slug"
+    },
+    {
+      "Index": 0x70,
+      "OldPointer": 0x15BEAA,
+      "Old": "Pit Bull Slug",
+      "New": "Pit Bull Slug"
+    },
+    {
+      "Index": 0x71,
+      "OldPointer": 0x15BF08,
+      "Old": "Rowdy Mouse",
+      "New": "Rowdy Mouse"
+    },
+    {
+      "Index": 0x72,
+      "OldPointer": 0x15BF66,
+      "Old": "Deadly Mouse",
+      "New": "Deadly Mouse"
+    },
+    {
+      "Index": 0x73,
+      "OldPointer": 0x15BFC4,
+      "Old": "Care Free Bomb",
+      "New": "Care Free Bomb"
+    },
+    {
+      "Index": 0x74,
+      "OldPointer": 0x15C022,
+      "Old": "Electro Specter",
+      "New": "Electro Specter"
+    },
+    {
+      "Index": 0x75,
+      "OldPointer": 0x15C080,
+      "Old": "Handsome Tom",
+      "New": "Handsome Tom"
+    },
+    {
+      "Index": 0x76,
+      "OldPointer": 0x15C0DE,
+      "Old": "Smilin' Sam",
+      "New": "Smilin' Sam"
+    },
+    {
+      "Index": 0x77,
+      "OldPointer": 0x15C13C,
+      "Old": "Manly Fish",
+      "New": "Manly Fish"
+    },
+    {
+      "Index": 0x78,
+      "OldPointer": 0x15C19A,
+      "Old": "Manly Fish's Brother",
+      "New": "Manly Fish's Brother"
+    },
+    {
+      "Index": 0x79,
+      "OldPointer": 0x15C1F8,
+      "Old": "Runaway Dog",
+      "New": "Runaway Dog"
+    },
+    {
+      "Index": 0x7A,
+      "OldPointer": 0x15C256,
+      "Old": "Trick or Trick Kid",
+      "New": "Trick or Trick Kid"
+    },
+    {
+      "Index": 0x7B,
+      "OldPointer": 0x15C2B4,
+      "Old": "Cave Boy",
+      "New": "Cave Boy"
+    },
+    {
+      "Index": 0x7C,
+      "OldPointer": 0x15C312,
+      "Old": "Abstract Art",
+      "New": "Abstract Art"
+    },
+    {
+      "Index": 0x7D,
+      "OldPointer": 0x15C370,
+      "Old": "Shattered Man",
+      "New": "Shattered Man"
+    },
+    {
+      "Index": 0x7E,
+      "OldPointer": 0x15C3CE,
+      "Old": "Fierce Shattered Man",
+      "New": "Fierce Shattered Man"
+    },
+    {
+      "Index": 0x7F,
+      "OldPointer": 0x15C42C,
+      "Old": "Ego Orb",
+      "New": "Ego Orb"
+    },
+    {
+      "Index": 0x80,
+      "OldPointer": 0x15C48A,
+      "Old": "Thunder and Storm",
+      "New": "Thunder and Storm"
+    },
+    {
+      "Index": 0x81,
+      "OldPointer": 0x15C4E8,
+      "Old": "Yes Man Junior",
+      "New": "Yes Man Junior"
+    },
+    {
+      "Index": 0x82,
+      "OldPointer": 0x15C546,
+      "Old": "Frankystein Mark II",
+      "New": "Frankystein Mark II"
+    },
+    {
+      "Index": 0x83,
+      "OldPointer": 0x15C5A4,
+      "Old": "Frank",
+      "New": "Frank"
+    },
+    {
+      "Index": 0x84,
+      "OldPointer": 0x15C602,
+      "Old": "Cute Li'l UFO",
+      "New": "Cute Li'l UFO"
+    },
+    {
+      "Index": 0x85,
+      "OldPointer": 0x15C660,
+      "Old": "Beautiful UFO",
+      "New": "Beautiful UFO"
+    },
+    {
+      "Index": 0x86,
+      "OldPointer": 0x15C6BE,
+      "Old": "Pogo Punk",
+      "New": "Pogo Punk"
+    },
+    {
+      "Index": 0x87,
+      "OldPointer": 0x15C71C,
+      "Old": "Tough Guy",
+      "New": "Tough Guy"
+    },
+    {
+      "Index": 0x88,
+      "OldPointer": 0x15C77A,
+      "Old": "Mad Taxi",
+      "New": "Mad Taxi"
+    },
+    {
+      "Index": 0x89,
+      "OldPointer": 0x15C7D8,
+      "Old": "Evil Mani-Mani",
+      "New": "Evil Mani-Mani"
+    },
+    {
+      "Index": 0x8A,
+      "OldPointer": 0x15C836,
+      "Old": "Mr. Molecule",
+      "New": "Mr. Molecule"
+    },
+    {
+      "Index": 0x8B,
+      "OldPointer": 0x15C894,
+      "Old": "Worthless Protoplasm",
+      "New": "Worthless Protoplasm"
+    },
+    {
+      "Index": 0x8C,
+      "OldPointer": 0x15C8F2,
+      "Old": "Sentry Robot",
+      "New": "Sentry Robot"
+    },
+    {
+      "Index": 0x8D,
+      "OldPointer": 0x15C950,
+      "Old": "Heavily Armed Pokey",
+      "New": "Heavily Armed Pokey"
+    },
+    {
+      "Index": 0x8E,
+      "OldPointer": 0x15C9AE,
+      "Old": "Psychic Psycho",
+      "New": "Psychic Psycho"
+    },
+    {
+      "Index": 0x8F,
+      "OldPointer": 0x15CA0C,
+      "Old": "Major Psychic Psycho",
+      "New": "Major Psychic Psycho"
+    },
+    {
+      "Index": 0x90,
+      "OldPointer": 0x15CA6A,
+      "Old": "Mole Playing Rough",
+      "New": "Mole Playing Rough"
+    },
+    {
+      "Index": 0x91,
+      "OldPointer": 0x15CAC8,
+      "Old": "Gruff Goat",
+      "New": "Gruff Goat"
+    },
+    {
+      "Index": 0x92,
+      "OldPointer": 0x15CB26,
+      "Old": "Clumsy Robot",
+      "New": "Clumsy Robot"
+    },
+    {
+      "Index": 0x93,
+      "OldPointer": 0x15CB84,
+      "Old": "Soul Consuming Flame",
+      "New": "Soul Consuming Flame"
+    },
+    {
+      "Index": 0x94,
+      "OldPointer": 0x15CBE2,
+      "Old": "Demonic Petunia",
+      "New": "Demonic Petunia"
+    },
+    {
+      "Index": 0x95,
+      "OldPointer": 0x15CC40,
+      "Old": "Ranboob",
+      "New": "Ranboob"
+    },
+    {
+      "Index": 0x96,
+      "OldPointer": 0x15CC9E,
+      "Old": "Li'l UFO",
+      "New": "Li'l UFO"
+    },
+    {
+      "Index": 0x97,
+      "OldPointer": 0x15CCFC,
+      "Old": "High-class UFO",
+      "New": "High-class UFO"
+    },
+    {
+      "Index": 0x98,
+      "OldPointer": 0x15CD5A,
+      "Old": "Noose Man",
+      "New": "Noose Man"
+    },
+    {
+      "Index": 0x99,
+      "OldPointer": 0x15CDB8,
+      "Old": "Robo-pump",
+      "New": "Robo-pump"
+    },
+    {
+      "Index": 0x9A,
+      "OldPointer": 0x15CE16,
+      "Old": "Plain Crocodile",
+      "New": "Plain Crocodile"
+    },
+    {
+      "Index": 0x9B,
+      "OldPointer": 0x15CE74,
+      "Old": "Strong Crocodile",
+      "New": "Strong Crocodile"
+    },
+    {
+      "Index": 0x9C,
+      "OldPointer": 0x15CED2,
+      "Old": "Hard Crocodile",
+      "New": "Hard Crocodile"
+    },
+    {
+      "Index": 0x9D,
+      "OldPointer": 0x15CF30,
+      "Old": "No Good Fly",
+      "New": "No Good Fly"
+    },
+    {
+      "Index": 0x9E,
+      "OldPointer": 0x15CF8E,
+      "Old": "Mostly Bad Fly",
+      "New": "Mostly Bad Fly"
+    },
+    {
+      "Index": 0x9F,
+      "OldPointer": 0x15CFEC,
+      "Old": "Spiteful Crow",
+      "New": "Spiteful Crow"
+    },
+    {
+      "Index": 0xA0,
+      "OldPointer": 0x15D04A,
+      "Old": "my pet",
+      "New": "my pet"
+    },
+    {
+      "Index": 0xA1,
+      "OldPointer": 0x15D0A8,
+      "Old": "Pokey",
+      "New": "Pokey"
+    },
+    {
+      "Index": 0xA2,
+      "OldPointer": 0x15D106,
+      "Old": "Picky",
+      "New": "Picky"
+    },
+    {
+      "Index": 0xA3,
+      "OldPointer": 0x15D164,
+      "Old": "Tony",
+      "New": "Tony"
+    },
+    {
+      "Index": 0xA4,
+      "OldPointer": 0x15D1C2,
+      "Old": "Bubble Monkey",
+      "New": "Bubble Monkey"
+    },
+    {
+      "Index": 0xA5,
+      "OldPointer": 0x15D220,
+      "Old": "Dungeon Man",
+      "New": "Dungeon Man"
+    },
+    {
+      "Index": 0xA6,
+      "OldPointer": 0x15D27E,
+      "Old": "Flying Man",
+      "New": "Flying Man"
+    },
+    {
+      "Index": 0xA7,
+      "OldPointer": 0x15D2DC,
+      "Old": "Teddy Bear",
+      "New": "Teddy Bear"
+    },
+    {
+      "Index": 0xA8,
+      "OldPointer": 0x15D33A,
+      "Old": "Super Plush Bear",
+      "New": "Super Plush Bear"
+    },
+    {
+      "Index": 0xA9,
+      "OldPointer": 0x15D398,
+      "Old": "Master Belch",
+      "New": "Master Belch"
+    },
+    {
+      "Index": 0xAA,
+      "OldPointer": 0x15D3F6,
+      "Old": "Insane Cultist",
+      "New": "Insane Cultist"
+    },
+    {
+      "Index": 0xAB,
+      "OldPointer": 0x15D454,
+      "Old": "Dept. Store Spook",
+      "New": "Dept. Store Spook"
+    },
+    {
+      "Index": 0xAC,
+      "OldPointer": 0x15D4B2,
+      "Old": "|'s Nightmare",
+      "New": "|'s Nightmare"
+    },
+    {
+      "Index": 0xAD,
+      "OldPointer": 0x15D510,
+      "Old": "Mr. Carpainter",
+      "New": "Mr. Carpainter"
+    },
+    {
+      "Index": 0xAE,
+      "OldPointer": 0x15D56E,
+      "Old": "Carbon Dog",
+      "New": "Carbon Dog"
+    },
+    {
+      "Index": 0xAF,
+      "OldPointer": 0x15D5CC,
+      "Old": "Chomposaur",
+      "New": "Chomposaur"
+    },
+    {
+      "Index": 0xB0,
+      "OldPointer": 0x15D62A,
+      "Old": "Titanic Ant",
+      "New": "Titanic Ant"
+    },
+    {
+      "Index": 0xB1,
+      "OldPointer": 0x15D688,
+      "Old": "Gigantic Ant",
+      "New": "Gigantic Ant"
+    },
+    {
+      "Index": 0xB2,
+      "OldPointer": 0x15D6E6,
+      "Old": "Shrooom!",
+      "New": "Shrooom!"
+    },
+    {
+      "Index": 0xB3,
+      "OldPointer": 0x15D744,
+      "Old": "Plague Rat of Doom",
+      "New": "Plague Rat of Doom"
+    },
+    {
+      "Index": 0xB4,
+      "OldPointer": 0x15D7A2,
+      "Old": "Mondo Mole",
+      "New": "Mondo Mole"
+    },
+    {
+      "Index": 0xB5,
+      "OldPointer": 0x15D800,
+      "Old": "Guardian Digger",
+      "New": "Guardian Digger"
+    },
+    {
+      "Index": 0xB6,
+      "OldPointer": 0x15D85E,
+      "Old": "Kraken",
+      "New": "Kraken"
+    },
+    {
+      "Index": 0xB7,
+      "OldPointer": 0x15D8BC,
+      "Old": "Bionic Kraken",
+      "New": "Bionic Kraken"
+    },
+    {
+      "Index": 0xB8,
+      "OldPointer": 0x15D91A,
+      "Old": "Starman",
+      "New": "Starman"
+    },
+    {
+      "Index": 0xB9,
+      "OldPointer": 0x15D978,
+      "Old": "Starman Super",
+      "New": "Starman Super"
+    },
+    {
+      "Index": 0xBA,
+      "OldPointer": 0x15D9D6,
+      "Old": "Ghost of Starman",
+      "New": "Ghost of Starman"
+    },
+    {
+      "Index": 0xBB,
+      "OldPointer": 0x15DA34,
+      "Old": "Starman Deluxe",
+      "New": "Starman Deluxe"
+    },
+    {
+      "Index": 0xBC,
+      "OldPointer": 0x15DA92,
+      "Old": "Final Starman",
+      "New": "Final Starman"
+    },
+    {
+      "Index": 0xBD,
+      "OldPointer": 0x15DAF0,
+      "Old": "Urban Zombie",
+      "New": "Urban Zombie"
+    },
+    {
+      "Index": 0xBE,
+      "OldPointer": 0x15DB4E,
+      "Old": "Diamond Dog",
+      "New": "Diamond Dog"
+    },
+    {
+      "Index": 0xBF,
+      "OldPointer": 0x15DBAC,
+      "Old": "Trillionage Sprout",
+      "New": "Trillionage Sprout"
+    },
+    {
+      "Index": 0xC0,
+      "OldPointer": 0x15DC0A,
+      "Old": "Master Belch",
+      "New": "Master Belch"
+    },
+    {
+      "Index": 0xC1,
+      "OldPointer": 0x15DC68,
+      "Old": "Big Pile of Puke",
+      "New": "Big Pile of Puke"
+    },
+    {
+      "Index": 0xC2,
+      "OldPointer": 0x15DCC6,
+      "Old": "Master Barf",
+      "New": "Master Barf"
+    },
+    {
+      "Index": 0xC3,
+      "OldPointer": 0x15DD24,
+      "Old": "Loaded Dice",
+      "New": "Loaded Dice"
+    },
+    {
+      "Index": 0xC4,
+      "OldPointer": 0x15DD82,
+      "Old": "Tangoo",
+      "New": "Tangoo"
+    },
+    {
+      "Index": 0xC5,
+      "OldPointer": 0x15DDE0,
+      "Old": "Boogey Tent",
+      "New": "Boogey Tent"
+    },
+    {
+      "Index": 0xC6,
+      "OldPointer": 0x15DE3E,
+      "Old": "Squatter Demon",
+      "New": "Squatter Demon"
+    },
+    {
+      "Index": 0xC7,
+      "OldPointer": 0x15DE9C,
+      "Old": "Everdred",
+      "New": "Everdred"
+    },
+    {
+      "Index": 0xC8,
+      "OldPointer": 0x15DEFA,
+      "Old": "Electro Specter",
+      "New": "Electro Specter"
+    },
+    {
+      "Index": 0xC9,
+      "OldPointer": 0x15DF58,
+      "Old": "Thunder and Storm",
+      "New": "Thunder and Storm"
+    },
+    {
+      "Index": 0xCA,
+      "OldPointer": 0x15DFB6,
+      "Old": "Frankystein Mark II",
+      "New": "Frankystein Mark II"
+    },
+    {
+      "Index": 0xCB,
+      "OldPointer": 0x15E014,
+      "Old": "Evil Mani-Mani",
+      "New": "Evil Mani-Mani"
+    },
+    {
+      "Index": 0xCC,
+      "OldPointer": 0x15E072,
+      "Old": "Heavily Armed Pokey",
+      "New": "Heavily Armed Pokey"
+    },
+    {
+      "Index": 0xCD,
+      "OldPointer": 0x15E0D0,
+      "Old": "Clumsy Robot",
+      "New": "Clumsy Robot"
+    },
+    {
+      "Index": 0xCE,
+      "OldPointer": 0x15E12E,
+      "Old": "Robo-pump",
+      "New": "Robo-pump"
+    },
+    {
+      "Index": 0xCF,
+      "OldPointer": 0x15E18C,
+      "Old": "Foppy",
+      "New": "Foppy"
+    },
+    {
+      "Index": 0xD0,
+      "OldPointer": 0x15E1EA,
+      "Old": "Guardian General",
+      "New": "Guardian General"
+    },
+    {
+      "Index": 0xD1,
+      "OldPointer": 0x15E248,
+      "Old": "Black Antoid",
+      "New": "Black Antoid"
+    },
+    {
+      "Index": 0xD2,
+      "OldPointer": 0x15E2A6,
+      "Old": "Struttin' Evil Mushroom",
+      "New": "Struttin' Evil Mushroom"
+    },
+    {
+      "Index": 0xD3,
+      "OldPointer": 0x15E304,
+      "Old": "Runaway Dog",
+      "New": "Runaway Dog"
+    },
+    {
+      "Index": 0xD4,
+      "OldPointer": 0x15E362,
+      "Old": "Cave Boy",
+      "New": "Cave Boy"
+    },
+    {
+      "Index": 0xD5,
+      "OldPointer": 0x15E3C0,
+      "Old": "Tiny Li'l Ghost",
+      "New": "Tiny Li'l Ghost"
+    },
+    {
+      "Index": 0xD6,
+      "OldPointer": 0x15E41E,
+      "Old": "Starman Junior",
+      "New": "Starman Junior"
+    },
+    {
+      "Index": 0xD7,
+      "OldPointer": 0x15E47C,
+      "Old": "Buzz Buzz",
+      "New": "Buzz Buzz"
+    },
+    {
+      "Index": 0xD8,
+      "OldPointer": 0x15E4DA,
+      "Old": "Heavily Armed Pokey",
+      "New": "Heavily Armed Pokey"
+    },
+    {
+      "Index": 0xD9,
+      "OldPointer": 0x15E538,
+      "Old": "Heavily Armed Pokey",
+      "New": "Heavily Armed Pokey"
+    },
+    {
+      "Index": 0xDA,
+      "OldPointer": 0x15E596,
+      "Old": "Giygas",
+      "New": "Giygas"
+    },
+    {
+      "Index": 0xDB,
+      "OldPointer": 0x15E5F4,
+      "Old": "Giygas",
+      "New": "Giygas"
+    },
+    {
+      "Index": 0xDC,
+      "OldPointer": 0x15E652,
+      "Old": "Giygas",
+      "New": "Giygas"
+    },
+    {
+      "Index": 0xDD,
+      "OldPointer": 0x15E6B0,
+      "Old": "Giygas",
+      "New": "Giygas"
+    },
+    {
+      "Index": 0xDE,
+      "OldPointer": 0x15E70E,
+      "Old": "Farm Zombie",
+      "New": "Farm Zombie"
+    },
+    {
+      "Index": 0xDF,
+      "OldPointer": 0x15E76C,
+      "Old": "Criminal Caterpillar",
+      "New": "Criminal Caterpillar"
+    },
+    {
+      "Index": 0xE0,
+      "OldPointer": 0x15E7CA,
+      "Old": "Evil Eye",
+      "New": "Evil Eye"
+    },
+    {
+      "Index": 0xE1,
+      "OldPointer": 0x15E828,
+      "Old": "Magic Butterfly",
+      "New": "Magic Butterfly"
+    },
+    {
+      "Index": 0xE2,
+      "OldPointer": 0x15E886,
+      "Old": "Mini Barf",
+      "New": "Mini Barf"
+    },
+    {
+      "Index": 0xE3,
+      "OldPointer": 0x15E8E4,
+      "Old": "Master Criminal Worm",
+      "New": "Master Criminal Worm"
+    },
+    {
+      "Index": 0xE4,
+      "OldPointer": 0x15E942,
+      "Old": "Captain Strong",
+      "New": "Captain Strong"
+    },
+    {
+      "Index": 0xE5,
+      "OldPointer": 0x15E9A0,
+      "Old": "Giygas",
+      "New": "Giygas"
+    },
+    {
+      "Index": 0xE6,
+      "OldPointer": 0x15E9FE,
+      "Old": "Clumsy Robot",
+      "New": "Clumsy Robot"
+    }
+  ]
+}

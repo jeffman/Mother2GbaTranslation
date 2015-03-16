@@ -1,0 +1,62 @@
+[
+  {
+    "Index": 0x0,
+    "PointerLocation": 0xB1F59C,
+    "OldPointer": 0x60D29,
+    "Label": "L2209"
+  },
+  {
+    "Index": 0x1,
+    "PointerLocation": 0xB1F5A0,
+    "OldPointer": 0x60CBA,
+    "Label": "L2210"
+  },
+  {
+    "Index": 0x2,
+    "PointerLocation": 0xB1F5A4,
+    "OldPointer": 0x60C9D,
+    "Label": "L2211"
+  },
+  {
+    "Index": 0x3,
+    "PointerLocation": 0xB1F5A8,
+    "OldPointer": 0x60D46,
+    "Label": "L2212"
+  },
+  {
+    "Index": 0x4,
+    "PointerLocation": 0xB1F5AC,
+    "OldPointer": 0x60D0F,
+    "Label": "L2213"
+  },
+  {
+    "Index": 0x5,
+    "PointerLocation": 0xB1F5B0,
+    "OldPointer": 0x60CD8,
+    "Label": "L2214"
+  },
+  {
+    "Index": 0x6,
+    "PointerLocation": 0xB1F5B4,
+    "OldPointer": 0x60D63,
+    "Label": "L2215"
+  },
+  {
+    "Index": 0x7,
+    "PointerLocation": 0xB1F5B8,
+    "OldPointer": 0x60D80,
+    "Label": "L2216"
+  },
+  {
+    "Index": 0x8,
+    "PointerLocation": 0xB1F5BC,
+    "OldPointer": 0x60D9B,
+    "Label": "L2217"
+  },
+  {
+    "Index": 0x9,
+    "PointerLocation": 0xB1F5C0,
+    "OldPointer": 0x60CF4,
+    "Label": "L2218"
+  }
+]

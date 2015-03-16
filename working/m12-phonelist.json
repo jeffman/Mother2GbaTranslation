@@ -1,0 +1,32 @@
+[
+  {
+    "Index": 0x0,
+    "PointerLocation": 0xB1B3BC,
+    "OldPointer": 0x80E68,
+    "Label": "L1924"
+  },
+  {
+    "Index": 0x1,
+    "PointerLocation": 0xB1B3C4,
+    "OldPointer": 0x84BC3,
+    "Label": "L1925"
+  },
+  {
+    "Index": 0x2,
+    "PointerLocation": 0xB1B3CC,
+    "OldPointer": 0x812D6,
+    "Label": "L1926"
+  },
+  {
+    "Index": 0x3,
+    "PointerLocation": 0xB1B3D4,
+    "OldPointer": 0x8271E,
+    "Label": "L1927"
+  },
+  {
+    "Index": 0x4,
+    "PointerLocation": 0xB1B3DC,
+    "OldPointer": 0x84A72,
+    "Label": "L1928"
+  }
+]
