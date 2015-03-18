@@ -71,9 +71,11 @@ org $80CA270; bl m2_vwf.x_reset1
 org $80CA30A; bl m2_vwf.x_reset2
 org $80CA332; bl m2_vwf.x_reset1
 org $80C8F26; bl m2_vwf.x_reset4 // Newline after a menu selection
+// Possible other places: 80BE370, 80BE436,
 
 // Erase a tile
 org $80CA560; bl m2_vwf.erase_tile_short // short, one-liner windows
+org $80CA8C4; bl m2_vwf.erase_tile_short2
 org $80C8F2A; bl m2_vwf.erase_tile_main // main version
 
 // Copy a tile upwards
@@ -81,6 +83,11 @@ org $80CA60E; bl m2_vwf.copy_tile
 
 // Re-draw the status screen after exiting the PSI sub-menu
 org $80BACFC; bl m2_formatting.status_redraw
+org $80BADE6; bl m2_formatting_status_redraw
+
+// PP cost: only print once
+org $80B8B56; bl m2_vwf.ppcost_once
+org $80B8B98; bl m2_vwf.ppcost_once2
 
 //==============================================================================
 // Formatting hacks
@@ -117,16 +124,34 @@ org $80C2258; bl m2_vwf.print_string_relative
 org $80C2270; bl m2_vwf.print_string_relative
 org $80C22AC; bl m2_vwf.print_string_relative
 org $80C22C4; bl m2_vwf.print_string_relative
-org $80C203E; mov r1,#0x12 // new entry length
-org $80C21B4; mov r1,#0x12
-org $80C224A; mov r1,#0x12
-org $80C229E; mov r1,#0x12
+org $80C203E; mov r1,#0x14 // new entry length
+org $80C21B4; mov r1,#0x14
+org $80C224A; mov r1,#0x14
+org $80C229E; mov r1,#0x14
+
+// PSI target strings
+org $80B8B12; mov r0,#0x14
 
 // PSI Rockin
 org $80C2192; mov r3,#8 // Y
 org $80C219E
 mov     r2,#0x71
 bl      m2_formatting.status1
+
+// Make PP cost use correct number values
+org $80CA732
+add     r1,#0x60
+
+// Make PP cost use the correct space value if there's only one digit
+org $80CA712
+mov		r0,#0x50
+
+// Fix PSI target offset calculation
+org $80B8B08
+mov	    r1,#100
+mul     r1,r2
+nop
+nop
 
 //==============================================================================
 // Data files

@@ -648,14 +648,7 @@ pop     {r0-r2,pc}
 
 .erase_tile_short:
 
-push    {r5,lr}
-ldr     r5,[sp,#8]
-mov     lr,r5
-ldr     r5,[sp,#4]
-str     r5,[sp,#8]
-pop     {r5}
-add     sp,#4
-push    {r0-r2,r4}
+push    {r0-r2,r4,lr}
 
 //--------------------------------
 // Get the window X and Y
@@ -676,6 +669,41 @@ bl      .erase_tile
 pop     {r0-r2,r4}
 strh    r0,[r5,#0]
 mov     r0,r12
+
+//--------------------------------
+pop     {pc}
+
+
+//==============================================================================
+// void erase_tile_short2(int x, int y, WINDOW* window)
+// In:
+//    r2: (x << 16), relative
+//    r7: y, relative
+//    r4: window
+//==============================================================================
+
+.erase_tile_short2:
+
+push    {r0-r3,lr}
+
+//--------------------------------
+// Get the window X and Y
+mov     r0,#0x22
+ldrb    r1,[r4,r0]           // Window X
+mov     r0,#0x24
+ldrb    r3,[r4,r0]           // Window Y
+
+lsr     r2,r2,#16
+add     r0,r1,r2             // Absolute X
+add     r1,r3,r7             // Absolute Y
+
+bl      .erase_tile
+
+//--------------------------------
+// Clobbered code
+pop     {r0-r3}
+strh    r0,[r5,#0]
+lsl     r1,r6,#0x10
 
 //--------------------------------
 pop     {pc}
@@ -1338,3 +1366,80 @@ bl      .weld_entry
 
 //--------------------------------
 pop     {r0-r2,pc}
+
+
+//==============================================================================
+// void ppcost_once(WINDOW* window)
+// In:
+//    r0: window
+//==============================================================================
+
+.ppcost_once:
+print	"m2vwf.ppcost_once:            $",pc
+
+// Need to copy LR to somewhere other than the stack
+push	{r1,r3}
+ldr		r3,=#m2_custom_wram
+mov		r1,lr
+str		r1,[r3,#0x10]
+pop		{r1,r3}
+
+// Check [r0 + 0x30]: if it's 0xFFFF, then we've already drawn the window
+push	{r1,r2}
+mov		r1,#0x30
+ldsh	r2,[r0,r1]
+mov		r1,#1
+neg		r1,r1
+cmp		r1,r2
+pop		{r1,r2}
+beq		+
+bl		$80C9634
+
++
+// Get back LR
+push	{r1,r3}
+ldr		r3,=#m2_custom_wram
+ldr		r1,[r3,#0x10]
+mov		lr,r1
+pop		{r1,r3}
+mov		pc,lr
+
+
+//==============================================================================
+// void ppcost_once2(WINDOW* window)
+// In:
+//    r0: window
+//==============================================================================
+
+// This one might be more unreliable -- maybe find a better way to do it
+// if it causes problems
+
+.ppcost_once2:
+print	"m2vwf.ppcost_once2:           $",pc
+
+// Need to copy LR to somewhere other than the stack
+push	{r1,r3}
+ldr		r3,=#m2_custom_wram
+mov		r1,lr
+str		r1,[r3,#0x10]
+pop		{r1,r3}
+
+// Check [r0 + 0x80]: if it's 0xFFFF, then we've already drawn the window
+push	{r1,r2}
+mov		r1,#0x80
+ldsh	r2,[r0,r1]
+mov		r1,#1
+neg		r1,r1
+cmp		r1,r2
+pop		{r1,r2}
+beq		+
+bl		$80C9634
+
++
+// Get back LR
+push	{r1,r3}
+ldr		r3,=#m2_custom_wram
+ldr		r1,[r3,#0x10]
+mov		lr,r1
+pop		{r1,r3}
+mov		pc,lr
