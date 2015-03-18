@@ -1,4 +1,4 @@
-# M2 - non-script things
+## M2 - non-script things
 - [ ] Translate dad text
 - [X] Translate enemy names
 - [X] Translate item names
@@ -8,7 +8,7 @@
 - [X] Translate PSI text
 - [X] Translate PSI targets
 
-# M2 - main script
+## M2 - main script
 - [X] Produce blank skeleton for main script (all strings in the game now point to "@Test")
 - [ ] Translate battle actions
 - [ ] Translate PSI help text
@@ -17,10 +17,10 @@
 - [ ] Translate object text (doors, etc.)
 - [ ] Translate enemy encounter/death text
 
-# M2 - main script tool
+## M2 - main script tool
 - [ ] Start a GUI tool to help the main script translation
 
-# M2 - hacking (main, high priority)
+## M2 - hacking (main, high priority)
 - [X] VWF core
 - [X] VWF for Talk
 - [X] VWF for Check
@@ -35,7 +35,7 @@
 - [ ] VWF for battles
 - [ ] VWF for credits sequence
 
-# M2 - hacking (misc, lower priority)
+## M2 - hacking (misc, lower priority)
 - [ ] Incorporate Mato's M1 translation
 - [ ] Insert EB's title screen
 - [ ] EB graphical localization (hospital crosses, cultist sprites, etc.)
