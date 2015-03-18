@@ -120,7 +120,7 @@ dw      $E801                // Break by means of invalid opcode
 ldrb    r0,[r1,#0]
 sub     r0,#0x50
 bpl     +
-mov     r0,#0x1F			// Replace char with ? if it's invalid
+mov     r0,#0x1F            // Replace char with ? if it's invalid
 b       .char_custom
 +
 cmp     r0,#0x60
@@ -1375,34 +1375,34 @@ pop     {r0-r2,pc}
 //==============================================================================
 
 .ppcost_once:
-print	"m2vwf.ppcost_once:            $",pc
+print    "m2vwf.ppcost_once:            $",pc
 
 // Need to copy LR to somewhere other than the stack
-push	{r1,r3}
-ldr		r3,=#m2_custom_wram
-mov		r1,lr
-str		r1,[r3,#0x10]
-pop		{r1,r3}
+push    {r1,r3}
+ldr     r3,=#m2_custom_wram
+mov     r1,lr
+str     r1,[r3,#0x10]
+pop     {r1,r3}
 
 // Check [r0 + 0x30]: if it's 0xFFFF, then we've already drawn the window
-push	{r1,r2}
-mov		r1,#0x30
-ldsh	r2,[r0,r1]
-mov		r1,#1
-neg		r1,r1
-cmp		r1,r2
-pop		{r1,r2}
-beq		+
-bl		$80C9634
+push    {r1,r2}
+mov     r1,#0x30
+ldsh    r2,[r0,r1]
+mov     r1,#1
+neg     r1,r1
+cmp     r1,r2
+pop     {r1,r2}
+beq     +
+bl      $80C9634
 
 +
 // Get back LR
-push	{r1,r3}
-ldr		r3,=#m2_custom_wram
-ldr		r1,[r3,#0x10]
-mov		lr,r1
-pop		{r1,r3}
-mov		pc,lr
+push    {r1,r3}
+ldr     r3,=#m2_custom_wram
+ldr     r1,[r3,#0x10]
+mov     lr,r1
+pop     {r1,r3}
+mov     pc,lr
 
 
 //==============================================================================
@@ -1415,31 +1415,31 @@ mov		pc,lr
 // if it causes problems
 
 .ppcost_once2:
-print	"m2vwf.ppcost_once2:           $",pc
+print    "m2vwf.ppcost_once2:           $",pc
 
 // Need to copy LR to somewhere other than the stack
-push	{r1,r3}
-ldr		r3,=#m2_custom_wram
-mov		r1,lr
-str		r1,[r3,#0x10]
-pop		{r1,r3}
+push    {r1,r3}
+ldr     r3,=#m2_custom_wram
+mov     r1,lr
+str     r1,[r3,#0x10]
+pop     {r1,r3}
 
 // Check [r0 + 0x80]: if it's 0xFFFF, then we've already drawn the window
-push	{r1,r2}
-mov		r1,#0x80
-ldsh	r2,[r0,r1]
-mov		r1,#1
-neg		r1,r1
-cmp		r1,r2
-pop		{r1,r2}
-beq		+
-bl		$80C9634
+push    {r1,r2}
+mov     r1,#0x80
+ldsh    r2,[r0,r1]
+mov     r1,#1
+neg     r1,r1
+cmp     r1,r2
+pop     {r1,r2}
+beq     +
+bl      $80C9634
 
 +
 // Get back LR
-push	{r1,r3}
-ldr		r3,=#m2_custom_wram
-ldr		r1,[r3,#0x10]
-mov		lr,r1
-pop		{r1,r3}
-mov		pc,lr
+push    {r1,r3}
+ldr     r3,=#m2_custom_wram
+ldr     r1,[r3,#0x10]
+mov     lr,r1
+pop     {r1,r3}
+mov     pc,lr

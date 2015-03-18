@@ -7,9 +7,6 @@ arch gba.thumb
 // Move the werird box font from 0xFCE6C
 org $80B3274; dd m2_font_relocate
 
-// Ness mom test
-//org $808F6B0; dd m2_nessmom
-
 //==============================================================================
 // Font hacks
 //==============================================================================
@@ -144,11 +141,11 @@ add     r1,#0x60
 
 // Make PP cost use the correct space value if there's only one digit
 org $80CA712
-mov		r0,#0x50
+mov     r0,#0x50
 
 // Fix PSI target offset calculation
 org $80B8B08
-mov	    r1,#100
+mov     r1,#100
 mul     r1,r2
 nop
 nop
