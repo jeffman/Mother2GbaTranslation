@@ -1,115 +1,123 @@
 {
   "StringsLocation": 0xB1B916,
+  "TablePointers": [
+	0xC211C,
+	0xC22F0,
+	0xC2398,
+	0xC2478,
+	0xC2528,
+	0xD39D0
+  ],
   "NumEntries": 18,
-  "EntryLength": 13,
+  "EntryLength": 20,
   "StringRefs": [
     {
       "Index": 0x0,
       "OldPointer": 0xB1B916,
       "Old": "ぁぁぁぁぁぁぁぁぁぁぁぁぁ",
-      "New": "ぁぁぁぁぁぁぁぁぁぁぁぁぁ"
+      "New": "[00 FF]"
     },
     {
       "Index": 0x1,
       "OldPointer": 0xB1B923,
       "Old": "PK[00 FF]",
-      "New": "PK[00 FF]"
+      "New": "PSI [00 FF]"
     },
     {
       "Index": 0x2,
       "OldPointer": 0xB1B930,
       "Old": "PKファイアー[00 FF]",
-      "New": "PKファイアー[00 FF]"
+      "New": "PSI Fire[00 FF]"
     },
     {
       "Index": 0x3,
       "OldPointer": 0xB1B93D,
       "Old": "PKフリーズ[00 FF]",
-      "New": "PKフリーズ[00 FF]"
+      "New": "PSI Freeze[00 FF]"
     },
     {
       "Index": 0x4,
       "OldPointer": 0xB1B94A,
       "Old": "PKサンダー[00 FF]",
-      "New": "PKサンダー[00 FF]"
+      "New": "PSI Thunder[00 FF]"
     },
     {
       "Index": 0x5,
       "OldPointer": 0xB1B957,
       "Old": "PKフラッシュ[00 FF]",
-      "New": "PKフラッシュ[00 FF]"
+      "New": "PSI Flash[00 FF]"
     },
     {
       "Index": 0x6,
       "OldPointer": 0xB1B964,
       "Old": "PKスターストーム[00 FF]",
-      "New": "PKスターストーム[00 FF]"
+      "New": "PSI Starstorm[00 FF]"
     },
     {
       "Index": 0x7,
       "OldPointer": 0xB1B971,
       "Old": "ライフアップ[00 FF]",
-      "New": "ライフアップ[00 FF]"
+      "New": "Lifeup[00 FF]"
     },
     {
       "Index": 0x8,
       "OldPointer": 0xB1B97E,
       "Old": "ヒーリング[00 FF]",
-      "New": "ヒーリング[00 FF]"
+      "New": "Healing[00 FF]"
     },
     {
       "Index": 0x9,
       "OldPointer": 0xB1B98B,
       "Old": "シールド[00 FF]",
-      "New": "シールド[00 FF]"
+      "New": "Shield[00 FF]"
     },
     {
       "Index": 0xA,
       "OldPointer": 0xB1B998,
       "Old": "サイコシールド[00 FF]",
-      "New": "サイコシールド[00 FF]"
+      "New": "PSI Shield[00 FF]"
     },
     {
       "Index": 0xB,
       "OldPointer": 0xB1B9A5,
       "Old": "オフェンスアップ[00 FF]",
-      "New": "オフェンスアップ[00 FF]"
+      "New": "Offense up[00 FF]"
     },
     {
       "Index": 0xC,
       "OldPointer": 0xB1B9B2,
       "Old": "ディフェンスダウン[00 FF]",
-      "New": "ディフェンスダウン[00 FF]"
+      "New": "Defense down[00 FF]"
     },
     {
       "Index": 0xD,
       "OldPointer": 0xB1B9BF,
       "Old": "さいみんじゅつ[00 FF]",
-      "New": "さいみんじゅつ[00 FF]"
+      "New": "Hypnosis[00 FF]"
     },
     {
       "Index": 0xE,
       "OldPointer": 0xB1B9CC,
       "Old": "サイマグネット[00 FF]",
-      "New": "サイマグネット[00 FF]"
+      "New": "PSI Magnet[00 FF]"
     },
     {
       "Index": 0xF,
       "OldPointer": 0xB1B9D9,
       "Old": "パラライシス[00 FF]",
-      "New": "パラライシス[00 FF]"
+      "New": "Paralysis[00 FF]"
     },
     {
       "Index": 0x10,
       "OldPointer": 0xB1B9E6,
       "Old": "ブレインショック[00 FF]",
-      "New": "ブレインショック[00 FF]"
+      "New": "Brainshock[00 FF]"
     },
     {
       "Index": 0x11,
       "OldPointer": 0xB1B9F3,
       "Old": "テレポート[00 FF]",
-      "New": "テレポート[00 FF]"
+      "New": "Teleport[00 FF]"
     }
   ]
 }

@@ -7,49 +7,49 @@
       "OffsetLocation": 0xB19A68,
       "OldPointer": 0xB198B4,
       "Old": "    はい     いいえ[00 FF]",
-      "New": "    はい     いいえ[00 FF]"
+      "New": "    Yes     No[00 FF]"
     },
     {
       "Index": 0x1,
       "OffsetLocation": 0xB19A6C,
       "OldPointer": 0xB198C4,
       "Old": "   ヒキダス    アズケル[00 FF]",
-      "New": "   ヒキダス    アズケル[00 FF]"
+      "New": "   Withdraw  Deposit[00 FF]"
     },
     {
       "Index": 0x2,
       "OffsetLocation": 0xB19A70,
       "OldPointer": 0xB198D5,
       "Old": "    いい    そうでもない[00 FF]",
-      "New": "    いい    そうでもない[00 FF]"
+      "New": "    tbd2[00 FF]"
     },
     {
       "Index": 0x3,
       "OffsetLocation": 0xB19A74,
       "OldPointer": 0xB198E7,
       "Old": "   とまる    とまらない[00 FF]",
-      "New": "   とまる    とまらない[00 FF]"
+      "New": "   tbd3[00 FF]"
     },
     {
       "Index": 0x4,
       "OffsetLocation": 0xB19A78,
       "OldPointer": 0xB198F8,
       "Old": "    いる     いらない[00 FF]",
-      "New": "    いる     いらない[00 FF]"
+      "New": "    tbd4[00 FF]"
     },
     {
       "Index": 0x5,
       "OffsetLocation": 0xB19A7C,
       "OldPointer": 0xB19909,
       "Old": "   しつれい   そうでもない[00 FF]",
-      "New": "   しつれい   そうでもない[00 FF]"
+      "New": "   tbd5[00 FF]"
     },
     {
       "Index": 0x6,
       "OffsetLocation": 0xB19A80,
       "OldPointer": 0xB1991B,
       "Old": "   おしえる   おしえない[00 FF]",
-      "New": "   おしえる   おしえない[00 FF]"
+      "New": "   tbd6[00 FF]"
     },
     {
       "Index": 0x7,
@@ -63,119 +63,119 @@
       "OffsetLocation": 0xB19A88,
       "OldPointer": 0xB1993B,
       "Old": "   たてかえ    げんきん[00 FF]",
-      "New": "   たてかえ    げんきん[00 FF]"
+      "New": "   tbd8[00 FF]"
     },
     {
       "Index": 0x9,
       "OffsetLocation": 0xB19A8C,
       "OldPointer": 0xB1994C,
       "Old": "     すてる       すてない[00 FF]",
-      "New": "     すてる       すてない[00 FF]"
+      "New": "     tbd9[00 FF]"
     },
     {
       "Index": 0xA,
       "OffsetLocation": 0xB19A90,
       "OldPointer": 0xB19961,
       "Old": "   つづける    おわる[00 FF]",
-      "New": "   つづける    おわる[00 FF]"
+      "New": "   tbdA[00 FF]"
     },
     {
       "Index": 0xB,
       "OffsetLocation": 0xB19A94,
       "OldPointer": 0xB19971,
       "Old": "   きこえる   きこえない[00 FF]",
-      "New": "   きこえる   きこえない[00 FF]"
+      "New": "   tbdB[00 FF]"
     },
     {
       "Index": 0xC,
       "OffsetLocation": 0xB19A98,
       "OldPointer": 0xB19982,
       "Old": "    みた    みなかった[00 FF]",
-      "New": "    みた    みなかった[00 FF]"
+      "New": "    tbdC[00 FF]"
     },
     {
       "Index": 0xD,
       "OffsetLocation": 0xB19A9C,
       "OldPointer": 0xB19993,
       "Old": "  かいにきた   うりにきた[00 FF]",
-      "New": "  かいにきた   うりにきた[00 FF]"
+      "New": "  tbdD[00 FF]"
     },
     {
       "Index": 0xE,
       "OffsetLocation": 0xB19AA0,
       "OldPointer": 0xB199A4,
       "Old": "   カイフク    ツウシン[00 FF]",
-      "New": "   カイフク    ツウシン[00 FF]"
+      "New": "   tbdE[00 FF]"
     },
     {
       "Index": 0xF,
       "OffsetLocation": 0xB19AA4,
       "OldPointer": 0xB199B5,
       "Old": "   シュウリ    ツウシン[00 FF]",
-      "New": "   シュウリ    ツウシン[00 FF]"
+      "New": "   tbdF[00 FF]"
     },
     {
       "Index": 0x10,
       "OffsetLocation": 0xB19AA8,
       "OldPointer": 0xB199C6,
       "Old": "  きろくする   とくにない[00 FF]",
-      "New": "  きろくする   とくにない[00 FF]"
+      "New": "  tbd10[00 FF]"
     },
     {
       "Index": 0x11,
       "OffsetLocation": 0xB19AAC,
       "OldPointer": 0xB199D7,
       "Old": "  おあずかり    おとどけ[00 FF]",
-      "New": "  おあずかり    おとどけ[00 FF]"
+      "New": "  tbd11[00 FF]"
     },
     {
       "Index": 0x12,
       "OffsetLocation": 0xB19AB0,
       "OldPointer": 0xB199E8,
       "Old": "   あずける    もちだす[00 FF]",
-      "New": "   あずける    もちだす[00 FF]"
+      "New": "   tbd12[00 FF]"
     },
     {
       "Index": 0x13,
       "OffsetLocation": 0xB19AB4,
       "OldPointer": 0xB199F9,
       "Old": "   ひきだす    あずける[00 FF]",
-      "New": "   ひきだす    あずける[00 FF]"
+      "New": "   tbd13[00 FF]"
     },
     {
       "Index": 0x14,
       "OffsetLocation": 0xB19AB8,
       "OldPointer": 0xB19A0A,
       "Old": "    ある      ない[00 FF]",
-      "New": "    ある      ない[00 FF]"
+      "New": "    tbd14[00 FF]"
     },
     {
       "Index": 0x15,
       "OffsetLocation": 0xB19ABC,
       "OldPointer": 0xB19A1A,
       "Old": "  みてもらう    いらない[00 FF]",
-      "New": "  みてもらう    いらない[00 FF]"
+      "New": "  tbd15[00 FF]"
     },
     {
       "Index": 0x16,
       "OffsetLocation": 0xB19AC0,
       "OldPointer": 0xB19A2B,
       "Old": "    うる     うらない[00 FF]",
-      "New": "    うる     うらない[00 FF]"
+      "New": "    tbd16[00 FF]"
     },
     {
       "Index": 0x17,
       "OffsetLocation": 0xB19AC4,
       "OldPointer": 0xB19A3C,
       "Old": "   いいえ      はい[00 FF]",
-      "New": "   いいえ      はい[00 FF]"
+      "New": "   No        Yes[00 FF]"
     },
     {
       "Index": 0x18,
       "OffsetLocation": 0xB19AC8,
       "OldPointer": 0xB19A4C,
       "Old": "     はい         いいえ[00 FF]",
-      "New": "     はい         いいえ[00 FF]"
+      "New": "     Yes         No[00 FF]"
     }
   ]
 }
