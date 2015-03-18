@@ -574,7 +574,7 @@ namespace ScriptTool
             var refs = new List<FixedStringRef>();
             int currentStringAddress = stringsAddress;
 
-            for(int i=0;i<numEntries;i++)
+            for (int i = 0; i < numEntries; i++)
             {
                 refs.Add(new FixedStringRef
                 {
@@ -614,6 +614,16 @@ namespace ScriptTool
             return miscStrings;
         }
 
+        public static FixedStringCollection ReadPsiTargets(byte[] rom)
+        {
+            var table = ReadFixedStringTable(rom, 0xB1B3EF, 10, 11);
+            table.TablePointers = new int[] {
+                0xB8B2C,
+                0xB8BA4
+            };
+            return table;
+        }
+
         public static MiscStringCollection ReadDadText(byte[] rom)
         {
             return ReadPointerTable(rom, 0xB18310, 0xB18160);
@@ -631,7 +641,16 @@ namespace ScriptTool
 
         public static FixedStringCollection ReadPsiNames(byte[] rom)
         {
-            return ReadFixedStringTable(rom, 0xB1B916, 0x12, 0xD);
+            var table = ReadFixedStringTable(rom, 0xB1B916, 0x12, 0xD);
+            table.TablePointers = new int[] {
+                0xC211C,
+	            0xC22F0,
+	            0xC2398,
+	            0xC2478,
+	            0xC2528,
+	            0xD39D0
+            };
+            return table;
         }
     }
 }

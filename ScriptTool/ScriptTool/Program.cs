@@ -63,6 +63,12 @@ namespace ScriptTool
                 {
                     IncludeFile.WriteLine("arch gba.thumb");
 
+                    // Compile main string tables
+                    if (options.DoMainText)
+                    {
+                        CompileM12();
+                    }
+
                     // Compile misc string tables
                     if (options.DoMiscText)
                     {
@@ -248,6 +254,10 @@ namespace ScriptTool
             // PSI names
             var psiNames = M12TextTables.ReadPsiNames(m12Rom);
             DecompileFixedStringCollection(m12Decompiler, m12Rom, "m12-psinames", psiNames);
+
+            // PSI targets
+            var miscText2 = M12TextTables.ReadPsiTargets(m12Rom);
+            DecompileFixedStringCollection(m12Decompiler, m12Rom, "m12-psitargets", miscText2);
         }
 
         static void DecompileM12MiscStringCollection(string name, MiscStringCollection miscStringCollection)
@@ -291,6 +301,57 @@ namespace ScriptTool
                 JsonConvert.SerializeObject(fixedStringCollection, Formatting.Indented));
         }
 
+        static void CompileM12()
+        {
+            int baseAddress = 0xB80000;
+            int referenceAddress = baseAddress;
+            var buffer = new List<byte>();
+
+            // Get the strings
+            string m12Strings = File.ReadAllText(Path.Combine(options.WorkingDirectory, "m12-strings-english.txt"));
+
+            // Compile
+            m12Compiler.ScanString(m12Strings, ref referenceAddress);
+            referenceAddress = baseAddress;
+            m12Compiler.CompileString(m12Strings, buffer, ref referenceAddress);
+            File.WriteAllBytes(Path.Combine(options.WorkingDirectory, "m12-main-strings.bin"), buffer.ToArray());
+
+            // Update labels
+            string[] labelFiles = {
+                                      "m12-tpt",
+                                      "m12-psihelp",
+                                      "m12-battle-actions",
+                                      "m12-itemhelp",
+                                      "m12-movements",
+                                      "m12-objects",
+                                      "m12-phonelist",
+                                      "m12-unknown",
+                                      "m12-asmrefs",
+                                      "m12-enemy-encounters",
+                                      "m12-prayers"
+                                  };
+
+            using (var labelAsmFile = File.CreateText(Path.Combine(options.WorkingDirectory, "m12-main-strings.asm")))
+            {
+                labelAsmFile.WriteLine(String.Format("org ${0:X}; incbin m12-main-strings.bin", baseAddress | 0x8000000));
+                labelAsmFile.WriteLine();
+                
+                foreach (var file in labelFiles)
+                {
+                    var mainStringRefs = JsonConvert.DeserializeObject<MainStringRef[]>(File.ReadAllText(
+                        Path.Combine(options.WorkingDirectory, file + ".json")));
+
+                    foreach (var stringRef in mainStringRefs)
+                    {
+                        labelAsmFile.WriteLine(String.Format("org ${0:X}; dd ${1:X8}",
+                            stringRef.PointerLocation | 0x8000000, m12Compiler.AddressMap[stringRef.Label] | 0x8000000));
+                    }
+                }
+            }
+
+            IncludeFile.WriteLine("incsrc m12-main-strings.asm");
+        }
+
         static void CompileM12Misc()
         {
             int referenceAddress = 0xB3C000;
@@ -306,6 +367,30 @@ namespace ScriptTool
 
             // Enemy names
             CompileM12MiscStringCollection("m12-enemynames", ref referenceAddress);
+
+            // PSI names
+            var newPsiPointers = CompileM12FixedStringCollection("m12-psinames", ref referenceAddress);
+
+            // Fix pointers to specific PSI strings
+            int psiPointer = newPsiPointers[1];
+            int[] updateAddresses = {
+                                        0xC21AC,
+                                        0xC2364,
+                                        0xC2420,
+                                        0xC24DC,
+                                        0xD3998
+                                    };
+
+            IncludeFile.WriteLine();
+            IncludeFile.WriteLine("// Fix pointers to \"PSI \"");
+            foreach (var address in updateAddresses)
+            {
+                IncludeFile.WriteLine(String.Format("org ${0:X}; dd ${1:X8}",
+                    address | 0x8000000, psiPointer | 0x8000000));
+            }
+
+            // PSI targets
+            CompileM12FixedStringCollection("m12-psitargets", ref referenceAddress);
         }
 
         static void CompileM12MiscStringCollection(string name, ref int referenceAddress)
@@ -326,7 +411,7 @@ namespace ScriptTool
                 offsetFile.WriteLine();
 
                 // Compile all strings
-                foreach (var str in stringCollection.StringRefs)
+                foreach (var str in stringCollection.StringRefs.OrderBy(s => s.Index))
                 {
                     offsetFile.WriteLine(String.Format("org ${0:X}; dd ${1:X8}",
                         str.OffsetLocation | 0x8000000, referenceAddress - stringCollection.StringsLocation));
@@ -340,6 +425,48 @@ namespace ScriptTool
 
             // Add to the include file
             IncludeFile.WriteLine("incsrc " + name + ".asm");
+        }
+
+        static IList<int> CompileM12FixedStringCollection(string name, ref int referenceAddress)
+        {
+            int baseAddress = referenceAddress;
+            var buffer = new List<byte>();
+            var newPointers = new List<int>();
+
+            // Read the JSON
+            FixedStringCollection stringCollection = JsonConvert.DeserializeObject<FixedStringCollection>(
+                File.ReadAllText(Path.Combine(options.WorkingDirectory, name + ".json")));
+
+            // Open the data ASM file
+            using (var offsetFile = File.CreateText(Path.Combine(options.WorkingDirectory, name + ".asm")))
+            {
+                // Include the binfile
+                offsetFile.WriteLine(String.Format("org ${0:X}; incbin {1}.bin",
+                    baseAddress | 0x8000000, name));
+                offsetFile.WriteLine();
+
+                // Update table pointers
+                foreach (int tablePointer in stringCollection.TablePointers)
+                {
+                    offsetFile.WriteLine(String.Format("org ${0:X}; dd ${1:X8}",
+                        tablePointer | 0x8000000, baseAddress | 0x8000000));
+                }
+
+                // Compile all strings
+                foreach (var str in stringCollection.StringRefs.OrderBy(s => s.Index))
+                {
+                    newPointers.Add(referenceAddress);
+                    m12Compiler.CompileString(str.New, buffer, ref referenceAddress, stringCollection.EntryLength);
+                }
+            }
+
+            // Write the buffer
+            File.WriteAllBytes(Path.Combine(options.WorkingDirectory, name + ".bin"), buffer.ToArray());
+
+            // Add to the include file
+            IncludeFile.WriteLine("incsrc " + name + ".asm");
+
+            return newPointers;
         }
     }
 }

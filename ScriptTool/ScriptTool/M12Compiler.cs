@@ -134,6 +134,13 @@ namespace ScriptTool
 
         public void CompileString(string str, IList<byte> buffer, ref int referenceAddress)
         {
+            CompileString(str, buffer, ref referenceAddress, -1);
+        }
+
+        public void CompileString(string str, IList<byte> buffer, ref int referenceAddress, int padLength)
+        {
+            int previousBufferSize = buffer.Count;
+
             for (int i = 0; i < str.Length; )
             {
                 if (str[i] == '[')
@@ -232,6 +239,20 @@ namespace ScriptTool
                         referenceAddress++;
                     }
                     i++;
+                }
+            }
+
+            // Pad the remaining bytes
+            if (padLength != -1)
+            {
+                int bytesWritten = buffer.Count - previousBufferSize;
+                if (bytesWritten > padLength)
+                    throw new Exception("Exceeded pad length");
+
+                for (int i = bytesWritten; i < padLength; i++)
+                {
+                    buffer.Add(0);
+                    referenceAddress++;
                 }
             }
         }

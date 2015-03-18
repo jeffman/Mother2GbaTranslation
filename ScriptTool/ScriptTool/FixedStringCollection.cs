@@ -12,6 +12,8 @@ namespace ScriptTool
         [JsonConverter(typeof(JsonHexConverter))]
         public int StringsLocation { get; set; }
 
+        public IList<int> TablePointers { get; set; }
+
         public int NumEntries { get; set; }
         public int EntryLength { get; set; }
         public IList<FixedStringRef> StringRefs { get; set; }
