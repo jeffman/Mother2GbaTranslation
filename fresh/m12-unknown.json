@@ -99,7 +99,7 @@
     "Index": 0x10,
     "PointerLocation": 0x72E50C,
     "OldPointer": 0x5F3D7,
-    "Label": "L128"
+    "Label": "L123"
   },
   {
     "Index": 0x11,
@@ -393,7 +393,7 @@
     "Index": 0x48,
     "PointerLocation": 0x72E88C,
     "OldPointer": 0x5F6B0,
-    "Label": "L368"
+    "Label": "L351"
   },
   {
     "Index": 0x49,
