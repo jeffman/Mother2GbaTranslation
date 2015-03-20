@@ -19,5 +19,10 @@ namespace ScriptTool
         public int OldPointer { get; set; }
 
         public string Label { get; set; }
+
+        public override string ToString()
+        {
+            return "[" + Index.ToString("X3") + "] " + Label;
+        }
     }
 }

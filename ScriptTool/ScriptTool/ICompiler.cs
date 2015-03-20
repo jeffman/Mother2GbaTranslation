@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ScriptTool
 {
-    interface ICompiler
+    public interface ICompiler
     {
-        void ScanString(string str, ref int referenceAddress);
+        IList<string> ScanString(string str, bool scanCodesOnly);
+        IList<string> ScanString(string str, ref int referenceAddress, bool scanCodesOnly);
         void CompileString(string str, IList<byte> buffer, ref int referenceAddress);
     }
 }

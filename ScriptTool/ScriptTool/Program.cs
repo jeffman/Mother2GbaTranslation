@@ -191,7 +191,10 @@ namespace ScriptTool
         {
             // Pull all string refs from the ROM
             var allRefs = new List<Tuple<string, MainStringRef[]>>();
-            allRefs.Add(Tuple.Create("m12-tpt", M12TextTables.ReadTptRefs(m12Rom)));
+
+            var tptTuple = M12TextTables.ReadTptRefs(m12Rom);
+            allRefs.Add(Tuple.Create("m12-tpt-primary", tptTuple.Item1));
+            allRefs.Add(Tuple.Create("m12-tpt-secondary", tptTuple.Item2));
             allRefs.Add(Tuple.Create("m12-psihelp", M12TextTables.ReadPsiHelpRefs(m12Rom)));
             allRefs.Add(Tuple.Create("m12-battle-actions", M12TextTables.ReadBattleActionRefs(m12Rom)));
             allRefs.Add(Tuple.Create("m12-itemhelp", M12TextTables.ReadItemHelpRefs(m12Rom)));
@@ -311,7 +314,7 @@ namespace ScriptTool
             string m12Strings = File.ReadAllText(Path.Combine(options.WorkingDirectory, "m12-strings-english.txt"));
 
             // Compile
-            m12Compiler.ScanString(m12Strings, ref referenceAddress);
+            m12Compiler.ScanString(m12Strings, ref referenceAddress, false);
             referenceAddress = baseAddress;
             m12Compiler.CompileString(m12Strings, buffer, ref referenceAddress);
             File.WriteAllBytes(Path.Combine(options.WorkingDirectory, "m12-main-strings.bin"), buffer.ToArray());

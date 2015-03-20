@@ -19,9 +19,10 @@ namespace ScriptTool
             0x57D
         };
 
-        public static MainStringRef[] ReadTptRefs(byte[] rom)
+        public static Tuple<MainStringRef[], MainStringRef[]> ReadTptRefs(byte[] rom)
         {
-            var refs = new List<MainStringRef>();
+            var primaryRefs = new List<MainStringRef>();
+            var secondaryRefs = new List<MainStringRef>();
 
             int address = 0x8EB14;
             int entries = 1584;
@@ -32,35 +33,35 @@ namespace ScriptTool
                 {
                     int firstPointer = rom.ReadGbaPointer(address + 9);
                     if (firstPointer != 0)
-                        refs.Add(new MainStringRef { Index = i, PointerLocation = address + 9, OldPointer = firstPointer });
+                        primaryRefs.Add(new MainStringRef { Index = i, PointerLocation = address + 9, OldPointer = firstPointer });
 
                     byte type = rom[address];
                     if (type != 2)
                     {
                         int secondPointer = rom.ReadGbaPointer(address + 13);
                         if (secondPointer != 0)
-                            refs.Add(new MainStringRef { Index = i, PointerLocation = address + 13, OldPointer = secondPointer });
+                            secondaryRefs.Add(new MainStringRef { Index = i, PointerLocation = address + 13, OldPointer = secondPointer });
                     }
                 }
                 else
                 {
                     int firstPointer = rom.ReadGbaPointer(address + 12);
                     if (firstPointer != 0)
-                        refs.Add(new MainStringRef { Index = i, PointerLocation = address + 12, OldPointer = firstPointer });
+                        primaryRefs.Add(new MainStringRef { Index = i, PointerLocation = address + 12, OldPointer = firstPointer });
 
                     byte type = rom[address];
                     if (type != 2)
                     {
                         int secondPointer = rom.ReadGbaPointer(address + 16);
                         if (secondPointer != 0)
-                            refs.Add(new MainStringRef { Index = i, PointerLocation = address + 16, OldPointer = secondPointer });
+                            secondaryRefs.Add(new MainStringRef { Index = i, PointerLocation = address + 16, OldPointer = secondPointer });
                     }
                 }
 
                 address += 20;
             }
 
-            return refs.ToArray();
+            return Tuple.Create(primaryRefs.ToArray(), secondaryRefs.ToArray());
         }
 
         public static MainStringRef[] ReadPsiHelpRefs(byte[] rom)

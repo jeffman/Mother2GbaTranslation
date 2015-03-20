@@ -7,7 +7,7 @@ using System.IO;
 
 namespace ScriptTool
 {
-    class M12Compiler : ICompiler
+    public class M12Compiler : ICompiler
     {
         private static IEnumerable<M12ControlCode> controlCodes;
         private static string[] charLookup;
@@ -63,8 +63,16 @@ namespace ScriptTool
             return (byte)(ebCharLookup.IndexOf(c) + 0x50);
         }
 
-        public void ScanString(string str, ref int referenceAddress)
+        public IList<string> ScanString(string str, bool scanCodesOnly)
         {
+            int temp = 0;
+            return ScanString(str, ref temp, scanCodesOnly);
+        }
+
+        public IList<string> ScanString(string str, ref int referenceAddress, bool scanCodesOnly)
+        {
+            var references = new List<string>();
+ 
             for (int i = 0; i < str.Length; )
             {
                 if (str[i] == '[')
@@ -85,11 +93,15 @@ namespace ScriptTool
                             if (codeString.Length <= 2)
                                 throw new Exception("Reference is empty");
 
-                            referenceAddress += 4;
+                            if (!scanCodesOnly)
+                                referenceAddress += 4;
+
+                            references.Add(codeString.Substring(1, codeString.Length - 2));
                         }
                         else if (IsHexByte(codeString))
                         {
-                            referenceAddress++;
+                            if (!scanCodesOnly)
+                                referenceAddress++;
                         }
                         else
                         {
@@ -114,7 +126,8 @@ namespace ScriptTool
                     if (AddressMap.ContainsKey(label))
                         throw new Exception("Label already defined");
 
-                    AddressMap.Add(label, referenceAddress);
+                    if(!scanCodesOnly)
+                        AddressMap.Add(label, referenceAddress);
 
                     i = str.IndexOf('^', i + 1) + 1;
                 }
@@ -122,14 +135,19 @@ namespace ScriptTool
                 {
                     if (!(str[i] == '\r') && !(str[i] == '\n'))
                     {
-                        if (!IsValidChar(str[i]))
-                            throw new Exception("Invalid character: " + str[i]);
+                        if (!scanCodesOnly)
+                        {
+                            if (!IsValidChar(str[i]))
+                                throw new Exception("Invalid character: " + str[i]);
 
-                        referenceAddress++;
+                            referenceAddress++;
+                        }
                     }
                     i++;
                 }
             }
+
+            return references;
         }
 
         public void CompileString(string str, IList<byte> buffer, ref int referenceAddress)
@@ -163,7 +181,8 @@ namespace ScriptTool
                                 throw new Exception("Code string for unrecognized control code block must be a byte literal");
 
                             byte value = byte.Parse(codeStrings[j], System.Globalization.NumberStyles.HexNumber);
-                            buffer.Add(value);
+                            if (buffer != null)
+                                buffer.Add(value);
                             referenceAddress++;
                         }
                     }
@@ -197,7 +216,8 @@ namespace ScriptTool
                                     pointer |= 0x8000000;
                                 }
 
-                                buffer.AddInt(pointer);
+                                if (buffer != null)
+                                    buffer.AddInt(pointer);
                                 referenceAddress += 4;
                             }
                             else if (IsHexByte(codeString))
@@ -235,7 +255,8 @@ namespace ScriptTool
                             throw new Exception("Invalid character: " + str[i]);
 
                         byte value = GetByte(str[i]);
-                        buffer.Add(value);
+                        if (buffer != null)
+                            buffer.Add(value);
                         referenceAddress++;
                     }
                     i++;
@@ -251,7 +272,8 @@ namespace ScriptTool
 
                 for (int i = bytesWritten; i < padLength; i++)
                 {
-                    buffer.Add(0);
+                    if (buffer != null)
+                        buffer.Add(0);
                     referenceAddress++;
                 }
             }

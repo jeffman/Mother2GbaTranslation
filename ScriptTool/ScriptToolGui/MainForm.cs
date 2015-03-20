@@ -15,145 +15,234 @@ namespace ScriptToolGui
 {
     public partial class MainForm : Form
     {
-        const string workingFolder = @"..\..\..\..\working";
+        static IDictionary<Game, TextBox> textboxLookup;
+        static IDictionary<Game, IList<string>> stringsLookup;
 
-        // String references
-        MainStringRef[] m12TptRefs;
-        MainStringRef[] ebTptRefs;
-        //MainStringRef[] m2TptRefs;
+        const string workingFolder = @"..\..\..\..\working";
+        static M12Compiler m12Compiler = new M12Compiler();
 
         // Strings
         IList<string> m12Strings;
         IList<string> m12StringsEnglish;
         IList<string> ebStrings;
-        //IList<string> m2Strings;
         
+        // Matched reference pairs
+        List<MatchedReferenceGroup> matchedGroups = new List<MatchedReferenceGroup>();
+
+        // Navigation stack
+        MatchedReferenceGroup previousGroup = null;
+        Stack<MatchedReferenceGroup> navigationStack = new Stack<MatchedReferenceGroup>();
+
         public MainForm()
         {
             InitializeComponent();
 
-            m12String.Font = new Font("Meiryo UI", 8);
+            ImportAllStringRefs(workingFolder);
+            ImportAllStrings(workingFolder);
 
-            LoadAllStringRefs(workingFolder);
-            LoadAllStrings(workingFolder);
+            textboxLookup = new Dictionary<Game, TextBox> {
+                { Game.Eb, ebString },
+                { Game.M12, m12String },
+                { Game.M12English, m12StringEnglish }
+            };
+
+            stringsLookup = new Dictionary<Game, IList<string>> {
+                { Game.Eb, ebStrings },
+                { Game.M12, m12Strings },
+                { Game.M12English, m12StringsEnglish }
+            };
 
             PopulateTptList();
         }
 
-        private void LoadAllStringRefs(string folder)
+        private void ImportAllStringRefs(string folder)
         {
-            string m12FileName = Path.Combine(folder, "m12-tpt.json");
-            string ebFileName = Path.Combine(folder, "eb-tpt.json");
-            //string m2FileName = Path.Combine(folder, "m2-tpt.json");
+            string m12PrimaryFileName = Path.Combine(folder, "m12-tpt-primary.json");
+            string ebPrimaryFileName = Path.Combine(folder, "eb-tpt-primary.json");
 
-            m12TptRefs = LoadStringRefs(m12FileName);
-            ebTptRefs = LoadStringRefs(ebFileName);
-            //m2TptRefs = LoadStringRefs(m2FileName);
+            var m12PrimaryTptRefs = ImportStringRefs(m12PrimaryFileName);
+            var ebPrimaryTptRefs = ImportStringRefs(ebPrimaryFileName);
+
+            string m12SecondaryFileName = Path.Combine(folder, "m12-tpt-secondary.json");
+            string ebSecondaryFileName = Path.Combine(folder, "eb-tpt-secondary.json");
+
+            var m12SecondaryTptRefs = ImportStringRefs(m12SecondaryFileName);
+            var ebSecondaryTptRefs = ImportStringRefs(ebSecondaryFileName);
+
+            matchedGroups.AddRange(MatchRefs(ebPrimaryTptRefs, m12PrimaryTptRefs));
+            matchedGroups.AddRange(MatchRefs(ebSecondaryTptRefs, m12SecondaryTptRefs));
+
+            matchedGroups.Sort((g1, g2) => g1.EbRef.Index.CompareTo(g2.EbRef.Index));
         }
 
-        private MainStringRef[] LoadStringRefs(string fileName)
+        private MatchedReferenceGroup[] MatchRefs(MainStringRef[] ebRefs, MainStringRef[] m12Refs)
+        {
+            return ebRefs.Join(m12Refs, e => e.Index, m => m.Index, (e, m) => new { e, m })
+                .Select(p => new MatchedReferenceGroup(p.e, p.m))
+                .ToArray();
+        }
+
+        private MainStringRef[] ImportStringRefs(string fileName)
         {
             string jsonString = File.ReadAllText(fileName);
             return JsonConvert.DeserializeObject<MainStringRef[]>(jsonString);
         }
 
-        private void LoadAllStrings(string folder)
+        private void ImportAllStrings(string folder)
         {
             string m12FileName = Path.Combine(folder, "m12-strings.txt");
             string m12EnglishFileName = Path.Combine(folder, "m12-strings-english.txt");
             string ebFileName = Path.Combine(folder, "eb-strings.txt");
-            //string m2FileName = Path.Combine(folder, "m2-strings.txt");
 
-            m12Strings = LoadStrings(m12FileName);
-            m12StringsEnglish = LoadStrings(m12EnglishFileName);
-            ebStrings = LoadStrings(ebFileName);
-            //m2Strings = LoadStrings(m2FileName);
+            m12Strings = ImportStrings(m12FileName);
+            m12StringsEnglish = ImportStrings(m12EnglishFileName);
+            ebStrings = ImportStrings(ebFileName);
         }
 
-        private IList<string> LoadStrings(string fileName)
+        private IList<string> ImportStrings(string fileName)
         {
             return new List<string>(File.ReadAllLines(fileName).Where(l => !l.Equals("")));
         }
 
+        private Game GetCurrentGame()
+        {
+            if (ebSelector.Checked)
+                return Game.Eb;
+
+            else if (m12Selector.Checked)
+                return Game.M12;
+
+            return Game.None;
+        }
+
         private void PopulateTptList()
         {
-            var sb = new StringBuilder();
             tptSelector.Items.Clear();
-            foreach (var m12Ref in m12TptRefs)
-            {
-                sb.Clear();
-                sb.Append('[');
-                sb.Append(m12Ref.Index.ToString("X3"));
-                sb.Append("] ");
-                sb.Append(m12Ref.Label);
-                tptSelector.Items.Add(sb.ToString());
-            }
+            tptSelector.Items.AddRange(matchedGroups.ToArray());
         }
 
-        private void LoadTptEntry(int index)
+        private void PopulateCodeList()
         {
-            if (index == -1)
+
+        }
+
+        private void PopulateReferenceList()
+        {
+            codeList.Text = "";
+            referenceList.Items.Clear();
+
+            if (ebSelector.Checked)
             {
-                ebString.Text =
-                    m12String.Text =
-                    m12StringEnglish.Text = "";
+
             }
-            else
+            else if (m12Selector.Checked)
             {
-                var ebRef = ebTptRefs.FirstOrDefault(eb => eb.Index == index);
-                var m12Ref = m12TptRefs.FirstOrDefault(m12 => m12.Index == index);
-
-                if (ebRef == null)
-                    ebString.Text = "";
-                else
-                {
-                    string str = GetString(ebStrings, ebRef.Label);
-                    if (str != null)
-                        ebString.Text = str;
-                }
-
-                if (m12Ref == null)
-                    m12String.Text = "";
-                else
-                {
-                    string str = GetString(m12Strings, m12Ref.Label);
-                    if (str != null)
-                        m12String.Text = str;
-
-                    str = GetString(m12StringsEnglish, m12Ref.Label);
-                    if (str != null)
-                        m12StringEnglish.Text = str;
-                }
-
+                var references = m12Compiler.ScanString(m12String.Text, true).Distinct().OrderBy(r => r);
+                referenceList.Items.AddRange(references.ToArray());
             }
         }
 
-        private string GetString(IList<string> strings, string label)
+        private string GetString(Game game, string label)
         {
             try
             {
-                return strings.First(l => l.Contains("^" + label + "^"));
+                return stringsLookup[game].First(l => l.Contains("^" + label + "^"));
             }
             catch
             {
-                MessageBox.Show("Error: label definition not found in strings: " + label);
                 return null;
+            }
+        }
+
+        private void NavigateTo(MatchedReferenceGroup group)
+        {
+            if (group == null)
+            {
+                ebString.Text = "";
+                m12String.Text = "";
+                m12StringEnglish.Text = "";
+
+                tptSelector.SelectedIndex = -1;
+            }
+            else
+            {
+                string eb = GetString(Game.Eb, group.EbRef.Label);
+                string m12 = GetString(Game.M12, group.M12Ref.Label);
+                string m12English = GetString(Game.M12English, group.M12Ref.Label);
+
+                ebString.Text = eb;
+                m12String.Text = m12;
+                m12StringEnglish.Text = m12English;
+
+                tptSelector.SelectedItem = group;
+            }
+
+            PopulateCodeList();
+            PopulateReferenceList();
+        }
+
+        private void NavigateTo(Game game, string label)
+        {
+
+        }
+
+        private void PushPreviousGroup()
+        {
+            if (previousGroup != null)
+            {
+                navigationStack.Push(previousGroup);
             }
         }
 
         private void tptSelector_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (tptSelector.SelectedIndex == -1)
-            {
-                LoadTptEntry(-1);
-            }
+                NavigateTo(null);
             else
             {
-                string tptString = (string)tptSelector.Items[tptSelector.SelectedIndex];
-                string indexString = tptString.Substring(1, 3);
-                int index = Convert.ToInt32(indexString, 16);
-                LoadTptEntry(index);
+                PushPreviousGroup();
+
+                var currentGroup = (MatchedReferenceGroup)tptSelector.SelectedItem;
+                NavigateTo(currentGroup);
+                previousGroup = currentGroup;
             }
         }
+
+        private void gameSelector_CheckedChanged(object sender, EventArgs e)
+        {
+            PopulateCodeList();
+            PopulateReferenceList();
+        }
+
+        private void referenceList_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int match = referenceList.IndexFromPoint(e.Location);
+            if (match != ListBox.NoMatches)
+            {
+                Game game = GetCurrentGame();
+                string label = (string)referenceList.SelectedItem;
+
+                
+            }
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            if (navigationStack.Count < 1)
+                return;
+
+            var group = navigationStack.Pop();
+            NavigateTo(group);
+            previousGroup = group;
+        }
+    }
+
+    enum Game
+    {
+        None,
+        Eb,
+        M2,
+        M12,
+        M12English
     }
 }
