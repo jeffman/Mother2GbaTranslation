@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace ScriptTool
 {
-    class MiscStringCollection
+    public class MiscStringCollection
     {
         [JsonConverter(typeof(JsonHexConverter))]
         public int OffsetTableLocation { get; set; }

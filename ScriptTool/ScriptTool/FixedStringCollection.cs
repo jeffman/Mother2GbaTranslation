@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace ScriptTool
 {
-    class FixedStringCollection
+    public class FixedStringCollection
     {
         [JsonConverter(typeof(JsonHexConverter))]
         public int StringsLocation { get; set; }
