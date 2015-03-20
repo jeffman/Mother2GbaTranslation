@@ -15,6 +15,9 @@
 - [ ] Translate item help text
 - [ ] Translate TPT text
 - [ ] Translate object text (doors, etc.)
+- [ ] Translate phone text
+- [ ] Translate dad text
+- [ ] Translate prayer text
 - [ ] Translate enemy encounter/death text
 
 ### M2 - main script tool
@@ -34,8 +37,12 @@
 - [ ] VWF for naming screens
 - [ ] VWF for battles
 - [ ] VWF for credits sequence
+- [ ] TODO: replace load/store chains with ldmia/stmia
 
 ### M2 - hacking (misc, lower priority)
 - [ ] Incorporate Mato's M1 translation
 - [ ] Insert EB's title screen
 - [ ] EB graphical localization (hospital crosses, cultist sprites, etc.)
+- [ ] M1+2 bugfixes:
+  - [ ] Exit mouse in Giygas lair
+  - [ ] Poison Giygas to death
