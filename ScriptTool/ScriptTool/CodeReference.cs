@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScriptTool
 {
-    class CodeReference : CodeString
+    public class CodeReference : CodeString
     {
         public int Address { get; set; }
 

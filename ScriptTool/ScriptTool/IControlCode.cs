@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScriptTool
 {
-    interface IControlCode
+    public interface IControlCode
     {
         bool IsEnd { get; }
         bool IsMatch(byte[] rom, int address);

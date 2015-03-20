@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScriptTool
 {
-    class CodeByte : CodeString
+    public class CodeByte : CodeString
     {
         public byte Value { get; set; }
 

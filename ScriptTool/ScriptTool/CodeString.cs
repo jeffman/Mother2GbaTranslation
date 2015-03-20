@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScriptTool
 {
-    abstract class CodeString
+    public abstract class CodeString
     {
     }
 }

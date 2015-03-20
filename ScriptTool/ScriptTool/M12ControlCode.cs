@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace ScriptTool
 {
-    class M12ControlCode : IControlCode
+    public class M12ControlCode : IControlCode
     {
         public static IEnumerable<M12ControlCode> Codes { get; private set; }
 
