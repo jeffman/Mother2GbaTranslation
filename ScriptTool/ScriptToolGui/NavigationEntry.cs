@@ -6,12 +6,37 @@ using System.Threading.Tasks;
 
 namespace ScriptToolGui
 {
-    class NavigationLabel
+    abstract class NavigationEntry
     {
-        public Game Game { get; private set; }
-        public string Label { get; private set; }
+        public abstract NavigationType Type { get; }
+    }
 
-        public NavigationLabel(Game game, string label)
+    enum NavigationType
+    {
+        MatchedGroup,
+        Reference
+    }
+
+    class MatchedGroupNavigationEntry : NavigationEntry
+    {
+        public override NavigationType Type { get { return NavigationType.MatchedGroup; } }
+
+        public MatchedGroup Group { get; private set; }
+
+        public MatchedGroupNavigationEntry(MatchedGroup group)
+        {
+            Group = group;
+        }
+    }
+
+    class ReferenceNavigationEntry : NavigationEntry
+    {
+        public override NavigationType Type { get { return NavigationType.Reference; } }
+
+        public string Label { get; private set; }
+        public Game Game { get; private set; }
+
+        public ReferenceNavigationEntry(Game game, string label)
         {
             Game = game;
             Label = label;

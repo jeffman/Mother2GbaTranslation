@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
             this.tptSelector = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.battleActionSelector = new System.Windows.Forms.ComboBox();
+            this.backButton = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.textSplitContainer = new System.Windows.Forms.SplitContainer();
             this.previewSplitContainer = new System.Windows.Forms.SplitContainer();
             this.ebString = new System.Windows.Forms.TextBox();
@@ -43,12 +51,9 @@
             this.gameSelectorPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ebSelector = new System.Windows.Forms.RadioButton();
             this.m12Selector = new System.Windows.Forms.RadioButton();
-            this.backButton = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textSplitContainer)).BeginInit();
             this.textSplitContainer.Panel1.SuspendLayout();
             this.textSplitContainer.Panel2.SuspendLayout();
@@ -61,29 +66,110 @@
             this.codeSplitContainer.Panel2.SuspendLayout();
             this.codeSplitContainer.SuspendLayout();
             this.gameSelectorPanel.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileMenu});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(761, 24);
+            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileMenu
+            // 
+            this.fileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveMenu});
+            this.fileMenu.Name = "fileMenu";
+            this.fileMenu.Size = new System.Drawing.Size(37, 20);
+            this.fileMenu.Text = "File";
+            // 
+            // saveMenu
+            // 
+            this.saveMenu.Name = "saveMenu";
+            this.saveMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveMenu.Size = new System.Drawing.Size(138, 22);
+            this.saveMenu.Text = "Save";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.label4);
+            this.flowLayoutPanel1.Controls.Add(this.tptSelector);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.battleActionSelector);
+            this.flowLayoutPanel1.Controls.Add(this.backButton);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(761, 29);
+            this.flowLayoutPanel1.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 0);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(3, 6, 3, 6);
+            this.label4.Size = new System.Drawing.Size(63, 25);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "TPT entry:";
             // 
             // tptSelector
             // 
             this.tptSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tptSelector.FormattingEnabled = true;
-            this.tptSelector.Location = new System.Drawing.Point(66, 4);
+            this.tptSelector.Location = new System.Drawing.Point(72, 4);
+            this.tptSelector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
             this.tptSelector.Name = "tptSelector";
             this.tptSelector.Size = new System.Drawing.Size(238, 21);
-            this.tptSelector.TabIndex = 0;
-            this.tptSelector.SelectionChangeCommitted += new System.EventHandler(this.tptSelector_SelectionChangeCommitted);
+            this.tptSelector.TabIndex = 10;
+            this.tptSelector.SelectionChangeCommitted += new System.EventHandler(this.selector_SelectionChangeCommitted);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 7);
+            this.label1.Location = new System.Drawing.Point(316, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "TPT entry:";
+            this.label1.Padding = new System.Windows.Forms.Padding(3, 6, 3, 6);
+            this.label1.Size = new System.Drawing.Size(75, 25);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Battle action:";
+            // 
+            // battleActionSelector
+            // 
+            this.battleActionSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.battleActionSelector.FormattingEnabled = true;
+            this.battleActionSelector.Location = new System.Drawing.Point(397, 4);
+            this.battleActionSelector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.battleActionSelector.Name = "battleActionSelector";
+            this.battleActionSelector.Size = new System.Drawing.Size(238, 21);
+            this.battleActionSelector.TabIndex = 13;
+            this.battleActionSelector.SelectionChangeCommitted += new System.EventHandler(this.selector_SelectionChangeCommitted);
+            // 
+            // backButton
+            // 
+            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.backButton.Location = new System.Drawing.Point(641, 3);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 12;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.textSplitContainer);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 53);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(761, 560);
+            this.panel2.TabIndex = 11;
             // 
             // textSplitContainer
             // 
@@ -178,7 +264,7 @@
             this.codeSplitContainer.Panel2.Controls.Add(this.referenceList);
             this.codeSplitContainer.Panel2.Controls.Add(this.label3);
             this.codeSplitContainer.Size = new System.Drawing.Size(222, 527);
-            this.codeSplitContainer.SplitterDistance = 245;
+            this.codeSplitContainer.SplitterDistance = 244;
             this.codeSplitContainer.TabIndex = 1;
             // 
             // codeList
@@ -190,7 +276,7 @@
             this.codeList.Name = "codeList";
             this.codeList.ReadOnly = true;
             this.codeList.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.codeList.Size = new System.Drawing.Size(218, 222);
+            this.codeList.Size = new System.Drawing.Size(218, 221);
             this.codeList.TabIndex = 1;
             // 
             // label2
@@ -211,7 +297,7 @@
             this.referenceList.FormattingEnabled = true;
             this.referenceList.Location = new System.Drawing.Point(0, 19);
             this.referenceList.Name = "referenceList";
-            this.referenceList.Size = new System.Drawing.Size(218, 255);
+            this.referenceList.Size = new System.Drawing.Size(218, 256);
             this.referenceList.TabIndex = 2;
             this.referenceList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.referenceList_MouseDoubleClick);
             // 
@@ -248,7 +334,6 @@
             this.ebSelector.Text = "EB";
             this.ebSelector.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ebSelector.UseVisualStyleBackColor = true;
-            this.ebSelector.CheckedChanged += new System.EventHandler(this.gameSelector_CheckedChanged);
             // 
             // m12Selector
             // 
@@ -262,65 +347,6 @@
             this.m12Selector.Text = "M12";
             this.m12Selector.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.m12Selector.UseVisualStyleBackColor = true;
-            this.m12Selector.CheckedChanged += new System.EventHandler(this.gameSelector_CheckedChanged);
-            // 
-            // backButton
-            // 
-            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.backButton.Location = new System.Drawing.Point(683, 3);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(75, 23);
-            this.backButton.TabIndex = 7;
-            this.backButton.Text = "Back";
-            this.backButton.UseVisualStyleBackColor = true;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileMenu});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(761, 24);
-            this.menuStrip1.TabIndex = 8;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // panel1
-            // 
-            this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.backButton);
-            this.panel1.Controls.Add(this.tptSelector);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(761, 29);
-            this.panel1.TabIndex = 9;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.textSplitContainer);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 53);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(761, 560);
-            this.panel2.TabIndex = 10;
-            // 
-            // fileMenu
-            // 
-            this.fileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveMenu});
-            this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(37, 20);
-            this.fileMenu.Text = "File";
-            // 
-            // saveMenu
-            // 
-            this.saveMenu.Name = "saveMenu";
-            this.saveMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveMenu.Size = new System.Drawing.Size(152, 22);
-            this.saveMenu.Text = "Save";
             // 
             // MainForm
             // 
@@ -328,12 +354,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(761, 613);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MOTHER 1+2 Funland";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.textSplitContainer.Panel1.ResumeLayout(false);
             this.textSplitContainer.Panel2.ResumeLayout(false);
             this.textSplitContainer.Panel2.PerformLayout();
@@ -350,11 +381,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.codeSplitContainer)).EndInit();
             this.codeSplitContainer.ResumeLayout(false);
             this.gameSelectorPanel.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -362,27 +388,29 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox tptSelector;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileMenu;
+        private System.Windows.Forms.ToolStripMenuItem saveMenu;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox battleActionSelector;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.ComboBox tptSelector;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.SplitContainer textSplitContainer;
         private System.Windows.Forms.SplitContainer previewSplitContainer;
         private System.Windows.Forms.TextBox ebString;
         private System.Windows.Forms.TextBox m12String;
         private System.Windows.Forms.TextBox m12StringEnglish;
-        private System.Windows.Forms.FlowLayoutPanel gameSelectorPanel;
-        private System.Windows.Forms.RadioButton ebSelector;
-        private System.Windows.Forms.RadioButton m12Selector;
         private System.Windows.Forms.SplitContainer codeSplitContainer;
         private System.Windows.Forms.TextBox codeList;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox referenceList;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ToolStripMenuItem fileMenu;
-        private System.Windows.Forms.ToolStripMenuItem saveMenu;
+        private System.Windows.Forms.FlowLayoutPanel gameSelectorPanel;
+        private System.Windows.Forms.RadioButton ebSelector;
+        private System.Windows.Forms.RadioButton m12Selector;
     }
 }
 
