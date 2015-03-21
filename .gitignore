@@ -5,6 +5,7 @@
 *.srm
 *.zst
 *.bak
+Thumbs.db
 snapshots/
 xkas/
 new/
