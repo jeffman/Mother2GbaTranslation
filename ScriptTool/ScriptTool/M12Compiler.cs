@@ -278,5 +278,42 @@ namespace ScriptTool
                 }
             }
         }
+
+        public string StripText(string str)
+        {
+            var sb = new StringBuilder();
+
+            for (int i = 0; i < str.Length; )
+            {
+                if (str[i] == '[')
+                {
+                    if (str.IndexOf(']', i + 1) == -1)
+                        throw new Exception("Opening bracket has no matching closing bracket");
+
+                    sb.Append(str.Substring(i, str.IndexOf(']', i + 1) - i + 1));
+
+                    i = str.IndexOf(']', i + 1) + 1;
+                }
+                else if (str[i] == ']')
+                {
+                    throw new Exception("Closing bracket has no matching opening bracket");
+                }
+                else if (str[i] == '^')
+                {
+                    if (str.IndexOf('^', i + 1) == -1)
+                        throw new Exception("Label has no matching closing caret");
+
+                    sb.Append(str.Substring(i, str.IndexOf('^', i + 1) - i + 1));
+
+                    i = str.IndexOf('^', i + 1) + 1;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+
+            return sb.ToString();
+        }
     }
 }

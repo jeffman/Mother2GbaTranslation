@@ -28,21 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.components = new System.ComponentModel.Container();
+            this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.saveMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.topPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.tptSelector = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.battleActionSelector = new System.Windows.Forms.ComboBox();
             this.backButton = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.previewSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.ebString = new System.Windows.Forms.TextBox();
-            this.m12String = new System.Windows.Forms.TextBox();
-            this.m12StringEnglish = new System.Windows.Forms.TextBox();
+            this.mainPanel = new System.Windows.Forms.Panel();
+            this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.leftSplitContainer = new System.Windows.Forms.SplitContainer();
             this.codeSplitContainer = new System.Windows.Forms.SplitContainer();
             this.codeList = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,33 +49,45 @@
             this.gameSelectorPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ebSelector = new System.Windows.Forms.RadioButton();
             this.m12Selector = new System.Windows.Forms.RadioButton();
-            this.menuStrip1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textSplitContainer)).BeginInit();
-            this.textSplitContainer.Panel1.SuspendLayout();
-            this.textSplitContainer.Panel2.SuspendLayout();
-            this.textSplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.previewSplitContainer)).BeginInit();
-            this.previewSplitContainer.Panel1.SuspendLayout();
-            this.previewSplitContainer.SuspendLayout();
+            this.statusBar = new System.Windows.Forms.StatusStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.writeTimer = new System.Windows.Forms.Timer(this.components);
+            this.lineOpsPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.textBoxPanel = new System.Windows.Forms.Panel();
+            this.ebString = new System.Windows.Forms.TextBox();
+            this.m12String = new System.Windows.Forms.TextBox();
+            this.m12StringEnglish = new System.Windows.Forms.TextBox();
+            this.copyCodesButton = new System.Windows.Forms.Button();
+            this.mainMenu.SuspendLayout();
+            this.topPanel.SuspendLayout();
+            this.mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
+            this.mainSplitContainer.Panel1.SuspendLayout();
+            this.mainSplitContainer.Panel2.SuspendLayout();
+            this.mainSplitContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.leftSplitContainer)).BeginInit();
+            this.leftSplitContainer.Panel1.SuspendLayout();
+            this.leftSplitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeSplitContainer)).BeginInit();
             this.codeSplitContainer.Panel1.SuspendLayout();
             this.codeSplitContainer.Panel2.SuspendLayout();
             this.codeSplitContainer.SuspendLayout();
             this.gameSelectorPanel.SuspendLayout();
+            this.statusBar.SuspendLayout();
+            this.lineOpsPanel.SuspendLayout();
+            this.textBoxPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // mainMenu
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenu.BackColor = System.Drawing.SystemColors.Control;
+            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(761, 24);
-            this.menuStrip1.TabIndex = 8;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mainMenu.Location = new System.Drawing.Point(0, 0);
+            this.mainMenu.Name = "mainMenu";
+            this.mainMenu.Size = new System.Drawing.Size(853, 24);
+            this.mainMenu.TabIndex = 8;
+            this.mainMenu.Text = "menuStrip1";
             // 
             // fileMenu
             // 
@@ -93,28 +103,30 @@
             this.saveMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveMenu.Size = new System.Drawing.Size(138, 22);
             this.saveMenu.Text = "Save";
+            this.saveMenu.Click += new System.EventHandler(this.saveMenu_Click);
             // 
-            // flowLayoutPanel1
+            // topPanel
             // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.label4);
-            this.flowLayoutPanel1.Controls.Add(this.tptSelector);
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.battleActionSelector);
-            this.flowLayoutPanel1.Controls.Add(this.backButton);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(761, 29);
-            this.flowLayoutPanel1.TabIndex = 10;
+            this.topPanel.AutoSize = true;
+            this.topPanel.Controls.Add(this.label4);
+            this.topPanel.Controls.Add(this.tptSelector);
+            this.topPanel.Controls.Add(this.label1);
+            this.topPanel.Controls.Add(this.battleActionSelector);
+            this.topPanel.Controls.Add(this.backButton);
+            this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topPanel.Location = new System.Drawing.Point(0, 24);
+            this.topPanel.Name = "topPanel";
+            this.topPanel.Size = new System.Drawing.Size(853, 29);
+            this.topPanel.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 0);
+            this.label4.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.label4.Size = new System.Drawing.Size(63, 25);
+            this.label4.Padding = new System.Windows.Forms.Padding(3, 7, 0, 6);
+            this.label4.Size = new System.Drawing.Size(60, 26);
             this.label4.TabIndex = 14;
             this.label4.Text = "TPT entry:";
             // 
@@ -122,7 +134,7 @@
             // 
             this.tptSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tptSelector.FormattingEnabled = true;
-            this.tptSelector.Location = new System.Drawing.Point(72, 4);
+            this.tptSelector.Location = new System.Drawing.Point(66, 4);
             this.tptSelector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
             this.tptSelector.Name = "tptSelector";
             this.tptSelector.Size = new System.Drawing.Size(238, 21);
@@ -132,10 +144,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(316, 0);
+            this.label1.Location = new System.Drawing.Point(310, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.label1.Size = new System.Drawing.Size(75, 25);
+            this.label1.Padding = new System.Windows.Forms.Padding(3, 7, 0, 6);
+            this.label1.Size = new System.Drawing.Size(72, 26);
             this.label1.TabIndex = 11;
             this.label1.Text = "Battle action:";
             // 
@@ -143,7 +156,7 @@
             // 
             this.battleActionSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.battleActionSelector.FormattingEnabled = true;
-            this.battleActionSelector.Location = new System.Drawing.Point(397, 4);
+            this.battleActionSelector.Location = new System.Drawing.Point(385, 4);
             this.battleActionSelector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
             this.battleActionSelector.Name = "battleActionSelector";
             this.battleActionSelector.Size = new System.Drawing.Size(238, 21);
@@ -153,7 +166,7 @@
             // backButton
             // 
             this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.backButton.Location = new System.Drawing.Point(641, 3);
+            this.backButton.Location = new System.Drawing.Point(629, 3);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 23);
             this.backButton.TabIndex = 12;
@@ -161,90 +174,56 @@
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // panel2
+            // mainPanel
             // 
-            this.panel2.AutoSize = true;
-            this.panel2.Controls.Add(this.textSplitContainer);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 53);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(761, 560);
-            this.panel2.TabIndex = 11;
+            this.mainPanel.AutoSize = true;
+            this.mainPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.mainPanel.Controls.Add(this.mainSplitContainer);
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Location = new System.Drawing.Point(0, 53);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(853, 540);
+            this.mainPanel.TabIndex = 11;
             // 
-            // textSplitContainer
+            // mainSplitContainer
             // 
-            this.textSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.textSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.textSplitContainer.Location = new System.Drawing.Point(0, 0);
-            this.textSplitContainer.Name = "textSplitContainer";
+            this.mainSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.mainSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.mainSplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.mainSplitContainer.Name = "mainSplitContainer";
             // 
-            // textSplitContainer.Panel1
+            // mainSplitContainer.Panel1
             // 
-            this.textSplitContainer.Panel1.AutoScroll = true;
-            this.textSplitContainer.Panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.textSplitContainer.Panel1.Controls.Add(this.previewSplitContainer);
+            this.mainSplitContainer.Panel1.AutoScroll = true;
+            this.mainSplitContainer.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.mainSplitContainer.Panel1.Controls.Add(this.leftSplitContainer);
             // 
-            // textSplitContainer.Panel2
+            // mainSplitContainer.Panel2
             // 
-            this.textSplitContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.textSplitContainer.Panel2.Controls.Add(this.codeSplitContainer);
-            this.textSplitContainer.Panel2.Controls.Add(this.gameSelectorPanel);
-            this.textSplitContainer.Size = new System.Drawing.Size(761, 560);
-            this.textSplitContainer.SplitterDistance = 535;
-            this.textSplitContainer.TabIndex = 6;
+            this.mainSplitContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.mainSplitContainer.Panel2.Controls.Add(this.codeSplitContainer);
+            this.mainSplitContainer.Panel2.Controls.Add(this.gameSelectorPanel);
+            this.mainSplitContainer.Size = new System.Drawing.Size(853, 540);
+            this.mainSplitContainer.SplitterDistance = 627;
+            this.mainSplitContainer.TabIndex = 6;
             // 
-            // previewSplitContainer
+            // leftSplitContainer
             // 
-            this.previewSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.previewSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.previewSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.previewSplitContainer.Location = new System.Drawing.Point(0, 0);
-            this.previewSplitContainer.Name = "previewSplitContainer";
-            this.previewSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.leftSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.leftSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.leftSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.leftSplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.leftSplitContainer.Name = "leftSplitContainer";
+            this.leftSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // previewSplitContainer.Panel1
+            // leftSplitContainer.Panel1
             // 
-            this.previewSplitContainer.Panel1.AutoScroll = true;
-            this.previewSplitContainer.Panel1.Controls.Add(this.ebString);
-            this.previewSplitContainer.Panel1.Controls.Add(this.m12String);
-            this.previewSplitContainer.Panel1.Controls.Add(this.m12StringEnglish);
-            this.previewSplitContainer.Size = new System.Drawing.Size(535, 560);
-            this.previewSplitContainer.SplitterDistance = 432;
-            this.previewSplitContainer.TabIndex = 5;
-            // 
-            // ebString
-            // 
-            this.ebString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ebString.Location = new System.Drawing.Point(3, 6);
-            this.ebString.Multiline = true;
-            this.ebString.Name = "ebString";
-            this.ebString.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ebString.Size = new System.Drawing.Size(525, 128);
-            this.ebString.TabIndex = 2;
-            // 
-            // m12String
-            // 
-            this.m12String.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.m12String.Location = new System.Drawing.Point(3, 140);
-            this.m12String.Multiline = true;
-            this.m12String.Name = "m12String";
-            this.m12String.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.m12String.Size = new System.Drawing.Size(525, 128);
-            this.m12String.TabIndex = 3;
-            // 
-            // m12StringEnglish
-            // 
-            this.m12StringEnglish.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.m12StringEnglish.Location = new System.Drawing.Point(3, 274);
-            this.m12StringEnglish.Multiline = true;
-            this.m12StringEnglish.Name = "m12StringEnglish";
-            this.m12StringEnglish.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.m12StringEnglish.Size = new System.Drawing.Size(525, 128);
-            this.m12StringEnglish.TabIndex = 4;
+            this.leftSplitContainer.Panel1.Controls.Add(this.textBoxPanel);
+            this.leftSplitContainer.Panel1.Controls.Add(this.lineOpsPanel);
+            this.leftSplitContainer.Size = new System.Drawing.Size(627, 540);
+            this.leftSplitContainer.SplitterDistance = 451;
+            this.leftSplitContainer.TabIndex = 5;
             // 
             // codeSplitContainer
             // 
@@ -263,8 +242,8 @@
             // 
             this.codeSplitContainer.Panel2.Controls.Add(this.referenceList);
             this.codeSplitContainer.Panel2.Controls.Add(this.label3);
-            this.codeSplitContainer.Size = new System.Drawing.Size(222, 527);
-            this.codeSplitContainer.SplitterDistance = 244;
+            this.codeSplitContainer.Size = new System.Drawing.Size(222, 507);
+            this.codeSplitContainer.SplitterDistance = 233;
             this.codeSplitContainer.TabIndex = 1;
             // 
             // codeList
@@ -276,7 +255,7 @@
             this.codeList.Name = "codeList";
             this.codeList.ReadOnly = true;
             this.codeList.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.codeList.Size = new System.Drawing.Size(218, 221);
+            this.codeList.Size = new System.Drawing.Size(218, 210);
             this.codeList.TabIndex = 1;
             // 
             // label2
@@ -297,7 +276,7 @@
             this.referenceList.FormattingEnabled = true;
             this.referenceList.Location = new System.Drawing.Point(0, 19);
             this.referenceList.Name = "referenceList";
-            this.referenceList.Size = new System.Drawing.Size(218, 256);
+            this.referenceList.Size = new System.Drawing.Size(218, 247);
             this.referenceList.TabIndex = 2;
             this.referenceList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.referenceList_MouseDoubleClick);
             // 
@@ -334,6 +313,7 @@
             this.ebSelector.Text = "EB";
             this.ebSelector.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ebSelector.UseVisualStyleBackColor = true;
+            this.ebSelector.CheckedChanged += new System.EventHandler(this.gameSelector_CheckedChanged);
             // 
             // m12Selector
             // 
@@ -347,33 +327,125 @@
             this.m12Selector.Text = "M12";
             this.m12Selector.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.m12Selector.UseVisualStyleBackColor = true;
+            this.m12Selector.CheckedChanged += new System.EventHandler(this.gameSelector_CheckedChanged);
+            // 
+            // statusBar
+            // 
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.statusBar.Location = new System.Drawing.Point(0, 593);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(853, 22);
+            this.statusBar.TabIndex = 7;
+            this.statusBar.Text = "statusStrip1";
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(0, 17);
+            // 
+            // writeTimer
+            // 
+            this.writeTimer.Enabled = true;
+            this.writeTimer.Interval = 10000;
+            this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
+            // 
+            // lineOpsPanel
+            // 
+            this.lineOpsPanel.AutoSize = true;
+            this.lineOpsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lineOpsPanel.Controls.Add(this.copyCodesButton);
+            this.lineOpsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lineOpsPanel.Location = new System.Drawing.Point(0, 414);
+            this.lineOpsPanel.Name = "lineOpsPanel";
+            this.lineOpsPanel.Size = new System.Drawing.Size(623, 33);
+            this.lineOpsPanel.TabIndex = 9;
+            // 
+            // textBoxPanel
+            // 
+            this.textBoxPanel.AutoScroll = true;
+            this.textBoxPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.textBoxPanel.Controls.Add(this.ebString);
+            this.textBoxPanel.Controls.Add(this.m12String);
+            this.textBoxPanel.Controls.Add(this.m12StringEnglish);
+            this.textBoxPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxPanel.Location = new System.Drawing.Point(0, 0);
+            this.textBoxPanel.Name = "textBoxPanel";
+            this.textBoxPanel.Size = new System.Drawing.Size(623, 414);
+            this.textBoxPanel.TabIndex = 10;
+            // 
+            // ebString
+            // 
+            this.ebString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ebString.Location = new System.Drawing.Point(3, 4);
+            this.ebString.Multiline = true;
+            this.ebString.Name = "ebString";
+            this.ebString.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ebString.Size = new System.Drawing.Size(613, 128);
+            this.ebString.TabIndex = 9;
+            // 
+            // m12String
+            // 
+            this.m12String.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.m12String.Location = new System.Drawing.Point(3, 138);
+            this.m12String.Multiline = true;
+            this.m12String.Name = "m12String";
+            this.m12String.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.m12String.Size = new System.Drawing.Size(613, 128);
+            this.m12String.TabIndex = 10;
+            // 
+            // m12StringEnglish
+            // 
+            this.m12StringEnglish.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.m12StringEnglish.Location = new System.Drawing.Point(3, 272);
+            this.m12StringEnglish.Multiline = true;
+            this.m12StringEnglish.Name = "m12StringEnglish";
+            this.m12StringEnglish.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.m12StringEnglish.Size = new System.Drawing.Size(613, 128);
+            this.m12StringEnglish.TabIndex = 11;
+            // 
+            // copyCodesButton
+            // 
+            this.copyCodesButton.AutoSize = true;
+            this.copyCodesButton.Location = new System.Drawing.Point(3, 3);
+            this.copyCodesButton.Name = "copyCodesButton";
+            this.copyCodesButton.Size = new System.Drawing.Size(124, 23);
+            this.copyCodesButton.TabIndex = 0;
+            this.copyCodesButton.Text = "Copy codes and labels";
+            this.copyCodesButton.UseVisualStyleBackColor = true;
+            this.copyCodesButton.Click += new System.EventHandler(this.copyCodesButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 613);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.ClientSize = new System.Drawing.Size(853, 615);
+            this.Controls.Add(this.mainPanel);
+            this.Controls.Add(this.topPanel);
+            this.Controls.Add(this.mainMenu);
+            this.Controls.Add(this.statusBar);
+            this.MainMenuStrip = this.mainMenu;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MOTHER 1+2 Funland";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.textSplitContainer.Panel1.ResumeLayout(false);
-            this.textSplitContainer.Panel2.ResumeLayout(false);
-            this.textSplitContainer.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textSplitContainer)).EndInit();
-            this.textSplitContainer.ResumeLayout(false);
-            this.previewSplitContainer.Panel1.ResumeLayout(false);
-            this.previewSplitContainer.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.previewSplitContainer)).EndInit();
-            this.previewSplitContainer.ResumeLayout(false);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.mainMenu.ResumeLayout(false);
+            this.mainMenu.PerformLayout();
+            this.topPanel.ResumeLayout(false);
+            this.topPanel.PerformLayout();
+            this.mainPanel.ResumeLayout(false);
+            this.mainSplitContainer.Panel1.ResumeLayout(false);
+            this.mainSplitContainer.Panel2.ResumeLayout(false);
+            this.mainSplitContainer.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).EndInit();
+            this.mainSplitContainer.ResumeLayout(false);
+            this.leftSplitContainer.Panel1.ResumeLayout(false);
+            this.leftSplitContainer.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.leftSplitContainer)).EndInit();
+            this.leftSplitContainer.ResumeLayout(false);
             this.codeSplitContainer.Panel1.ResumeLayout(false);
             this.codeSplitContainer.Panel1.PerformLayout();
             this.codeSplitContainer.Panel2.ResumeLayout(false);
@@ -381,6 +453,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.codeSplitContainer)).EndInit();
             this.codeSplitContainer.ResumeLayout(false);
             this.gameSelectorPanel.ResumeLayout(false);
+            this.statusBar.ResumeLayout(false);
+            this.statusBar.PerformLayout();
+            this.lineOpsPanel.ResumeLayout(false);
+            this.lineOpsPanel.PerformLayout();
+            this.textBoxPanel.ResumeLayout(false);
+            this.textBoxPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,21 +466,18 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem fileMenu;
         private System.Windows.Forms.ToolStripMenuItem saveMenu;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel topPanel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox battleActionSelector;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.ComboBox tptSelector;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.SplitContainer textSplitContainer;
-        private System.Windows.Forms.SplitContainer previewSplitContainer;
-        private System.Windows.Forms.TextBox ebString;
-        private System.Windows.Forms.TextBox m12String;
-        private System.Windows.Forms.TextBox m12StringEnglish;
+        private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.SplitContainer mainSplitContainer;
+        private System.Windows.Forms.SplitContainer leftSplitContainer;
         private System.Windows.Forms.SplitContainer codeSplitContainer;
         private System.Windows.Forms.TextBox codeList;
         private System.Windows.Forms.Label label2;
@@ -411,6 +486,15 @@
         private System.Windows.Forms.FlowLayoutPanel gameSelectorPanel;
         private System.Windows.Forms.RadioButton ebSelector;
         private System.Windows.Forms.RadioButton m12Selector;
+        private System.Windows.Forms.StatusStrip statusBar;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        private System.Windows.Forms.Timer writeTimer;
+        private System.Windows.Forms.Panel textBoxPanel;
+        private System.Windows.Forms.TextBox ebString;
+        private System.Windows.Forms.TextBox m12String;
+        private System.Windows.Forms.TextBox m12StringEnglish;
+        private System.Windows.Forms.FlowLayoutPanel lineOpsPanel;
+        private System.Windows.Forms.Button copyCodesButton;
     }
 }
 
