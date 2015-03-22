@@ -7,21 +7,20 @@ using System.IO;
 
 namespace ScriptTool
 {
-    class M12Decompiler : IDecompiler
+    class Decompiler : IDecompiler
     {
-        private static IEnumerable<IControlCode> controlCodes;
-        private static string[] charLookup;
-
+        public IEnumerable<IControlCode> ControlCodes { get; set; }
+        public IDictionary<byte, string> CharLookup { get; set; }
         public LabelMap LabelMap { get; set; }
+        public Func<byte[], int, bool> ControlCodePredicate { get; set; }
 
-        static M12Decompiler()
+        public Decompiler(IEnumerable<IControlCode> controlCodes, IDictionary<byte, string> charLookup,
+            Func<byte[], int, bool> controlCodePredicate)
         {
-            controlCodes = M12ControlCode.Codes;
-            charLookup = File.ReadAllLines("m12-text-table.txt");
-        }
+            ControlCodes = controlCodes;
+            CharLookup = charLookup;
+            ControlCodePredicate = controlCodePredicate;
 
-        public M12Decompiler()
-        {
             LabelMap = new LabelMap();
         }
 
@@ -33,9 +32,9 @@ namespace ScriptTool
             int address = startAddress;
             while (address < endAddress)
             {
-                if (rom[address + 1] == 0xFF)
+                if (ControlCodePredicate(rom, address))
                 {
-                    IControlCode code = controlCodes.FirstOrDefault(c => c.IsMatch(rom, address));
+                    IControlCode code = ControlCodes.FirstOrDefault(c => c.IsMatch(rom, address));
 
                     if (code == null)
                         throw new Exception("Control code not found");
@@ -82,21 +81,29 @@ namespace ScriptTool
                     builder.Append('^');
                 }
 
-                if (rom[address + 1] == 0xFF)
+                if (ControlCodePredicate(rom, address))
                 {
-                    IControlCode code = (M12ControlCode)controlCodes.FirstOrDefault(c => c.IsMatch(rom, address));
+                    IControlCode code = ControlCodes.FirstOrDefault(c => c.IsMatch(rom, address));
 
                     if (code == null)
                         throw new Exception("Control code not found");
 
-                    IList<CodeString> codeStrings = code.GetCodeStrings(rom, address);
-                    var filtered = codeStrings.Select(cs => FilterCodeString(cs)).ToArray();
-
-                    builder.Append(String.Format("[{0}]", String.Join(" ", filtered)));
-
-                    if (newLines && code.IsEnd)
+                    // Check if it's compressed text
+                    if (code.IsCompressedString)
                     {
-                        builder.AppendLine();
+                        builder.Append(code.GetCompressedString(rom, address));
+                    }
+                    else
+                    {
+                        IList<CodeString> codeStrings = code.GetCodeStrings(rom, address);
+                        var filtered = codeStrings.Select(cs => FilterCodeString(cs)).ToArray();
+
+                        builder.Append(String.Format("[{0}]", String.Join(" ", filtered)));
+
+                        if (newLines && code.IsEnd)
+                        {
+                            builder.AppendLine();
+                        }
                     }
 
                     address += code.ComputeLength(rom, address);
@@ -111,7 +118,7 @@ namespace ScriptTool
                 }
                 else
                 {
-                    builder.Append(CharLookup(rom[address++]));
+                    builder.Append(GetChar(rom[address++]));
                 }
 
                 if (!readUntilEnd && address >= endAddress)
@@ -135,13 +142,13 @@ namespace ScriptTool
             {
                 if (rom[address] == 0 && rom[address + 1] == 0xFF)
                 {
-                    builder.AppendLine("[00 FF]");
+                    builder.Append("[00 FF]");
                     ended = true;
                     address += 2;
                 }
                 else if (rom[address] != 0xFF)
                 {
-                    builder.AppendLine(CharLookup(rom[address++]));
+                    builder.Append(GetChar(rom[address++]));
                 }
                 else
                 {
@@ -152,17 +159,15 @@ namespace ScriptTool
             return builder.ToString();
         }
 
-        public string CharLookup(byte value)
+        public string GetChar(byte value)
         {
-            if ((value >= 83 && value <= 95) ||
-                (value >= 180 && value <= 191) ||
-                value == 255)
+            if (!CharLookup.ContainsKey(value))
             {
                 // Invalid
                 throw new Exception("Invalid character");
             }
 
-            return charLookup[value];
+            return CharLookup[value];
         }
     }
 }

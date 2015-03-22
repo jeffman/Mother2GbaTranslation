@@ -8,8 +8,10 @@ namespace ScriptTool
 {
     public interface ICompiler
     {
-        IList<string> ScanString(string str, bool scanCodesOnly);
-        IList<string> ScanString(string str, ref int referenceAddress, bool scanCodesOnly);
-        void CompileString(string str, IList<byte> buffer, ref int referenceAddress);
+        void ScanString(string str, IDictionary<byte, string> charLookup, bool scanCodesOnly,
+            out IList<string> references, out ISet<IControlCode> controlCodes);
+        void ScanString(string str, ref int referenceAddress, IDictionary<byte, string> charLookup, bool scanCodesOnly,
+            out IList<string> references, out ISet<IControlCode> controlCodes);
+        void CompileString(string str, IList<byte> buffer, ref int referenceAddress, IDictionary<byte, string> charLookup);
     }
 }

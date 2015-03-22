@@ -18,10 +18,14 @@ namespace ScriptTool
         static byte[] m12Rom;
 
         // Decompiler setup
-        static M12Decompiler m12Decompiler;
+        static Decompiler m12Decompiler;
+        static Decompiler ebDecompiler;
+
+        static IDictionary<byte, string> m12CharLookup;
+        static IDictionary<byte, string> ebCharLookup;
 
         // Compiler setup
-        static M12Compiler m12Compiler;
+        static Compiler m12Compiler;
         static StreamWriter IncludeFile;
 
         static void Main(string[] args)
@@ -33,9 +37,14 @@ namespace ScriptTool
                 return;
             }
 
+            m12CharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("m12-char-lookup.json"));
+            ebCharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("eb-char-lookup.json"));
+
             if (options.Command == CommandType.Decompile)
             {
-                m12Decompiler = new M12Decompiler();
+                // Set up decompilers
+                m12Decompiler = new Decompiler(M12ControlCode.Codes, m12CharLookup, (rom, address) => rom[address + 1] == 0xFF);
+                ebDecompiler = new Decompiler(EbControlCode.Codes, ebCharLookup, (rom, address) => rom[address] < 0x20);
 
                 // Load ROMs
                 ebRom = File.ReadAllBytes(options.EbRom);
@@ -51,13 +60,14 @@ namespace ScriptTool
                 // Decompile main string tables
                 if (options.DoMainText)
                 {
-                    //DecompileEb();
+                    DecompileEb();
                     DecompileM12();
                 }
             }
             else if (options.Command == CommandType.Compile)
             {
-                m12Compiler = new M12Compiler();
+                // Set up compilers
+                m12Compiler = new Compiler(M12ControlCode.Codes, (rom, address) => rom[address + 1] == 0xFF);
 
                 using (IncludeFile = File.CreateText(Path.Combine(options.WorkingDirectory, "m12-includes.asm")))
                 {
@@ -149,13 +159,14 @@ namespace ScriptTool
             };
         }
 
-        /*static void DecompileEb(byte[] ebRom, string workingDirectory)
+        static void DecompileEb()
         {
-            var context = new DecompileContext();
-
             // Pull all string refs from the ROM
             var allRefs = new List<Tuple<string, MainStringRef[]>>();
-            allRefs.Add(Tuple.Create("eb-tpt", EbTextTables.ReadTptRefs(ebRom)));
+
+            var tptTuple = EbTextTables.ReadTptRefs(ebRom);
+            allRefs.Add(Tuple.Create("eb-tpt-primary", tptTuple.Item1));
+            allRefs.Add(Tuple.Create("eb-tpt-secondary", tptTuple.Item2));
             allRefs.Add(Tuple.Create("eb-battle-actions", EbTextTables.ReadBattleActionRefs(ebRom)));
             allRefs.Add(Tuple.Create("eb-prayers", EbTextTables.ReadPrayerRefs(ebRom)));
             allRefs.Add(Tuple.Create("eb-item-help", EbTextTables.ReadItemHelpRefs(ebRom)));
@@ -164,28 +175,42 @@ namespace ScriptTool
             allRefs.Add(Tuple.Create("eb-enemy-encounters", EbTextTables.ReadEnemyTextRefs(ebRom)));
 
             // Decompile
-            var allPointers = allRefs.SelectMany(rl => rl.Item2).Select(r => r.OldPointer).ToArray();
-            ebDecompiler.Decompile(ebRom, allPointers, context);
+            var allPointers = allRefs.SelectMany(rl => rl.Item2).Select(r => r.OldPointer);
+            ebDecompiler.LabelMap.AddRange(allPointers);
+
+            IList<int[]> textRanges = new List<int[]>();
+            textRanges.Add(new int[] { 0x50000, 0x5FFEC });
+            textRanges.Add(new int[] { 0x60000, 0x6FFE3 });
+            textRanges.Add(new int[] { 0x70000, 0x7FF40 });
+            textRanges.Add(new int[] { 0x80000, 0x8BC2D });
+            textRanges.Add(new int[] { 0x8D9ED, 0x8FFF3 });
+            textRanges.Add(new int[] { 0x90000, 0x9FF2F });
+            textRanges.Add(new int[] { 0x2F4E20, 0x2FA460 });
+
+            var strings = new List<string>();
+            foreach (var range in textRanges)
+            {
+                ebDecompiler.ScanRange(ebRom, range[0], range[1]);
+            }
+
+            foreach (var range in textRanges)
+            {
+                strings.Add(ebDecompiler.DecompileRange(ebRom, range[0], range[1], true));
+            }
 
             // Update labels for all refs and write to JSON
             foreach (var refList in allRefs)
             {
                 foreach (var stringRef in refList.Item2)
-                    stringRef.Label = context.LabelMap[stringRef.OldPointer];
+                    stringRef.Label = ebDecompiler.LabelMap.Labels[stringRef.OldPointer];
 
-                File.WriteAllText(Path.Combine(workingDirectory, refList.Item1 + ".json"), JsonConvert.SerializeObject(refList.Item2, Formatting.Indented));
+                File.WriteAllText(Path.Combine(options.WorkingDirectory, refList.Item1 + ".json"),
+                    JsonConvert.SerializeObject(refList.Item2, Formatting.Indented));
             }
 
             // Write the strings
-            File.WriteAllText(Path.Combine(workingDirectory, "eb-strings.txt"), String.Join(Environment.NewLine, context.Strings));
+            File.WriteAllText(Path.Combine(options.WorkingDirectory, "eb-strings.txt"), String.Join(Environment.NewLine, strings));
         }
-
-        static void DecompileEbMisc(byte[] ebRom, string workingDirectory)
-        {
-            // Enemy names
-            var enemyNames = EbTextTables.ReadEnemyNames(ebRom);
-            DecompileFixedStringCollection(ebDecompiler, ebRom, workingDirectory, "eb-enemynames", enemyNames);
-        }*/
 
         static void DecompileM12()
         {
@@ -314,14 +339,15 @@ namespace ScriptTool
             string m12Strings = File.ReadAllText(Path.Combine(options.WorkingDirectory, "m12-strings-english.txt"));
 
             // Compile
-            m12Compiler.ScanString(m12Strings, ref referenceAddress, false);
+            m12Compiler.ScanString(m12Strings, ref referenceAddress, ebCharLookup, false);
             referenceAddress = baseAddress;
-            m12Compiler.CompileString(m12Strings, buffer, ref referenceAddress);
+            m12Compiler.CompileString(m12Strings, buffer, ref referenceAddress, ebCharLookup);
             File.WriteAllBytes(Path.Combine(options.WorkingDirectory, "m12-main-strings.bin"), buffer.ToArray());
 
             // Update labels
             string[] labelFiles = {
-                                      "m12-tpt",
+                                      "m12-tpt-primary",
+                                      "m12-tpt-secondary",
                                       "m12-psihelp",
                                       "m12-battle-actions",
                                       "m12-itemhelp",
@@ -419,7 +445,7 @@ namespace ScriptTool
                     offsetFile.WriteLine(String.Format("org ${0:X}; dd ${1:X8}",
                         str.OffsetLocation | 0x8000000, referenceAddress - stringCollection.StringsLocation));
 
-                    m12Compiler.CompileString(str.New, buffer, ref referenceAddress);
+                    m12Compiler.CompileString(str.New, buffer, ref referenceAddress, ebCharLookup);
                 }
             }
 
@@ -459,7 +485,7 @@ namespace ScriptTool
                 foreach (var str in stringCollection.StringRefs.OrderBy(s => s.Index))
                 {
                     newPointers.Add(referenceAddress);
-                    m12Compiler.CompileString(str.New, buffer, ref referenceAddress, stringCollection.EntryLength);
+                    m12Compiler.CompileString(str.New, buffer, ref referenceAddress, ebCharLookup, stringCollection.EntryLength);
                 }
             }
 

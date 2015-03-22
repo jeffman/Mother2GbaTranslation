@@ -9,13 +9,8 @@ namespace ScriptTool
 {
     public class MiscStringRef
     {
-        [JsonConverter(typeof(JsonHexConverter))]
         public int Index { get; set; }
-
-        [JsonConverter(typeof(JsonHexConverter))]
         public int OffsetLocation { get; set; }
-
-        [JsonConverter(typeof(JsonHexConverter))]
         public int OldPointer { get; set; }
 
         public bool BasicMode { get; set; }

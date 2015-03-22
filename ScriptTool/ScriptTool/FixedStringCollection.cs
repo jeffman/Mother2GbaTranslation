@@ -9,7 +9,6 @@ namespace ScriptTool
 {
     public class FixedStringCollection
     {
-        [JsonConverter(typeof(JsonHexConverter))]
         public int StringsLocation { get; set; }
 
         public IList<int> TablePointers { get; set; }

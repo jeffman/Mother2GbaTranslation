@@ -8,47 +8,60 @@ using Newtonsoft.Json;
 
 namespace ScriptTool
 {
-    public class M12ControlCode : IControlCode, IComparable, IComparable<M12ControlCode>
+    public class EbControlCode : IControlCode, IComparable, IComparable<EbControlCode>
     {
         public static IEnumerable<IControlCode> Codes { get; private set; }
+        private static string[][] compressedStrings;
 
-        public byte Identifier { get; set; }
+        public IList<byte> Identifier { get; set; }
         public string Description { get; set; }
         public bool IsEnd { get; set; }
+        public bool IsCompressedString { get; set; }
         public int Length { get; set; }
         public bool IsVariableLength { get; set; }
         public int ReferenceOffset { get; set; }
+        public int CountOffset { get; set; }
         public bool HasReferences { get; set; }
-        public bool AbsoluteAddressing { get; set; }
-        public bool IsCompressedString { get { return false; } }
+        public bool AbsoluteAddressing { get { return true; } }
 
-        static M12ControlCode()
+        static EbControlCode()
         {
-            Codes = JsonConvert.DeserializeObject<List<M12ControlCode>>(
-                File.ReadAllText("m12-codelist.json"));
+            // Load compressed strings
+            compressedStrings = new string[3][];
+            string[] stringsFromFile = File.ReadAllLines(@"eb-compressed-strings.txt");
+            compressedStrings[0] = stringsFromFile.Take(0x100).ToArray();
+            compressedStrings[1] = stringsFromFile.Skip(0x100).Take(0x100).ToArray();
+            compressedStrings[2] = stringsFromFile.Skip(0x200).Take(0x100).ToArray();
+
+            // Load codes
+            Codes = JsonConvert.DeserializeObject<List<EbControlCode>>(
+                File.ReadAllText("eb-codelist.json"));
         }
 
         public bool IsMatch(byte[] rom, int address)
         {
-            return rom[address] == Identifier &&
-                rom[address + 1] == 0xFF;
+            for (int i = 0; i < Identifier.Count; i++)
+                if (rom[address + i] != Identifier[i])
+                    return false;
+
+            return true;
         }
 
         public bool IsMatch(string[] codeStrings)
         {
-            if (codeStrings == null || codeStrings.Length < 2)
+            if (codeStrings == null || codeStrings.Length < Identifier.Count)
                 return false;
 
-            byte value1 = Convert.ToByte(codeStrings[0], 16);
-            byte value2 = Convert.ToByte(codeStrings[1], 16);
+            for (int i = 0; i < Identifier.Count; i++)
+                if (Convert.ToByte(codeStrings[i], 16) != Identifier[i])
+                    return false;
 
-            return value1 == Identifier && value2 == 0xFF;
+            return true;
         }
 
-        // Assumes the code has already been matched
         public bool IsValid(string[] codeStrings)
         {
-            if (codeStrings == null || codeStrings.Length < 2)
+            if (codeStrings == null || codeStrings.Length < 1)
                 return false;
 
             if (!HasReferences)
@@ -57,7 +70,7 @@ namespace ScriptTool
                     return false;
 
                 // Check that each codestring is a byte
-                for (int i = 2; i < codeStrings.Length; i++)
+                for (int i = Identifier.Count; i < codeStrings.Length; i++)
                 {
                     if (!Compiler.IsHexByte(codeStrings[i]))
                         return false;
@@ -65,12 +78,12 @@ namespace ScriptTool
             }
             else
             {
-                // If there's at least one reference, then there must be at least 6 code strings
-                if (codeStrings.Length < 6)
+                // If there's at least one reference, then there must be at least 5 code strings
+                if (codeStrings.Length < 5)
                     return false;
 
                 // Check bytes before references
-                for (int i = 2; i < ReferenceOffset; i++)
+                for (int i = Identifier.Count; i < ReferenceOffset; i++)
                 {
                     if (!Compiler.IsHexByte(codeStrings[i]))
                         return false;
@@ -80,13 +93,13 @@ namespace ScriptTool
                 int numReferences;
                 if (!IsVariableLength)
                 {
-                    numReferences = 1;
+                    numReferences = (Length - ReferenceOffset) / 4;
                 }
                 else
                 {
                     byte count;
 
-                    if (!byte.TryParse(codeStrings[2], System.Globalization.NumberStyles.HexNumber,
+                    if (!byte.TryParse(codeStrings[CountOffset], System.Globalization.NumberStyles.HexNumber,
                         null, out count))
                         return false;
 
@@ -123,17 +136,14 @@ namespace ScriptTool
             }
             else
             {
-                byte count = rom[address + 2];
-                return (count * 4) + 3;
+                int count = rom[address + CountOffset];
+                return (count * 4) + 1 + Identifier.Count;
             }
         }
 
         private int GetReference(byte[] rom, int referenceAddress)
         {
-            if (AbsoluteAddressing)
-                return rom.ReadGbaPointer(referenceAddress);
-            else
-                return rom.ReadInt(referenceAddress) + referenceAddress;
+            return rom.ReadSnesPointer(referenceAddress);
         }
 
         public IList<int> GetReferences(byte[] rom, int address)
@@ -145,11 +155,12 @@ namespace ScriptTool
 
             if (!IsVariableLength)
             {
-                refs.Add(GetReference(rom, address + ReferenceOffset));
+                for (int i = ReferenceOffset; i < Length; i += 4)
+                    refs.Add(GetReference(rom, address + i));
             }
             else
             {
-                byte count = rom[address + 2];
+                int count = rom[address + CountOffset];
                 for (int i = 0; i < count; i++)
                 {
                     refs.Add(GetReference(rom, address + ReferenceOffset + (i * 4)));
@@ -163,15 +174,15 @@ namespace ScriptTool
         {
             var codeStrings = new List<CodeString>();
 
-            codeStrings.Add(new CodeByte(Identifier));
-            codeStrings.Add(new CodeByte(0xFF));
+            foreach (var b in Identifier)
+                codeStrings.Add(new CodeByte(b));
 
             int length = ComputeLength(rom, address);
 
             if (!HasReferences)
             {
                 // Direct copy
-                for (int i = 2; i < length; i++)
+                for (int i = Identifier.Count; i < length; i++)
                 {
                     codeStrings.Add(new CodeByte(rom[address + i]));
                 }
@@ -182,7 +193,7 @@ namespace ScriptTool
                 var references = GetReferences(rom, address);
 
                 // Copy bytes before reference
-                for (int i = 2; i < ReferenceOffset; i++)
+                for (int i = Identifier.Count; i < ReferenceOffset; i++)
                 {
                     codeStrings.Add(new CodeByte(rom[address + i]));
                 }
@@ -216,16 +227,7 @@ namespace ScriptTool
                         throw new Exception("Reference is empty");
 
                     string label = codeString.Substring(1, codeString.Length - 2);
-                    int pointer = addressMap[label];
-
-                    if (!AbsoluteAddressing)
-                    {
-                        pointer -= referenceAddress;
-                    }
-                    else
-                    {
-                        pointer |= 0x8000000;
-                    }
+                    int pointer = addressMap[label] + 0xC00000;
 
                     if (buffer != null)
                         buffer.AddInt(pointer);
@@ -233,7 +235,7 @@ namespace ScriptTool
                 }
                 else
                 {
-                    byte value = Convert.ToByte(codeString, 16); 
+                    byte value = Convert.ToByte(codeString, 16);
                     buffer.Add(value);
                     referenceAddress++;
                 }
@@ -242,22 +244,70 @@ namespace ScriptTool
 
         public string GetCompressedString(byte[] rom, int address)
         {
-            throw new InvalidOperationException("Code is not a compressed string");
+            return compressedStrings[rom[address] - 0x15][rom[address + 1]];
         }
 
         public override string ToString()
         {
-            return String.Format("[{0:X2} FF]: {1}", Identifier, Description);
+            return String.Format("[{0}]: {1}", String.Join(" ", Identifier.Select(b => b.ToString("X2")).ToArray()), Description);
         }
 
-        public int CompareTo(M12ControlCode other)
+        #region JSON
+        public bool ShouldSerializeIsEnd()
         {
-            return Identifier.CompareTo(other.Identifier);
+            return IsEnd;
+        }
+
+        public bool ShouldSerializeIsCompressedString()
+        {
+            return IsCompressedString;
+        }
+
+        public bool ShouldSerializeIsVariableLength()
+        {
+            return IsVariableLength;
+        }
+
+        public bool ShouldSerializeHasReferences()
+        {
+            return HasReferences;
+        }
+
+        public bool ShouldSerializeAbsoluteAddressing()
+        {
+            return AbsoluteAddressing;
+        }
+
+        public bool ShouldSerializeReferenceOffset()
+        {
+            return HasReferences;
+        }
+
+        public bool ShouldSerializeCountOffset()
+        {
+            return IsVariableLength;
+        }
+
+        #endregion
+
+        public int CompareTo(EbControlCode other)
+        {
+            int numToCheck = Math.Min(Identifier.Count, other.Identifier.Count);
+
+            for (int i = 0; i < numToCheck; i++)
+            {
+                if (Identifier[i] != other.Identifier[i])
+                {
+                    return Identifier[i].CompareTo(other.Identifier[i]);
+                }
+            }
+
+            return 0;
         }
 
         public int CompareTo(object obj)
         {
-            var other = obj as M12ControlCode;
+            var other = obj as EbControlCode;
             if (other == null)
                 throw new Exception("Cannot compare!");
 

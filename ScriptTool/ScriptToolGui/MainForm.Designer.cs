@@ -41,8 +41,13 @@
             this.mainPanel = new System.Windows.Forms.Panel();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.leftSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.textBoxPanel = new System.Windows.Forms.Panel();
+            this.ebString = new System.Windows.Forms.TextBox();
+            this.m12String = new System.Windows.Forms.TextBox();
+            this.m12StringEnglish = new System.Windows.Forms.TextBox();
+            this.lineOpsPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.copyCodesButton = new System.Windows.Forms.Button();
             this.codeSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.codeList = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.referenceList = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,12 +57,7 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.writeTimer = new System.Windows.Forms.Timer(this.components);
-            this.lineOpsPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBoxPanel = new System.Windows.Forms.Panel();
-            this.ebString = new System.Windows.Forms.TextBox();
-            this.m12String = new System.Windows.Forms.TextBox();
-            this.m12StringEnglish = new System.Windows.Forms.TextBox();
-            this.copyCodesButton = new System.Windows.Forms.Button();
+            this.codeList = new System.Windows.Forms.ListBox();
             this.mainMenu.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -68,14 +68,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.leftSplitContainer)).BeginInit();
             this.leftSplitContainer.Panel1.SuspendLayout();
             this.leftSplitContainer.SuspendLayout();
+            this.textBoxPanel.SuspendLayout();
+            this.lineOpsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeSplitContainer)).BeginInit();
             this.codeSplitContainer.Panel1.SuspendLayout();
             this.codeSplitContainer.Panel2.SuspendLayout();
             this.codeSplitContainer.SuspendLayout();
             this.gameSelectorPanel.SuspendLayout();
             this.statusBar.SuspendLayout();
-            this.lineOpsPanel.SuspendLayout();
-            this.textBoxPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -182,7 +182,7 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 53);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(853, 540);
+            this.mainPanel.Size = new System.Drawing.Size(853, 667);
             this.mainPanel.TabIndex = 11;
             // 
             // mainSplitContainer
@@ -204,7 +204,7 @@
             this.mainSplitContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.mainSplitContainer.Panel2.Controls.Add(this.codeSplitContainer);
             this.mainSplitContainer.Panel2.Controls.Add(this.gameSelectorPanel);
-            this.mainSplitContainer.Size = new System.Drawing.Size(853, 540);
+            this.mainSplitContainer.Size = new System.Drawing.Size(853, 667);
             this.mainSplitContainer.SplitterDistance = 627;
             this.mainSplitContainer.TabIndex = 6;
             // 
@@ -221,9 +221,77 @@
             // 
             this.leftSplitContainer.Panel1.Controls.Add(this.textBoxPanel);
             this.leftSplitContainer.Panel1.Controls.Add(this.lineOpsPanel);
-            this.leftSplitContainer.Size = new System.Drawing.Size(627, 540);
-            this.leftSplitContainer.SplitterDistance = 451;
+            this.leftSplitContainer.Size = new System.Drawing.Size(627, 667);
+            this.leftSplitContainer.SplitterDistance = 443;
             this.leftSplitContainer.TabIndex = 5;
+            // 
+            // textBoxPanel
+            // 
+            this.textBoxPanel.AutoScroll = true;
+            this.textBoxPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.textBoxPanel.Controls.Add(this.ebString);
+            this.textBoxPanel.Controls.Add(this.m12String);
+            this.textBoxPanel.Controls.Add(this.m12StringEnglish);
+            this.textBoxPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxPanel.Location = new System.Drawing.Point(0, 0);
+            this.textBoxPanel.Name = "textBoxPanel";
+            this.textBoxPanel.Size = new System.Drawing.Size(623, 406);
+            this.textBoxPanel.TabIndex = 10;
+            // 
+            // ebString
+            // 
+            this.ebString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ebString.Location = new System.Drawing.Point(3, 4);
+            this.ebString.Multiline = true;
+            this.ebString.Name = "ebString";
+            this.ebString.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ebString.Size = new System.Drawing.Size(613, 128);
+            this.ebString.TabIndex = 9;
+            // 
+            // m12String
+            // 
+            this.m12String.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.m12String.Location = new System.Drawing.Point(3, 138);
+            this.m12String.Multiline = true;
+            this.m12String.Name = "m12String";
+            this.m12String.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.m12String.Size = new System.Drawing.Size(613, 128);
+            this.m12String.TabIndex = 10;
+            // 
+            // m12StringEnglish
+            // 
+            this.m12StringEnglish.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.m12StringEnglish.Location = new System.Drawing.Point(3, 272);
+            this.m12StringEnglish.Multiline = true;
+            this.m12StringEnglish.Name = "m12StringEnglish";
+            this.m12StringEnglish.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.m12StringEnglish.Size = new System.Drawing.Size(613, 128);
+            this.m12StringEnglish.TabIndex = 11;
+            // 
+            // lineOpsPanel
+            // 
+            this.lineOpsPanel.AutoSize = true;
+            this.lineOpsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lineOpsPanel.Controls.Add(this.copyCodesButton);
+            this.lineOpsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lineOpsPanel.Location = new System.Drawing.Point(0, 406);
+            this.lineOpsPanel.Name = "lineOpsPanel";
+            this.lineOpsPanel.Size = new System.Drawing.Size(623, 33);
+            this.lineOpsPanel.TabIndex = 9;
+            // 
+            // copyCodesButton
+            // 
+            this.copyCodesButton.AutoSize = true;
+            this.copyCodesButton.Location = new System.Drawing.Point(3, 3);
+            this.copyCodesButton.Name = "copyCodesButton";
+            this.copyCodesButton.Size = new System.Drawing.Size(124, 23);
+            this.copyCodesButton.TabIndex = 0;
+            this.copyCodesButton.Text = "Copy codes and labels";
+            this.copyCodesButton.UseVisualStyleBackColor = true;
+            this.copyCodesButton.Click += new System.EventHandler(this.copyCodesButton_Click);
             // 
             // codeSplitContainer
             // 
@@ -242,21 +310,9 @@
             // 
             this.codeSplitContainer.Panel2.Controls.Add(this.referenceList);
             this.codeSplitContainer.Panel2.Controls.Add(this.label3);
-            this.codeSplitContainer.Size = new System.Drawing.Size(222, 507);
-            this.codeSplitContainer.SplitterDistance = 233;
+            this.codeSplitContainer.Size = new System.Drawing.Size(222, 634);
+            this.codeSplitContainer.SplitterDistance = 292;
             this.codeSplitContainer.TabIndex = 1;
-            // 
-            // codeList
-            // 
-            this.codeList.BackColor = System.Drawing.SystemColors.Window;
-            this.codeList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.codeList.Location = new System.Drawing.Point(0, 19);
-            this.codeList.Multiline = true;
-            this.codeList.Name = "codeList";
-            this.codeList.ReadOnly = true;
-            this.codeList.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.codeList.Size = new System.Drawing.Size(218, 210);
-            this.codeList.TabIndex = 1;
             // 
             // label2
             // 
@@ -274,9 +330,10 @@
             // 
             this.referenceList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.referenceList.FormattingEnabled = true;
+            this.referenceList.HorizontalScrollbar = true;
             this.referenceList.Location = new System.Drawing.Point(0, 19);
             this.referenceList.Name = "referenceList";
-            this.referenceList.Size = new System.Drawing.Size(218, 247);
+            this.referenceList.Size = new System.Drawing.Size(218, 315);
             this.referenceList.TabIndex = 2;
             this.referenceList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.referenceList_MouseDoubleClick);
             // 
@@ -333,7 +390,7 @@
             // 
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusBar.Location = new System.Drawing.Point(0, 593);
+            this.statusBar.Location = new System.Drawing.Point(0, 720);
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(853, 22);
             this.statusBar.TabIndex = 7;
@@ -350,79 +407,21 @@
             this.writeTimer.Interval = 10000;
             this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
             // 
-            // lineOpsPanel
+            // codeList
             // 
-            this.lineOpsPanel.AutoSize = true;
-            this.lineOpsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lineOpsPanel.Controls.Add(this.copyCodesButton);
-            this.lineOpsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lineOpsPanel.Location = new System.Drawing.Point(0, 414);
-            this.lineOpsPanel.Name = "lineOpsPanel";
-            this.lineOpsPanel.Size = new System.Drawing.Size(623, 33);
-            this.lineOpsPanel.TabIndex = 9;
-            // 
-            // textBoxPanel
-            // 
-            this.textBoxPanel.AutoScroll = true;
-            this.textBoxPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.textBoxPanel.Controls.Add(this.ebString);
-            this.textBoxPanel.Controls.Add(this.m12String);
-            this.textBoxPanel.Controls.Add(this.m12StringEnglish);
-            this.textBoxPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxPanel.Location = new System.Drawing.Point(0, 0);
-            this.textBoxPanel.Name = "textBoxPanel";
-            this.textBoxPanel.Size = new System.Drawing.Size(623, 414);
-            this.textBoxPanel.TabIndex = 10;
-            // 
-            // ebString
-            // 
-            this.ebString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ebString.Location = new System.Drawing.Point(3, 4);
-            this.ebString.Multiline = true;
-            this.ebString.Name = "ebString";
-            this.ebString.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ebString.Size = new System.Drawing.Size(613, 128);
-            this.ebString.TabIndex = 9;
-            // 
-            // m12String
-            // 
-            this.m12String.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.m12String.Location = new System.Drawing.Point(3, 138);
-            this.m12String.Multiline = true;
-            this.m12String.Name = "m12String";
-            this.m12String.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.m12String.Size = new System.Drawing.Size(613, 128);
-            this.m12String.TabIndex = 10;
-            // 
-            // m12StringEnglish
-            // 
-            this.m12StringEnglish.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.m12StringEnglish.Location = new System.Drawing.Point(3, 272);
-            this.m12StringEnglish.Multiline = true;
-            this.m12StringEnglish.Name = "m12StringEnglish";
-            this.m12StringEnglish.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.m12StringEnglish.Size = new System.Drawing.Size(613, 128);
-            this.m12StringEnglish.TabIndex = 11;
-            // 
-            // copyCodesButton
-            // 
-            this.copyCodesButton.AutoSize = true;
-            this.copyCodesButton.Location = new System.Drawing.Point(3, 3);
-            this.copyCodesButton.Name = "copyCodesButton";
-            this.copyCodesButton.Size = new System.Drawing.Size(124, 23);
-            this.copyCodesButton.TabIndex = 0;
-            this.copyCodesButton.Text = "Copy codes and labels";
-            this.copyCodesButton.UseVisualStyleBackColor = true;
-            this.copyCodesButton.Click += new System.EventHandler(this.copyCodesButton_Click);
+            this.codeList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.codeList.FormattingEnabled = true;
+            this.codeList.HorizontalScrollbar = true;
+            this.codeList.Location = new System.Drawing.Point(0, 19);
+            this.codeList.Name = "codeList";
+            this.codeList.Size = new System.Drawing.Size(218, 269);
+            this.codeList.TabIndex = 3;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 615);
+            this.ClientSize = new System.Drawing.Size(853, 742);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.topPanel);
             this.Controls.Add(this.mainMenu);
@@ -446,6 +445,10 @@
             this.leftSplitContainer.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leftSplitContainer)).EndInit();
             this.leftSplitContainer.ResumeLayout(false);
+            this.textBoxPanel.ResumeLayout(false);
+            this.textBoxPanel.PerformLayout();
+            this.lineOpsPanel.ResumeLayout(false);
+            this.lineOpsPanel.PerformLayout();
             this.codeSplitContainer.Panel1.ResumeLayout(false);
             this.codeSplitContainer.Panel1.PerformLayout();
             this.codeSplitContainer.Panel2.ResumeLayout(false);
@@ -455,10 +458,6 @@
             this.gameSelectorPanel.ResumeLayout(false);
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
-            this.lineOpsPanel.ResumeLayout(false);
-            this.lineOpsPanel.PerformLayout();
-            this.textBoxPanel.ResumeLayout(false);
-            this.textBoxPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,7 +478,6 @@
         private System.Windows.Forms.SplitContainer mainSplitContainer;
         private System.Windows.Forms.SplitContainer leftSplitContainer;
         private System.Windows.Forms.SplitContainer codeSplitContainer;
-        private System.Windows.Forms.TextBox codeList;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox referenceList;
         private System.Windows.Forms.Label label3;
@@ -495,6 +493,7 @@
         private System.Windows.Forms.TextBox m12StringEnglish;
         private System.Windows.Forms.FlowLayoutPanel lineOpsPanel;
         private System.Windows.Forms.Button copyCodesButton;
+        private System.Windows.Forms.ListBox codeList;
     }
 }
 

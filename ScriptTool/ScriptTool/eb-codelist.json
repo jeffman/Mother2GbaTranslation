@@ -1,0 +1,1736 @@
+[
+  {
+    "Identifier": [
+      0
+    ],
+    "Description": "Line break",
+    "Length": 1
+  },
+  {
+    "Identifier": [
+      1
+    ],
+    "Description": "Start on Blank Line",
+    "Length": 1
+  },
+  {
+    "Identifier": [
+      2
+    ],
+    "Description": "Signal end of block or string",
+    "IsEnd": true,
+    "Length": 1
+  },
+  {
+    "Identifier": [
+      3
+    ],
+    "Description": "Wait with prompt, brief pause in battle",
+    "Length": 1
+  },
+  {
+    "Identifier": [
+      4
+    ],
+    "Description": "Toggle flag $XXXX on",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      5
+    ],
+    "Description": "Toggle flag $XXXX off",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      6
+    ],
+    "Description": "If flag $XXXX is set, jump to address $YYYYYYYY",
+    "Length": 7,
+    "HasReferences": true,
+    "ReferenceOffset": 3
+  },
+  {
+    "Identifier": [
+      7
+    ],
+    "Description": "Set binary flag with the status of flag $XXXX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      8
+    ],
+    "Description": "Parse text at $XXXXXXXX and continue here",
+    "Length": 5,
+    "HasReferences": true,
+    "ReferenceOffset": 1
+  },
+  {
+    "Identifier": [
+      9
+    ],
+    "Description": "Multiple-entry pointer table (Jump to address)",
+    "Length": -1,
+    "IsVariableLength": true,
+    "HasReferences": true,
+    "ReferenceOffset": 2,
+    "CountOffset": 1
+  },
+  {
+    "Identifier": [
+      10
+    ],
+    "Description": "Jump to text at address $XXXXXXXX",
+    "IsEnd": true,
+    "Length": 5,
+    "HasReferences": true,
+    "ReferenceOffset": 1
+  },
+  {
+    "Identifier": [
+      11
+    ],
+    "Description": "Set binary flag to true if number in memory == $XX",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      12
+    ],
+    "Description": "Set binary flag to true if number in memory != $XX",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      13
+    ],
+    "Description": "Copy from memory $XX into argumentative memory",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      14
+    ],
+    "Description": "Input $XX into a memory bank",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      15
+    ],
+    "Description": "Secondary memory +1",
+    "Length": 1
+  },
+  {
+    "Identifier": [
+      16
+    ],
+    "Description": "Pause for ~0.02 sec. * $XX",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      17
+    ],
+    "Description": "Treats text displayed by [1C (07|0C) XX] as a menu",
+    "Length": 1
+  },
+  {
+    "Identifier": [
+      18
+    ],
+    "Description": "Clear current line of text",
+    "Length": 1
+  },
+  {
+    "Identifier": [
+      19
+    ],
+    "Description": "Wait without prompt",
+    "Length": 1
+  },
+  {
+    "Identifier": [
+      20
+    ],
+    "Description": "Wait with prompt in battle",
+    "Length": 1
+  },
+  {
+    "Identifier": [
+      24,
+      0
+    ],
+    "Description": "Closes most recently used text window",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      24,
+      1
+    ],
+    "Description": "Open window",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      24,
+      2
+    ],
+    "Description": "UNKNOWN",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      24,
+      3
+    ],
+    "Description": "Change parsing focus to window $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      24,
+      4
+    ],
+    "Description": "Close all windows",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      24,
+      5
+    ],
+    "Description": "Display text $XX pixels over and $YY lines down",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      24,
+      6
+    ],
+    "Description": "Clear contents from current window",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      24,
+      7
+    ],
+    "Description": "Check for $XX inequality to memory",
+    "Length": 7
+  },
+  {
+    "Identifier": [
+      24,
+      8
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      24,
+      9
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      24,
+      10
+    ],
+    "Description": "Open wallet window and display current cash on hand",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      24,
+      13
+    ],
+    "Description": "Display Status window for Char$XX YY-01-parameter, 01,02 specific, 02 ?",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      25,
+      2
+    ],
+    "Description": "Load a text string into memory (end with [02]",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      25,
+      4
+    ],
+    "Description": "UNKNOWN",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      25,
+      5
+    ],
+    "Description": "Inflict ailment YY YY on character $XX",
+    "Length": 5
+  },
+  {
+    "Identifier": [
+      25,
+      16
+    ],
+    "Description": "Return the character number of the person in party position $X",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      25,
+      17
+    ],
+    "Description": "Return One Letter from a Character's Name (see lexicon.txt)",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      25,
+      20
+    ],
+    "Description": "UNKNOWN",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      25,
+      22
+    ],
+    "Description": "Return Byte YY of Character XX Status",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      25,
+      24
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      25,
+      25
+    ],
+    "Description": "Sets $YY(01-0e) in item menu of Char$XX into working memory",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      25,
+      26
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      25,
+      27
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      25,
+      28
+    ],
+    "Description": "UNKNOWN",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      25,
+      29
+    ],
+    "Description": "UNKNOWN",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      25,
+      30
+    ],
+    "Description": "UNKNOWN",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      25,
+      31
+    ],
+    "Description": "UNKNOWN",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      25,
+      32
+    ],
+    "Description": "UNKNOWN",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      25,
+      33
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      25,
+      34
+    ],
+    "Description": "Store to memory the direction from character $XX to object $YY",
+    "Length": 6
+  },
+  {
+    "Identifier": [
+      25,
+      35
+    ],
+    "Description": "Store to memory the direction from TPT entry $XX to object $YY (ZZ unknown)",
+    "Length": 7
+  },
+  {
+    "Identifier": [
+      25,
+      36
+    ],
+    "Description": "Store to memory the direction from generated sprite $XX to object $YY (ZZ=00)",
+    "Length": 7
+  },
+  {
+    "Identifier": [
+      25,
+      37
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      25,
+      38
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      25,
+      39
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      25,
+      40
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      26,
+      0
+    ],
+    "Description": "UNKNOWN INCOMPLETE",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      26,
+      1
+    ],
+    "Description": "Current Party Member Selection Menu",
+    "Length": 18,
+    "HasReferences": true,
+    "ReferenceOffset": 2
+  },
+  {
+    "Identifier": [
+      26,
+      4
+    ],
+    "Description": "UNKNOWN INCOMPLETE",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      26,
+      5
+    ],
+    "Description": "Display the inventory of character YY in window XX",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      26,
+      6
+    ],
+    "Description": "Displays shop window $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      26,
+      7
+    ],
+    "Description": "Related to Escargo Express stored goods window",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      26,
+      8
+    ],
+    "Description": "UNKNOWN INCOMPLETE",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      26,
+      9
+    ],
+    "Description": "UNKNOWN INCOMPLETE",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      26,
+      10
+    ],
+    "Description": "Open non-working phone window",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      26,
+      11
+    ],
+    "Description": "Copy WRAM to Active Memory",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      27,
+      0
+    ],
+    "Description": "Copy all memory to storage",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      27,
+      1
+    ],
+    "Description": "Copy all storage to memory",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      27,
+      2
+    ],
+    "Description": "If binary flag is set 0, jump to $XXXXXXXX",
+    "Length": 6,
+    "HasReferences": true,
+    "ReferenceOffset": 2
+  },
+  {
+    "Identifier": [
+      27,
+      3
+    ],
+    "Description": "If binary flag is set 1, jump to $XXXXXXXX",
+    "Length": 6,
+    "HasReferences": true,
+    "ReferenceOffset": 2
+  },
+  {
+    "Identifier": [
+      27,
+      4
+    ],
+    "Description": "Swap working and argumentary memory",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      27,
+      5
+    ],
+    "Description": "Copy Active Memory to WRAM",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      27,
+      6
+    ],
+    "Description": "Copy WRAM to Active Memory",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      28,
+      0
+    ],
+    "Description": "Text and window background color effects",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      28,
+      1
+    ],
+    "Description": "Display statistical data value $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      28,
+      2
+    ],
+    "Description": "Display character name $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      28,
+      3
+    ],
+    "Description": "Display Text Character XX; 00 as argument",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      28,
+      4
+    ],
+    "Description": "Open party HP/PP status windows",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      28,
+      5
+    ],
+    "Description": "Display item name $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      28,
+      6
+    ],
+    "Description": "Display teleport destination name $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      28,
+      7
+    ],
+    "Description": "Display $XX strings centered horizontally (see [19 02])",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      28,
+      8
+    ],
+    "Description": "Display text graphic $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      28,
+      9
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      28,
+      10
+    ],
+    "Description": "Displays $XXXXXXXX in decimal",
+    "Length": 6
+  },
+  {
+    "Identifier": [
+      28,
+      11
+    ],
+    "Description": "Displays $XXXXXXXX in decimal as money",
+    "Length": 6
+  },
+  {
+    "Identifier": [
+      28,
+      12
+    ],
+    "Description": "Display $XX strings vertically (see [19 02])",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      28,
+      13
+    ],
+    "Description": "Display action user name",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      28,
+      14
+    ],
+    "Description": "Display action target name",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      28,
+      15
+    ],
+    "Description": "UNKNOWN INCOMPLETE;IN PROGRESS (Relates to Level-Up stats editor)",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      28,
+      17
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      28,
+      18
+    ],
+    "Description": "Print PSI name $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      28,
+      19
+    ],
+    "Description": "Display XX Amimation (YY is usually 00) See Animation code on forum",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      28,
+      20
+    ],
+    "Description": "Say $XX pronoun",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      28,
+      21
+    ],
+    "Description": "Say $XX pronoun",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      29,
+      0
+    ],
+    "Description": "Add item $YY to character $XX's inventory and return $YY if successful",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      1
+    ],
+    "Description": "Remove item $YY from character $XX's inventory",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      2
+    ],
+    "Description": "Set binary flag true if character $XX does not have free space in their inventory",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      29,
+      3
+    ],
+    "Description": "Set binary flag true if character $XX has free space in their inventory",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      29,
+      4
+    ],
+    "Description": "Sets binary flag true if char $XX does not have item $YY",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      5
+    ],
+    "Description": "Sets binary flag true if char $XX has item $YY",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      6
+    ],
+    "Description": "Add $XX dollars to ATM balance",
+    "Length": 6
+  },
+  {
+    "Identifier": [
+      29,
+      7
+    ],
+    "Description": "Remove $XX dollars from ATM balance",
+    "Length": 6
+  },
+  {
+    "Identifier": [
+      29,
+      8
+    ],
+    "Description": "Add $XX dollars to wallet balance",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      9
+    ],
+    "Description": "Remove $XX dollars from wallet balanc",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      10
+    ],
+    "Description": "Return price of item",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      29,
+      11
+    ],
+    "Description": "Get one half of item $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      29,
+      12
+    ],
+    "Description": "UNKNOWN",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      13
+    ],
+    "Description": "Set binary flag true if character $XX has ailment YY YY",
+    "Length": 5
+  },
+  {
+    "Identifier": [
+      29,
+      14
+    ],
+    "Description": "Add item $YY to character $XX's inventory and return number of items held",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      15
+    ],
+    "Description": "UNKNOWN",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      16
+    ],
+    "Description": "UNKNOWN",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      17
+    ],
+    "Description": "UNKNOWN",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      18
+    ],
+    "Description": "UNKNOWN",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      19
+    ],
+    "Description": "UNKNOWN",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      20
+    ],
+    "Description": "Sets binary flag true if the player currently holds $XX in the wallet",
+    "Length": 6
+  },
+  {
+    "Identifier": [
+      29,
+      21
+    ],
+    "Description": "Multiply $XXXX by the number of characters in the party, and store in Working Memory",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      29,
+      23
+    ],
+    "Description": "Sets binary flag true if the player currently holds $XX in the ATM",
+    "Length": 6
+  },
+  {
+    "Identifier": [
+      29,
+      24
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      29,
+      25
+    ],
+    "Description": "Sets binary flag true if there are $XX party members",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      29,
+      32
+    ],
+    "Description": "Check same user/target",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      29,
+      33
+    ],
+    "Description": "Generate random number from 0 to $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      29,
+      34
+    ],
+    "Description": "Set binary flag if current sector is Exit mouse-compatible",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      29,
+      35
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      29,
+      36
+    ],
+    "Description": "May relate to returning cash earned since last phone call to dad",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      30,
+      0
+    ],
+    "Description": "Character $XX recovers HP by YY% of max",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      30,
+      1
+    ],
+    "Description": "Character $XX loses HP by YY% of max",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      30,
+      2
+    ],
+    "Description": "Character $XX recovers $YY HP",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      30,
+      3
+    ],
+    "Description": "Character $XX loses $YY HP",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      30,
+      4
+    ],
+    "Description": "Character $XX recovers PP by YY% of max",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      30,
+      5
+    ],
+    "Description": "Character $XX loses PP by YY% of max",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      30,
+      6
+    ],
+    "Description": "Character $XX recovers $YY PP",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      30,
+      7
+    ],
+    "Description": "Character $XX loses $YY PP",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      30,
+      8
+    ],
+    "Description": "Character $XX becomes level $YY",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      30,
+      9
+    ],
+    "Description": "Character $XX gains $YYYYYY EXP",
+    "Length": 6
+  },
+  {
+    "Identifier": [
+      30,
+      10
+    ],
+    "Description": "Boost IQ in character $XX by $YY",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      30,
+      11
+    ],
+    "Description": "Boost Guts in character $XX by $YY",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      30,
+      12
+    ],
+    "Description": "Boost Speed in character $XX by $YY",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      30,
+      13
+    ],
+    "Description": "Boost Vitality in character $XX by $YY",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      30,
+      14
+    ],
+    "Description": "Boost Luck in character $XX by $YY",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      0
+    ],
+    "Description": "Play music track $YY ($XX is unused)",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      1,
+      0
+    ],
+    "Description": "Stops music",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      2
+    ],
+    "Description": "Play sound effect $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      3
+    ],
+    "Description": "Return music setting to sector default",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      4
+    ],
+    "Description": "Toggles sound for text printing (?)",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      5
+    ],
+    "Description": "Disallow Sector Boundaries to Change Music",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      6
+    ],
+    "Description": "Allow Sector Boundaries to Change Music",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      7
+    ],
+    "Description": "Apply audio effect $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      17
+    ],
+    "Description": "Add character $XX to party",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      18
+    ],
+    "Description": "Remove character $XX from party",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      19
+    ],
+    "Description": "Turn character $XX to direction $YY",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      20
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      21
+    ],
+    "Description": "Generate sprite $XXXX with movement pattern $YYYY using style $ZZ",
+    "Length": 7
+  },
+  {
+    "Identifier": [
+      31,
+      22
+    ],
+    "Description": "Turn TPT entry $XXXX to direction $YY",
+    "Length": 5
+  },
+  {
+    "Identifier": [
+      31,
+      23
+    ],
+    "Description": "Generate TPT entry $XXXX with movement pattern $YYYY using style $ZZ",
+    "Length": 7
+  },
+  {
+    "Identifier": [
+      31,
+      24
+    ],
+    "Description": "UNKNOWN",
+    "Length": 9
+  },
+  {
+    "Identifier": [
+      31,
+      25
+    ],
+    "Description": "UNKNOWN",
+    "Length": 9
+  },
+  {
+    "Identifier": [
+      31,
+      26
+    ],
+    "Description": "Generate sprite $YY near TPT entry $XXXX",
+    "Length": 5
+  },
+  {
+    "Identifier": [
+      31,
+      27
+    ],
+    "Description": "Delete 1F 1A sprite near TPT entry $XXXX",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      28
+    ],
+    "Description": "Generate sprite $YY near character $XX",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      29
+    ],
+    "Description": "Delete 1F 1C sprite near character $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      30
+    ],
+    "Description": "Make TPT entry $XXXX disappear via style $YY",
+    "Length": 5
+  },
+  {
+    "Identifier": [
+      31,
+      31
+    ],
+    "Description": "Delete 1F 15-generated sprite $XXXX via style $YY",
+    "Length": 5
+  },
+  {
+    "Identifier": [
+      31,
+      32
+    ],
+    "Description": "PSI Teleport to destination $XX using method $YY",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      33
+    ],
+    "Description": "Teleport to 0x15EDAB teleport coordinate entry $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      35
+    ],
+    "Description": "Trigger battle with 0x10D74C enemy group entry $XXXX",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      48
+    ],
+    "Description": "Change to normal font",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      49
+    ],
+    "Description": "Change to Mr. Saturn font",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      65
+    ],
+    "Description": "Call special event $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      80
+    ],
+    "Description": "Disable controller input",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      81
+    ],
+    "Description": "Re-enable controller input",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      82
+    ],
+    "Description": "Number selector with XX digits",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      96
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      97
+    ],
+    "Description": "Simultaneously commences all prepared movements",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      98
+    ],
+    "Description": "UNKNOWN",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      99
+    ],
+    "Description": "Jump to $XXXXXXXX after the next screen refresh",
+    "Length": 6,
+    "HasReferences": true,
+    "ReferenceOffset": 2
+  },
+  {
+    "Identifier": [
+      31,
+      100
+    ],
+    "Description": "Purge all NPCs from party",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      101
+    ],
+    "Description": "Purge first NPC from party",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      102
+    ],
+    "Description": "Activate hotspot $XX with address $ZZZZZZZZ",
+    "Length": 8,
+    "HasReferences": true,
+    "ReferenceOffset": 4
+  },
+  {
+    "Identifier": [
+      31,
+      103
+    ],
+    "Description": "Deactivate hotspot $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      104
+    ],
+    "Description": "Store current coordinates into memory",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      105
+    ],
+    "Description": "Teleport to coordinates stored by 1F 68",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      113
+    ],
+    "Description": "Character $XX realizes special PSI $YY",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      129
+    ],
+    "Description": "Check If Character Can Use Item",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      131
+    ],
+    "Description": "Equip character XX with his or her YYth item",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      144
+    ],
+    "Description": "UNKNOWN",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      160
+    ],
+    "Description": "TPT entry being spoken to/checked faces downwards",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      161
+    ],
+    "Description": "Change Direction of Current TPT Entry to Down",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      162
+    ],
+    "Description": "UNKNOWN",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      176
+    ],
+    "Description": "Save the game in the slot selected at the beginning",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      192
+    ],
+    "Description": "Multiple-entry pointer table (Reference address)",
+    "Length": -1,
+    "IsVariableLength": true,
+    "HasReferences": true,
+    "ReferenceOffset": 3,
+    "CountOffset": 2
+  },
+  {
+    "Identifier": [
+      31,
+      208
+    ],
+    "Description": "Attempt to Fix Items",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      209
+    ],
+    "Description": "Returns a numeric value based on the proximity of a magic truffle TPT entry",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      210
+    ],
+    "Description": "Summon photographer to location $XX",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      211
+    ],
+    "Description": "Trigger timed event $XX from the 0x15F845 table",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      225
+    ],
+    "Description": "Change map palette to that of tileset $XX, pallet $YY at speed $ZZ",
+    "Length": 5
+  },
+  {
+    "Identifier": [
+      31,
+      228
+    ],
+    "Description": "Change direction of 1F 15-generated sprite $XXXX to $YY",
+    "Length": 5
+  },
+  {
+    "Identifier": [
+      31,
+      229
+    ],
+    "Description": "Lock player movement",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      230
+    ],
+    "Description": "Delay appearance of TPT entry $XXXX until end of text parsing",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      231
+    ],
+    "Description": "UNKNOWN",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      232
+    ],
+    "Description": "Restrict player movement if camera is focused on other sprite (XX is usually FF)",
+    "Length": 3
+  },
+  {
+    "Identifier": [
+      31,
+      233
+    ],
+    "Description": "Restrict player movement until end of text block (use 1F 61 after)",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      234
+    ],
+    "Description": "UNKNOWN",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      235
+    ],
+    "Description": "Make character $XX disappear via style $YY",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      236
+    ],
+    "Description": "Make character $XX appear via style $YY",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      237
+    ],
+    "Description": "Your party will be teleported (in a glitchy way) on top of some sprite that is nearby when the text block is over if the camera switched to another sprite in the block of text",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      238
+    ],
+    "Description": "UNKNOWN",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      239
+    ],
+    "Description": "Focuses the camera to where [1f 15]-generated sprite xxxx is but doesn't follow it",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      31,
+      240
+    ],
+    "Description": "Activate bicycle",
+    "Length": 2
+  },
+  {
+    "Identifier": [
+      31,
+      241
+    ],
+    "Description": "Apply movement pattern $YYYY to TPT entry $XXXX",
+    "Length": 6
+  },
+  {
+    "Identifier": [
+      31,
+      242
+    ],
+    "Description": "Apply movement pattern $YYYY to sprite $XXXX",
+    "Length": 6
+  },
+  {
+    "Identifier": [
+      31,
+      243
+    ],
+    "Description": "Generate sprite $YY near sprite $XXXX",
+    "Length": 5
+  },
+  {
+    "Identifier": [
+      31,
+      244
+    ],
+    "Description": "Delete 1F F3 sprite near sprite $XXXX",
+    "Length": 4
+  },
+  {
+    "Identifier": [
+      21
+    ],
+    "Description": "Use compressed string $XX from bank 0",
+    "Length": 2,
+    "IsCompressedString": true
+  },
+  {
+    "Identifier": [
+      22
+    ],
+    "Description": "Use compressed string $XX from bank 1",
+    "Length": 2,
+    "IsCompressedString": true
+  },
+  {
+    "Identifier": [
+      23
+    ],
+    "Description": "Use compressed string $XX from bank 2",
+    "Length": 2,
+    "IsCompressedString": true
+  }
+]

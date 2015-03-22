@@ -7,72 +7,75 @@ using System.IO;
 
 namespace ScriptTool
 {
-    public class M12Compiler : ICompiler
+    public class Compiler : ICompiler
     {
-        private static IEnumerable<M12ControlCode> controlCodes;
-        private static string[] charLookup;
-        private const string hexChars = "0123456789ABCDEFabcdef";
-        private const string ebCharLookup = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZØØØØØ`abcdefghijklmnopqrstuvwxyz{|}~\\";
-
+        public IEnumerable<IControlCode> ControlCodes { get; set; }
         public Dictionary<string, int> AddressMap { get; set; }
+        public Func<byte[], int, bool> ControlCodePredicate { get; set; }
 
-        static M12Compiler()
+        public Compiler(IEnumerable<IControlCode> controlCodes,
+            Func<byte[], int, bool> controlCodePredicate)
         {
-            controlCodes = M12ControlCode.Codes;
-            charLookup = File.ReadAllLines("m12-text-table.txt");
-        }
+            ControlCodes = controlCodes;
+            ControlCodePredicate = controlCodePredicate;
 
-        public M12Compiler()
-        {
             AddressMap = new Dictionary<string, int>();
         }
 
         public static bool IsHexByte(string str)
         {
-            if (str == null || str.Length > 2)
+            try
+            {
+                Convert.ToByte(str, 16);
+                return true;
+            }
+            catch
             {
                 return false;
             }
-
-            for (int i = 0; i < str.Length; i++)
-            {
-                if (hexChars.IndexOf(str[i]) == -1)
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
 
-        public static bool IsValidChar(char c)
+        private byte GetByte(char c, IDictionary<byte, string> charLookup)
         {
-            if (!ebCharLookup.Contains(c))
-            {
-                return false;
-            }
-            if (c == 'Ø')
-            {
-                return false;
-            }
-            return true;
+            return charLookup.First(kv => kv.Value[0] == c).Key; // lazy
         }
 
-        public static byte GetByte(char c)
+        public void ScanString(string str, ref int referenceAddress, IDictionary<byte, string> charLookup, bool scanCodesOnly)
         {
-            return (byte)(ebCharLookup.IndexOf(c) + 0x50);
+            ISet<IControlCode> codes;
+            IList<string> references;
+            ScanString(str, ref referenceAddress, charLookup, scanCodesOnly, out references, out codes);
         }
 
-        public IList<string> ScanString(string str, bool scanCodesOnly)
+        public void ScanString(string str, IDictionary<byte, string> charLookup, bool scanCodesOnly,
+            out IList<string> references)
         {
             int temp = 0;
-            return ScanString(str, ref temp, scanCodesOnly);
+            ISet<IControlCode> codes;
+            ScanString(str, ref temp, charLookup, scanCodesOnly, out references, out codes);
         }
 
-        public IList<string> ScanString(string str, ref int referenceAddress, bool scanCodesOnly)
+        public void ScanString(string str, IDictionary<byte, string> charLookup, bool scanCodesOnly,
+            out ISet<IControlCode> codes)
         {
-            var references = new List<string>();
- 
+            int temp = 0;
+            IList<string> references;
+            ScanString(str, ref temp, charLookup, scanCodesOnly, out references, out codes);
+        }
+
+        public void ScanString(string str, IDictionary<byte, string> charLookup, bool scanCodesOnly,
+            out IList<string> references, out ISet<IControlCode> controlCodes)
+        {
+            int temp = 0;
+            ScanString(str, ref temp, charLookup, scanCodesOnly, out references, out controlCodes);
+        }
+
+        public void ScanString(string str, ref int referenceAddress, IDictionary<byte, string> charLookup, bool scanCodesOnly,
+            out IList<string> references, out ISet<IControlCode> controlCodes)
+        {
+            references = new List<string>();
+            controlCodes = new HashSet<IControlCode>();
+
             for (int i = 0; i < str.Length; )
             {
                 if (str[i] == '[')
@@ -82,6 +85,12 @@ namespace ScriptTool
 
                     string[] codeStrings = str.Substring(i + 1, str.IndexOf(']', i + 1) - i - 1)
                         .Split(' ');
+
+                    IControlCode code = ControlCodes.FirstOrDefault(c => c.IsMatch(codeStrings));
+                    if (!controlCodes.Contains(code))
+                    {
+                        controlCodes.Add(code);
+                    }
 
                     foreach (var codeString in codeStrings)
                     {
@@ -137,25 +146,21 @@ namespace ScriptTool
                     {
                         if (!scanCodesOnly)
                         {
-                            if (!IsValidChar(str[i]))
-                                throw new Exception("Invalid character: " + str[i]);
-
+                            GetByte(str[i], charLookup); // just check if it's valid
                             referenceAddress++;
                         }
                     }
                     i++;
                 }
             }
-
-            return references;
         }
 
-        public void CompileString(string str, IList<byte> buffer, ref int referenceAddress)
+        public void CompileString(string str, IList<byte> buffer, ref int referenceAddress, IDictionary<byte, string> charLookup)
         {
-            CompileString(str, buffer, ref referenceAddress, -1);
+            CompileString(str, buffer, ref referenceAddress, charLookup, -1);
         }
 
-        public void CompileString(string str, IList<byte> buffer, ref int referenceAddress, int padLength)
+        public void CompileString(string str, IList<byte> buffer, ref int referenceAddress, IDictionary<byte, string> charLookup, int padLength)
         {
             int previousBufferSize = buffer.Count;
 
@@ -170,7 +175,7 @@ namespace ScriptTool
                         .Split(' ');
 
                     // Match the code
-                    M12ControlCode code = controlCodes.FirstOrDefault(c => c.IsMatch(codeStrings));
+                    IControlCode code = ControlCodes.FirstOrDefault(c => c.IsMatch(codeStrings));
 
                     if (code == null)
                     {
@@ -194,44 +199,7 @@ namespace ScriptTool
                             throw new Exception("Invalid control code");
 
                         // Parse
-                        foreach (var codeString in codeStrings)
-                        {
-                            if (codeString[0] == '_')
-                            {
-                                if (codeString[codeString.Length - 1] != '_')
-                                    throw new Exception("Reference has no closing underscore");
-
-                                if (codeString.Length <= 2)
-                                    throw new Exception("Reference is empty");
-
-                                string label = codeString.Substring(1, codeString.Length - 2);
-                                int pointer = AddressMap[label];
-
-                                if (!code.AbsoluteAddressing)
-                                {
-                                    pointer -= referenceAddress;
-                                }
-                                else
-                                {
-                                    pointer |= 0x8000000;
-                                }
-
-                                if (buffer != null)
-                                    buffer.AddInt(pointer);
-                                referenceAddress += 4;
-                            }
-                            else if (IsHexByte(codeString))
-                            {
-                                byte value = byte.Parse(codeString, System.Globalization.NumberStyles.HexNumber);
-                                buffer.Add(value);
-                                referenceAddress++;
-                            }
-                            else
-                            {
-                                throw new Exception(String.Format(
-                                    "Encountered invalid code string at position {0}: {1}", i, codeString));
-                            }
-                        }
+                        code.Compile(codeStrings, buffer, ref referenceAddress, AddressMap);
                     }
 
                     i = str.IndexOf(']', i + 1) + 1;
@@ -251,12 +219,11 @@ namespace ScriptTool
                 {
                     if (!(str[i] == '\r') && !(str[i] == '\n'))
                     {
-                        if (!IsValidChar(str[i]))
-                            throw new Exception("Invalid character: " + str[i]);
+                        byte value = GetByte(str[i], charLookup);
 
-                        byte value = GetByte(str[i]);
                         if (buffer != null)
                             buffer.Add(value);
+
                         referenceAddress++;
                     }
                     i++;
@@ -267,6 +234,7 @@ namespace ScriptTool
             if (padLength != -1)
             {
                 int bytesWritten = buffer.Count - previousBufferSize;
+
                 if (bytesWritten > padLength)
                     throw new Exception("Exceeded pad length");
 
@@ -274,6 +242,7 @@ namespace ScriptTool
                 {
                     if (buffer != null)
                         buffer.Add(0);
+
                     referenceAddress++;
                 }
             }

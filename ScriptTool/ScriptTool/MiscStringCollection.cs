@@ -9,10 +9,7 @@ namespace ScriptTool
 {
     public class MiscStringCollection
     {
-        [JsonConverter(typeof(JsonHexConverter))]
         public int OffsetTableLocation { get; set; }
-
-        [JsonConverter(typeof(JsonHexConverter))]
         public int StringsLocation { get; set; }
 
         public IList<MiscStringRef> StringRefs { get; set; }

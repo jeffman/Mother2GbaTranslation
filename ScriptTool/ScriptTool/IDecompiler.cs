@@ -11,6 +11,5 @@ namespace ScriptTool
         void ScanRange(byte[] rom, int startAddress, int endAddress);
         string DecompileRange(byte[] rom, int startAddress, int endAddress, bool newLines);
         string DecompileString(byte[] rom, int address, bool newLines);
-        string CharLookup(byte value);
     }
 }

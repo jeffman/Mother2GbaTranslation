@@ -50,16 +50,16 @@
     <Compile Include="CodeReference.cs" />
     <Compile Include="CodeString.cs" />
     <Compile Include="CommandOptions.cs" />
+    <Compile Include="EbControlCode.cs" />
     <Compile Include="FixedStringCollection.cs" />
     <Compile Include="ICompiler.cs" />
     <Compile Include="IControlCode.cs" />
     <Compile Include="IDecompiler.cs" />
     <Compile Include="M12ControlCode.cs" />
-    <Compile Include="M12Compiler.cs" />
-    <Compile Include="M12Decompiler.cs" />
+    <Compile Include="Compiler.cs" />
+    <Compile Include="Decompiler.cs" />
     <Compile Include="M12TextTables.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="JsonHexConverter.cs" />
     <Compile Include="LabelMap.cs" />
     <Compile Include="MiscStringCollection.cs" />
     <Compile Include="FixedStringRef.cs" />
@@ -71,19 +71,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="eb-char-lookup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="eb-codelist.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="m12-char-lookup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="m12-codelist.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="eb-codelist.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="eb-compressed-strings.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="m12-text-table.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

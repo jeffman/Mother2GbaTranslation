@@ -9,13 +9,8 @@ namespace ScriptTool
 {
     public class MainStringRef
     {
-        [JsonConverter(typeof(JsonHexConverter))]
         public int Index { get; set; }
-
-        [JsonConverter(typeof(JsonHexConverter))]
         public int PointerLocation { get; set; }
-
-        [JsonConverter(typeof(JsonHexConverter))]
         public int OldPointer { get; set; }
 
         public string Label { get; set; }

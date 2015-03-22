@@ -17,8 +17,10 @@ namespace ScriptToolGui
     {
         // Static/const members
         const string workingFolder = @"..\..\..\..\working";
-        static M12Compiler m12Compiler = new M12Compiler();
+        static Compiler m12Compiler = new Compiler(M12ControlCode.Codes, (rom, address) => rom[address + 1] == 0xFF);
+        static Compiler ebCompiler = new Compiler(EbControlCode.Codes, (rom, address) => rom[address] < 0x20);
         static readonly Game[] validGames;
+        static IDictionary<byte, string> ebCharLookup;
 
         // Lookups
         IDictionary<Game, TextBox> textboxLookup;
@@ -46,6 +48,7 @@ namespace ScriptToolGui
         static MainForm()
         {
             validGames = new Game[] { Game.Eb, Game.M12, Game.M12English };
+            ebCharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("eb-char-lookup.json"));
         }
 
         public MainForm()
@@ -169,22 +172,32 @@ namespace ScriptToolGui
 
         private void PopulateCodeList()
         {
+            codeList.Items.Clear();
+            ISet<IControlCode> codes = null;
 
+            if (ebSelector.Checked)
+                ebCompiler.ScanString(ebString.Text, ebCharLookup, true, out codes);
+
+            else if (m12Selector.Checked)
+                m12Compiler.ScanString(m12String.Text, ebCharLookup, true, out codes);
+
+            var sorted = codes.Distinct().OrderBy(c => c).ToArray();
+            codeList.Items.AddRange(sorted.ToArray());
         }
 
         private void PopulateReferenceList()
         {
             referenceList.Items.Clear();
+            IList<string> references = null;
 
             if (ebSelector.Checked)
-            {
+                ebCompiler.ScanString(ebString.Text, ebCharLookup, true, out references);
 
-            }
             else if (m12Selector.Checked)
-            {
-                var references = m12Compiler.ScanString(m12String.Text, true).Distinct().OrderBy(r => r);
-                referenceList.Items.AddRange(references.ToArray());
-            }
+                m12Compiler.ScanString(m12String.Text, ebCharLookup, true, out references);
+
+            references = references.Distinct().OrderBy(r => r).ToList();
+            referenceList.Items.AddRange(references.ToArray());
         }
 
         private string GetString(Game game, string label)
@@ -446,6 +459,7 @@ namespace ScriptToolGui
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            writeTimer.Enabled = false;
             WriteChanges();
         }
 

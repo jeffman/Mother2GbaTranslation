@@ -9,10 +9,7 @@ namespace ScriptTool
 {
     public class FixedStringRef
     {
-        [JsonConverter(typeof(JsonHexConverter))]
         public int Index { get; set; }
-
-        [JsonConverter(typeof(JsonHexConverter))]
         public int OldPointer { get; set; }
 
         public string Old { get; set; }
