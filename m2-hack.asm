@@ -80,7 +80,7 @@ org $80CA60E; bl m2_vwf.copy_tile
 
 // Re-draw the status screen after exiting the PSI sub-menu
 org $80BACFC; bl m2_formatting.status_redraw
-org $80BADE6; bl m2_formatting_status_redraw
+org $80BADE6; bl m2_formatting.status_redraw
 
 // PP cost: only print once
 org $80B8B56; bl m2_vwf.ppcost_once
