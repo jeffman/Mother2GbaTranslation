@@ -35,6 +35,16 @@ org $80CA448; push {lr}; bl m2_vwf.main; b $80CA46C
 // Status entry
 org $80C9116; push {lr}; bl m2_vwf.status; b $80C9144
 
+// Goods entry
+org $80BFB3E; bl m2_vwf.goods; b $80BFB78
+org $80BFB98; b $80BFBCC // skip drawing equip symbol
+
+// Goods -- dirty flags
+org $80BF91E; bl m2_vwf.goods_dirty1
+org $80BF8FA; bl m2_vwf.goods_dirty2
+org $80B8540; bl m2_vwf.goods_dirty3
+org $80BFC0E; bl m2_vwf.goods_clean
+
 // Menu select entry
 org $80B7FC6; bl m2_vwf.print_string_relative
 

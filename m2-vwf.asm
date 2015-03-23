@@ -1,3 +1,9 @@
+// m2_custom_wram range:
+// 00-03: saved tilebase
+// 04-0F: pixel X values
+// 10-13: temp LR copy
+// 14:    goods dirty flag
+
 m2_vwf:
 
 //==============================================================================
@@ -1254,6 +1260,46 @@ pop     {r0-r7,pc}
 
 
 //==============================================================================
+// void string_width(char* chr, byte font)
+// In:
+//    r0: chr
+//    r1: font
+// Out:
+//    r0: width (pixels)
+//    r1: chars read
+//==============================================================================
+ 
+.string_width:
+print   "m2vwf.string_width:           $",pc
+
+push    {r2-r5,lr}
+
+ldr     r2,=#m2_widths_table
+lsl     r1,r1,#2             // Font number * 4
+ldr     r2,[r2,r1]
+mov     r4,#0
+mov     r5,#0
+
+-
+ldrb    r3,[r0,#1]
+cmp     r3,#0xFF
+beq     +
+ldrb    r3,[r0,#0]
+sub     r3,#0x50
+lsl     r3,r3,#1
+ldrb    r1,[r2,r3]           // Virtual width
+add     r4,r4,r1
+add     r0,r0,#1
+add     r5,r5,#1
+b       -
++
+
+mov     r0,r4
+mov     r1,r5
+pop     {r2-r5,pc}
+
+
+//==============================================================================
 // void main(WINDOW* window, char* chr, TILEDATA* tileData)
 // In:
 //    r5: window
@@ -1314,6 +1360,244 @@ bl      .weld_entry
 pop     {r0-r2}
 pop     {pc}
 
+
+//==============================================================================
+// void goods(char* chr, TILEDATA* tileData)
+// In:
+//    r3: chr
+//    r6: tileData
+//==============================================================================
+
+.goods:
+print   "m2vwf.goods:                  $",pc
+
+push    {lr}
+
+//--------------------------------
+// Check if the item is equipped
+push    {r1-r3}
+mov     r0,r8
+add     r0,r0,#1
+bl      $80BC670
+pop     {r1-r3}
+cmp     r0,#0
+beq     +
+
+// Write the equip symbol
+push    {r2}
+mov     r0,r10
+ldrh    r0,[r0,#0]          // tile offset (0x100)
+ldr     r1,=#0x8B1B6AC      // equip tile number (0x1DE)
+ldrh    r1,[r1,#0]
+add     r0,r0,r1
+mov     r1,r9
+ldrh    r2,[r1,#0]          // mask (0xE000)
+mov     r1,r2
+orr     r1,r0
+strh    r1,[r6,#0]
+mov     r1,r6
+add     r1,#0x40
+add     r0,#0x20
+orr     r0,r2
+strh    r0,[r1,#0]
+
+add     r6,r6,#2
+lsl     r0,r4,#0x10
+ldr     r4,=#0xFFFF0000
+add     r0,r0,r4
+lsr     r4,r0,#0x10
+
+pop     {r2}
+
++
+//--------------------------------
+// Check if the dirty flag is set
+ldr     r0,=#m2_custom_wram
+add     r0,#0x14
+ldrb    r1,[r0,#0]
+cmp     r1,#1
+bne     +
+
+// Just get the string width instead (don't need to render)
+mov     r0,r3
+mov     r1,#0
+bl      .string_width
+add     r3,r3,r1
+b       .goods_skip
+
++
+//--------------------------------
+// Get x and y from tilebase
+mov     r0,r6
+bl      .get_coords
+
+//--------------------------------
+// Print string
+push    {r6,r7}
+mov     r6,#0
+mov     r5,r3
+mov     r3,#0
+
+-
+ldrb    r2,[r5,#1]
+cmp     r2,#0xFF
+beq     +
+
+ldrb    r2,[r5,#0]
+sub     r2,#0x50
+mov     r7,r0
+bl      .print_character
+add     r6,r0,r6
+add     r0,r0,r7
+add     r5,r5,#1
+b       -
+
++
+mov     r3,r5
+mov     r0,r6
+pop     {r6,r7}
+
+//--------------------------------
+.goods_skip:
+
+// Advance r4 and r6
+sub     r1,r0,#1
+asr     r0,r0,#3
+add     r1,r0,#1
+
+ldr     r2,=#0xFFFF0000
+
+-
+cmp     r1,#0
+beq     +
+
+lsl     r0,r4,#0x10
+add     r0,r0,r2
+lsr     r4,r0,#0x10
+add     r6,r6,#2
+sub     r1,r1,#1
+b       -
+
++
+pop     {pc}
+
+
+//==============================================================================
+// void goods_clean()
+//==============================================================================
+
+.goods_clean:
+print   "m2vwf.goods_clean:            $",pc}
+
+push    {lr}
+
+ldr     r0,=#m2_custom_wram
+add     r0,#0x14
+mov     r1,#1
+strb    r1,[r0,#0]
+
+ldr     r0,=#0x3002504 // Clobbered code
+ldrh    r1,[r0,#0]
+
+pop     {pc}
+
+
+//==============================================================================
+// void goods_dirty1()
+//==============================================================================
+
+.goods_dirty1:
+print   "m2vwf.goods_dirty1:           $",pc
+
+push    {lr}
+
+// Set the dirty flag
+ldr     r5,=#m2_custom_wram
+add     r5,#0x14
+mov     r0,#0
+strb    r0,[r5,#0]
+
+// Clear the window
+mov     r0,r7
+bl      .clear_window
+
+// Clobbered code
+ldrh    r0,[r4,#0]
+sub     r0,#0x1
+
+pop     {pc}
+
+
+//==============================================================================
+// void goods_dirty2()
+//==============================================================================
+
+.goods_dirty2:
+print   "m2vwf.goods_dirty2:           $",pc
+
+push    {lr}
+
+// Set the dirty flag
+ldr     r1,=#m2_custom_wram
+add     r1,#0x14
+mov     r0,#0
+strb    r0,[r1,#0]
+
+// Clear the window
+mov     r0,r7
+bl      .clear_window
+
+// Clobbered code
+mov     r0,r4
+add     r0,#0x1
+
+pop     {pc}
+
+//==============================================================================
+// void goods_dirty3()
+//==============================================================================
+
+.goods_dirty3:
+print   "m2vwf.goods_dirty3:           $",pc
+
+push    {r3,lr}
+
+// Set the dirty flag
+ldr     r2,=#m2_custom_wram
+add     r2,#0x14
+mov     r3,#0
+strb    r3,[r2,#0]
+
+// Clobbered code
+ldrb    r0,[r0,#0]
+strh    r0,[r1,#0]
+
+pop     {r3,pc}
+
+
+//==============================================================================
+// void get_coords(TILEMAP* map)
+// In:
+//    r0: tilemap
+// Out:
+//    r0: x (pixel)
+//    r1: y (pixel)
+//==============================================================================
+
+.get_coords:
+print   "m2vwf.get_coords:             $",pc
+
+push    {r2-r3,lr}
+
+ldr     r1,=#0x3005270
+ldr     r3,[r1,#0]
+sub     r1,r0,r3
+lsl     r2,r1,#26
+lsr     r0,r2,#24
+lsr     r2,r1,#6
+lsl     r1,r2,#3
+
+pop     {r2-r3,pc}
 
 //==============================================================================
 // void menu_select(WINDOW* window, char* chr, TILEDATA* tileData)
