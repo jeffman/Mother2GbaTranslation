@@ -38,16 +38,25 @@ org $80C9116; push {lr}; bl m2_vwf.status; b $80C9144
 // Goods entry
 org $80BFB3E; bl m2_vwf.goods; b $80BFB78 // unfocused
 org $80BF0E2; bl m2_vwf.goods2; b $80BF11A // focused
-org $80BFB98; b $80BFBCC // skip drawing equip symbol
-org $80BF134; b $80BF15E
+org $80C0162; bl m2_vwf.goods2; b $80C0192 // giving item
 org $80B999C; bl m2_vwf.goods_highlight
+
+// Goods -- skip drawing equip symbols
+org $80BFB98; b $80BFBCC
+org $80BF134; b $80BF15E
+org $80C01B2; b $80C01DC
 
 // Goods -- dirty flags
 org $80BF91E; bl m2_vwf.goods_dirty1
-org $80BF8FA; bl m2_vwf.goods_dirty2
+org $80BF8FC; bl m2_vwf.goods_dirty2
 org $80B8540; bl m2_vwf.goods_dirty3
 org $80BFC0E; bl m2_vwf.goods_clean
+org $80C01F2; bl m2_vwf.goods_clean
 org $80BF054; bl m2_vwf.goods_dirty4
+org $80BFF34; bl m2_vwf.goods_dirty1
+org $80BFF12; bl m2_vwf.goods_dirty2
+org $80C00D4; bl m2_vwf.goods_dirty5
+org $80BA688; bl m2_vwf.goods_redraw // pressing B from Give window
 
 // Menu select entry
 org $80B7FC6; bl m2_vwf.print_string_relative
