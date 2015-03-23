@@ -36,14 +36,18 @@ org $80CA448; push {lr}; bl m2_vwf.main; b $80CA46C
 org $80C9116; push {lr}; bl m2_vwf.status; b $80C9144
 
 // Goods entry
-org $80BFB3E; bl m2_vwf.goods; b $80BFB78
+org $80BFB3E; bl m2_vwf.goods; b $80BFB78 // unfocused
+org $80BF0E2; bl m2_vwf.goods2; b $80BF11A // focused
 org $80BFB98; b $80BFBCC // skip drawing equip symbol
+org $80BF134; b $80BF15E
+org $80B999C; bl m2_vwf.goods_highlight
 
 // Goods -- dirty flags
 org $80BF91E; bl m2_vwf.goods_dirty1
 org $80BF8FA; bl m2_vwf.goods_dirty2
 org $80B8540; bl m2_vwf.goods_dirty3
 org $80BFC0E; bl m2_vwf.goods_clean
+org $80BF054; bl m2_vwf.goods_dirty4
 
 // Menu select entry
 org $80B7FC6; bl m2_vwf.print_string_relative
@@ -78,6 +82,8 @@ org $80CA270; bl m2_vwf.x_reset1
 org $80CA30A; bl m2_vwf.x_reset2
 org $80CA332; bl m2_vwf.x_reset1
 org $80C8F26; bl m2_vwf.x_reset4 // Newline after a menu selection
+org $80C888C; bl m2_vwf.x_resetall // Use goods menu
+org $80C9D2C; bl m2_vwf.x_reset5 // After finishing Use menu
 // Possible other places: 80BE370, 80BE436,
 
 // Erase a tile

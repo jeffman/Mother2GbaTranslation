@@ -986,13 +986,6 @@ mov     r0,r1
 bl      .get_window_number
 
 //--------------------------------
-// Reset the pixel X
-ldr     r3,=#m2_custom_wram
-add     r2,r0,r3
-mov     r3,#0
-strb    r3,[r2,#4]
-
-//--------------------------------
 // Clear the window
 mov     r0,r1
 bl      .clear_window
@@ -1082,13 +1075,6 @@ mov     r0,r3
 bl      .get_window_number
 
 //--------------------------------
-// Reset the pixel X
-ldr     r1,=#m2_custom_wram
-add     r2,r0,r1
-mov     r1,#0
-strb    r1,[r2,#4]
-
-//--------------------------------
 // Clear the window
 mov     r0,r3
 bl      .clear_window
@@ -1134,6 +1120,59 @@ pop     {r1-r3,pc}
 
 
 //==============================================================================
+// void x_reset5()
+// In:
+//    r5: window address
+//==============================================================================
+
+.x_reset5:
+push    {r1-r3,lr}
+mov     r3,r0
+
+//--------------------------------
+// Get the window number
+mov     r0,r5
+bl      .get_window_number
+
+//--------------------------------
+// Reset the pixel X
+ldr     r1,=#m2_custom_wram
+add     r2,r0,r1
+mov     r1,#0
+strb    r1,[r2,#4]
+
+//--------------------------------
+// Clobbered code
+pop     {r1-r3}
+ldrb    r0,[r3,#0]
+sub     r0,#6
+pop     {pc}
+
+
+//==============================================================================
+// void x_resetall()
+// In:
+//    r6: window address
+//==============================================================================
+
+.x_resetall:
+push    {lr}
+
+//--------------------------------
+// Reset the pixel X
+ldr     r5,=#m2_custom_wram
+mov     r0,#0
+str     r0,[r5,#4]
+str     r0,[r5,#8]
+str     r0,[r5,#12]
+
+//--------------------------------
+// Clobbered code
+strh    r0,[r6,#0x32]
+pop     {pc}
+
+
+//==============================================================================
 // void clear_window(*WINDOW window)
 // In:
 //    r0: window address
@@ -1143,12 +1182,24 @@ pop     {r1-r3,pc}
 print   "m2vwf.clear_window:           $",pc
 
 push    {r0-r7,lr}
+
+//--------------------------------
+// Reset the X coordinate
+mov     r2,r0
+bl      .get_window_number
+ldr     r1,=#m2_custom_wram
+add     r1,r0,r1
+mov     r0,#0
+strb    r0,[r1,#4]
+mov     r0,r2
+
+//--------------------------------
+// Erase each tile
 mov     r1,r8
 push    {r1}
 ldr     r1,=#0x44444444
 mov     r8,r1
 
-//--------------------------------
 mov     r7,#0x22
 ldrb    r6,[r0,r7]           // Window X
 mov     r7,#0x24
@@ -1161,6 +1212,7 @@ ldrb    r4,[r0,r7]           // Window height
 add     r4,r4,r2             // Window bottom
 ldr     r7,=#0x30051EC
 ldrh    r7,[r7,#0]           // Tile offset
+
 //--------------------------------
 .clear_loop:
 mov     r5,r6
@@ -1412,10 +1464,9 @@ pop     {r2}
 +
 //--------------------------------
 // Check if the dirty flag is set
-ldr     r0,=#m2_custom_wram
-add     r0,#0x14
-ldrb    r1,[r0,#0]
-cmp     r1,#1
+mov     r0,r7
+bl      .get_dirty_flag
+cmp     r0,#1
 bne     +
 
 // Just get the string width instead (don't need to render)
@@ -1483,18 +1534,209 @@ pop     {pc}
 
 
 //==============================================================================
+// void goods2(char* chr, TILEDATA* tileData)
+// In:
+//    r3: chr
+//    r6: tileData
+//==============================================================================
+
+.goods2:
+print   "m2vwf.goods2:                 $",pc
+
+push    {lr}
+
+//--------------------------------
+// Check if the item is equipped
+push    {r1-r3}
+mov     r0,r8
+add     r0,r0,#1
+bl      $80BC670
+pop     {r1-r3}
+cmp     r0,#0
+beq     +
+
+// Write the equip symbol
+push    {r2}
+ldr     r0,=#0x30051EC
+ldrh    r0,[r0,#0]          // tile offset (0x100)
+ldr     r1,=#0x8B1B6AC      // equip tile number (0x1DE)
+ldrh    r1,[r1,#0]
+add     r0,r0,r1
+mov     r1,r9
+ldrh    r2,[r1,#0]          // mask (0xE000)
+mov     r1,r2
+orr     r1,r0
+strh    r1,[r6,#0]
+mov     r1,r6
+add     r1,#0x40
+add     r0,#0x20
+orr     r0,r2
+strh    r0,[r1,#0]
+
+add     r6,r6,#2
+pop     {r2}
+
++
+//--------------------------------
+// Check if the dirty flag is set
+mov     r0,r7
+bl      .get_dirty_flag
+cmp     r0,#1
+bne     +
+
+// Just get the string width instead (don't need to render)
+mov     r0,r3
+mov     r1,#0
+bl      .string_width
+add     r3,r3,r1
+b       .goods2_skip
+
++
+//--------------------------------
+// Get x and y from tilebase
+mov     r0,r6
+bl      .get_coords
+
+//--------------------------------
+// Print string
+push    {r6,r7}
+mov     r6,#0
+mov     r5,r3
+mov     r3,#0
+
+-
+ldrb    r2,[r5,#1]
+cmp     r2,#0xFF
+beq     +
+
+ldrb    r2,[r5,#0]
+sub     r2,#0x50
+mov     r7,r0
+bl      .print_character
+add     r6,r0,r6
+add     r0,r0,r7
+add     r5,r5,#1
+b       -
+
++
+mov     r3,r5
+mov     r0,r6
+pop     {r6,r7}
+
+//--------------------------------
+.goods2_skip:
+
+// Advance r4 and r6
+sub     r1,r0,#1
+asr     r0,r0,#3
+add     r1,r0,#1
+
+//ldr     r2,=#0xFFFF0000
+
+-
+cmp     r1,#0
+beq     +
+
+//lsl     r0,r4,#0x10
+//add     r0,r0,r2
+//lsr     r4,r0,#0x10
+add     r6,r6,#2
+sub     r1,r1,#1
+b       -
+
++
+pop     {pc}
+
+
+//==============================================================================
+// void goods_highlight(WINDOW* window, char* chr, int itemIndex)
+// In:
+//    r0: window
+//    r1: chr
+//    r9: itemIndex (based at 0)
+// Out:
+//    r2: new tile X
+//==============================================================================
+
+.goods_highlight:
+print   "m2vwf.goods_highlight:        $",pc
+
+// Clobbered code
+str     r1,[sp,#0]
+
+//--------------------------------
+push    {r0,r4,lr}
+mov     r4,r0
+mov     r0,r9
+add     r0,#1
+push    {r1-r3}
+bl      $80BC670
+pop     {r1-r3}
+cmp     r0,#0
+beq     +
+
+// Advance the X coord by 1 tile
+add     r2,#1
+
++
+mov     r0,r4
+//--------------------------------
+// Clobbered code
+mov     r1,r6
+pop     {r0,r4,pc}
+
+
+//==============================================================================
+// void get_dirty_flag(WINDOW* window)
+// In:
+//    r0: window
+// Out:
+//    r0: flag
+//==============================================================================
+
+.get_dirty_flag:
+
+push    {r1,lr}
+
+ldr     r1,=#m2_custom_wram
+add     r1,#0x14
+bl      .get_window_number
+ldrb    r0,[r1,r0]
+
+pop     {r1,pc}
+
+
+//==============================================================================
+// void set_dirty_flag(WINDOW* window, byte value)
+// In:
+//    r0: window
+//    r1: value
+//==============================================================================
+
+.set_dirty_flag:
+
+push    {r0-r2,lr}
+
+ldr     r2,=#m2_custom_wram
+add     r2,#0x14
+bl      .get_window_number
+strb    r1,[r2,r0]
+
+pop     {r0-r2,pc}
+
+
+//==============================================================================
 // void goods_clean()
 //==============================================================================
 
 .goods_clean:
-print   "m2vwf.goods_clean:            $",pc}
+print   "m2vwf.goods_clean:            $",pc
 
 push    {lr}
 
-ldr     r0,=#m2_custom_wram
-add     r0,#0x14
+mov     r0,r7
 mov     r1,#1
-strb    r1,[r0,#0]
+bl      .set_dirty_flag
 
 ldr     r0,=#0x3002504 // Clobbered code
 ldrh    r1,[r0,#0]
@@ -1509,13 +1751,12 @@ pop     {pc}
 .goods_dirty1:
 print   "m2vwf.goods_dirty1:           $",pc
 
-push    {lr}
+push    {r1,lr}
 
 // Set the dirty flag
-ldr     r5,=#m2_custom_wram
-add     r5,#0x14
-mov     r0,#0
-strb    r0,[r5,#0]
+mov     r0,r7
+mov     r1,#0
+bl      .set_dirty_flag
 
 // Clear the window
 mov     r0,r7
@@ -1525,7 +1766,7 @@ bl      .clear_window
 ldrh    r0,[r4,#0]
 sub     r0,#0x1
 
-pop     {pc}
+pop     {r1,pc}
 
 
 //==============================================================================
@@ -1538,10 +1779,9 @@ print   "m2vwf.goods_dirty2:           $",pc
 push    {lr}
 
 // Set the dirty flag
-ldr     r1,=#m2_custom_wram
-add     r1,#0x14
-mov     r0,#0
-strb    r0,[r1,#0]
+mov     r0,r7
+mov     r1,#0
+bl      .set_dirty_flag
 
 // Clear the window
 mov     r0,r7
@@ -1553,6 +1793,7 @@ add     r0,#0x1
 
 pop     {pc}
 
+
 //==============================================================================
 // void goods_dirty3()
 //==============================================================================
@@ -1560,19 +1801,46 @@ pop     {pc}
 .goods_dirty3:
 print   "m2vwf.goods_dirty3:           $",pc
 
-push    {r3,lr}
+push    {r2-r3,lr}
+mov     r2,r0
+mov     r3,r1
 
 // Set the dirty flag
-ldr     r2,=#m2_custom_wram
-add     r2,#0x14
-mov     r3,#0
-strb    r3,[r2,#0]
+ldr     r0,=#0x3005240
+ldr     r0,[r0,#0]
+mov     r2,r1
+mov     r1,#0
+bl      .set_dirty_flag
+
+mov     r0,r2
+mov     r1,r3
 
 // Clobbered code
 ldrb    r0,[r0,#0]
 strh    r0,[r1,#0]
 
-pop     {r3,pc}
+pop     {r2-r3,pc}
+
+
+//==============================================================================
+// void goods_dirty4()
+//==============================================================================
+
+.goods_dirty4:
+print   "m2vwf.goods_dirty4:           $",pc
+
+push    {r1,lr}
+
+// Set the dirty flag
+mov     r0,r7
+mov     r1,#0
+bl      .set_dirty_flag
+
+// Clobbered code
+mov     r6,#0
+mov     r8,r6
+
+pop     {r1,pc}
 
 
 //==============================================================================
@@ -1598,6 +1866,7 @@ lsr     r2,r1,#6
 lsl     r1,r2,#3
 
 pop     {r2-r3,pc}
+
 
 //==============================================================================
 // void menu_select(WINDOW* window, char* chr, TILEDATA* tileData)
