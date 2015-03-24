@@ -1460,7 +1460,7 @@
 ^L1459^
 ^L1460^
 ^L1461^
-^L1462^<ATM card>[02 FF]@You know, you shouldn't leave[01 FF]  home without...[02 FF]@It even works overseas![1D FF][00 FF]
+^L1462^ <ATM card>[02 FF]@You know, you shouldn't leave[01 FF]  home without it...[02 FF]@It even works overseas![1D FF][00 FF]
 ^L1463^
 ^L1464^
 ^L1465^
