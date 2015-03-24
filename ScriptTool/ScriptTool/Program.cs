@@ -227,9 +227,9 @@ namespace ScriptTool
             allRefs.Add(Tuple.Create("m12-objects", M12TextTables.ReadObjectRefs(m12Rom)));
             allRefs.Add(Tuple.Create("m12-phonelist", M12TextTables.ReadPhoneRefs(m12Rom)));
             allRefs.Add(Tuple.Create("m12-unknown", M12TextTables.ReadUnknownRefs(m12Rom)));
-            allRefs.Add(Tuple.Create("m12-asmrefs", M12TextTables.ReadAsmRefs(m12Rom)));
             allRefs.Add(Tuple.Create("m12-enemy-encounters", M12TextTables.ReadEnemyEncounters(m12Rom)));
             allRefs.Add(Tuple.Create("m12-prayers", M12TextTables.ReadPrayerRefs(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-asmrefs", M12TextTables.ReadAsmRefs(m12Rom)));
 
             // Decompile
             var allPointers = allRefs.SelectMany(rl => rl.Item2).Select(r => r.OldPointer);
