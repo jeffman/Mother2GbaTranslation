@@ -156,6 +156,16 @@ org $80C21B4; mov r1,#0x14
 org $80C224A; mov r1,#0x14
 org $80C229E; mov r1,#0x14
 
+// PSI -- set clean/dirty flags
+org $80BAD1A; bl m2_vwf.psi_clear1
+org $80BAD28; bl m2_vwf.psi_clean1
+org $80BE658; bl m2_vwf.cursor_dirty1
+org $80BE764; bl m2_vwf.cursor_dirty1
+
+// PSI help -- set clean/dirty flags
+org $80BADCE; bl m2_vwf.psi_help_clear1
+org $80BADD4; bl m2_vwf.psi_help_clean1
+
 // PSI target strings
 org $80B8B12; mov r0,#0x14
 

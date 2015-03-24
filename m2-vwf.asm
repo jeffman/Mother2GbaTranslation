@@ -250,6 +250,14 @@ pop     {r0-r7,pc}
 push    {r0-r6,lr}
 
 //--------------------------------
+// Check the dirty flag
+mov     r6,r0
+bl      .get_dirty_flag
+cmp     r0,#0
+bne     +
+mov     r0,r6
+
+//--------------------------------
 mov     r5,#0x22
 ldrb    r4,[r0,r5]           // Window X
 mov     r5,#0x24
@@ -265,8 +273,9 @@ lsl     r3,r3,#3
 mov     r0,r2
 mov     r2,r1
 mov     r1,r3
-bl      m2_vwf.print_string
+bl      .print_string
 
++
 //--------------------------------
 pop     {r0-r6,pc}
 
@@ -2022,6 +2031,134 @@ pop     {r0-r7}
 bl      $80C8BE4
 
 pop     {pc}
+
+
+//==============================================================================
+// void psi_clean1()
+//==============================================================================
+
+.psi_clean1:
+print   "m2vwf.psi_clean1:             $",pc
+
+push    {r0-r1,lr}
+
+// Clobbered code
+bl      $80BAE98                // render the PSI window
+
+// Unset the dirty flag
+mov     r1,r5                   // = #0x3005230
+ldr     r0,[r1,#0x1C]           // PSI window address
+mov     r1,#1
+bl      .set_dirty_flag
+
+pop     {r0-r1,pc}
+
+
+//==============================================================================
+// void psi_clear1()
+//==============================================================================
+
+.psi_clear1:
+print   "m2vwf.psi_clear1:             $",pc
+
+push    {r0-r1,lr}
+
+// Check the dirty flag
+bl      .get_dirty_flag
+
+// If it's clean, don't erase
+cmp     r0,#0
+bne     +
+
+// Clobbered code -- clear the window
+pop     {r0-r1}
+bl      $80CA834
+pop     {pc}
+
++
+pop     {r0-r1,pc}
+
+
+//==============================================================================
+// void psi_help_clean1()
+//==============================================================================
+
+.psi_help_clean1:
+print   "m2vwf.psi_help_clean1:        $",pc
+
+push    {r0-r1,r4,lr}
+
+// Clobbered code
+mov     r4,r0
+bl      $80C8BE4                // render the PSI help window
+
+// Unset the dirty flag
+mov     r0,r4
+mov     r1,#1
+bl      .set_dirty_flag
+
+pop     {r0-r1,r4,pc}
+
+
+//==============================================================================
+// void psi_help_clear1()
+//==============================================================================
+
+.psi_help_clear1:
+print   "m2vwf.psi_help_clear1:        $",pc
+
+push    {r0-r1,lr}
+
+// Check the dirty flag
+bl      .get_dirty_flag
+
+// If it's clean, don't erase
+cmp     r0,#0
+bne     +
+
+// Clobbered code -- clear the window
+pop     {r0-r1}
+bl      $80BE458
+pop     {pc}
+
++
+pop     {r0-r1,pc}
+
+
+//==============================================================================
+// void cursor_dirty1()
+//==============================================================================
+
+.cursor_dirty1:
+print   "m2vwf.cursor_dirty1:          $",pc
+
+push    {lr}
+
+// Set the dirty flag
+bl      .set_all_dirty_flags
+
+// Clobbered code
+strh    r0,[r5,#0x36]
+mov     r1,#0x36
+
+pop     {pc}
+
+
+//==============================================================================
+// void set_all_dirty_flags()
+//==============================================================================
+
+.set_all_dirty_flags:
+print   "m2vwf.set_all_dirty_flags:    $",pc
+
+push    {r0-r1,lr}
+ldr     r0,=#m2_custom_wram
+add     r0,#0x14
+mov     r1,#0
+str     r1,[r0,#0]
+str     r1,[r0,#4]
+str     r1,[r0,#8]
+pop     {r0-r1,pc}
 
 
 //==============================================================================

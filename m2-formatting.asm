@@ -386,4 +386,7 @@ mov     r0,r4
 bl      $80C8FFC
 
 //--------------------------------
+// Set all dirty flags
+bl      m2_vwf.set_all_dirty_flags
+
 pop     {r0-r7,pc}
