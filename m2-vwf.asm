@@ -1385,6 +1385,52 @@ pop     {pc}
 
 
 //==============================================================================
+// void main_redraw(WINDOW* window)
+// In:
+//    r0: window
+//==============================================================================
+
+.main_redraw:
+print   "m2vwf.main_redraw:            $",pc
+push    {r0-r5,lr}
+
+//--------------------------------
+// Get the address of the main menu window
+ldr     r5,=#0x3005230
+ldr     r0,[r5,#0]
+mov     r4,r0
+
+// Get its text address
+ldr     r1,[r0,#4]
+
+// Draw it
+mov     r2,#0
+bl      $80BE458
+mov     r0,r4
+bl      $80C8FFC
+
+//--------------------------------
+// Get the address of the cash window
+ldr     r0,[r5,#4]
+mov     r4,r0
+
+// Get its text address
+ldr     r1,[r0,#4]
+
+// Draw it
+mov     r2,#0
+bl      $80BE458
+mov     r0,r4
+bl      $80C8FFC
+
+//--------------------------------
+// Clobbered code
+pop     {r0-r5}
+bl      $80BD7AC
+pop     {pc}
+
+
+//==============================================================================
 // void status(WINDOW* window, char* chr, TILEDATA* tileData)
 // In:
 //    r4: window
