@@ -1863,6 +1863,27 @@ pop     {r0,pc}
 
 
 //==============================================================================
+// void goods_dirty6()
+//==============================================================================
+
+.goods_dirty6:
+print   "m2vwf.goods_dirty6:           $",pc
+
+push    {r1,lr}
+
+// Set the dirty flag
+mov     r0,r7
+mov     r1,#0
+bl      .set_dirty_flag
+
+// Clobbered code
+mov     r0,#0
+strh    r0,[r7,#0x32]
+
+pop     {r1,pc}
+
+
+//==============================================================================
 // void goods_redraw()
 //==============================================================================
 
@@ -1887,92 +1908,67 @@ ldr     r0,[r0,#0]
 mov     r5,r0
 bl      .clear_window
 
-//================================
-// Redraw each item text
-//================================
-
-ldr     r6,=#0x8B1AF94
-ldr     r7,=#0x8B1A694
-
-// Get inventory pointer
+//--------------------------------
+// Redraw the goods window
 ldr     r0,=#0x3005264
 ldrb    r1,[r0,#0]      // get character number
 mov     r0,#0x6C
 mul     r1,r0
 ldr     r0,=#0x3001D54
 add     r1,r0,r1        // inventory pointer
+mov     r0,r5
+mov     r5,r1
+mov     r4,r0
+mov     r2,#8
+strb    r2,[r0,#1]      // need to set this flag for some reason
+bl      $80BEB6C
 
-// Read the item number
-ldrh    r2,[r1,#0]
+//--------------------------------
+// Redraw the highlighted item
 
-// Get the item address
-mov     r0,r6
-mov     r1,r7
-bl      $80BE260
-mov     r2,r0
+// Get the item index from the cursor coords
+add     r4,#0x34
+ldrh    r1,[r4,#0]      // X
+add     r6,r1,#0
+cmp     r1,#0xB
+bne     +
+mov     r1,#1
++
+ldrh    r0,[r4,#2]      // Y
+mov     r7,r0
+lsl     r0,r0,#1
+add     r0,r0,r1        // item index
 
-// Set the X and Y
-mov     r3,#0x22
-ldrh    r0,[r5,r3]      // text area X
+// Check if the item is equipped
+push    {r0-r3}
 add     r0,#1
-mov     r3,#0x24
-ldrh    r1,[r5,r3]      // text area Y
+bl      $80BC670
+cmp     r0,#0
+pop     {r0-r3}
+beq     +
+add     r6,#1
++
 
-// Draw
-bl      .print_string
+// Get the item number
+lsl     r2,r0,#1
+ldrh    r2,[r5,r2]      // item number
 
-////--------------------------------
-//// Redraw the goods window
-//ldr     r0,=#0x3005264
-//ldrb    r1,[r0,#0]      // get character number
-//mov     r0,#0x6C
-//mul     r1,r0
-//ldr     r0,=#0x3001D54
-//add     r1,r0,r1        // inventory pointer
-//mov     r5,r1
-//ldr     r0,=#0x3005240
-//ldr     r0,[r0,#0]      // get Goods window address
-//mov     r4,r0
-//mov     r2,#8
-//strb    r2,[r0,#1]      // need to set this flag for some reason
-//bl      $80BEB6C
-//
-////--------------------------------
-//// Redraw the highlighted item
-//
-//// Get the item index from the cursor coords
-//add     r4,#0x34
-//ldrh    r1,[r4,#0]      // X
-//add     r6,r1,#0
-//cmp     r1,#0xB
-//bne     +
-//mov     r1,#1
-//+
-//ldrh    r0,[r4,#2]      // Y
-//mov     r7,r0
-//lsl     r0,r0,#1
-//add     r0,r0,r1        // item index
-//
-//// Get the item number
-//lsl     r2,r0,#1
-//ldrh    r2,[r5,r2]      // item number
-//
-//// Get the item's text address
-//ldr     r0,=#0x8B1AF94
-//ldr     r1,=#0x8B1A694
-//bl      $80BE260        // r0 = address
-//
-//// Draw the text
-//add     sp,#-4
-//mov     r1,#1
-//str     r1,[sp,#0]
-//mov     r1,r0
-//sub     r4,#0x34
-//mov     r0,r4
-//mov     r2,r6
-//mov     r3,r7
-//bl      $80C9634
-//add     sp,#4
+// Get the item's text address
+ldr     r0,=#0x8B1AF94
+ldr     r1,=#0x8B1A694
+bl      $80BE260        // r0 = address
+
+// Draw the text
+add     sp,#-4
+mov     r1,#1
+str     r1,[sp,#0]
+mov     r1,r0
+sub     r4,#0x34
+mov     r0,r4
+add     r2,r6,#1
+mov     r3,r7
+bl      $80C9634
+add     sp,#4
 
 //--------------------------------
 // Clobbered code
