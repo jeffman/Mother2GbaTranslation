@@ -1,4 +1,4 @@
-^L0^
+^L0^[1C FF 28 00 _L2220_][1C FF 40 00 _L2221_]@Hey kid![1B FF 0F 00]  Do you wanna become[01 FF]  a member?[01 FF][03 FF 00 00][04 FF _L2222_][05 FF _L2223_]^L2223^@Don't be such a snob![02 FF][86 FF _L2224_][81 FF _L2225_][85 FF 01 00 06 00][08 FF 28 00][00 FF]^L2222^@Come back after you finish[01 FF]  Earthbound![1D FF][00 FF]
 ^L1^
 ^L2^
 ^L3^
