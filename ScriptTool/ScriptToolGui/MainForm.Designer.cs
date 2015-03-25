@@ -33,6 +33,8 @@
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.saveMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.topPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.collectionSelector = new System.Windows.Forms.ComboBox();
             this.groupSelector = new System.Windows.Forms.ComboBox();
             this.backButton = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.Panel();
@@ -44,6 +46,7 @@
             this.m12StringEnglish = new System.Windows.Forms.TextBox();
             this.lineOpsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.copyCodesButton = new System.Windows.Forms.Button();
+            this.previewButton = new System.Windows.Forms.Button();
             this.codeSplitContainer = new System.Windows.Forms.SplitContainer();
             this.codeList = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,9 +58,7 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.writeTimer = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.collectionSelector = new System.Windows.Forms.ComboBox();
-            this.previewButton = new System.Windows.Forms.Button();
+            this.previewer = new ScriptToolGui.StringPreviewer();
             this.mainMenu.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -67,6 +68,7 @@
             this.mainSplitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leftSplitContainer)).BeginInit();
             this.leftSplitContainer.Panel1.SuspendLayout();
+            this.leftSplitContainer.Panel2.SuspendLayout();
             this.leftSplitContainer.SuspendLayout();
             this.textBoxPanel.SuspendLayout();
             this.lineOpsPanel.SuspendLayout();
@@ -117,6 +119,27 @@
             this.topPanel.Name = "topPanel";
             this.topPanel.Size = new System.Drawing.Size(1026, 29);
             this.topPanel.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 8, 0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Group:";
+            // 
+            // collectionSelector
+            // 
+            this.collectionSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.collectionSelector.FormattingEnabled = true;
+            this.collectionSelector.Location = new System.Drawing.Point(45, 4);
+            this.collectionSelector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.collectionSelector.Name = "collectionSelector";
+            this.collectionSelector.Size = new System.Drawing.Size(157, 21);
+            this.collectionSelector.TabIndex = 14;
+            this.collectionSelector.SelectionChangeCommitted += new System.EventHandler(this.collectionSelector_SelectionChangeCommitted);
             // 
             // groupSelector
             // 
@@ -187,6 +210,10 @@
             // 
             this.leftSplitContainer.Panel1.Controls.Add(this.textBoxPanel);
             this.leftSplitContainer.Panel1.Controls.Add(this.lineOpsPanel);
+            // 
+            // leftSplitContainer.Panel2
+            // 
+            this.leftSplitContainer.Panel2.Controls.Add(this.previewer);
             this.leftSplitContainer.Size = new System.Drawing.Size(800, 667);
             this.leftSplitContainer.SplitterDistance = 526;
             this.leftSplitContainer.TabIndex = 5;
@@ -259,6 +286,16 @@
             this.copyCodesButton.Text = "Copy codes and labels";
             this.copyCodesButton.UseVisualStyleBackColor = true;
             this.copyCodesButton.Click += new System.EventHandler(this.copyCodesButton_Click);
+            // 
+            // previewButton
+            // 
+            this.previewButton.Location = new System.Drawing.Point(133, 3);
+            this.previewButton.Name = "previewButton";
+            this.previewButton.Size = new System.Drawing.Size(75, 23);
+            this.previewButton.TabIndex = 1;
+            this.previewButton.Text = "Preview";
+            this.previewButton.UseVisualStyleBackColor = true;
+            this.previewButton.Click += new System.EventHandler(this.previewButton_Click);
             // 
             // codeSplitContainer
             // 
@@ -384,35 +421,17 @@
             this.writeTimer.Interval = 10000;
             this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
             // 
-            // label1
+            // previewer
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 8);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 8, 0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Group:";
-            // 
-            // collectionSelector
-            // 
-            this.collectionSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.collectionSelector.FormattingEnabled = true;
-            this.collectionSelector.Location = new System.Drawing.Point(45, 4);
-            this.collectionSelector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
-            this.collectionSelector.Name = "collectionSelector";
-            this.collectionSelector.Size = new System.Drawing.Size(157, 21);
-            this.collectionSelector.TabIndex = 14;
-            this.collectionSelector.SelectionChangeCommitted += new System.EventHandler(this.collectionSelector_SelectionChangeCommitted);
-            // 
-            // previewButton
-            // 
-            this.previewButton.Location = new System.Drawing.Point(133, 3);
-            this.previewButton.Name = "previewButton";
-            this.previewButton.Size = new System.Drawing.Size(75, 23);
-            this.previewButton.TabIndex = 1;
-            this.previewButton.Text = "Preview";
-            this.previewButton.UseVisualStyleBackColor = true;
+            this.previewer.AutoScroll = true;
+            this.previewer.CharLookup = null;
+            this.previewer.DisplayedString = null;
+            this.previewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previewer.Location = new System.Drawing.Point(0, 0);
+            this.previewer.M12Compiler = null;
+            this.previewer.Name = "previewer";
+            this.previewer.Size = new System.Drawing.Size(796, 133);
+            this.previewer.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -440,6 +459,7 @@
             this.mainSplitContainer.ResumeLayout(false);
             this.leftSplitContainer.Panel1.ResumeLayout(false);
             this.leftSplitContainer.Panel1.PerformLayout();
+            this.leftSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.leftSplitContainer)).EndInit();
             this.leftSplitContainer.ResumeLayout(false);
             this.textBoxPanel.ResumeLayout(false);
@@ -491,6 +511,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox collectionSelector;
         private System.Windows.Forms.Button previewButton;
+        private StringPreviewer previewer;
     }
 }
 

@@ -72,6 +72,9 @@ namespace ScriptToolGui
         public MainForm()
         {
             InitializeComponent();
+            
+            previewer.M12Compiler = m12Compiler;
+            previewer.CharLookup = ebCharLookup;
 
             ImportAllStringRefs();
             ImportAllStrings(workingFolder);
@@ -308,6 +311,8 @@ namespace ScriptToolGui
 
             PopulateCodeList();
             PopulateReferenceList();
+
+            previewButton_Click(null, null);
         }
 
         private void SelectGroup(MatchedGroup group)
@@ -388,6 +393,8 @@ namespace ScriptToolGui
 
             PopulateCodeList();
             PopulateReferenceList();
+
+            previewButton_Click(null, null);
         }
 
         private void PushPreviousNavigationState()
@@ -538,10 +545,21 @@ namespace ScriptToolGui
             if (collectionSelector.SelectedIndex == -1)
             {
                 groupSelector.Items.Clear();
+                previewer.DisplayedString = null;
             }
             else
             {
                 var collection = (MatchedGroupCollection)collectionSelector.SelectedItem;
+
+                // Set the previewer width before we do navigation stuff
+                if (collection == psiHelpGroups)
+                {
+                    previewer.MaxWidth = 224;
+                }
+                else
+                {
+                    previewer.MaxWidth = 144;
+                }
 
                 // Take no action if we haven't actually changed the collection
                 // (otherwise, the group selector would jump to 0, probably unwanted)
@@ -554,6 +572,11 @@ namespace ScriptToolGui
                 groupSelector.SelectedIndex = 0;
                 groupSelector_SelectionChangeCommitted(null, null);
             }
+        }
+
+        private void previewButton_Click(object sender, EventArgs e)
+        {
+            previewer.DisplayedString = m12StringEnglish.Text;
         }
     }
 
