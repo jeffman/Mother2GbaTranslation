@@ -220,12 +220,12 @@ namespace ScriptTool
             var tptTuple = M12TextTables.ReadTptRefs(m12Rom);
             allRefs.Add(Tuple.Create("m12-tpt-primary", tptTuple.Item1));
             allRefs.Add(Tuple.Create("m12-tpt-secondary", tptTuple.Item2));
-            allRefs.Add(Tuple.Create("m12-psihelp", M12TextTables.ReadPsiHelpRefs(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-psi-help", M12TextTables.ReadPsiHelpRefs(m12Rom)));
             allRefs.Add(Tuple.Create("m12-battle-actions", M12TextTables.ReadBattleActionRefs(m12Rom)));
-            allRefs.Add(Tuple.Create("m12-itemhelp", M12TextTables.ReadItemHelpRefs(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-item-help", M12TextTables.ReadItemHelpRefs(m12Rom)));
             allRefs.Add(Tuple.Create("m12-movements", M12TextTables.ReadMovementRefs(m12Rom)));
             allRefs.Add(Tuple.Create("m12-objects", M12TextTables.ReadObjectRefs(m12Rom)));
-            allRefs.Add(Tuple.Create("m12-phonelist", M12TextTables.ReadPhoneRefs(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-phone-list", M12TextTables.ReadPhoneRefs(m12Rom)));
             allRefs.Add(Tuple.Create("m12-unknown", M12TextTables.ReadUnknownRefs(m12Rom)));
             allRefs.Add(Tuple.Create("m12-enemy-encounters", M12TextTables.ReadEnemyEncounters(m12Rom)));
             allRefs.Add(Tuple.Create("m12-prayers", M12TextTables.ReadPrayerRefs(m12Rom)));

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ScriptToolGui
 {
-    struct IndexPair
+    class IndexPair
     {
-        public readonly int First;
-        public readonly int Second;
+        public int First { get; private set; }
+        public int Second { get; private set; }
 
         public IndexPair(int first, int second)
         {

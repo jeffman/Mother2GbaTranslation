@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ScriptToolGui
 {
-    class IndexMapping : IEnumerable<IndexPair>
+    class IndexMapping : IEnumerable<IndexPair>, ICollection<IndexPair>
     {
-        public IList<IndexPair> Pairs { get; private set; }
+        public ICollection<IndexPair> Pairs { get; private set; }
 
         public IndexMapping()
         {
@@ -28,6 +28,41 @@ namespace ScriptToolGui
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public void Add(IndexPair item)
+        {
+            Pairs.Add(item);
+        }
+
+        public void Clear()
+        {
+            Pairs.Clear();
+        }
+
+        public bool Contains(IndexPair item)
+        {
+            return Pairs.Contains(item);
+        }
+
+        public void CopyTo(IndexPair[] array, int arrayIndex)
+        {
+            Pairs.CopyTo(array, arrayIndex);
+        }
+
+        public int Count
+        {
+            get { return Pairs.Count; }
+        }
+
+        public bool IsReadOnly
+        {
+            get { return Pairs.IsReadOnly; }
+        }
+
+        public bool Remove(IndexPair item)
+        {
+            return Pairs.Remove(item);
         }
     }
 }

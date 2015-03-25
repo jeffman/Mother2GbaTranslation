@@ -110,7 +110,7 @@ namespace ScriptTool
 
                     address += code.ComputeLength(rom, address);
 
-                    /*if (code.IsEnd)
+                    /*if (newLines && code.IsEnd && !suppressNextEnd)
                     {
                         builder.Append("(" + address.ToString("X") + ")");
                     }*/

@@ -77,6 +77,9 @@
     <None Include="eb-codelist.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="item-map.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="m12-char-lookup.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

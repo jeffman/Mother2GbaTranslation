@@ -41,6 +41,7 @@ namespace ScriptToolGui
         // Matched reference pairs
         MatchedGroupCollection tptGroups = new MatchedGroupCollection("TPT");
         MatchedGroupCollection battleActionGroups = new MatchedGroupCollection("Battle actions");
+        MatchedGroupCollection itemHelpGroups = new MatchedGroupCollection("Item help");
         List<MatchedGroup> matchedGroups = new List<MatchedGroup>();
         IList<MatchedGroupCollection> matchedCollections = new List<MatchedGroupCollection>();
 
@@ -48,6 +49,7 @@ namespace ScriptToolGui
         IDictionary<Game, int> currentIndex;
         NavigationEntry previousNavigationState = null;
         Stack<NavigationEntry> navigationStack = new Stack<NavigationEntry>();
+        MatchedGroupCollection currentCollection = null;
 
         static MainForm()
         {
@@ -55,11 +57,21 @@ namespace ScriptToolGui
             ebCharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("eb-char-lookup.json"));
         }
 
+        string ReadEbString(byte[] rom, int address, int length)
+        {
+            var sb = new StringBuilder();
+            for(int i=0;i<length && rom[address] != 0; i++)
+            {
+                sb.Append((char)(rom[address++] - 0x30));
+            }
+            return sb.ToString();
+        }
+
         public MainForm()
         {
             InitializeComponent();
 
-            ImportAllStringRefs(workingFolder);
+            ImportAllStringRefs();
             ImportAllStrings(workingFolder);
 
             InitLookups();
@@ -74,8 +86,7 @@ namespace ScriptToolGui
         {
             collectionSelector.Items.Clear();
 
-            collectionSelector.Items.Add(tptGroups);
-            collectionSelector.Items.Add(battleActionGroups);
+            collectionSelector.Items.AddRange(matchedCollections.ToArray());
         }
 
         private void PopulateGroupSelector(MatchedGroupCollection collection)
@@ -109,47 +120,60 @@ namespace ScriptToolGui
             };
         }
 
-        private void ImportAllStringRefs(string folder)
+        private void ImportAllStringRefs()
         {
             // TPT
-            var m12PrimaryTptRefs = ImportStringRefs(Path.Combine(folder, "m12-tpt-primary.json"));
-            var ebPrimaryTptRefs = ImportStringRefs(Path.Combine(folder, "eb-tpt-primary.json"));
+            var m12PrimaryTptRefs = ImportStringRefs("m12-tpt-primary.json");
+            var ebPrimaryTptRefs = ImportStringRefs("eb-tpt-primary.json");
 
-            var m12SecondaryTptRefs = ImportStringRefs(Path.Combine(folder, "m12-tpt-secondary.json"));
-            var ebSecondaryTptRefs = ImportStringRefs(Path.Combine(folder, "eb-tpt-secondary.json"));
+            var m12SecondaryTptRefs = ImportStringRefs("m12-tpt-secondary.json");
+            var ebSecondaryTptRefs = ImportStringRefs("eb-tpt-secondary.json");
 
             tptGroups.Groups.AddRange(MatchRefs(ebPrimaryTptRefs, m12PrimaryTptRefs));
             tptGroups.Groups.AddRange(MatchRefs(ebSecondaryTptRefs, m12SecondaryTptRefs));
-            tptGroups.Groups.Sort((g1, g2) => g1.Index.CompareTo(g2.Index));
-
+            tptGroups.Groups.Sort((g1, g2) => g1.Refs[Game.Eb].Index.CompareTo(g2.Refs[Game.Eb].Index));
             matchedGroups.AddRange(tptGroups);
 
             // Battle actions
-            var m12BattleActionRefs = ImportStringRefs(Path.Combine(folder, "m12-battle-actions.json"));
-            var ebBattleActionRefs = ImportStringRefs(Path.Combine(folder, "eb-battle-actions.json"));
+            var m12BattleActionRefs = ImportStringRefs("m12-battle-actions.json");
+            var ebBattleActionRefs = ImportStringRefs("eb-battle-actions.json");
 
             battleActionGroups.Groups.AddRange(MatchRefs(ebBattleActionRefs, m12BattleActionRefs));
-            battleActionGroups.Groups.Sort((g1, g2) => g1.Index.CompareTo(g2.Index));
-
+            battleActionGroups.Groups.Sort((g1, g2) => g1.Refs[Game.Eb].Index.CompareTo(g2.Refs[Game.Eb].Index));
             matchedGroups.AddRange(battleActionGroups);
 
             // Item help
+            itemMapping = JsonConvert.DeserializeObject<IndexMapping>(File.ReadAllText("item-map.json"));
+            var m12ItemHelpRefs = ImportStringRefs("m12-item-help.json");
+            var ebItemHelpRefs = ImportStringRefs("eb-item-help.json");
+            var itemHelpMappingGroups = itemMapping.Select(p => new MatchedGroup(
+                ebItemHelpRefs.First(e => e.Index == p.First),
+                m12ItemHelpRefs.First(m => m.Index == p.Second),
+                m12ItemHelpRefs.First(m => m.Index == p.Second)))
+                .OrderBy(g => g.Refs[Game.Eb].Index)
+                .ToArray();
 
-            matchedGroups.Sort((g1, g2) => g1.Index.CompareTo(g2.Index));
+            itemHelpGroups.Groups.AddRange(itemHelpMappingGroups);
+            matchedGroups.AddRange(itemHelpGroups);
+
+            matchedGroups.Sort((g1, g2) => g1.Refs[Game.Eb].Index.CompareTo(g2.Refs[Game.Eb].Index));
+
             matchedCollections.Add(tptGroups);
             matchedCollections.Add(battleActionGroups);
+            matchedCollections.Add(itemHelpGroups);
         }
 
         private MatchedGroup[] MatchRefs(MainStringRef[] ebRefs, MainStringRef[] m12Refs)
         {
-            return ebRefs.Join(m12Refs, e => e.Index, m => m.Index, (e, m) => new { e, m })
+            return ebRefs.Join(m12Refs, e => e.Index, m => m.Index,
+                (e, m) => new { e, m })
                 .Select(p => new MatchedGroup(p.e, p.m, p.m))
                 .ToArray();
         }
 
         private MainStringRef[] ImportStringRefs(string fileName)
         {
-            string jsonString = File.ReadAllText(fileName);
+            string jsonString = File.ReadAllText(Path.Combine(workingFolder, fileName));
             return JsonConvert.DeserializeObject<MainStringRef[]>(jsonString);
         }
 
@@ -499,6 +523,13 @@ namespace ScriptToolGui
             else
             {
                 var collection = (MatchedGroupCollection)collectionSelector.SelectedItem;
+
+                // Take no action if we haven't actually changed the collection
+                // (otherwise, the group selector would jump to 0, probably unwanted)
+                if (collection == currentCollection)
+                    return;
+
+                currentCollection = collection;
                 PopulateGroupSelector(collection);
 
                 groupSelector.SelectedIndex = 0;
