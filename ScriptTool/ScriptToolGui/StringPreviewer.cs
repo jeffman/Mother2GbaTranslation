@@ -55,7 +55,7 @@ namespace ScriptToolGui
                 {
                     var label = new Label();
                     label.AutoSize = true;
-                    label.Text = parsed[i] + "(" + widths[i] + ")";
+                    label.Text = parsed[i] + " (" + widths[i] + ")";
 
                     if (widths[i] <= MaxWidth)
                         label.ForeColor = Color.Green;
