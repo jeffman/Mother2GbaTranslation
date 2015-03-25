@@ -33,10 +33,7 @@
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.saveMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.topPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tptSelector = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.battleActionSelector = new System.Windows.Forms.ComboBox();
+            this.groupSelector = new System.Windows.Forms.ComboBox();
             this.backButton = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
@@ -48,6 +45,7 @@
             this.lineOpsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.copyCodesButton = new System.Windows.Forms.Button();
             this.codeSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.codeList = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.referenceList = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,7 +55,9 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.writeTimer = new System.Windows.Forms.Timer(this.components);
-            this.codeList = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.collectionSelector = new System.Windows.Forms.ComboBox();
+            this.previewButton = new System.Windows.Forms.Button();
             this.mainMenu.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -85,7 +85,7 @@
             this.fileMenu});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(853, 24);
+            this.mainMenu.Size = new System.Drawing.Size(1026, 24);
             this.mainMenu.TabIndex = 8;
             this.mainMenu.Text = "menuStrip1";
             // 
@@ -108,65 +108,31 @@
             // topPanel
             // 
             this.topPanel.AutoSize = true;
-            this.topPanel.Controls.Add(this.label4);
-            this.topPanel.Controls.Add(this.tptSelector);
             this.topPanel.Controls.Add(this.label1);
-            this.topPanel.Controls.Add(this.battleActionSelector);
+            this.topPanel.Controls.Add(this.collectionSelector);
+            this.topPanel.Controls.Add(this.groupSelector);
             this.topPanel.Controls.Add(this.backButton);
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 24);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(853, 29);
+            this.topPanel.Size = new System.Drawing.Size(1026, 29);
             this.topPanel.TabIndex = 10;
             // 
-            // label4
+            // groupSelector
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(3, 7, 0, 6);
-            this.label4.Size = new System.Drawing.Size(60, 26);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "TPT entry:";
-            // 
-            // tptSelector
-            // 
-            this.tptSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tptSelector.FormattingEnabled = true;
-            this.tptSelector.Location = new System.Drawing.Point(66, 4);
-            this.tptSelector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
-            this.tptSelector.Name = "tptSelector";
-            this.tptSelector.Size = new System.Drawing.Size(238, 21);
-            this.tptSelector.TabIndex = 10;
-            this.tptSelector.SelectionChangeCommitted += new System.EventHandler(this.selector_SelectionChangeCommitted);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(310, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(3, 7, 0, 6);
-            this.label1.Size = new System.Drawing.Size(72, 26);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Battle action:";
-            // 
-            // battleActionSelector
-            // 
-            this.battleActionSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.battleActionSelector.FormattingEnabled = true;
-            this.battleActionSelector.Location = new System.Drawing.Point(385, 4);
-            this.battleActionSelector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
-            this.battleActionSelector.Name = "battleActionSelector";
-            this.battleActionSelector.Size = new System.Drawing.Size(238, 21);
-            this.battleActionSelector.TabIndex = 13;
-            this.battleActionSelector.SelectionChangeCommitted += new System.EventHandler(this.selector_SelectionChangeCommitted);
+            this.groupSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.groupSelector.FormattingEnabled = true;
+            this.groupSelector.Location = new System.Drawing.Point(208, 4);
+            this.groupSelector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.groupSelector.Name = "groupSelector";
+            this.groupSelector.Size = new System.Drawing.Size(238, 21);
+            this.groupSelector.TabIndex = 10;
+            this.groupSelector.SelectionChangeCommitted += new System.EventHandler(this.groupSelector_SelectionChangeCommitted);
             // 
             // backButton
             // 
             this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.backButton.Location = new System.Drawing.Point(629, 3);
+            this.backButton.Location = new System.Drawing.Point(452, 3);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 23);
             this.backButton.TabIndex = 12;
@@ -182,7 +148,7 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 53);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(853, 667);
+            this.mainPanel.Size = new System.Drawing.Size(1026, 667);
             this.mainPanel.TabIndex = 11;
             // 
             // mainSplitContainer
@@ -204,8 +170,8 @@
             this.mainSplitContainer.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.mainSplitContainer.Panel2.Controls.Add(this.codeSplitContainer);
             this.mainSplitContainer.Panel2.Controls.Add(this.gameSelectorPanel);
-            this.mainSplitContainer.Size = new System.Drawing.Size(853, 667);
-            this.mainSplitContainer.SplitterDistance = 627;
+            this.mainSplitContainer.Size = new System.Drawing.Size(1026, 667);
+            this.mainSplitContainer.SplitterDistance = 800;
             this.mainSplitContainer.TabIndex = 6;
             // 
             // leftSplitContainer
@@ -221,8 +187,8 @@
             // 
             this.leftSplitContainer.Panel1.Controls.Add(this.textBoxPanel);
             this.leftSplitContainer.Panel1.Controls.Add(this.lineOpsPanel);
-            this.leftSplitContainer.Size = new System.Drawing.Size(627, 667);
-            this.leftSplitContainer.SplitterDistance = 443;
+            this.leftSplitContainer.Size = new System.Drawing.Size(800, 667);
+            this.leftSplitContainer.SplitterDistance = 526;
             this.leftSplitContainer.TabIndex = 5;
             // 
             // textBoxPanel
@@ -235,7 +201,7 @@
             this.textBoxPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxPanel.Location = new System.Drawing.Point(0, 0);
             this.textBoxPanel.Name = "textBoxPanel";
-            this.textBoxPanel.Size = new System.Drawing.Size(623, 406);
+            this.textBoxPanel.Size = new System.Drawing.Size(796, 489);
             this.textBoxPanel.TabIndex = 10;
             // 
             // ebString
@@ -246,7 +212,7 @@
             this.ebString.Multiline = true;
             this.ebString.Name = "ebString";
             this.ebString.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ebString.Size = new System.Drawing.Size(613, 128);
+            this.ebString.Size = new System.Drawing.Size(786, 128);
             this.ebString.TabIndex = 9;
             // 
             // m12String
@@ -257,7 +223,7 @@
             this.m12String.Multiline = true;
             this.m12String.Name = "m12String";
             this.m12String.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.m12String.Size = new System.Drawing.Size(613, 128);
+            this.m12String.Size = new System.Drawing.Size(786, 128);
             this.m12String.TabIndex = 10;
             // 
             // m12StringEnglish
@@ -268,7 +234,7 @@
             this.m12StringEnglish.Multiline = true;
             this.m12StringEnglish.Name = "m12StringEnglish";
             this.m12StringEnglish.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.m12StringEnglish.Size = new System.Drawing.Size(613, 128);
+            this.m12StringEnglish.Size = new System.Drawing.Size(786, 128);
             this.m12StringEnglish.TabIndex = 11;
             // 
             // lineOpsPanel
@@ -276,10 +242,11 @@
             this.lineOpsPanel.AutoSize = true;
             this.lineOpsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lineOpsPanel.Controls.Add(this.copyCodesButton);
+            this.lineOpsPanel.Controls.Add(this.previewButton);
             this.lineOpsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lineOpsPanel.Location = new System.Drawing.Point(0, 406);
+            this.lineOpsPanel.Location = new System.Drawing.Point(0, 489);
             this.lineOpsPanel.Name = "lineOpsPanel";
-            this.lineOpsPanel.Size = new System.Drawing.Size(623, 33);
+            this.lineOpsPanel.Size = new System.Drawing.Size(796, 33);
             this.lineOpsPanel.TabIndex = 9;
             // 
             // copyCodesButton
@@ -313,6 +280,16 @@
             this.codeSplitContainer.Size = new System.Drawing.Size(222, 634);
             this.codeSplitContainer.SplitterDistance = 292;
             this.codeSplitContainer.TabIndex = 1;
+            // 
+            // codeList
+            // 
+            this.codeList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.codeList.FormattingEnabled = true;
+            this.codeList.HorizontalScrollbar = true;
+            this.codeList.Location = new System.Drawing.Point(0, 19);
+            this.codeList.Name = "codeList";
+            this.codeList.Size = new System.Drawing.Size(218, 269);
+            this.codeList.TabIndex = 3;
             // 
             // label2
             // 
@@ -392,7 +369,7 @@
             this.statusLabel});
             this.statusBar.Location = new System.Drawing.Point(0, 720);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(853, 22);
+            this.statusBar.Size = new System.Drawing.Size(1026, 22);
             this.statusBar.TabIndex = 7;
             this.statusBar.Text = "statusStrip1";
             // 
@@ -407,21 +384,41 @@
             this.writeTimer.Interval = 10000;
             this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
             // 
-            // codeList
+            // label1
             // 
-            this.codeList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.codeList.FormattingEnabled = true;
-            this.codeList.HorizontalScrollbar = true;
-            this.codeList.Location = new System.Drawing.Point(0, 19);
-            this.codeList.Name = "codeList";
-            this.codeList.Size = new System.Drawing.Size(218, 269);
-            this.codeList.TabIndex = 3;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 8, 0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Group:";
+            // 
+            // collectionSelector
+            // 
+            this.collectionSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.collectionSelector.FormattingEnabled = true;
+            this.collectionSelector.Location = new System.Drawing.Point(45, 4);
+            this.collectionSelector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.collectionSelector.Name = "collectionSelector";
+            this.collectionSelector.Size = new System.Drawing.Size(157, 21);
+            this.collectionSelector.TabIndex = 14;
+            this.collectionSelector.SelectionChangeCommitted += new System.EventHandler(this.collectionSelector_SelectionChangeCommitted);
+            // 
+            // previewButton
+            // 
+            this.previewButton.Location = new System.Drawing.Point(133, 3);
+            this.previewButton.Name = "previewButton";
+            this.previewButton.Size = new System.Drawing.Size(75, 23);
+            this.previewButton.TabIndex = 1;
+            this.previewButton.Text = "Preview";
+            this.previewButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 742);
+            this.ClientSize = new System.Drawing.Size(1026, 742);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.topPanel);
             this.Controls.Add(this.mainMenu);
@@ -469,11 +466,8 @@
         private System.Windows.Forms.ToolStripMenuItem fileMenu;
         private System.Windows.Forms.ToolStripMenuItem saveMenu;
         private System.Windows.Forms.FlowLayoutPanel topPanel;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox battleActionSelector;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.ComboBox tptSelector;
+        private System.Windows.Forms.ComboBox groupSelector;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.SplitContainer mainSplitContainer;
         private System.Windows.Forms.SplitContainer leftSplitContainer;
@@ -494,6 +488,9 @@
         private System.Windows.Forms.FlowLayoutPanel lineOpsPanel;
         private System.Windows.Forms.Button copyCodesButton;
         private System.Windows.Forms.ListBox codeList;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox collectionSelector;
+        private System.Windows.Forms.Button previewButton;
     }
 }
 

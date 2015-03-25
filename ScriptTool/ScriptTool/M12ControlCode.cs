@@ -21,6 +21,7 @@ namespace ScriptTool
         public bool HasReferences { get; set; }
         public bool AbsoluteAddressing { get; set; }
         public bool IsCompressedString { get { return false; } }
+        public bool SuppressNextEnd { get; set; }
 
         static M12ControlCode()
         {

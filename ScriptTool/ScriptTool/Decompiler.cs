@@ -70,6 +70,8 @@ namespace ScriptTool
             var builder = new StringBuilder();
             bool readUntilEnd = (endAddress == -1);
             bool ended = false;
+            bool suppressNextEnd = false;
+
             int address = startAddress;
 
             while (!ended)
@@ -100,7 +102,7 @@ namespace ScriptTool
 
                         builder.Append(String.Format("[{0}]", String.Join(" ", filtered)));
 
-                        if (newLines && code.IsEnd)
+                        if (newLines && code.IsEnd && !suppressNextEnd)
                         {
                             builder.AppendLine();
                         }
@@ -115,6 +117,15 @@ namespace ScriptTool
 
                     if (readUntilEnd && code.IsEnd)
                         ended = true;
+
+                    if (code.IsEnd)
+                    {
+                        suppressNextEnd = false;
+                    }
+                    else if (code.SuppressNextEnd == true)
+                    {
+                        suppressNextEnd = true;
+                    }
                 }
                 else
                 {

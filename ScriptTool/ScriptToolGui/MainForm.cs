@@ -35,10 +35,14 @@ namespace ScriptToolGui
         IList<string> m12StringsEnglish;
         IList<string> ebStrings;
         
+        // Index mappings
+        IndexMapping itemMapping = new IndexMapping();
+
         // Matched reference pairs
-        List<MatchedGroup> tptGroups = new List<MatchedGroup>();
-        List<MatchedGroup> battleActionGroups = new List<MatchedGroup>();
+        MatchedGroupCollection tptGroups = new MatchedGroupCollection("TPT");
+        MatchedGroupCollection battleActionGroups = new MatchedGroupCollection("Battle actions");
         List<MatchedGroup> matchedGroups = new List<MatchedGroup>();
+        IList<MatchedGroupCollection> matchedCollections = new List<MatchedGroupCollection>();
 
         // Navigation stack
         IDictionary<Game, int> currentIndex;
@@ -60,7 +64,28 @@ namespace ScriptToolGui
 
             InitLookups();
 
-            PopulateSelectors();
+            PopulateCollectionSelector();
+
+            collectionSelector.SelectedIndex = 0;
+            collectionSelector_SelectionChangeCommitted(null, null);
+        }
+
+        private void PopulateCollectionSelector()
+        {
+            collectionSelector.Items.Clear();
+
+            collectionSelector.Items.Add(tptGroups);
+            collectionSelector.Items.Add(battleActionGroups);
+        }
+
+        private void PopulateGroupSelector(MatchedGroupCollection collection)
+        {
+            groupSelector.Items.Clear();
+
+            if (collection != null)
+            {
+                groupSelector.Items.AddRange(collection.Groups.ToArray());
+            }
         }
 
         private void InitLookups()
@@ -87,38 +112,32 @@ namespace ScriptToolGui
         private void ImportAllStringRefs(string folder)
         {
             // TPT
-            string m12PrimaryFileName = Path.Combine(folder, "m12-tpt-primary.json");
-            string ebPrimaryFileName = Path.Combine(folder, "eb-tpt-primary.json");
+            var m12PrimaryTptRefs = ImportStringRefs(Path.Combine(folder, "m12-tpt-primary.json"));
+            var ebPrimaryTptRefs = ImportStringRefs(Path.Combine(folder, "eb-tpt-primary.json"));
 
-            var m12PrimaryTptRefs = ImportStringRefs(m12PrimaryFileName);
-            var ebPrimaryTptRefs = ImportStringRefs(ebPrimaryFileName);
+            var m12SecondaryTptRefs = ImportStringRefs(Path.Combine(folder, "m12-tpt-secondary.json"));
+            var ebSecondaryTptRefs = ImportStringRefs(Path.Combine(folder, "eb-tpt-secondary.json"));
 
-            string m12SecondaryFileName = Path.Combine(folder, "m12-tpt-secondary.json");
-            string ebSecondaryFileName = Path.Combine(folder, "eb-tpt-secondary.json");
-
-            var m12SecondaryTptRefs = ImportStringRefs(m12SecondaryFileName);
-            var ebSecondaryTptRefs = ImportStringRefs(ebSecondaryFileName);
-
-            tptGroups.AddRange(MatchRefs(ebPrimaryTptRefs, m12PrimaryTptRefs));
-            tptGroups.AddRange(MatchRefs(ebSecondaryTptRefs, m12SecondaryTptRefs));
-            tptGroups.Sort((g1, g2) => g1.Index.CompareTo(g2.Index));
+            tptGroups.Groups.AddRange(MatchRefs(ebPrimaryTptRefs, m12PrimaryTptRefs));
+            tptGroups.Groups.AddRange(MatchRefs(ebSecondaryTptRefs, m12SecondaryTptRefs));
+            tptGroups.Groups.Sort((g1, g2) => g1.Index.CompareTo(g2.Index));
 
             matchedGroups.AddRange(tptGroups);
 
             // Battle actions
-            string m12BattleActionsFileName = Path.Combine(folder, "m12-battle-actions.json");
-            string ebBattleActionsFileName = Path.Combine(folder, "eb-battle-actions.json");
+            var m12BattleActionRefs = ImportStringRefs(Path.Combine(folder, "m12-battle-actions.json"));
+            var ebBattleActionRefs = ImportStringRefs(Path.Combine(folder, "eb-battle-actions.json"));
 
-            var m12BattleActionRefs = ImportStringRefs(m12BattleActionsFileName);
-            var ebBattleActionRefs = ImportStringRefs(ebBattleActionsFileName);
-
-            battleActionGroups.AddRange(MatchRefs(ebBattleActionRefs, m12BattleActionRefs));
-            battleActionGroups.Sort((g1, g2) => g1.Index.CompareTo(g2.Index));
+            battleActionGroups.Groups.AddRange(MatchRefs(ebBattleActionRefs, m12BattleActionRefs));
+            battleActionGroups.Groups.Sort((g1, g2) => g1.Index.CompareTo(g2.Index));
 
             matchedGroups.AddRange(battleActionGroups);
 
-            matchedGroups.Sort((g1, g2) => g1.Index.CompareTo(g2.Index));
+            // Item help
 
+            matchedGroups.Sort((g1, g2) => g1.Index.CompareTo(g2.Index));
+            matchedCollections.Add(tptGroups);
+            matchedCollections.Add(battleActionGroups);
         }
 
         private MatchedGroup[] MatchRefs(MainStringRef[] ebRefs, MainStringRef[] m12Refs)
@@ -159,15 +178,6 @@ namespace ScriptToolGui
                 return Game.M12;
 
             return Game.None;
-        }
-
-        private void PopulateSelectors()
-        {
-            tptSelector.Items.Clear();
-            tptSelector.Items.AddRange(tptGroups.ToArray());
-
-            battleActionSelector.Items.Clear();
-            battleActionSelector.Items.AddRange(battleActionGroups.ToArray());
         }
 
         private void PopulateCodeList()
@@ -251,19 +261,35 @@ namespace ScriptToolGui
                 previousNavigationState = new MatchedGroupNavigationEntry(group);
             }
 
-            SelectGroup(tptSelector, group);
-            SelectGroup(battleActionSelector, group);
+            SelectGroup(group);
 
             PopulateCodeList();
             PopulateReferenceList();
         }
 
-        private void SelectGroup(ComboBox selector, MatchedGroup group)
+        private void SelectGroup(MatchedGroup group)
         {
-            if (group != null && selector.Items.Contains(group))
-                selector.SelectedItem = group;
-            else
-                selector.SelectedIndex = -1;
+            if (group != null)
+            {
+                // Find this group in our collections
+                foreach (var collection in matchedCollections)
+                {
+                    if (collection.Contains(group))
+                    {
+                        if ((MatchedGroupCollection)collectionSelector.SelectedItem !=
+                            collection)
+                        {
+                            collectionSelector.SelectedItem = collection;
+                            PopulateGroupSelector(collection);
+                        }
+
+                        groupSelector.SelectedItem = group;
+                        return;
+                    }
+                }
+            }
+            
+            groupSelector.SelectedIndex = -1;
         }
 
         private MatchedGroup FindGroup(IEnumerable<MatchedGroup> groups, Game game, string label)
@@ -312,12 +338,10 @@ namespace ScriptToolGui
                     labelDef = "^" + otherGame.Value.Label + "^";
                     textboxLookup[otherGame.Key].Text = GetString(otherGame.Key, otherGame.Value.Label, out index);
                     currentIndex[game] = index;
-                    //stringsLookup[otherGame.Key].First(l => l.Contains(labelDef));
                 }
             }
 
-            SelectGroup(tptSelector, match);
-            SelectGroup(battleActionSelector, match);
+            SelectGroup(match);
 
             PopulateCodeList();
             PopulateReferenceList();
@@ -384,19 +408,17 @@ namespace ScriptToolGui
             }
         }
 
-        private void selector_SelectionChangeCommitted(object sender, EventArgs e)
+        private void groupSelector_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            var selector = (ComboBox)sender;
-
             SaveCurrentState();
 
-            if (selector.SelectedIndex == -1)
+            if (groupSelector.SelectedIndex == -1)
                 NavigateTo(null);
             else
             {
                 PushPreviousNavigationState();
 
-                var currentGroup = (MatchedGroup)selector.SelectedItem;
+                var currentGroup = (MatchedGroup)groupSelector.SelectedItem;
                 NavigateTo(currentGroup);
             }
         }
@@ -466,6 +488,22 @@ namespace ScriptToolGui
         private void copyCodesButton_Click(object sender, EventArgs e)
         {
             m12StringEnglish.Text = m12Compiler.StripText(m12String.Text);
+        }
+
+        private void collectionSelector_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (collectionSelector.SelectedIndex == -1)
+            {
+                groupSelector.Items.Clear();
+            }
+            else
+            {
+                var collection = (MatchedGroupCollection)collectionSelector.SelectedItem;
+                PopulateGroupSelector(collection);
+
+                groupSelector.SelectedIndex = 0;
+                groupSelector_SelectionChangeCommitted(null, null);
+            }
         }
     }
 

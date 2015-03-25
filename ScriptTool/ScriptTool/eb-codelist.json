@@ -260,7 +260,8 @@
       2
     ],
     "Description": "Load a text string into memory (end with [02]",
-    "Length": 2
+    "Length": 2,
+    "SuppressNextEnd": true
   },
   {
     "Identifier": [

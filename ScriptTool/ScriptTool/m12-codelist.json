@@ -18,7 +18,8 @@
   {
     "Identifier": 0x3,
     "Description": "Display menu string set {0:X}",
-    "Length": 4
+    "Length": 4,
+    "SuppressNextEnd": true
   },
   {
     "Identifier": 0x4,

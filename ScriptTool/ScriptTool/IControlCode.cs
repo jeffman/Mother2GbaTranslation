@@ -15,6 +15,7 @@ namespace ScriptTool
         bool IsValid(string[] codeStrings);
         bool HasReferences { get; }
         bool AbsoluteAddressing { get; }
+        bool SuppressNextEnd { get; }
 
         int ComputeLength(byte[] rom, int address);
         IList<int> GetReferences(byte[] rom, int address);

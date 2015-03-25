@@ -23,6 +23,7 @@ namespace ScriptTool
         public int CountOffset { get; set; }
         public bool HasReferences { get; set; }
         public bool AbsoluteAddressing { get { return true; } }
+        public bool SuppressNextEnd { get; set; }
 
         static EbControlCode()
         {
@@ -286,6 +287,11 @@ namespace ScriptTool
         public bool ShouldSerializeCountOffset()
         {
             return IsVariableLength;
+        }
+
+        public bool ShouldSerializeSuppressNextEnd()
+        {
+            return SuppressNextEnd;
         }
 
         #endregion
