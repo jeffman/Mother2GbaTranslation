@@ -405,9 +405,9 @@ namespace ScriptToolGui
             navigationStack.Push(previousNavigationState);
         }
         
-        private async void SaveCurrentState()
+        private async void SaveCurrentState(bool insertEndcode)
         {
-            bool insertedNewLine = false;
+            string endcodeInsertion = null;
 
             lock (changeLock)
             {
@@ -425,24 +425,35 @@ namespace ScriptToolGui
                                 changesMade = true;
                             }
 
-                            // Special case -- for M12 English, if the line is modified,
-                            // check for an end code and insert if it's missing
-                            if (!newString.ToUpper().EndsWith("[00 FF]")
-                                && !IsJustALabel(newString))
+                            if (insertEndcode)
                             {
-                                newString += "[00 FF]";
-                                insertedNewLine = true;
+                                // Special case -- for M12 English, if the line is modified,
+                                // check for an end code and insert if it's missing
+                                var lastCode = m12Compiler.GetLastControlCode(newString);
+
+                                if (!IsJustALabel(newString) && (lastCode == null || (lastCode != null
+                                    && !lastCode.IsEnd)))
+                                {
+                                    newString += "[00 FF]";
+                                    endcodeInsertion = "Inserted missing [00 FF]";
+                                }
                             }
                         }
 
                         stringsLookup[game][currentIndex[game]] = newString;
+
+                        if (endcodeInsertion != null)
+                        {
+                            // Update the text box as well
+                            textboxLookup[game].Text = newString;
+                        }
                     }
                 }
             }
 
-            if (insertedNewLine)
+            if (endcodeInsertion != null)
             {
-                await SetMessageLabel("Missing [00 FF] appended");
+                await SetMessageLabel(endcodeInsertion);
             }
         }
 
@@ -452,9 +463,9 @@ namespace ScriptToolGui
                 (str[str.Length - 1] == '^') && !str.Skip(1).Take(str.Length - 2).Contains('^');
         }
 
-        private void WriteChanges()
+        private void WriteChanges(bool insertEndcode)
         {
-            SaveCurrentState();
+            SaveCurrentState(insertEndcode);
 
             lock (changeLock)
             {
@@ -488,7 +499,7 @@ namespace ScriptToolGui
 
         private void groupSelector_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            SaveCurrentState();
+            SaveCurrentState(true);
 
             if (groupSelector.SelectedIndex == -1)
                 NavigateTo(null);
@@ -518,7 +529,7 @@ namespace ScriptToolGui
                 // Only navigate if we're not already at the target label
                 if (!stringsLookup[game].Contains("^" + label + "^"))
                 {
-                    SaveCurrentState();
+                    SaveCurrentState(true);
 
                     PushPreviousNavigationState();
                     NavigateTo(game, label);
@@ -531,7 +542,7 @@ namespace ScriptToolGui
             if (navigationStack.Count < 1)
                 return;
             
-            SaveCurrentState();
+            SaveCurrentState(true);
 
             var nav = navigationStack.Pop();
 
@@ -549,18 +560,18 @@ namespace ScriptToolGui
 
         private void saveMenu_Click(object sender, EventArgs e)
         {
-            WriteChanges();
+            WriteChanges(true);
         }
 
         private void writeTimer_Tick(object sender, EventArgs e)
         {
-            WriteChanges();
+            WriteChanges(false);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             writeTimer.Enabled = false;
-            WriteChanges();
+            WriteChanges(true);
         }
 
         private void copyCodesButton_Click(object sender, EventArgs e)
@@ -620,9 +631,14 @@ namespace ScriptToolGui
 
         private async Task SetMessageLabel(string message)
         {
-            messageLabel.Text = message;
+            var messageLabel = new ToolStripStatusLabel(message);
+            messageLabel.Font = new Font(messageLabel.Font, FontStyle.Bold);
+            messageLabel.BackColor = SystemColors.Highlight;
+            statusBar.Items.Add(messageLabel);
+
             await Task.Delay(3000);
-            messageLabel.Text = "";
+
+            statusBar.Items.Remove(messageLabel);
         }
     }
 

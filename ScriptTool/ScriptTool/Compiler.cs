@@ -465,5 +465,24 @@ namespace ScriptTool
 
             return strings;
         }
+
+        public IControlCode GetLastControlCode(string str)
+        {
+            if (str.Length < 2)
+                return null;
+
+            if (!(str[str.Length - 1] == ']'))
+                return null;
+
+            int lastOpenBracket = str.LastIndexOf('[');
+
+            if (lastOpenBracket < str.LastIndexOf(']', str.Length - 2))
+                return null;
+
+            var codeStrings = str.Substring(lastOpenBracket + 1, str.Length - lastOpenBracket - 2)
+                .Split(' ');
+
+            return ControlCodes.FirstOrDefault(c => c.IsMatch(codeStrings));
+        }
     }
 }

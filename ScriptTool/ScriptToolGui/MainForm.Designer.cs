@@ -58,7 +58,6 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.writeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.writeTimer = new System.Windows.Forms.Timer(this.components);
-            this.messageLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.previewer = new ScriptToolGui.StringPreviewer();
             this.mainMenu.SuspendLayout();
             this.topPanel.SuspendLayout();
@@ -408,8 +407,7 @@
             // statusBar
             // 
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.writeLabel,
-            this.messageLabel});
+            this.writeLabel});
             this.statusBar.Location = new System.Drawing.Point(0, 720);
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(1026, 22);
@@ -426,13 +424,6 @@
             this.writeTimer.Enabled = true;
             this.writeTimer.Interval = 10000;
             this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
-            // 
-            // messageLabel
-            // 
-            this.messageLabel.BackColor = System.Drawing.SystemColors.Highlight;
-            this.messageLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.messageLabel.Name = "messageLabel";
-            this.messageLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // previewer
             // 
@@ -526,7 +517,6 @@
         private System.Windows.Forms.ComboBox collectionSelector;
         private System.Windows.Forms.Button previewButton;
         private StringPreviewer previewer;
-        private System.Windows.Forms.ToolStripStatusLabel messageLabel;
     }
 }
 
