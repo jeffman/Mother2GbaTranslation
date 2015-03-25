@@ -235,6 +235,7 @@
             // 
             this.ebString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ebString.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ebString.Location = new System.Drawing.Point(3, 4);
             this.ebString.Multiline = true;
             this.ebString.Name = "ebString";
@@ -246,6 +247,7 @@
             // 
             this.m12String.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.m12String.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m12String.Location = new System.Drawing.Point(3, 138);
             this.m12String.Multiline = true;
             this.m12String.Name = "m12String";
@@ -257,6 +259,7 @@
             // 
             this.m12StringEnglish.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.m12StringEnglish.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m12StringEnglish.Location = new System.Drawing.Point(3, 272);
             this.m12StringEnglish.Multiline = true;
             this.m12StringEnglish.Name = "m12StringEnglish";
@@ -429,6 +432,7 @@
             this.previewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewer.Location = new System.Drawing.Point(0, 0);
             this.previewer.M12Compiler = null;
+            this.previewer.MaxWidth = 0;
             this.previewer.Name = "previewer";
             this.previewer.Size = new System.Drawing.Size(796, 133);
             this.previewer.TabIndex = 0;
