@@ -42,6 +42,8 @@ namespace ScriptToolGui
         MatchedGroupCollection tptGroups = new MatchedGroupCollection("TPT");
         MatchedGroupCollection battleActionGroups = new MatchedGroupCollection("Battle actions");
         MatchedGroupCollection itemHelpGroups = new MatchedGroupCollection("Item help");
+        MatchedGroupCollection psiHelpGroups = new MatchedGroupCollection("PSI help");
+
         List<MatchedGroup> matchedGroups = new List<MatchedGroup>();
         IList<MatchedGroupCollection> matchedCollections = new List<MatchedGroupCollection>();
 
@@ -131,7 +133,7 @@ namespace ScriptToolGui
 
             tptGroups.Groups.AddRange(MatchRefs(ebPrimaryTptRefs, m12PrimaryTptRefs));
             tptGroups.Groups.AddRange(MatchRefs(ebSecondaryTptRefs, m12SecondaryTptRefs));
-            tptGroups.Groups.Sort((g1, g2) => g1.Refs[Game.Eb].Index.CompareTo(g2.Refs[Game.Eb].Index));
+            tptGroups.SortGroups();
             matchedGroups.AddRange(tptGroups);
 
             // Battle actions
@@ -139,13 +141,14 @@ namespace ScriptToolGui
             var ebBattleActionRefs = ImportStringRefs("eb-battle-actions.json");
 
             battleActionGroups.Groups.AddRange(MatchRefs(ebBattleActionRefs, m12BattleActionRefs));
-            battleActionGroups.Groups.Sort((g1, g2) => g1.Refs[Game.Eb].Index.CompareTo(g2.Refs[Game.Eb].Index));
+            battleActionGroups.SortGroups();
             matchedGroups.AddRange(battleActionGroups);
 
             // Item help
             itemMapping = JsonConvert.DeserializeObject<IndexMapping>(File.ReadAllText("item-map.json"));
             var m12ItemHelpRefs = ImportStringRefs("m12-item-help.json");
             var ebItemHelpRefs = ImportStringRefs("eb-item-help.json");
+
             var itemHelpMappingGroups = itemMapping.Select(p => new MatchedGroup(
                 ebItemHelpRefs.First(e => e.Index == p.First),
                 m12ItemHelpRefs.First(m => m.Index == p.Second),
@@ -156,11 +159,27 @@ namespace ScriptToolGui
             itemHelpGroups.Groups.AddRange(itemHelpMappingGroups);
             matchedGroups.AddRange(itemHelpGroups);
 
+            // PSI help
+            var m12PsiHelpRefs = ImportStringRefs("m12-psi-help.json");
+            var ebPsiHelpRefs = ImportStringRefs("eb-psi-help.json");
+
+            var psiHelpMappingGroups = ebPsiHelpRefs.Select(e =>
+                new MatchedGroup(e,
+                    m12PsiHelpRefs.First(m => m.Index == e.Index - 1),
+                    m12PsiHelpRefs.First(m => m.Index == e.Index - 1)))
+                .ToArray();
+
+            psiHelpGroups.Groups.AddRange(psiHelpMappingGroups);
+            psiHelpGroups.SortGroups();
+            matchedGroups.AddRange(psiHelpGroups);
+
+            // Final sorting
             matchedGroups.Sort((g1, g2) => g1.Refs[Game.Eb].Index.CompareTo(g2.Refs[Game.Eb].Index));
 
             matchedCollections.Add(tptGroups);
             matchedCollections.Add(battleActionGroups);
             matchedCollections.Add(itemHelpGroups);
+            matchedCollections.Add(psiHelpGroups);
         }
 
         private MatchedGroup[] MatchRefs(MainStringRef[] ebRefs, MainStringRef[] m12Refs)

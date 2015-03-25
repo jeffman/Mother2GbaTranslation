@@ -17,6 +17,11 @@ namespace ScriptToolGui
             Groups = new List<MatchedGroup>();
         }
 
+        public void SortGroups()
+        {
+            Groups.Sort((g1, g2) => g1.Refs[Game.Eb].Index.CompareTo(g2.Refs[Game.Eb].Index));
+        }
+
         public IEnumerator<MatchedGroup> GetEnumerator()
         {
             return Groups.GetEnumerator();
