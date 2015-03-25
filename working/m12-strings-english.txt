@@ -1055,9 +1055,9 @@
 ^L1054^
 ^L1055^
 ^L1056^[86 FF _L3989_] each enemy about 50[01 FF]  points of damage.[00 FF]
-^L1056^[86 FF _L3989_] each enemy about 180[01 FF]  points of damage.[00 FF]
-^L1056^[86 FF _L3989_] each enemy about 320[01 FF]  points of damage.[00 FF]
-^L1056^[86 FF _L3989_] each enemy about 640[01 FF]  points of damage.[00 FF]
+^L1057^[86 FF _L3989_] each enemy about 180[01 FF]  points of damage.[00 FF]
+^L1058^[86 FF _L3989_] each enemy about 320[01 FF]  points of damage.[00 FF]
+^L1059^[86 FF _L3989_] each enemy about 640[01 FF]  points of damage.[00 FF]
 ^L1060^
 ^L1061^
 ^L1062^
