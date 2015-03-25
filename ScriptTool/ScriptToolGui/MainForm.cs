@@ -416,7 +416,7 @@ namespace ScriptToolGui
                     if (currentIndex[game] >= 0)
                     {
                         string oldString = stringsLookup[game][currentIndex[game]];
-                        string newString = textboxLookup[game].Text;
+                        string newString = textboxLookup[game].Text.Replace(Environment.NewLine, "");
 
                         if (game == Game.M12English)
                         {
@@ -442,7 +442,7 @@ namespace ScriptToolGui
 
                         stringsLookup[game][currentIndex[game]] = newString;
 
-                        if (endcodeInsertion != null)
+                        if (!textboxLookup[game].Text.Equals(newString))
                         {
                             // Update the text box as well
                             textboxLookup[game].Text = newString;
