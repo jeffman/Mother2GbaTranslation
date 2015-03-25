@@ -405,8 +405,10 @@ namespace ScriptToolGui
             navigationStack.Push(previousNavigationState);
         }
         
-        private void SaveCurrentState()
+        private async void SaveCurrentState()
         {
+            bool insertedNewLine = false;
+
             lock (changeLock)
             {
                 foreach (var game in validGames)
@@ -415,13 +417,39 @@ namespace ScriptToolGui
                     {
                         string oldString = stringsLookup[game][currentIndex[game]];
                         string newString = textboxLookup[game].Text;
-                        stringsLookup[game][currentIndex[game]] = newString;
 
-                        if (game == Game.M12English && oldString != newString)
-                            changesMade = true;
+                        if (game == Game.M12English)
+                        {
+                            if (oldString != newString)
+                            {
+                                changesMade = true;
+                            }
+
+                            // Special case -- for M12 English, if the line is modified,
+                            // check for an end code and insert if it's missing
+                            if (!newString.ToUpper().EndsWith("[00 FF]")
+                                && !IsJustALabel(newString))
+                            {
+                                newString += "[00 FF]";
+                                insertedNewLine = true;
+                            }
+                        }
+
+                        stringsLookup[game][currentIndex[game]] = newString;
                     }
                 }
             }
+
+            if (insertedNewLine)
+            {
+                await SetMessageLabel("Missing [00 FF] appended");
+            }
+        }
+
+        public static bool IsJustALabel(string str)
+        {
+            return (str.Length > 2) && (str[0] == '^') &&
+                (str[str.Length - 1] == '^') && !str.Skip(1).Take(str.Length - 2).Contains('^');
         }
 
         private void WriteChanges()
@@ -454,7 +482,7 @@ namespace ScriptToolGui
             }
             else
             {
-                statusLabel.Text = text;
+                writeLabel.Text = text;
             }
         }
 
@@ -577,6 +605,24 @@ namespace ScriptToolGui
         private void previewButton_Click(object sender, EventArgs e)
         {
             previewer.DisplayedString = m12StringEnglish.Text;
+        }
+
+        private void m12StringEnglish_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (ModifierKeys == Keys.Control)
+            {
+                // Insert a line break
+                int currentSelectionStart = m12StringEnglish.SelectionStart;
+                m12StringEnglish.Text = m12StringEnglish.Text.Insert(m12StringEnglish.SelectionStart, "[01 FF]");
+                m12StringEnglish.SelectionStart = currentSelectionStart + 7;
+            }
+        }
+
+        private async Task SetMessageLabel(string message)
+        {
+            messageLabel.Text = message;
+            await Task.Delay(3000);
+            messageLabel.Text = "";
         }
     }
 

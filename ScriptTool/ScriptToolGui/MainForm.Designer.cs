@@ -56,8 +56,9 @@
             this.ebSelector = new System.Windows.Forms.RadioButton();
             this.m12Selector = new System.Windows.Forms.RadioButton();
             this.statusBar = new System.Windows.Forms.StatusStrip();
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.writeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.writeTimer = new System.Windows.Forms.Timer(this.components);
+            this.messageLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.previewer = new ScriptToolGui.StringPreviewer();
             this.mainMenu.SuspendLayout();
             this.topPanel.SuspendLayout();
@@ -266,6 +267,7 @@
             this.m12StringEnglish.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.m12StringEnglish.Size = new System.Drawing.Size(786, 128);
             this.m12StringEnglish.TabIndex = 11;
+            this.m12StringEnglish.MouseClick += new System.Windows.Forms.MouseEventHandler(this.m12StringEnglish_MouseClick);
             // 
             // lineOpsPanel
             // 
@@ -406,23 +408,31 @@
             // statusBar
             // 
             this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
+            this.writeLabel,
+            this.messageLabel});
             this.statusBar.Location = new System.Drawing.Point(0, 720);
             this.statusBar.Name = "statusBar";
             this.statusBar.Size = new System.Drawing.Size(1026, 22);
             this.statusBar.TabIndex = 7;
             this.statusBar.Text = "statusStrip1";
             // 
-            // statusLabel
+            // writeLabel
             // 
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(0, 17);
+            this.writeLabel.Name = "writeLabel";
+            this.writeLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // writeTimer
             // 
             this.writeTimer.Enabled = true;
             this.writeTimer.Interval = 10000;
             this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
+            // 
+            // messageLabel
+            // 
+            this.messageLabel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.messageLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.messageLabel.Name = "messageLabel";
+            this.messageLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // previewer
             // 
@@ -503,7 +513,7 @@
         private System.Windows.Forms.RadioButton ebSelector;
         private System.Windows.Forms.RadioButton m12Selector;
         private System.Windows.Forms.StatusStrip statusBar;
-        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel writeLabel;
         private System.Windows.Forms.Timer writeTimer;
         private System.Windows.Forms.Panel textBoxPanel;
         private System.Windows.Forms.TextBox ebString;
@@ -516,6 +526,7 @@
         private System.Windows.Forms.ComboBox collectionSelector;
         private System.Windows.Forms.Button previewButton;
         private StringPreviewer previewer;
+        private System.Windows.Forms.ToolStripStatusLabel messageLabel;
     }
 }
 
