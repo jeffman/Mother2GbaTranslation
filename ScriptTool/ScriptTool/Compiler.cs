@@ -341,72 +341,97 @@ namespace ScriptTool
 
                     i = str.IndexOf(']', i + 1) + 1;
 
-                    
-                    switch (code.Identifier)
+                    if (code == null)
                     {
-                        case 0xC:
-                        case 0xD:
-                        case 0xE:
-                        case 0xF:
-                        case 0x10:
-                        case 0x11:
-                        case 0x12:
-                        case 0x15:
-                        case 0x1A:
-                        case 0x2D:
-                        case 0x9F:
-                        case 0xAD:
-                            // Name/item code
-                            sb.Append("[NAME]");
-                            currentWidth += 60;
-                            break;
-
-                        case 0x1:
-                        case 0x2:
-                            // Line break
-                            strings.Add(sb.ToString());
-                            sb.Clear();
-                            widths.Add(currentWidth);
-                            currentWidth = 0;
-                            break;
-
-                        case 0x20:
-                            sb.Append("[SMAAASH]");
-                            currentWidth += 72;
-                            break;
-
-                        case 0x21:
-                            sb.Append("[YOU WIN]");
-                            currentWidth += 72;
-                            break;
-
-                        case 0x23:
-                        case 0x63:
-                        case 0x98:
-                        case 0xB7:
-                            sb.Append("[MONEY]");
-                            currentWidth += 36;
-                            break;
-
-                        case 0x24:
-                        case 0x25:
-                        case 0x26:
-                        case 0x27:
-                        case 0x28:
-                        case 0x29:
-                        case 0x2A:
-                        case 0x2B:
-                            sb.Append("[STAT]");
-                            currentWidth += 18;
-                            break;
-
-                        case 0x1E:
-                        case 0x1F:
-                            sb.Append("_");
-                            currentWidth += 10;
-                            break;
+                        // Not matched to anything -- check if it's a valid character sequence
+                        foreach (var codeString in codeStrings)
+                        {
+                            if (!IsHexByte(codeString))
+                            {
+                                sb.Append("[INVALID]");
+                            }
+                            else
+                            {
+                                byte b = Convert.ToByte(codeString, 16);
+                                if (!charLookup.ContainsKey(b))
+                                {
+                                    sb.Append("[INVALID]");
+                                }
+                                else
+                                {
+                                    sb.Append(charLookup[b]);
+                                    currentWidth += virtualWidths[b - 0x50];
+                                }
+                            }
+                        }
                     }
+                    else
+                    {
+                        switch (code.Identifier)
+                        {
+                            case 0xC:
+                            case 0xD:
+                            case 0xE:
+                            case 0xF:
+                            case 0x10:
+                            case 0x11:
+                            case 0x12:
+                            case 0x15:
+                            case 0x1A:
+                            case 0x2D:
+                            case 0x9F:
+                            case 0xAD:
+                                // Name/item code
+                                sb.Append("[NAME]");
+                                currentWidth += 60;
+                                break;
 
+                            case 0x1:
+                            case 0x2:
+                                // Line break
+                                strings.Add(sb.ToString());
+                                sb.Clear();
+                                widths.Add(currentWidth);
+                                currentWidth = 0;
+                                break;
+
+                            case 0x20:
+                                sb.Append("[SMAAASH]");
+                                currentWidth += 72;
+                                break;
+
+                            case 0x21:
+                                sb.Append("[YOU WIN]");
+                                currentWidth += 72;
+                                break;
+
+                            case 0x23:
+                            case 0x63:
+                            case 0x98:
+                            case 0xB7:
+                                sb.Append("[MONEY]");
+                                currentWidth += 36;
+                                break;
+
+                            case 0x24:
+                            case 0x25:
+                            case 0x26:
+                            case 0x27:
+                            case 0x28:
+                            case 0x29:
+                            case 0x2A:
+                            case 0x2B:
+                                sb.Append("[STAT]");
+                                currentWidth += 18;
+                                break;
+
+                            case 0x1E:
+                            case 0x1F:
+                                sb.Append("_");
+                                currentWidth += 10;
+                                break;
+                        }
+                    }
                 }
                 else if (str[i] == ']')
                 {
