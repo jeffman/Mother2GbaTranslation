@@ -430,7 +430,7 @@ namespace ScriptToolGui
 
             lock (changeLock)
             {
-                if (changesMade)
+                //if (changesMade)
                 {
                     using (StreamWriter sw = File.CreateText(Path.Combine(workingFolder, "m12-strings-english.txt")))
                     {
