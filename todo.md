@@ -9,7 +9,7 @@
 - [X] Translate PSI targets
 
 ### M2 - main script
-- [X] Produce blank skeleton for main script (all strings in the game now point to "@Test")
+- [X] Produce blank skeleton for main script (all strings in the game point to "@Test")
 - [ ] Translate battle actions
 - [ ] Translate PSI help text
 - [ ] Translate item help text
@@ -21,7 +21,7 @@
 - [ ] Translate enemy encounter/death text
 
 ### M2 - main script tool
-- [ ] Start a GUI tool to help the main script translation
+- [X] Start a GUI tool to help the main script translation
 
 ### M2 - hacking (main, high priority)
 - [X] VWF core
@@ -37,6 +37,12 @@
 - [ ] VWF for naming screens
 - [ ] VWF for battles
 - [ ] VWF for credits sequence
+- [ ] Add Saturn font
+- [ ] Add small font (names on HP/PP, Goods, PSI, etc. windows)
+- [ ] Add big font (flyovers)
+- [ ] VWF for Saturn font
+- [ ] VWF for small font
+- [ ] VWF for big font (already implemented this in a past project, just need to migrate it)
 - [ ] TODO: replace load/store chains with ldmia/stmia
 
 ### M2 - hacking (misc, lower priority)
