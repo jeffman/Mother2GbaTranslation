@@ -1,4 +1,4 @@
-^L0^
+^L0^[1C FF 28 00 _L2220_][1C FF 40 00 _L2221_]@Hey kid![1B FF 0F 00]  Do you wanna become[01 FF]  a member?[01 FF][03 FF 00 00][04 FF _L2222_][05 FF _L2223_]^L2223^@Don't be such a snob![02 FF][86 FF _L2224_][81 FF _L2225_][85 FF 01 00 06 00][08 FF 28 00][00 FF]^L2222^@Come back after you finish[01 FF]  Earthbound![1D FF][00 FF]
 ^L1^
 ^L2^
 ^L3^
@@ -1054,44 +1054,44 @@
 ^L1053^
 ^L1054^
 ^L1055^
-^L1056^
-^L1057^
-^L1058^
-^L1059^
-^L1060^
-^L1061^
-^L1062^
-^L1063^
-^L1064^
-^L1065^
-^L1066^
-^L1067^
-^L1068^
-^L1069^
-^L1070^
-^L1071^
-^L1072^
-^L1073^
-^L1074^
-^L1075^
-^L1076^
-^L1077^
-^L1078^
-^L1079^
-^L1080^
-^L1081^
-^L1082^
-^L1083^
-^L1084^
-^L1085^
-^L1086^
-^L1087^
-^L1088^
-^L1089^
-^L1090^
-^L1091^
-^L1092^
-^L1093^
+^L1056^[86 FF _L3989_] each enemy about 50[01 FF]  points of damage.[00 FF]
+^L1057^[86 FF _L3989_] each enemy about 180[01 FF]  points of damage.[00 FF]
+^L1058^[86 FF _L3989_] each enemy about 320[01 FF]  points of damage.[00 FF]
+^L1059^[86 FF _L3989_] each enemy about 640[01 FF]  points of damage.[00 FF]
+^L1060^[86 FF _L3990_] about 80 points of damage each.[00 FF]
+^L1061^[86 FF _L3990_] about 160 points of damage each.[00 FF]
+^L1062^[86 FF _L3990_] about 240 points of damage each.[00 FF]
+^L1063^[86 FF _L3990_] about 320 points of damage each.[00 FF]
+^L1064^[86 FF _L3991_] inflicting about 180 points of damage.[01 FF][86 FF _L3992_][86 FF _L3993_][00 FF]
+^L1065^[86 FF _L3991_] inflicting about 360 points of damage.[01 FF][86 FF _L3992_][86 FF _L3993_][00 FF]
+^L1066^[86 FF _L3991_] inflicting about 540 points of damage.[01 FF][86 FF _L3992_][86 FF _L3993_][00 FF]
+^L1067^[86 FF _L3991_] inflicting about 720 points of damage.[01 FF][86 FF _L3992_][86 FF _L3993_][00 FF]
+^L1068^@The enemy is thunder struck for about 120[01 FF]  points of damage.[01 FF][86 FF _L3994_][00 FF]
+^L1069^@The enemy is thunder struck for about 120[01 FF]  points of damage two separate times.[01 FF][86 FF _L3994_][00 FF]
+^L1070^@The enemy is thunder struck for about 200[01 FF]  points of damage three separate times.[01 FF][86 FF _L3994_][00 FF]
+^L1071^@The enemy is thunder struck for about 200[01 FF]  points of damage four separate times.[01 FF][86 FF _L3994_][00 FF]
+^L1072^[86 FF _L3995_][86 FF _L3996_], and in some[01 FF]  circumstances, feel strange.[00 FF]
+^L1073^, and in some[01 FF]  circumstances, can make the enemy feel strange,[01 FF]  become numb, or even be destroyed.[00 FF]
+^L1074^[86 FF _L3995_][86 FF _L3996_].[01 FF]@Often, it will destroy an enemy in a single strike.[00 FF]
+^L1075^@It generates glorious rays that have a high[01 FF]  probability of destroying all the enemies on the[01 FF]  scene in a single strike.[00 FF]
+^L1076^[86 FF _L3997_][01 FF]@It deals about 360 points of damage to each[01 FF]  enemy.[00 FF]
+^L1077^[86 FF _L3997_][01 FF]@It deals about 720 points of damage to each[01 FF]  enemy.[00 FF]
+^L1078^@Restores 100 HP to one person.[00 FF]
+^L1079^@Restores 300 HP to one person.[00 FF]
+^L1080^@Completely restores the HP of one person.[00 FF]
+^L1081^@Restores 400 HP to everyone.[00 FF]
+^L1082^@Cures a cold, sunstroke or sleep conditions.[00 FF]
+^L1083^@In addition to the effects of Healing [8B], this cures[01 FF]  poisonings, nausea, feeling strange and[01 FF]  uncontrollable crying.[00 FF]
+^L1084^@In addition to the effects of Healing [8C], this cures[01 FF]  being diamondized and paralysis.[01 FF]@It also revives a friend who has become[01 FF]  unconscious, though HP is not maxed out.[00 FF]
+^L1085^@In addition to the effects of Healing [8D], this[01 FF]  revives a friend who has become unconscious,[01 FF]  and it completely maxes out that person's HP[01 FF]  when revived.[00 FF]
+^L1086^@Protect one person with the shield of light.[01 FF][86 FF _L3998_][86 FF _L3999_][00 FF]
+^L1087^@Protect everyone with the shield of light.[01 FF][86 FF _L3998_][86 FF _L3999_][00 FF]
+^L1088^@Protects one person with a power shield.[01 FF][00 FF]
+^L1089^@Protects everyone with a power shield.[01 FF][86 FF _L4000_][86 FF _L3999_][00 FF]
+^L1090^@Protects one person with a psychic shield.[01 FF][86 FF _L4001_][86 FF _L3999_][00 FF]
+^L1091^@Protects everyone with a psychic shield.[01 FF][86 FF _L4001_][86 FF _L3999_][00 FF]
+^L1092^@Protects one person with a psychic power shield.[01 FF][86 FF _L4002_][86 FF _L3999_][00 FF]
+^L1093^@Protects everyone with a psychic power shield.[01 FF][86 FF _L4002_][86 FF _L3999_][00 FF]
 ^L1094^
 ^L1095^
 ^L1096^
@@ -1460,7 +1460,7 @@
 ^L1459^
 ^L1460^
 ^L1461^
-^L1462^
+^L1462^ <ATM card>[02 FF]@You know, you shouldn't leave[01 FF]  home without it...[02 FF]@It even works overseas![1D FF][00 FF]
 ^L1463^
 ^L1464^
 ^L1465^
@@ -2220,8 +2220,6 @@
 ^L2219^
 ^L2220^
 ^L2221^
-^L2222^
-^L2223^
 ^L2224^
 ^L2225^
 ^L2226^
@@ -3987,20 +3985,20 @@
 ^L3986^
 ^L3987^
 ^L3988^
-^L3989^
-^L3990^
-^L3991^
-^L3992^
-^L3993^
-^L3994^
-^L3995^
-^L3996^
-^L3997^
-^L3998^
-^L3999^
-^L4000^
-^L4001^
-^L4002^
+^L3989^@A deadly PSI attack which only [90 FF 01][1A FF 01 00] can use.[01 FF]@It's a psychokinetic wave generated by[01 FF]  concentration that deals[00 FF]
+^L3990^@Fire bursts from the fingers and a row of[01 FF]  enemies take[00 FF]
+^L3991^@Causes a very cold wind to swirl around one[01 FF] enemy,[00 FF]
+^L3992^@May freeze the enemy completely.[01 FF][00 FF]
+^L3993^@It may not be so effective against some enemies.[00 FF]
+^L3994^@You may miss when there are few enemies.[01 FF]@Eliminates a psychic or psychic power shield.[00 FF]
+^L3995^@It generates a strong flash and can make the[01 FF]  enemy[00 FF]
+^L3996^ start crying uncontrollably[00 FF]
+^L3997^@The method of <shaking off the stars> which[01 FF]  [90 FF 04][1A FF 01 00] learned in his training.[00 FF]
+^L3998^@It reduces the damage caused by an enemy's[01 FF]  attack by 50%.[00 FF]
+^L3999^[01 FF]@Using a different shield will cancel these effects.[00 FF]
+^L4000^@Cuts damage in half and some of the blocked[01 FF]  damage is dealt back to the enemy.[00 FF]
+^L4001^@It blocks an enemy's PSI attack.[00 FF]
+^L4002^@It reflects an enemy's PSI attack back at the[01 FF]  attacker.[00 FF]
 ^L4003^
 ^L4004^
 ^L4005^
