@@ -154,7 +154,6 @@ namespace ScriptToolGui
 
             var itemHelpMappingGroups = itemMapping.Select(p => new MatchedGroup(
                 ebItemHelpRefs.First(e => e.Index == p.First),
-                m12ItemHelpRefs.First(m => m.Index == p.Second),
                 m12ItemHelpRefs.First(m => m.Index == p.Second)))
                 .OrderBy(g => g.Refs[Game.Eb].Index)
                 .ToArray();
@@ -168,7 +167,6 @@ namespace ScriptToolGui
 
             var psiHelpMappingGroups = ebPsiHelpRefs.Select(e =>
                 new MatchedGroup(e,
-                    m12PsiHelpRefs.First(m => m.Index == e.Index - 1),
                     m12PsiHelpRefs.First(m => m.Index == e.Index - 1)))
                 .ToArray();
 
@@ -189,7 +187,7 @@ namespace ScriptToolGui
         {
             return ebRefs.Join(m12Refs, e => e.Index, m => m.Index,
                 (e, m) => new { e, m })
-                .Select(p => new MatchedGroup(p.e, p.m, p.m))
+                .Select(p => new MatchedGroup(p.e, p.m))
                 .ToArray();
         }
 

@@ -16,12 +16,12 @@ namespace ScriptToolGui
             Refs = new Dictionary<Game, MainStringRef>();
         }
 
-        public MatchedGroup(MainStringRef ebRef, MainStringRef m12Ref, MainStringRef m12EnglishRef)
+        public MatchedGroup(MainStringRef ebRef, MainStringRef m12Ref)
             : this()
         {
             Refs.Add(Game.Eb, ebRef);
             Refs.Add(Game.M12, m12Ref);
-            Refs.Add(Game.M12English, m12EnglishRef);
+            Refs.Add(Game.M12English, m12Ref);
         }
 
         public override string ToString()
