@@ -43,8 +43,6 @@ namespace ScriptToolGui
         MatchedGroupCollection battleActionGroups = new MatchedGroupCollection("Battle actions");
         MatchedGroupCollection itemHelpGroups = new MatchedGroupCollection("Item help");
         MatchedGroupCollection psiHelpGroups = new MatchedGroupCollection("PSI help");
-
-        List<MatchedGroup> matchedGroups = new List<MatchedGroup>();
         List<MatchedGroupCollection> matchedCollections = new List<MatchedGroupCollection>();
 
         // Navigation stack
@@ -137,7 +135,6 @@ namespace ScriptToolGui
             tptGroups.Groups.AddRange(MatchRefs(ebPrimaryTptRefs, m12PrimaryTptRefs));
             tptGroups.Groups.AddRange(MatchRefs(ebSecondaryTptRefs, m12SecondaryTptRefs));
             tptGroups.SortGroups();
-            matchedGroups.AddRange(tptGroups);
 
             // Battle actions
             var m12BattleActionRefs = ImportStringRefs("m12-battle-actions.json");
@@ -145,7 +142,6 @@ namespace ScriptToolGui
 
             battleActionGroups.Groups.AddRange(MatchRefs(ebBattleActionRefs, m12BattleActionRefs));
             battleActionGroups.SortGroups();
-            matchedGroups.AddRange(battleActionGroups);
 
             // Item help
             itemMapping = JsonConvert.DeserializeObject<IndexMapping>(File.ReadAllText("item-map.json"));
@@ -159,7 +155,6 @@ namespace ScriptToolGui
                 .ToArray();
 
             itemHelpGroups.Groups.AddRange(itemHelpMappingGroups);
-            matchedGroups.AddRange(itemHelpGroups);
 
             // PSI help
             var m12PsiHelpRefs = ImportStringRefs("m12-psi-help.json");
@@ -172,10 +167,6 @@ namespace ScriptToolGui
 
             psiHelpGroups.Groups.AddRange(psiHelpMappingGroups);
             psiHelpGroups.SortGroups();
-            matchedGroups.AddRange(psiHelpGroups);
-
-            // Final sorting
-            matchedGroups.Sort((g1, g2) => g1.Refs[Game.Eb].Index.CompareTo(g2.Refs[Game.Eb].Index));
 
             matchedCollections.Add(tptGroups);
             matchedCollections.Add(battleActionGroups);
@@ -277,7 +268,7 @@ namespace ScriptToolGui
                 return str.Line;
         }
 
-        private void NavigateTo(MatchedGroup group)
+        private void NavigateTo(MatchedGroup group, MatchedGroupCollection collection)
         {
             if (group == null)
             {
@@ -302,7 +293,7 @@ namespace ScriptToolGui
                 m12String.Text = m12;
                 m12StringEnglish.Text = m12English;
 
-                previousNavigationState = new MatchedGroupNavigationEntry(group);
+                previousNavigationState = new MatchedGroupNavigationEntry(group, collection);
             }
 
             PopulateCodeList();
@@ -311,41 +302,55 @@ namespace ScriptToolGui
             previewButton_Click(null, null);
         }
 
-        private void SelectGroup(MatchedGroup group)
+        private void SelectGroup(MatchedGroup group, MatchedGroupCollection collection)
         {
-            if (group != null)
+            if (collection != null)
             {
-                // Find this group in our collections
-                foreach (var collection in matchedCollections)
+                if ((MatchedGroupCollection)collectionSelector.SelectedItem !=
+                        collection)
                 {
-                    if (collection.Contains(group))
-                    {
-                        if ((MatchedGroupCollection)collectionSelector.SelectedItem !=
-                            collection)
-                        {
-                            collectionSelector.SelectedItem = collection;
-                            PopulateGroupSelector(collection);
-                        }
+                    collectionSelector.SelectedItem = collection;
+                    PopulateGroupSelector(collection);
+                }
 
-                        groupSelector.SelectedItem = group;
-                        return;
-                    }
+                if (group != null)
+                {
+                    groupSelector.SelectedItem = group;
+                }
+                else
+                {
+                    groupSelector.SelectedIndex = -1;
                 }
             }
-            
-            groupSelector.SelectedIndex = -1;
+            else
+            {
+                collectionSelector.SelectedIndex = -1;
+                groupSelector.SelectedIndex = -1;
+            }
         }
 
-        private MatchedGroup FindGroup(IEnumerable<MatchedGroup> groups, Game game, string label)
+        private void FindGroup(Game game, string label, out MatchedGroup group, out MatchedGroupCollection collection)
         {
             // Attempt to find the label
             string labelDef = "^" + label + "^";
-            string str = stringsLookup[game].First(l => l.Contains(labelDef));
-            var match = groups.FirstOrDefault(g => str.Contains("^" + g.Refs[game].Label + "^"));
-            return match;
+            string str = stringsLookup[game].First(s => s.Contains(labelDef));
+
+            foreach (var coll in matchedCollections)
+            {
+                var match = coll.Groups.FirstOrDefault(g => str.Contains("^" + g.Refs[game].Label + "^"));
+                if (match != null)
+                {
+                    group = match;
+                    collection = coll;
+                    return;
+                }
+            }
+
+            group = null;
+            collection = null;
         }
 
-        private MatchedGroup NavigateTo(Game game, string label)
+        private void NavigateTo(Game game, string label, out MatchedGroup group, out MatchedGroupCollection collection)
         {
             foreach (var eachGame in validGames)
             {
@@ -372,12 +377,12 @@ namespace ScriptToolGui
 
             previousNavigationState = new ReferenceNavigationEntry(game, label);
 
-            MatchedGroup match = FindGroup(matchedGroups, game, label);
+            FindGroup(game, label, out group, out collection);
 
             // Check if any other games have this matched ref
-            if (match != null)
+            if (group != null)
             {
-                foreach (var otherGame in match.Refs.Where(kv => kv.Key != game))
+                foreach (var otherGame in group.Refs.Where(kv => kv.Key != game))
                 {
                     labelDef = "^" + otherGame.Value.Label + "^";
                     textboxLookup[otherGame.Key].Text = GetString(otherGame.Key, otherGame.Value.Label, out index);
@@ -389,8 +394,6 @@ namespace ScriptToolGui
             PopulateReferenceList();
 
             previewButton_Click(null, null);
-
-            return match;
         }
 
         private void PushPreviousNavigationState()
@@ -541,14 +544,16 @@ namespace ScriptToolGui
 
             if (groupSelector.SelectedIndex == -1)
             {
-                NavigateTo(null);
+                NavigateTo(null, null);
             }
             else
             {
                 PushPreviousNavigationState();
 
                 var currentGroup = (MatchedGroup)groupSelector.SelectedItem;
-                NavigateTo(currentGroup);
+                var currentCollection = (MatchedGroupCollection)collectionSelector.SelectedItem;
+
+                NavigateTo(currentGroup, currentCollection);
             }
         }
 
@@ -570,10 +575,12 @@ namespace ScriptToolGui
                 if (!stringsLookup[game].Contains("^" + label + "^"))
                 {
                     SaveCurrentState(true);
-
                     PushPreviousNavigationState();
-                    var group = NavigateTo(game, label);
-                    SelectGroup(group);
+
+                    MatchedGroup group;
+                    MatchedGroupCollection collection;
+                    NavigateTo(game, label, out group, out collection);
+                    SelectGroup(group, collection);
                 }
             }
         }
@@ -590,14 +597,16 @@ namespace ScriptToolGui
             if (nav.Type == NavigationType.MatchedGroup)
             {
                 var matchedEntry = (MatchedGroupNavigationEntry)nav;
-                NavigateTo(matchedEntry.Group);
-                SelectGroup(matchedEntry.Group);
+                NavigateTo(matchedEntry.Group, matchedEntry.Collection);
+                SelectGroup(matchedEntry.Group, matchedEntry.Collection);
             }
             else if (nav.Type == NavigationType.Reference)
             {
                 var referenceEntry = (ReferenceNavigationEntry)nav;
-                var group = NavigateTo(referenceEntry.Game, referenceEntry.Label);
-                SelectGroup(group);
+                MatchedGroup group;
+                MatchedGroupCollection collection;
+                NavigateTo(referenceEntry.Game, referenceEntry.Label, out group, out collection);
+                SelectGroup(group, collection);
             }
         }
 
