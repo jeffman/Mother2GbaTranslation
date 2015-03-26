@@ -23,17 +23,17 @@ namespace ScriptToolGui
         static IDictionary<byte, string> ebCharLookup;
 
         // Lookups
-        IDictionary<Game, TextBox> textboxLookup;
-        IDictionary<Game, IList<string>> stringsLookup;
+        Dictionary<Game, TextBox> textboxLookup;
+        Dictionary<Game, List<string>> stringsLookup;
 
         // Saving changes
         object changeLock = new object();
         bool changesMade = false;
 
         // Strings
-        IList<string> m12Strings;
-        IList<string> m12StringsEnglish;
-        IList<string> ebStrings;
+        List<string> m12Strings;
+        List<string> m12StringsEnglish;
+        List<string> ebStrings;
         
         // Index mappings
         IndexMapping itemMapping = new IndexMapping();
@@ -45,7 +45,7 @@ namespace ScriptToolGui
         MatchedGroupCollection psiHelpGroups = new MatchedGroupCollection("PSI help");
 
         List<MatchedGroup> matchedGroups = new List<MatchedGroup>();
-        IList<MatchedGroupCollection> matchedCollections = new List<MatchedGroupCollection>();
+        List<MatchedGroupCollection> matchedCollections = new List<MatchedGroupCollection>();
 
         // Navigation stack
         IDictionary<Game, int> currentIndex;
@@ -112,7 +112,7 @@ namespace ScriptToolGui
                 { Game.M12English, m12StringEnglish }
             };
 
-            stringsLookup = new Dictionary<Game, IList<string>> {
+            stringsLookup = new Dictionary<Game, List<string>> {
                 { Game.Eb, ebStrings },
                 { Game.M12, m12Strings },
                 { Game.M12English, m12StringsEnglish }
@@ -210,7 +210,7 @@ namespace ScriptToolGui
             ebStrings = ImportStrings(ebFileName);
         }
 
-        private IList<string> ImportStrings(string fileName)
+        private List<string> ImportStrings(string fileName)
         {
             return new List<string>(File.ReadAllLines(fileName).Where(l => !l.Equals("")));
         }
@@ -485,6 +485,48 @@ namespace ScriptToolGui
             }
         }
 
+        private static IList<string> ExtractLabels(string str)
+        {
+            if (str == null)
+                return null;
+
+            var labels = new List<string>();
+
+            for (int i = 0; i < str.Length; )
+            {
+                // Find the first caret
+                if (str[i] == '^')
+                {
+                    // Find the next caret
+                    bool foundNext = false;
+                    for (int j = i + 1; j < str.Length; j++)
+                    {
+                        if (str[j] == '^')
+                        {
+                            // Get the label
+                            string label = str.Substring(i + 1, j - i - 1);
+                            labels.Add(label);
+
+                            i = j + 1;
+                            foundNext = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundNext)
+                    {
+                        throw new Exception("Found opening caret with no closing caret: " + str);
+                    }
+                }
+                else
+                {
+                    i++;
+                }
+            }
+
+            return labels;
+        }
+
         private void UpdateStatus(string text)
         {
             if (statusBar.InvokeRequired)
@@ -639,6 +681,103 @@ namespace ScriptToolGui
             await Task.Delay(3000);
 
             statusBar.Items.Remove(messageLabel);
+        }
+
+        private void resolveDuplicateLabelsMenu_Click(object sender, EventArgs e)
+        {
+            SaveCurrentState(false);
+
+            try
+            {
+                // Enumerate all labels
+                var labels = m12StringsEnglish.Select((s, i) => new { Labels = ExtractLabels(s), Index = i });
+
+                // Find duplicates
+                var flattened = labels.SelectMany(l => l.Labels.Select(b => new { Label = b, Index = l.Index }));
+                var duplicates = flattened.GroupBy(f => f.Label)
+                    .Where(g => g.Count() > 1)
+                    .Select(g => new { Label = g.Key,
+                        Indices = g.Select(r => new { Index = r.Index, Trivial = IsJustALabel(m12StringsEnglish[r.Index]) }).ToList() })
+                    .ToList();
+
+                // Find the duplicates that can be resolved
+                var canBeResolved = duplicates.Where(d => d.Indices.Where(i => !i.Trivial).Count() <= 1).ToList();
+
+                // Find the duplicates that can't be resolved
+                var cantBeResolved = duplicates.Where(d => d.Indices.Where(i => !i.Trivial).Count() > 1).ToList();
+
+                if (duplicates.Count == 0)
+                {
+                    MessageBox.Show("No duplicates found.", "Duplicates", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string message = "Duplicates were found.";
+
+                    if (canBeResolved.Count > 0)
+                    {
+                        message += Environment.NewLine + Environment.NewLine +
+                            "The following duplicates may be resolved automatically:" + Environment.NewLine +
+                            String.Join(", ", canBeResolved.Select(d => d.Label).ToArray());
+                    }
+
+                    if (cantBeResolved.Count > 0)
+                    {
+                        message += Environment.NewLine + Environment.NewLine +
+                            "The following duplicates cannot be resolved manually:" + Environment.NewLine +
+                            String.Join(", ", cantBeResolved.Select(d => d.Label).ToArray());
+                    }
+
+                    if (canBeResolved.Count > 0)
+                    {
+                        message += Environment.NewLine + Environment.NewLine +
+                            "Would you like to fix the resolvable duplicates now?";
+
+                        var dialogResult = MessageBox.Show(message, "Duplicates", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            // The trivial duplicates may simply be removed from the strings collection
+                            var toBeRemoved = canBeResolved.SelectMany(d => d.Indices)
+                                .Where(i => i.Trivial)
+                                .Select(i => i.Index)
+                                .Distinct()
+                                .OrderByDescending(i => i);
+
+                            // Make sure we aren't currently on a string that's about to be removed (shouldn't ever actually happen...)
+                            if (toBeRemoved.Any(i => i == currentIndex[Game.M12English]))
+                            {
+                                MessageBox.Show("Could not remove duplicates because one of them is currently selected! Navigate away first.",
+                                    "Could not resolve", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            
+                            foreach (int i in toBeRemoved)
+                            {
+                                // Remove the string
+                                m12StringsEnglish.RemoveAt(i);
+                                
+                                // Update currentIndex
+                                if (currentIndex[Game.M12English] > i)
+                                {
+                                    currentIndex[Game.M12English]--;
+                                }
+                            }
+
+                            MessageBox.Show("Duplicates removed!", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(message, "Duplicates", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error extracting labels. " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
     }
 

@@ -47,6 +47,7 @@
             this.lineOpsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.copyCodesButton = new System.Windows.Forms.Button();
             this.previewButton = new System.Windows.Forms.Button();
+            this.previewer = new ScriptToolGui.StringPreviewer();
             this.codeSplitContainer = new System.Windows.Forms.SplitContainer();
             this.codeList = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,7 +59,8 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.writeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.writeTimer = new System.Windows.Forms.Timer(this.components);
-            this.previewer = new ScriptToolGui.StringPreviewer();
+            this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.resolveDuplicateLabelsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -84,7 +86,8 @@
             // 
             this.mainMenu.BackColor = System.Drawing.SystemColors.Control;
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileMenu});
+            this.fileMenu,
+            this.toolsMenu});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
             this.mainMenu.Size = new System.Drawing.Size(1026, 24);
@@ -301,6 +304,19 @@
             this.previewButton.UseVisualStyleBackColor = true;
             this.previewButton.Click += new System.EventHandler(this.previewButton_Click);
             // 
+            // previewer
+            // 
+            this.previewer.AutoScroll = true;
+            this.previewer.CharLookup = null;
+            this.previewer.DisplayedString = null;
+            this.previewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previewer.Location = new System.Drawing.Point(0, 0);
+            this.previewer.M12Compiler = null;
+            this.previewer.MaxWidth = 0;
+            this.previewer.Name = "previewer";
+            this.previewer.Size = new System.Drawing.Size(796, 133);
+            this.previewer.TabIndex = 0;
+            // 
             // codeSplitContainer
             // 
             this.codeSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -425,18 +441,20 @@
             this.writeTimer.Interval = 10000;
             this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
             // 
-            // previewer
+            // toolsMenu
             // 
-            this.previewer.AutoScroll = true;
-            this.previewer.CharLookup = null;
-            this.previewer.DisplayedString = null;
-            this.previewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.previewer.Location = new System.Drawing.Point(0, 0);
-            this.previewer.M12Compiler = null;
-            this.previewer.MaxWidth = 0;
-            this.previewer.Name = "previewer";
-            this.previewer.Size = new System.Drawing.Size(796, 133);
-            this.previewer.TabIndex = 0;
+            this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.resolveDuplicateLabelsMenu});
+            this.toolsMenu.Name = "toolsMenu";
+            this.toolsMenu.Size = new System.Drawing.Size(48, 20);
+            this.toolsMenu.Text = "Tools";
+            // 
+            // resolveDuplicateLabelsMenu
+            // 
+            this.resolveDuplicateLabelsMenu.Name = "resolveDuplicateLabelsMenu";
+            this.resolveDuplicateLabelsMenu.Size = new System.Drawing.Size(208, 22);
+            this.resolveDuplicateLabelsMenu.Text = "Resolve duplicate labels...";
+            this.resolveDuplicateLabelsMenu.Click += new System.EventHandler(this.resolveDuplicateLabelsMenu_Click);
             // 
             // MainForm
             // 
@@ -517,6 +535,8 @@
         private System.Windows.Forms.ComboBox collectionSelector;
         private System.Windows.Forms.Button previewButton;
         private StringPreviewer previewer;
+        private System.Windows.Forms.ToolStripMenuItem toolsMenu;
+        private System.Windows.Forms.ToolStripMenuItem resolveDuplicateLabelsMenu;
     }
 }
 
