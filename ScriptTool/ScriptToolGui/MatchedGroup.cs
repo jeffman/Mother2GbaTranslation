@@ -24,6 +24,13 @@ namespace ScriptToolGui
             Refs.Add(Game.M12English, m12Ref);
         }
 
+        public MatchedGroup(MainStringRef m12Ref)
+            : this()
+        {
+            Refs.Add(Game.M12, m12Ref);
+            Refs.Add(Game.M12English, m12Ref);
+        }
+
         public override string ToString()
         {
             return String.Format("[{0:X3}] EB: {1} / [{2:X3}] M12: {3}",
