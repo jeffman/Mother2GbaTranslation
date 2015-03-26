@@ -2,7 +2,7 @@
 // 00-03: saved tilebase
 // 04-0F: pixel X values
 // 10-13: temp LR copy
-// 14:    goods dirty flag
+// 14-1F: window dirty flags
 
 m2_vwf:
 

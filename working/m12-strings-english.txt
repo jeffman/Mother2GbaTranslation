@@ -1074,8 +1074,8 @@
 ^L1073^, and in some[01 FF]  circumstances, can make the enemy feel strange,[01 FF]  become numb, or even be destroyed.[00 FF]
 ^L1074^[86 FF _L3995_][86 FF _L3996_].[01 FF]@Often, it will destroy an enemy in a single strike.[00 FF]
 ^L1075^@It generates glorious rays that have a high[01 FF]  probability of destroying all the enemies on the[01 FF]  scene in a single strike.[00 FF]
-^L1076^[01 FF]@It deals about 360 points of damage to each[01 FF]  enemy.[00 FF]
-^L1077^[01 FF]@It deals about 720 points of damage to each[01 FF]  enemy.[00 FF]
+^L1076^[86 FF _L3997_][01 FF]@It deals about 360 points of damage to each[01 FF]  enemy.[00 FF]
+^L1077^[86 FF _L3997_][01 FF]@It deals about 720 points of damage to each[01 FF]  enemy.[00 FF]
 ^L1078^@Restores 100 HP to one person.[00 FF]
 ^L1079^@Restores 300 HP to one person.[00 FF]
 ^L1080^@Completely restores the HP of one person.[00 FF]
@@ -2220,8 +2220,6 @@
 ^L2219^
 ^L2220^
 ^L2221^
-^L2222^
-^L2223^
 ^L2224^
 ^L2225^
 ^L2226^
