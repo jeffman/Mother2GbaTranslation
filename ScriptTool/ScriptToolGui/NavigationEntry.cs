@@ -22,10 +22,12 @@ namespace ScriptToolGui
         public override NavigationType Type { get { return NavigationType.MatchedGroup; } }
 
         public MatchedGroup Group { get; private set; }
+        public MatchedGroupCollection Collection { get; private set; }
 
-        public MatchedGroupNavigationEntry(MatchedGroup group)
+        public MatchedGroupNavigationEntry(MatchedGroup group, MatchedGroupCollection collection)
         {
             Group = group;
+            Collection = collection;
         }
     }
 
