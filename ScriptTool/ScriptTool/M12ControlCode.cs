@@ -66,8 +66,8 @@ namespace ScriptTool
             }
             else
             {
-                // If there's at least one reference, then there must be at least 6 code strings
-                if (codeStrings.Length < 6)
+                // If there's at least one reference, then there must be at least 3 code strings
+                if (codeStrings.Length < 3)
                     return false;
 
                 // Check bytes before references
