@@ -305,8 +305,6 @@ namespace ScriptToolGui
                 previousNavigationState = new MatchedGroupNavigationEntry(group);
             }
 
-            SelectGroup(group);
-
             PopulateCodeList();
             PopulateReferenceList();
 
@@ -347,7 +345,7 @@ namespace ScriptToolGui
             return match;
         }
 
-        private void NavigateTo(Game game, string label)
+        private MatchedGroup NavigateTo(Game game, string label)
         {
             foreach (var eachGame in validGames)
             {
@@ -387,12 +385,12 @@ namespace ScriptToolGui
                 }
             }
 
-            SelectGroup(match);
-
             PopulateCodeList();
             PopulateReferenceList();
 
             previewButton_Click(null, null);
+
+            return match;
         }
 
         private void PushPreviousNavigationState()
@@ -542,7 +540,9 @@ namespace ScriptToolGui
             SaveCurrentState(true);
 
             if (groupSelector.SelectedIndex == -1)
+            {
                 NavigateTo(null);
+            }
             else
             {
                 PushPreviousNavigationState();
@@ -572,7 +572,8 @@ namespace ScriptToolGui
                     SaveCurrentState(true);
 
                     PushPreviousNavigationState();
-                    NavigateTo(game, label);
+                    var group = NavigateTo(game, label);
+                    SelectGroup(group);
                 }
             }
         }
@@ -590,11 +591,13 @@ namespace ScriptToolGui
             {
                 var matchedEntry = (MatchedGroupNavigationEntry)nav;
                 NavigateTo(matchedEntry.Group);
+                SelectGroup(matchedEntry.Group);
             }
             else if (nav.Type == NavigationType.Reference)
             {
                 var referenceEntry = (ReferenceNavigationEntry)nav;
-                NavigateTo(referenceEntry.Game, referenceEntry.Label);
+                var group = NavigateTo(referenceEntry.Game, referenceEntry.Label);
+                SelectGroup(group);
             }
         }
 
