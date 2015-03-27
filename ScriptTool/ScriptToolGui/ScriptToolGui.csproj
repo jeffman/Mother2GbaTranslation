@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IndexLabel.cs" />
     <Compile Include="IndexMapping.cs" />
     <Compile Include="IndexPair.cs" />
     <Compile Include="MainForm.cs">

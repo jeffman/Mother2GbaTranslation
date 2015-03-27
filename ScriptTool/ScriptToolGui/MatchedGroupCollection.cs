@@ -10,11 +10,13 @@ namespace ScriptToolGui
     {
         public string Name { get; set; }
         public List<MatchedGroup> Groups { get; private set; }
+        public List<Game> Games { get; private set; }
 
-        public MatchedGroupCollection(string name)
+        public MatchedGroupCollection(string name, params Game[] games)
         {
             Name = name;
             Groups = new List<MatchedGroup>();
+            Games = new List<Game>(games);
         }
 
         public void SortGroups()

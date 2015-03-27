@@ -39,10 +39,12 @@ namespace ScriptToolGui
         IndexMapping itemMapping = new IndexMapping();
 
         // Matched reference pairs
-        MatchedGroupCollection tptGroups = new MatchedGroupCollection("TPT");
-        MatchedGroupCollection battleActionGroups = new MatchedGroupCollection("Battle actions");
-        MatchedGroupCollection itemHelpGroups = new MatchedGroupCollection("Item help");
-        MatchedGroupCollection psiHelpGroups = new MatchedGroupCollection("PSI help");
+        MatchedGroupCollection tptGroups = new MatchedGroupCollection("TPT", Game.Eb, Game.M12, Game.M12English);
+        MatchedGroupCollection battleActionGroups = new MatchedGroupCollection("Battle actions", Game.Eb, Game.M12, Game.M12English);
+        MatchedGroupCollection itemHelpGroups = new MatchedGroupCollection("Item help", Game.Eb, Game.M12, Game.M12English);
+        MatchedGroupCollection psiHelpGroups = new MatchedGroupCollection("PSI help", Game.Eb, Game.M12, Game.M12English);
+        MatchedGroupCollection rawM12Groups = new MatchedGroupCollection("Raw M12 strings", Game.M12, Game.M12English);
+        MatchedGroupCollection rawEbGroups = new MatchedGroupCollection("Raw EB strings", Game.Eb);
         List<MatchedGroupCollection> matchedCollections = new List<MatchedGroupCollection>();
 
         // Navigation stack
@@ -74,8 +76,8 @@ namespace ScriptToolGui
             previewer.M12Compiler = m12Compiler;
             previewer.CharLookup = ebCharLookup;
 
+            ImportAllStrings();
             ImportAllStringRefs();
-            ImportAllStrings(workingFolder);
 
             InitLookups();
 
@@ -88,7 +90,6 @@ namespace ScriptToolGui
         private void PopulateCollectionSelector()
         {
             collectionSelector.Items.Clear();
-
             collectionSelector.Items.AddRange(matchedCollections.ToArray());
         }
 
@@ -168,10 +169,26 @@ namespace ScriptToolGui
             psiHelpGroups.Groups.AddRange(psiHelpMappingGroups);
             psiHelpGroups.SortGroups();
 
+            // Raw M12
+            var labels = Enumerable.Range(0, 5926);
+            foreach (int i in labels)
+            {
+                rawM12Groups.Groups.Add(new MatchedGroup(i, "L" + i.ToString()));
+            }
+
+            // Raw EB
+            labels = Enumerable.Range(0, 5357);
+            foreach (int i in labels)
+            {
+                rawEbGroups.Groups.Add(new MatchedGroup(Game.Eb, i, "L" + i.ToString()));
+            }
+
             matchedCollections.Add(tptGroups);
             matchedCollections.Add(battleActionGroups);
             matchedCollections.Add(itemHelpGroups);
             matchedCollections.Add(psiHelpGroups);
+            matchedCollections.Add(rawM12Groups);
+            matchedCollections.Add(rawEbGroups);
         }
 
         private MatchedGroup[] MatchRefs(MainStringRef[] ebRefs, MainStringRef[] m12Refs)
@@ -188,11 +205,11 @@ namespace ScriptToolGui
             return JsonConvert.DeserializeObject<MainStringRef[]>(jsonString);
         }
 
-        private void ImportAllStrings(string folder)
+        private void ImportAllStrings()
         {
-            string m12FileName = Path.Combine(folder, "m12-strings.txt");
-            string m12EnglishFileName = Path.Combine(folder, "m12-strings-english.txt");
-            string ebFileName = Path.Combine(folder, "eb-strings.txt");
+            string m12FileName = Path.Combine(workingFolder, "m12-strings.txt");
+            string m12EnglishFileName = Path.Combine(workingFolder, "m12-strings-english.txt");
+            string ebFileName = Path.Combine(workingFolder, "eb-strings.txt");
 
             m12Strings = ImportStrings(m12FileName);
             m12StringsEnglish = ImportStrings(m12EnglishFileName);
@@ -245,10 +262,21 @@ namespace ScriptToolGui
             referenceList.Items.AddRange(references.ToArray());
         }
 
-        private string GetString(Game game, string label)
+        private string GetString(Game game, MatchedGroup group)
         {
             int index;
-            return GetString(game, label, out index);
+            return GetString(game, group, out index);
+        }
+
+        private string GetString(Game game, MatchedGroup group, out int index)
+        {
+            if (!group.Refs.ContainsKey(game))
+            {
+                index = -1;
+                return null;
+            }
+
+            return GetString(game, group.Refs[game].Label, out index);
         }
 
         private string GetString(Game game, string label, out int index)
@@ -280,13 +308,13 @@ namespace ScriptToolGui
             {
                 int index;
 
-                string eb = GetString(Game.Eb, group.Refs[Game.Eb].Label, out index);
+                string eb = GetString(Game.Eb, group, out index);
                 currentIndex[Game.Eb] = index;
 
-                string m12 = GetString(Game.M12, group.Refs[Game.M12].Label, out index);
+                string m12 = GetString(Game.M12, group, out index);
                 currentIndex[Game.M12] = index;
 
-                string m12English = GetString(Game.M12English, group.Refs[Game.M12].Label, out index);
+                string m12English = GetString(Game.M12English, group, out index);
                 currentIndex[Game.M12English] = index;
 
                 ebString.Text = eb;
@@ -327,6 +355,8 @@ namespace ScriptToolGui
                 collectionSelector.SelectedIndex = -1;
                 groupSelector.SelectedIndex = -1;
             }
+
+            currentCollection = collection;
         }
 
         private void FindGroup(Game game, string label, out MatchedGroup group, out MatchedGroupCollection collection)
@@ -335,7 +365,7 @@ namespace ScriptToolGui
             string labelDef = "^" + label + "^";
             string str = stringsLookup[game].First(s => s.Contains(labelDef));
 
-            foreach (var coll in matchedCollections)
+            foreach (var coll in matchedCollections.Where(c => c.Games.Contains(game)))
             {
                 var match = coll.Groups.FirstOrDefault(g => str.Contains("^" + g.Refs[game].Label + "^"));
                 if (match != null)
