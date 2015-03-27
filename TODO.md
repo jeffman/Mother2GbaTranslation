@@ -27,11 +27,11 @@
 - [X] VWF core
 - [X] VWF for Talk
 - [X] VWF for Check
-- [ ] VWF for Goods menu
+- [X] VWF for Goods menu
 - [ ] VWF for PSI menu
 - [X] VWF for Status window
 - [X] VWF for cash window
-- [ ] Make PSI sub-menus (from Status window) redraw only when needed (currently they redraw continuously when they're not needed, and likewise they don't redraw when they are needed)
+- [X] Make PSI sub-menus (from Status window) redraw only when needed (currently they redraw continuously when they're not needed, and likewise they don't redraw when they are needed)
 - [ ] Make Status window redraw properly when exiting from a PSI sub-menu
 - [ ] VWF for HP/PP boxes
 - [ ] VWF for naming screens
@@ -43,6 +43,7 @@
 - [ ] VWF for Saturn font
 - [ ] VWF for small font
 - [ ] VWF for big font (already implemented this in a past project, just need to migrate it)
+- [ ] BUG: jump control codes seem to be resetting pixel X values when they shouldn't
 - [ ] TODO: replace load/store chains with ldmia/stmia
 
 ### M2 - hacking (misc, lower priority)
