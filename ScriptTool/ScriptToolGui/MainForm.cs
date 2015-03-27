@@ -677,6 +677,10 @@ namespace ScriptToolGui
                 {
                     previewer.MaxWidth = 224;
                 }
+                else if (collection == battleActionGroups)
+                {
+                    previewer.MaxWidth = 176;
+                }
                 else
                 {
                     previewer.MaxWidth = 144;
