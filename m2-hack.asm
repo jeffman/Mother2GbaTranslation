@@ -116,6 +116,14 @@ org $80BADE6; bl m2_formatting.status_redraw
 org $80B8B56; bl m2_vwf.ppcost_once
 org $80B8B98; bl m2_vwf.ppcost_once2
 
+// VWFs for printing character names
+org $80D2F24
+mov     r1,r6
+mov     r2,r7
+mov     r0,r4
+bl      m2_vwf.weld_entry
+b       $80D2F52
+
 //==============================================================================
 // Formatting hacks
 //==============================================================================
