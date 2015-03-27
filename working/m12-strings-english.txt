@@ -1092,30 +1092,30 @@
 ^L1091^@Protects everyone with a psychic shield.[01 FF][86 FF _L4001_][86 FF _L3999_][00 FF]
 ^L1092^@Protects one person with a psychic power shield.[01 FF][86 FF _L4002_][86 FF _L3999_][00 FF]
 ^L1093^@Protects everyone with a psychic power shield.[01 FF][86 FF _L4002_][86 FF _L3999_][00 FF]
-^L1094^
-^L1095^
-^L1096^
-^L1097^
-^L1098^
-^L1099^
-^L1100^
-^L1101^
-^L1102^
-^L1103^
-^L1104^
-^L1105^
-^L1106^
-^L1107^
-^L1108^
-^L1109^
-^L1110^
-^L1111^
-^L1112^
-^L1113^
-^L1114^
-^L1115^
-^L1116^
-^L1117^
+^L1094^@Increase one person's Offense[01 FF]  for the duration of the current battle.[01 FF][86 FF _L4003_][00 FF]
+^L1095^@Increase everyone's Offense for the[01 FF]  duration of the current battle.[01 FF][86 FF _L4003_][00 FF]
+^L1096^@Decreases the Defense of one enemy[01 FF]  for the duration of the current battle.[01 FF][86 FF _L4003_][00 FF]
+^L1097^@Decreases the Defense of all enemies[01 FF]  for the duration of the current battle.[01 FF][86 FF _L4003_][00 FF]
+^L1098^@Puts one enemy to sleep.[01 FF][86 FF _L4004_][00 FF]
+^L1099^@Puts all of the enemies to sleep.[01 FF][86 FF _L4004_][00 FF]
+^L1100^@Grabs 2-8 points of PP from one enemy and[01 FF]  adds it to your own.[00 FF]
+^L1101^@Grabs 2-8 points of PP from each enemy and[01 FF]  adds it to your own.[00 FF]
+^L1102^@Forces one enemy into[86 FF _L4006_][00 FF]
+^L1103^@Forces all enemies into[86 FF _L4006_][00 FF]
+^L1104^@Makes one enemy feels strange.[00 FF]
+^L1105^@Makes all of the enemies feel strange.[00 FF]
+^L1106^[86 FF _L4008_][01 FF]@You need a good running approach[01 FF]  for this to work.[00 FF]
+^L1107^[86 FF _L4008_][01 FF]@You don't need a running approach to use this.[01 FF]@It is also called the <Tornado Teleport.>[00 FF]
+^L1108^[00 FF]
+^L1109^@[9F FF][C1 FF][87 FF] used[01 FF]  the[90 FF 00][1A FF 02 00].[02 FF]@But nothing happened.[02 FF][00 FF]
+^L1110^@[9F FF][C1 FF][87 FF] used[01 FF]  the[90 FF 00][1A FF 02 00].[02 FF]@But nothing happened.[02 FF][00 FF]
+^L1111^@[C1 FF][87 FF][9F FF] tried[01 FF]  to use the[90 FF 00][1A FF 02 00].[02 FF]@But [9F FF] could not use[01 FF]  the [90 FF 00][1A FF 02 00] very well.[02 FF][00 FF]
+^L1112^[FC FF 08 00][82 FF _L3526_][D4 FF 19 00]@[9F FF] is attacking![D4 FF 1A 00][02 FF][00 FF]
+^L1113^[D4 FF 18 00]@[9F FF] attacks![D4 FF 1B 00][02 FF][00 FF]
+^L1114^@[9F FF] spies on [01 FF]  [AD FF]![02 FF][00 FF]
+^L1115^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  with her whole heart![02 FF][00 FF]
+^L1116^@[9F FF] is on guard.[02 FF][00 FF]
+^L1117^[FC FF 3B 00][82 FF _L3527_][FC FF 08 00][82 FF _L3528_][D4 FF 37 00]@[9F FF] tried[01 FF][C1 FF][87 FF]  [2D FF]![02 FF][80 FF _L3529_]
 ^L1118^
 ^L1119^
 ^L1120^
@@ -3522,7 +3522,7 @@
 ^L3523^
 ^L3524^
 ^L3525^
-^L3526^
+^L3526^[1F 02 18]@[9F FF] attacks![D4 FF 1A 00][02 FF][00 FF]
 ^L3527^
 ^L3528^
 ^L3529^
@@ -3999,12 +3999,12 @@
 ^L4000^@Cuts damage in half and some of the blocked[01 FF]  damage is dealt back to the enemy.[00 FF]
 ^L4001^@It blocks an enemy's PSI attack.[00 FF]
 ^L4002^@It reflects an enemy's PSI attack back at the[01 FF]  attacker.[00 FF]
-^L4003^
-^L4004^
-^L4005^
-^L4006^
-^L4007^
-^L4008^
+^L4003^@It is most effective if you use this power[01 FF]  multiple times to <layer> the effect.[00 FF]
+^L4004^[00 FF]
+^L4005^[00 FF]
+^L4006^ <numbed> condition.[00 FF]
+^L4007^[00 FF]
+^L4008^@Allows you to immediately return to a place[01 FF]  where you have already been.[00 FF]
 ^L4009^
 ^L4010^
 ^L4011^
