@@ -117,12 +117,15 @@ org $80B8B56; bl m2_vwf.ppcost_once
 org $80B8B98; bl m2_vwf.ppcost_once2
 
 // VWFs for printing character names
+org $80D2EF0; ldrb r0,[r6,#0] // allows for 5 letters!
 org $80D2F24
 mov     r1,r6
 mov     r2,r7
 mov     r0,r4
 bl      m2_vwf.weld_entry
 b       $80D2F52
+
+org $80D2F5A; nop
 
 //==============================================================================
 // Formatting hacks
@@ -173,6 +176,10 @@ org $80BE764; bl m2_vwf.cursor_dirty1
 // PSI help -- set clean/dirty flags
 org $80BADCE; bl m2_vwf.psi_help_clear1
 org $80BADD4; bl m2_vwf.psi_help_clean1
+org $80C476A; bl m2_vwf.psi_help_dirty1
+org $80C48B4; bl m2_vwf.psi_help_dirty1
+org $80C4644; bl m2_vwf.psi_help_dirty2
+org $80C4582; bl m2_vwf.psi_help_dirty2
 
 // PSI target strings
 org $80B8B12; mov r0,#0x14
