@@ -1071,7 +1071,7 @@
 ^L1070^@The enemy is thunder struck for about 200[01 FF]  points of damage three separate times.[01 FF][86 FF _L3994_][00 FF]
 ^L1071^@The enemy is thunder struck for about 200[01 FF]  points of damage four separate times.[01 FF][86 FF _L3994_][00 FF]
 ^L1072^[86 FF _L3995_][86 FF _L3996_], and in some[01 FF]  circumstances, feel strange.[00 FF]
-^L1073^, and in some[01 FF]  circumstances, can make the enemy feel strange,[01 FF]  become numb, or even be destroyed.[00 FF]
+^L1073^[86 FF _L3995_][86 FF _L3996_], and in some[01 FF]  circumstances, can make the enemy feel strange,[01 FF]  become numb, or even be destroyed.[00 FF]
 ^L1074^[86 FF _L3995_][86 FF _L3996_].[01 FF]@Often, it will destroy an enemy in a single strike.[00 FF]
 ^L1075^@It generates glorious rays that have a high[01 FF]  probability of destroying all the enemies on the[01 FF]  scene in a single strike.[00 FF]
 ^L1076^[86 FF _L3997_][01 FF]@It deals about 360 points of damage to each[01 FF]  enemy.[00 FF]
