@@ -210,7 +210,7 @@ push    {r0-r7,lr}
 //--------------------------------
 mov     r3,#0
 mov     r4,r2
-mov     r5,r0
+mov     r5,#0
 
 -
 ldrb    r2,[r4,#1]
@@ -221,6 +221,19 @@ cmp     r6,#0
 beq     .print_numerical_endcode
 
 .print_numerical_invalid:
+// Check if it's a character name (5 letter hack)
+ldr     r6,=#0x3001F10
+sub     r6,r4,r6
+bmi     .print_invalid
+cmp     r6,#0x16
+bgt     .print_invalid
+ldrb    r6,[r4,#0]
+cmp     r6,#0xFF
+beq     .print_numerical_endcode
+mov     r5,#1                // Signal that we need to exit after this letter
+b       +
+
+.print_invalid:
 dw      $E801                // Break by means of invalid opcode
 
 // Print the character
@@ -231,7 +244,8 @@ sub     r2,#0x50
 bl      .print_character
 add     r0,r0,r7
 add     r4,r4,#1
-b       -
+cmp     r5,#0
+beq     -
 
 .print_numerical_endcode:
 pop     {r0-r7,pc}
@@ -957,7 +971,7 @@ pop     {r1-r6,pc}
 //==============================================================================
 
 .save_tilebase:
-print   "m2vwf.save_tilebase:          $", pc
+print   "m2vwf.save_tilebase:          $",pc
 push    {r5,lr}
 ldr     r5,[sp,#8]
 mov     lr,r5
