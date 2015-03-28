@@ -62,7 +62,6 @@ org $80C0260; bl m2_vwf.goods_dirty6
 org $80BA688; bl m2_vwf.goods_redraw // pressing B from Give window; redraw old Goods window
 org $80B9CF8; bl m2_vwf.main_redraw // selecting the Use option; need to redraw the main menu
 
-
 // Menu select entry
 org $80B7FC6; bl m2_vwf.print_string_relative
 

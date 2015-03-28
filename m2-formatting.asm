@@ -386,6 +386,12 @@ mov     r0,r4
 bl      $80C8FFC
 
 //--------------------------------
+// Draw the numbers
+mov     r0,r4
+mov     r1,#0
+bl      $80C0A5C
+
+//--------------------------------
 // Set all dirty flags
 bl      m2_vwf.set_all_dirty_flags
 
