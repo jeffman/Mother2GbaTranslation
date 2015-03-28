@@ -97,7 +97,7 @@ org $80CA30A; bl m2_vwf.x_reset2
 org $80CA332; bl m2_vwf.x_reset1
 org $80C8F26; bl m2_vwf.x_reset4 // Newline after a menu selection
 org $80C888C; bl m2_vwf.x_resetall // Use goods menu
-org $80C9D2C; bl m2_vwf.x_reset5 // After finishing Use menu
+org $80B9B34; bl m2_vwf.x_reset5 // Pressing Help!
 // Possible other places: 80BE370, 80BE436,
 
 // Erase a tile
