@@ -96,7 +96,7 @@ namespace ScriptTool
 
                 for (int i = 0; i < numReferences; i++)
                 {
-                    string reference = codeStrings[(i * 4) + ReferenceOffset];
+                    string reference = codeStrings[i + ReferenceOffset];
 
                     if (reference.Length < 3)
                         return false;
@@ -106,7 +106,7 @@ namespace ScriptTool
                 }
 
                 // Check bytes after references
-                for (int i = ReferenceOffset + (numReferences * 4); i < codeStrings.Length; i++)
+                for (int i = ReferenceOffset + numReferences; i < codeStrings.Length; i++)
                 {
                     if (!Compiler.IsHexByte(codeStrings[i]))
                         return false;
