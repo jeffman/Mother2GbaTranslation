@@ -2050,6 +2050,112 @@ pop     {pc}
 
 
 //==============================================================================
+// void psi_menu_clear()
+//==============================================================================
+
+.psi_menu_clear:
+print   "m2vwf.psi_menu_clear:         $",pc
+
+push    {r0-r3,lr}
+
+// Get the dirty flag
+bl      .get_dirty_flag
+
+// Only clear if it's dirty
+cmp     r0,#0
+beq     +
+pop     {r0-r3,pc}
+
++
+// Clobbered code
+pop     {r0-r3}
+bl      $80CA834
+pop     {pc}
+
+
+//==============================================================================
+// void psi_menu_draw()
+//==============================================================================
+
+.psi_menu_draw:
+print   "m2vwf.psi_menu_draw:          $",pc
+
+push    {r0-r4,lr}
+
+// Get the window address
+ldr     r1,=#0x300524C
+ldr     r0,[r1,#0]
+mov     r4,r0
+
+// Get the dirty flag
+bl      .get_dirty_flag
+
+// Only draw if it's dirty
+cmp     r0,#0
+beq     +
+pop     {r0-r4,pc}
+
++
+// Clobbered code
+pop     {r0-r3}
+bl      $80C1FBC
+
+// Unset the dirty flag
+push    {r0,r1}
+mov     r0,r4
+mov     r1,#1
+bl      .set_dirty_flag
+pop     {r0,r1,r4,pc}
+
+
+//==============================================================================
+// void psi_menu_dirty1()
+//==============================================================================
+
+.psi_menu_dirty1:
+print   "m2vwf.psi_menu_dirty1:        $",pc
+
+push    {lr}
+
+// Get the window address
+ldr     r0,[r4,#0x1C]           // r4 = 0x3005230
+
+// Set the dirty flag
+mov     r1,#0
+bl      .set_dirty_flag
+
+// Clobbered code
+ldr     r0,[r5,#0]
+mov     r1,#1
+pop     {pc}
+
+
+//==============================================================================
+// void psi_menu_dirty2()
+//==============================================================================
+
+.psi_menu_dirty2:
+print   "m2vwf.psi_menu_dirty2:        $",pc
+
+push    {r0,r1,lr}
+
+// Set the dirty flag
+mov     r0,r5
+mov     r1,#0
+bl      .set_dirty_flag
+
+// Clean the window
+mov     r0,r5
+bl      $80CA834
+
+// Clobbered code
+pop     {r0,r1}
+strh    r0,[r4,#0]
+lsl     r0,r0,#0x10
+pop     {pc}
+
+
+//==============================================================================
 // void psi_clean1()
 //==============================================================================
 

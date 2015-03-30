@@ -62,6 +62,13 @@ org $80C0260; bl m2_vwf.goods_dirty6
 org $80BA688; bl m2_vwf.goods_redraw // pressing B from Give window; redraw old Goods window
 org $80B9CF8; bl m2_vwf.main_redraw // selecting the Use option; need to redraw the main menu
 
+// PSI -- dirty flags
+org $80B8CD2; bl m2_vwf.psi_menu_clear
+org $80B8CEA; bl m2_vwf.psi_menu_draw
+org $80B85F0; bl m2_vwf.psi_menu_dirty1
+org $80C4048; bl m2_vwf.psi_menu_dirty2
+org $80C4080; bl m2_vwf.psi_menu_dirty2
+
 // Menu select entry
 org $80B7FC6; bl m2_vwf.print_string_relative
 
