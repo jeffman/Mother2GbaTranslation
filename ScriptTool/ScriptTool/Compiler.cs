@@ -267,6 +267,11 @@ namespace ScriptTool
 
         public string StripText(string str)
         {
+            if (str == null)
+            {
+                return null;
+            }
+
             var sb = new StringBuilder();
 
             for (int i = 0; i < str.Length; )

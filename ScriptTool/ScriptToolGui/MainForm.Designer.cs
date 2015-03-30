@@ -32,6 +32,8 @@
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.saveMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.resolveDuplicateLabelsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.topPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.collectionSelector = new System.Windows.Forms.ComboBox();
@@ -47,7 +49,6 @@
             this.lineOpsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.copyCodesButton = new System.Windows.Forms.Button();
             this.previewButton = new System.Windows.Forms.Button();
-            this.previewer = new ScriptToolGui.StringPreviewer();
             this.codeSplitContainer = new System.Windows.Forms.SplitContainer();
             this.codeList = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,8 +60,7 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.writeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.writeTimer = new System.Windows.Forms.Timer(this.components);
-            this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.resolveDuplicateLabelsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.previewer = new ScriptToolGui.StringPreviewer();
             this.mainMenu.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -109,6 +109,21 @@
             this.saveMenu.Size = new System.Drawing.Size(138, 22);
             this.saveMenu.Text = "Save";
             this.saveMenu.Click += new System.EventHandler(this.saveMenu_Click);
+            // 
+            // toolsMenu
+            // 
+            this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.resolveDuplicateLabelsMenu});
+            this.toolsMenu.Name = "toolsMenu";
+            this.toolsMenu.Size = new System.Drawing.Size(48, 20);
+            this.toolsMenu.Text = "Tools";
+            // 
+            // resolveDuplicateLabelsMenu
+            // 
+            this.resolveDuplicateLabelsMenu.Name = "resolveDuplicateLabelsMenu";
+            this.resolveDuplicateLabelsMenu.Size = new System.Drawing.Size(208, 22);
+            this.resolveDuplicateLabelsMenu.Text = "Resolve duplicate labels...";
+            this.resolveDuplicateLabelsMenu.Click += new System.EventHandler(this.resolveDuplicateLabelsMenu_Click);
             // 
             // topPanel
             // 
@@ -304,19 +319,6 @@
             this.previewButton.UseVisualStyleBackColor = true;
             this.previewButton.Click += new System.EventHandler(this.previewButton_Click);
             // 
-            // previewer
-            // 
-            this.previewer.AutoScroll = true;
-            this.previewer.CharLookup = null;
-            this.previewer.DisplayedString = null;
-            this.previewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.previewer.Location = new System.Drawing.Point(0, 0);
-            this.previewer.M12Compiler = null;
-            this.previewer.MaxWidth = 0;
-            this.previewer.Name = "previewer";
-            this.previewer.Size = new System.Drawing.Size(796, 133);
-            this.previewer.TabIndex = 0;
-            // 
             // codeSplitContainer
             // 
             this.codeSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -441,20 +443,18 @@
             this.writeTimer.Interval = 10000;
             this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
             // 
-            // toolsMenu
+            // previewer
             // 
-            this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.resolveDuplicateLabelsMenu});
-            this.toolsMenu.Name = "toolsMenu";
-            this.toolsMenu.Size = new System.Drawing.Size(48, 20);
-            this.toolsMenu.Text = "Tools";
-            // 
-            // resolveDuplicateLabelsMenu
-            // 
-            this.resolveDuplicateLabelsMenu.Name = "resolveDuplicateLabelsMenu";
-            this.resolveDuplicateLabelsMenu.Size = new System.Drawing.Size(208, 22);
-            this.resolveDuplicateLabelsMenu.Text = "Resolve duplicate labels...";
-            this.resolveDuplicateLabelsMenu.Click += new System.EventHandler(this.resolveDuplicateLabelsMenu_Click);
+            this.previewer.AutoScroll = true;
+            this.previewer.CharLookup = null;
+            this.previewer.DisplayedString = null;
+            this.previewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previewer.Location = new System.Drawing.Point(0, 0);
+            this.previewer.M12Compiler = null;
+            this.previewer.MaxWidth = 0;
+            this.previewer.Name = "previewer";
+            this.previewer.Size = new System.Drawing.Size(796, 133);
+            this.previewer.TabIndex = 0;
             // 
             // MainForm
             // 

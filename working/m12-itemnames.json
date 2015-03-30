@@ -133,7 +133,7 @@
       "OffsetLocation": 0xB1AFE0,
       "OldPointer": 0xB1A743,
       "Old": "たのしいフライパン[00 FF]",
-      "New": "Non-stick fry pan[00 FF]"
+      "New": "Non-stick frypan[00 FF]"
     },
     {
       "Index": 0x13,
@@ -504,7 +504,7 @@
       "OffsetLocation": 0xB1B0B4,
       "OldPointer": 0xB1A932,
       "Old": "どせいさんのリボン[00 FF]",
-      "New": "Mr. Saturn ribbon[00 FF]"
+      "New": "Saturn ribbon[00 FF]"
     },
     {
       "Index": 0x48,
@@ -833,7 +833,7 @@
       "OffsetLocation": 0xB1B170,
       "OldPointer": 0xB1AAE1,
       "Old": "たかいみず[00 FF]",
-      "New": "Bottle of DX water[00 FF]"
+      "New": "Bottle of DXwater[00 FF]"
     },
     {
       "Index": 0x77,
@@ -1281,7 +1281,7 @@
       "OffsetLocation": 0xB1B270,
       "OldPointer": 0xB1AD1E,
       "Old": "ドラゴンパウダー[00 FF]",
-      "New": "Bag of dragonite[00 FF]"
+      "New": "Bag of Dragonite[00 FF]"
     },
     {
       "Index": 0xB7,
@@ -1568,7 +1568,7 @@
       "OffsetLocation": 0xB1B314,
       "OldPointer": 0xB1AE74,
       "Old": "バイタルカプセル[00 FF]",
-      "New": "Vitality capsule[00 FF]"
+      "New": "Vital capsule[00 FF]"
     },
     {
       "Index": 0xE0,

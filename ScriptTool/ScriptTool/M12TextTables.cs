@@ -118,8 +118,15 @@ namespace ScriptTool
                 // Check if it's in text range
                 if (ptr >= 0x803697F && ptr < 0x808C4B0)
                 {
-                    refs.Add(new MainStringRef { Index = count++, PointerLocation = address, OldPointer = ptr & 0x1FFFFFF });
-                    address += 3;
+                    // Check if the code before it is an endcode
+                    ptr = ptr & 0x1FFFFFF;
+                    if ((rom[ptr - 2] == 0 && rom[ptr - 1] == 0xFF) || (rom[ptr - 6] == 0x80 && rom[ptr - 5] == 0xFF))
+                    {
+                        refs.Add(new MainStringRef { Index = count, PointerLocation = address, OldPointer = ptr });
+                        address += 3;
+                    }
+
+                    count++;
                 }
             }
             return refs.ToArray();

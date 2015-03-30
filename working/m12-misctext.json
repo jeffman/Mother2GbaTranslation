@@ -915,28 +915,28 @@
       "OffsetLocation": 0xB180E8,
       "OldPointer": 0xB17DD4,
       "Old": "きぜつしている[00 FF]",
-      "New": "misc80[00 FF]"
+      "New": "Unconscious[00 FF]"
     },
     {
       "Index": 0x81,
       "OffsetLocation": 0xB180EC,
       "OldPointer": 0xB17DDD,
       "Old": "ダイヤになっている[00 FF]",
-      "New": "misc81[00 FF]"
+      "New": "Diamondized[00 FF]"
     },
     {
       "Index": 0x82,
       "OffsetLocation": 0xB180F0,
       "OldPointer": 0xB17DE8,
       "Old": "しびれている[00 FF]",
-      "New": "misc82[00 FF]"
+      "New": "Numb[00 FF]"
     },
     {
       "Index": 0x83,
       "OffsetLocation": 0xB180F4,
       "OldPointer": 0xB17DF0,
       "Old": "きもちがわるい[00 FF]",
-      "New": "misc83[00 FF]"
+      "New": "Nausea[00 FF]"
     },
     {
       "Index": 0x84,

@@ -170,7 +170,7 @@ namespace ScriptToolGui
             psiHelpGroups.SortGroups();
 
             // Raw M12
-            var labels = Enumerable.Range(0, 5926);
+            var labels = Enumerable.Range(0, 5864);
             foreach (int i in labels)
             {
                 rawM12Groups.Groups.Add(new MatchedGroup(i, "L" + i.ToString()));
@@ -322,6 +322,16 @@ namespace ScriptToolGui
                 m12StringEnglish.Text = m12English;
 
                 previousNavigationState = new MatchedGroupNavigationEntry(group, collection);
+
+                if (m12 == m12Compiler.StripText(m12))
+                {
+                    m12String.BackColor = Color.Orange;
+
+                }
+                else
+                {
+                    m12String.BackColor = Color.White;
+                }
             }
 
             PopulateCodeList();
@@ -659,6 +669,7 @@ namespace ScriptToolGui
         private void copyCodesButton_Click(object sender, EventArgs e)
         {
             m12StringEnglish.Text = m12Compiler.StripText(m12String.Text);
+            groupSelector.Focus();
         }
 
         private void collectionSelector_SelectionChangeCommitted(object sender, EventArgs e)
@@ -740,8 +751,11 @@ namespace ScriptToolGui
                 var flattened = labels.SelectMany(l => l.Labels.Select(b => new { Label = b, Index = l.Index }));
                 var duplicates = flattened.GroupBy(f => f.Label)
                     .Where(g => g.Count() > 1)
-                    .Select(g => new { Label = g.Key,
-                        Indices = g.Select(r => new { Index = r.Index, Trivial = IsJustALabel(m12StringsEnglish[r.Index]) }).ToList() })
+                    .Select(g => new
+                    {
+                        Label = g.Key,
+                        Indices = g.Select(r => new { Index = r.Index, Trivial = IsJustALabel(m12StringsEnglish[r.Index]) }).ToList()
+                    })
                     .ToList();
 
                 // Find the duplicates that can be resolved
@@ -795,12 +809,12 @@ namespace ScriptToolGui
                                     "Could not resolve", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
-                            
+
                             foreach (int i in toBeRemoved)
                             {
                                 // Remove the string
                                 m12StringsEnglish.RemoveAt(i);
-                                
+
                                 // Update currentIndex
                                 if (currentIndex[Game.M12English] > i)
                                 {
