@@ -61,6 +61,7 @@
             this.writeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.writeTimer = new System.Windows.Forms.Timer(this.components);
             this.previewer = new ScriptToolGui.StringPreviewer();
+            this.checkCompletionMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -113,7 +114,8 @@
             // toolsMenu
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.resolveDuplicateLabelsMenu});
+            this.resolveDuplicateLabelsMenu,
+            this.checkCompletionMenu});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(48, 20);
             this.toolsMenu.Text = "Tools";
@@ -121,7 +123,7 @@
             // resolveDuplicateLabelsMenu
             // 
             this.resolveDuplicateLabelsMenu.Name = "resolveDuplicateLabelsMenu";
-            this.resolveDuplicateLabelsMenu.Size = new System.Drawing.Size(208, 22);
+            this.resolveDuplicateLabelsMenu.Size = new System.Drawing.Size(214, 22);
             this.resolveDuplicateLabelsMenu.Text = "Resolve duplicate labels...";
             this.resolveDuplicateLabelsMenu.Click += new System.EventHandler(this.resolveDuplicateLabelsMenu_Click);
             // 
@@ -456,6 +458,13 @@
             this.previewer.Size = new System.Drawing.Size(796, 133);
             this.previewer.TabIndex = 0;
             // 
+            // checkCompletionMenu
+            // 
+            this.checkCompletionMenu.Name = "checkCompletionMenu";
+            this.checkCompletionMenu.Size = new System.Drawing.Size(214, 22);
+            this.checkCompletionMenu.Text = "Check completion status...";
+            this.checkCompletionMenu.Click += new System.EventHandler(this.checkCompletionMenu_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -537,6 +546,7 @@
         private StringPreviewer previewer;
         private System.Windows.Forms.ToolStripMenuItem toolsMenu;
         private System.Windows.Forms.ToolStripMenuItem resolveDuplicateLabelsMenu;
+        private System.Windows.Forms.ToolStripMenuItem checkCompletionMenu;
     }
 }
 

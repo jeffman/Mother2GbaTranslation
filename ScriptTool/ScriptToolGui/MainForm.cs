@@ -323,10 +323,9 @@ namespace ScriptToolGui
 
                 previousNavigationState = new MatchedGroupNavigationEntry(group, collection);
 
-                if (m12 == m12Compiler.StripText(m12))
+                if (m12 != null && m12 == m12Compiler.StripText(m12))
                 {
                     m12String.BackColor = Color.Orange;
-
                 }
                 else
                 {
@@ -836,6 +835,13 @@ namespace ScriptToolGui
                 MessageBox.Show("Error extracting labels. " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+
+        private void checkCompletionMenu_Click(object sender, EventArgs e)
+        {
+            int completedCount = m12StringsEnglish.Count(s => !IsJustALabel(s));
+            int total = m12StringsEnglish.Count;
+            MessageBox.Show(String.Format("Completed: {0}/{1} ({2:F2}%)", completedCount, total, (double)completedCount * 100d / (double)total));
         }
     }
 
