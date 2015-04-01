@@ -300,7 +300,7 @@ pop     {r0-r2,pc}
 //==============================================================================
 
 .status_clear:
-print   "m2_formatting.status_clear:   $",pc
+print   "m2formatting.status_clear:    $",pc
 
 push    {r0-r4,lr}
 ldr     r4,=#.status_clear_areas

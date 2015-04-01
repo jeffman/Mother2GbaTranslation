@@ -11,7 +11,7 @@ m2_customcodes:
 //==============================================================================
 
 .parse:
-print   "m2-customcodes.parse:         $",pc
+print   "m2customcodes.parse:          $",pc
 
 push    {r1-r6,lr}
 mov     r6,#0
