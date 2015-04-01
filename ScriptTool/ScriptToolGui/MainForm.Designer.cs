@@ -34,6 +34,7 @@
             this.saveMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.resolveDuplicateLabelsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkCompletionMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.topPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.collectionSelector = new System.Windows.Forms.ComboBox();
@@ -49,6 +50,7 @@
             this.lineOpsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.copyCodesButton = new System.Windows.Forms.Button();
             this.previewButton = new System.Windows.Forms.Button();
+            this.previewer = new ScriptToolGui.StringPreviewer();
             this.codeSplitContainer = new System.Windows.Forms.SplitContainer();
             this.codeList = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,8 +62,8 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.writeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.writeTimer = new System.Windows.Forms.Timer(this.components);
-            this.previewer = new ScriptToolGui.StringPreviewer();
-            this.checkCompletionMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.nextButton = new System.Windows.Forms.Button();
+            this.prevButton = new System.Windows.Forms.Button();
             this.mainMenu.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -127,12 +129,21 @@
             this.resolveDuplicateLabelsMenu.Text = "Resolve duplicate labels...";
             this.resolveDuplicateLabelsMenu.Click += new System.EventHandler(this.resolveDuplicateLabelsMenu_Click);
             // 
+            // checkCompletionMenu
+            // 
+            this.checkCompletionMenu.Name = "checkCompletionMenu";
+            this.checkCompletionMenu.Size = new System.Drawing.Size(214, 22);
+            this.checkCompletionMenu.Text = "Check completion status...";
+            this.checkCompletionMenu.Click += new System.EventHandler(this.checkCompletionMenu_Click);
+            // 
             // topPanel
             // 
             this.topPanel.AutoSize = true;
             this.topPanel.Controls.Add(this.label1);
             this.topPanel.Controls.Add(this.collectionSelector);
             this.topPanel.Controls.Add(this.groupSelector);
+            this.topPanel.Controls.Add(this.prevButton);
+            this.topPanel.Controls.Add(this.nextButton);
             this.topPanel.Controls.Add(this.backButton);
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 24);
@@ -175,7 +186,7 @@
             // backButton
             // 
             this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.backButton.Location = new System.Drawing.Point(452, 3);
+            this.backButton.Location = new System.Drawing.Point(554, 3);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 23);
             this.backButton.TabIndex = 12;
@@ -321,6 +332,19 @@
             this.previewButton.UseVisualStyleBackColor = true;
             this.previewButton.Click += new System.EventHandler(this.previewButton_Click);
             // 
+            // previewer
+            // 
+            this.previewer.AutoScroll = true;
+            this.previewer.CharLookup = null;
+            this.previewer.DisplayedString = null;
+            this.previewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previewer.Location = new System.Drawing.Point(0, 0);
+            this.previewer.M12Compiler = null;
+            this.previewer.MaxWidth = 0;
+            this.previewer.Name = "previewer";
+            this.previewer.Size = new System.Drawing.Size(796, 133);
+            this.previewer.TabIndex = 0;
+            // 
             // codeSplitContainer
             // 
             this.codeSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -445,25 +469,25 @@
             this.writeTimer.Interval = 10000;
             this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
             // 
-            // previewer
+            // nextButton
             // 
-            this.previewer.AutoScroll = true;
-            this.previewer.CharLookup = null;
-            this.previewer.DisplayedString = null;
-            this.previewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.previewer.Location = new System.Drawing.Point(0, 0);
-            this.previewer.M12Compiler = null;
-            this.previewer.MaxWidth = 0;
-            this.previewer.Name = "previewer";
-            this.previewer.Size = new System.Drawing.Size(796, 133);
-            this.previewer.TabIndex = 0;
+            this.nextButton.Location = new System.Drawing.Point(503, 3);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(45, 23);
+            this.nextButton.TabIndex = 15;
+            this.nextButton.Text = "˅";
+            this.nextButton.UseVisualStyleBackColor = true;
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
-            // checkCompletionMenu
+            // prevButton
             // 
-            this.checkCompletionMenu.Name = "checkCompletionMenu";
-            this.checkCompletionMenu.Size = new System.Drawing.Size(214, 22);
-            this.checkCompletionMenu.Text = "Check completion status...";
-            this.checkCompletionMenu.Click += new System.EventHandler(this.checkCompletionMenu_Click);
+            this.prevButton.Location = new System.Drawing.Point(452, 3);
+            this.prevButton.Name = "prevButton";
+            this.prevButton.Size = new System.Drawing.Size(45, 23);
+            this.prevButton.TabIndex = 16;
+            this.prevButton.Text = "˄";
+            this.prevButton.UseVisualStyleBackColor = true;
+            this.prevButton.Click += new System.EventHandler(this.prevButton_Click);
             // 
             // MainForm
             // 
@@ -547,6 +571,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolsMenu;
         private System.Windows.Forms.ToolStripMenuItem resolveDuplicateLabelsMenu;
         private System.Windows.Forms.ToolStripMenuItem checkCompletionMenu;
+        private System.Windows.Forms.Button prevButton;
+        private System.Windows.Forms.Button nextButton;
     }
 }
 

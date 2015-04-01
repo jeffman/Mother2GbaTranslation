@@ -843,6 +843,28 @@ namespace ScriptToolGui
             int total = m12StringsEnglish.Count;
             MessageBox.Show(String.Format("Completed: {0}/{1} ({2:F2}%)", completedCount, total, (double)completedCount * 100d / (double)total));
         }
+
+        private void prevButton_Click(object sender, EventArgs e)
+        {
+            if (groupSelector.SelectedIndex < 1)
+            {
+                return;
+            }
+
+            groupSelector.SelectedIndex--;
+            groupSelector_SelectionChangeCommitted(null, null);
+        }
+
+        private void nextButton_Click(object sender, EventArgs e)
+        {
+            if (groupSelector.SelectedIndex == -1 || groupSelector.SelectedIndex == groupSelector.Items.Count - 1)
+            {
+                return;
+            }
+
+            groupSelector.SelectedIndex++;
+            groupSelector_SelectionChangeCommitted(null, null);
+        }
     }
 
     enum Game
