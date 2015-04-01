@@ -1,6 +1,6 @@
 ^L0^[1C FF 28 00 _L2156_][1C FF 40 00 _L2157_]@Hey kid![1B FF 0F 00]  Do you wanna become[01 FF]  a member?[01 FF][03 FF 00 00][04 FF _L2158_][05 FF _L2159_]^L2159^@Don't be such a snob![02 FF][86 FF _L2160_][81 FF _L2161_][85 FF 01 00 06 00][08 FF 28 00][00 FF]^L2158^@Come back after you finish[01 FF]  Earthbound![1D FF][00 FF]
-^L1^
-^L2^
+^L1^[1C FF 6D 01 _L2156_][1C FF 40 00 _L2162_]@It was you![1B FF 14 00]  YOU beat up[01 FF]  my buddy,[1B FF 0F 00] didn't you?[02 FF]@You'd better just beat it![02 FF][C6 FF][86 FF _L2163_][81 FF _L2161_][1B FF 01 00][A1 FF 02 00 29 00][08 FF 6D 01][00 FF]
+^L2^[1C FF 40 00 _L2164_]@Uh huh... Uh huh...[02 FF]@You sound like a real[01 FF]  whiner to me.[02 FF]@Don't get lippy,[1B FF 0A 00][01 FF]  or I'll kick your butt![1D FF][00 FF]
 ^L3^
 ^L4^
 ^L5^
@@ -1318,48 +1318,48 @@
 ^L1317^
 ^L1318^
 ^L1319^
-^L1320^[86 FF _L3947_][1D FF][00 FF]
-^L1321^[86 FF _L3947_][1D FF][00 FF]
-^L1322^[86 FF _L3947_][1D FF][00 FF]
-^L1323^[86 FF _L3947_][1D FF][00 FF]
-^L1324^[86 FF _L3947_][1D FF][00 FF]
+^L1320^ <Cracked bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
+^L1321^ <Tee ball bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
+^L1322^ <Sand lot bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
+^L1323^ <Minor league bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
+^L1324^ <Mr. Baseball bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
 ^L1325^[86 FF _L3947_][1D FF][00 FF]
-^L1326^
-^L1327^[86 FF _L3947_][1D FF][00 FF]
+^L1326^ <Big league bat>[02 FF][86 FF _L3947_][02 FF]@This item looks like it could've[01 FF]  had cork put into the core![1D FF][00 FF]
+^L1327^ <Hall of fame bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
 ^L1328^[86 FF _L3947_][1D FF][00 FF]
-^L1329^[86 FF _L3947_][1D FF][00 FF]
-^L1330^[86 FF _L3947_][1D FF][00 FF]
-^L1331^
-^L1332^
-^L1333^[86 FF _L3948_][1D FF][00 FF]
-^L1334^[86 FF _L3948_][1D FF][00 FF]
-^L1335^[86 FF _L3948_][1D FF][00 FF]
-^L1336^[86 FF _L3948_][1D FF][00 FF]
+^L1329^ <Magicant bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
+^L1330^ <Legendary bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
+^L1331^ <Gutsy bat>[02 FF][86 FF _L3947_][02 FF]@When equipped,[01 FF]  it increases your guts.[1D FF][00 FF]
+^L1332^ <Casey bat>[02 FF][86 FF _L3947_][02 FF]@You can't help but swing this[01 FF]  bat with all your might.[02 FF]@There's a good chance that[01 FF]  you may just whiff.[1D FF][00 FF]
+^L1333^ <Fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
+^L1334^ <Thick fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
+^L1335^ <Deluxe fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
+^L1336^ <Chef's fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
 ^L1337^[86 FF _L3948_][1D FF][00 FF]
-^L1338^[86 FF _L3948_][1D FF][00 FF]
-^L1339^[86 FF _L3948_][1D FF][00 FF]
-^L1340^[86 FF _L3948_][1D FF][00 FF]
-^L1341^
-^L1342^[86 FF _L3950_][1D FF][00 FF]
-^L1343^[86 FF _L3950_][1D FF][00 FF]
-^L1344^[86 FF _L3950_][1D FF][00 FF]
-^L1345^[86 FF _L3950_][1D FF][00 FF]
-^L1346^[86 FF _L3950_][1D FF][00 FF]
-^L1347^[86 FF _L3950_][1D FF][00 FF]
-^L1348^[86 FF _L3950_][1D FF][00 FF]
-^L1349^[86 FF _L3950_][1D FF][00 FF]
-^L1350^[86 FF _L3950_][1D FF][00 FF]
-^L1351^[86 FF _L3950_][1D FF][00 FF]
-^L1352^[86 FF _L3950_][1D FF][00 FF]
-^L1353^[86 FF _L3950_][1D FF][00 FF]
-^L1354^[86 FF _L3950_][1D FF][00 FF]
-^L1355^[86 FF _L3950_][1D FF][00 FF]
-^L1356^
-^L1357^
-^L1358^
-^L1359^
-^L1360^
-^L1361^[86 FF _L3951_][1D FF][00 FF]
+^L1338^ <French fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
+^L1339^ <Magic fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
+^L1340^ <Holy fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
+^L1341^ <Sword of kings>[02 FF][86 FF _L3949_][02 FF]@It increases your offence.[1D FF][00 FF]
+^L1342^ <Pop gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1343^ <Stun gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1344^ <Toy air gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1345^ <Magnum air gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1346^ <Zip gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1347^ <Laser gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1348^ <Hyper beam>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1349^ <Double beam>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1350^ <Crusher beam>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1351^ <Spectrum beam>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1352^ <Baddest beam>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1353^ <Death ray>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1354^ <Moon beam gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1355^ <Gaia beam>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1356^ <Yo-yo>[02 FF]@A so-so weapon.[1D FF][00 FF]
+^L1357^ <Slingshot>[02 FF]@A decent little weapon.[1D FF][00 FF]
+^L1358^ <Combat yo-yo>[02 FF]@A pretty powerful weapon.[1D FF][00 FF]
+^L1359^ <Trick yo-yo>[02 FF]@A tough, strong weapon![1D FF][00 FF]
+^L1360^ <Combat yo-yo>[02 FF]@This one rocks, for sure.[1D FF][00 FF]
+^L1361^ <Travel charm>[02 FF][86 FF _L3951_][1D FF][00 FF]
 ^L1362^
 ^L1363^
 ^L1364^
@@ -1493,7 +1493,7 @@
 ^L1492^
 ^L1493^
 ^L1494^
-^L1495^
+^L1495^ <Super plush bear>[02 FF]@[86 FF _L3945_][1D FF][00 FF]
 ^L1496^
 ^L1497^
 ^L1498^
@@ -1501,7 +1501,7 @@
 ^L1500^
 ^L1501^
 ^L1502^
-^L1503^
+^L1503^ <Teddy bear>[02 FF]@[86 FF _L3945_][1D FF][00 FF]
 ^L1504^
 ^L1505^
 ^L1506^
@@ -1544,19 +1544,19 @@
 ^L1543^
 ^L1544^
 ^L1545^
-^L1546^
-^L1547^
-^L1548^
-^L1549^
-^L1550^
-^L1551^
-^L1552^
-^L1553^
-^L1554^
-^L1555^
-^L1556^
-^L1557^
-^L1558^
+^L1546^ <Broken machine>[02 FF]@There's no way of knowing[01 FF]  its original use.[02 FF]@It's just some kind of[01 FF]  broken gadget.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1547^ <Broken gadget>[02 FF]@There's no way of knowing[01 FF]  its original use.[02 FF]@It's just some kind of[01 FF]  broken mechanism.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1548^ <Broken air gun>[02 FF]@A broken air gun.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1549^ <Broken spray can>[02 FF]@A broken spray can.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1550^ <Broken laser>[02 FF]@A broken laser gun.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1551^ <Broken iron>[02 FF]@A contraption that looks[01 FF]  like an iron.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1552^ <Broken pipe>[02 FF]@It looks like a busted[01 FF]  water pipe.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1553^ <Broken cannon>[02 FF]@A broken beam cannon.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1554^ <Broken tube>[02 FF]@A broken tube-shaped item.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1555^ <Broken bazooka>[02 FF]@A broken bazooka.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1556^ <Broken trumpet>[02 FF]@A broken apparatus that is[01 FF]  shaped like a trumpet.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1557^ <Broken harmonica>[02 FF]@A broken device that[01 FF]  looks like a harmonica.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1558^ <Broken antenna>[02 FF]@A piece of broken equipment[01 FF]  that looks like a satellite dish.[02 FF][86 FF _L3946_][1D FF][00 FF]
 ^L1559^
 ^L1560^
 ^L1561^
@@ -2154,13 +2154,13 @@
 ^L2153^
 ^L2154^
 ^L2155^
-^L2156^
+^L2156^[1C FF 94 02 _L341_]@Who are you talking to?[1D FF][00 FF]
 ^L2157^
 ^L2160^[C6 FF][A7 FF B1 01][00 FF]
 ^L2161^[00 FF]
-^L2162^
+^L2162^@Yeah?[1D FF][C6 FF][A1 FF 02 00 02 00][00 FF]
 ^L2163^[C6 FF][A7 FF B0 01][00 FF]
-^L2164^
+^L2164^@You sure are strong![1B FF 14 00][01 FF]  You got me,[1B FF 0F 00] at least...[1D FF][00 FF]
 ^L2165^
 ^L2166^[08 FF E2 00][86 FF _L4325_][09 FF E2 00][00 FF]
 ^L2167^[08 FF E3 00][86 FF _L4325_][09 FF E3 00][00 FF]
@@ -3919,14 +3919,14 @@
 ^L3942^ <numbed> condition.[00 FF]
 ^L3943^[00 FF]
 ^L3944^@Allows you to immediately return to a place[01 FF]  where you have already been.[00 FF]
-^L3945^
-^L3946^
-^L3947^
-^L3948^
-^L3949^
-^L3950^
-^L3951^
-^L3952^
+^L3945^A cute teddy bear![00 FF]
+^L3946^@That genius [90 FF 03][1A FF 01 00] should[01 FF]  be able to fix it sometime.[00 FF]
+^L3947^@[90 FF 01][1A FF 01 00][80 FF _L3973_]
+^L3948^@[90 FF 02][1A FF 01 00][80 FF _L3973_]
+^L3949^@[90 FF 04][1A FF 01 00][80 FF _L3973_]
+^L3950^@[90 FF 03][1A FF 01 00][80 FF _L3973_]
+^L3951^[86 FF _L3952_]@It protects you from[01 FF]  paralysis attacks.[00 FF]
+^L3952^@Must be equipped on your body.[02 FF][00 FF]
 ^L3953^
 ^L3954^
 ^L3955^
@@ -3947,7 +3947,7 @@
 ^L3970^
 ^L3971^
 ^L3972^
-^L3973^
+^L3973^ can equip this[01 FF]  weapon.[00 FF]
 ^L3974^
 ^L3975^
 ^L3976^[DF FF][81 FF _L5140_][BA FF 01 00 00 00][9C FF]^L5140^[00 FF]
