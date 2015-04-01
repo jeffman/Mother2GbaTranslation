@@ -637,7 +637,7 @@
       "OffsetLocation": 0xB1B100,
       "OldPointer": 0xB1A9E4,
       "Old": "ゆでたまご[00 FF]",
-      "New": "Fresh egg[00 FF]"
+      "New": "Boiled egg[00 FF]"
     },
     {
       "Index": 0x5B,
@@ -686,7 +686,7 @@
       "OffsetLocation": 0xB1B11C,
       "OldPointer": 0xB1AA21,
       "Old": "うみたてたまご[00 FF]",
-      "New": "Boiled egg[00 FF]"
+      "New": "Fresh egg[00 FF]"
     },
     {
       "Index": 0x62,
