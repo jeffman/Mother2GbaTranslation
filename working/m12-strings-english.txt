@@ -1360,99 +1360,99 @@
 ^L1359^ <Trick yo-yo>[02 FF]@A tough, strong weapon![1D FF][00 FF]
 ^L1360^ <Combat yo-yo>[02 FF]@This one rocks, for sure.[1D FF][00 FF]
 ^L1361^ <Travel charm>[02 FF][86 FF _L3951_][1D FF][00 FF]
-^L1362^
-^L1363^
-^L1364^
-^L1365^
-^L1366^
-^L1367^
-^L1368^
-^L1369^
-^L1370^
-^L1371^
-^L1372^[86 FF _L3953_][1D FF][00 FF]
-^L1373^[86 FF _L3953_][1D FF][00 FF]
-^L1374^[86 FF _L3953_][1D FF][00 FF]
-^L1375^[86 FF _L3953_][1D FF][00 FF]
-^L1376^[86 FF _L3953_][1D FF][00 FF]
-^L1377^[86 FF _L3953_][1D FF][00 FF]
-^L1378^[86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
-^L1379^[86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
-^L1380^[86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
-^L1381^
-^L1382^
-^L1383^
-^L1384^
-^L1385^
-^L1386^[86 FF _L3956_][1D FF][00 FF]
-^L1387^[86 FF _L3956_][1D FF][00 FF]
+^L1362^ <Great charm>[02 FF][86 FF _L3951_][02 FF]@Also, it adds a bit of Speed.[1D FF][00 FF]
+^L1363^ <Crystal charm>[02 FF][86 FF _L3951_][02 FF]@It also increases your Speed.[1D FF][00 FF]
+^L1364^ <Rabbit's foot>[02 FF][86 FF _L3951_][02 FF]@It increases your Speed[01 FF]  in a big way.[1D FF][00 FF]
+^L1365^ <Flame pendant>[02 FF][86 FF _L3952_][02 FF]@It protects you from[01 FF]  fire attacks.[1D FF][00 FF]
+^L1366^ <Rain pendant>[02 FF][86 FF _L3952_][02 FF]@It protects you from[01 FF]  freeze attacks.[1D FF][00 FF]
+^L1367^ <Night pendant>[02 FF][86 FF _L3952_][02 FF]@It absorbs the light of[01 FF]  a flash attack.[1D FF][00 FF]
+^L1368^ <Sea pendant>[02 FF][86 FF _L3952_][02 FF]@It protects you from fire,[01 FF]  freeze and flash attacks.[1D FF][00 FF]
+^L1369^ <Earth pendant>[02 FF][86 FF _L3952_][02 FF]@It protects you from fire,[01 FF]  freeze, and flash attacks.[1D FF][00 FF]
+^L1370^ <Star pendant>[02 FF][86 FF _L3952_][02 FF]@It protects you from fire,[01 FF]  freeze and flash attacks.[1D FF][00 FF]
+^L1371^ <Cloak of kings>[02 FF]@[90 FF 04][1A FF 01 00]'s body equipment.[02 FF]@It increases his Defense.[1D FF][00 FF]
+^L1372^ <Cheap bracelet>[02 FF][86 FF _L3953_][1D FF][00 FF]
+^L1373^ <Copper bracelet>[02 FF][86 FF _L3953_][1D FF][00 FF]
+^L1374^ <Silver bracelet>[02 FF][86 FF _L3953_][1D FF][00 FF]
+^L1375^ <Gold bracelet>[02 FF][86 FF _L3953_][1D FF][00 FF]
+^L1376^ <Platinum band>[02 FF][86 FF _L3953_][1D FF][00 FF]
+^L1377^ <Diamond band>[02 FF][86 FF _L3953_][1D FF][00 FF]
+^L1378^ <Pixie's bracelet>[02 FF][86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
+^L1379^ <Cherub's band>[02 FF][86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
+^L1380^ <Goddess band>[02 FF][86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
+^L1381^ <Bracer of kings>[02 FF]@To be equipped on[01 FF]  [90 FF 04][1A FF 01 00]'s arm.[02 FF]@Helps protect from being[01 FF]  hypnotized, and Luck goes up.[02 FF]@Of course,[01 FF]  Defense also goes up.[1D FF][00 FF]
+^L1382^ <Baseball cap>[02 FF][86 FF _L3955_][02 FF]@It has the logo of your[01 FF]  favorite baseball team.[1D FF][00 FF]
+^L1383^ <Holmes hat>[02 FF][86 FF _L3955_][02 FF]@It makes you feel like the[01 FF]  great detective, Sherlock[01 FF]  Holmes, when equipped.[1D FF][00 FF]
+^L1384^ <Mr. Baseball cap>[02 FF][86 FF _L3955_][02 FF]@It is said to have been given[01 FF]  to your friend by a famous[01 FF]  player at the ballpark.[1D FF][00 FF]
+^L1385^ <Hard hat>[02 FF][86 FF _L3955_][02 FF]@Should be worn when searching[01 FF]  for buried treasure,[02 FF]@or while you are at the[01 FF]  construction site.[1D FF][00 FF]
+^L1386^ <Ribbon>[02 FF][86 FF _L3956_][1D FF][00 FF]
+^L1387^ <Red ribbon>[02 FF][86 FF _L3956_][1D FF][00 FF]
 ^L1388^[86 FF _L3956_][02 FF][86 FF _L3972_][1D FF][00 FF]
 ^L1389^[86 FF _L3956_][02 FF][86 FF _L3972_][1D FF][00 FF]
 ^L1390^
-^L1391^[86 FF _L3956_][1D FF][00 FF]
-^L1392^[86 FF _L3957_][1D FF][00 FF]
-^L1393^[86 FF _L3957_][1D FF][00 FF]
+^L1391^ <Goddess ribbon>[02 FF][86 FF _L3956_][1D FF][00 FF]
+^L1392^ <Coin of slumber>[02 FF][86 FF _L3957_][1D FF][00 FF]
+^L1393^ <Coin of defense>[02 FF][86 FF _L3957_][1D FF][00 FF]
 ^L1394^[86 FF _L3957_][1D FF][00 FF]
 ^L1395^
-^L1396^[86 FF _L3957_][1D FF][00 FF]
-^L1397^[86 FF _L3957_][1D FF][00 FF]
-^L1398^[86 FF _L3957_][1D FF][00 FF]
-^L1399^[86 FF _L3957_][1D FF][00 FF]
-^L1400^
-^L1401^
-^L1402^
+^L1396^ <Lucky coin>[02 FF][86 FF _L3957_][1D FF][00 FF]
+^L1397^ <Talisman coin>[02 FF][86 FF _L3957_][1D FF][00 FF]
+^L1398^ <Shiny coin>[02 FF][86 FF _L3957_][1D FF][00 FF]
+^L1399^ <Souvenir coin>[02 FF][86 FF _L3957_][1D FF][00 FF]
+^L1400^ <Diadem of kings>[02 FF][86 FF _L3958_][02 FF]@It increases his Defense.[1D FF][00 FF]
+^L1401^ <Can of fruit juice>[02 FF][86 FF _L3961_]6[86 FF _L3960_][1D FF][00 FF]
+^L1402^ <Cookie>[02 FF][86 FF _L3959_]6[86 FF _L3960_][1D FF][00 FF]
 ^L1403^
 ^L1404^
-^L1405^
+^L1405^ <Bag of fries>[86 FF _L3959_]24[86 FF _L3960_][1D FF][00 FF]
 ^L1406^
-^L1407^
+^L1407^ <Bread roll>[02 FF][86 FF _L3959_]30[86 FF _L3960_][1D FF][00 FF]
 ^L1408^
-^L1409^
+^L1409^ <Boiled egg>[02 FF][86 FF _L3959_]40[86 FF _L3960_][1D FF][00 FF]
 ^L1410^
 ^L1411^
-^L1412^
-^L1413^
+^L1412^ <Hamburger>[02 FF][86 FF _L3959_]50[86 FF _L3960_][02 FF]@100% beef.[1D FF][00 FF]
+^L1413^ <Croissant>[02 FF][86 FF _L3959_]60[86 FF _L3960_][1D FF][00 FF]
 ^L1414^
-^L1415^
-^L1416^
+^L1415^ <Royal iced tea>[02 FF]@The highest quality tea,[01 FF]  produced by tea expert[01 FF]  Mr. Y. Todaar,[02 FF]@who carefully selects only[01 FF]  hand-picked tea leaves.[02 FF]@Long ago, only aristocrats[01 FF]  at a king's court were allowed[01 FF]  to drink this tea.[02 FF][86 FF _L3961_]60[86 FF _L3960_][1D FF][00 FF]
+^L1416^ <Fresh egg>[02 FF][86 FF _L3959_]80[86 FF _L3960_][02 FF]@So fresh, it's still warm![1D FF][00 FF]
 ^L1417^
-^L1418^
-^L1419^
+^L1418^ <Picnic lunch>[02 FF][86 FF _L3959_]80[86 FF _L3960_][02 FF]@There's even a slice of your[01 FF]  favorite cake![1D FF][00 FF]
+^L1419^ <Protein drink>[02 FF]@For building a stronger,[01 FF]  healthier body.[02 FF]@It gives you a blast[01 FF]  of nourishment when you[01 FF]  are fatigued.[02 FF][86 FF _L3961_]80[86 FF _L3960_][1D FF][00 FF]
 ^L1420^
 ^L1421^
-^L1422^
-^L1423^
+^L1422^ <Pasta di Summers>[02 FF]@This is a pasta dish which[01 FF]  legend holds was a favorite of[01 FF]  King Summers the Third[02 FF]@in the 16th century. Back then,[01 FF]  there were many great chefs,[01 FF]  confident of their[02 FF]@culinary skills, always going[01 FF]  to and from Summer's Palace.[02 FF]@Once day, King Summers wife,[01 FF]  Anna Summers, said,[02 FF]@<Oh what I wouldn't give for[01 FF]  some really delicious pasta!>[01 FF]  ... ... ...[02 FF]@...Well, let's just leave it[01 FF]  at that. The story is too long to[01 FF]  go through completely...[02 FF]@but it really is a beautiful,[01 FF]  touching tale...[02 FF][86 FF _L3959_]110[86 FF _L3960_][1D FF][00 FF]
+^L1423^ <Pizza>[02 FF][86 FF _L3959_]120[86 FF _L3960_][1D FF][00 FF]
 ^L1424^
 ^L1425^
 ^L1426^
 ^L1427^
 ^L1428^
-^L1429^
+^L1429^ <Chef's special>[02 FF]@This is today's special.[01 FF]  It is highly recommended by our[01 FF]  chef,[02 FF]@who is trained at a five-star[01 FF]  restaurant in Paris.[02 FF][86 FF _L3959_]200[86 FF _L3960_][1D FF][00 FF]
 ^L1430^
 ^L1431^
 ^L1432^
-^L1433^
-^L1434^
-^L1435^
-^L1436^
+^L1433^ <Kraken soup>[02 FF]@Soup made from the fin of the[01 FF]  sea monster known as Kraken.[02 FF]@This beast lives in the ocean[01 FF]  off the shore of Summers.[02 FF]@Very expensive, but a sizable[01 FF]  power boost is guaranteed.[1D FF][00 FF]
+^L1434^ <Large pizza>[02 FF]@Since it's a really big pizza,[01 FF]  everyone can recover[01 FF]  about 240 HP when eaten.[1D FF][00 FF]
+^L1435^ <Brain food lunch>[02 FF][86 FF _L3959_]300 HP and about 50 PP.[1D FF][00 FF]
+^L1436^ <Bottle of water>[02 FF]@When you drink it,[01 FF]  your PP slightly increases.[1D FF][00 FF]
 ^L1437^
-^L1438^
+^L1438^ <PSI caramel>[02 FF]@Replenishes about 20 PP.[1D FF][00 FF]
 ^L1439^
-^L1440^
+^L1440^ <Magic truffle>[02 FF]@A dream-like delicacy[01 FF]  that is said to grow at[01 FF]  the base of trees[02 FF]@in wet, muddy places.[02 FF]@It restores about 80 PP.[1D FF][00 FF]
 ^L1441^
 ^L1442^
 ^L1443^
 ^L1444^
-^L1445^[86 FF _L3962_][1D FF][00 FF]
-^L1446^[86 FF _L3962_][1D FF][00 FF]
-^L1447^[86 FF _L3962_][1D FF][00 FF]
-^L1448^[86 FF _L3962_][1D FF][00 FF]
-^L1449^[86 FF _L3962_][1D FF][00 FF]
-^L1450^[86 FF _L3962_][1D FF][00 FF]
-^L1451^[86 FF _L3962_][1D FF][00 FF]
-^L1452^
+^L1445^ <Sprig of parsley>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1446^ <Ketchup packet>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1447^ <Sugar packet>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1448^ <Carton of cream>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1449^ <Salt packet>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1450^ <Jar of hot sauce>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1451^ <Tin of cocoa>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1452^ <Jar of delisauce>[02 FF]@Use by sprinkling it over food.[02 FF]@It tastes good with[01 FF]  any kind of food, thereby[02 FF]@increasing the recovery power[01 FF]  of the food.[1D FF][00 FF]
 ^L1453^
-^L1454^
+^L1454^ <Counter-PSI unit>[02 FF][86 FF _L3968_][02 FF]@Contains the enemy's PSI[01 FF]  during a battle.[02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1455^
 ^L1456^[80 FF _L1538_]
 ^L1457^
@@ -1463,7 +1463,7 @@
 ^L1462^ <ATM card>[02 FF]@You know, you shouldn't leave[01 FF]  home without it...[02 FF]@It even works overseas![1D FF][00 FF]
 ^L1463^
 ^L1464^
-^L1465^
+^L1465^ <Yogurt dispenser>[02 FF][86 FF _L3968_][02 FF]@Invented by Apple Kid.[02 FF]@If used during combat,[01 FF]  some damage will be dealt[01 FF]  to the enemy,[02 FF]@though it's not understood[01 FF]  why this happens...[01 FF]@it's just yogurt after all...[02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1466^
 ^L1467^
 ^L1468^
@@ -1475,13 +1475,13 @@
 ^L1474^
 ^L1475^
 ^L1476^
-^L1477^
+^L1477^ <Shield killer>[02 FF][86 FF _L3968_][02 FF]@Breaks through the enemy's[01 FF]  shield during a battle.[02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1478^
 ^L1479^
-^L1480^
-^L1481^
-^L1482^
-^L1483^
+^L1480^ <Xterminator spray>[02 FF]@Deals 200 points of damage to[01 FF]  any bug when used[01 FF]  during combat.[02 FF][86 FF _L3969_][1D FF][00 FF]
+^L1481^ <Hungry HP-sucker>[02 FF][86 FF _L3968_][02 FF]@Sucks up some HP from[01 FF]  all the enemies.[02 FF]@The more HP the enemies have,[01 FF]  the more you get.[02 FF][86 FF _L3969_][1D FF][00 FF]
+^L1482^ <Heavy bazooka>[02 FF][86 FF _L3968_][02 FF]@Really dishes out a lot of[01 FF]  damage to the enemy during a[01 FF]  battle.[02 FF]@Because of its explosive power,[02 FF]@it may effect others besides[01 FF]  the target creature.[02 FF][86 FF _L3969_][1D FF][00 FF]
+^L1483^ <Super bomb>[02 FF]@Able to dish out some[01 FF]  heavy-duty destruction[01 FF]  in combat.[02 FF]@Because of its explosive power,[02 FF]@it may effect others besides[01 FF]  the target creature.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1484^
 ^L1485^
 ^L1486^
@@ -1490,7 +1490,7 @@
 ^L1489^
 ^L1490^
 ^L1491^
-^L1492^
+^L1492^ <HP-sucker>[02 FF][86 FF _L3968_][02 FF]@Sucks up some HP from[01 FF]  the target creature.[02 FF]@The more HP an enemy has,[01 FF]  the more you get.[02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1493^
 ^L1494^
 ^L1495^ <Super plush bear>[02 FF]@[86 FF _L3945_][1D FF][00 FF]
@@ -1502,47 +1502,47 @@
 ^L1501^
 ^L1502^
 ^L1503^ <Teddy bear>[02 FF]@[86 FF _L3945_][1D FF][00 FF]
-^L1504^
-^L1505^
-^L1506^
-^L1507^
+^L1504^ <Slime generator>[02 FF][86 FF _L3968_][02 FF]@Sprays a sticky substance that[01 FF]  stops the enemy from moving.[02 FF][86 FF _L3969_][1D FF][00 FF]
+^L1505^ <Jar of fly honey>[02 FF]@Belch's most favorite food[01 FF]  in the whole world.[02 FF]@However... it smells REALLY,[01 FF]  really nasty! We're talkin'[01 FF]  major stinkage here![1D FF][00 FF]
+^L1506^ <Bazooka>[02 FF][86 FF _L3968_][02 FF][86 FF _L3970_][02 FF]@Because of its explosive power,[02 FF]@it may effect others besides[01 FF]  the target creature.[02 FF][86 FF _L3969_][1D FF][00 FF]
+^L1507^ <Backstage pass>[02 FF]@It allows you go back stage[01 FF]  at the Chaos Theater.[02 FF]@Of course, you can also watch[01 FF]  the show using the pass.[1D FF][00 FF]
 ^L1508^
 ^L1509^
 ^L1510^
 ^L1511^
 ^L1512^
 ^L1513^
-^L1514^
+^L1514^ <Pak of bubble gum>[02 FF]@This is the[01 FF]  Balloon Monkey's favorite.[02 FF]@It will not help you recover, but[02 FF]@you'll also never run out,[01 FF]  'cause it's a super jumbo pack![1D FF][00 FF]
 ^L1515^
 ^L1516^ <Franklin badge>[02 FF]@By keeping it as one of your items,[02 FF]@it deflects a lightning attack back at the attacker.[1D FF][00 FF]
-^L1517^
+^L1517^ <Protractor>[02 FF]@You can even use this[01 FF]  during battle![02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1518^
 ^L1519^
-^L1520^
-^L1521^[86 FF _L3968_][02 FF][86 FF _L3970_][02 FF][86 FF _L3971_][1D FF][00 FF]
-^L1522^
-^L1523^
-^L1524^
+^L1520^ <Snake bag>[02 FF]@During battle, a snake pops[01 FF]  out of the bag and bites[01 FF]  the enemy.[02 FF]@There are thousands of small[01 FF]  snakes living in the bag,[02 FF]@so you should be able to use it[01 FF]  over and over again.[02 FF]@It can possibly poison[01 FF]  the enemy, too.[1D FF][00 FF]
+^L1521^ <Bottle rocket>[02 FF][86 FF _L3968_][02 FF][86 FF _L3970_][02 FF][86 FF _L3971_][1D FF][00 FF]
+^L1522^ <Big bottle rocket>[02 FF][86 FF _L3968_][02 FF]@Fires a fast, powerful[01 FF]  bottle rocket.[02 FF][86 FF _L3971_][1D FF][00 FF]
+^L1523^ <Multi bottle rocket>[02 FF][86 FF _L3968_][02 FF]@Possibly the strongest[01 FF]  weapon around,[02 FF]@it does a lot of damage[01 FF]  due to its massive warhead.[02 FF][86 FF _L3971_][1D FF][00 FF]
+^L1524^ <Bomb>[02 FF][86 FF _L3970_][02 FF]@Because of its explosive power,[02 FF]@it may effect others besides[01 FF]  the target creature.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1525^
-^L1526^
+^L1526^ <Mummy wrap>[02 FF]@If used as a whip[01 FF]  during battle, the enemy[01 FF]  will take some damage[02 FF]@and stop moving for a while.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1527^
 ^L1528^
 ^L1529^
-^L1530^
+^L1530^ <Ruler>[02 FF]@You can even use this[01 FF]  during battle![02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1531^
 ^L1532^
-^L1533^
-^L1534^
-^L1535^
-^L1536^
-^L1537^
-^L1538^
-^L1539^
-^L1540^
-^L1541^
-^L1542^
-^L1543^
-^L1544^
+^L1533^ <Cold remedy>[02 FF]@This is the most effective[01 FF]  thing to take when[01 FF]  you catch a cold.[1D FF][00 FF]
+^L1534^ <Wet towel>[02 FF]@It's great for those times[01 FF]  that you get sunstroke.[1D FF][00 FF]
+^L1535^ <Vial of serum>[02 FF]@This is the best thing to take[01 FF]  when you get poisoned.[1D FF][00 FF]
+^L1536^ <Refreshing herb>[02 FF]@It helps when you have been[01 FF]  poisoned, or you are feeling[01 FF]  nauseous.[02 FF]@It also has other uses...[02 FF][86 FF _L3963_][86 FF _L3964_][1D FF][00 FF]
+^L1537^ <Secret herb>[02 FF]@May revive a friend who[01 FF]  is unconscious.[02 FF][86 FF _L3965_][86 FF _L3963_][86 FF _L3964_][02 FF][86 FF _L3966_][1D FF][00 FF]
+^L1538^ <Horn of life>[02 FF]@Revives a friend who[01 FF]  is unconscious.[02 FF][86 FF _L3965_][86 FF _L3963_][86 FF _L3967_][02 FF][86 FF _L3966_][1D FF][00 FF]
+^L1539^ <IQ capsule>[02 FF]@It increases your IQ[01 FF]  when taken.[1D FF][00 FF]
+^L1540^ <Guts capsule>[02 FF]@It increases your Guts[01 FF]  when taken.[1D FF][00 FF]
+^L1541^ <Speed capsule>[02 FF]@It increases your Speed[01 FF]  when taken.[1D FF][00 FF]
+^L1542^ <Vital capsule>[02 FF]@It increases your Vitality[01 FF]  when taken.[1D FF][00 FF]
+^L1543^ <Luck capsule>[02 FF]@It increases your Luck[01 FF]  when taken.[1D FF][00 FF]
+^L1544^ <Rock candy>[02 FF]@When you eat this, it will[01 FF]  increase either Speed, Guts,[01 FF]  Vitality, IQ or Luck.[1D FF][00 FF]
 ^L1545^
 ^L1546^ <Broken machine>[02 FF]@There's no way of knowing[01 FF]  its original use.[02 FF]@It's just some kind of[01 FF]  broken gadget.[02 FF][86 FF _L3946_][1D FF][00 FF]
 ^L1547^ <Broken gadget>[02 FF]@There's no way of knowing[01 FF]  its original use.[02 FF]@It's just some kind of[01 FF]  broken mechanism.[02 FF][86 FF _L3946_][1D FF][00 FF]
@@ -3927,25 +3927,25 @@
 ^L3950^@[90 FF 03][1A FF 01 00][80 FF _L3973_]
 ^L3951^[86 FF _L3952_]@It protects you from[01 FF]  paralysis attacks.[00 FF]
 ^L3952^@Must be equipped on your body.[02 FF][00 FF]
-^L3953^
-^L3954^
-^L3955^
-^L3956^
-^L3957^
-^L3958^
-^L3959^
-^L3960^
-^L3961^
-^L3962^
-^L3963^
-^L3964^
-^L3965^
-^L3966^
-^L3967^
-^L3968^
-^L3969^
-^L3970^
-^L3971^
+^L3953^@Must be equipped on your arm.[02 FF]@It increases your Defense.[00 FF]
+^L3954^@Helps keep you from being[01 FF]  hypnotized, and it also[01 FF]  increases your Luck.[00 FF]
+^L3955^@Must be equipped as <other.>[00 FF]
+^L3956^@Miscellaneous equipment that[01 FF]  can only be used by [90 FF 02][1A FF 01 00].[00 FF]
+^L3957^[86 FF _L3955_][02 FF]@Increases your Defense and[01 FF]  Luck.[00 FF]
+^L3958^@Miscellaneous equipment that[01 FF]  can only be used by [90 FF 04][1A FF 01 00].[00 FF]
+^L3959^@When eaten, you recover[01 FF]  about [00 FF]
+^L3960^ HP.[00 FF]
+^L3961^@If you drink this,[01 FF]  you recover about [00 FF]
+^L3962^@To use, sprinkle over food.[02 FF]@A good combination[01 FF]  increases the strength[01 FF]  of your recovery.[00 FF]
+^L3963^@colds, sunstroke, falling asleep,[01 FF]  uncontrollable crying,[01 FF]  and feeling strange.[00 FF]
+^L3964^[00 FF]
+^L3965^@In addition, it also works well[01 FF]  on poison, nausea,[02 FF][00 FF]
+^L3966^@This is effective when you[01 FF]  have paralysis, or you have[01 FF]  been diamondized.[00 FF]
+^L3967^[00 FF]
+^L3968^@Items for [90 FF 03][1A FF 01 00].[00 FF]
+^L3969^@Can be used many times.[00 FF]
+^L3970^@Damages an enemy when[01 FF]  used during battle.[00 FF]
+^L3971^@Gone after one use.[00 FF]
 ^L3972^
 ^L3973^ can equip this[01 FF]  weapon.[00 FF]
 ^L3974^
