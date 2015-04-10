@@ -403,15 +403,32 @@ namespace ScriptToolGui
             textboxLookup[game].Text = GetString(game, label, out index);
             currentIndex[game] = index;
 
-            if (game == Game.M12)
+            if (game == Game.M12 || game == Game.M12English)
             {
-                textboxLookup[Game.M12English].Text = GetString(Game.M12English, label, out index);
-                currentIndex[Game.M12English] = index;
+                if (game == Game.M12)
+                {
+                    textboxLookup[Game.M12English].Text = GetString(Game.M12English, label, out index);
+                    currentIndex[Game.M12English] = index;
+                }
+                else if (game == Game.M12English)
+                {
+                    textboxLookup[Game.M12].Text = GetString(Game.M12, label, out index);
+                    currentIndex[Game.M12] = index;
+                }
+
+                string m12 = textboxLookup[Game.M12].Text;
+                if (m12 != null && m12 == m12Compiler.StripText(m12))
+                {
+                    m12String.BackColor = Color.Orange;
+                }
+                else
+                {
+                    m12String.BackColor = Color.White;
+                }
             }
-            else if (game == Game.M12English)
+            else
             {
-                textboxLookup[Game.M12].Text = GetString(Game.M12, label, out index);
-                currentIndex[Game.M12] = index;
+                m12String.BackColor = Color.White;
             }
 
             previousNavigationState = new ReferenceNavigationEntry(game, label);
