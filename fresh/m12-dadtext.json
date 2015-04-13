@@ -1,81 +1,81 @@
 {
-  "OffsetTableLocation": 0xB18310,
-  "StringsLocation": 0xB18160,
+  "OffsetTableLocation": 11633424,
+  "StringsLocation": 11632992,
   "StringRefs": [
     {
-      "Index": 0x0,
-      "OffsetLocation": 0xB18314,
-      "OldPointer": 0xB18160,
+      "Index": 0,
+      "OffsetLocation": 11633428,
+      "OldPointer": 11632992,
       "Old": "[0C FF]は じゅわきをとった｡[00 FF]",
       "New": "[0C FF] picked up the receiver.[00 FF]"
     },
     {
-      "Index": 0x1,
-      "OffsetLocation": 0xB18318,
-      "OldPointer": 0xB1816F,
+      "Index": 1,
+      "OffsetLocation": 11633432,
+      "OldPointer": 11633007,
       "Old": "パパ[00 FF]",
       "New": "Dad[00 FF]"
     },
     {
-      "Index": 0x2,
-      "OffsetLocation": 0xB1831C,
-      "OldPointer": 0xB18173,
+      "Index": 2,
+      "OffsetLocation": 11633436,
+      "OldPointer": 11633011,
       "Old": "ママ[00 FF]",
       "New": "Mom[00 FF]"
     },
     {
-      "Index": 0x3,
-      "OffsetLocation": 0xB18320,
-      "OldPointer": 0xB18177,
+      "Index": 3,
+      "OffsetLocation": 11633440,
+      "OldPointer": 11633015,
       "Old": "エスカルゴうんそう[00 FF]",
       "New": "Escargo Express[00 FF]"
     },
     {
-      "Index": 0x4,
-      "OffsetLocation": 0xB18324,
-      "OldPointer": 0xB18182,
+      "Index": 4,
+      "OffsetLocation": 11633444,
+      "OldPointer": 11633026,
       "Old": "マッハピザ[00 FF]",
       "New": "Mach Pizza[00 FF]"
     },
     {
-      "Index": 0x5,
-      "OffsetLocation": 0xB18328,
-      "OldPointer": 0xB18189,
+      "Index": 5,
+      "OffsetLocation": 11633448,
+      "OldPointer": 11633033,
       "Old": "ストイッククラブ[00 FF]",
       "New": "Stoic Club[00 FF]"
     },
     {
-      "Index": 0x6,
-      "OffsetLocation": 0xB1832C,
-      "OldPointer": 0xB18193,
+      "Index": 6,
+      "OffsetLocation": 11633452,
+      "OldPointer": 11633043,
       "Old": "◆あ パパだ｡[02 FF]◆おまえの ぎんこうこうざに[01 FF]ドル[01 FF] ふりこんでおいたからね｡[02 FF]◆つかったぶんと さしひきで[01 FF]ドル[01 FF] ぎんこうに はいっているはずだ｡[02 FF]◆えーと つぎのレベルまで··[01 FF][0D FF]は｡[01 FF]◆それはそうと なんのようだい?[01 FF][18 FF 00 00]",
       "New": "@[0D FF]? It's your dad.[02 FF]@I deposited $"
     },
     {
-      "Index": 0x7,
-      "OffsetLocation": 0xB18330,
-      "OldPointer": 0xB18227,
+      "Index": 7,
+      "OffsetLocation": 11633456,
+      "OldPointer": 11633191,
       "Old": "◆そうか｡[01 FF] パパも もう きょうは[01 FF] やすもうと おもっていたところだ｡[02 FF]◆ぼうけんのきろくは[01 FF] つけといたよ｡[02 FF]◆おやすみ··[01 FF][18 FF 00 00]",
       "New": "◆そうか｡[01 FF] パパも もう きょうは[01 FF] やすもうと おもっていたところだ｡[02 FF]◆ぼうけんのきろくは[01 FF] つけといたよ｡[02 FF]◆おやすみ··[01 FF][18 FF 00 00]"
     },
     {
-      "Index": 0x8,
-      "OffsetLocation": 0xB18334,
-      "OldPointer": 0xB18286,
+      "Index": 8,
+      "OffsetLocation": 11633460,
+      "OldPointer": 11633286,
       "Old": "◆がんばれよ｡[02 FF]◆ガチャン ツーツーツー[00 FF]",
       "New": "◆がんばれよ｡[02 FF]◆ガチャン ツーツーツー[00 FF]"
     },
     {
-      "Index": 0x9,
-      "OffsetLocation": 0xB18338,
-      "OldPointer": 0xB1829D,
+      "Index": 9,
+      "OffsetLocation": 11633464,
+      "OldPointer": 11633309,
       "Old": "◆[0D FF]も ママににて[01 FF] がんばりやだなぁ｡[02 FF]◆むりするなよ｡[02 FF]◆ガチャン ツーツーツー[00 FF]",
       "New": "◆[0D FF]も ママににて[01 FF] がんばりやだなぁ｡[02 FF]◆むりするなよ｡[02 FF]◆ガチャン ツーツーツー[00 FF]"
     },
     {
-      "Index": 0xA,
-      "OffsetLocation": 0xB1833C,
-      "OldPointer": 0xB182CD,
+      "Index": 10,
+      "OffsetLocation": 11633468,
+      "OldPointer": 11633357,
       "Old": "◆おたがい よくやったよな｡[02 FF]◆それじゃ リセットボタンを[01 FF] おさないで でんげんを OFFに[01 FF] しなさい｡ わかったね｡[00 FF]",
       "New": "◆おたがい よくやったよな｡[02 FF]◆それじゃ リセットボタンを[01 FF] おさないで でんげんを OFFに[01 FF] しなさい｡ わかったね｡[00 FF]"
     }

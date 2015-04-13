@@ -1,5 +1,5 @@
 {
-  "StringsLocation": 0xB1B3EF,
+  "StringsLocation": 11645935,
   "TablePointers": [
     756524,
     756644
@@ -8,62 +8,62 @@
   "EntryLength": 20,
   "StringRefs": [
     {
-      "Index": 0x0,
-      "OldPointer": 0xB1B3EF,
+      "Index": 0,
+      "OldPointer": 11645935,
       "Old": "てきに      [00 FF]",
       "New": "To enemy[00 FF]"
     },
     {
-      "Index": 0x1,
-      "OldPointer": 0xB1B3FA,
+      "Index": 1,
+      "OldPointer": 11645946,
       "Old": "てき ひとりに  [00 FF]",
       "New": "To one enemy[00 FF]"
     },
     {
-      "Index": 0x2,
-      "OldPointer": 0xB1B405,
+      "Index": 2,
+      "OldPointer": 11645957,
       "Old": "てき だれかに  [00 FF]",
       "New": "To some enemies[00 FF]"
     },
     {
-      "Index": 0x3,
-      "OldPointer": 0xB1B410,
+      "Index": 3,
+      "OldPointer": 11645968,
       "Old": "てき いちれつに [00 FF]",
       "New": "To row of foes[00 FF]"
     },
     {
-      "Index": 0x4,
-      "OldPointer": 0xB1B41B,
+      "Index": 4,
+      "OldPointer": 11645979,
       "Old": "てき ぜんいんに [00 FF]",
       "New": "To all enemies[00 FF]"
     },
     {
-      "Index": 0x5,
-      "OldPointer": 0xB1B426,
+      "Index": 5,
+      "OldPointer": 11645990,
       "Old": "じぶんに     [00 FF]",
       "New": "To their[00 FF]"
     },
     {
-      "Index": 0x6,
-      "OldPointer": 0xB1B431,
+      "Index": 6,
+      "OldPointer": 11646001,
       "Old": "みかた ひとりに [00 FF]",
       "New": "To one of us[00 FF]"
     },
     {
-      "Index": 0x7,
-      "OldPointer": 0xB1B43C,
+      "Index": 7,
+      "OldPointer": 11646012,
       "Old": "みかた だれかに [00 FF]",
       "New": "To some of us[00 FF]"
     },
     {
-      "Index": 0x8,
-      "OldPointer": 0xB1B447,
+      "Index": 8,
+      "OldPointer": 11646023,
       "Old": "みかた ぜんいんに[00 FF]",
       "New": "To all of us[00 FF]"
     },
     {
-      "Index": 0x9,
-      "OldPointer": 0xB1B452,
+      "Index": 9,
+      "OldPointer": 11646034,
       "Old": "みかた ぜんいんに[00 FF]",
       "New": "To all of us[00 FF]"
     }

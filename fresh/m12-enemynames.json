@@ -1,1621 +1,1621 @@
 {
-  "OffsetTableLocation": 0xB1A2F0,
-  "StringsLocation": 0xB19AD0,
+  "OffsetTableLocation": 11641584,
+  "StringsLocation": 11639504,
   "StringRefs": [
     {
-      "Index": 0x0,
-      "OffsetLocation": 0xB1A2F4,
-      "OldPointer": 0xB19AD0,
+      "Index": 0,
+      "OffsetLocation": 11641588,
+      "OldPointer": 11639504,
       "Old": "   [00 FF]",
       "New": "null[00 FF]"
     },
     {
-      "Index": 0x1,
-      "OffsetLocation": 0xB1A2F8,
-      "OldPointer": 0xB19AD5,
+      "Index": 1,
+      "OffsetLocation": 11641592,
+      "OldPointer": 11639509,
       "Old": "らんぼうなしんじゃ[00 FF]",
       "New": "Insane Cultist[00 FF]"
     },
     {
-      "Index": 0x2,
-      "OffsetLocation": 0xB1A2FC,
-      "OldPointer": 0xB19AE0,
+      "Index": 2,
+      "OffsetLocation": 11641596,
+      "OldPointer": 11639520,
       "Old": "デパートのかいじん[00 FF]",
       "New": "Dept. Store Spook[00 FF]"
     },
     {
-      "Index": 0x3,
-      "OffsetLocation": 0xB1A300,
-      "OldPointer": 0xB19AEB,
+      "Index": 3,
+      "OffsetLocation": 11641600,
+      "OldPointer": 11639531,
       "Old": "アーマーガエル[00 FF]",
       "New": "Armored Frog[00 FF]"
     },
     {
-      "Index": 0x4,
-      "OffsetLocation": 0xB1A304,
-      "OldPointer": 0xB19AF4,
+      "Index": 4,
+      "OffsetLocation": 11641604,
+      "OldPointer": 11639540,
       "Old": "バッファロー[00 FF]",
       "New": "Bad Buffalo[00 FF]"
     },
     {
-      "Index": 0x5,
-      "OffsetLocation": 0xB1A308,
-      "OldPointer": 0xB19AFC,
+      "Index": 5,
+      "OffsetLocation": 11641608,
+      "OldPointer": 11639548,
       "Old": "アリアリブラック[00 FF]",
       "New": "Black Antoid[00 FF]"
     },
     {
-      "Index": 0x6,
-      "OffsetLocation": 0xB1A30C,
-      "OldPointer": 0xB19B06,
+      "Index": 6,
+      "OffsetLocation": 11641612,
+      "OldPointer": 11639558,
       "Old": "アリアリレッド[00 FF]",
       "New": "Red Antoid[00 FF]"
     },
     {
-      "Index": 0x7,
-      "OffsetLocation": 0xB1A310,
-      "OldPointer": 0xB19B0F,
+      "Index": 7,
+      "OffsetLocation": 11641616,
+      "OldPointer": 11639567,
       "Old": "あるくキノコ[00 FF]",
       "New": "Ramblin' Evil Mushroom[00 FF]"
     },
     {
-      "Index": 0x8,
-      "OffsetLocation": 0xB1A314,
-      "OldPointer": 0xB19B17,
+      "Index": 8,
+      "OffsetLocation": 11641620,
+      "OldPointer": 11639575,
       "Old": "いけないキノコ[00 FF]",
       "New": "Struttin' Evil Mushroom[00 FF]"
     },
     {
-      "Index": 0x9,
-      "OffsetLocation": 0xB1A318,
-      "OldPointer": 0xB19B20,
+      "Index": 9,
+      "OffsetLocation": 11641624,
+      "OldPointer": 11639584,
       "Old": "あるくめ[00 FF]",
       "New": "Mobile Sprout[00 FF]"
     },
     {
-      "Index": 0xA,
-      "OffsetLocation": 0xB1A31C,
-      "OldPointer": 0xB19B26,
+      "Index": 10,
+      "OffsetLocation": 11641628,
+      "OldPointer": 11639590,
       "Old": "つよいあるくめ[00 FF]",
       "New": "Tough Mobile Sprout[00 FF]"
     },
     {
-      "Index": 0xB,
-      "OffsetLocation": 0xB1A320,
-      "OldPointer": 0xB19B2F,
+      "Index": 11,
+      "OffsetLocation": 11641632,
+      "OldPointer": 11639599,
       "Old": "いかりのプラグ[00 FF]",
       "New": "Enraged Fire Plug[00 FF]"
     },
     {
-      "Index": 0xC,
-      "OffsetLocation": 0xB1A324,
-      "OldPointer": 0xB19B38,
+      "Index": 12,
+      "OffsetLocation": 11641636,
+      "OldPointer": 11639608,
       "Old": "あやかしのレコード[00 FF]",
       "New": "Mystical Record[00 FF]"
     },
     {
-      "Index": 0xD,
-      "OffsetLocation": 0xB1A328,
-      "OldPointer": 0xB19B43,
+      "Index": 13,
+      "OffsetLocation": 11641640,
+      "OldPointer": 11639619,
       "Old": "エナジーロボ[00 FF]",
       "New": "Atomic Power Robot[00 FF]"
     },
     {
-      "Index": 0xE,
-      "OffsetLocation": 0xB1A32C,
-      "OldPointer": 0xB19B4B,
+      "Index": 14,
+      "OffsetLocation": 11641644,
+      "OldPointer": 11639627,
       "Old": "スーパーエナジーロボ[00 FF]",
       "New": "Nuclear Reactor Robot[00 FF]"
     },
     {
-      "Index": 0xF,
-      "OffsetLocation": 0xB1A330,
-      "OldPointer": 0xB19B57,
+      "Index": 15,
+      "OffsetLocation": 11641648,
+      "OldPointer": 11639639,
       "Old": "のろいのえもじ[00 FF]",
       "New": "Guardian Hieroglyph[00 FF]"
     },
     {
-      "Index": 0x10,
-      "OffsetLocation": 0xB1A334,
-      "OldPointer": 0xB19B60,
+      "Index": 16,
+      "OffsetLocation": 11641652,
+      "OldPointer": 11639648,
       "Old": "スネークえもじ[00 FF]",
       "New": "Lethal Asp Hieroglyph[00 FF]"
     },
     {
-      "Index": 0x11,
-      "OffsetLocation": 0xB1A338,
-      "OldPointer": 0xB19B69,
+      "Index": 17,
+      "OffsetLocation": 11641656,
+      "OldPointer": 11639657,
       "Old": "でんげきビューン[00 FF]",
       "New": "Electro Swoosh[00 FF]"
     },
     {
-      "Index": 0x12,
-      "OffsetLocation": 0xB1A33C,
-      "OldPointer": 0xB19B73,
+      "Index": 18,
+      "OffsetLocation": 11641660,
+      "OldPointer": 11639667,
       "Old": "エレショッカ[00 FF]",
       "New": "Conducting Menace[00 FF]"
     },
     {
-      "Index": 0x13,
-      "OffsetLocation": 0xB1A340,
-      "OldPointer": 0xB19B7B,
+      "Index": 19,
+      "OffsetLocation": 11641664,
+      "OldPointer": 11639675,
       "Old": "エレキスピリット[00 FF]",
       "New": "Conducting Spirit[00 FF]"
     },
     {
-      "Index": 0x14,
-      "OffsetLocation": 0xB1A344,
-      "OldPointer": 0xB19B85,
+      "Index": 20,
+      "OffsetLocation": 11641668,
+      "OldPointer": 11639685,
       "Old": "のろいのメーワク[00 FF]",
       "New": "Evil Elemental[00 FF]"
     },
     {
-      "Index": 0x15,
-      "OffsetLocation": 0xB1A348,
-      "OldPointer": 0xB19B8F,
+      "Index": 21,
+      "OffsetLocation": 11641672,
+      "OldPointer": 11639695,
       "Old": "♪のあくま[00 FF]",
       "New": "|'s Nightmare[00 FF]"
     },
     {
-      "Index": 0x16,
-      "OffsetLocation": 0xB1A34C,
-      "OldPointer": 0xB19B96,
+      "Index": 22,
+      "OffsetLocation": 11641676,
+      "OldPointer": 11639702,
       "Old": "こまったおじさん[00 FF]",
       "New": "Annoying Old Party Man[00 FF]"
     },
     {
-      "Index": 0x17,
-      "OffsetLocation": 0xB1A350,
-      "OldPointer": 0xB19BA0,
+      "Index": 23,
+      "OffsetLocation": 11641680,
+      "OldPointer": 11639712,
       "Old": "めいわくなオヤジ[00 FF]",
       "New": "Annoying Reveler[00 FF]"
     },
     {
-      "Index": 0x18,
-      "OffsetLocation": 0xB1A354,
-      "OldPointer": 0xB19BAA,
+      "Index": 24,
+      "OffsetLocation": 11641684,
+      "OldPointer": 11639722,
       "Old": "ジミなにいさん[00 FF]",
       "New": "Unassuming Local Guy[00 FF]"
     },
     {
-      "Index": 0x19,
-      "OffsetLocation": 0xB1A358,
-      "OldPointer": 0xB19BB3,
+      "Index": 25,
+      "OffsetLocation": 11641688,
+      "OldPointer": 11639731,
       "Old": "きままなにいさん[00 FF]",
       "New": "New Age Retro Hippie[00 FF]"
     },
     {
-      "Index": 0x1A,
-      "OffsetLocation": 0xB1A35C,
-      "OldPointer": 0xB19BBD,
+      "Index": 26,
+      "OffsetLocation": 11641692,
+      "OldPointer": 11639741,
       "Old": "カーペインターさん[00 FF]",
       "New": "Mr. Carpainter[00 FF]"
     },
     {
-      "Index": 0x1B,
-      "OffsetLocation": 0xB1A360,
-      "OldPointer": 0xB19BC8,
+      "Index": 27,
+      "OffsetLocation": 11641696,
+      "OldPointer": 11639752,
       "Old": "カーボンドッグ[00 FF]",
       "New": "Carbon Dog[00 FF]"
     },
     {
-      "Index": 0x1C,
-      "OffsetLocation": 0xB1A364,
-      "OldPointer": 0xB19BD1,
+      "Index": 28,
+      "OffsetLocation": 11641700,
+      "OldPointer": 11639761,
       "Old": "かいりきベア[00 FF]",
       "New": "Mighty Bear[00 FF]"
     },
     {
-      "Index": 0x1D,
-      "OffsetLocation": 0xB1A368,
-      "OldPointer": 0xB19BD9,
+      "Index": 29,
+      "OffsetLocation": 11641704,
+      "OldPointer": 11639769,
       "Old": "かいりきベア·セブン[00 FF]",
       "New": "Mighty Bear Seven[00 FF]"
     },
     {
-      "Index": 0x1E,
-      "OffsetLocation": 0xB1A36C,
-      "OldPointer": 0xB19BE5,
+      "Index": 30,
+      "OffsetLocation": 11641708,
+      "OldPointer": 11639781,
       "Old": "カビクサイマン[00 FF]",
       "New": "Putrid Moldyman[00 FF]"
     },
     {
-      "Index": 0x1F,
-      "OffsetLocation": 0xB1A370,
-      "OldPointer": 0xB19BEE,
+      "Index": 31,
+      "OffsetLocation": 11641712,
+      "OldPointer": 11639790,
       "Old": "リトルサンダー[00 FF]",
       "New": "Thunder Mite[00 FF]"
     },
     {
-      "Index": 0x20,
-      "OffsetLocation": 0xB1A374,
-      "OldPointer": 0xB19BF7,
+      "Index": 32,
+      "OffsetLocation": 11641716,
+      "OldPointer": 11639799,
       "Old": "ガミガミレディ[00 FF]",
       "New": "Cranky Lady[00 FF]"
     },
     {
-      "Index": 0x21,
-      "OffsetLocation": 0xB1A378,
-      "OldPointer": 0xB19C00,
+      "Index": 33,
+      "OffsetLocation": 11641720,
+      "OldPointer": 11639808,
       "Old": "ガミガミガミレディ[00 FF]",
       "New": "Extra Cranky Lady[00 FF]"
     },
     {
-      "Index": 0x22,
-      "OffsetLocation": 0xB1A37C,
-      "OldPointer": 0xB19C0B,
+      "Index": 34,
+      "OffsetLocation": 11641724,
+      "OldPointer": 11639819,
       "Old": "ギーグ[00 FF]",
       "New": "Giygas[00 FF]"
     },
     {
-      "Index": 0x23,
-      "OffsetLocation": 0xB1A380,
-      "OldPointer": 0xB19C10,
+      "Index": 35,
+      "OffsetLocation": 11641728,
+      "OldPointer": 11639824,
       "Old": "カニメザウルス[00 FF]",
       "New": "Wetnosaur[00 FF]"
     },
     {
-      "Index": 0x24,
-      "OffsetLocation": 0xB1A384,
-      "OldPointer": 0xB19C19,
+      "Index": 36,
+      "OffsetLocation": 11641732,
+      "OldPointer": 11639833,
       "Old": "ハラペコザウルス[00 FF]",
       "New": "Chomposaur[00 FF]"
     },
     {
-      "Index": 0x25,
-      "OffsetLocation": 0xB1A388,
-      "OldPointer": 0xB19C23,
+      "Index": 37,
+      "OffsetLocation": 11641736,
+      "OldPointer": 11639843,
       "Old": "きょだいアリ[00 FF]",
       "New": "Titanic Ant[00 FF]"
     },
     {
-      "Index": 0x26,
-      "OffsetLocation": 0xB1A38C,
-      "OldPointer": 0xB19C2B,
+      "Index": 38,
+      "OffsetLocation": 11641740,
+      "OldPointer": 11639851,
       "Old": "もっときょだいアリ[00 FF]",
       "New": "Gigantic Ant[00 FF]"
     },
     {
-      "Index": 0x27,
-      "OffsetLocation": 0xB1A390,
-      "OldPointer": 0xB19C36,
+      "Index": 39,
+      "OffsetLocation": 11641744,
+      "OldPointer": 11639862,
       "Old": "きょだいキノコ[00 FF]",
       "New": "Shrooom![00 FF]"
     },
     {
-      "Index": 0x28,
-      "OffsetLocation": 0xB1A394,
-      "OldPointer": 0xB19C3F,
+      "Index": 40,
+      "OffsetLocation": 11641748,
+      "OldPointer": 11639871,
       "Old": "きょだいネズミ[00 FF]",
       "New": "Plague Rat of Doom[00 FF]"
     },
     {
-      "Index": 0x29,
-      "OffsetLocation": 0xB1A398,
-      "OldPointer": 0xB19C48,
+      "Index": 41,
+      "OffsetLocation": 11641752,
+      "OldPointer": 11639880,
       "Old": "きょだいモグラ[00 FF]",
       "New": "Mondo Mole[00 FF]"
     },
     {
-      "Index": 0x2A,
-      "OffsetLocation": 0xB1A39C,
-      "OldPointer": 0xB19C51,
+      "Index": 42,
+      "OffsetLocation": 11641756,
+      "OldPointer": 11639889,
       "Old": "あなのぬし[00 FF]",
       "New": "Guardian Digger[00 FF]"
     },
     {
-      "Index": 0x2B,
-      "OffsetLocation": 0xB1A3A0,
-      "OldPointer": 0xB19C58,
+      "Index": 43,
+      "OffsetLocation": 11641760,
+      "OldPointer": 11639896,
       "Old": "キラーカップ[00 FF]",
       "New": "Scalding Coffee Cup[00 FF]"
     },
     {
-      "Index": 0x2C,
-      "OffsetLocation": 0xB1A3A4,
-      "OldPointer": 0xB19C60,
+      "Index": 44,
+      "OffsetLocation": 11641764,
+      "OldPointer": 11639904,
       "Old": "うわきなダイス[00 FF]",
       "New": "Loaded Dice[00 FF]"
     },
     {
-      "Index": 0x2D,
-      "OffsetLocation": 0xB1A3A8,
-      "OldPointer": 0xB19C69,
+      "Index": 45,
+      "OffsetLocation": 11641768,
+      "OldPointer": 11639913,
       "Old": "ぐちゃぐちゃ[00 FF]",
       "New": "Slimy Little Pile[00 FF]"
     },
     {
-      "Index": 0x2E,
-      "OffsetLocation": 0xB1A3AC,
-      "OldPointer": 0xB19C71,
+      "Index": 46,
+      "OffsetLocation": 11641772,
+      "OldPointer": 11639921,
       "Old": "げどげど[00 FF]",
       "New": "Even Slimier Little Pile[00 FF]"
     },
     {
-      "Index": 0x2F,
-      "OffsetLocation": 0xB1A3B0,
-      "OldPointer": 0xB19C77,
+      "Index": 47,
+      "OffsetLocation": 11641776,
+      "OldPointer": 11639927,
       "Old": "スパイダー![00 FF]",
       "New": "Arachnid![00 FF]"
     },
     {
-      "Index": 0x30,
-      "OffsetLocation": 0xB1A3B4,
-      "OldPointer": 0xB19C7F,
+      "Index": 48,
+      "OffsetLocation": 11641780,
+      "OldPointer": 11639935,
       "Old": "スパイダー!!!![00 FF]",
       "New": "Arachnid!!![00 FF]"
     },
     {
-      "Index": 0x31,
-      "OffsetLocation": 0xB1A3B8,
-      "OldPointer": 0xB19C8A,
+      "Index": 49,
+      "OffsetLocation": 11641784,
+      "OldPointer": 11639946,
       "Old": "クラーケン[00 FF]",
       "New": "Kraken[00 FF]"
     },
     {
-      "Index": 0x32,
-      "OffsetLocation": 0xB1A3BC,
-      "OldPointer": 0xB19C91,
+      "Index": 50,
+      "OffsetLocation": 11641788,
+      "OldPointer": 11639953,
       "Old": "クラーケンバイオ[00 FF]",
       "New": "Bionic Kraken[00 FF]"
     },
     {
-      "Index": 0x33,
-      "OffsetLocation": 0xB1A3C0,
-      "OldPointer": 0xB19C9B,
+      "Index": 51,
+      "OffsetLocation": 11641792,
+      "OldPointer": 11639963,
       "Old": "クルーン[00 FF]",
       "New": "Spinning Robo[00 FF]"
     },
     {
-      "Index": 0x34,
-      "OffsetLocation": 0xB1A3C4,
-      "OldPointer": 0xB19CA1,
+      "Index": 52,
+      "OffsetLocation": 11641796,
+      "OldPointer": 11639969,
       "Old": "クルルーン[00 FF]",
       "New": "Whirling Robo[00 FF]"
     },
     {
-      "Index": 0x35,
-      "OffsetLocation": 0xB1A3C8,
-      "OldPointer": 0xB19CA8,
+      "Index": 53,
+      "OffsetLocation": 11641800,
+      "OldPointer": 11639976,
       "Old": "クルンクルーン[00 FF]",
       "New": "Hyper Spinning Robo[00 FF]"
     },
     {
-      "Index": 0x36,
-      "OffsetLocation": 0xB1A3CC,
-      "OldPointer": 0xB19CB1,
+      "Index": 54,
+      "OffsetLocation": 11641804,
+      "OldPointer": 11639985,
       "Old": "ポリスマン[00 FF]",
       "New": "Cop[00 FF]"
     },
     {
-      "Index": 0x37,
-      "OffsetLocation": 0xB1A3D0,
-      "OldPointer": 0xB19CB8,
+      "Index": 55,
+      "OffsetLocation": 11641808,
+      "OldPointer": 11639992,
       "Old": "まきへび[00 FF]",
       "New": "Coil Snake[00 FF]"
     },
     {
-      "Index": 0x38,
-      "OffsetLocation": 0xB1A3D4,
-      "OldPointer": 0xB19CBE,
+      "Index": 56,
+      "OffsetLocation": 11641812,
+      "OldPointer": 11639998,
       "Old": "まきへびドライ[00 FF]",
       "New": "Thirsty Coil Snake[00 FF]"
     },
     {
-      "Index": 0x39,
-      "OffsetLocation": 0xB1A3D8,
-      "OldPointer": 0xB19CC7,
+      "Index": 57,
+      "OffsetLocation": 11641816,
+      "OldPointer": 11640007,
       "Old": "こうもりさん[00 FF]",
       "New": "Mr. Batty[00 FF]"
     },
     {
-      "Index": 0x3A,
-      "OffsetLocation": 0xB1A3DC,
-      "OldPointer": 0xB19CCF,
+      "Index": 58,
+      "OffsetLocation": 11641820,
+      "OldPointer": 11640015,
       "Old": "こうもりさま[00 FF]",
       "New": "Elder Batty[00 FF]"
     },
     {
-      "Index": 0x3B,
-      "OffsetLocation": 0xB1A3E0,
-      "OldPointer": 0xB19CD7,
+      "Index": 59,
+      "OffsetLocation": 11641824,
+      "OldPointer": 11640023,
       "Old": "あれ[00 FF]",
       "New": "Violent Roach[00 FF]"
     },
     {
-      "Index": 0x3C,
-      "OffsetLocation": 0xB1A3E4,
-      "OldPointer": 0xB19CDB,
+      "Index": 60,
+      "OffsetLocation": 11641828,
+      "OldPointer": 11640027,
       "Old": "あのあれ[00 FF]",
       "New": "Filthy Attack Roach[00 FF]"
     },
     {
-      "Index": 0x3D,
-      "OffsetLocation": 0xB1A3E8,
-      "OldPointer": 0xB19CE1,
+      "Index": 61,
+      "OffsetLocation": 11641832,
+      "OldPointer": 11640033,
       "Old": "マッドサイン[00 FF]",
       "New": "Crazed Sign[00 FF]"
     },
     {
-      "Index": 0x3E,
-      "OffsetLocation": 0xB1A3EC,
-      "OldPointer": 0xB19CE9,
+      "Index": 62,
+      "OffsetLocation": 11641836,
+      "OldPointer": 11640041,
       "Old": "スイスイ[00 FF]",
       "New": "Wooly Shambler[00 FF]"
     },
     {
-      "Index": 0x3F,
-      "OffsetLocation": 0xB1A3F0,
-      "OldPointer": 0xB19CEF,
+      "Index": 63,
+      "OffsetLocation": 11641840,
+      "OldPointer": 11640047,
       "Old": "スーダララッタ[00 FF]",
       "New": "Wild 'n Wooly Shambler[00 FF]"
     },
     {
-      "Index": 0x40,
-      "OffsetLocation": 0xB1A3F4,
-      "OldPointer": 0xB19CF8,
+      "Index": 64,
+      "OffsetLocation": 11641844,
+      "OldPointer": 11640056,
       "Old": "なまいきボーダー[00 FF]",
       "New": "Skate Punk[00 FF]"
     },
     {
-      "Index": 0x41,
-      "OffsetLocation": 0xB1A3F8,
-      "OldPointer": 0xB19D02,
+      "Index": 65,
+      "OffsetLocation": 11641848,
+      "OldPointer": 11640066,
       "Old": "スケルピオン[00 FF]",
       "New": "Skelpion[00 FF]"
     },
     {
-      "Index": 0x42,
-      "OffsetLocation": 0xB1A3FC,
-      "OldPointer": 0xB19D0A,
+      "Index": 66,
+      "OffsetLocation": 11641852,
+      "OldPointer": 11640074,
       "Old": "スケルピオン·デッド[00 FF]",
       "New": "Dread Skelpion[00 FF]"
     },
     {
-      "Index": 0x43,
-      "OffsetLocation": 0xB1A400,
-      "OldPointer": 0xB19D16,
+      "Index": 67,
+      "OffsetLocation": 11641856,
+      "OldPointer": 11640086,
       "Old": "スターマン[00 FF]",
       "New": "Starman[00 FF]"
     },
     {
-      "Index": 0x44,
-      "OffsetLocation": 0xB1A404,
-      "OldPointer": 0xB19D1D,
+      "Index": 68,
+      "OffsetLocation": 11641860,
+      "OldPointer": 11640093,
       "Old": "スーパースターマン[00 FF]",
       "New": "Starman Super[00 FF]"
     },
     {
-      "Index": 0x45,
-      "OffsetLocation": 0xB1A408,
-      "OldPointer": 0xB19D28,
+      "Index": 69,
+      "OffsetLocation": 11641864,
+      "OldPointer": 11640104,
       "Old": "スターマン·センゾ[00 FF]",
       "New": "Ghost of Starman[00 FF]"
     },
     {
-      "Index": 0x46,
-      "OffsetLocation": 0xB1A40C,
-      "OldPointer": 0xB19D33,
+      "Index": 70,
+      "OffsetLocation": 11641868,
+      "OldPointer": 11640115,
       "Old": "わらいボール[00 FF]",
       "New": "Smilin' Sphere[00 FF]"
     },
     {
-      "Index": 0x47,
-      "OffsetLocation": 0xB1A410,
-      "OldPointer": 0xB19D3B,
+      "Index": 71,
+      "OffsetLocation": 11641872,
+      "OldPointer": 11640123,
       "Old": "ぶきみボール[00 FF]",
       "New": "Uncontrollable Sphere[00 FF]"
     },
     {
-      "Index": 0x48,
-      "OffsetLocation": 0xB1A414,
-      "OldPointer": 0xB19D43,
+      "Index": 72,
+      "OffsetLocation": 11641876,
+      "OldPointer": 11640131,
       "Old": "おうけのせきぞう[00 FF]",
       "New": "Petrified Royal Guard[00 FF]"
     },
     {
-      "Index": 0x49,
-      "OffsetLocation": 0xB1A418,
-      "OldPointer": 0xB19D4D,
+      "Index": 73,
+      "OffsetLocation": 11641880,
+      "OldPointer": 11640141,
       "Old": "せきぞうのもとじめ[00 FF]",
       "New": "Guardian General[00 FF]"
     },
     {
-      "Index": 0x4A,
-      "OffsetLocation": 0xB1A41C,
-      "OldPointer": 0xB19D58,
+      "Index": 74,
+      "OffsetLocation": 11641884,
+      "OldPointer": 11640152,
       "Old": "DXスターマン[00 FF]",
       "New": "Starman Deluxe[00 FF]"
     },
     {
-      "Index": 0x4B,
-      "OffsetLocation": 0xB1A420,
-      "OldPointer": 0xB19D61,
+      "Index": 75,
+      "OffsetLocation": 11641888,
+      "OldPointer": 11640161,
       "Old": "さいごのスターマン[00 FF]",
       "New": "Final Starman[00 FF]"
     },
     {
-      "Index": 0x4C,
-      "OffsetLocation": 0xB1A424,
-      "OldPointer": 0xB19D6C,
+      "Index": 76,
+      "OffsetLocation": 11641892,
+      "OldPointer": 11640172,
       "Old": "アーバンゾンビ[00 FF]",
       "New": "Urban Zombie[00 FF]"
     },
     {
-      "Index": 0x4D,
-      "OffsetLocation": 0xB1A428,
-      "OldPointer": 0xB19D75,
+      "Index": 77,
+      "OffsetLocation": 11641896,
+      "OldPointer": 11640181,
       "Old": "とりつきゾンビ[00 FF]",
       "New": "Zombie Possessor[00 FF]"
     },
     {
-      "Index": 0x4E,
-      "OffsetLocation": 0xB1A42C,
-      "OldPointer": 0xB19D7E,
+      "Index": 78,
+      "OffsetLocation": 11641900,
+      "OldPointer": 11640190,
       "Old": "ゾンビドッグ[00 FF]",
       "New": "Zombie Dog[00 FF]"
     },
     {
-      "Index": 0x4F,
-      "OffsetLocation": 0xB1A430,
-      "OldPointer": 0xB19D86,
+      "Index": 79,
+      "OffsetLocation": 11641904,
+      "OldPointer": 11640198,
       "Old": "ダーティコップ[00 FF]",
       "New": "Crooked Cop[00 FF]"
     },
     {
-      "Index": 0x50,
-      "OffsetLocation": 0xB1A434,
-      "OldPointer": 0xB19D8F,
+      "Index": 80,
+      "OffsetLocation": 11641908,
+      "OldPointer": 11640207,
       "Old": "あばれんぼうコップ[00 FF]",
       "New": "Over Zealous Cop[00 FF]"
     },
     {
-      "Index": 0x51,
-      "OffsetLocation": 0xB1A438,
-      "OldPointer": 0xB19D9A,
+      "Index": 81,
+      "OffsetLocation": 11641912,
+      "OldPointer": 11640218,
       "Old": "だいウッドー[00 FF]",
       "New": "Territorial Oak[00 FF]"
     },
     {
-      "Index": 0x52,
-      "OffsetLocation": 0xB1A43C,
-      "OldPointer": 0xB19DA2,
+      "Index": 82,
+      "OffsetLocation": 11641916,
+      "OldPointer": 11640226,
       "Old": "こんじょうウッドー[00 FF]",
       "New": "Hostile Elder Oak[00 FF]"
     },
     {
-      "Index": 0x53,
-      "OffsetLocation": 0xB1A440,
-      "OldPointer": 0xB19DAD,
+      "Index": 83,
+      "OffsetLocation": 11641920,
+      "OldPointer": 11640237,
       "Old": "ダイヤモンドドッグ[00 FF]",
       "New": "Diamond Dog[00 FF]"
     },
     {
-      "Index": 0x54,
-      "OffsetLocation": 0xB1A444,
-      "OldPointer": 0xB19DB8,
+      "Index": 84,
+      "OffsetLocation": 11641924,
+      "OldPointer": 11640248,
       "Old": "マル·デ·タコ[00 FF]",
       "New": "Marauder Octobot[00 FF]"
     },
     {
-      "Index": 0x55,
-      "OffsetLocation": 0xB1A448,
-      "OldPointer": 0xB19DC1,
+      "Index": 85,
+      "OffsetLocation": 11641928,
+      "OldPointer": 11640257,
       "Old": "ミタ·メ·タコ[00 FF]",
       "New": "Military Octobot[00 FF]"
     },
     {
-      "Index": 0x56,
-      "OffsetLocation": 0xB1A44C,
-      "OldPointer": 0xB19DCA,
+      "Index": 86,
+      "OffsetLocation": 11641932,
+      "OldPointer": 11640266,
       "Old": "カナ·リ·タコ[00 FF]",
       "New": "Mechanical Octobot[00 FF]"
     },
     {
-      "Index": 0x57,
-      "OffsetLocation": 0xB1A450,
-      "OldPointer": 0xB19DD3,
+      "Index": 87,
+      "OffsetLocation": 11641936,
+      "OldPointer": 11640275,
       "Old": "タコ·ソ·ノモノ[00 FF]",
       "New": "Ultimate Octobot[00 FF]"
     },
     {
-      "Index": 0x58,
-      "OffsetLocation": 0xB1A454,
-      "OldPointer": 0xB19DDD,
+      "Index": 88,
+      "OffsetLocation": 11641940,
+      "OldPointer": 11640285,
       "Old": "つっぱりダック[00 FF]",
       "New": "Mad Duck[00 FF]"
     },
     {
-      "Index": 0x59,
-      "OffsetLocation": 0xB1A458,
-      "OldPointer": 0xB19DE6,
+      "Index": 89,
+      "OffsetLocation": 11641944,
+      "OldPointer": 11640294,
       "Old": "うしなわれしきおく[00 FF]",
       "New": "Dali's Clock[00 FF]"
     },
     {
-      "Index": 0x5A,
-      "OffsetLocation": 0xB1A45C,
-      "OldPointer": 0xB19DF1,
+      "Index": 90,
+      "OffsetLocation": 11641948,
+      "OldPointer": 11640305,
       "Old": "ちょうねんじゅのめ[00 FF]",
       "New": "Trillionage Sprout[00 FF]"
     },
     {
-      "Index": 0x5B,
-      "OffsetLocation": 0xB1A460,
-      "OldPointer": 0xB19DFC,
+      "Index": 91,
+      "OffsetLocation": 11641952,
+      "OldPointer": 11640316,
       "Old": "ムジカ[00 FF]",
       "New": "Musica[00 FF]"
     },
     {
-      "Index": 0x5C,
-      "OffsetLocation": 0xB1A464,
-      "OldPointer": 0xB19E01,
+      "Index": 92,
+      "OffsetLocation": 11641956,
+      "OldPointer": 11640321,
       "Old": "デザートウルフ[00 FF]",
       "New": "Desert Wolf[00 FF]"
     },
     {
-      "Index": 0x5D,
-      "OffsetLocation": 0xB1A468,
-      "OldPointer": 0xB19E0A,
+      "Index": 93,
+      "OffsetLocation": 11641960,
+      "OldPointer": 11640330,
       "Old": "ゲップー[00 FF]",
       "New": "Master Belch[00 FF]"
     },
     {
-      "Index": 0x5E,
-      "OffsetLocation": 0xB1A46C,
-      "OldPointer": 0xB19E10,
+      "Index": 94,
+      "OffsetLocation": 11641964,
+      "OldPointer": 11640336,
       "Old": "でかぐちゃぐちゃ[00 FF]",
       "New": "Big Pile of Puke[00 FF]"
     },
     {
-      "Index": 0x5F,
-      "OffsetLocation": 0xB1A470,
-      "OldPointer": 0xB19E1A,
+      "Index": 95,
+      "OffsetLocation": 11641968,
+      "OldPointer": 11640346,
       "Old": "かえってきたゲップー[00 FF]",
       "New": "Master Barf[00 FF]"
     },
     {
-      "Index": 0x60,
-      "OffsetLocation": 0xB1A474,
-      "OldPointer": 0xB19E26,
+      "Index": 96,
+      "OffsetLocation": 11641972,
+      "OldPointer": 11640358,
       "Old": "あくまのキッス[00 FF]",
       "New": "Kiss of Death[00 FF]"
     },
     {
-      "Index": 0x61,
-      "OffsetLocation": 0xB1A478,
-      "OldPointer": 0xB19E2F,
+      "Index": 97,
+      "OffsetLocation": 11641976,
+      "OldPointer": 11640367,
       "Old": "あくまのディープキス[00 FF]",
       "New": "French Kiss of Death[00 FF]"
     },
     {
-      "Index": 0x62,
-      "OffsetLocation": 0xB1A47C,
-      "OldPointer": 0xB19E3B,
+      "Index": 98,
+      "OffsetLocation": 11641980,
+      "OldPointer": 11640379,
       "Old": "デヘラー[00 FF]",
       "New": "Foppy[00 FF]"
     },
     {
-      "Index": 0x63,
-      "OffsetLocation": 0xB1A480,
-      "OldPointer": 0xB19E41,
+      "Index": 99,
+      "OffsetLocation": 11641984,
+      "OldPointer": 11640385,
       "Old": "デヘヘヘラー[00 FF]",
       "New": "Fobby[00 FF]"
     },
     {
-      "Index": 0x64,
-      "OffsetLocation": 0xB1A484,
-      "OldPointer": 0xB19E49,
+      "Index": 100,
+      "OffsetLocation": 11641988,
+      "OldPointer": 11640393,
       "Old": "でんきウナーギ[00 FF]",
       "New": "Zap Eel[00 FF]"
     },
     {
-      "Index": 0x65,
-      "OffsetLocation": 0xB1A488,
-      "OldPointer": 0xB19E52,
+      "Index": 101,
+      "OffsetLocation": 11641992,
+      "OldPointer": 11640402,
       "Old": "てんぐどの[00 FF]",
       "New": "Tangoo[00 FF]"
     },
     {
-      "Index": 0x66,
-      "OffsetLocation": 0xB1A48C,
-      "OldPointer": 0xB19E59,
+      "Index": 102,
+      "OffsetLocation": 11641996,
+      "OldPointer": 11640409,
       "Old": "ばけテント[00 FF]",
       "New": "Boogey Tent[00 FF]"
     },
     {
-      "Index": 0x67,
-      "OffsetLocation": 0xB1A490,
-      "OldPointer": 0xB19E60,
+      "Index": 103,
+      "OffsetLocation": 11642000,
+      "OldPointer": 11640416,
       "Old": "やどかりデビル[00 FF]",
       "New": "Squatter Demon[00 FF]"
     },
     {
-      "Index": 0x68,
-      "OffsetLocation": 0xB1A494,
-      "OldPointer": 0xB19E69,
+      "Index": 104,
+      "OffsetLocation": 11642004,
+      "OldPointer": 11640425,
       "Old": "トサカラン[00 FF]",
       "New": "Crested Booka[00 FF]"
     },
     {
-      "Index": 0x69,
-      "OffsetLocation": 0xB1A498,
-      "OldPointer": 0xB19E70,
+      "Index": 105,
+      "OffsetLocation": 11642008,
+      "OldPointer": 11640432,
       "Old": "ドザガラン[00 FF]",
       "New": "Great Crested Booka[00 FF]"
     },
     {
-      "Index": 0x6A,
-      "OffsetLocation": 0xB1A49C,
-      "OldPointer": 0xB19E77,
+      "Index": 106,
+      "OffsetLocation": 11642012,
+      "OldPointer": 11640439,
       "Old": "ドムーク·イージー[00 FF]",
       "New": "Lesser Mook[00 FF]"
     },
     {
-      "Index": 0x6B,
-      "OffsetLocation": 0xB1A4A0,
-      "OldPointer": 0xB19E82,
+      "Index": 107,
+      "OffsetLocation": 11642016,
+      "OldPointer": 11640450,
       "Old": "ドムーク·シニア[00 FF]",
       "New": "Mook Senior[00 FF]"
     },
     {
-      "Index": 0x6C,
-      "OffsetLocation": 0xB1A4A4,
-      "OldPointer": 0xB19E8C,
+      "Index": 108,
+      "OffsetLocation": 11642020,
+      "OldPointer": 11640460,
       "Old": "ちょっとくさゴースト[00 FF]",
       "New": "Smelly Ghost[00 FF]"
     },
     {
-      "Index": 0x6D,
-      "OffsetLocation": 0xB1A4A8,
-      "OldPointer": 0xB19E98,
+      "Index": 109,
+      "OffsetLocation": 11642024,
+      "OldPointer": 11640472,
       "Old": "あくしゅうゴースト[00 FF]",
       "New": "Stinky Ghost[00 FF]"
     },
     {
-      "Index": 0x6E,
-      "OffsetLocation": 0xB1A4AC,
-      "OldPointer": 0xB19EA3,
+      "Index": 110,
+      "OffsetLocation": 11642028,
+      "OldPointer": 11640483,
       "Old": "トンチキさん[00 FF]",
       "New": "Everdred[00 FF]"
     },
     {
-      "Index": 0x6F,
-      "OffsetLocation": 0xB1A4B0,
-      "OldPointer": 0xB19EAB,
+      "Index": 111,
+      "OffsetLocation": 11642032,
+      "OldPointer": 11640491,
       "Old": "むこうみずなナメクジ[00 FF]",
       "New": "Attack Slug[00 FF]"
     },
     {
-      "Index": 0x70,
-      "OffsetLocation": 0xB1A4B4,
-      "OldPointer": 0xB19EB7,
+      "Index": 112,
+      "OffsetLocation": 11642036,
+      "OldPointer": 11640503,
       "Old": "ねちっこいナメクジ[00 FF]",
       "New": "Pit Bull Slug[00 FF]"
     },
     {
-      "Index": 0x71,
-      "OffsetLocation": 0xB1A4B8,
-      "OldPointer": 0xB19EC2,
+      "Index": 113,
+      "OffsetLocation": 11642040,
+      "OldPointer": 11640514,
       "Old": "ぐれたネズミ[00 FF]",
       "New": "Rowdy Mouse[00 FF]"
     },
     {
-      "Index": 0x72,
-      "OffsetLocation": 0xB1A4BC,
-      "OldPointer": 0xB19ECA,
+      "Index": 114,
+      "OffsetLocation": 11642044,
+      "OldPointer": 11640522,
       "Old": "あくのネズミ[00 FF]",
       "New": "Deadly Mouse[00 FF]"
     },
     {
-      "Index": 0x73,
-      "OffsetLocation": 0xB1A4C0,
-      "OldPointer": 0xB19ED2,
+      "Index": 115,
+      "OffsetLocation": 11642048,
+      "OldPointer": 11640530,
       "Old": "あんしんボム[00 FF]",
       "New": "Care Free Bomb[00 FF]"
     },
     {
-      "Index": 0x74,
-      "OffsetLocation": 0xB1A4C4,
-      "OldPointer": 0xB19EDA,
+      "Index": 116,
+      "OffsetLocation": 11642052,
+      "OldPointer": 11640538,
       "Old": "でんげきバチバチ[00 FF]",
       "New": "Electro Specter[00 FF]"
     },
     {
-      "Index": 0x75,
-      "OffsetLocation": 0xB1A4C8,
-      "OldPointer": 0xB19EE4,
+      "Index": 117,
+      "OffsetLocation": 11642056,
+      "OldPointer": 11640548,
       "Old": "かわいいトムくん[00 FF]",
       "New": "Handsome Tom[00 FF]"
     },
     {
-      "Index": 0x76,
-      "OffsetLocation": 0xB1A4CC,
-      "OldPointer": 0xB19EEE,
+      "Index": 118,
+      "OffsetLocation": 11642060,
+      "OldPointer": 11640558,
       "Old": "おちゃめなサムくん[00 FF]",
       "New": "Smilin' Sam[00 FF]"
     },
     {
-      "Index": 0x77,
-      "OffsetLocation": 0xB1A4D0,
-      "OldPointer": 0xB19EF9,
+      "Index": 119,
+      "OffsetLocation": 11642064,
+      "OldPointer": 11640569,
       "Old": "サカナにんげん[00 FF]",
       "New": "Manly Fish[00 FF]"
     },
     {
-      "Index": 0x78,
-      "OffsetLocation": 0xB1A4D4,
-      "OldPointer": 0xB19F02,
+      "Index": 120,
+      "OffsetLocation": 11642068,
+      "OldPointer": 11640578,
       "Old": "サカナにんげん·あに[00 FF]",
       "New": "Manly Fish's Brother[00 FF]"
     },
     {
-      "Index": 0x79,
-      "OffsetLocation": 0xB1A4D8,
-      "OldPointer": 0xB19F0E,
+      "Index": 121,
+      "OffsetLocation": 11642072,
+      "OldPointer": 11640590,
       "Old": "おんしらずなイヌ[00 FF]",
       "New": "Runaway Dog[00 FF]"
     },
     {
-      "Index": 0x7A,
-      "OffsetLocation": 0xB1A4DC,
-      "OldPointer": 0xB19F18,
+      "Index": 122,
+      "OffsetLocation": 11642076,
+      "OldPointer": 11640600,
       "Old": "ハロウィーンやろう[00 FF]",
       "New": "Trick or Trick Kid[00 FF]"
     },
     {
-      "Index": 0x7B,
-      "OffsetLocation": 0xB1A4E0,
-      "OldPointer": 0xB19F23,
+      "Index": 123,
+      "OffsetLocation": 11642080,
+      "OldPointer": 11640611,
       "Old": "ビッグフット[00 FF]",
       "New": "Cave Boy[00 FF]"
     },
     {
-      "Index": 0x7C,
-      "OffsetLocation": 0xB1A4E4,
-      "OldPointer": 0xB19F2B,
+      "Index": 124,
+      "OffsetLocation": 11642084,
+      "OldPointer": 11640619,
       "Old": "なぞのゲージュツ[00 FF]",
       "New": "Abstract Art[00 FF]"
     },
     {
-      "Index": 0x7D,
-      "OffsetLocation": 0xB1A4E8,
-      "OldPointer": 0xB19F35,
+      "Index": 125,
+      "OffsetLocation": 11642088,
+      "OldPointer": 11640629,
       "Old": "ひびわれおとこ[00 FF]",
       "New": "Shattered Man[00 FF]"
     },
     {
-      "Index": 0x7E,
-      "OffsetLocation": 0xB1A4EC,
-      "OldPointer": 0xB19F3E,
+      "Index": 126,
+      "OffsetLocation": 11642092,
+      "OldPointer": 11640638,
       "Old": "しばきひびわれ[00 FF]",
       "New": "Fierce Shattered Man[00 FF]"
     },
     {
-      "Index": 0x7F,
-      "OffsetLocation": 0xB1A4F0,
-      "OldPointer": 0xB19F47,
+      "Index": 127,
+      "OffsetLocation": 11642096,
+      "OldPointer": 11640647,
       "Old": "おもいこみストーン[00 FF]",
       "New": "Ego Orb[00 FF]"
     },
     {
-      "Index": 0x80,
-      "OffsetLocation": 0xB1A4F4,
-      "OldPointer": 0xB19F52,
+      "Index": 128,
+      "OffsetLocation": 11642100,
+      "OldPointer": 11640658,
       "Old": "いなずま·あらし[00 FF]",
       "New": "Thunder and Storm[00 FF]"
     },
     {
-      "Index": 0x81,
-      "OffsetLocation": 0xB1A4F8,
-      "OldPointer": 0xB19F5C,
+      "Index": 129,
+      "OffsetLocation": 11642104,
+      "OldPointer": 11640668,
       "Old": "おちょうしものキッド[00 FF]",
       "New": "Yes Man Junior[00 FF]"
     },
     {
-      "Index": 0x82,
-      "OffsetLocation": 0xB1A4FC,
-      "OldPointer": 0xB19F68,
+      "Index": 130,
+      "OffsetLocation": 11642108,
+      "OldPointer": 11640680,
       "Old": "フランキースタイン2[00 FF]",
       "New": "Frankystein Mark II[00 FF]"
     },
     {
-      "Index": 0x83,
-      "OffsetLocation": 0xB1A500,
-      "OldPointer": 0xB19F74,
+      "Index": 131,
+      "OffsetLocation": 11642112,
+      "OldPointer": 11640692,
       "Old": "フランクさま[00 FF]",
       "New": "Frank[00 FF]"
     },
     {
-      "Index": 0x84,
-      "OffsetLocation": 0xB1A504,
-      "OldPointer": 0xB19F7C,
+      "Index": 132,
+      "OffsetLocation": 11642116,
+      "OldPointer": 11640700,
       "Old": "おあいそユーホー[00 FF]",
       "New": "Cute Li'l UFO[00 FF]"
     },
     {
-      "Index": 0x85,
-      "OffsetLocation": 0xB1A508,
-      "OldPointer": 0xB19F86,
+      "Index": 133,
+      "OffsetLocation": 11642120,
+      "OldPointer": 11640710,
       "Old": "きくばりユーホー[00 FF]",
       "New": "Beautiful UFO[00 FF]"
     },
     {
-      "Index": 0x86,
-      "OffsetLocation": 0xB1A50C,
-      "OldPointer": 0xB19F90,
+      "Index": 134,
+      "OffsetLocation": 11642124,
+      "OldPointer": 11640720,
       "Old": "はねっかえりキッド[00 FF]",
       "New": "Pogo Punk[00 FF]"
     },
     {
-      "Index": 0x87,
-      "OffsetLocation": 0xB1A510,
-      "OldPointer": 0xB19F9B,
+      "Index": 135,
+      "OffsetLocation": 11642128,
+      "OldPointer": 11640731,
       "Old": "どすこいおとこ[00 FF]",
       "New": "Tough Guy[00 FF]"
     },
     {
-      "Index": 0x88,
-      "OffsetLocation": 0xB1A514,
-      "OldPointer": 0xB19FA4,
+      "Index": 136,
+      "OffsetLocation": 11642132,
+      "OldPointer": 11640740,
       "Old": "マッドタクシー[00 FF]",
       "New": "Mad Taxi[00 FF]"
     },
     {
-      "Index": 0x89,
-      "OffsetLocation": 0xB1A518,
-      "OldPointer": 0xB19FAD,
+      "Index": 137,
+      "OffsetLocation": 11642136,
+      "OldPointer": 11640749,
       "Old": "マニマニのあくま[00 FF]",
       "New": "Evil Mani-Mani[00 FF]"
     },
     {
-      "Index": 0x8A,
-      "OffsetLocation": 0xB1A51C,
-      "OldPointer": 0xB19FB7,
+      "Index": 138,
+      "OffsetLocation": 11642140,
+      "OldPointer": 11640759,
       "Old": "ジッパヒトカリゲ[00 FF]",
       "New": "Mr. Molecule[00 FF]"
     },
     {
-      "Index": 0x8B,
-      "OffsetLocation": 0xB1A520,
-      "OldPointer": 0xB19FC1,
+      "Index": 139,
+      "OffsetLocation": 11642144,
+      "OldPointer": 11640769,
       "Old": "オレナンカドーセ[00 FF]",
       "New": "Worthless Protoplasm[00 FF]"
     },
     {
-      "Index": 0x8C,
-      "OffsetLocation": 0xB1A524,
-      "OldPointer": 0xB19FCB,
+      "Index": 140,
+      "OffsetLocation": 11642148,
+      "OldPointer": 11640779,
       "Old": "みはりロボット[00 FF]",
       "New": "Sentry Robot[00 FF]"
     },
     {
-      "Index": 0x8D,
-      "OffsetLocation": 0xB1A528,
-      "OldPointer": 0xB19FD4,
+      "Index": 141,
+      "OffsetLocation": 11642152,
+      "OldPointer": 11640788,
       "Old": "じゅうそうびポーキー[00 FF]",
       "New": "Heavily Armed Pokey[00 FF]"
     },
     {
-      "Index": 0x8E,
-      "OffsetLocation": 0xB1A52C,
-      "OldPointer": 0xB19FE0,
+      "Index": 142,
+      "OffsetLocation": 11642156,
+      "OldPointer": 11640800,
       "Old": "PKおとこ[00 FF]",
       "New": "Psychic Psycho[00 FF]"
     },
     {
-      "Index": 0x8F,
-      "OffsetLocation": 0xB1A530,
-      "OldPointer": 0xB19FE7,
+      "Index": 143,
+      "OffsetLocation": 11642160,
+      "OldPointer": 11640807,
       "Old": "PKおとこ·かくうえ[00 FF]",
       "New": "Major Psychic Psycho[00 FF]"
     },
     {
-      "Index": 0x90,
-      "OffsetLocation": 0xB1A534,
-      "OldPointer": 0xB19FF3,
+      "Index": 144,
+      "OffsetLocation": 11642164,
+      "OldPointer": 11640819,
       "Old": "わるぶるモグラ[00 FF]",
       "New": "Mole Playing Rough[00 FF]"
     },
     {
-      "Index": 0x91,
-      "OffsetLocation": 0xB1A538,
-      "OldPointer": 0xB19FFC,
+      "Index": 145,
+      "OffsetLocation": 11642168,
+      "OldPointer": 11640828,
       "Old": "あばれゴート[00 FF]",
       "New": "Gruff Goat[00 FF]"
     },
     {
-      "Index": 0x92,
-      "OffsetLocation": 0xB1A53C,
-      "OldPointer": 0xB1A004,
+      "Index": 146,
+      "OffsetLocation": 11642172,
+      "OldPointer": 11640836,
       "Old": "ゆだんロボ[00 FF]",
       "New": "Clumsy Robot[00 FF]"
     },
     {
-      "Index": 0x93,
-      "OffsetLocation": 0xB1A540,
-      "OldPointer": 0xB1A00B,
+      "Index": 147,
+      "OffsetLocation": 11642176,
+      "OldPointer": 11640843,
       "Old": "あつくもえる てき[00 FF]",
       "New": "Soul Consuming Flame[00 FF]"
     },
     {
-      "Index": 0x94,
-      "OffsetLocation": 0xB1A544,
-      "OldPointer": 0xB1A016,
+      "Index": 148,
+      "OffsetLocation": 11642180,
+      "OldPointer": 11640854,
       "Old": "おにラフレシア[00 FF]",
       "New": "Demonic Petunia[00 FF]"
     },
     {
-      "Index": 0x95,
-      "OffsetLocation": 0xB1A548,
-      "OldPointer": 0xB1A01F,
+      "Index": 149,
+      "OffsetLocation": 11642184,
+      "OldPointer": 11640863,
       "Old": "ランブーブ[00 FF]",
       "New": "Ranboob[00 FF]"
     },
     {
-      "Index": 0x96,
-      "OffsetLocation": 0xB1A54C,
-      "OldPointer": 0xB1A026,
+      "Index": 150,
+      "OffsetLocation": 11642188,
+      "OldPointer": 11640870,
       "Old": "ひとくちユーホー[00 FF]",
       "New": "Li'l UFO[00 FF]"
     },
     {
-      "Index": 0x97,
-      "OffsetLocation": 0xB1A550,
-      "OldPointer": 0xB1A030,
+      "Index": 151,
+      "OffsetLocation": 11642192,
+      "OldPointer": 11640880,
       "Old": "こうきゅうユーホー[00 FF]",
       "New": "High-class UFO[00 FF]"
     },
     {
-      "Index": 0x98,
-      "OffsetLocation": 0xB1A554,
-      "OldPointer": 0xB1A03B,
+      "Index": 152,
+      "OffsetLocation": 11642196,
+      "OldPointer": 11640891,
       "Old": "ツナマン[00 FF]",
       "New": "Noose Man[00 FF]"
     },
     {
-      "Index": 0x99,
-      "OffsetLocation": 0xB1A558,
-      "OldPointer": 0xB1A041,
+      "Index": 153,
+      "OffsetLocation": 11642200,
+      "OldPointer": 11640897,
       "Old": "ロボ·ガロン[00 FF]",
       "New": "Robo-pump[00 FF]"
     },
     {
-      "Index": 0x9A,
-      "OffsetLocation": 0xB1A55C,
-      "OldPointer": 0xB1A049,
+      "Index": 154,
+      "OffsetLocation": 11642204,
+      "OldPointer": 11640905,
       "Old": "プレーンわに[00 FF]",
       "New": "Plain Crocodile[00 FF]"
     },
     {
-      "Index": 0x9B,
-      "OffsetLocation": 0xB1A560,
-      "OldPointer": 0xB1A051,
+      "Index": 155,
+      "OffsetLocation": 11642208,
+      "OldPointer": 11640913,
       "Old": "つよいわに[00 FF]",
       "New": "Strong Crocodile[00 FF]"
     },
     {
-      "Index": 0x9C,
-      "OffsetLocation": 0xB1A564,
-      "OldPointer": 0xB1A058,
+      "Index": 156,
+      "OffsetLocation": 11642212,
+      "OldPointer": 11640920,
       "Old": "キツイわに[00 FF]",
       "New": "Hard Crocodile[00 FF]"
     },
     {
-      "Index": 0x9D,
-      "OffsetLocation": 0xB1A568,
-      "OldPointer": 0xB1A05F,
+      "Index": 157,
+      "OffsetLocation": 11642216,
+      "OldPointer": 11640927,
       "Old": "よくないハエ[00 FF]",
       "New": "No Good Fly[00 FF]"
     },
     {
-      "Index": 0x9E,
-      "OffsetLocation": 0xB1A56C,
-      "OldPointer": 0xB1A067,
+      "Index": 158,
+      "OffsetLocation": 11642220,
+      "OldPointer": 11640935,
       "Old": "けっこうわるいハエ[00 FF]",
       "New": "Mostly Bad Fly[00 FF]"
     },
     {
-      "Index": 0x9F,
-      "OffsetLocation": 0xB1A570,
-      "OldPointer": 0xB1A072,
+      "Index": 159,
+      "OffsetLocation": 11642224,
+      "OldPointer": 11640946,
       "Old": "にくいカラス[00 FF]",
       "New": "Spiteful Crow[00 FF]"
     },
     {
-      "Index": 0xA0,
-      "OffsetLocation": 0xB1A574,
-      "OldPointer": 0xB1A07A,
+      "Index": 160,
+      "OffsetLocation": 11642228,
+      "OldPointer": 11640954,
       "Old": "かいいぬの なまえ[00 FF]",
       "New": "my pet[00 FF]"
     },
     {
-      "Index": 0xA1,
-      "OffsetLocation": 0xB1A578,
-      "OldPointer": 0xB1A085,
+      "Index": 161,
+      "OffsetLocation": 11642232,
+      "OldPointer": 11640965,
       "Old": "ポーキー[00 FF]",
       "New": "Pokey[00 FF]"
     },
     {
-      "Index": 0xA2,
-      "OffsetLocation": 0xB1A57C,
-      "OldPointer": 0xB1A08B,
+      "Index": 162,
+      "OffsetLocation": 11642236,
+      "OldPointer": 11640971,
       "Old": "ピッキー[00 FF]",
       "New": "Picky[00 FF]"
     },
     {
-      "Index": 0xA3,
-      "OffsetLocation": 0xB1A580,
-      "OldPointer": 0xB1A091,
+      "Index": 163,
+      "OffsetLocation": 11642240,
+      "OldPointer": 11640977,
       "Old": "トニー[00 FF]",
       "New": "Tony[00 FF]"
     },
     {
-      "Index": 0xA4,
-      "OffsetLocation": 0xB1A584,
-      "OldPointer": 0xB1A096,
+      "Index": 164,
+      "OffsetLocation": 11642244,
+      "OldPointer": 11640982,
       "Old": "バルーンモンキー[00 FF]",
       "New": "Bubble Monkey[00 FF]"
     },
     {
-      "Index": 0xA5,
-      "OffsetLocation": 0xB1A588,
-      "OldPointer": 0xB1A0A0,
+      "Index": 165,
+      "OffsetLocation": 11642248,
+      "OldPointer": 11640992,
       "Old": "ダンジョンおとこ[00 FF]",
       "New": "Dungeon Man[00 FF]"
     },
     {
-      "Index": 0xA6,
-      "OffsetLocation": 0xB1A58C,
-      "OldPointer": 0xB1A0AA,
+      "Index": 166,
+      "OffsetLocation": 11642252,
+      "OldPointer": 11641002,
       "Old": "フライングマン[00 FF]",
       "New": "Flying Man[00 FF]"
     },
     {
-      "Index": 0xA7,
-      "OffsetLocation": 0xB1A590,
-      "OldPointer": 0xB1A0B3,
+      "Index": 167,
+      "OffsetLocation": 11642256,
+      "OldPointer": 11641011,
       "Old": "ぬいぐるみ[00 FF]",
       "New": "Teddy Bear[00 FF]"
     },
     {
-      "Index": 0xA8,
-      "OffsetLocation": 0xB1A594,
-      "OldPointer": 0xB1A0BA,
+      "Index": 168,
+      "OffsetLocation": 11642260,
+      "OldPointer": 11641018,
       "Old": "つよいぬいぐるみ[00 FF]",
       "New": "Super Plush Bear[00 FF]"
     },
     {
-      "Index": 0xA9,
-      "OffsetLocation": 0xB1A598,
-      "OldPointer": 0xB1A0C4,
+      "Index": 169,
+      "OffsetLocation": 11642264,
+      "OldPointer": 11641028,
       "Old": "ゲップー[00 FF]",
       "New": "Master Belch[00 FF]"
     },
     {
-      "Index": 0xAA,
-      "OffsetLocation": 0xB1A59C,
-      "OldPointer": 0xB1A0CA,
+      "Index": 170,
+      "OffsetLocation": 11642268,
+      "OldPointer": 11641034,
       "Old": "らんぼうなしんじゃ[00 FF]",
       "New": "Insane Cultist[00 FF]"
     },
     {
-      "Index": 0xAB,
-      "OffsetLocation": 0xB1A5A0,
-      "OldPointer": 0xB1A0D5,
+      "Index": 171,
+      "OffsetLocation": 11642272,
+      "OldPointer": 11641045,
       "Old": "デパートのかいじん[00 FF]",
       "New": "Dept. Store Spook[00 FF]"
     },
     {
-      "Index": 0xAC,
-      "OffsetLocation": 0xB1A5A4,
-      "OldPointer": 0xB1A0E0,
+      "Index": 172,
+      "OffsetLocation": 11642276,
+      "OldPointer": 11641056,
       "Old": "♪のあくま[00 FF]",
       "New": "|'s Nightmare[00 FF]"
     },
     {
-      "Index": 0xAD,
-      "OffsetLocation": 0xB1A5A8,
-      "OldPointer": 0xB1A0E7,
+      "Index": 173,
+      "OffsetLocation": 11642280,
+      "OldPointer": 11641063,
       "Old": "カーペインターさん[00 FF]",
       "New": "Mr. Carpainter[00 FF]"
     },
     {
-      "Index": 0xAE,
-      "OffsetLocation": 0xB1A5AC,
-      "OldPointer": 0xB1A0F2,
+      "Index": 174,
+      "OffsetLocation": 11642284,
+      "OldPointer": 11641074,
       "Old": "カーボンドッグ[00 FF]",
       "New": "Carbon Dog[00 FF]"
     },
     {
-      "Index": 0xAF,
-      "OffsetLocation": 0xB1A5B0,
-      "OldPointer": 0xB1A0FB,
+      "Index": 175,
+      "OffsetLocation": 11642288,
+      "OldPointer": 11641083,
       "Old": "ハラペコザウルス[00 FF]",
       "New": "Chomposaur[00 FF]"
     },
     {
-      "Index": 0xB0,
-      "OffsetLocation": 0xB1A5B4,
-      "OldPointer": 0xB1A105,
+      "Index": 176,
+      "OffsetLocation": 11642292,
+      "OldPointer": 11641093,
       "Old": "きょだいアリ[00 FF]",
       "New": "Titanic Ant[00 FF]"
     },
     {
-      "Index": 0xB1,
-      "OffsetLocation": 0xB1A5B8,
-      "OldPointer": 0xB1A10D,
+      "Index": 177,
+      "OffsetLocation": 11642296,
+      "OldPointer": 11641101,
       "Old": "もっときょだいアリ[00 FF]",
       "New": "Gigantic Ant[00 FF]"
     },
     {
-      "Index": 0xB2,
-      "OffsetLocation": 0xB1A5BC,
-      "OldPointer": 0xB1A118,
+      "Index": 178,
+      "OffsetLocation": 11642300,
+      "OldPointer": 11641112,
       "Old": "きょだいキノコ[00 FF]",
       "New": "Shrooom![00 FF]"
     },
     {
-      "Index": 0xB3,
-      "OffsetLocation": 0xB1A5C0,
-      "OldPointer": 0xB1A121,
+      "Index": 179,
+      "OffsetLocation": 11642304,
+      "OldPointer": 11641121,
       "Old": "きょだいネズミ[00 FF]",
       "New": "Plague Rat of Doom[00 FF]"
     },
     {
-      "Index": 0xB4,
-      "OffsetLocation": 0xB1A5C4,
-      "OldPointer": 0xB1A12A,
+      "Index": 180,
+      "OffsetLocation": 11642308,
+      "OldPointer": 11641130,
       "Old": "きょだいモグラ[00 FF]",
       "New": "Mondo Mole[00 FF]"
     },
     {
-      "Index": 0xB5,
-      "OffsetLocation": 0xB1A5C8,
-      "OldPointer": 0xB1A133,
+      "Index": 181,
+      "OffsetLocation": 11642312,
+      "OldPointer": 11641139,
       "Old": "あなのぬし[00 FF]",
       "New": "Guardian Digger[00 FF]"
     },
     {
-      "Index": 0xB6,
-      "OffsetLocation": 0xB1A5CC,
-      "OldPointer": 0xB1A13A,
+      "Index": 182,
+      "OffsetLocation": 11642316,
+      "OldPointer": 11641146,
       "Old": "クラーケン[00 FF]",
       "New": "Kraken[00 FF]"
     },
     {
-      "Index": 0xB7,
-      "OffsetLocation": 0xB1A5D0,
-      "OldPointer": 0xB1A141,
+      "Index": 183,
+      "OffsetLocation": 11642320,
+      "OldPointer": 11641153,
       "Old": "クラーケンバイオ[00 FF]",
       "New": "Bionic Kraken[00 FF]"
     },
     {
-      "Index": 0xB8,
-      "OffsetLocation": 0xB1A5D4,
-      "OldPointer": 0xB1A14B,
+      "Index": 184,
+      "OffsetLocation": 11642324,
+      "OldPointer": 11641163,
       "Old": "スターマン[00 FF]",
       "New": "Starman[00 FF]"
     },
     {
-      "Index": 0xB9,
-      "OffsetLocation": 0xB1A5D8,
-      "OldPointer": 0xB1A152,
+      "Index": 185,
+      "OffsetLocation": 11642328,
+      "OldPointer": 11641170,
       "Old": "スーパースターマン[00 FF]",
       "New": "Starman Super[00 FF]"
     },
     {
-      "Index": 0xBA,
-      "OffsetLocation": 0xB1A5DC,
-      "OldPointer": 0xB1A15D,
+      "Index": 186,
+      "OffsetLocation": 11642332,
+      "OldPointer": 11641181,
       "Old": "スターマン·センゾ[00 FF]",
       "New": "Ghost of Starman[00 FF]"
     },
     {
-      "Index": 0xBB,
-      "OffsetLocation": 0xB1A5E0,
-      "OldPointer": 0xB1A168,
+      "Index": 187,
+      "OffsetLocation": 11642336,
+      "OldPointer": 11641192,
       "Old": "DXスターマン[00 FF]",
       "New": "Starman Deluxe[00 FF]"
     },
     {
-      "Index": 0xBC,
-      "OffsetLocation": 0xB1A5E4,
-      "OldPointer": 0xB1A171,
+      "Index": 188,
+      "OffsetLocation": 11642340,
+      "OldPointer": 11641201,
       "Old": "さいごのスターマン[00 FF]",
       "New": "Final Starman[00 FF]"
     },
     {
-      "Index": 0xBD,
-      "OffsetLocation": 0xB1A5E8,
-      "OldPointer": 0xB1A17C,
+      "Index": 189,
+      "OffsetLocation": 11642344,
+      "OldPointer": 11641212,
       "Old": "アーバンゾンビ[00 FF]",
       "New": "Urban Zombie[00 FF]"
     },
     {
-      "Index": 0xBE,
-      "OffsetLocation": 0xB1A5EC,
-      "OldPointer": 0xB1A185,
+      "Index": 190,
+      "OffsetLocation": 11642348,
+      "OldPointer": 11641221,
       "Old": "ダイヤモンドドッグ[00 FF]",
       "New": "Diamond Dog[00 FF]"
     },
     {
-      "Index": 0xBF,
-      "OffsetLocation": 0xB1A5F0,
-      "OldPointer": 0xB1A190,
+      "Index": 191,
+      "OffsetLocation": 11642352,
+      "OldPointer": 11641232,
       "Old": "ちょうねんじゅのめ[00 FF]",
       "New": "Trillionage Sprout[00 FF]"
     },
     {
-      "Index": 0xC0,
-      "OffsetLocation": 0xB1A5F4,
-      "OldPointer": 0xB1A19B,
+      "Index": 192,
+      "OffsetLocation": 11642356,
+      "OldPointer": 11641243,
       "Old": "ゲップー[00 FF]",
       "New": "Master Belch[00 FF]"
     },
     {
-      "Index": 0xC1,
-      "OffsetLocation": 0xB1A5F8,
-      "OldPointer": 0xB1A1A1,
+      "Index": 193,
+      "OffsetLocation": 11642360,
+      "OldPointer": 11641249,
       "Old": "でかぐちゃぐちゃ[00 FF]",
       "New": "Big Pile of Puke[00 FF]"
     },
     {
-      "Index": 0xC2,
-      "OffsetLocation": 0xB1A5FC,
-      "OldPointer": 0xB1A1AB,
+      "Index": 194,
+      "OffsetLocation": 11642364,
+      "OldPointer": 11641259,
       "Old": "かえってきたゲップー[00 FF]",
       "New": "Master Barf[00 FF]"
     },
     {
-      "Index": 0xC3,
-      "OffsetLocation": 0xB1A600,
-      "OldPointer": 0xB1A1B7,
+      "Index": 195,
+      "OffsetLocation": 11642368,
+      "OldPointer": 11641271,
       "Old": "うわきなダイス[00 FF]",
       "New": "Loaded Dice[00 FF]"
     },
     {
-      "Index": 0xC4,
-      "OffsetLocation": 0xB1A604,
-      "OldPointer": 0xB1A1C0,
+      "Index": 196,
+      "OffsetLocation": 11642372,
+      "OldPointer": 11641280,
       "Old": "てんぐどの[00 FF]",
       "New": "Tangoo[00 FF]"
     },
     {
-      "Index": 0xC5,
-      "OffsetLocation": 0xB1A608,
-      "OldPointer": 0xB1A1C7,
+      "Index": 197,
+      "OffsetLocation": 11642376,
+      "OldPointer": 11641287,
       "Old": "ばけテント[00 FF]",
       "New": "Boogey Tent[00 FF]"
     },
     {
-      "Index": 0xC6,
-      "OffsetLocation": 0xB1A60C,
-      "OldPointer": 0xB1A1CE,
+      "Index": 198,
+      "OffsetLocation": 11642380,
+      "OldPointer": 11641294,
       "Old": "やどかりデビル[00 FF]",
       "New": "Squatter Demon[00 FF]"
     },
     {
-      "Index": 0xC7,
-      "OffsetLocation": 0xB1A610,
-      "OldPointer": 0xB1A1D7,
+      "Index": 199,
+      "OffsetLocation": 11642384,
+      "OldPointer": 11641303,
       "Old": "トンチキさん[00 FF]",
       "New": "Everdred[00 FF]"
     },
     {
-      "Index": 0xC8,
-      "OffsetLocation": 0xB1A614,
-      "OldPointer": 0xB1A1DF,
+      "Index": 200,
+      "OffsetLocation": 11642388,
+      "OldPointer": 11641311,
       "Old": "でんげきバチバチ[00 FF]",
       "New": "Electro Specter[00 FF]"
     },
     {
-      "Index": 0xC9,
-      "OffsetLocation": 0xB1A618,
-      "OldPointer": 0xB1A1E9,
+      "Index": 201,
+      "OffsetLocation": 11642392,
+      "OldPointer": 11641321,
       "Old": "いなずま·あらし[00 FF]",
       "New": "Thunder and Storm[00 FF]"
     },
     {
-      "Index": 0xCA,
-      "OffsetLocation": 0xB1A61C,
-      "OldPointer": 0xB1A1F3,
+      "Index": 202,
+      "OffsetLocation": 11642396,
+      "OldPointer": 11641331,
       "Old": "フランキースタイン2[00 FF]",
       "New": "Frankystein Mark II[00 FF]"
     },
     {
-      "Index": 0xCB,
-      "OffsetLocation": 0xB1A620,
-      "OldPointer": 0xB1A1FF,
+      "Index": 203,
+      "OffsetLocation": 11642400,
+      "OldPointer": 11641343,
       "Old": "マニマニのあくま[00 FF]",
       "New": "Evil Mani-Mani[00 FF]"
     },
     {
-      "Index": 0xCC,
-      "OffsetLocation": 0xB1A624,
-      "OldPointer": 0xB1A209,
+      "Index": 204,
+      "OffsetLocation": 11642404,
+      "OldPointer": 11641353,
       "Old": "じゅうそうびポーキー[00 FF]",
       "New": "Heavily Armed Pokey[00 FF]"
     },
     {
-      "Index": 0xCD,
-      "OffsetLocation": 0xB1A628,
-      "OldPointer": 0xB1A215,
+      "Index": 205,
+      "OffsetLocation": 11642408,
+      "OldPointer": 11641365,
       "Old": "ゆだんロボ[00 FF]",
       "New": "Clumsy Robot[00 FF]"
     },
     {
-      "Index": 0xCE,
-      "OffsetLocation": 0xB1A62C,
-      "OldPointer": 0xB1A21C,
+      "Index": 206,
+      "OffsetLocation": 11642412,
+      "OldPointer": 11641372,
       "Old": "ロボ·ガロン[00 FF]",
       "New": "Robo-pump[00 FF]"
     },
     {
-      "Index": 0xCF,
-      "OffsetLocation": 0xB1A630,
-      "OldPointer": 0xB1A224,
+      "Index": 207,
+      "OffsetLocation": 11642416,
+      "OldPointer": 11641380,
       "Old": "デヘラー[00 FF]",
       "New": "Foppy[00 FF]"
     },
     {
-      "Index": 0xD0,
-      "OffsetLocation": 0xB1A634,
-      "OldPointer": 0xB1A22A,
+      "Index": 208,
+      "OffsetLocation": 11642420,
+      "OldPointer": 11641386,
       "Old": "せきぞうのもとじめ[00 FF]",
       "New": "Guardian General[00 FF]"
     },
     {
-      "Index": 0xD1,
-      "OffsetLocation": 0xB1A638,
-      "OldPointer": 0xB1A235,
+      "Index": 209,
+      "OffsetLocation": 11642424,
+      "OldPointer": 11641397,
       "Old": "アリアリブラック[00 FF]",
       "New": "Black Antoid[00 FF]"
     },
     {
-      "Index": 0xD2,
-      "OffsetLocation": 0xB1A63C,
-      "OldPointer": 0xB1A23F,
+      "Index": 210,
+      "OffsetLocation": 11642428,
+      "OldPointer": 11641407,
       "Old": "あるくキノコ[00 FF]",
       "New": "Struttin' Evil Mushroom[00 FF]"
     },
     {
-      "Index": 0xD3,
-      "OffsetLocation": 0xB1A640,
-      "OldPointer": 0xB1A247,
+      "Index": 211,
+      "OffsetLocation": 11642432,
+      "OldPointer": 11641415,
       "Old": "おんしらずなイヌ[00 FF]",
       "New": "Runaway Dog[00 FF]"
     },
     {
-      "Index": 0xD4,
-      "OffsetLocation": 0xB1A644,
-      "OldPointer": 0xB1A251,
+      "Index": 212,
+      "OffsetLocation": 11642436,
+      "OldPointer": 11641425,
       "Old": "ビッグフット[00 FF]",
       "New": "Cave Boy[00 FF]"
     },
     {
-      "Index": 0xD5,
-      "OffsetLocation": 0xB1A648,
-      "OldPointer": 0xB1A259,
+      "Index": 213,
+      "OffsetLocation": 11642440,
+      "OldPointer": 11641433,
       "Old": "ミニミニユーレイ[00 FF]",
       "New": "Tiny Li'l Ghost[00 FF]"
     },
     {
-      "Index": 0xD6,
-      "OffsetLocation": 0xB1A64C,
-      "OldPointer": 0xB1A263,
+      "Index": 214,
+      "OffsetLocation": 11642444,
+      "OldPointer": 11641443,
       "Old": "スターマンのむすこ[00 FF]",
       "New": "Starman Junior[00 FF]"
     },
     {
-      "Index": 0xD7,
-      "OffsetLocation": 0xB1A650,
-      "OldPointer": 0xB1A26E,
+      "Index": 215,
+      "OffsetLocation": 11642448,
+      "OldPointer": 11641454,
       "Old": "ブンブーン[00 FF]",
       "New": "Buzz Buzz[00 FF]"
     },
     {
-      "Index": 0xD8,
-      "OffsetLocation": 0xB1A654,
-      "OldPointer": 0xB1A275,
+      "Index": 216,
+      "OffsetLocation": 11642452,
+      "OldPointer": 11641461,
       "Old": "じゅうそうびポーキー[00 FF]",
       "New": "Heavily Armed Pokey[00 FF]"
     },
     {
-      "Index": 0xD9,
-      "OffsetLocation": 0xB1A658,
-      "OldPointer": 0xB1A281,
+      "Index": 217,
+      "OffsetLocation": 11642456,
+      "OldPointer": 11641473,
       "Old": "じゅうそうびポーキー[00 FF]",
       "New": "Heavily Armed Pokey[00 FF]"
     },
     {
-      "Index": 0xDA,
-      "OffsetLocation": 0xB1A65C,
-      "OldPointer": 0xB1A28D,
+      "Index": 218,
+      "OffsetLocation": 11642460,
+      "OldPointer": 11641485,
       "Old": "ギーグ[00 FF]",
       "New": "Giygas[00 FF]"
     },
     {
-      "Index": 0xDB,
-      "OffsetLocation": 0xB1A660,
-      "OldPointer": 0xB1A292,
+      "Index": 219,
+      "OffsetLocation": 11642464,
+      "OldPointer": 11641490,
       "Old": "ギーグ[00 FF]",
       "New": "Giygas[00 FF]"
     },
     {
-      "Index": 0xDC,
-      "OffsetLocation": 0xB1A664,
-      "OldPointer": 0xB1A297,
+      "Index": 220,
+      "OffsetLocation": 11642468,
+      "OldPointer": 11641495,
       "Old": "ギーグ[00 FF]",
       "New": "Giygas[00 FF]"
     },
     {
-      "Index": 0xDD,
-      "OffsetLocation": 0xB1A668,
-      "OldPointer": 0xB1A29C,
+      "Index": 221,
+      "OffsetLocation": 11642472,
+      "OldPointer": 11641500,
       "Old": "ギーグ[00 FF]",
       "New": "Giygas[00 FF]"
     },
     {
-      "Index": 0xDE,
-      "OffsetLocation": 0xB1A66C,
-      "OldPointer": 0xB1A2A1,
+      "Index": 222,
+      "OffsetLocation": 11642476,
+      "OldPointer": 11641505,
       "Old": "どろつきゾンビ[00 FF]",
       "New": "Farm Zombie[00 FF]"
     },
     {
-      "Index": 0xDF,
-      "OffsetLocation": 0xB1A670,
-      "OldPointer": 0xB1A2AA,
+      "Index": 223,
+      "OffsetLocation": 11642480,
+      "OldPointer": 11641514,
       "Old": "おたずねものムシ[00 FF]",
       "New": "Criminal Caterpillar[00 FF]"
     },
     {
-      "Index": 0xE0,
-      "OffsetLocation": 0xB1A674,
-      "OldPointer": 0xB1A2B4,
+      "Index": 224,
+      "OffsetLocation": 11642484,
+      "OldPointer": 11641524,
       "Old": "ジロリンガ[00 FF]",
       "New": "Evil Eye[00 FF]"
     },
     {
-      "Index": 0xE1,
-      "OffsetLocation": 0xB1A678,
-      "OldPointer": 0xB1A2BB,
+      "Index": 225,
+      "OffsetLocation": 11642488,
+      "OldPointer": 11641531,
       "Old": "マジックバタフライ[00 FF]",
       "New": "Magic Butterfly[00 FF]"
     },
     {
-      "Index": 0xE2,
-      "OffsetLocation": 0xB1A67C,
-      "OldPointer": 0xB1A2C6,
+      "Index": 226,
+      "OffsetLocation": 11642492,
+      "OldPointer": 11641542,
       "Old": "オエップ[00 FF]",
       "New": "Mini Barf[00 FF]"
     },
     {
-      "Index": 0xE3,
-      "OffsetLocation": 0xB1A680,
-      "OldPointer": 0xB1A2CC,
+      "Index": 227,
+      "OffsetLocation": 11642496,
+      "OldPointer": 11641548,
       "Old": "レアおたずねものムシ[00 FF]",
       "New": "Master Criminal Worm[00 FF]"
     },
     {
-      "Index": 0xE4,
-      "OffsetLocation": 0xB1A684,
-      "OldPointer": 0xB1A2D8,
+      "Index": 228,
+      "OffsetLocation": 11642500,
+      "OldPointer": 11641560,
       "Old": "ストロングしょちょう[00 FF]",
       "New": "Captain Strong[00 FF]"
     },
     {
-      "Index": 0xE5,
-      "OffsetLocation": 0xB1A688,
-      "OldPointer": 0xB1A2E4,
+      "Index": 229,
+      "OffsetLocation": 11642504,
+      "OldPointer": 11641572,
       "Old": "ギーグ[00 FF]",
       "New": "Giygas[00 FF]"
     },
     {
-      "Index": 0xE6,
-      "OffsetLocation": 0xB1A68C,
-      "OldPointer": 0xB1A2E9,
+      "Index": 230,
+      "OffsetLocation": 11642508,
+      "OldPointer": 11641577,
       "Old": "ゆだんロボ[00 FF]",
       "New": "Clumsy Robot[00 FF]"
     }
