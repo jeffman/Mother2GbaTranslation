@@ -1116,19 +1116,19 @@
 ^L1115^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  with her whole heart![02 FF][00 FF]
 ^L1116^@[9F FF] is on guard.[02 FF][00 FF]
 ^L1117^[FC FF 3B 00][82 FF _L3463_][FC FF 08 00][82 FF _L3464_][D4 FF 37 00]@[9F FF] tried[01 FF][C1 FF][87 FF]  [2D FF]![02 FF][80 FF _L3465_]
-^L1118^
-^L1119^
-^L1120^
-^L1121^
-^L1122^
-^L1123^
-^L1124^
-^L1125^
-^L1126^
-^L1127^
-^L1128^
-^L1129^
-^L1130^
+^L1118^[D4 FF 19 00]@[9F FF] called[01 FF]  for help![D4 FF 48 00][02 FF][00 FF]
+^L1119^[D4 FF 19 00]@[9F FF] sowed[01 FF]  some seeds around itself![D4 FF 48 00][02 FF][00 FF]
+^L1120^[D4 FF 19 00]@[9F FF] exploded[01 FF]  into bits![D4 FF 5B 00][02 FF][1B FF 1E 00][00 FF]
+^L1121^[D4 FF 19 00]@[9F FF] burst[01 FF]  into flames![D4 FF 4B 00][02 FF][1B FF 1E 00][00 FF]
+^L1122^@[9F FF][C1 FF][82 FF _L3506_][87 FF] stole a [90 FF 00][1A FF 02 00][02 FF]  in the confusion of the battle![02 FF][00 FF]
+^L1123^[D4 FF 19 00]@[9F FF] froze[01 FF]  you in time![C4 FF 00 04][02 FF][1B FF 01 00][00 FF]
+^L1124^[D4 FF 19 00]@[9F FF] glared[01 FF]  with its eerie eyes![02 FF][1B FF 01 00][00 FF]
+^L1125^[D4 FF 19 00]@[9F FF] generated[01 FF]  a mysterious electric field![D4 FF 96 00][02 FF][1B FF 01 00][00 FF]
+^L1126^[D4 FF 19 00]@[9F FF] stumbled,[01 FF]  but fired a strange beam.[D4 FF 96 00][02 FF][1B FF 01 00][00 FF]
+^L1127^[D4 FF 19 00]@[9F FF] burped[01 FF]  and blew his nauseating breath at you![D4 FF 4E 00][02 FF][1B FF 01 00][00 FF]
+^L1128^[D4 FF 19 00]@[9F FF] stung[01 FF]  with its poison stinger![02 FF][1B FF 01 00][00 FF]
+^L1129^[D4 FF 19 00]@[9F FF] gave[01 FF]  the kiss of death![02 FF][1B FF 01 00][00 FF]
+^L1130^[D4 FF 19 00]@[9F FF] exhaled[01 FF]  arctic-cold breath![D4 FF 51 00][02 FF][1B FF 01 00][00 FF]
 ^L1131^
 ^L1132^
 ^L1133^
@@ -1455,7 +1455,7 @@
 ^L1454^ <Counter-PSI unit>[02 FF][86 FF _L3968_][02 FF]@Contains the enemy's PSI[01 FF]  during a battle.[02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1455^
 ^L1456^[80 FF _L1538_]
-^L1457^
+^L1457^ <Sudden guts pill>[02 FF]@Doubles your guts during battle.[02 FF]@However, after a battle,[01 FF]  your guts return to normal.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1458^
 ^L1459^
 ^L1460^
@@ -1465,15 +1465,15 @@
 ^L1464^
 ^L1465^ <Yogurt dispenser>[02 FF][86 FF _L3968_][02 FF]@Invented by Apple Kid.[02 FF]@If used during combat,[01 FF]  some damage will be dealt[01 FF]  to the enemy,[02 FF]@though it's not understood[01 FF]  why this happens...[01 FF]@it's just yogurt after all...[02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1466^
-^L1467^
+^L1467^ <Stag beetle>[02 FF]@By throwing this at the enemy[01 FF]  during battle,[02 FF]@the enemy is shocked and[01 FF]  stops moving.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1468^
 ^L1469^
 ^L1470^
 ^L1471^
-^L1472^
+^L1472^ <Insecticide spray>[02 FF]@Deals 100 points of damage to[01 FF]  any bug  when used[01 FF]  during combat.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1473^
-^L1474^
-^L1475^
+^L1474^ <Rust promoter>[02 FF]@Quickly rusts metallic enemies[01 FF]  when used during battle.[02 FF]@The enemy will take about[01 FF]  200 points of damage.[02 FF][86 FF _L3971_][1D FF][00 FF]
+^L1475^ <Rust promoter DX>[02 FF]@Causes almost instantaneous[01 FF]  rusting when used on metallic[01 FF]  enemies during battle.[02 FF]@The enemy takes about[01 FF]  400 points of damage.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1476^
 ^L1477^ <Shield killer>[02 FF][86 FF _L3968_][02 FF]@Breaks through the enemy's[01 FF]  shield during a battle.[02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1478^
@@ -1494,29 +1494,29 @@
 ^L1493^
 ^L1494^
 ^L1495^ <Super plush bear>[02 FF]@[86 FF _L3945_][1D FF][00 FF]
-^L1496^
-^L1497^
+^L1496^ <Defense shower>[02 FF]@Increases the Defense of[01 FF]  all the friends.[02 FF][86 FF _L3939_][02 FF][86 FF _L3969_][1D FF][00 FF]
+^L1497^ <Defense spray>[02 FF]@Increase one of the friends[01 FF]  Defense during battle.[02 FF][86 FF _L3939_][02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1498^
 ^L1499^
 ^L1500^
-^L1501^
+^L1501^ <Bag of Dragonite>[02 FF]@If you sprinkle the powder on[01 FF]  one of your friends[01 FF]  during battle,[02 FF]@that friend turns into a dragon[01 FF]  and attacks all enemies.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1502^
 ^L1503^ <Teddy bear>[02 FF]@[86 FF _L3945_][1D FF][00 FF]
 ^L1504^ <Slime generator>[02 FF][86 FF _L3968_][02 FF]@Sprays a sticky substance that[01 FF]  stops the enemy from moving.[02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1505^ <Jar of fly honey>[02 FF]@Belch's most favorite food[01 FF]  in the whole world.[02 FF]@However... it smells REALLY,[01 FF]  really nasty! We're talkin'[01 FF]  major stinkage here![1D FF][00 FF]
 ^L1506^ <Bazooka>[02 FF][86 FF _L3968_][02 FF][86 FF _L3970_][02 FF]@Because of its explosive power,[02 FF]@it may effect others besides[01 FF]  the target creature.[02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1507^ <Backstage pass>[02 FF]@It allows you go back stage[01 FF]  at the Chaos Theater.[02 FF]@Of course, you can also watch[01 FF]  the show using the pass.[1D FF][00 FF]
-^L1508^
+^L1508^ <Toothbrush>[02 FF]@Can be used during battle.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1509^
-^L1510^
+^L1510^ <Handbag strap>[02 FF]@When used as a whip[01 FF]  during battle,[02 FF]@the enemy takes[01 FF]  enough damage to stop moving[01 FF]  for a short time.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1511^
 ^L1512^
-^L1513^
+^L1513^ <Pharaoh's curse>[02 FF]@An ectoplasmic ooze is[01 FF]  disgorged out of the dreadful[01 FF]  box,[02 FF]@and the enemy[01 FF]  may be poisoned.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1514^ <Pak of bubble gum>[02 FF]@This is the[01 FF]  Balloon Monkey's favorite.[02 FF]@It will not help you recover, but[02 FF]@you'll also never run out,[01 FF]  'cause it's a super jumbo pack![1D FF][00 FF]
 ^L1515^
-^L1516^ <Franklin badge>[02 FF]@By keeping it as one of your items,[02 FF]@it deflects a lightning attack back at the attacker.[1D FF][00 FF]
+^L1516^ <Franklin badge>[02 FF]@By keeping it as[01 FF]  one of your items,[02 FF]@it deflects a lightning attack[01 FF]  back at the attacker.[1D FF][00 FF]
 ^L1517^ <Protractor>[02 FF]@You can even use this[01 FF]  during battle![02 FF][86 FF _L3969_][1D FF][00 FF]
-^L1518^
+^L1518^ <Pair of dirty socks>[02 FF]@When used during battle,[01 FF]  the enemy gets so nauseous[01 FF]  from the ripe odor,[02 FF]@they cannot fight.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1519^
 ^L1520^ <Snake bag>[02 FF]@During battle, a snake pops[01 FF]  out of the bag and bites[01 FF]  the enemy.[02 FF]@There are thousands of small[01 FF]  snakes living in the bag,[02 FF]@so you should be able to use it[01 FF]  over and over again.[02 FF]@It can possibly poison[01 FF]  the enemy, too.[1D FF][00 FF]
 ^L1521^ <Bottle rocket>[02 FF][86 FF _L3968_][02 FF][86 FF _L3970_][02 FF][86 FF _L3971_][1D FF][00 FF]
@@ -1562,7 +1562,7 @@
 ^L1561^
 ^L1562^
 ^L1563^
-^L1564^
+^L1564^ <Letter from mom>[02 FF]@A letter from Mom to[01 FF]  [90 FF 01][1A FF 01 00].[1D FF][00 FF]
 ^L1565^
 ^L1566^
 ^L1567^
@@ -3493,7 +3493,7 @@
 ^L3503^[1B FF 14 00][D4 FF 50 00][F0 FF 00 00 03 00][1B FF 28 00][F0 FF 2F 00 00 00][1B FF 80 00][00 FF]
 ^L3504^
 ^L3505^
-^L3506^
+^L3506^ tried to[01 FF]  steal something, but failed![02 FF][00 FF]
 ^L3507^
 ^L3508^
 ^L3509^
@@ -3913,7 +3913,7 @@
 ^L3936^@Cuts damage in half and some of the blocked[01 FF]  damage is dealt back to the enemy.[00 FF]
 ^L3937^@It blocks an enemy's PSI attack.[00 FF]
 ^L3938^@It reflects an enemy's PSI attack back at the[01 FF]  attacker.[00 FF]
-^L3939^@It is most effective if you use this power[01 FF]  multiple times to <layer> the effect.[00 FF]
+^L3939^@It is most effective if you use[01 FF]  this power multiple times to[01 FF]  <layer> the effect.[00 FF]
 ^L3940^[00 FF]
 ^L3941^[00 FF]
 ^L3942^ <numbed> condition.[00 FF]
