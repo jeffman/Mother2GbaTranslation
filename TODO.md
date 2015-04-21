@@ -11,7 +11,7 @@
 ### M2 - main script
 - [X] Produce blank skeleton for main script (all strings in the game point to "@Test")
 - [ ] Translate battle actions
-- [ ] Translate PSI help text
+- [X] Translate PSI help text
 - [ ] Translate item help text
 - [ ] Translate TPT text
 - [ ] Translate object text (doors, etc.)
@@ -19,6 +19,7 @@
 - [ ] Translate dad text
 - [ ] Translate prayer text
 - [ ] Translate enemy encounter/death text
+- [ ] Translate Lumine Hall text
 
 ### M2 - main script tool
 - [X] Start a GUI tool to help the main script translation
@@ -42,7 +43,10 @@
 - [ ] Add big font (flyovers)
 - [ ] VWF for Saturn font
 - [ ] VWF for small font
-- [ ] VWF for big font (already implemented this in a past project, just need to migrate it)
+- [ ] VWF for big font
+  - [ ] Flyovers (already implemented this in a past project, just need to migrate it)
+  - [ ] Coffee/tea scenes
+- [ ] VWF for Lumine Hall text
 - [ ] BUG: jump control codes seem to be resetting pixel X values when they shouldn't
 - [ ] TODO: replace load/store chains with ldmia/stmia
 
