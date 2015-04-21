@@ -11,6 +11,7 @@
 ### M2 - main script
 - [X] Produce blank skeleton for main script (all strings in the game point to "@Test")
 - [ ] Translate battle actions
+  - [ ] Add pronoun control codes
 - [X] Translate PSI help text
 - [ ] Translate item help text
 - [ ] Translate TPT text
@@ -47,7 +48,8 @@
   - [ ] Flyovers (already implemented this in a past project, just need to migrate it)
   - [ ] Coffee/tea scenes
 - [ ] VWF for Lumine Hall text
-- [ ] BUG: jump control codes seem to be resetting pixel X values when they shouldn't
+- [ ] Pronoun control codes
+- [X] BUG: jump control codes seem to be resetting pixel X values when they shouldn't
 - [ ] TODO: replace load/store chains with ldmia/stmia
 
 ### M2 - hacking (misc, lower priority)
