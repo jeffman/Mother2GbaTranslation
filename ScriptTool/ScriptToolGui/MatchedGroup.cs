@@ -50,11 +50,11 @@ namespace ScriptToolGui
             
             if (Refs.ContainsKey(Game.Eb))
             {
-                parts.Add(String.Format("[{0:X3}] EB: {1}", Refs[Game.Eb].Index, Refs[Game.Eb].Label));
+                parts.Add(String.Format("[{0:D4}] EB: {1}", Refs[Game.Eb].Index, Refs[Game.Eb].Label));
             }
             if (Refs.ContainsKey(Game.M12))
             {
-                parts.Add(String.Format("[{0:X3}] M12: {1}", Refs[Game.M12].Index, Refs[Game.M12].Label));
+                parts.Add(String.Format("[{0:D4}] M12: {1}", Refs[Game.M12].Index, Refs[Game.M12].Label));
             }
 
             return String.Join(" / ", parts.ToArray());
