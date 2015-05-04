@@ -15,8 +15,10 @@ namespace ScriptToolGui
 {
     public partial class MainForm : Form
     {
+        // Config
+        Config config;
+
         // Static/const members
-        const string workingFolder = @"..\..\..\..\working";
         static Compiler m12Compiler = new Compiler(M12ControlCode.Codes, (rom, address) => rom[address + 1] == 0xFF);
         static Compiler ebCompiler = new Compiler(EbControlCode.Codes, (rom, address) => rom[address] < 0x20);
         static readonly Game[] validGames;
@@ -72,7 +74,9 @@ namespace ScriptToolGui
         public MainForm()
         {
             InitializeComponent();
-            
+
+            config = Config.Read("config.json");
+
             previewer.M12Compiler = m12Compiler;
             previewer.CharLookup = ebCharLookup;
 
@@ -201,15 +205,15 @@ namespace ScriptToolGui
 
         private MainStringRef[] ImportStringRefs(string fileName)
         {
-            string jsonString = File.ReadAllText(Path.Combine(workingFolder, fileName));
+            string jsonString = File.ReadAllText(Path.Combine(config.WorkingFolder, fileName));
             return JsonConvert.DeserializeObject<MainStringRef[]>(jsonString);
         }
 
         private void ImportAllStrings()
         {
-            string m12FileName = Path.Combine(workingFolder, "m12-strings.txt");
-            string m12EnglishFileName = Path.Combine(workingFolder, "m12-strings-english.txt");
-            string ebFileName = Path.Combine(workingFolder, "eb-strings.txt");
+            string m12FileName = Path.Combine(config.WorkingFolder, "m12-strings.txt");
+            string m12EnglishFileName = Path.Combine(config.WorkingFolder, "m12-strings-english.txt");
+            string ebFileName = Path.Combine(config.WorkingFolder, "eb-strings.txt");
 
             m12Strings = ImportStrings(m12FileName);
             m12StringsEnglish = ImportStrings(m12EnglishFileName);
@@ -526,7 +530,7 @@ namespace ScriptToolGui
             {
                 //if (changesMade)
                 {
-                    using (StreamWriter sw = File.CreateText(Path.Combine(workingFolder, "m12-strings-english.txt")))
+                    using (StreamWriter sw = File.CreateText(Path.Combine(config.WorkingFolder, "m12-strings-english.txt")))
                     {
                         foreach (string line in m12StringsEnglish)
                         {

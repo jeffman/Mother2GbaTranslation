@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config.cs" />
     <Compile Include="IndexLabel.cs" />
     <Compile Include="IndexMapping.cs" />
     <Compile Include="IndexPair.cs" />
@@ -85,6 +86,9 @@
     <EmbeddedResource Include="StringPreviewer.resx">
       <DependentUpon>StringPreviewer.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
