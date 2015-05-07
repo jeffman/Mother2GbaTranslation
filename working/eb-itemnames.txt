@@ -1,0 +1,253 @@
+[00] Null
+[01] Franklin badge
+[02] Teddy bear
+[03] Super plush bear
+[04] Broken machine
+[05] Broken gadget
+[06] Broken air gun
+[07] Broken spray can
+[08] Broken laser
+[09] Broken iron
+[0A] Broken pipe
+[0B] Broken cannon
+[0C] Broken tube
+[0D] Broken bazooka
+[0E] Broken trumpet
+[0F] Broken harmonica
+[10] Broken antenna
+[11] Cracked bat
+[12] Tee ball bat
+[13] Sand lot bat
+[14] Minor league bat
+[15] Mr. Baseball bat
+[16] Big league bat
+[17] Hall of fame bat
+[18] Magicant bat
+[19] Legendary bat
+[1A] Gutsy bat
+[1B] Casey bat
+[1C] Fry pan
+[1D] Thick fry pan
+[1E] Deluxe fry pan
+[1F] Chef's fry pan
+[20] French fry pan
+[21] Magic fry pan
+[22] Holy fry pan
+[23] Sword of kings
+[24] Pop gun
+[25] Stun gun
+[26] Toy air gun
+[27] Magnum air gun
+[28] Zip gun
+[29] Laser gun
+[2A] Hyper beam
+[2B] Crusher beam
+[2C] Spectrum beam
+[2D] Death ray
+[2E] Baddest beam
+[2F] Moon beam gun
+[30] Gaia beam
+[31] Yo-yo
+[32] Slingshot
+[33] Bionic slingshot
+[34] Trick yo-yo
+[35] Combat yo-yo
+[36] Travel charm
+[37] Great charm
+[38] Crystal charm
+[39] Rabbit's foot
+[3A] Flame pendant
+[3B] Rain pendant
+[3C] Night pendant
+[3D] Sea pendant
+[3E] Star pendant
+[3F] Cloak of kings
+[40] Cheap bracelet
+[41] Copper bracelet
+[42] Silver bracelet
+[43] Gold bracelet
+[44] Platinum band
+[45] Diamond band
+[46] Pixie's bracelet
+[47] Cherub's band
+[48] Goddess band
+[49] Bracer of kings
+[4A] Baseball cap
+[4B] Holmes hat
+[4C] Mr. Baseball cap
+[4D] Hard hat
+[4E] Ribbon
+[4F] Red ribbon
+[50] Goddess ribbon
+[51] Coin of slumber
+[52] Coin of defense
+[53] Lucky coin
+[54] Talisman coin
+[55] Shiny coin
+[56] Souvenir coin
+[57] Diadem of kings
+[58] Cookie
+[59] Bag of fries
+[5A] Hamburger
+[5B] Boiled egg
+[5C] Fresh egg
+[5D] Picnic lunch
+[5E] Pasta di Summers
+[5F] Pizza
+[60] Chef's special
+[61] Large pizza
+[62] PSI caramel
+[63] Magic truffle
+[64] Brain food lunch
+[65] Rock candy
+[66] Croissant
+[67] Bread roll
+[68] Pak of bubble gum
+[69] Jar of fly honey
+[6A] Can of fruit juice
+[6B] Royal iced tea
+[6C] Protein drink
+[6D] Kraken soup
+[6E] Bottle of water
+[6F] Cold remedy
+[70] Vial of serum
+[71] IQ capsule
+[72] Guts capsule
+[73] Speed capsule
+[74] Vital capsule
+[75] Luck capsule
+[76] Ketchup packet
+[77] Sugar packet
+[78] Tin of cocoa
+[79] Carton of cream
+[7A] Sprig of parsley
+[7B] Jar of hot sauce
+[7C] Salt packet
+[7D] Backstage pass
+[7E] Jar of delisauce
+[7F] Wet towel
+[80] Refreshing herb
+[81] Secret herb
+[82] Horn of life
+[83] Counter-PSI unit
+[84] Shield killer
+[85] Bazooka
+[86] Heavy bazooka
+[87] HP-sucker
+[88] Hungry HP-sucker
+[89] Xterminator spray
+[8A] Slime generator
+[8B] Yogurt dispenser
+[8C] Ruler
+[8D] Snake bag
+[8E] Mummy wrap
+[8F] Protractor
+[90] Bottle rocket
+[91] Big bottle rocket
+[92] Multi bottle rocket
+[93] Bomb
+[94] Super bomb
+[95] Insecticide spray
+[96] Rust promoter
+[97] Rust promoter DX
+[98] Pair of dirty socks
+[99] Stag beetle
+[9A] Toothbrush
+[9B] Handbag strap
+[9C] Pharaoh's curse
+[9D] Defense shower
+[9E] Letter from mom
+[9F] Sudden guts pill
+[A0] Bag of Dragonite
+[A1] Defense spray
+[A2] Piggy nose
+[A3] For Sale sign
+[A4] Shyness book
+[A5] Picture postcard
+[A6] King banana
+[A7] Letter from Tony
+[A8] Chick
+[A9] Chicken
+[AA] Key to the shack
+[AB] Key to the cabin
+[AC] Bad key machine
+[AE] Zombie paper
+[AF] Hawk eye
+[B0] Bicycle
+[B1] ATM card
+[B2] Show ticket
+[B3] Letter from kids
+[B4] Wad of bills
+[B5] Receiver phone
+[B6] Diamond
+[B7] Signed banana
+[B8] Pencil eraser
+[B9] Hieroglyph copy
+[BA] Meteotite
+[BB] Contact lens
+[BC] Hand-Aid
+[BD] Trout yogurt
+[BE] Banana
+[BF] Calorie stick
+[C0] Key to the tower
+[C1] Meteorite piece
+[C2] Earth pendant
+[C3] Neutralizer
+[C4] Sound stone
+[C5] Exit mouse
+[C6] Gelato de resort
+[C7] Snake
+[C8] Viper
+[C9] Brain stone
+[CA] Town map
+[CC] Suporma
+[CD] Key to the locker
+[CE] Insignificant item
+[CF] Magic tart
+[D0] Tiny ruby
+[D1] Monkey's love
+[D2] Eraser eraser
+[D3] Tendakraut
+[D4] T-rex's bat
+[D5] Big league bat
+[D6] Ultimate bat
+[D7] Double beam
+[D8] Platinum band
+[D9] Diamond band
+[DA] Defense ribbon
+[DB] Talisman ribbon
+[DC] Saturn ribbon
+[DD] Coin of silence
+[DE] Charm coin
+[DF] Cup of noodles
+[E0] Skip sandwich
+[E1] Skip sandwich DX
+[E2] Lucky sandwich
+[E2] Lucky sandwich
+[E3] Lucky sandwich
+[E4] Lucky sandwich
+[E5] Lucky sandwich
+[E6] Lucky sandwich
+[E7] Lucky sandwich
+[E8] Cup of coffee
+[E9] Double burger
+[EA] Peanut cheese bar
+[EB] Piggy jelly
+[EC] Bowl of rice gruel
+[ED] Bean croquette
+[EE] Molokheiya soup
+[EF] Plain roll
+[F0] Kabob
+[F1] Plain yogurt
+[F2] Beef jerky
+[F3] Mammoth burger
+[F4] Spicy jerky
+[F5] Luxury jerky
+[F6] Bottle of DXwater
+[F7] Magic pudding
+[F8] Non-stick frypan
+[F9] Mr. Saturn coin
+[FA] Meteornium
+[FB] Popsicle
+[FC] Cup of lifenoodles
+[FD] Carrot key
