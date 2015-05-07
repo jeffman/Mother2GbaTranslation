@@ -55,6 +55,9 @@ namespace ScriptToolGui
         Stack<NavigationEntry> navigationStack = new Stack<NavigationEntry>();
         MatchedGroupCollection currentCollection = null;
 
+        // Misc
+        bool badStart = false;
+
         static MainForm()
         {
             validGames = new Game[] { Game.Eb, Game.M12, Game.M12English };
@@ -75,20 +78,31 @@ namespace ScriptToolGui
         {
             InitializeComponent();
 
-            config = Config.Read("config.json");
+            try
+            {
+                config = Config.Read("config.json");
 
-            previewer.M12Compiler = m12Compiler;
-            previewer.CharLookup = ebCharLookup;
+                previewer.M12Compiler = m12Compiler;
+                previewer.CharLookup = ebCharLookup;
 
-            ImportAllStrings();
-            ImportAllStringRefs();
+                ImportAllStrings();
+                ImportAllStringRefs();
 
-            InitLookups();
+                InitLookups();
 
-            PopulateCollectionSelector();
+                PopulateCollectionSelector();
 
-            collectionSelector.SelectedIndex = 0;
-            collectionSelector_SelectionChangeCommitted(null, null);
+                collectionSelector.SelectedIndex = 0;
+                collectionSelector_SelectionChangeCommitted(null, null);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("There was an error starting the tool." + Environment.NewLine +
+                    "Reason: " + e.Message);
+
+                badStart = true;
+                this.Load += (s, ee) => this.Close();
+            }
         }
 
         private void PopulateCollectionSelector()
@@ -160,6 +174,14 @@ namespace ScriptToolGui
                 .ToArray();
 
             itemHelpGroups.Groups.AddRange(itemHelpMappingGroups);
+
+            var itemNames = JsonConvert.DeserializeObject<MiscStringCollection>(File.ReadAllText(@"..\..\..\..\working\m12-itemnames.json"));
+            var ebItems = itemMapping.Select(p => new { Index = p.First, Name = itemNames.StringRefs[p.Second].New })
+                .OrderBy(o => o.Index)
+                .Select(m => "[" + (m.Index).ToString("X2") + "] " + m.Name.Substring(0, m.Name.Length - 7))
+                .ToArray();
+
+            File.WriteAllLines(@"D:\eb-itemnames.txt", ebItems);
 
             // PSI help
             var m12PsiHelpRefs = ImportStringRefs("m12-psi-help.json");
@@ -682,6 +704,9 @@ namespace ScriptToolGui
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (badStart)
+                return;
+
             writeTimer.Enabled = false;
             WriteChanges(true);
         }
