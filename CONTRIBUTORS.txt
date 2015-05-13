@@ -4,6 +4,7 @@ Hacking, script tool, script compiler/decompiler:
 Text conversion:
   JeffMan
   ItsIggy
+  TheZunar123
 
 Special thanks:
   TragicManner
