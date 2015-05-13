@@ -833,12 +833,21 @@ namespace ScriptToolGui
                         if (dialogResult == DialogResult.Yes)
                         {
                             // The trivial duplicates may simply be removed from the strings collection
-                            var toBeRemoved = canBeResolved.SelectMany(d => d.Indices)
+
+                            // Unless, however, a label has no non-trivial duplicates; in that case, keep one of them
+                            var noNonTrivial = canBeResolved.Where(d => !d.Indices.Any(i => !i.Trivial));
+                            foreach (var toBeSaved in noNonTrivial)
+                                toBeSaved.Indices.RemoveAt(0);
+
+                            var toBeRemoved = canBeResolved.Where(d => d.Indices.Any(i => !i.Trivial))
+                                .Concat(noNonTrivial)
+                                .SelectMany(d => d.Indices)
                                 .Where(i => i.Trivial)
                                 .Select(i => i.Index)
                                 .Distinct()
                                 .OrderByDescending(i => i);
 
+                            // If there are no non-trivial duplicates, we must leave exactly one trivial duplicate
                             // Make sure we aren't currently on a string that's about to be removed (shouldn't ever actually happen...)
                             if (toBeRemoved.Any(i => i == currentIndex[Game.M12English]))
                             {
