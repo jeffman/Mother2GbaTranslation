@@ -1,6 +1,6 @@
 ^L0^[1C FF 28 00 _L2156_][1C FF 40 00 _L2157_]@Hey kid![1B FF 0F 00]  Do you wanna become[01 FF]  a member?[01 FF][03 FF 00 00][04 FF _L2158_][05 FF _L2159_]^L2159^@Don't be such a snob![02 FF][86 FF _L2160_][81 FF _L2161_][85 FF 01 00 06 00][08 FF 28 00][00 FF]^L2158^@Come back after you finish[01 FF]  Earthbound![1D FF][00 FF]
-^L1^
-^L2^
+^L1^[1C FF 6D 01 _L2156_][1C FF 40 00 _L2162_]@It was you![1B FF 14 00]  YOU beat up[01 FF]  my buddy,[1B FF 0F 00] didn't you?[02 FF]@You'd better just beat it![02 FF][C6 FF][86 FF _L2163_][81 FF _L2161_][1B FF 01 00][A1 FF 02 00 29 00][08 FF 6D 01][00 FF]
+^L2^[1C FF 40 00 _L2164_]@Uh huh... Uh huh...[02 FF]@You sound like a real[01 FF]  whiner to me.[02 FF]@Don't get lippy,[1B FF 0A 00][01 FF]  or I'll kick your butt![1D FF][00 FF]
 ^L3^
 ^L4^
 ^L5^
@@ -12,7 +12,7 @@
 ^L11^
 ^L12^
 ^L13^
-^L14^
+^L14^[1C FF EE 02 _L2395_][1C FF D7 01 _L2396_]@What was that noise?[02 FF]@[0D FF],[1B FF 0F 00] you don't seem[01 FF] scared.[1B FF 14 00]  Are you nuts?[02 FF]@And now you want to go[01 FF]  check it out?[1B FF 0F 00]...oh[1B FF 0F 00] ...okay.[02 FF]@You'll sneak out of your room[01 FF]  anyway,[1B FF 0F 00] even if I asked you not[01 FF]  to.[02 FF]@At least change out of your[01 FF]  jammies before you go.[02 FF][C6 FF][1B FF 01 00][08 FF D7 01][14 FF 01 00][09 FF ED 02][00 FF]
 ^L15^
 ^L16^
 ^L17^
@@ -203,7 +203,7 @@
 ^L202^
 ^L203^
 ^L204^
-^L205^
+^L205^@That's right,[1B FF 0F 00] I'm a bus driver.[1B FF 14 00][01 FF]  For now,[1B FF 0F 00] I'm resting.[02 FF]@Life is long... take it easy,[1B FF 0F 00][8D FF 01 00][BD FF 04 _L2558_ _L2559_ _L2560_ _L2561_][02 FF][BE FF FF 00 CF 00][82 FF _L2562_]@Why don't you check out your[01 FF]  town map and learn about[01 FF]  this area.[1D FF][00 FF]
 ^L206^
 ^L207^[08 FF AA 02][BC FF 32 00][86 FF _L5848_][00 FF]
 ^L208^
@@ -1116,346 +1116,345 @@
 ^L1115^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  with her whole heart![02 FF][00 FF]
 ^L1116^@[9F FF] is on guard.[02 FF][00 FF]
 ^L1117^[FC FF 3B 00][82 FF _L3463_][FC FF 08 00][82 FF _L3464_][D4 FF 37 00]@[9F FF] tried[01 FF][C1 FF][87 FF]  [2D FF]![02 FF][80 FF _L3465_]
-^L1118^
-^L1119^
-^L1120^
-^L1121^
-^L1122^
-^L1123^
-^L1124^
-^L1125^
-^L1126^
-^L1127^
-^L1128^
-^L1129^
-^L1130^
-^L1131^
-^L1132^
-^L1133^
-^L1134^
-^L1135^
-^L1136^
-^L1137^
-^L1138^
-^L1139^
-^L1140^
-^L1141^
-^L1142^
-^L1143^
-^L1144^
-^L1145^
-^L1146^
-^L1147^
-^L1148^
-^L1149^
-^L1150^
-^L1151^
-^L1152^
-^L1153^
-^L1154^
-^L1155^
-^L1156^
-^L1157^
-^L1158^
-^L1159^
-^L1160^
-^L1161^
-^L1162^
-^L1163^
-^L1164^
-^L1165^
-^L1166^
-^L1167^
-^L1168^
-^L1169^
-^L1170^
-^L1171^
-^L1172^
-^L1173^
-^L1174^
-^L1175^
-^L1176^
-^L1177^
-^L1178^
-^L1179^
-^L1180^
-^L1181^
-^L1182^
-^L1183^
-^L1184^
-^L1185^
-^L1186^
-^L1187^
-^L1188^
-^L1189^
-^L1190^
-^L1191^
-^L1192^
-^L1193^
-^L1194^
-^L1195^
-^L1196^
-^L1197^
-^L1198^
-^L1199^
-^L1200^
-^L1201^
-^L1202^
-^L1203^
-^L1204^
-^L1205^
-^L1206^
-^L1207^
-^L1208^
-^L1209^
-^L1210^
+^L1118^[D4 FF 19 00]@[9F FF] called[01 FF]  for help![D4 FF 48 00][02 FF][00 FF]
+^L1119^[D4 FF 19 00]@[9F FF] sowed[01 FF]  some seeds around itself![D4 FF 48 00][02 FF][00 FF]
+^L1120^[D4 FF 19 00]@[9F FF] exploded[01 FF]  into bits![D4 FF 5B 00][02 FF][1B FF 1E 00][00 FF]
+^L1121^[D4 FF 19 00]@[9F FF] burst[01 FF]  into flames![D4 FF 4B 00][02 FF][1B FF 1E 00][00 FF]
+^L1122^@[9F FF][C1 FF][82 FF _L3506_][87 FF] stole a [90 FF 00][1A FF 02 00][02 FF]  in the confusion of the battle![02 FF][00 FF]
+^L1123^[D4 FF 19 00]@[9F FF] froze[01 FF]  you in time![C4 FF 00 04][02 FF][1B FF 01 00][00 FF]
+^L1124^[D4 FF 19 00]@[9F FF] glared[01 FF]  with its eerie eyes![02 FF][1B FF 01 00][00 FF]
+^L1125^[D4 FF 19 00]@[9F FF] generated[01 FF]  a mysterious electric field![D4 FF 96 00][02 FF][1B FF 01 00][00 FF]
+^L1126^[D4 FF 19 00]@[9F FF] stumbled,[01 FF]  but fired a strange beam.[D4 FF 96 00][02 FF][1B FF 01 00][00 FF]
+^L1127^[D4 FF 19 00]@[9F FF] burped[01 FF]  and blew his nauseating breath at you![D4 FF 4E 00][02 FF][1B FF 01 00][00 FF]
+^L1128^[D4 FF 19 00]@[9F FF] stung[01 FF]  with its poison stinger![02 FF][1B FF 01 00][00 FF]
+^L1129^[D4 FF 19 00]@[9F FF] gave[01 FF]  the kiss of death![02 FF][1B FF 01 00][00 FF]
+^L1130^[D4 FF 19 00]@[9F FF] exhaled[01 FF]  arctic-cold breath![D4 FF 51 00][02 FF][1B FF 01 00][00 FF]
+^L1131^[D4 FF 19 00]@[9F FF] scattered[01 FF]  some spores![D4 FF 52 00][02 FF][1B FF 01 00][00 FF]
+^L1132^[D4 FF 19 00]@[9F FF] tried to[01 FF]  possess you in a frightening manner.[D4 FF 60 00][02 FF][1B FF 01 00][00 FF]
+^L1133^[D4 FF 19 00]@[9F FF] sprinkled around some[01 FF]  wonderful-smelling powder.[D4 FF 52 00][02 FF][1B FF 01 00][00 FF]
+^L1134^[D4 FF 19 00]@[9F FF] scattered[01 FF]  some mold spores![D4 FF 52 00][02 FF][1B FF 01 00][00 FF]
+^L1135^[D4 FF 19 00]@[9F FF] employed[01 FF]  a binding attack![02 FF][1B FF 01 00][00 FF]
+^L1136^[D4 FF 19 00]@[9F FF] spit out  a sticky mucus![D4 FF 51 00][02 FF][1B FF 01 00][00 FF]
+^L1137^[D4 FF 19 00]@[9F FF] spewed[01 FF]  <Fly Honey> out of his mouth![D4 FF 51 00][02 FF][1B FF 01 00][00 FF]
+^L1138^[D4 FF 19 00]@[9F FF] shot[01 FF]  spider silk out of its body![02 FF][00 FF]
+^L1139^[D4 FF 19 00]@[9F FF] said[01 FF]  something really scary![D4 FF 54 00][02 FF][1B FF 01 00][00 FF]
+^L1140^[D4 FF 19 00]@[9F FF] did[01 FF]  something very mysterious![D4 FF 55 00][02 FF][1B FF 01 00][00 FF]
+^L1141^[D4 FF 19 00]@[9F FF] disrupted[01 FF]  your senses![02 FF][00 FF]
+^L1142^[D4 FF 19 00]@[9F FF] is[01 FF]  sizing up the situation![02 FF][00 FF]
+^L1143^[D4 FF 19 00]@[9F FF] exhaled[01 FF]  a blast of stinky breath![D4 FF 5C 00][02 FF][1B FF 01 00][00 FF]
+^L1144^[D4 FF 19 00]@[9F FF] summoned[01 FF]  a storm![D4 FF 56 00][02 FF][1B FF 01 00][00 FF]
+^L1145^[D4 FF 19 00]@[9F FF] spilled[01 FF]  some scalding hot espresso![02 FF][00 FF]
+^L1146^[D4 FF 19 00]@[9F FF] played[01 FF]  a haunting melody![02 FF][1B FF 01 00][00 FF]
+^L1147^[D4 FF 19 00]@[9F FF] dispensed[01 FF]  an extinguishing blast![D4 FF 58 00][02 FF][1B FF 01 00][00 FF]
+^L1148^[D4 FF 19 00]@[9F FF] used a[01 FF]  Crashing Boom Bang attack![02 FF][00 FF]
+^L1149^[D4 FF 19 00]@[9F FF] shot out[01 FF]  a spray of fire![D4 FF 4B 00][02 FF][1B FF 01 00][00 FF]
+^L1150^[D4 FF 19 00]@[9F FF] breathed[01 FF]  fire![D4 FF 4B 00][02 FF][1B FF 01 00][00 FF]
+^L1151^[D4 FF 19 00]@[9F FF] made[01 FF]  something spin around![02 FF][00 FF]
+^L1152^[D4 FF 19 00]@[9F FF] lost[01 FF]  his temper![02 FF][00 FF]
+^L1153^[D4 FF 19 00]@[9F FF] said[01 FF]  something nasty![D4 FF 54 00][02 FF][1B FF 01 00][00 FF]
+^L1154^[D4 FF 19 00]@[9F FF] used a[01 FF]  vacuum attack![02 FF][00 FF]
+^L1155^[D4 FF 19 00]@[9F FF] replenished a fuel[01 FF]  supply![D4 FF 59 00][02 FF][1B FF 01 00][00 FF]
+^L1156^[D4 FF 19 00]@[9F FF] took a bite[01 FF]  using its poisonous fangs![02 FF][00 FF]
+^L1157^[D4 FF 19 00]@[9F FF] fired[01 FF]  a missile, making itself dizzy.[D4 FF 46 00][02 FF][1B FF 01 00][00 FF]
+^L1158^[D4 FF 19 00]@[9F FF] started a[01 FF]  continuous attack![02 FF][00 FF]
+^L1159^[D4 FF 19 00]@[9F FF] is[01 FF]  on guard.[02 FF][00 FF]
+^L1160^[D4 FF 19 00]@[9F FF] spewed out[01 FF]  a flaming fireball![D4 FF 4B 00][02 FF][1B FF 01 00][00 FF]
+^L1161^[D4 FF 19 00]@[9F FF] rushed in,[01 FF]  and intertwined with you![02 FF][00 FF]
+^L1162^[D4 FF 19 00]@[9F FF] attacked[01 FF]  with a crushing chop![02 FF][00 FF]
+^L1163^[D4 FF 19 00]@[9F FF] grappled and used[01 FF]  his submission hold![02 FF][00 FF]
+^L1164^[D4 FF 19 00]@[9F FF] revved and accelerated![02 FF][00 FF]
+^L1165^[D4 FF 19 00]@[9F FF] brandished[01 FF]  a knife![02 FF][00 FF]
+^L1166^[D4 FF 19 00]@[9F FF] tore[01 FF]  into you![02 FF][00 FF]
+^L1167^[D4 FF 19 00]@[9F FF] used a[01 FF]  biting attack![02 FF][00 FF]
+^L1168^[D4 FF 19 00]@[9F FF] clawed[01 FF]  with his sharp nails![02 FF][00 FF]
+^L1169^[D4 FF 19 00]@[9F FF] swung[01 FF]  his tail very hard![02 FF][00 FF]
+^L1170^[D4 FF 19 00]@[9F FF] growled[01 FF]  and lunged forward![02 FF][00 FF]
+^L1171^[D4 FF 19 00]@[9F FF] wielded[01 FF]  a shopping bag![02 FF][00 FF]
+^L1172^[D4 FF 19 00]@[9F FF] swung[01 FF]  a club![02 FF][00 FF]
+^L1173^[D4 FF 19 00]@[9F FF] generated[01 FF]  a tornado![D4 FF 5A 00][02 FF][00 FF]
+^L1174^[D4 FF 19 00]@[9F FF] sprayed a gigantic[01 FF]  blast of water![02 FF][00 FF]
+^L1175^[D4 FF 19 00]@[9F FF] flashed[01 FF]  a menacing smile![02 FF][00 FF]
+^L1176^[D4 FF 19 00]@[9F FF] started[01 FF]  laughing hysterically![02 FF][00 FF]
+^L1177^[D4 FF 19 00]@[9F FF] edged[01 FF]  closer![02 FF][00 FF]
+^L1178^[D4 FF 19 00]@[9F FF] whispered[01 FF][61 FF 02 00]  <3...>[61 FF 01 00][02 FF][00 FF]
+^L1179^[D4 FF 19 00]@[9F FF] murmured[01 FF][61 FF 02 00]  <2...>[61 FF 01 00][02 FF][00 FF]
+^L1180^[D4 FF 19 00]@[9F FF] muttered[01 FF][61 FF 02 00]  <1...>[61 FF 01 00][02 FF][00 FF]
+^L1181^[D4 FF 19 00]@[9F FF] fell down![D4 FF 22 00][02 FF][00 FF]
+^L1182^[D4 FF 19 00]@[9F FF] is being[01 FF]  absentminded.[02 FF][00 FF]
+^L1183^[D4 FF 19 00]@[9F FF] generated[01 FF]  a burst of steam![02 FF][00 FF]
+^L1184^[D4 FF 19 00]@[9F FF] is[01 FF]  wobbly.[02 FF][00 FF]
+^L1185^[D4 FF 19 00]@[9F FF] is[01 FF]  reeling.[02 FF][00 FF]
+^L1186^[D4 FF 19 00]@[9F FF] has[01 FF]  a big grin on his face.[02 FF][00 FF]
+^L1187^[D4 FF 19 00]@[9F FF] is taking deep[01 FF]  breaths for the next assault.[02 FF][00 FF]
+^L1188^[D4 FF 19 00]@[9F FF] sends[01 FF]  a greeting![02 FF][00 FF]
+^L1189^[D4 FF 19 00]@[9F FF] is[01 FF]  making a loud, piercing howl.[02 FF][00 FF]
+^L1190^[D4 FF 19 00]@[9F FF] is[01 FF]  saying <tick-tock.>[02 FF][00 FF]
+^L1191^[FC FF 3B 00][82 FF _L3512_][C1 FF][87 FF][E3 FF][9A FF 02 00][81 FF _L3513_][E4 FF][81 FF _L3514_][E5 FF][81 FF _L3515_]@[9F FF] took[01 FF]  [90 FF 00][1A FF 02 00] out and[02 FF]  [AD FF] ate it.[D4 FF 44 00][02 FF][00 FF]
+^L1192^[FC FF 3B 00][82 FF _L3507_]@[9F FF] used the[01 FF]  [C1 FF][87 FF][90 FF 00][1A FF 02 00][02 FF][00 FF]
+^L1193^[FC FF 3B 00][82 FF _L3508_]@[9F FF][C1 FF][87 FF] used the[01 FF]  [90 FF 00][1A FF 02 00]![1B FF 1E 00][D4 FF 36 00][1B FF 1E 00][F0 FF 00 00 01 00][1B FF 3C 00][02 FF][00 FF]
+^L1194^[FC FF 3B 00][82 FF _L3511_]@[9F FF][C1 FF][87 FF] used the[01 FF]  [90 FF 00][1A FF 02 00]![1B FF 1E 00][D4 FF 63 00][F0 FF 00 00 1B 00][1B FF 3C 00][02 FF][00 FF]
+^L1195^[FC FF 3B 00][82 FF _L3509_]@[9F FF][C1 FF][87 FF] used the[01 FF]  [90 FF 00][1A FF 02 00]![1B FF 1E 00][D4 FF 3B 00][F0 FF 00 00 04 00][1B FF 3C 00][02 FF][00 FF]
+^L1196^[C1 FF][87 FF]@[9F FF] lashed out[01 FF]  with the [90 FF 00][1A FF 02 00]![02 FF][00 FF]
+^L1197^@[9F FF][C1 FF][87 FF] fired[01 FF]  the [90 FF 00][1A FF 02 00]![D4 FF 46 00][02 FF][00 FF]
+^L1198^@[9F FF] fired[01 FF]  the Big Bottle Rocket![D4 FF 46 00][1B FF 08 00][D4 FF 46 00][1B FF 08 00][D4 FF 46 00][1B FF 08 00][D4 FF 46 00][1B FF 08 00][D4 FF 46 00][1B FF 08 00][02 FF][00 FF]
+^L1199^@[9F FF] fired[01 FF]  the Multi Bottle Rocket![D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][02 FF][00 FF]
+^L1200^@[9F FF][C1 FF][87 FF] threw[01 FF]  the [90 FF 00][1A FF 02 00]![D4 FF 46 00][02 FF][00 FF]
+^L1201^@[9F FF][C1 FF][87 FF] used[01 FF]  the [90 FF 00][1A FF 02 00]![02 FF][00 FF]
+^L1202^@[9F FF][C1 FF][87 FF] used[01 FF]  the [90 FF 00][1A FF 02 00]![02 FF]@Suddenly, some Trout Yogurt[01 FF]  was produced![02 FF][00 FF]
+^L1203^[9F FF] took a snake[01 FF]  out of the [90 FF 00][1A FF 02 00][02 FF]  and threw it![02 FF][00 FF]
+^L1204^@[9F FF][C1 FF][87 FF] used [90 FF 00][1A FF 02 00][01 FF]  and his teeth[02 FF]@were white and breath was fresh![02 FF]@The brightness of[01 FF]  [9F FF]'s teeth[02 FF]@made the enemy scared![02 FF][00 FF]
+^L1205^@[9F FF][C1 FF][87 FF] used[01 FF]  the [90 FF 00][1A FF 02 00][02 FF]@Suddenly, something unknown burst[01 FF]  from the box.[02 FF][00 FF]
+^L1206^[FC FF 3B 00][82 FF _L3510_]@[9F FF][C1 FF][87 FF] used the[01 FF]  [90 FF 00][1A FF 02 00]![1B FF 1E 00][D4 FF 3B 00][F0 FF 00 00 1E 00][1B FF 3C 00][02 FF][00 FF]
+^L1207^@[9F FF][C1 FF][87 FF] sprinkled[01 FF]  the [90 FF 00][1A FF 02 00] over his head.[02 FF]@Yoicks!! [9F FF] turned[01 FF]  into a gigantic, fire-breathing dragon![02 FF][00 FF]
+^L1208^@[9F FF][C1 FF][87 FF] sprayed a blast of[01 FF]  [90 FF 00][1A FF 02 00]![D4 FF 47 00][02 FF][00 FF]
+^L1209^[FC FF 3B 00][82 FF _L3550_]@[9F FF][C1 FF][87 FF] used [90 FF 00][1A FF 02 00]![02 FF]@Now, he can figure out the length of[01 FF]  things easily.[02 FF][00 FF]
+^L1210^[FC FF 3B 00][82 FF _L3551_]@[9F FF][C1 FF][87 FF] used the [90 FF 00][1A FF 02 00]![02 FF]@Now, he can fairly easily figure out the[01 FF]  angle of various things.[02 FF][00 FF]
 ^L1211^[8D FF 02 00][9A FF 09 00][82 FF _L3526_][86 FF _L3527_][00 FF]
-^L1212^
-^L1213^
-^L1214^
-^L1215^
-^L1216^
-^L1217^
-^L1218^
-^L1219^
-^L1220^
-^L1221^
-^L1222^
-^L1223^
-^L1224^
-^L1225^
-^L1226^
-^L1227^
-^L1228^
-^L1229^
-^L1230^
-^L1231^
-^L1232^
-^L1233^
-^L1234^
-^L1235^
-^L1236^
-^L1237^
-^L1238^
-^L1239^
-^L1240^
-^L1241^
-^L1242^
-^L1243^
-^L1244^
-^L1245^
-^L1246^
-^L1247^
-^L1248^
-^L1249^
-^L1250^
-^L1251^
-^L1252^
-^L1253^
-^L1254^
-^L1255^
-^L1256^
-^L1257^
+^L1212^@[9F FF][C1 FF][87 FF] put[01 FF]  the [90 FF 00][1A FF 02 00] on his nose![D4 FF 73 00][02 FF]@[9F FF] searched for the[01 FF]  smell of the magic truffle.[02 FF][FF FF][82 FF _L3529_][88 FF][9A FF 01 00][81 FF _L3530_][89 FF][9A FF 0A 00][81 FF _L3531_][89 FF]@(It must be a little further[BD FF 09 _L1108_ _L3532_ _L3533_ _L3534_ _L3535_ _L3536_ _L3537_ _L3538_ _L3539_] up.)[1D FF][00 FF]
+^L1213^[1C FF FB 02 _L3540_][1C FF 49 00 _L3540_][1C FF 74 01 _L2155_][86 FF _L3541_][81 FF _L3542_][1C FF BE 01 _L3542_][1C FF 86 02 _L3542_][1C FF 87 02 _L3542_][1C FF 88 02 _L3542_]@[9F FF][C1 FF][87 FF] used[01 FF]  the [90 FF 00][1A FF 02 00]![02 FF]@A customer is heading this[01 FF]  way.[1D FF][C6 FF][F6 FF 03 00][95 FF 03 _L3543_ _L3544_ _L3545_][CF FF 04 00][08 FF BE 01][08 FF F2 02][00 FF]
+^L1214^@This book should be required[01 FF]  reading for any quiet,[01 FF]  shy person.[02 FF][00 FF]
+^L1215^@You felt sad and empty.[02 FF][00 FF]
+^L1216^@(If you get this message,[01 FF]  it means that something is wrong.)[02 FF][00 FF]
+^L1217^[D4 FF 65 00]@Seeing chicks makes you happy.[D4 FF 65 00][02 FF][00 FF]
+^L1218^[D4 FF 68 00][1B FF 0A 00][D4 FF 68 00]@A chicken ran away as fast as it could.[02 FF][00 FF]
+^L1219^@To use this,[01 FF]  go to a cash machine and insert[01 FF]  the card.[02 FF][00 FF]
+^L1220^@[9F FF][C1 FF][87 FF] placed the[01 FF]  [90 FF 00][1A FF 02 00] on the floor.[D4 FF 73 00][1B FF 01 00][02 FF][01 FF][08 FF 7C 00][6D FF FF 00 A6 00][00 FF]
+^L1221^@[9F FF][C1 FF][87 FF] used the [90 FF 00][1A FF 02 00]![D4 FF 95 00][1B FF 01 00][1D FF][C6 FF][1B FF 01 00][6D FF FF 00 A9 00][08 FF 20 01][86 FF _L3546_][08 FF FC 01][00 FF]
+^L1222^[8D FF 02 00][81 FF _L3547_][8D FF 01 00][92 FF 00 02 02][81 FF _L3548_]@[9F FF] rode a bicycle.[7D FF][00 FF]
+^L1223^[D4 FF 19 00]@[9F FF] emitted[01 FF]  a glorious light![02 FF][00 FF]
+^L1224^[D4 FF 19 00]@[9F FF] used an[01 FF]  electrical shock attack![02 FF][00 FF]
+^L1225^[D4 FF 19 00]@[9F FF] scattered[01 FF]  its pollen around![D4 FF 52 00][02 FF][1B FF 01 00][00 FF]
+^L1226^[D4 FF 19 00]@[9F FF] reached[01 FF]  out with its icy hand.[02 FF][00 FF]
+^L1227^[D4 FF 19 00]@[9F FF] played[01 FF]  a flute with his poisonous breath![02 FF][00 FF]
+^L1228^[D4 FF 19 00]@[9F FF] spewed[01 FF]  exhaust fumes![02 FF][00 FF]
+^L1229^[D4 FF 19 00]@[9F FF] started[01 FF]  laughing maniacally![02 FF][00 FF]
+^L1230^[D4 FF 19 00]@[9F FF] breathed[01 FF]  in through his flute![02 FF][00 FF]
+^L1231^[D4 FF 19 00]@[9F FF] leaped[01 FF]  forward and spread its wings![02 FF][00 FF]
+^L1232^[D4 FF 19 00]@[9F FF] became[01 FF]  friendly and affectionate![02 FF]@You backed off.[02 FF][00 FF]
+^L1233^[D4 FF 19 00]@[9F FF] made a[01 FF]  loud rumble![02 FF][00 FF]
+^L1234^[D4 FF 19 00]@[9F FF] gave you[01 FF]  a great big hug.[02 FF][00 FF]
+^L1235^[D4 FF 19 00]@[9F FF] let loose[01 FF]  with a hacking cough.[02 FF][00 FF]
+^L1236^[D4 FF 19 00]@[9F FF] used[01 FF]  his misery attack![02 FF][00 FF]
+^L1237^[D4 FF 19 00]@[9F FF] utilized a[01 FF]  paint attack![02 FF][00 FF]
+^L1238^[D4 FF 19 00]@[9F FF] came out[01 FF]  swinging![02 FF][00 FF]
+^L1239^[D4 FF 19 00]@[9F FF] scratched[01 FF]  with its claws![02 FF][00 FF]
+^L1240^[D4 FF 19 00]@[9F FF] pecked[01 FF]  at your eyes![02 FF][00 FF]
+^L1241^[D4 FF 19 00]@[9F FF] rammed[01 FF]  and trampled you![02 FF][00 FF]
+^L1242^[D4 FF 19 00]@[9F FF] threw[01 FF]  a punch![02 FF][00 FF]
+^L1243^[D4 FF 19 00]@[9F FF] spit[01 FF]  its pumpkin seeds![02 FF][00 FF]
+^L1244^[D4 FF 19 00]@[9F FF] fired[01 FF]  a beam![D4 FF 96 00][02 FF][1B FF 01 00][00 FF]
+^L1245^[D4 FF 19 00]@[9F FF] jabbed[01 FF]  with a spear![02 FF][00 FF]
+^L1246^[D4 FF 19 00]@[9F FF] stomped[01 FF]  with his huge foot![02 FF][00 FF]
+^L1247^[D4 FF 19 00]@[9F FF] swung[01 FF]  his hula hoop.[D4 FF 1A 00][02 FF][00 FF]
+^L1248^[D4 FF 19 00]@[9F FF] charged[01 FF]  forward![02 FF][00 FF]
+^L1249^[D4 FF 19 00]@[9F FF] shredded[01 FF]  fiercely on a skateboard![02 FF][00 FF]
+^L1250^[D4 FF 19 00]@[9F FF] bit you[01 FF]  hard![02 FF][00 FF]
+^L1251^[D4 FF 19 00]@[9F FF] grumbled[01 FF]  about today's youth![D4 FF 54 00][02 FF][00 FF]
+^L1252^[D4 FF 19 00]@[9F FF] started[01 FF]  lecturing you![D4 FF 54 00][02 FF][00 FF]
+^L1253^[D4 FF 19 00]@[9F FF] scowled[01 FF]  sharply![D4 FF 54 00][02 FF][00 FF]
+^L1254^[D4 FF 19 00]@[9F FF] vented[01 FF]  a terrible odor![02 FF][00 FF]
+^L1255^[D4 FF 19 00]@[9F FF] shouted[01 FF]  in a loud voice![02 FF][00 FF]
+^L1256^[D4 FF 19 00]@[9F FF] shrieked a war cry![02 FF][00 FF]
+^L1257^[D4 FF 19 00]@[9F FF] knitted[01 FF]  its brow![02 FF][00 FF]
 ^L1258^[F6 FF 03 00][95 FF 03 _L1317_ _L1318_ _L1319_][80 FF _L1316_]
-^L1259^
-^L1260^
+^L1259^[D4 FF 19 00]@[9F FF] shot a[01 FF]  beam`that`causes`night-time`stuffiness![02 FF][00 FF]
+^L1260^[D4 FF 19 00]@[9F FF] coiled[01 FF]  around you and attacked![02 FF][00 FF]
 ^L1261^[00 FF]
-^L1262^
-^L1263^
-^L1264^
-^L1265^
-^L1266^
-^L1267^
-^L1268^
-^L1269^
+^L1262^[E8 FF 04 00 02 00]@Suddenly, [90 FF 04][1A FF 01 00] swooped[01 FF]  down from the sky![22 FF][00 FF]
+^L1263^[D4 FF 19 00]@[9F FF] emitted[01 FF]  a pale green light![02 FF][00 FF]
+^L1264^[FC FF 3B 00][82 FF _L3518_]@[C2 FF][1A FF 05 00] ate[01 FF]  the [C1 FF][87 FF][90 FF 00][1A FF 02 00] together.[D4 FF 44 00][1B FF 01 00][02 FF][00 FF]
+^L1265^[F6 FF 03 00][95 FF 03 _L3574_ _L3575_ _L3576_]@[9F FF] misses home.[02 FF][00 FF]
+^L1266^@[9F FF]'s body is[01 FF]  numb and he can't move![02 FF][00 FF]
+^L1267^@[9F FF] has[01 FF]  fallen asleep[02 FF][00 FF]
+^L1268^@[9F FF] cannot[01 FF]  move around![02 FF][00 FF]
+^L1269^@[9F FF] was[01 FF]  able to move![D4 FF 25 00][02 FF][00 FF]
 ^L1270^[FC FF 08 00][82 FF _L3572_][D4 FF 37 00][80 FF _L3573_]
-^L1271^
-^L1272^
-^L1273^
-^L1274^
-^L1275^
-^L1276^
-^L1277^
-^L1278^
-^L1279^
+^L1271^@[9F FF] lost[01 FF]  his mind by wolfing down <Fly Honey>![02 FF][00 FF]
+^L1272^[AB FF 00 00][87 FF]@[9F FF][87 FF] touched the[01 FF]  [90 FF 00][1A FF 02 00] to his forehead and[01 FF]  gathered his thoughts.[1D FF][FC FF 09 00][00 FF]
+^L1273^[88 FF][FD FF][82 FF _L3552_][1C FF 0A 03 _L3553_][83 FF B4 00][81 FF _L3554_][83 FF B5 00][81 FF _L3555_][83 FF 85 02][81 FF _L3555_][83 FF BE 01][81 FF _L3556_][83 FF 86 02][81 FF _L3556_][83 FF 87 02][81 FF _L3556_][83 FF 88 02][81 FF _L3556_][83 FF A3 02][81 FF _L3554_][83 FF B6 02][81 FF _L3555_][83 FF B7 02][81 FF _L3555_][1C FF FE 02 _L3557_][FC FF 05 00]@(The mouse found the way out and[01 FF]  waved for you to follow.)[02 FF][14 FF 7E 00][89 FF][B9 FF 00 00 00 00][09 FF 00 02][FC FF 06 00][86 FF _L3558_][00 FF]
+^L1274^[F6 FF 08 00][95 FF 08 _L1275_ _L1276_ _L1277_ _L3577_ _L3578_ _L3579_ _L3580_ _L3581_]@Pokey used [0D FF][01 FF]  as a shield![02 FF][00 FF]
+^L1275^@Pokey played dead![02 FF][00 FF]
+^L1276^@Pokey pretended[01 FF]  to cry![02 FF][00 FF]
+^L1277^@Pokey apologized[01 FF]  profusely![02 FF][00 FF]
+^L1278^@[9F FF] is[01 FF]  barking![02 FF][00 FF]
+^L1279^@[9F FF] is[01 FF]  chanting a magic spell![02 FF][00 FF]
 ^L1280^[00 FF]
-^L1281^
-^L1282^
-^L1283^
+^L1281^@[9F FF] is[01 FF]  scratching his head![02 FF][00 FF]
+^L1282^@[9F FF][C1 FF][87 FF] threw[01 FF]  the [90 FF 00][1A FF 02 00]![02 FF]@The [90 FF 00][1A FF 02 00] is[01 FF]  biting![02 FF][00 FF]
+^L1283^[87 FF]@[90 FF 00][1A FF 01 00] read the hieroglyphs.[02 FF]@<To fight against the invaders, we built[01 FF]  this pyramid fortress.[02 FF]@However, our efforts were futile, and[01 FF]  we lost.[02 FF]@Nonetheless, our pyramid was[01 FF]  protected by the gods of Scaraba.[02 FF]@The invaders will be reborn every[01 FF]  millennium and will attack again.[02 FF]@Even now, the invaders hide beyond[01 FF]  space and time and build their evil[01 FF]  stronghold.[02 FF]@A place out of time is beyond the Dark,[01 FF]  and is even farther beyond the Lost[01 FF]  Underworld.[02 FF]@The Deep Darkness is shrouded,[01 FF]  it is without light.[02 FF]@Only one with the Hawk Eye can[01 FF] pierce the dark.[02 FF]@The Sphinx now watches over[01 FF]  everything,[02 FF]@waiting for the coming of a truly[01 FF]  brave hero.[02 FF]@   #[01 FF]  4   3[01 FF]   2 5[02 FF]@Dance in front of the Sphinx!>[1D FF][00 FF]
 ^L1284^[FC FF 07 00][82 FF _L3559_][00 FF]
-^L1285^
-^L1286^
-^L1287^
-^L1288^
-^L1289^
-^L1290^
-^L1291^
-^L1292^
-^L1293^
-^L1294^
-^L1295^
-^L1296^
-^L1297^
-^L1298^
-^L1299^
-^L1300^
-^L1301^
-^L1302^
-^L1303^
-^L1304^
-^L1305^
-^L1306^
-^L1307^
-^L1308^
-^L1309^
-^L1310^
-^L1311^
+^L1285^[D4 FF 19 00]@[9F FF] discharged[01 FF]  a very stinky gas![00 FF]
+^L1286^[86 FF _L1314_][68 FF]@You cannot grasp the true form[01 FF]  of [9F FF]' attack![F0 FF 31 00 00 00][1B FF 78 00][F0 FF 36 00 00 00][D4 FF 51 00][1B FF 28 00][D4 FF 51 00][00 FF]
+^L1287^[FC FF 2A 00][C7 FF][69 FF][1B FF 28 00]@I understand you guys are already[01 FF]  claiming to be heroes.[22 FF][01 FF]@Well, it is a gazillion years too early for[01 FF]  you to oppose Giygas![22 FF][01 FF]@You must feel pretty stupid to keep[01 FF]  fighting without even knowing[22 FF][01 FF]@what Giygas looks like![22 FF][01 FF]@If you were to ever see Giygas, you'd[01 FF]  be so petrified with fear,[22 FF][01 FF]@you'd never be able to run away![22 FF][01 FF]@...That's how scary it is![22 FF][01 FF]@So, do you want me to turn off the[01 FF]  <Devil's Machine?>[22 FF][01 FF]@Well, prepare to be amazed![D4 FF 4A 00][1B FF 96 00][C7 FF][FC FF 2B 00][69 FF][00 FF]
+^L1288^@[C2 FF][1A FF 05 00] tried to get away,[1B FF 3C 00][02 FF]@and did![02 FF][00 FF]
+^L1289^@[9F FF] relaxed[01 FF]  and took a deep breath.[02 FF][00 FF]
+^L1290^@The Suporma sang the song[01 FF]  <Ode to Orange Kid.>[02 FF]@As soon as it finished, the machine[01 FF]  broke down.[6D FF FF 00 94 00][1D FF][00 FF]
+^L1291^@By using the Insignificant Present, you[01 FF]  had a very fruitful experience[02 FF]@that cannot be understood by someone[01 FF]  who does not use something[01 FF]  insignificant.[1D FF][00 FF]
+^L1292^@[9F FF] used the Monkey Love.[02 FF]@All of a sudden, a monkey came along,[02 FF]  and pinned the enemy down with its[01 FF]  tiny monkey body.[02 FF][00 FF]
+^L1293^@It smelled so unbelievably bad that[01 FF]  you could not eat it.[1D FF][00 FF]
+^L1294^@You would probably regret it if you ate[01 FF]  this now...[02 FF][00 FF]
+^L1295^@This phone only receives calls.[02 FF]@You cannot make outgoing calls from[01 FF]  it.[02 FF][00 FF]
+^L1296^@(Dear [0D FF],[01 FF]  How are you?[02 FF]@Since you left home on your journey,[01 FF]  things have changed around here.[02 FF]@For example, I don't have as much[01 FF]  laundry.[02 FF]@Also, we don't seem to eat[01 FF]  [11 FF] as much as we used to.[02 FF]@I heard that you defeated some[01 FF]  universal evil character--what was it,[02 FF]@Googi, or something like that?[02 FF]@Well, that sounds really great![01 FF]  I want to hear all the details, so hurry[01 FF]  home, okay?[02 FF]@Tracy, [15 FF] and I are waiting[01 FF]  for you.[02 FF]@                                Love,[01 FF]                                  Mama)[1D FF][00 FF]
+^L1297^@(Dear [0F FF],[01 FF]  Everything's really going great here.[02 FF]@I wish I could have gone with you on[01 FF]  your adventure, even just part of the[01 FF]  way,[02 FF]@but instead I'm sitting here, waiting for[01 FF]  you in Winters.[02 FF]@I want to see you again as soon as[01 FF]  possible. I can't wait to see your[01 FF]  cheerful face.[02 FF]@I bet your glasses are dirty... If you[01 FF]  come back, I'll clean them for you![02 FF]@Like I said, I'm waiting for you.[02 FF]@                        Yours truly,[01 FF]                                   Tony [02 FF][01 FF]@P.S.  Don't show this letter to[01 FF]  anyone!)[1D FF][00 FF]
+^L1298^@(Dear [0E FF],[01 FF]  How are you doing?[01 FF]  I'm fine.[02 FF]@I fine too![02 FF]@So are me![02 FF]@Me also![02 FF]@Me okay.[02 FF]@Please come and play with us again at[01 FF]  the Polestar Preschool.[02 FF]@Oh yeah, one more thing, bring us some[01 FF]  presents ...if you have any.[02 FF]@                           Sincerely,[01 FF]               Your friends at the[01 FF]               Polestar Preschool)[1D FF][00 FF]
+^L1299^@All of a sudden,[02 FF]@[9F FF] gave off[01 FF]  a rainbow of colors![02 FF][D4 FF 41 00][F0 FF 28 00 00 00][1B FF 1E 00][D4 FF 41 00][F0 FF 28 00 00 00][1B FF 1E 00][D4 FF 41 00][F0 FF 28 00 00 00][1B FF 1E 00][00 FF]
+^L1300^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please give us strength,[22 FF][01 FF]@if it is possible...[01 FF]  Please...>[22 FF][01 FF]@<................[01 FF]  Somebody... help us...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1301^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please give us strength![22 FF][01 FF]@Anyone who can hear our plea...[01 FF]  Help us...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1302^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please give us strength![22 FF][01 FF]@Speed this prayer[01 FF]  to all the people of the earth.>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1303^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please give us strength![22 FF][01 FF]@Anyone who can hear our plea...[01 FF]  Help us...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1304^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please grant us power![22 FF][01 FF]@Anyone who can hear our plea...[01 FF]  Help us...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1305^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please grant us strength![22 FF][01 FF]@Anyone who can hear our plea...[01 FF]  We ask for this...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1306^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please grant us power![22 FF][01 FF]@Speed this prayer[01 FF]  to all the people of the earth...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1307^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<I can't think of[01 FF]  anyone else...[22 FF][01 FF]@...Someone, anyone...[01 FF]  ...please help us.>[61 FF 01 00][1B FF 96 00][C6 FF][00 FF]
+^L1308^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from the bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<Someone... can you hear me?![22 FF][01 FF]@Please, give us strength!>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1309^[86 FF _L1311_][1B FF 28 00][68 FF]@You cannot grasp the true form[01 FF]  of [9F FF]' attack![F0 FF 31 00 00 00][1B FF 78 00][F0 FF 36 00 00 00][D4 FF 51 00][1B FF 28 00][D4 FF 51 00][00 FF]
+^L1310^[86 FF _L1311_][1B FF 28 00][68 FF][86 FF _L1311_][1B FF 28 00][68 FF][86 FF _L1311_][1B FF 28 00][68 FF]@You cannot grasp the true form[01 FF]  of [9F FF]' attack![F0 FF 31 00 00 00][1B FF 78 00][F0 FF 36 00 00 00][D4 FF 51 00][1B FF 28 00][D4 FF 51 00][00 FF]
+^L1311^[F6 FF 0D 00][95 FF 0D _L3593_ _L3594_ _L3595_ _L3596_ _L3597_ _L3598_ _L3599_ _L3600_ _L3601_ _L3602_ _L3603_ _L3604_ _L3605_]^L1314^[61 FF 02 00]@<.....[0D FF][1B FF 01 00]...>[61 FF 01 00][02 FF][00 FF]
 ^L1312^[86 FF _L1311_][1B FF 28 00][68 FF][86 FF _L1311_][1B FF 28 00][68 FF][86 FF _L1311_][1B FF 28 00][68 FF][00 FF]
-^L1313^
-^L1314^
-^L1315^
-^L1316^
-^L1317^
-^L1318^
-^L1319^
-^L1320^[86 FF _L3947_][1D FF][00 FF]
-^L1321^[86 FF _L3947_][1D FF][00 FF]
-^L1322^[86 FF _L3947_][1D FF][00 FF]
-^L1323^[86 FF _L3947_][1D FF][00 FF]
-^L1324^[86 FF _L3947_][1D FF][00 FF]
+^L1313^@[9F FF][C1 FF][87 FF] fired[01 FF]  the [90 FF 00][1A FF 02 00]![D4 FF 46 00][02 FF][00 FF]
+^L1315^@[9F FF] ate a[01 FF]  bologne sandwich![D4 FF 44 00][02 FF][86 FF _L1576_][00 FF]
+^L1316^[D4 FF 19 00]@[9F FF] lost[01 FF]  a gear and some bolts![02 FF][00 FF]
+^L1317^[D4 FF 19 00]@[9F FF] re-applied[01 FF]  a bandage![02 FF][00 FF]
+^L1318^[D4 FF 19 00]@[9F FF] cleaned[01 FF]  the area![02 FF][00 FF]
+^L1319^[D4 FF 19 00]@[9F FF] wanted to go[01 FF]  and get a battery![02 FF][00 FF]
+^L1320^ <Cracked bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
+^L1321^ <Tee ball bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
+^L1322^ <Sand lot bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
+^L1323^ <Minor league bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
+^L1324^ <Mr. Baseball bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
 ^L1325^[86 FF _L3947_][1D FF][00 FF]
-^L1326^
-^L1327^[86 FF _L3947_][1D FF][00 FF]
+^L1326^ <Big league bat>[02 FF][86 FF _L3947_][02 FF]@This item looks like it could've[01 FF]  had cork put into the core![1D FF][00 FF]
+^L1327^ <Hall of fame bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
 ^L1328^[86 FF _L3947_][1D FF][00 FF]
-^L1329^[86 FF _L3947_][1D FF][00 FF]
-^L1330^[86 FF _L3947_][1D FF][00 FF]
-^L1331^
-^L1332^
-^L1333^[86 FF _L3948_][1D FF][00 FF]
-^L1334^[86 FF _L3948_][1D FF][00 FF]
-^L1335^[86 FF _L3948_][1D FF][00 FF]
-^L1336^[86 FF _L3948_][1D FF][00 FF]
+^L1329^ <Magicant bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
+^L1330^ <Legendary bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
+^L1331^ <Gutsy bat>[02 FF][86 FF _L3947_][02 FF]@When equipped,[01 FF]  it increases your guts.[1D FF][00 FF]
+^L1332^ <Casey bat>[02 FF][86 FF _L3947_][02 FF]@You can't help but swing this[01 FF]  bat with all your might.[02 FF]@There's a good chance that[01 FF]  you may just whiff.[1D FF][00 FF]
+^L1333^ <Fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
+^L1334^ <Thick fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
+^L1335^ <Deluxe fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
+^L1336^ <Chef's fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
 ^L1337^[86 FF _L3948_][1D FF][00 FF]
-^L1338^[86 FF _L3948_][1D FF][00 FF]
-^L1339^[86 FF _L3948_][1D FF][00 FF]
-^L1340^[86 FF _L3948_][1D FF][00 FF]
-^L1341^
-^L1342^[86 FF _L3950_][1D FF][00 FF]
-^L1343^[86 FF _L3950_][1D FF][00 FF]
-^L1344^[86 FF _L3950_][1D FF][00 FF]
-^L1345^[86 FF _L3950_][1D FF][00 FF]
-^L1346^[86 FF _L3950_][1D FF][00 FF]
-^L1347^[86 FF _L3950_][1D FF][00 FF]
-^L1348^[86 FF _L3950_][1D FF][00 FF]
-^L1349^[86 FF _L3950_][1D FF][00 FF]
-^L1350^[86 FF _L3950_][1D FF][00 FF]
-^L1351^[86 FF _L3950_][1D FF][00 FF]
-^L1352^[86 FF _L3950_][1D FF][00 FF]
-^L1353^[86 FF _L3950_][1D FF][00 FF]
-^L1354^[86 FF _L3950_][1D FF][00 FF]
-^L1355^[86 FF _L3950_][1D FF][00 FF]
-^L1356^
-^L1357^
-^L1358^
-^L1359^
-^L1360^
-^L1361^[86 FF _L3951_][1D FF][00 FF]
-^L1362^
-^L1363^
-^L1364^
-^L1365^
-^L1366^
-^L1367^
-^L1368^
-^L1369^
-^L1370^
-^L1371^
-^L1372^[86 FF _L3953_][1D FF][00 FF]
-^L1373^[86 FF _L3953_][1D FF][00 FF]
-^L1374^[86 FF _L3953_][1D FF][00 FF]
-^L1375^[86 FF _L3953_][1D FF][00 FF]
-^L1376^[86 FF _L3953_][1D FF][00 FF]
-^L1377^[86 FF _L3953_][1D FF][00 FF]
-^L1378^[86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
-^L1379^[86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
-^L1380^[86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
-^L1381^
-^L1382^
-^L1383^
-^L1384^
-^L1385^
-^L1386^[86 FF _L3956_][1D FF][00 FF]
-^L1387^[86 FF _L3956_][1D FF][00 FF]
+^L1338^ <French fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
+^L1339^ <Magic fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
+^L1340^ <Holy fry pan>[02 FF][86 FF _L3948_][1D FF][00 FF]
+^L1341^ <Sword of kings>[02 FF][86 FF _L3949_][02 FF]@It increases your offence.[1D FF][00 FF]
+^L1342^ <Pop gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1343^ <Stun gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1344^ <Toy air gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1345^ <Magnum air gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1346^ <Zip gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1347^ <Laser gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1348^ <Hyper beam>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1349^ <Double beam>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1350^ <Crusher beam>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1351^ <Spectrum beam>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1352^ <Baddest beam>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1353^ <Death ray>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1354^ <Moon beam gun>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1355^ <Gaia beam>[02 FF][86 FF _L3950_][1D FF][00 FF]
+^L1356^ <Yo-yo>[02 FF]@A so-so weapon.[1D FF][00 FF]
+^L1357^ <Slingshot>[02 FF]@A decent little weapon.[1D FF][00 FF]
+^L1358^ <Combat yo-yo>[02 FF]@A pretty powerful weapon.[1D FF][00 FF]
+^L1359^ <Trick yo-yo>[02 FF]@A tough, strong weapon![1D FF][00 FF]
+^L1360^ <Combat yo-yo>[02 FF]@This one rocks, for sure.[1D FF][00 FF]
+^L1361^ <Travel charm>[02 FF][86 FF _L3951_][1D FF][00 FF]
+^L1362^ <Great charm>[02 FF][86 FF _L3951_][02 FF]@Also, it adds a bit of Speed.[1D FF][00 FF]
+^L1363^ <Crystal charm>[02 FF][86 FF _L3951_][02 FF]@It also increases your Speed.[1D FF][00 FF]
+^L1364^ <Rabbit's foot>[02 FF][86 FF _L3951_][02 FF]@It increases your Speed[01 FF]  in a big way.[1D FF][00 FF]
+^L1365^ <Flame pendant>[02 FF][86 FF _L3952_][02 FF]@It protects you from[01 FF]  fire attacks.[1D FF][00 FF]
+^L1366^ <Rain pendant>[02 FF][86 FF _L3952_][02 FF]@It protects you from[01 FF]  freeze attacks.[1D FF][00 FF]
+^L1367^ <Night pendant>[02 FF][86 FF _L3952_][02 FF]@It absorbs the light of[01 FF]  a flash attack.[1D FF][00 FF]
+^L1368^ <Sea pendant>[02 FF][86 FF _L3952_][02 FF]@It protects you from fire,[01 FF]  freeze and flash attacks.[1D FF][00 FF]
+^L1369^ <Earth pendant>[02 FF][86 FF _L3952_][02 FF]@It protects you from fire,[01 FF]  freeze, and flash attacks.[1D FF][00 FF]
+^L1370^ <Star pendant>[02 FF][86 FF _L3952_][02 FF]@It protects you from fire,[01 FF]  freeze and flash attacks.[1D FF][00 FF]
+^L1371^ <Cloak of kings>[02 FF]@[90 FF 04][1A FF 01 00]'s body equipment.[02 FF]@It increases his Defense.[1D FF][00 FF]
+^L1372^ <Cheap bracelet>[02 FF][86 FF _L3953_][1D FF][00 FF]
+^L1373^ <Copper bracelet>[02 FF][86 FF _L3953_][1D FF][00 FF]
+^L1374^ <Silver bracelet>[02 FF][86 FF _L3953_][1D FF][00 FF]
+^L1375^ <Gold bracelet>[02 FF][86 FF _L3953_][1D FF][00 FF]
+^L1376^ <Platinum band>[02 FF][86 FF _L3953_][1D FF][00 FF]
+^L1377^ <Diamond band>[02 FF][86 FF _L3953_][1D FF][00 FF]
+^L1378^ <Pixie's bracelet>[02 FF][86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
+^L1379^ <Cherub's band>[02 FF][86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
+^L1380^ <Goddess band>[02 FF][86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
+^L1381^ <Bracer of kings>[02 FF]@To be equipped on[01 FF]  [90 FF 04][1A FF 01 00]'s arm.[02 FF]@Helps protect from being[01 FF]  hypnotized, and Luck goes up.[02 FF]@Of course,[01 FF]  Defense also goes up.[1D FF][00 FF]
+^L1382^ <Baseball cap>[02 FF][86 FF _L3955_][02 FF]@It has the logo of your[01 FF]  favorite baseball team.[1D FF][00 FF]
+^L1383^ <Holmes hat>[02 FF][86 FF _L3955_][02 FF]@It makes you feel like the[01 FF]  great detective, Sherlock[01 FF]  Holmes, when equipped.[1D FF][00 FF]
+^L1384^ <Mr. Baseball cap>[02 FF][86 FF _L3955_][02 FF]@It is said to have been given[01 FF]  to your friend by a famous[01 FF]  player at the ballpark.[1D FF][00 FF]
+^L1385^ <Hard hat>[02 FF][86 FF _L3955_][02 FF]@Should be worn when searching[01 FF]  for buried treasure,[02 FF]@or while you are at the[01 FF]  construction site.[1D FF][00 FF]
+^L1386^ <Ribbon>[02 FF][86 FF _L3956_][1D FF][00 FF]
+^L1387^ <Red ribbon>[02 FF][86 FF _L3956_][1D FF][00 FF]
 ^L1388^[86 FF _L3956_][02 FF][86 FF _L3972_][1D FF][00 FF]
 ^L1389^[86 FF _L3956_][02 FF][86 FF _L3972_][1D FF][00 FF]
 ^L1390^
-^L1391^[86 FF _L3956_][1D FF][00 FF]
-^L1392^[86 FF _L3957_][1D FF][00 FF]
-^L1393^[86 FF _L3957_][1D FF][00 FF]
+^L1391^ <Goddess ribbon>[02 FF][86 FF _L3956_][1D FF][00 FF]
+^L1392^ <Coin of slumber>[02 FF][86 FF _L3957_][1D FF][00 FF]
+^L1393^ <Coin of defense>[02 FF][86 FF _L3957_][1D FF][00 FF]
 ^L1394^[86 FF _L3957_][1D FF][00 FF]
 ^L1395^
-^L1396^[86 FF _L3957_][1D FF][00 FF]
-^L1397^[86 FF _L3957_][1D FF][00 FF]
-^L1398^[86 FF _L3957_][1D FF][00 FF]
-^L1399^[86 FF _L3957_][1D FF][00 FF]
-^L1400^
-^L1401^
-^L1402^
+^L1396^ <Lucky coin>[02 FF][86 FF _L3957_][1D FF][00 FF]
+^L1397^ <Talisman coin>[02 FF][86 FF _L3957_][1D FF][00 FF]
+^L1398^ <Shiny coin>[02 FF][86 FF _L3957_][1D FF][00 FF]
+^L1399^ <Souvenir coin>[02 FF][86 FF _L3957_][1D FF][00 FF]
+^L1400^ <Diadem of kings>[02 FF][86 FF _L3958_][02 FF]@It increases his Defense.[1D FF][00 FF]
+^L1401^ <Can of fruit juice>[02 FF][86 FF _L3961_]6[86 FF _L3960_][1D FF][00 FF]
+^L1402^ <Cookie>[02 FF][86 FF _L3959_]6[86 FF _L3960_][1D FF][00 FF]
 ^L1403^
 ^L1404^
-^L1405^
+^L1405^ <Bag of fries>[86 FF _L3959_]24[86 FF _L3960_][1D FF][00 FF]
 ^L1406^
-^L1407^
+^L1407^ <Bread roll>[02 FF][86 FF _L3959_]30[86 FF _L3960_][1D FF][00 FF]
 ^L1408^
-^L1409^
+^L1409^ <Boiled egg>[02 FF][86 FF _L3959_]40[86 FF _L3960_][1D FF][00 FF]
 ^L1410^
 ^L1411^
-^L1412^
-^L1413^
+^L1412^ <Hamburger>[02 FF][86 FF _L3959_]50[86 FF _L3960_][02 FF]@100% beef.[1D FF][00 FF]
+^L1413^ <Croissant>[02 FF][86 FF _L3959_]60[86 FF _L3960_][1D FF][00 FF]
 ^L1414^
-^L1415^
-^L1416^
+^L1415^ <Royal iced tea>[02 FF]@The highest quality tea,[01 FF]  produced by tea expert[01 FF]  Mr. Y. Todaar,[02 FF]@who carefully selects only[01 FF]  hand-picked tea leaves.[02 FF]@Long ago, only aristocrats[01 FF]  at a king's court were allowed[01 FF]  to drink this tea.[02 FF][86 FF _L3961_]60[86 FF _L3960_][1D FF][00 FF]
+^L1416^ <Fresh egg>[02 FF][86 FF _L3959_]80[86 FF _L3960_][02 FF]@So fresh, it's still warm![1D FF][00 FF]
 ^L1417^
-^L1418^
-^L1419^
+^L1418^ <Picnic lunch>[02 FF][86 FF _L3959_]80[86 FF _L3960_][02 FF]@There's even a slice of your[01 FF]  favorite cake![1D FF][00 FF]
+^L1419^ <Protein drink>[02 FF]@For building a stronger,[01 FF]  healthier body.[02 FF]@It gives you a blast[01 FF]  of nourishment when you[01 FF]  are fatigued.[02 FF][86 FF _L3961_]80[86 FF _L3960_][1D FF][00 FF]
 ^L1420^
 ^L1421^
-^L1422^
-^L1423^
+^L1422^ <Pasta di Summers>[02 FF]@This is a pasta dish which[01 FF]  legend holds was a favorite of[01 FF]  King Summers the Third[02 FF]@in the 16th century. Back then,[01 FF]  there were many great chefs,[01 FF]  confident of their[02 FF]@culinary skills, always going[01 FF]  to and from Summer's Palace.[02 FF]@Once day, King Summers wife,[01 FF]  Anna Summers, said,[02 FF]@<Oh what I wouldn't give for[01 FF]  some really delicious pasta!>[01 FF]  ... ... ...[02 FF]@...Well, let's just leave it[01 FF]  at that. The story is too long to[01 FF]  go through completely...[02 FF]@but it really is a beautiful,[01 FF]  touching tale...[02 FF][86 FF _L3959_]110[86 FF _L3960_][1D FF][00 FF]
+^L1423^ <Pizza>[02 FF][86 FF _L3959_]120[86 FF _L3960_][1D FF][00 FF]
 ^L1424^
 ^L1425^
 ^L1426^
 ^L1427^
 ^L1428^
-^L1429^
+^L1429^ <Chef's special>[02 FF]@This is today's special.[01 FF]  It is highly recommended by our[01 FF]  chef,[02 FF]@who is trained at a five-star[01 FF]  restaurant in Paris.[02 FF][86 FF _L3959_]200[86 FF _L3960_][1D FF][00 FF]
 ^L1430^
 ^L1431^
 ^L1432^
-^L1433^
-^L1434^
-^L1435^
-^L1436^
+^L1433^ <Kraken soup>[02 FF]@Soup made from the fin of the[01 FF]  sea monster known as Kraken.[02 FF]@This beast lives in the ocean[01 FF]  off the shore of Summers.[02 FF]@Very expensive, but a sizable[01 FF]  power boost is guaranteed.[1D FF][00 FF]
+^L1434^ <Large pizza>[02 FF]@Since it's a really big pizza,[01 FF]  everyone can recover[01 FF]  about 240 HP when eaten.[1D FF][00 FF]
+^L1435^ <Brain food lunch>[02 FF][86 FF _L3959_]300 HP and about 50 PP.[1D FF][00 FF]
+^L1436^ <Bottle of water>[02 FF]@When you drink it,[01 FF]  your PP slightly increases.[1D FF][00 FF]
 ^L1437^
-^L1438^
+^L1438^ <PSI caramel>[02 FF]@Replenishes about 20 PP.[1D FF][00 FF]
 ^L1439^
-^L1440^
+^L1440^ <Magic truffle>[02 FF]@A dream-like delicacy[01 FF]  that is said to grow at[01 FF]  the base of trees[02 FF]@in wet, muddy places.[02 FF]@It restores about 80 PP.[1D FF][00 FF]
 ^L1441^
 ^L1442^
 ^L1443^
 ^L1444^
-^L1445^[86 FF _L3962_][1D FF][00 FF]
-^L1446^[86 FF _L3962_][1D FF][00 FF]
-^L1447^[86 FF _L3962_][1D FF][00 FF]
-^L1448^[86 FF _L3962_][1D FF][00 FF]
-^L1449^[86 FF _L3962_][1D FF][00 FF]
-^L1450^[86 FF _L3962_][1D FF][00 FF]
-^L1451^[86 FF _L3962_][1D FF][00 FF]
-^L1452^
+^L1445^ <Sprig of parsley>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1446^ <Ketchup packet>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1447^ <Sugar packet>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1448^ <Carton of cream>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1449^ <Salt packet>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1450^ <Jar of hot sauce>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1451^ <Tin of cocoa>[02 FF][86 FF _L3962_][1D FF][00 FF]
+^L1452^ <Jar of delisauce>[02 FF]@Use by sprinkling it over food.[02 FF]@It tastes good with[01 FF]  any kind of food, thereby[02 FF]@increasing the recovery power[01 FF]  of the food.[1D FF][00 FF]
 ^L1453^
-^L1454^
+^L1454^ <Counter-PSI unit>[02 FF][86 FF _L3968_][02 FF]@Contains the enemy's PSI[01 FF]  during a battle.[02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1455^
 ^L1456^[80 FF _L1538_]
-^L1457^
+^L1457^ <Sudden guts pill>[02 FF]@Doubles your guts during battle.[02 FF]@However, after a battle,[01 FF]  your guts return to normal.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1458^
 ^L1459^
 ^L1460^
@@ -1463,25 +1462,25 @@
 ^L1462^ <ATM card>[02 FF]@You know, you shouldn't leave[01 FF]  home without it...[02 FF]@It even works overseas![1D FF][00 FF]
 ^L1463^
 ^L1464^
-^L1465^
+^L1465^ <Yogurt dispenser>[02 FF][86 FF _L3968_][02 FF]@Invented by Apple Kid.[02 FF]@If used during combat,[01 FF]  some damage will be dealt[01 FF]  to the enemy,[02 FF]@though it's not understood[01 FF]  why this happens...[01 FF]@it's just yogurt after all...[02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1466^
-^L1467^
+^L1467^ <Stag beetle>[02 FF]@By throwing this at the enemy[01 FF]  during battle,[02 FF]@the enemy is shocked and[01 FF]  stops moving.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1468^
 ^L1469^
 ^L1470^
 ^L1471^
-^L1472^
+^L1472^ <Insecticide spray>[02 FF]@Deals 100 points of damage to[01 FF]  any bug  when used[01 FF]  during combat.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1473^
-^L1474^
-^L1475^
+^L1474^ <Rust promoter>[02 FF]@Quickly rusts metallic enemies[01 FF]  when used during battle.[02 FF]@The enemy will take about[01 FF]  200 points of damage.[02 FF][86 FF _L3971_][1D FF][00 FF]
+^L1475^ <Rust promoter DX>[02 FF]@Causes almost instantaneous[01 FF]  rusting when used on metallic[01 FF]  enemies during battle.[02 FF]@The enemy takes about[01 FF]  400 points of damage.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1476^
-^L1477^
+^L1477^ <Shield killer>[02 FF][86 FF _L3968_][02 FF]@Breaks through the enemy's[01 FF]  shield during a battle.[02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1478^
 ^L1479^
-^L1480^
-^L1481^
-^L1482^
-^L1483^
+^L1480^ <Xterminator spray>[02 FF]@Deals 200 points of damage to[01 FF]  any bug when used[01 FF]  during combat.[02 FF][86 FF _L3969_][1D FF][00 FF]
+^L1481^ <Hungry HP-sucker>[02 FF][86 FF _L3968_][02 FF]@Sucks up some HP from[01 FF]  all the enemies.[02 FF]@The more HP the enemies have,[01 FF]  the more you get.[02 FF][86 FF _L3969_][1D FF][00 FF]
+^L1482^ <Heavy bazooka>[02 FF][86 FF _L3968_][02 FF]@Really dishes out a lot of[01 FF]  damage to the enemy during a[01 FF]  battle.[02 FF]@Because of its explosive power,[02 FF]@it may effect others besides[01 FF]  the target creature.[02 FF][86 FF _L3969_][1D FF][00 FF]
+^L1483^ <Super bomb>[02 FF]@Able to dish out some[01 FF]  heavy-duty destruction[01 FF]  in combat.[02 FF]@Because of its explosive power,[02 FF]@it may effect others besides[01 FF]  the target creature.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1484^
 ^L1485^
 ^L1486^
@@ -1490,79 +1489,79 @@
 ^L1489^
 ^L1490^
 ^L1491^
-^L1492^
+^L1492^ <HP-sucker>[02 FF][86 FF _L3968_][02 FF]@Sucks up some HP from[01 FF]  the target creature.[02 FF]@The more HP an enemy has,[01 FF]  the more you get.[02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1493^
 ^L1494^
-^L1495^
-^L1496^
-^L1497^
+^L1495^ <Super plush bear>[02 FF]@[86 FF _L3945_][1D FF][00 FF]
+^L1496^ <Defense shower>[02 FF]@Increases the Defense of[01 FF]  all the friends.[02 FF][86 FF _L3939_][02 FF][86 FF _L3969_][1D FF][00 FF]
+^L1497^ <Defense spray>[02 FF]@Increase one of the friends[01 FF]  Defense during battle.[02 FF][86 FF _L3939_][02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1498^
 ^L1499^
 ^L1500^
-^L1501^
+^L1501^ <Bag of Dragonite>[02 FF]@If you sprinkle the powder on[01 FF]  one of your friends[01 FF]  during battle,[02 FF]@that friend turns into a dragon[01 FF]  and attacks all enemies.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1502^
-^L1503^
-^L1504^
-^L1505^
-^L1506^
-^L1507^
-^L1508^
+^L1503^ <Teddy bear>[02 FF]@[86 FF _L3945_][1D FF][00 FF]
+^L1504^ <Slime generator>[02 FF][86 FF _L3968_][02 FF]@Sprays a sticky substance that[01 FF]  stops the enemy from moving.[02 FF][86 FF _L3969_][1D FF][00 FF]
+^L1505^ <Jar of fly honey>[02 FF]@Belch's most favorite food[01 FF]  in the whole world.[02 FF]@However... it smells REALLY,[01 FF]  really nasty! We're talkin'[01 FF]  major stinkage here![1D FF][00 FF]
+^L1506^ <Bazooka>[02 FF][86 FF _L3968_][02 FF][86 FF _L3970_][02 FF]@Because of its explosive power,[02 FF]@it may effect others besides[01 FF]  the target creature.[02 FF][86 FF _L3969_][1D FF][00 FF]
+^L1507^ <Backstage pass>[02 FF]@It allows you go back stage[01 FF]  at the Chaos Theater.[02 FF]@Of course, you can also watch[01 FF]  the show using the pass.[1D FF][00 FF]
+^L1508^ <Toothbrush>[02 FF]@Can be used during battle.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1509^
-^L1510^
+^L1510^ <Handbag strap>[02 FF]@When used as a whip[01 FF]  during battle,[02 FF]@the enemy takes[01 FF]  enough damage to stop moving[01 FF]  for a short time.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1511^
 ^L1512^
-^L1513^
-^L1514^
+^L1513^ <Pharaoh's curse>[02 FF]@An ectoplasmic ooze is[01 FF]  disgorged out of the dreadful[01 FF]  box,[02 FF]@and the enemy[01 FF]  may be poisoned.[02 FF][86 FF _L3971_][1D FF][00 FF]
+^L1514^ <Pak of bubble gum>[02 FF]@This is the[01 FF]  Balloon Monkey's favorite.[02 FF]@It will not help you recover, but[02 FF]@you'll also never run out,[01 FF]  'cause it's a super jumbo pack![1D FF][00 FF]
 ^L1515^
-^L1516^ <Franklin badge>[02 FF]@By keeping it as one of your items,[02 FF]@it deflects a lightning attack back at the attacker.[1D FF][00 FF]
-^L1517^
-^L1518^
+^L1516^ <Franklin badge>[02 FF]@By keeping it as[01 FF]  one of your items,[02 FF]@it deflects a lightning attack[01 FF]  back at the attacker.[1D FF][00 FF]
+^L1517^ <Protractor>[02 FF]@You can even use this[01 FF]  during battle![02 FF][86 FF _L3969_][1D FF][00 FF]
+^L1518^ <Pair of dirty socks>[02 FF]@When used during battle,[01 FF]  the enemy gets so nauseous[01 FF]  from the ripe odor,[02 FF]@they cannot fight.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1519^
-^L1520^
-^L1521^[86 FF _L3968_][02 FF][86 FF _L3970_][02 FF][86 FF _L3971_][1D FF][00 FF]
-^L1522^
-^L1523^
-^L1524^
+^L1520^ <Snake bag>[02 FF]@During battle, a snake pops[01 FF]  out of the bag and bites[01 FF]  the enemy.[02 FF]@There are thousands of small[01 FF]  snakes living in the bag,[02 FF]@so you should be able to use it[01 FF]  over and over again.[02 FF]@It can possibly poison[01 FF]  the enemy, too.[1D FF][00 FF]
+^L1521^ <Bottle rocket>[02 FF][86 FF _L3968_][02 FF][86 FF _L3970_][02 FF][86 FF _L3971_][1D FF][00 FF]
+^L1522^ <Big bottle rocket>[02 FF][86 FF _L3968_][02 FF]@Fires a fast, powerful[01 FF]  bottle rocket.[02 FF][86 FF _L3971_][1D FF][00 FF]
+^L1523^ <Multi bottle rocket>[02 FF][86 FF _L3968_][02 FF]@Possibly the strongest[01 FF]  weapon around,[02 FF]@it does a lot of damage[01 FF]  due to its massive warhead.[02 FF][86 FF _L3971_][1D FF][00 FF]
+^L1524^ <Bomb>[02 FF][86 FF _L3970_][02 FF]@Because of its explosive power,[02 FF]@it may effect others besides[01 FF]  the target creature.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1525^
-^L1526^
+^L1526^ <Mummy wrap>[02 FF]@If used as a whip[01 FF]  during battle, the enemy[01 FF]  will take some damage[02 FF]@and stop moving for a while.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1527^
 ^L1528^
 ^L1529^
-^L1530^
+^L1530^ <Ruler>[02 FF]@You can even use this[01 FF]  during battle![02 FF][86 FF _L3969_][1D FF][00 FF]
 ^L1531^
 ^L1532^
-^L1533^
-^L1534^
-^L1535^
-^L1536^
-^L1537^
-^L1538^
-^L1539^
-^L1540^
-^L1541^
-^L1542^
-^L1543^
-^L1544^
+^L1533^ <Cold remedy>[02 FF]@This is the most effective[01 FF]  thing to take when[01 FF]  you catch a cold.[1D FF][00 FF]
+^L1534^ <Wet towel>[02 FF]@It's great for those times[01 FF]  that you get sunstroke.[1D FF][00 FF]
+^L1535^ <Vial of serum>[02 FF]@This is the best thing to take[01 FF]  when you get poisoned.[1D FF][00 FF]
+^L1536^ <Refreshing herb>[02 FF]@It helps when you have been[01 FF]  poisoned, or you are feeling[01 FF]  nauseous.[02 FF]@It also has other uses...[02 FF][86 FF _L3963_][86 FF _L3964_][1D FF][00 FF]
+^L1537^ <Secret herb>[02 FF]@May revive a friend who[01 FF]  is unconscious.[02 FF][86 FF _L3965_][86 FF _L3963_][86 FF _L3964_][02 FF][86 FF _L3966_][1D FF][00 FF]
+^L1538^ <Horn of life>[02 FF]@Revives a friend who[01 FF]  is unconscious.[02 FF][86 FF _L3965_][86 FF _L3963_][86 FF _L3967_][02 FF][86 FF _L3966_][1D FF][00 FF]
+^L1539^ <IQ capsule>[02 FF]@It increases your IQ[01 FF]  when taken.[1D FF][00 FF]
+^L1540^ <Guts capsule>[02 FF]@It increases your Guts[01 FF]  when taken.[1D FF][00 FF]
+^L1541^ <Speed capsule>[02 FF]@It increases your Speed[01 FF]  when taken.[1D FF][00 FF]
+^L1542^ <Vital capsule>[02 FF]@It increases your Vitality[01 FF]  when taken.[1D FF][00 FF]
+^L1543^ <Luck capsule>[02 FF]@It increases your Luck[01 FF]  when taken.[1D FF][00 FF]
+^L1544^ <Rock candy>[02 FF]@When you eat this, it will[01 FF]  increase either Speed, Guts,[01 FF]  Vitality, IQ or Luck.[1D FF][00 FF]
 ^L1545^
-^L1546^
-^L1547^
-^L1548^
-^L1549^
-^L1550^
-^L1551^
-^L1552^
-^L1553^
-^L1554^
-^L1555^
-^L1556^
-^L1557^
-^L1558^
+^L1546^ <Broken machine>[02 FF]@There's no way of knowing[01 FF]  its original use.[02 FF]@It's just some kind of[01 FF]  broken gadget.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1547^ <Broken gadget>[02 FF]@There's no way of knowing[01 FF]  its original use.[02 FF]@It's just some kind of[01 FF]  broken mechanism.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1548^ <Broken air gun>[02 FF]@A broken air gun.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1549^ <Broken spray can>[02 FF]@A broken spray can.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1550^ <Broken laser>[02 FF]@A broken laser gun.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1551^ <Broken iron>[02 FF]@A contraption that looks[01 FF]  like an iron.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1552^ <Broken pipe>[02 FF]@It looks like a busted[01 FF]  water pipe.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1553^ <Broken cannon>[02 FF]@A broken beam cannon.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1554^ <Broken tube>[02 FF]@A broken tube-shaped item.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1555^ <Broken bazooka>[02 FF]@A broken bazooka.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1556^ <Broken trumpet>[02 FF]@A broken apparatus that is[01 FF]  shaped like a trumpet.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1557^ <Broken harmonica>[02 FF]@A broken device that[01 FF]  looks like a harmonica.[02 FF][86 FF _L3946_][1D FF][00 FF]
+^L1558^ <Broken antenna>[02 FF]@A piece of broken equipment[01 FF]  that looks like a satellite dish.[02 FF][86 FF _L3946_][1D FF][00 FF]
 ^L1559^
 ^L1560^
 ^L1561^
 ^L1562^
 ^L1563^
-^L1564^
+^L1564^ <Letter from mom>[02 FF]@A letter from Mom to[01 FF]  [90 FF 01][1A FF 01 00].[1D FF][00 FF]
 ^L1565^
 ^L1566^
 ^L1567^
@@ -2154,13 +2153,13 @@
 ^L2153^
 ^L2154^
 ^L2155^
-^L2156^
+^L2156^[1C FF 94 02 _L341_]@Who are you talking to?[1D FF][00 FF]
 ^L2157^
 ^L2160^[C6 FF][A7 FF B1 01][00 FF]
 ^L2161^[00 FF]
-^L2162^
+^L2162^@Yeah?[1D FF][C6 FF][A1 FF 02 00 02 00][00 FF]
 ^L2163^[C6 FF][A7 FF B0 01][00 FF]
-^L2164^
+^L2164^@You sure are strong![1B FF 14 00][01 FF]  You got me,[1B FF 0F 00] at least...[1D FF][00 FF]
 ^L2165^
 ^L2166^[08 FF E2 00][86 FF _L4325_][09 FF E2 00][00 FF]
 ^L2167^[08 FF E3 00][86 FF _L4325_][09 FF E3 00][00 FF]
@@ -3047,7 +3046,7 @@
 ^L3054^
 ^L3055^
 ^L3056^
-^L3057^
+^L3057^@Kyakya kyekyi?[02 FF]@(So... how 've you been?)[1D FF][00 FF]
 ^L3058^
 ^L3059^
 ^L3060^
@@ -3493,7 +3492,7 @@
 ^L3503^[1B FF 14 00][D4 FF 50 00][F0 FF 00 00 03 00][1B FF 28 00][F0 FF 2F 00 00 00][1B FF 80 00][00 FF]
 ^L3504^
 ^L3505^
-^L3506^
+^L3506^ tried to[01 FF]  steal something, but failed![02 FF][00 FF]
 ^L3507^
 ^L3508^
 ^L3509^
@@ -3913,41 +3912,41 @@
 ^L3936^@Cuts damage in half and some of the blocked[01 FF]  damage is dealt back to the enemy.[00 FF]
 ^L3937^@It blocks an enemy's PSI attack.[00 FF]
 ^L3938^@It reflects an enemy's PSI attack back at the[01 FF]  attacker.[00 FF]
-^L3939^@It is most effective if you use this power[01 FF]  multiple times to <layer> the effect.[00 FF]
+^L3939^@It is most effective if you use[01 FF]  this power multiple times to[01 FF]  <layer> the effect.[00 FF]
 ^L3940^[00 FF]
 ^L3941^[00 FF]
 ^L3942^ <numbed> condition.[00 FF]
 ^L3943^[00 FF]
 ^L3944^@Allows you to immediately return to a place[01 FF]  where you have already been.[00 FF]
-^L3945^
-^L3946^
-^L3947^
-^L3948^
-^L3949^
-^L3950^
-^L3951^
-^L3952^
-^L3953^
-^L3954^
-^L3955^
-^L3956^
-^L3957^
-^L3958^
-^L3959^
-^L3960^
-^L3961^
-^L3962^
-^L3963^
-^L3964^
-^L3965^
-^L3966^
-^L3967^
-^L3968^
-^L3969^
-^L3970^
-^L3971^
+^L3945^A cute teddy bear![00 FF]
+^L3946^@That genius [90 FF 03][1A FF 01 00] should[01 FF]  be able to fix it sometime.[00 FF]
+^L3947^@[90 FF 01][1A FF 01 00][80 FF _L3973_]
+^L3948^@[90 FF 02][1A FF 01 00][80 FF _L3973_]
+^L3949^@[90 FF 04][1A FF 01 00][80 FF _L3973_]
+^L3950^@[90 FF 03][1A FF 01 00][80 FF _L3973_]
+^L3951^[86 FF _L3952_]@It protects you from[01 FF]  paralysis attacks.[00 FF]
+^L3952^@Must be equipped on your body.[02 FF][00 FF]
+^L3953^@Must be equipped on your arm.[02 FF]@It increases your Defense.[00 FF]
+^L3954^@Helps keep you from being[01 FF]  hypnotized, and it also[01 FF]  increases your Luck.[00 FF]
+^L3955^@Must be equipped as <other.>[00 FF]
+^L3956^@Miscellaneous equipment that[01 FF]  can only be used by [90 FF 02][1A FF 01 00].[00 FF]
+^L3957^[86 FF _L3955_][02 FF]@Increases your Defense and[01 FF]  Luck.[00 FF]
+^L3958^@Miscellaneous equipment that[01 FF]  can only be used by [90 FF 04][1A FF 01 00].[00 FF]
+^L3959^@When eaten, you recover[01 FF]  about [00 FF]
+^L3960^ HP.[00 FF]
+^L3961^@If you drink this,[01 FF]  you recover about [00 FF]
+^L3962^@To use, sprinkle over food.[02 FF]@A good combination[01 FF]  increases the strength[01 FF]  of your recovery.[00 FF]
+^L3963^@colds, sunstroke, falling asleep,[01 FF]  uncontrollable crying,[01 FF]  and feeling strange.[00 FF]
+^L3964^[00 FF]
+^L3965^@In addition, it also works well[01 FF]  on poison, nausea,[02 FF][00 FF]
+^L3966^@This is effective when you[01 FF]  have paralysis, or you have[01 FF]  been diamondized.[00 FF]
+^L3967^[00 FF]
+^L3968^@Items for [90 FF 03][1A FF 01 00].[00 FF]
+^L3969^@Can be used many times.[00 FF]
+^L3970^@Damages an enemy when[01 FF]  used during battle.[00 FF]
+^L3971^@Gone after one use.[00 FF]
 ^L3972^
-^L3973^
+^L3973^ can equip this[01 FF]  weapon.[00 FF]
 ^L3974^
 ^L3975^
 ^L3976^[DF FF][81 FF _L5140_][BA FF 01 00 00 00][9C FF]^L5140^[00 FF]

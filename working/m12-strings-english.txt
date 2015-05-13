@@ -12,7 +12,7 @@
 ^L11^
 ^L12^
 ^L13^
-^L14^
+^L14^[1C FF EE 02 _L2395_][1C FF D7 01 _L2396_]@What was that noise?[02 FF]@[0D FF],[1B FF 0F 00] you don't seem[01 FF] scared.[1B FF 14 00]  Are you nuts?[02 FF]@And now you want to go[01 FF]  check it out?[1B FF 0F 00]...oh[1B FF 0F 00] ...okay.[02 FF]@You'll sneak out of your room[01 FF]  anyway,[1B FF 0F 00] even if I asked you not[01 FF]  to.[02 FF]@At least change out of your[01 FF]  jammies before you go.[02 FF][C6 FF][1B FF 01 00][08 FF D7 01][14 FF 01 00][09 FF ED 02][00 FF]
 ^L15^
 ^L16^
 ^L17^
@@ -203,7 +203,7 @@
 ^L202^
 ^L203^
 ^L204^
-^L205^
+^L205^@That's right,[1B FF 0F 00] I'm a bus driver.[1B FF 14 00][01 FF]  For now,[1B FF 0F 00] I'm resting.[02 FF]@Life is long... take it easy,[1B FF 0F 00][8D FF 01 00][BD FF 04 _L2558_ _L2559_ _L2560_ _L2561_][02 FF][BE FF FF 00 CF 00][82 FF _L2562_]@Why don't you check out your[01 FF]  town map and learn about[01 FF]  this area.[1D FF][00 FF]
 ^L206^
 ^L207^[08 FF AA 02][BC FF 32 00][86 FF _L5848_][00 FF]
 ^L208^
@@ -1129,195 +1129,194 @@
 ^L1128^[D4 FF 19 00]@[9F FF] stung[01 FF]  with its poison stinger![02 FF][1B FF 01 00][00 FF]
 ^L1129^[D4 FF 19 00]@[9F FF] gave[01 FF]  the kiss of death![02 FF][1B FF 01 00][00 FF]
 ^L1130^[D4 FF 19 00]@[9F FF] exhaled[01 FF]  arctic-cold breath![D4 FF 51 00][02 FF][1B FF 01 00][00 FF]
-^L1131^
-^L1132^
-^L1133^
-^L1134^
-^L1135^
-^L1136^
-^L1137^
-^L1138^
-^L1139^
-^L1140^
-^L1141^
-^L1142^
-^L1143^
-^L1144^
-^L1145^
-^L1146^
-^L1147^
-^L1148^
-^L1149^
-^L1150^
-^L1151^
-^L1152^
-^L1153^
-^L1154^
-^L1155^
-^L1156^
-^L1157^
-^L1158^
-^L1159^
-^L1160^
-^L1161^
-^L1162^
-^L1163^
-^L1164^
-^L1165^
-^L1166^
-^L1167^
-^L1168^
-^L1169^
-^L1170^
-^L1171^
-^L1172^
-^L1173^
-^L1174^
-^L1175^
-^L1176^
-^L1177^
-^L1178^
-^L1179^
-^L1180^
-^L1181^
-^L1182^
-^L1183^
-^L1184^
-^L1185^
-^L1186^
-^L1187^
-^L1188^
-^L1189^
-^L1190^
-^L1191^
-^L1192^
-^L1193^
-^L1194^
-^L1195^
-^L1196^
-^L1197^
-^L1198^
-^L1199^
-^L1200^
-^L1201^
-^L1202^
-^L1203^
-^L1204^
-^L1205^
-^L1206^
-^L1207^
-^L1208^
-^L1209^
-^L1210^
+^L1131^[D4 FF 19 00]@[9F FF] scattered[01 FF]  some spores![D4 FF 52 00][02 FF][1B FF 01 00][00 FF]
+^L1132^[D4 FF 19 00]@[9F FF] tried to[01 FF]  possess you in a frightening manner.[D4 FF 60 00][02 FF][1B FF 01 00][00 FF]
+^L1133^[D4 FF 19 00]@[9F FF] sprinkled around some[01 FF]  wonderful-smelling powder.[D4 FF 52 00][02 FF][1B FF 01 00][00 FF]
+^L1134^[D4 FF 19 00]@[9F FF] scattered[01 FF]  some mold spores![D4 FF 52 00][02 FF][1B FF 01 00][00 FF]
+^L1135^[D4 FF 19 00]@[9F FF] employed[01 FF]  a binding attack![02 FF][1B FF 01 00][00 FF]
+^L1136^[D4 FF 19 00]@[9F FF] spit out  a sticky mucus![D4 FF 51 00][02 FF][1B FF 01 00][00 FF]
+^L1137^[D4 FF 19 00]@[9F FF] spewed[01 FF]  <Fly Honey> out of his mouth![D4 FF 51 00][02 FF][1B FF 01 00][00 FF]
+^L1138^[D4 FF 19 00]@[9F FF] shot[01 FF]  spider silk out of its body![02 FF][00 FF]
+^L1139^[D4 FF 19 00]@[9F FF] said[01 FF]  something really scary![D4 FF 54 00][02 FF][1B FF 01 00][00 FF]
+^L1140^[D4 FF 19 00]@[9F FF] did[01 FF]  something very mysterious![D4 FF 55 00][02 FF][1B FF 01 00][00 FF]
+^L1141^[D4 FF 19 00]@[9F FF] disrupted[01 FF]  your senses![02 FF][00 FF]
+^L1142^[D4 FF 19 00]@[9F FF] is[01 FF]  sizing up the situation![02 FF][00 FF]
+^L1143^[D4 FF 19 00]@[9F FF] exhaled[01 FF]  a blast of stinky breath![D4 FF 5C 00][02 FF][1B FF 01 00][00 FF]
+^L1144^[D4 FF 19 00]@[9F FF] summoned[01 FF]  a storm![D4 FF 56 00][02 FF][1B FF 01 00][00 FF]
+^L1145^[D4 FF 19 00]@[9F FF] spilled[01 FF]  some scalding hot espresso![02 FF][00 FF]
+^L1146^[D4 FF 19 00]@[9F FF] played[01 FF]  a haunting melody![02 FF][1B FF 01 00][00 FF]
+^L1147^[D4 FF 19 00]@[9F FF] dispensed[01 FF]  an extinguishing blast![D4 FF 58 00][02 FF][1B FF 01 00][00 FF]
+^L1148^[D4 FF 19 00]@[9F FF] used a[01 FF]  Crashing Boom Bang attack![02 FF][00 FF]
+^L1149^[D4 FF 19 00]@[9F FF] shot out[01 FF]  a spray of fire![D4 FF 4B 00][02 FF][1B FF 01 00][00 FF]
+^L1150^[D4 FF 19 00]@[9F FF] breathed[01 FF]  fire![D4 FF 4B 00][02 FF][1B FF 01 00][00 FF]
+^L1151^[D4 FF 19 00]@[9F FF] made[01 FF]  something spin around![02 FF][00 FF]
+^L1152^[D4 FF 19 00]@[9F FF] lost[01 FF]  his temper![02 FF][00 FF]
+^L1153^[D4 FF 19 00]@[9F FF] said[01 FF]  something nasty![D4 FF 54 00][02 FF][1B FF 01 00][00 FF]
+^L1154^[D4 FF 19 00]@[9F FF] used a[01 FF]  vacuum attack![02 FF][00 FF]
+^L1155^[D4 FF 19 00]@[9F FF] replenished a fuel[01 FF]  supply![D4 FF 59 00][02 FF][1B FF 01 00][00 FF]
+^L1156^[D4 FF 19 00]@[9F FF] took a bite[01 FF]  using its poisonous fangs![02 FF][00 FF]
+^L1157^[D4 FF 19 00]@[9F FF] fired[01 FF]  a missile, making itself dizzy.[D4 FF 46 00][02 FF][1B FF 01 00][00 FF]
+^L1158^[D4 FF 19 00]@[9F FF] started a[01 FF]  continuous attack![02 FF][00 FF]
+^L1159^[D4 FF 19 00]@[9F FF] is[01 FF]  on guard.[02 FF][00 FF]
+^L1160^[D4 FF 19 00]@[9F FF] spewed out[01 FF]  a flaming fireball![D4 FF 4B 00][02 FF][1B FF 01 00][00 FF]
+^L1161^[D4 FF 19 00]@[9F FF] rushed in,[01 FF]  and intertwined with you![02 FF][00 FF]
+^L1162^[D4 FF 19 00]@[9F FF] attacked[01 FF]  with a crushing chop![02 FF][00 FF]
+^L1163^[D4 FF 19 00]@[9F FF] grappled and used[01 FF]  his submission hold![02 FF][00 FF]
+^L1164^[D4 FF 19 00]@[9F FF] revved and accelerated![02 FF][00 FF]
+^L1165^[D4 FF 19 00]@[9F FF] brandished[01 FF]  a knife![02 FF][00 FF]
+^L1166^[D4 FF 19 00]@[9F FF] tore[01 FF]  into you![02 FF][00 FF]
+^L1167^[D4 FF 19 00]@[9F FF] used a[01 FF]  biting attack![02 FF][00 FF]
+^L1168^[D4 FF 19 00]@[9F FF] clawed[01 FF]  with his sharp nails![02 FF][00 FF]
+^L1169^[D4 FF 19 00]@[9F FF] swung[01 FF]  his tail very hard![02 FF][00 FF]
+^L1170^[D4 FF 19 00]@[9F FF] growled[01 FF]  and lunged forward![02 FF][00 FF]
+^L1171^[D4 FF 19 00]@[9F FF] wielded[01 FF]  a shopping bag![02 FF][00 FF]
+^L1172^[D4 FF 19 00]@[9F FF] swung[01 FF]  a club![02 FF][00 FF]
+^L1173^[D4 FF 19 00]@[9F FF] generated[01 FF]  a tornado![D4 FF 5A 00][02 FF][00 FF]
+^L1174^[D4 FF 19 00]@[9F FF] sprayed a gigantic[01 FF]  blast of water![02 FF][00 FF]
+^L1175^[D4 FF 19 00]@[9F FF] flashed[01 FF]  a menacing smile![02 FF][00 FF]
+^L1176^[D4 FF 19 00]@[9F FF] started[01 FF]  laughing hysterically![02 FF][00 FF]
+^L1177^[D4 FF 19 00]@[9F FF] edged[01 FF]  closer![02 FF][00 FF]
+^L1178^[D4 FF 19 00]@[9F FF] whispered[01 FF][61 FF 02 00]  <3...>[61 FF 01 00][02 FF][00 FF]
+^L1179^[D4 FF 19 00]@[9F FF] murmured[01 FF][61 FF 02 00]  <2...>[61 FF 01 00][02 FF][00 FF]
+^L1180^[D4 FF 19 00]@[9F FF] muttered[01 FF][61 FF 02 00]  <1...>[61 FF 01 00][02 FF][00 FF]
+^L1181^[D4 FF 19 00]@[9F FF] fell down![D4 FF 22 00][02 FF][00 FF]
+^L1182^[D4 FF 19 00]@[9F FF] is being[01 FF]  absentminded.[02 FF][00 FF]
+^L1183^[D4 FF 19 00]@[9F FF] generated[01 FF]  a burst of steam![02 FF][00 FF]
+^L1184^[D4 FF 19 00]@[9F FF] is[01 FF]  wobbly.[02 FF][00 FF]
+^L1185^[D4 FF 19 00]@[9F FF] is[01 FF]  reeling.[02 FF][00 FF]
+^L1186^[D4 FF 19 00]@[9F FF] has[01 FF]  a big grin on his face.[02 FF][00 FF]
+^L1187^[D4 FF 19 00]@[9F FF] is taking deep[01 FF]  breaths for the next assault.[02 FF][00 FF]
+^L1188^[D4 FF 19 00]@[9F FF] sends[01 FF]  a greeting![02 FF][00 FF]
+^L1189^[D4 FF 19 00]@[9F FF] is[01 FF]  making a loud, piercing howl.[02 FF][00 FF]
+^L1190^[D4 FF 19 00]@[9F FF] is[01 FF]  saying <tick-tock.>[02 FF][00 FF]
+^L1191^[FC FF 3B 00][82 FF _L3512_][C1 FF][87 FF][E3 FF][9A FF 02 00][81 FF _L3513_][E4 FF][81 FF _L3514_][E5 FF][81 FF _L3515_]@[9F FF] took[01 FF]  [90 FF 00][1A FF 02 00] out and[02 FF]  [AD FF] ate it.[D4 FF 44 00][02 FF][00 FF]
+^L1192^[FC FF 3B 00][82 FF _L3507_]@[9F FF] used the[01 FF]  [C1 FF][87 FF][90 FF 00][1A FF 02 00][02 FF][00 FF]
+^L1193^[FC FF 3B 00][82 FF _L3508_]@[9F FF][C1 FF][87 FF] used the[01 FF]  [90 FF 00][1A FF 02 00]![1B FF 1E 00][D4 FF 36 00][1B FF 1E 00][F0 FF 00 00 01 00][1B FF 3C 00][02 FF][00 FF]
+^L1194^[FC FF 3B 00][82 FF _L3511_]@[9F FF][C1 FF][87 FF] used the[01 FF]  [90 FF 00][1A FF 02 00]![1B FF 1E 00][D4 FF 63 00][F0 FF 00 00 1B 00][1B FF 3C 00][02 FF][00 FF]
+^L1195^[FC FF 3B 00][82 FF _L3509_]@[9F FF][C1 FF][87 FF] used the[01 FF]  [90 FF 00][1A FF 02 00]![1B FF 1E 00][D4 FF 3B 00][F0 FF 00 00 04 00][1B FF 3C 00][02 FF][00 FF]
+^L1196^[C1 FF][87 FF]@[9F FF] lashed out[01 FF]  with the [90 FF 00][1A FF 02 00]![02 FF][00 FF]
+^L1197^@[9F FF][C1 FF][87 FF] fired[01 FF]  the [90 FF 00][1A FF 02 00]![D4 FF 46 00][02 FF][00 FF]
+^L1198^@[9F FF] fired[01 FF]  the Big Bottle Rocket![D4 FF 46 00][1B FF 08 00][D4 FF 46 00][1B FF 08 00][D4 FF 46 00][1B FF 08 00][D4 FF 46 00][1B FF 08 00][D4 FF 46 00][1B FF 08 00][02 FF][00 FF]
+^L1199^@[9F FF] fired[01 FF]  the Multi Bottle Rocket![D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][D4 FF 46 00][1B FF 04 00][02 FF][00 FF]
+^L1200^@[9F FF][C1 FF][87 FF] threw[01 FF]  the [90 FF 00][1A FF 02 00]![D4 FF 46 00][02 FF][00 FF]
+^L1201^@[9F FF][C1 FF][87 FF] used[01 FF]  the [90 FF 00][1A FF 02 00]![02 FF][00 FF]
+^L1202^@[9F FF][C1 FF][87 FF] used[01 FF]  the [90 FF 00][1A FF 02 00]![02 FF]@Suddenly, some Trout Yogurt[01 FF]  was produced![02 FF][00 FF]
+^L1203^[9F FF] took a snake[01 FF]  out of the [90 FF 00][1A FF 02 00][02 FF]  and threw it![02 FF][00 FF]
+^L1204^@[9F FF][C1 FF][87 FF] used [90 FF 00][1A FF 02 00][01 FF]  and his teeth[02 FF]@were white and breath was fresh![02 FF]@The brightness of[01 FF]  [9F FF]'s teeth[02 FF]@made the enemy scared![02 FF][00 FF]
+^L1205^@[9F FF][C1 FF][87 FF] used[01 FF]  the [90 FF 00][1A FF 02 00][02 FF]@Suddenly, something unknown burst[01 FF]  from the box.[02 FF][00 FF]
+^L1206^[FC FF 3B 00][82 FF _L3510_]@[9F FF][C1 FF][87 FF] used the[01 FF]  [90 FF 00][1A FF 02 00]![1B FF 1E 00][D4 FF 3B 00][F0 FF 00 00 1E 00][1B FF 3C 00][02 FF][00 FF]
+^L1207^@[9F FF][C1 FF][87 FF] sprinkled[01 FF]  the [90 FF 00][1A FF 02 00] over his head.[02 FF]@Yoicks!! [9F FF] turned[01 FF]  into a gigantic, fire-breathing dragon![02 FF][00 FF]
+^L1208^@[9F FF][C1 FF][87 FF] sprayed a blast of[01 FF]  [90 FF 00][1A FF 02 00]![D4 FF 47 00][02 FF][00 FF]
+^L1209^[FC FF 3B 00][82 FF _L3550_]@[9F FF][C1 FF][87 FF] used [90 FF 00][1A FF 02 00]![02 FF]@Now, he can figure out the length of[01 FF]  things easily.[02 FF][00 FF]
+^L1210^[FC FF 3B 00][82 FF _L3551_]@[9F FF][C1 FF][87 FF] used the [90 FF 00][1A FF 02 00]![02 FF]@Now, he can fairly easily figure out the[01 FF]  angle of various things.[02 FF][00 FF]
 ^L1211^[8D FF 02 00][9A FF 09 00][82 FF _L3526_][86 FF _L3527_][00 FF]
-^L1212^
-^L1213^
-^L1214^
-^L1215^
-^L1216^
-^L1217^
-^L1218^
-^L1219^
-^L1220^
-^L1221^
-^L1222^
-^L1223^
-^L1224^
-^L1225^
-^L1226^
-^L1227^
-^L1228^
-^L1229^
-^L1230^
-^L1231^
-^L1232^
-^L1233^
-^L1234^
-^L1235^
-^L1236^
-^L1237^
-^L1238^
-^L1239^
-^L1240^
-^L1241^
-^L1242^
-^L1243^
-^L1244^
-^L1245^
-^L1246^
-^L1247^
-^L1248^
-^L1249^
-^L1250^
-^L1251^
-^L1252^
-^L1253^
-^L1254^
-^L1255^
-^L1256^
-^L1257^
+^L1212^@[9F FF][C1 FF][87 FF] put[01 FF]  the [90 FF 00][1A FF 02 00] on his nose![D4 FF 73 00][02 FF]@[9F FF] searched for the[01 FF]  smell of the magic truffle.[02 FF][FF FF][82 FF _L3529_][88 FF][9A FF 01 00][81 FF _L3530_][89 FF][9A FF 0A 00][81 FF _L3531_][89 FF]@(It must be a little further[BD FF 09 _L1108_ _L3532_ _L3533_ _L3534_ _L3535_ _L3536_ _L3537_ _L3538_ _L3539_] up.)[1D FF][00 FF]
+^L1213^[1C FF FB 02 _L3540_][1C FF 49 00 _L3540_][1C FF 74 01 _L2155_][86 FF _L3541_][81 FF _L3542_][1C FF BE 01 _L3542_][1C FF 86 02 _L3542_][1C FF 87 02 _L3542_][1C FF 88 02 _L3542_]@[9F FF][C1 FF][87 FF] used[01 FF]  the [90 FF 00][1A FF 02 00]![02 FF]@A customer is heading this[01 FF]  way.[1D FF][C6 FF][F6 FF 03 00][95 FF 03 _L3543_ _L3544_ _L3545_][CF FF 04 00][08 FF BE 01][08 FF F2 02][00 FF]
+^L1214^@This book should be required[01 FF]  reading for any quiet,[01 FF]  shy person.[02 FF][00 FF]
+^L1215^@You felt sad and empty.[02 FF][00 FF]
+^L1216^@(If you get this message,[01 FF]  it means that something is wrong.)[02 FF][00 FF]
+^L1217^[D4 FF 65 00]@Seeing chicks makes you happy.[D4 FF 65 00][02 FF][00 FF]
+^L1218^[D4 FF 68 00][1B FF 0A 00][D4 FF 68 00]@A chicken ran away as fast as it could.[02 FF][00 FF]
+^L1219^@To use this,[01 FF]  go to a cash machine and insert[01 FF]  the card.[02 FF][00 FF]
+^L1220^@[9F FF][C1 FF][87 FF] placed the[01 FF]  [90 FF 00][1A FF 02 00] on the floor.[D4 FF 73 00][1B FF 01 00][02 FF][01 FF][08 FF 7C 00][6D FF FF 00 A6 00][00 FF]
+^L1221^@[9F FF][C1 FF][87 FF] used the [90 FF 00][1A FF 02 00]![D4 FF 95 00][1B FF 01 00][1D FF][C6 FF][1B FF 01 00][6D FF FF 00 A9 00][08 FF 20 01][86 FF _L3546_][08 FF FC 01][00 FF]
+^L1222^[8D FF 02 00][81 FF _L3547_][8D FF 01 00][92 FF 00 02 02][81 FF _L3548_]@[9F FF] rode a bicycle.[7D FF][00 FF]
+^L1223^[D4 FF 19 00]@[9F FF] emitted[01 FF]  a glorious light![02 FF][00 FF]
+^L1224^[D4 FF 19 00]@[9F FF] used an[01 FF]  electrical shock attack![02 FF][00 FF]
+^L1225^[D4 FF 19 00]@[9F FF] scattered[01 FF]  its pollen around![D4 FF 52 00][02 FF][1B FF 01 00][00 FF]
+^L1226^[D4 FF 19 00]@[9F FF] reached[01 FF]  out with its icy hand.[02 FF][00 FF]
+^L1227^[D4 FF 19 00]@[9F FF] played[01 FF]  a flute with his poisonous breath![02 FF][00 FF]
+^L1228^[D4 FF 19 00]@[9F FF] spewed[01 FF]  exhaust fumes![02 FF][00 FF]
+^L1229^[D4 FF 19 00]@[9F FF] started[01 FF]  laughing maniacally![02 FF][00 FF]
+^L1230^[D4 FF 19 00]@[9F FF] breathed[01 FF]  in through his flute![02 FF][00 FF]
+^L1231^[D4 FF 19 00]@[9F FF] leaped[01 FF]  forward and spread its wings![02 FF][00 FF]
+^L1232^[D4 FF 19 00]@[9F FF] became[01 FF]  friendly and affectionate![02 FF]@You backed off.[02 FF][00 FF]
+^L1233^[D4 FF 19 00]@[9F FF] made a[01 FF]  loud rumble![02 FF][00 FF]
+^L1234^[D4 FF 19 00]@[9F FF] gave you[01 FF]  a great big hug.[02 FF][00 FF]
+^L1235^[D4 FF 19 00]@[9F FF] let loose[01 FF]  with a hacking cough.[02 FF][00 FF]
+^L1236^[D4 FF 19 00]@[9F FF] used[01 FF]  his misery attack![02 FF][00 FF]
+^L1237^[D4 FF 19 00]@[9F FF] utilized a[01 FF]  paint attack![02 FF][00 FF]
+^L1238^[D4 FF 19 00]@[9F FF] came out[01 FF]  swinging![02 FF][00 FF]
+^L1239^[D4 FF 19 00]@[9F FF] scratched[01 FF]  with its claws![02 FF][00 FF]
+^L1240^[D4 FF 19 00]@[9F FF] pecked[01 FF]  at your eyes![02 FF][00 FF]
+^L1241^[D4 FF 19 00]@[9F FF] rammed[01 FF]  and trampled you![02 FF][00 FF]
+^L1242^[D4 FF 19 00]@[9F FF] threw[01 FF]  a punch![02 FF][00 FF]
+^L1243^[D4 FF 19 00]@[9F FF] spit[01 FF]  its pumpkin seeds![02 FF][00 FF]
+^L1244^[D4 FF 19 00]@[9F FF] fired[01 FF]  a beam![D4 FF 96 00][02 FF][1B FF 01 00][00 FF]
+^L1245^[D4 FF 19 00]@[9F FF] jabbed[01 FF]  with a spear![02 FF][00 FF]
+^L1246^[D4 FF 19 00]@[9F FF] stomped[01 FF]  with his huge foot![02 FF][00 FF]
+^L1247^[D4 FF 19 00]@[9F FF] swung[01 FF]  his hula hoop.[D4 FF 1A 00][02 FF][00 FF]
+^L1248^[D4 FF 19 00]@[9F FF] charged[01 FF]  forward![02 FF][00 FF]
+^L1249^[D4 FF 19 00]@[9F FF] shredded[01 FF]  fiercely on a skateboard![02 FF][00 FF]
+^L1250^[D4 FF 19 00]@[9F FF] bit you[01 FF]  hard![02 FF][00 FF]
+^L1251^[D4 FF 19 00]@[9F FF] grumbled[01 FF]  about today's youth![D4 FF 54 00][02 FF][00 FF]
+^L1252^[D4 FF 19 00]@[9F FF] started[01 FF]  lecturing you![D4 FF 54 00][02 FF][00 FF]
+^L1253^[D4 FF 19 00]@[9F FF] scowled[01 FF]  sharply![D4 FF 54 00][02 FF][00 FF]
+^L1254^[D4 FF 19 00]@[9F FF] vented[01 FF]  a terrible odor![02 FF][00 FF]
+^L1255^[D4 FF 19 00]@[9F FF] shouted[01 FF]  in a loud voice![02 FF][00 FF]
+^L1256^[D4 FF 19 00]@[9F FF] shrieked a war cry![02 FF][00 FF]
+^L1257^[D4 FF 19 00]@[9F FF] knitted[01 FF]  its brow![02 FF][00 FF]
 ^L1258^[F6 FF 03 00][95 FF 03 _L1317_ _L1318_ _L1319_][80 FF _L1316_]
-^L1259^
-^L1260^
+^L1259^[D4 FF 19 00]@[9F FF] shot a[01 FF]  beam`that`causes`night-time`stuffiness![02 FF][00 FF]
+^L1260^[D4 FF 19 00]@[9F FF] coiled[01 FF]  around you and attacked![02 FF][00 FF]
 ^L1261^[00 FF]
-^L1262^
-^L1263^
-^L1264^
-^L1265^
-^L1266^
-^L1267^
-^L1268^
-^L1269^
+^L1262^[E8 FF 04 00 02 00]@Suddenly, [90 FF 04][1A FF 01 00] swooped[01 FF]  down from the sky![22 FF][00 FF]
+^L1263^[D4 FF 19 00]@[9F FF] emitted[01 FF]  a pale green light![02 FF][00 FF]
+^L1264^[FC FF 3B 00][82 FF _L3518_]@[C2 FF][1A FF 05 00] ate[01 FF]  the [C1 FF][87 FF][90 FF 00][1A FF 02 00] together.[D4 FF 44 00][1B FF 01 00][02 FF][00 FF]
+^L1265^[F6 FF 03 00][95 FF 03 _L3574_ _L3575_ _L3576_]@[9F FF] misses home.[02 FF][00 FF]
+^L1266^@[9F FF]'s body is[01 FF]  numb and he can't move![02 FF][00 FF]
+^L1267^@[9F FF] has[01 FF]  fallen asleep[02 FF][00 FF]
+^L1268^@[9F FF] cannot[01 FF]  move around![02 FF][00 FF]
+^L1269^@[9F FF] was[01 FF]  able to move![D4 FF 25 00][02 FF][00 FF]
 ^L1270^[FC FF 08 00][82 FF _L3572_][D4 FF 37 00][80 FF _L3573_]
-^L1271^
-^L1272^
-^L1273^
-^L1274^
-^L1275^
-^L1276^
-^L1277^
-^L1278^
-^L1279^
+^L1271^@[9F FF] lost[01 FF]  his mind by wolfing down <Fly Honey>![02 FF][00 FF]
+^L1272^[AB FF 00 00][87 FF]@[9F FF][87 FF] touched the[01 FF]  [90 FF 00][1A FF 02 00] to his forehead and[01 FF]  gathered his thoughts.[1D FF][FC FF 09 00][00 FF]
+^L1273^[88 FF][FD FF][82 FF _L3552_][1C FF 0A 03 _L3553_][83 FF B4 00][81 FF _L3554_][83 FF B5 00][81 FF _L3555_][83 FF 85 02][81 FF _L3555_][83 FF BE 01][81 FF _L3556_][83 FF 86 02][81 FF _L3556_][83 FF 87 02][81 FF _L3556_][83 FF 88 02][81 FF _L3556_][83 FF A3 02][81 FF _L3554_][83 FF B6 02][81 FF _L3555_][83 FF B7 02][81 FF _L3555_][1C FF FE 02 _L3557_][FC FF 05 00]@(The mouse found the way out and[01 FF]  waved for you to follow.)[02 FF][14 FF 7E 00][89 FF][B9 FF 00 00 00 00][09 FF 00 02][FC FF 06 00][86 FF _L3558_][00 FF]
+^L1274^[F6 FF 08 00][95 FF 08 _L1275_ _L1276_ _L1277_ _L3577_ _L3578_ _L3579_ _L3580_ _L3581_]@Pokey used [0D FF][01 FF]  as a shield![02 FF][00 FF]
+^L1275^@Pokey played dead![02 FF][00 FF]
+^L1276^@Pokey pretended[01 FF]  to cry![02 FF][00 FF]
+^L1277^@Pokey apologized[01 FF]  profusely![02 FF][00 FF]
+^L1278^@[9F FF] is[01 FF]  barking![02 FF][00 FF]
+^L1279^@[9F FF] is[01 FF]  chanting a magic spell![02 FF][00 FF]
 ^L1280^[00 FF]
-^L1281^
-^L1282^
-^L1283^
+^L1281^@[9F FF] is[01 FF]  scratching his head![02 FF][00 FF]
+^L1282^@[9F FF][C1 FF][87 FF] threw[01 FF]  the [90 FF 00][1A FF 02 00]![02 FF]@The [90 FF 00][1A FF 02 00] is[01 FF]  biting![02 FF][00 FF]
+^L1283^[87 FF]@[90 FF 00][1A FF 01 00] read the hieroglyphs.[02 FF]@<To fight against the invaders, we built[01 FF]  this pyramid fortress.[02 FF]@However, our efforts were futile, and[01 FF]  we lost.[02 FF]@Nonetheless, our pyramid was[01 FF]  protected by the gods of Scaraba.[02 FF]@The invaders will be reborn every[01 FF]  millennium and will attack again.[02 FF]@Even now, the invaders hide beyond[01 FF]  space and time and build their evil[01 FF]  stronghold.[02 FF]@A place out of time is beyond the Dark,[01 FF]  and is even farther beyond the Lost[01 FF]  Underworld.[02 FF]@The Deep Darkness is shrouded,[01 FF]  it is without light.[02 FF]@Only one with the Hawk Eye can[01 FF] pierce the dark.[02 FF]@The Sphinx now watches over[01 FF]  everything,[02 FF]@waiting for the coming of a truly[01 FF]  brave hero.[02 FF]@   #[01 FF]  4   3[01 FF]   2 5[02 FF]@Dance in front of the Sphinx!>[1D FF][00 FF]
 ^L1284^[FC FF 07 00][82 FF _L3559_][00 FF]
-^L1285^
-^L1286^
-^L1287^
-^L1288^
-^L1289^
-^L1290^
-^L1291^
-^L1292^
-^L1293^
-^L1294^
-^L1295^
-^L1296^
-^L1297^
-^L1298^
-^L1299^
-^L1300^
-^L1301^
-^L1302^
-^L1303^
-^L1304^
-^L1305^
-^L1306^
-^L1307^
-^L1308^
-^L1309^
-^L1310^
-^L1311^
+^L1285^[D4 FF 19 00]@[9F FF] discharged[01 FF]  a very stinky gas![00 FF]
+^L1286^[86 FF _L1314_][68 FF]@You cannot grasp the true form[01 FF]  of [9F FF]' attack![F0 FF 31 00 00 00][1B FF 78 00][F0 FF 36 00 00 00][D4 FF 51 00][1B FF 28 00][D4 FF 51 00][00 FF]
+^L1287^[FC FF 2A 00][C7 FF][69 FF][1B FF 28 00]@I understand you guys are already[01 FF]  claiming to be heroes.[22 FF][01 FF]@Well, it is a gazillion years too early for[01 FF]  you to oppose Giygas![22 FF][01 FF]@You must feel pretty stupid to keep[01 FF]  fighting without even knowing[22 FF][01 FF]@what Giygas looks like![22 FF][01 FF]@If you were to ever see Giygas, you'd[01 FF]  be so petrified with fear,[22 FF][01 FF]@you'd never be able to run away![22 FF][01 FF]@...That's how scary it is![22 FF][01 FF]@So, do you want me to turn off the[01 FF]  <Devil's Machine?>[22 FF][01 FF]@Well, prepare to be amazed![D4 FF 4A 00][1B FF 96 00][C7 FF][FC FF 2B 00][69 FF][00 FF]
+^L1288^@[C2 FF][1A FF 05 00] tried to get away,[1B FF 3C 00][02 FF]@and did![02 FF][00 FF]
+^L1289^@[9F FF] relaxed[01 FF]  and took a deep breath.[02 FF][00 FF]
+^L1290^@The Suporma sang the song[01 FF]  <Ode to Orange Kid.>[02 FF]@As soon as it finished, the machine[01 FF]  broke down.[6D FF FF 00 94 00][1D FF][00 FF]
+^L1291^@By using the Insignificant Present, you[01 FF]  had a very fruitful experience[02 FF]@that cannot be understood by someone[01 FF]  who does not use something[01 FF]  insignificant.[1D FF][00 FF]
+^L1292^@[9F FF] used the Monkey Love.[02 FF]@All of a sudden, a monkey came along,[02 FF]  and pinned the enemy down with its[01 FF]  tiny monkey body.[02 FF][00 FF]
+^L1293^@It smelled so unbelievably bad that[01 FF]  you could not eat it.[1D FF][00 FF]
+^L1294^@You would probably regret it if you ate[01 FF]  this now...[02 FF][00 FF]
+^L1295^@This phone only receives calls.[02 FF]@You cannot make outgoing calls from[01 FF]  it.[02 FF][00 FF]
+^L1296^@(Dear [0D FF],[01 FF]  How are you?[02 FF]@Since you left home on your journey,[01 FF]  things have changed around here.[02 FF]@For example, I don't have as much[01 FF]  laundry.[02 FF]@Also, we don't seem to eat[01 FF]  [11 FF] as much as we used to.[02 FF]@I heard that you defeated some[01 FF]  universal evil character--what was it,[02 FF]@Googi, or something like that?[02 FF]@Well, that sounds really great![01 FF]  I want to hear all the details, so hurry[01 FF]  home, okay?[02 FF]@Tracy, [15 FF] and I are waiting[01 FF]  for you.[02 FF]@                                Love,[01 FF]                                  Mama)[1D FF][00 FF]
+^L1297^@(Dear [0F FF],[01 FF]  Everything's really going great here.[02 FF]@I wish I could have gone with you on[01 FF]  your adventure, even just part of the[01 FF]  way,[02 FF]@but instead I'm sitting here, waiting for[01 FF]  you in Winters.[02 FF]@I want to see you again as soon as[01 FF]  possible. I can't wait to see your[01 FF]  cheerful face.[02 FF]@I bet your glasses are dirty... If you[01 FF]  come back, I'll clean them for you![02 FF]@Like I said, I'm waiting for you.[02 FF]@                        Yours truly,[01 FF]                                   Tony [02 FF][01 FF]@P.S.  Don't show this letter to[01 FF]  anyone!)[1D FF][00 FF]
+^L1298^@(Dear [0E FF],[01 FF]  How are you doing?[01 FF]  I'm fine.[02 FF]@I fine too![02 FF]@So are me![02 FF]@Me also![02 FF]@Me okay.[02 FF]@Please come and play with us again at[01 FF]  the Polestar Preschool.[02 FF]@Oh yeah, one more thing, bring us some[01 FF]  presents ...if you have any.[02 FF]@                           Sincerely,[01 FF]               Your friends at the[01 FF]               Polestar Preschool)[1D FF][00 FF]
+^L1299^@All of a sudden,[02 FF]@[9F FF] gave off[01 FF]  a rainbow of colors![02 FF][D4 FF 41 00][F0 FF 28 00 00 00][1B FF 1E 00][D4 FF 41 00][F0 FF 28 00 00 00][1B FF 1E 00][D4 FF 41 00][F0 FF 28 00 00 00][1B FF 1E 00][00 FF]
+^L1300^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please give us strength,[22 FF][01 FF]@if it is possible...[01 FF]  Please...>[22 FF][01 FF]@<................[01 FF]  Somebody... help us...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1301^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please give us strength![22 FF][01 FF]@Anyone who can hear our plea...[01 FF]  Help us...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1302^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please give us strength![22 FF][01 FF]@Speed this prayer[01 FF]  to all the people of the earth.>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1303^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please give us strength![22 FF][01 FF]@Anyone who can hear our plea...[01 FF]  Help us...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1304^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please grant us power![22 FF][01 FF]@Anyone who can hear our plea...[01 FF]  Help us...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1305^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please grant us strength![22 FF][01 FF]@Anyone who can hear our plea...[01 FF]  We ask for this...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1306^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please grant us power![22 FF][01 FF]@Speed this prayer[01 FF]  to all the people of the earth...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1307^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<I can't think of[01 FF]  anyone else...[22 FF][01 FF]@...Someone, anyone...[01 FF]  ...please help us.>[61 FF 01 00][1B FF 96 00][C6 FF][00 FF]
+^L1308^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from the bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<Someone... can you hear me?![22 FF][01 FF]@Please, give us strength!>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1309^[86 FF _L1311_][1B FF 28 00][68 FF]@You cannot grasp the true form[01 FF]  of [9F FF]' attack![F0 FF 31 00 00 00][1B FF 78 00][F0 FF 36 00 00 00][D4 FF 51 00][1B FF 28 00][D4 FF 51 00][00 FF]
+^L1310^[86 FF _L1311_][1B FF 28 00][68 FF][86 FF _L1311_][1B FF 28 00][68 FF][86 FF _L1311_][1B FF 28 00][68 FF]@You cannot grasp the true form[01 FF]  of [9F FF]' attack![F0 FF 31 00 00 00][1B FF 78 00][F0 FF 36 00 00 00][D4 FF 51 00][1B FF 28 00][D4 FF 51 00][00 FF]
+^L1311^[F6 FF 0D 00][95 FF 0D _L3593_ _L3594_ _L3595_ _L3596_ _L3597_ _L3598_ _L3599_ _L3600_ _L3601_ _L3602_ _L3603_ _L3604_ _L3605_]^L1314^[61 FF 02 00]@<.....[0D FF][1B FF 01 00]...>[61 FF 01 00][02 FF][00 FF]
 ^L1312^[86 FF _L1311_][1B FF 28 00][68 FF][86 FF _L1311_][1B FF 28 00][68 FF][86 FF _L1311_][1B FF 28 00][68 FF][00 FF]
-^L1313^
-^L1314^
-^L1315^
-^L1316^
-^L1317^
-^L1318^
-^L1319^
+^L1313^@[9F FF][C1 FF][87 FF] fired[01 FF]  the [90 FF 00][1A FF 02 00]![D4 FF 46 00][02 FF][00 FF]
+^L1315^@[9F FF] ate a[01 FF]  bologne sandwich![D4 FF 44 00][02 FF][86 FF _L1576_][00 FF]
+^L1316^[D4 FF 19 00]@[9F FF] lost[01 FF]  a gear and some bolts![02 FF][00 FF]
+^L1317^[D4 FF 19 00]@[9F FF] re-applied[01 FF]  a bandage![02 FF][00 FF]
+^L1318^[D4 FF 19 00]@[9F FF] cleaned[01 FF]  the area![02 FF][00 FF]
+^L1319^[D4 FF 19 00]@[9F FF] wanted to go[01 FF]  and get a battery![02 FF][00 FF]
 ^L1320^ <Cracked bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
 ^L1321^ <Tee ball bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
 ^L1322^ <Sand lot bat>[02 FF][86 FF _L3947_][1D FF][00 FF]
@@ -3047,7 +3046,7 @@
 ^L3054^
 ^L3055^
 ^L3056^
-^L3057^
+^L3057^@Kyakya kyekyi?[02 FF]@(So... how 've you been?)[1D FF][00 FF]
 ^L3058^
 ^L3059^
 ^L3060^

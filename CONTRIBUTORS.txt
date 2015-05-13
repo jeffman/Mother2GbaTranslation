@@ -1,0 +1,9 @@
+Hacking, script tool, script compiler/decompiler:
+  JeffMan
+
+Text conversion:
+  JeffMan
+  ItsIggy
+
+Special thanks:
+  TragicManner
