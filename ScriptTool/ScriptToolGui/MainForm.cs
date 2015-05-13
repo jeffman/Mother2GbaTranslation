@@ -460,7 +460,7 @@ namespace ScriptToolGui
                 {
                     labelDef = "^" + otherGame.Value.Label + "^";
                     textboxLookup[otherGame.Key].Text = GetString(otherGame.Key, otherGame.Value.Label, out index);
-                    currentIndex[game] = index;
+                    currentIndex[otherGame.Key] = index;
                 }
             }
 
