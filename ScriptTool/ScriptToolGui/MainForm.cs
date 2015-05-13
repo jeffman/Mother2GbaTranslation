@@ -175,14 +175,6 @@ namespace ScriptToolGui
 
             itemHelpGroups.Groups.AddRange(itemHelpMappingGroups);
 
-            var itemNames = JsonConvert.DeserializeObject<MiscStringCollection>(File.ReadAllText(@"..\..\..\..\working\m12-itemnames.json"));
-            var ebItems = itemMapping.Select(p => new { Index = p.First, Name = itemNames.StringRefs[p.Second].New })
-                .OrderBy(o => o.Index)
-                .Select(m => "[" + (m.Index).ToString("X2") + "] " + m.Name.Substring(0, m.Name.Length - 7))
-                .ToArray();
-
-            File.WriteAllLines(@"D:\eb-itemnames.txt", ebItems);
-
             // PSI help
             var m12PsiHelpRefs = ImportStringRefs("m12-psi-help.json");
             var ebPsiHelpRefs = ImportStringRefs("eb-psi-help.json");

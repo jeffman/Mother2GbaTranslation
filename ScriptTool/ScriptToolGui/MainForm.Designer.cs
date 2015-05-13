@@ -39,6 +39,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.collectionSelector = new System.Windows.Forms.ComboBox();
             this.groupSelector = new System.Windows.Forms.ComboBox();
+            this.prevButton = new System.Windows.Forms.Button();
+            this.nextButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
@@ -62,8 +64,6 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.writeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.writeTimer = new System.Windows.Forms.Timer(this.components);
-            this.nextButton = new System.Windows.Forms.Button();
-            this.prevButton = new System.Windows.Forms.Button();
             this.mainMenu.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -182,6 +182,26 @@
             this.groupSelector.Size = new System.Drawing.Size(238, 21);
             this.groupSelector.TabIndex = 10;
             this.groupSelector.SelectionChangeCommitted += new System.EventHandler(this.groupSelector_SelectionChangeCommitted);
+            // 
+            // prevButton
+            // 
+            this.prevButton.Location = new System.Drawing.Point(452, 3);
+            this.prevButton.Name = "prevButton";
+            this.prevButton.Size = new System.Drawing.Size(45, 23);
+            this.prevButton.TabIndex = 16;
+            this.prevButton.Text = "˄";
+            this.prevButton.UseVisualStyleBackColor = true;
+            this.prevButton.Click += new System.EventHandler(this.prevButton_Click);
+            // 
+            // nextButton
+            // 
+            this.nextButton.Location = new System.Drawing.Point(503, 3);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(45, 23);
+            this.nextButton.TabIndex = 15;
+            this.nextButton.Text = "˅";
+            this.nextButton.UseVisualStyleBackColor = true;
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
             // backButton
             // 
@@ -313,7 +333,6 @@
             // 
             // copyCodesButton
             // 
-            this.copyCodesButton.AutoSize = true;
             this.copyCodesButton.Location = new System.Drawing.Point(3, 3);
             this.copyCodesButton.Name = "copyCodesButton";
             this.copyCodesButton.Size = new System.Drawing.Size(124, 23);
@@ -469,26 +488,6 @@
             this.writeTimer.Interval = 10000;
             this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
             // 
-            // nextButton
-            // 
-            this.nextButton.Location = new System.Drawing.Point(503, 3);
-            this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(45, 23);
-            this.nextButton.TabIndex = 15;
-            this.nextButton.Text = "˅";
-            this.nextButton.UseVisualStyleBackColor = true;
-            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
-            // 
-            // prevButton
-            // 
-            this.prevButton.Location = new System.Drawing.Point(452, 3);
-            this.prevButton.Name = "prevButton";
-            this.prevButton.Size = new System.Drawing.Size(45, 23);
-            this.prevButton.TabIndex = 16;
-            this.prevButton.Text = "˄";
-            this.prevButton.UseVisualStyleBackColor = true;
-            this.prevButton.Click += new System.EventHandler(this.prevButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -521,7 +520,6 @@
             this.textBoxPanel.ResumeLayout(false);
             this.textBoxPanel.PerformLayout();
             this.lineOpsPanel.ResumeLayout(false);
-            this.lineOpsPanel.PerformLayout();
             this.codeSplitContainer.Panel1.ResumeLayout(false);
             this.codeSplitContainer.Panel1.PerformLayout();
             this.codeSplitContainer.Panel2.ResumeLayout(false);
