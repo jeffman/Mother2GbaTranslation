@@ -5,6 +5,7 @@ Text conversion:
   JeffMan
   ItsIggy
   TheZunar123
+  EBrent
 
 Special thanks:
   TragicManner
