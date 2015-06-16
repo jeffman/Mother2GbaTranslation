@@ -912,6 +912,11 @@ namespace ScriptToolGui
             groupSelector.SelectedIndex++;
             groupSelector_SelectionChangeCommitted(null, null);
         }
+
+        private void autosaveMenu_Click(object sender, EventArgs e)
+        {
+            writeTimer.Enabled = autosaveMenu.Checked;
+        }
     }
 
     enum Game

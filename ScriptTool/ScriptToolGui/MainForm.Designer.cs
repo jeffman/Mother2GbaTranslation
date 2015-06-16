@@ -64,6 +64,7 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.writeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.writeTimer = new System.Windows.Forms.Timer(this.components);
+            this.autosaveMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -117,7 +118,8 @@
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resolveDuplicateLabelsMenu,
-            this.checkCompletionMenu});
+            this.checkCompletionMenu,
+            this.autosaveMenu});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(48, 20);
             this.toolsMenu.Text = "Tools";
@@ -488,6 +490,16 @@
             this.writeTimer.Interval = 10000;
             this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
             // 
+            // autosaveMenu
+            // 
+            this.autosaveMenu.Checked = true;
+            this.autosaveMenu.CheckOnClick = true;
+            this.autosaveMenu.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.autosaveMenu.Name = "autosaveMenu";
+            this.autosaveMenu.Size = new System.Drawing.Size(214, 22);
+            this.autosaveMenu.Text = "Autosave";
+            this.autosaveMenu.Click += new System.EventHandler(this.autosaveMenu_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -571,6 +583,7 @@
         private System.Windows.Forms.ToolStripMenuItem checkCompletionMenu;
         private System.Windows.Forms.Button prevButton;
         private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.ToolStripMenuItem autosaveMenu;
     }
 }
 
