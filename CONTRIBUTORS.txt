@@ -7,6 +7,7 @@ Text conversion:
   TheZunar123
   EBrent
   Pitch
+  MalBound
 
 Special thanks:
   TragicManner

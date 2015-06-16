@@ -802,7 +802,7 @@
 ^L805^@Snakes are so unpleasant,[01 FF]  but so cute...[02 FF]@Oh, I don't know what I[01 FF]  may be saying.[1D FF][00 FF]
 ^L806^@Should I keep a snake[01 FF]  at home?[02 FF]@Perhaps I should <asp>[01 FF]  an expert.[1D FF][00 FF]
 ^L807^@Poisonous snakes cost[01 FF]  more.[02 FF]@Why would a fine young[00 FF]
-^L808^The [90 FF 8D] can hold live snakes![00 FF]
+^L808^@The Snake bag can hold live[01 FF]  snakes![1B FF 14 00]  There are snakes in[01 FF]  the sack![02 FF]@Please, it is a very useful item![02 FF]@Shall you buy one?[1B FF 14 00]  I am humbly[01 FF]  offering it to you...[22 FF][03 FF 00 00][04 FF _L3294_][05 FF _L3295_]^L3295^@You are afraid of snakes,[1B FF 0F 00] are[01 FF]  you not?  Heh heh heh.[1D FF][00 FF]^L3294^[91 FF FF][82 FF _L3296_]@That is 290 dollars, kind[01 FF]  (PRONOUN).[9C FF][03 FF 00 00][04 FF _L3297_][05 FF _L3295_][80 FF _L3295_]^L3297^[99 FF 22 01 00 00][81 FF _L3298_][91 FF FF][93 FF 00 CA][D4 FF 76 00][9B FF 62 00 00 00][9C FF][D4 FF 78 00]@I'll give you a discount as the[01 FF]  sack has a hole in it.[02 FF]@(Snake sack dealer marked the[01 FF]  price down to 98 dollars from[01 FF]  290 dollars.)[1D FF][00 FF]
 ^L809^[86 FF _L3299_][00 FF]
 ^L810^[86 FF _L3300_][00 FF]
 ^L811^
@@ -859,7 +859,7 @@
 ^L862^[86 FF _L3321_][86 FF _L2883_][86 FF _L3322_][86 FF _L2184_][86 FF _L2185_][14 FF 6C 00][09 FF 7F 01][00 FF]
 ^L863^[1C FF DA 00 _L3320_]@<Goodbye Exit>[02 FF]@Some day, you should enter[01 FF]  with courage.[02 FF]@...Brick Road.[1D FF][00 FF]
 ^L864^@That face is mine.[01 FF]  (Feel free to talk to it.)[02 FF]@...Brick Road.[1D FF][00 FF]
-^L865^[1C FF 8A 02 _L3327_][1C FF 0A 00 _L3328_]@I heard monkeys living in[01 FF]  some desert can teleport.[02 FF]@Oh, you learned how to teleport[01 FF]  from the monkeys?[02 FF][1B FF 3C 00][01 FF]@...I wanna try![02 FF][03 FF 06 00][04 FF _L3329_][05 FF _L3330_]^L3330^@You don't want to have a[01 FF]  monkey for a student, do you?[1D FF][00 FF]^L3329^[C6 FF][1B FF 1E 00][01 FF]@Okay... I'll try it.[02 FF][C6 FF][A1 FF CA 04 38 02][9E FF][A4 FF CA 04][1B FF 3C 00][A3 FF CA 04][C4 FF 00 0D][9E FF][85 FF CA 04 06 00][A0 FF 08 00 0C 00 01 00][C4 FF 00 0E][1B FF 78 00][C5 FF][A5 FF 08 00 06 00][84 FF CA 04 39 02 01 00][9E FF][A4 FF CA 04][8D FF 01 00][A8 FF 00][DB FF CA 04 01 00 00 00][CE FF CA 04 00 00]@I'll never give up.[1B FF][00 FF]
+^L865^[1C FF 8A 02 _L3327_][1C FF 0A 00 _L3328_]@I heard monkeys living in[01 FF]  some desert can teleport.[02 FF]@Oh, you learned how to teleport[01 FF]  from the monkeys?[02 FF][1B FF 3C 00][01 FF]@...I wanna try![02 FF][03 FF 06 00][04 FF _L3329_][05 FF _L3330_]^L3330^@You don't want to have a[01 FF]  monkey for a student, do you?[1D FF][00 FF]^L3329^[C6 FF][1B FF 1E 00][01 FF]@Okay... I'll try it.[02 FF][C6 FF][A1 FF CA 04 38 02][9E FF][A4 FF CA 04][1B FF 3C 00][A3 FF CA 04][C4 FF 00 0D][9E FF][85 FF CA 04 06 00][A0 FF 08 00 0C 00 01 00][C4 FF 00 0E][1B FF 78 00][C5 FF][A5 FF 08 00 06 00][84 FF CA 04 39 02 01 00][9E FF][A4 FF CA 04][8D FF 01 00][A8 FF 00][DB FF CA 04 01 00 00 00][CE FF CA 04 00 00]@I'll never give up. (FINISH ME)[00 FF]
 ^L866^[1C FF 20 01 _L3332_]@It's really dark here in[01 FF]  the Deep Darkness, isn't it?[02 FF]@It's pretty creepy, don't[01 FF]  you think?[02 FF]@If you don't have the[01 FF]  [90 FF A9][1A FF 02 00] here, you're[01 FF]  helpless.[1D FF][00 FF]
 ^L867^[86 FF _L3333_][00 FF]
 ^L868^[1C FF 14 01 _L2156_][C4 FF 00 86]@You may have forgotten,[01 FF]  but *Buuuuurp!*...[02 FF]@I'm the return of Belch![02 FF][D4 FF 4E 00][1B FF 01 00]@I've fought you before.[02 FF][D4 FF 4E 00][1B FF 01 00]@Peeeeyouuu![02 FF]@Don't you remember my ripe[01 FF]  odor?[02 FF]@Belch has trained more[01 FF]  and has returned much[01 FF]  stronger.[02 FF]@Buuuuurp![1B FF 14 00][D4 FF 4E 00] Belch has also[01 FF]  changed his name to Puke!...[02 FF]@Barf!  vomit!  barf, barf![01 FF]  chuck!  chuck![02 FF]@Drown to death in puke![02 FF]@Don't you think that's an[01 FF]  incredibly masculine taunt[01 FF]  to throw at you?[02 FF][86 FF _L3334_][81 FF _L2161_][AE FF 04][E8 FF 04 00 02 00][08 FF 14 01][1B FF 01 00][A1 FF CD 04 29 00][00 FF]
@@ -3202,10 +3202,7 @@
 ^L3291^[08 FF 46 01][08 FF 90 02][86 FF _L4325_][09 FF 46 01][09 FF 90 02][00 FF]
 ^L3292^[08 FF 0A 00][BC FF C8 00][86 FF _L5051_][00 FF]
 ^L3293^[BC FF 50 00][86 FF _L5049_][00 FF]
-^L3294^
-^L3295^
 ^L3296^
-^L3297^
 ^L3298^
 ^L3299^[08 FF 44 01][08 FF 90 02][86 FF _L4326_][09 FF 44 01][09 FF 90 02][00 FF]
 ^L3300^[08 FF 45 01][08 FF 90 02][86 FF _L4325_][09 FF 45 01][09 FF 90 02][00 FF]
@@ -3213,7 +3210,6 @@
 ^L3302^[86 FF _L4216_][A9 FF 03 00][9E FF][AA FF 03 00][DA FF 03 00 01 00][86 FF _L4217_][A5 FF 4E 00 06 00][D4 FF 63 00][A0 FF B3 00 19 02 01 00][A5 FF 03 00 06 00][A0 FF B3 00 1A 02 01 00][9E FF][7E FF 08 00][09 FF 0B 00][86 FF _L3558_][BE FF 04 00 A9 00][82 FF _L2197_][08 FF B3 02][6D FF 04 00 A9 00][00 FF]
 ^L3303^
 ^L3304^
-^L3305^
 ^L3306^
 ^L3307^
 ^L3308^
@@ -3224,7 +3220,6 @@
 ^L3313^
 ^L3314^
 ^L3315^
-^L3316^
 ^L3317^
 ^L3318^
 ^L3319^
@@ -3237,8 +3232,6 @@
 ^L3326^
 ^L3327^
 ^L3328^
-^L3329^
-^L3330^
 ^L3331^
 ^L3332^
 ^L3333^
@@ -3271,7 +3264,6 @@
 ^L3361^
 ^L3362^
 ^L3363^
-^L3364^
 ^L3365^[86 FF _L3366_][00 FF]
 ^L3366^
 ^L3367^
