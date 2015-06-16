@@ -795,36 +795,36 @@
 ^L797^[86 FF _L3291_][00 FF]
 ^L798^[86 FF _L5662_][A8 FF 01][87 FF][BD FF 1D _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5760_ _L5761_ _L5762_ _L5763_ _L5764_ _L5765_][00 FF]
 ^L799^
-^L800^
+^L800^@I've never seen you around[01 FF]  here.[02 FF]@What do you want?[1B FF 14 00] I do[01 FF]  not have anything you would[01 FF]  want.[1D FF][00 FF]
 ^L801^[86 FF _L3292_][00 FF]
 ^L802^[86 FF _L3293_][00 FF]
 ^L803^[08 FF E8 00][86 FF _L5392_][09 FF E8 00][00 FF]
-^L804^
-^L805^
-^L806^
-^L807^
-^L808^
+^L804^@Did you come from Toto[01 FF]  by ship?[02 FF]@There's a scary monster in[01 FF]  the sea...[02 FF]@...Did you beat him?[1B FF 14 00] Or[01 FF]  did you escape?[02 FF]@Either way,[1B FF 0F 00] you are fantastic![1D FF][00 FF]
+^L805^@Snakes are so unpleasant,[01 FF]  but so cute...[02 FF]@Oh, I don't know what I[01 FF]  may be saying.[1D FF][00 FF]
+^L806^@Should I keep a snake[01 FF]  at home?[02 FF]@Perhaps I should <asp>[01 FF]  an expert.[1D FF][00 FF]
+^L807^@Poisonous snakes cost[01 FF]  more.[02 FF]@Why would a fine young[00 FF]
+^L808^The [90 FF 8D] can hold live snakes![00 FF]
 ^L809^[86 FF _L3299_][00 FF]
 ^L810^[86 FF _L3300_][00 FF]
 ^L811^
-^L812^
-^L813^
-^L814^
-^L815^
+^L812^[1C FF 49 00 _L3301_]@Oh, you have the mark[01 FF]  of bad luck on your face...[02 FF]@If you want to know,[01 FF]  I'll humbly tell you.[02 FF]@<You shall come back here...[02 FF]@After you have encountered[01 FF]  a dangerous situation.>[02 FF]@However, I may be wrong,[01 FF]  and if so... a thousand pardons.[1D FF][00 FF]
+^L813^@(The door of the pyramid is[01 FF]  firmly sealed...)[1D FF][00 FF]
+^L814^@The Tenda tribe used to live[01 FF]  here.[02 FF]@They went to the back[01 FF]  of the Deep Darkness as they[01 FF]  were too innocent.[02 FF]@I wonder if they are still alive.[1D FF][00 FF]
+^L815^@If you're going to[01 FF]  the Pyramid, prepare well,[02 FF]@and be ready for[01 FF]  whatever may occur.[1D FF][00 FF]
 ^L816^[86 FF _L5292_][00 FF]
 ^L817^[08 FF 57 02][08 FF 90 02][86 FF _L4325_][09 FF 57 02][09 FF 90 02][00 FF]
-^L818^
-^L819^
-^L820^
-^L821^
-^L822^
+^L818^[1C FF 50 01 _L3303_]@I'm doing this as a hobby.[1B FF 14 00][01 FF]  Isn't it cool?[02 FF]@I recently made a friend.[1B FF 14 00][01 FF]  He used to be a Dungeon[01 FF]  Maker.[02 FF]@And now he's a <Dungeon Man.>[02 FF]@Would you like to meet him?[03 FF 00 00][04 FF _L3304_][05 FF _L3305_][01 FF]^L3305^@I understand,[1B FF 0F 00] he is a very[01 FF]  strange fellow.[1D FF][00 FF]
+^L819^[1C FF 50 01 _L3306_]@I am not sure if it was[01 FF]  the <Dungeon Man,> but...[02 FF]@there is a strange looking[01 FF]  tower to the northwest.[02 FF]@...This key I picked[01 FF]  up a little while ago shall[01 FF]  maybe open the tower.[02 FF]@You may have it, I do not[01 FF]  need it.[91 FF FF][82 FF _L3307_][02 FF][93 FF 00 B5][8A FF][86 FF _L2238_][08 FF 50 01][1D FF][C6 FF][83 FF B3 02][82 FF _L2197_][1B FF 3C 00][86 FF _L3308_][00 FF]
+^L820^[1C FF 5E 02 _L3309_]@(Looks like you could enter,[01 FF]  but it's locked.)[1D FF][00 FF]
+^L821^[1C FF DA 00 _L3313_]@A scary place called[01 FF]  Deep Darkness is on the[01 FF]  other side of the river.[02 FF]@The monsters are very strong[01 FF]  and you can lose your health[02 FF]@just by wandering in the[01 FF]  swamp.[02 FF]@Do you want to cross the[01 FF]  river,[1B FF 0F 00] even though you know[01 FF]  it's a stupid idea?[03 FF 00 00][04 FF _L3314_][05 FF _L3315_][00 FF]
+^L822^[1C FF DA 00 _L4218_][1C FF 97 00 _L4219_]@I believe it is impossible[01 FF]  for me to move from this spot.[02 FF]@Do not worry about me...[1B FF 14 00][01 FF]  Please continue on.[1D FF][C6 FF][00 FF]
 ^L823^[08 FF AE 02][08 FF 90 02][BC FF 64 00][86 FF _L5848_][09 FF 90 02][00 FF]
-^L824^
+^L824^@Oh, be careful where you[01 FF]  walk. It's filthy.[02 FF]@A chubby kid did his[01 FF]  business out here somewhere...[1D FF][00 FF]
 ^L825^[86 FF _L5297_][00 FF]
 ^L826^[86 FF _L5298_][00 FF]
-^L827^
-^L828^
-^L829^
+^L827^@(Pokey's stink still hangs[01 FF]  in the air...)[1D FF][00 FF]
+^L828^@<Great Southern[01 FF]  International Resort Hotel>[02 FF]@100 dollars per night for[01 FF]  a single room.[1D FF][00 FF]
+^L829^@Hassan's Shop[02 FF]@($ dollars acceptable.)[1D FF][00 FF]
 ^L830^[1C FF 88 01 _L2156_][C6 FF][A7 FF BB 01][81 FF _L1108_][08 FF 88 01][1B FF 01 00][A1 FF 90 04 29 00][00 FF]
 ^L831^[1C FF 89 01 _L2156_][C6 FF][A7 FF BB 01][81 FF _L1108_][08 FF 89 01][1B FF 01 00][A1 FF 91 04 29 00][00 FF]
 ^L832^[1C FF 97 01 _L2156_][C6 FF][A7 FF BC 01][81 FF _L1108_][08 FF 97 01][1B FF 01 00][A1 FF 92 04 29 00][00 FF]
@@ -850,51 +850,51 @@
 ^L852^[1C FF 96 01 _L2156_][C6 FF][A7 FF BB 01][81 FF _L1108_][08 FF 96 01][1B FF 01 00][A1 FF A6 04 29 00][00 FF]
 ^L853^[1C FF 9E 01 _L2156_][C6 FF][A7 FF BC 01][81 FF _L1108_][08 FF 9E 01][1B FF 01 00][A1 FF A7 04 29 00][00 FF]
 ^L854^[1C FF 9F 01 _L2156_][C6 FF][A7 FF BC 01][81 FF _L1108_][08 FF 9F 01][1B FF 01 00][A1 FF A8 04 29 00][00 FF]
-^L855^
-^L856^
-^L857^
+^L855^@(This casket seems a[01 FF]  little suspicious...)[1D FF][00 FF]
+^L856^[1C FF DA 00 _L3316_][1C FF 97 00 _L3317_]^L3316^@Welcome![02 FF][C6 FF][86 FF _L2866_][D4 FF 25 00][1B FF 5A 00][1C FF DA 00 _L3318_]@Long time, no see.[02 FF]@Mr. [0F FF], we met in[01 FF]  Winters a long time ago.[02 FF]@I'm Brick Road.[02 FF]@Dr. Andonuts finally made me[02 FF]  Dungeon Man.[02 FF]@If you want, I'll come with[01 FF]  you guys for a while.[02 FF]@The <Return Hole> is over[01 FF]  there.[02 FF]@Jump in that hole and[01 FF]  then walk out.[1D FF][08 FF 18 00][08 FF BD 01][9D FF 01 09 _L3319_][08 FF FB 01][00 FF]
+^L857^[BC FF 03 00][86 FF _L2177_][81 FF _L3323_]@([0F FF] checked the[01 FF]  broken submarine.)[02 FF]@Yes![1B FF 14 00] It can still work.[02 FF][C6 FF][80 FF _L3324_]
 ^L858^[86 FF _L3321_][86 FF _L2883_][86 FF _L3322_][86 FF _L2184_][86 FF _L2185_][14 FF 6A 00][09 FF 7F 01][00 FF]
 ^L859^[86 FF _L3321_][86 FF _L2883_][86 FF _L3322_][86 FF _L2184_][86 FF _L2185_][14 FF 69 00][09 FF 7F 01][00 FF]
-^L860^
+^L860^@If you check into this bench,[01 FF]  it's just like checking into[01 FF]  a hotel.[02 FF]@                      ...Brick Road[1D FF][00 FF]
 ^L861^[86 FF _L3321_][86 FF _L2883_][86 FF _L3322_][86 FF _L2184_][86 FF _L2185_][14 FF 6B 00][09 FF 7F 01][00 FF]
 ^L862^[86 FF _L3321_][86 FF _L2883_][86 FF _L3322_][86 FF _L2184_][86 FF _L2185_][14 FF 6C 00][09 FF 7F 01][00 FF]
-^L863^
-^L864^
-^L865^
-^L866^
+^L863^[1C FF DA 00 _L3320_]@<Goodbye Exit>[02 FF]@Some day, you should enter[01 FF]  with courage.[02 FF]@...Brick Road.[1D FF][00 FF]
+^L864^@That face is mine.[01 FF]  (Feel free to talk to it.)[02 FF]@...Brick Road.[1D FF][00 FF]
+^L865^[1C FF 8A 02 _L3327_][1C FF 0A 00 _L3328_]@I heard monkeys living in[01 FF]  some desert can teleport.[02 FF]@Oh, you learned how to teleport[01 FF]  from the monkeys?[02 FF][1B FF 3C 00][01 FF]@...I wanna try![02 FF][03 FF 06 00][04 FF _L3329_][05 FF _L3330_]^L3330^@You don't want to have a[01 FF]  monkey for a student, do you?[1D FF][00 FF]^L3329^[C6 FF][1B FF 1E 00][01 FF]@Okay... I'll try it.[02 FF][C6 FF][A1 FF CA 04 38 02][9E FF][A4 FF CA 04][1B FF 3C 00][A3 FF CA 04][C4 FF 00 0D][9E FF][85 FF CA 04 06 00][A0 FF 08 00 0C 00 01 00][C4 FF 00 0E][1B FF 78 00][C5 FF][A5 FF 08 00 06 00][84 FF CA 04 39 02 01 00][9E FF][A4 FF CA 04][8D FF 01 00][A8 FF 00][DB FF CA 04 01 00 00 00][CE FF CA 04 00 00]@I'll never give up.[1B FF][00 FF]
+^L866^[1C FF 20 01 _L3332_]@It's really dark here in[01 FF]  the Deep Darkness, isn't it?[02 FF]@It's pretty creepy, don't[01 FF]  you think?[02 FF]@If you don't have the[01 FF]  [90 FF A9][1A FF 02 00] here, you're[01 FF]  helpless.[1D FF][00 FF]
 ^L867^[86 FF _L3333_][00 FF]
-^L868^
-^L869^
+^L868^[1C FF 14 01 _L2156_][C4 FF 00 86]@You may have forgotten,[01 FF]  but *Buuuuurp!*...[02 FF]@I'm the return of Belch![02 FF][D4 FF 4E 00][1B FF 01 00]@I've fought you before.[02 FF][D4 FF 4E 00][1B FF 01 00]@Peeeeyouuu![02 FF]@Don't you remember my ripe[01 FF]  odor?[02 FF]@Belch has trained more[01 FF]  and has returned much[01 FF]  stronger.[02 FF]@Buuuuurp![1B FF 14 00][D4 FF 4E 00] Belch has also[01 FF]  changed his name to Puke!...[02 FF]@Barf!  vomit!  barf, barf![01 FF]  chuck!  chuck![02 FF]@Drown to death in puke![02 FF]@Don't you think that's an[01 FF]  incredibly masculine taunt[01 FF]  to throw at you?[02 FF][86 FF _L3334_][81 FF _L2161_][AE FF 04][E8 FF 04 00 02 00][08 FF 14 01][1B FF 01 00][A1 FF CD 04 29 00][00 FF]
+^L869^@Kaweeeek![02 FF]@Village Tenda's Comes Nobody[02 FF]@Far It's Because. Kweek.[1D FF][00 FF]
 ^L870^[08 FF 8D 02][08 FF 90 02][86 FF _L4325_][09 FF 8D 02][09 FF 90 02][00 FF]
-^L871^
-^L872^
-^L873^
+^L871^@Hi, how are you?[1B FF 14 00][01 FF]  I'm not a bad guy.[02 FF]@I came from one of the[01 FF]  world's largest economic[01 FF]  powers[02 FF]@to this small rural village.[02 FF]@A businessman that is truly[01 FF]  tough has to travel this far[02 FF]@for the best opportunities.[02 FF]@...and I'm a tough[01 FF]  businessman, yessir![02 FF]@I am also a representative[01 FF]  of the doctor over there.[02 FF]@A: Do you want to buy...?[02 FF]@B: Do you want to heal...?[03 FF 07 00][04 FF _L3338_][05 FF _L3339_][80 FF _L3340_]
+^L872^@I don't feel it's necessary[01 FF]  for us to talk.[1D FF][00 FF]
+^L873^@*Ring* *ring*[02 FF][86 FF _L3351_][00 FF]
 ^L874^[86 FF _L3349_][00 FF]
-^L875^
-^L876^
+^L875^@This is the Deep Darkness.[02 FF]@When you walk through[01 FF] the swamp,[1B FF 0F 00] you endanger your[01 FF] health.[02 FF]@You can't help it.[1B FF 0F 00] That's why[01 FF]  it's called Deep Darkness.[1D FF][00 FF]
+^L876^@I wanna become a pig.[02 FF]@If I become a pig, I can find[01 FF]  the mushrooms called[01 FF]  Magic truffles.[02 FF]@They're located in the swamp[01 FF]  and can be found by scent.[02 FF]@You know, a Pig's nose would[01 FF]  be enough[02 FF]@to find those great truffles[01 FF]  by scent alone.[1D FF][00 FF]
 ^L877^[86 FF _L3335_][82 FF _L3336_][86 FF _L3337_][08 FF B7 01][85 FF D8 04 06 00][00 FF]
 ^L878^[86 FF _L3335_][82 FF _L3336_][86 FF _L3337_][08 FF B8 01][85 FF D9 04 06 00][00 FF]
 ^L879^[86 FF _L3335_][82 FF _L3336_][86 FF _L3337_][08 FF B9 01][85 FF DA 04 06 00][00 FF]
 ^L880^[86 FF _L3335_][82 FF _L3336_][86 FF _L3337_][08 FF BA 01][85 FF DB 04 06 00][00 FF]
 ^L881^[86 FF _L3335_][82 FF _L3336_][86 FF _L3337_][08 FF BB 01][85 FF DC 04 06 00][00 FF]
-^L882^
-^L883^
-^L884^
-^L885^
-^L886^
-^L887^
+^L882^[1C FF 49 00 _L3350_][BC FF 03 00][86 FF _L2177_][81 FF _L3350_][C3 FF 01 01 03 00][D8 FF 01 00 00 00][C3 FF 02 01 03 00][D8 FF 02 00 00 00][1B FF 14 00]@It's completely broken.[02 FF]@I thought I could fix it,[1B FF 14 00] but[01 FF]  on re-examination...[02 FF]@...I noticed that there's[01 FF]  no engine.[1B FF 14 00] Mmmm.[1D FF][C6 FF][00 FF]
+^L883^[1C FF C4 00 _L2156_][BC FF 01 00][86 FF _L2177_][81 FF _L2380_][C4 FF 00 9B]@You finally got here.[02 FF]@This is the seventh <Your[01 FF]  Sanctuary> location.[1B FF 14 00] But[01 FF]  it's mine now.[02 FF]@Take it from me,[1B FF 1E 00] if you dare...[02 FF][86 FF _L3378_][81 FF _L2161_][85 FF DE 04 08 00][1B FF 78 00][08 FF C4 00][00 FF]
+^L884^@Thanks for talking to me.[1D FF][00 FF]
+^L885^@The underground talking[01 FF]  rock seems to want to talk a[01 FF]  lot more than I do.[1D FF][00 FF]
+^L886^@This is the earth's belly button![1D FF][00 FF]
+^L887^[1C FF 9B 00 _L3353_]^L3364^@.....[02 FF]@We're shy...[1D FF][00 FF]
 ^L888^[86 FF _L3354_][00 FF]
-^L889^
+^L889^[1C FF 49 00 _L3355_][1C FF 5C 00 _L3356_][1C FF 9B 00 _L3357_]@...We're all shy.[02 FF]@Rumor, I heard a book to fix[01 FF] shyness, there is.[02 FF]@Where?[02 FF]@Don't know.[02 FF]@Just a rumor.[1D FF][08 FF 9A 00][00 FF]
 ^L890^[1C FF 9B 00 _L3363_][80 FF _L3364_]
 ^L891^[1C FF 9B 00 _L3365_][80 FF _L3364_]
 ^L892^[1C FF 9B 00 _L3367_][80 FF _L3364_]
 ^L893^[1C FF 9B 00 _L3368_][80 FF _L3364_]
 ^L894^[1C FF 9B 00 _L3369_][80 FF _L3364_]
-^L895^
+^L895^[1C FF 99 00 _L4224_][1C FF 9B 00 _L4225_]@.....[1B FF 14 00][01 FF]  Shy...[1B FF 0F 00][01 FF]  that we are...[1D FF][00 FF]
 ^L896^[1C FF 9B 00 _L3374_][80 FF _L3364_]
-^L897^
-^L898^
-^L899^
+^L897^@Good evening.[02 FF]@I'm a talking rock.[02 FF]@But the rocks around here[01 FF]  don't talk too much.[02 FF]@The rock that talks the most[01 FF]  is deep down in the labyrinth[01 FF]  a ways ahead...[02 FF]@in the <Lost Underworld.>[02 FF]@Don't forget to talk to the[01 FF]  rock![1B FF 14 00] It's important![1D FF][08 FF 89 02][00 FF]
+^L898^[1C FF 9B 00 _L3372_][1C FF 02 00 _L3373_]@There's only one Tenda[01 FF]  who's not shy.[02 FF]@It's me, bubby![02 FF]@You know what?[02 FF]@There's something scary that[01 FF]  comes from the underground.[02 FF]@So, we covered up the hole.[02 FF]@There are lots of dinosaurs[01 FF]  there.[02 FF]@I went there once, but I came[01 FF]  right back, 'cause I was so[01 FF]  surprised![02 FF]@There was a talking stone[01 FF]  that talks a lot.[02 FF]@Do you wanna go and see?[02 FF]@I understand.[02 FF]@But I'm not as strong as I[01 FF]  look.[02 FF]@I'm sorry, I guess I can't help[01 FF]  you.[02 FF]@The guy next to me is strong,[01 FF]  but he lacks conversation skills.[02 FF]@He needs to overcome his[01 FF]  shyness first.[1D FF][08 FF 02 00][00 FF]
+^L899^@(Hot Springs.  Good all over)[1D FF][00 FF]
 ^L900^
 ^L901^
 ^L902^
