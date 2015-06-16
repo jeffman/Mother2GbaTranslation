@@ -391,8 +391,10 @@ namespace ScriptTool
                                 currentWidth += 60;
                                 break;
 
+                            case 0x0:
                             case 0x1:
                             case 0x2:
+                            case 0x3:
                                 // Line break
                                 strings.Add(sb.ToString());
                                 sb.Clear();
