@@ -35,6 +35,7 @@
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.resolveDuplicateLabelsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.checkCompletionMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.autosaveMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.topPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.collectionSelector = new System.Windows.Forms.ComboBox();
@@ -64,7 +65,6 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.writeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.writeTimer = new System.Windows.Forms.Timer(this.components);
-            this.autosaveMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -137,6 +137,16 @@
             this.checkCompletionMenu.Size = new System.Drawing.Size(214, 22);
             this.checkCompletionMenu.Text = "Check completion status...";
             this.checkCompletionMenu.Click += new System.EventHandler(this.checkCompletionMenu_Click);
+            // 
+            // autosaveMenu
+            // 
+            this.autosaveMenu.Checked = true;
+            this.autosaveMenu.CheckOnClick = true;
+            this.autosaveMenu.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.autosaveMenu.Name = "autosaveMenu";
+            this.autosaveMenu.Size = new System.Drawing.Size(214, 22);
+            this.autosaveMenu.Text = "Autosave";
+            this.autosaveMenu.Click += new System.EventHandler(this.autosaveMenu_Click);
             // 
             // topPanel
             // 
@@ -489,16 +499,6 @@
             this.writeTimer.Enabled = true;
             this.writeTimer.Interval = 10000;
             this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
-            // 
-            // autosaveMenu
-            // 
-            this.autosaveMenu.Checked = true;
-            this.autosaveMenu.CheckOnClick = true;
-            this.autosaveMenu.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.autosaveMenu.Name = "autosaveMenu";
-            this.autosaveMenu.Size = new System.Drawing.Size(214, 22);
-            this.autosaveMenu.Text = "Autosave";
-            this.autosaveMenu.Click += new System.EventHandler(this.autosaveMenu_Click);
             // 
             // MainForm
             // 
