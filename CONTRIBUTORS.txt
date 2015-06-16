@@ -6,6 +6,7 @@ Text conversion:
   ItsIggy
   TheZunar123
   EBrent
+  Pitch
 
 Special thanks:
   TragicManner
