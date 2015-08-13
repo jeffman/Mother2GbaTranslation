@@ -10,6 +10,7 @@ Text conversion:
   MalBound
   imthegeek37
   Tasos500
+  ThePoltergeist
 
 Special thanks:
   TragicManner
