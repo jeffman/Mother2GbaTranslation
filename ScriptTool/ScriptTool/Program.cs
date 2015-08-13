@@ -172,7 +172,8 @@ namespace ScriptTool
             allRefs.Add(Tuple.Create("eb-item-help", EbTextTables.ReadItemHelpRefs(ebRom)));
             allRefs.Add(Tuple.Create("eb-psi-help", EbTextTables.ReadPsiHelpRefs(ebRom)));
             allRefs.Add(Tuple.Create("eb-phone", EbTextTables.ReadPhoneRefs(ebRom)));
-            allRefs.Add(Tuple.Create("eb-enemy-encounters", EbTextTables.ReadEnemyTextRefs(ebRom)));
+            allRefs.Add(Tuple.Create("eb-enemy-encounters", EbTextTables.ReadEnemyEncounters(ebRom)));
+            allRefs.Add(Tuple.Create("eb-enemy-deaths", EbTextTables.ReadEnemyDeaths(ebRom)));
 
             // Decompile
             var allPointers = allRefs.SelectMany(rl => rl.Item2).Select(r => r.OldPointer);
@@ -228,6 +229,7 @@ namespace ScriptTool
             allRefs.Add(Tuple.Create("m12-phone-list", M12TextTables.ReadPhoneRefs(m12Rom)));
             allRefs.Add(Tuple.Create("m12-unknown", M12TextTables.ReadUnknownRefs(m12Rom)));
             allRefs.Add(Tuple.Create("m12-enemy-encounters", M12TextTables.ReadEnemyEncounters(m12Rom)));
+            allRefs.Add(Tuple.Create("m12-enemy-deaths", M12TextTables.ReadEnemyDeaths(m12Rom)));
             allRefs.Add(Tuple.Create("m12-prayers", M12TextTables.ReadPrayerRefs(m12Rom)));
             allRefs.Add(Tuple.Create("m12-asmrefs", M12TextTables.ReadAsmRefs(m12Rom)));
 
@@ -357,6 +359,7 @@ namespace ScriptTool
                                       "m12-unknown",
                                       "m12-asmrefs",
                                       "m12-enemy-encounters",
+                                      "m12-enemy-deaths",
                                       "m12-prayers"
                                   };
 

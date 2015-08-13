@@ -106,7 +106,7 @@ namespace ScriptTool
             return refs.ToArray();
         }
 
-        public static MainStringRef[] ReadEnemyTextRefs(byte[] rom)
+        public static MainStringRef[] ReadEnemyEncounters(byte[] rom)
         {
             var refs = new List<MainStringRef>();
             int address = 0x159589;
@@ -116,7 +116,18 @@ namespace ScriptTool
                 if (pointer != 0)
                     refs.Add(new MainStringRef { Index = i, PointerLocation = address + 0x2D, OldPointer = pointer });
 
-                pointer = rom.ReadSnesPointer(address + 0x31);
+                address += 94;
+            }
+            return refs.ToArray();
+        }
+
+        public static MainStringRef[] ReadEnemyDeaths(byte[] rom)
+        {
+            var refs = new List<MainStringRef>();
+            int address = 0x159589;
+            for (int i = 0; i < 231; i++)
+            {
+                int pointer = rom.ReadSnesPointer(address + 0x31);
                 if (pointer != 0)
                     refs.Add(new MainStringRef { Index = i, PointerLocation = address + 0x31, OldPointer = pointer });
 

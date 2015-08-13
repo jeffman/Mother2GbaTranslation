@@ -45,6 +45,8 @@ namespace ScriptToolGui
         MatchedGroupCollection battleActionGroups = new MatchedGroupCollection("Battle actions", Game.Eb, Game.M12, Game.M12English);
         MatchedGroupCollection itemHelpGroups = new MatchedGroupCollection("Item help", Game.Eb, Game.M12, Game.M12English);
         MatchedGroupCollection psiHelpGroups = new MatchedGroupCollection("PSI help", Game.Eb, Game.M12, Game.M12English);
+        MatchedGroupCollection enemyEncounterGroups = new MatchedGroupCollection("Enemy encounters", Game.Eb, Game.M12, Game.M12English);
+        MatchedGroupCollection enemyDeathGroups = new MatchedGroupCollection("Enemy deaths", Game.Eb, Game.M12, Game.M12English);
         MatchedGroupCollection rawM12Groups = new MatchedGroupCollection("Raw M12 strings", Game.M12, Game.M12English);
         MatchedGroupCollection rawEbGroups = new MatchedGroupCollection("Raw EB strings", Game.Eb);
         List<MatchedGroupCollection> matchedCollections = new List<MatchedGroupCollection>();
@@ -182,10 +184,22 @@ namespace ScriptToolGui
             var psiHelpMappingGroups = ebPsiHelpRefs.Select(e =>
                 new MatchedGroup(e,
                     m12PsiHelpRefs.First(m => m.Index == e.Index - 1)))
-                .ToArray();
+                    .ToArray();
 
             psiHelpGroups.Groups.AddRange(psiHelpMappingGroups);
             psiHelpGroups.SortGroups();
+
+            // Enemy encounters
+            var m12EncounterRefs = ImportStringRefs("m12-enemy-encounters.json");
+            var ebEncounterRefs = ImportStringRefs("eb-enemy-encounters.json");
+
+            enemyEncounterGroups.Groups.AddRange(MatchRefs(ebEncounterRefs, m12EncounterRefs));
+
+            // Enemy deaths
+            var m12DeathRefs = ImportStringRefs("m12-enemy-deaths.json");
+            var ebDeathRefs = ImportStringRefs("eb-enemy-deaths.json");
+
+            enemyDeathGroups.Groups.AddRange(MatchRefs(ebDeathRefs, m12DeathRefs));
 
             // Raw M12
             var labels = Enumerable.Range(0, 5864);
@@ -205,6 +219,8 @@ namespace ScriptToolGui
             matchedCollections.Add(battleActionGroups);
             matchedCollections.Add(itemHelpGroups);
             matchedCollections.Add(psiHelpGroups);
+            matchedCollections.Add(enemyEncounterGroups);
+            matchedCollections.Add(enemyDeathGroups);
             matchedCollections.Add(rawM12Groups);
             matchedCollections.Add(rawEbGroups);
         }

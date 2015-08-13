@@ -234,7 +234,18 @@ namespace ScriptTool
                 if (pointer != 0)
                     refs.Add(new MainStringRef { Index = i, PointerLocation = address + 20, OldPointer = pointer });
 
-                pointer = rom.ReadGbaPointer(address + 24);
+                address += 64;
+            }
+            return refs.ToArray();
+        }
+
+        public static MainStringRef[] ReadEnemyDeaths(byte[] rom)
+        {
+            var refs = new List<MainStringRef>();
+            int address = 0x739D1C;
+            for (int i = 0; i < 231; i++)
+            {
+                int pointer = rom.ReadGbaPointer(address + 24);
                 if (pointer != 0)
                     refs.Add(new MainStringRef { Index = i, PointerLocation = address + 24, OldPointer = pointer });
 
