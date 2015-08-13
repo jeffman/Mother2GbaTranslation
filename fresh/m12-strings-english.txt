@@ -336,7 +336,7 @@
 ^L338^
 ^L339^
 ^L340^
-^L341^
+^L341^@(There's no response.)[1D FF][00 FF]
 ^L342^
 ^L343^
 ^L344^
@@ -805,7 +805,7 @@
 ^L808^@The Snake bag can hold live[01 FF]  snakes![1B FF 14 00]  There are snakes in[01 FF]  the sack![02 FF]@Please, it is a very useful item![02 FF]@Shall you buy one?[1B FF 14 00]  I am humbly[01 FF]  offering it to you...[22 FF][03 FF 00 00][04 FF _L3294_][05 FF _L3295_]^L3295^@You are afraid of snakes,[1B FF 0F 00] are[01 FF]  you not?  Heh heh heh.[1D FF][00 FF]^L3294^[91 FF FF][82 FF _L3296_]@That is 290 dollars, kind[01 FF]  (PRONOUN).[9C FF][03 FF 00 00][04 FF _L3297_][05 FF _L3295_][80 FF _L3295_]^L3297^[99 FF 22 01 00 00][81 FF _L3298_][91 FF FF][93 FF 00 CA][D4 FF 76 00][9B FF 62 00 00 00][9C FF][D4 FF 78 00]@I'll give you a discount as the[01 FF]  sack has a hole in it.[02 FF]@(Snake sack dealer marked the[01 FF]  price down to 98 dollars from[01 FF]  290 dollars.)[1D FF][00 FF]
 ^L809^[86 FF _L3299_][00 FF]
 ^L810^[86 FF _L3300_][00 FF]
-^L811^
+^L811^@I bought a <Piggy nose.>[02 FF]@This will help out a large[01 FF]  amount while I am humbly[01 FF]  searching for the Magic truffle[01 FF]  in the Deep Darkness.[02 FF]@You too can learn how to use a[01 FF]  Piggy nose with the <Use>[01 FF]  command under <Goods.>[02 FF]@So please rest easy.[1D FF][00 FF]
 ^L812^[1C FF 49 00 _L3301_]@Oh, you have the mark[01 FF]  of bad luck on your face...[02 FF]@If you want to know,[01 FF]  I'll humbly tell you.[02 FF]@<You shall come back here...[02 FF]@After you have encountered[01 FF]  a dangerous situation.>[02 FF]@However, I may be wrong,[01 FF]  and if so... a thousand pardons.[1D FF][00 FF]
 ^L813^@(The door of the pyramid is[01 FF]  firmly sealed...)[1D FF][00 FF]
 ^L814^@The Tenda tribe used to live[01 FF]  here.[02 FF]@They went to the back[01 FF]  of the Deep Darkness as they[01 FF]  were too innocent.[02 FF]@I wonder if they are still alive.[1D FF][00 FF]
@@ -894,29 +894,28 @@
 ^L897^@Good evening.[02 FF]@I'm a talking rock.[02 FF]@But the rocks around here[01 FF]  don't talk too much.[02 FF]@The rock that talks the most[01 FF]  is deep down in the labyrinth[01 FF]  a ways ahead...[02 FF]@in the <Lost Underworld.>[02 FF]@Don't forget to talk to the[01 FF]  rock![1B FF 14 00] It's important![1D FF][08 FF 89 02][00 FF]
 ^L898^[1C FF 9B 00 _L3372_][1C FF 02 00 _L3373_]@There's only one Tenda[01 FF]  who's not shy.[02 FF]@It's me, bubby![02 FF]@You know what?[02 FF]@There's something scary that[01 FF]  comes from the underground.[02 FF]@So, we covered up the hole.[02 FF]@There are lots of dinosaurs[01 FF]  there.[02 FF]@I went there once, but I came[01 FF]  right back, 'cause I was so[01 FF]  surprised![02 FF]@There was a talking stone[01 FF]  that talks a lot.[02 FF]@Do you wanna go and see?[02 FF]@I understand.[02 FF]@But I'm not as strong as I[01 FF]  look.[02 FF]@I'm sorry, I guess I can't help[01 FF]  you.[02 FF]@The guy next to me is strong,[01 FF]  but he lacks conversation skills.[02 FF]@He needs to overcome his[01 FF]  shyness first.[1D FF][08 FF 02 00][00 FF]
 ^L899^@(Hot Springs.  Good all over)[1D FF][00 FF]
-^L900^
-^L901^
-^L902^
-^L903^
-^L904^
-^L905^
+^L900^[7B FF]@Kidnapped. [1B FF 14 00]I was. Boing![02 FF]@Kidnapper. [1B FF 14 00]Bad guy.[02 FF]@Bad guy gone. Zoom![02 FF]@Where?[02 FF]@To the past.[02 FF]@Ding, ding![1D FF][7C FF][00 FF]
+^L901^@This is very hard for me to[01 FF]  tell you, but...[02 FF][1C FF 1D 01 _L4310_][00 FF]
+^L902^@In order to defeat Giygas,[1B FF 0F 00] who[01 FF]  is attacking from the past,[02 FF]@you must warp to the past.[02 FF]@This can be done by way of the[01 FF]  <Phase Distorter 3.>[02 FF]@However, the machine cannot[01 FF]  warp living things,[1B FF 0F 00] I mean[01 FF]  lifeforms.[02 FF]@Life is demolished in the[01 FF]  process of warping.[02 FF]@The only way to accomplish[01 FF]  the time travel is to transfer[01 FF]  your brain <program> into a[01 FF]  robot, and send the robot[01 FF]  to the past.[02 FF]@...The transfer means that your[01 FF]  spirit will go with the robot[01 FF]  while your body is left behind...[02 FF]@I cannot promise that your[01 FF]  spirit will come back after the[01 FF]  battle in the past.[02 FF]@Yet, you must understand that[01 FF]  the four of you are the chosen[01 FF]  ones.[02 FF]@Do you still wish to face Giygas[01 FF]  by traveling to the past?[22 FF][03 FF 00 00][04 FF _L4311_][05 FF _L4312_]^L4312^[01 FF]@Yes, it's natural to feel as[01 FF]  you do.[02 FF]@The only thing left is the[01 FF]  destruction of our planet...[1D FF][00 FF]^L4311^[01 FF]@...Hmmm[1B FF 14 00] ...you accept this[01 FF]  while knowing that you may not[01 FF]  be able to return to your[01 FF]  current form, right?[1B FF 1E 00][03 FF 00 00][04 FF _L4313_][05 FF _L4312_][80 FF _L4312_]^L4313^[01 FF]@...Yes... I see...[1B FF 14 00] You have really[01 FF]  set your mind on this...[02 FF]@Let me take a good look at[01 FF]  you now...[02 FF]@[0D FF],[1B FF 0F 00] please give me[01 FF]  that red cap...[02 FF][1B FF 3C 00][01 FF]@Ready... stand by...[02 FF][C6 FF][1B FF 01 00][86 FF _L2200_][6B FF 03 00][A0 FF D0 07 13 00 01 00][9E FF][CB FF FF 00 06 00][14 FF 6E 00][EA FF FF 00][C4 FF 00 B3][A0 FF 25 01 5F 02 01 00][9E FF][A0 FF D0 07 0A 03 01 00][9E FF][A5 FF 25 01 06 00][A0 FF 26 01 5F 02 01 00][A0 FF D0 07 0B 03 01 00][9E FF][A0 FF D0 07 0A 03 01 00][9E FF][A5 FF 26 01 06 00][A0 FF 27 01 5F 02 01 00][A0 FF D0 07 0B 03 01 00][9E FF][A0 FF D0 07 0A 03 01 00][9E FF][A5 FF 27 01 06 00][A0 FF 28 01 5F 02 01 00][A0 FF D0 07 0B 03 01 00][9E FF][A5 FF 28 01 06 00][74 FF][14 FF 6F 00][A0 FF 30 00 60 02 FF 00][EA FF FF 00][CB FF FF 00 06 00]@[0D FF]![01 FF]  [0E FF]![01 FF]  [10 FF]![02 FF]@[0F FF]!...[1B FF 14 00] my son...[02 FF]@There is no turning back now.[02 FF]@[0D FF], activate the[01 FF]  Phase Distorter 3 by your[01 FF]  own hand,[02 FF]@thereby following your own[01 FF]  destiny...[02 FF]@Will you do so?[22 FF][03 FF 00 00][04 FF _L4314_][05 FF _L4315_][80 FF _L4315_]^L4315^@...I see...[02 FF]@[0F FF]![1B FF 14 00] You do it![03 FF 00 00][04 FF _L4314_][05 FF _L4316_][80 FF _L4316_]^L4316^[01 FF]@Oh, you lost your nerve...[02 FF]@[0D FF]![1B FF 14 00] It is up to you...[22 FF][03 FF 00 00][04 FF _L4314_][05 FF _L4315_]^L4314^[01 FF]@Only a few people know of your[01 FF]  amazing courage,[02 FF]@but the number of people you[01 FF]  save through that bravery[01 FF]  is immense.[02 FF]@I feel very fortunate...[02 FF]@to be present at the beginning[01 FF]  of this monumental[01 FF]  undertaking...[02 FF][A4 FF F4 04][A4 FF F8 04][A4 FF F7 04][C4 FF 00 5B][C6 FF][08 FF 74 01][1B FF 01 00][FC FF 22 00][9E FF][14 FF 70 00][EA FF FF 00][FC FF 23 00][1B FF 3C 00][CC FF FF 00 01 00][A0 FF D0 07 5E 02 01 00][86 FF _L4040_][7E FF 01 00][09 FF 7E 01][09 FF 48 01][09 FF 4B 01][09 FF 49 01][09 FF 4A 01][09 FF 4C 01][09 FF 47 01][09 FF 51 01][09 FF 0B 00][EB FF FF 00][00 FF]^L903^@You must warp to the past[01 FF]  and fight, but...[1D FF][08 FF 1D 01][00 FF]
+^L904^[7B FF]@We here too.[02 FF]@Boing![1D FF][7C FF][00 FF]
+^L905^[1C FF DF 00 _L3265_][8D FF 01 00][A8 FF 00]@[90 FF 00][1A FF 01 00] checked the[01 FF]  broken Phase Distorter.[02 FF]@There was a Horn of life.[02 FF][91 FF FF][82 FF _L3266_][01 FF][93 FF 00 DC][86 FF _L2233_][08 FF DF 00][1D FF][00 FF]
 ^L906^@INPUT YOUR COMMAND.[1C FF 74 01 _L5141_][03 FF 0E 00]^L5143^[04 FF _L5061_][05 FF _L5142_][00 FF]^L5141^[03 FF 0F 00][80 FF _L5143_]^L5142^[86 FF _L1860_][00 FF]
-^L907^
+^L907^[1C FF C5 00 _L2156_][BC FF 01 00][86 FF _L2177_][81 FF _L2380_][C4 FF 00 9B]@You finally got here.[02 FF]@This is the eighth[01 FF]  <Your Sanctuary> location.[1B FF 14 00][01 FF]  But it's mine now.[02 FF]@Take it from me,[1B FF 1E 00] if you dare...[02 FF][86 FF _L3379_][81 FF _L2161_][85 FF FC 04 08 00][1B FF 78 00][08 FF C5 00][00 FF]
 ^L908^[08 FF DB 02][08 FF 90 02][86 FF _L4325_][09 FF DB 02][09 FF 90 02][00 FF]
-^L909^
-^L910^
-^L911^
-^L912^
-^L913^
-^L914^
-^L915^
-^L916^
+^L909^[1C FF A7 01 _L3380_]@Even though I listened to the[01 FF]  talkative Mystery Rock's story,[02 FF]@I don't understand what he's[01 FF]  talking about.[1D FF][00 FF]
+^L910^[1C FF A7 01 _L3381_][1C FF 68 02 _L3382_]@What are you doing in the[01 FF]  dinosaur's cage?[02 FF]@I'll open the door for you, and[01 FF]  you get out of the cage quick.[02 FF]@That's an order from the boss.[1B FF 0F 00][01 FF]  ...By the way,[1B FF 0F 00] thanks for the[01 FF]  Tendakraut.[02 FF][8D FF 01 00][A8 FF 00]@([90 FF 00][1A FF 01 00]'s Tendakraut[01 FF]  was taken.)[02 FF]@(That nasty smell left you at[01 FF]  the same time!)[1D FF][08 FF 68 02][00 FF]
+^L911^[1C FF 49 00 _L3383_]@We are the same Tenda as[01 FF]  those above ground.[02 FF]@...We seem different?[02 FF]@Yeah,[1B FF 0F 00] you know, the Tenda up[01 FF]  there are shy and don't like to[01 FF]  talk.[00 FF]
+^L912^[1C FF 49 00 _L3384_]@Didn't you think that the Tenda[01 FF]  up above have some[01 FF]  particularly beautiful women?[02 FF]@They're still shy, though.[1D FF][00 FF]
+^L913^[1C FF FF 02 _L3385_][08 FF FF 02]@You're strange, but you smell[01 FF]  good.[1B FF 14 00] So I'll tell you a secret.[02 FF]@Did you feel the earthquake[01 FF]  a little while ago?[02 FF]@...You know, we have[01 FF]  earthquakes all the time here.[02 FF]@After an earthquake, the hot[01 FF]  springs will erupt.[02 FF]@The blue springs are great for[01 FF]  recovering health.[02 FF]@The Red springs are perfect for[01 FF]  healing paralysis or drawing out[01 FF]  poison.[1D FF][00 FF]
+^L914^[1C FF 49 00 _L3386_]@Tenda who like to talk came to[01 FF]  the Lost Underworld[02 FF]@because we couldn't stand the[01 FF]  quiet up above.[02 FF]@So, we established a separate[01 FF]  tribe.[02 FF]@I hope we can be friendly again[01 FF]  some day.[02 FF]@...Yeah,[1B FF 14 00] it was a lot easier to[01 FF]  live up above.[1D FF][00 FF]
+^L915^@We made a cage for dinosaurs[01 FF]  and locked them up...[02 FF]@That's what my brother tells[01 FF]  me.[02 FF]@But I don't believe it...[1B FF 14 00][01 FF]  He's just spewing out of his[01 FF]  cake hole.[1D FF][00 FF]
+^L916^[1C FF 49 00 _L3387_]@A chubby, obnoxious kid from[01 FF]  some foreign country said[01 FF]  something heartrending...[02 FF]@So, I'm healing my wounds in[01 FF]  the hot springs.[1D FF][00 FF]
 ^L917^[86 FF _L3388_][00 FF]
-^L918^
-^L919^
-^L920^
-^L921^
-^L922^
+^L918^[1C FF A7 01 _L2156_][1C FF 80 01 _L3376_][C4 FF 00 77][1C FF 02 00 _L3377_]@You finally came,[01 FF]  [0D FF].[02 FF][EE FF 01 00 01 00 01 00][EE FF 01 00 02 00 01 00][EE FF 01 00 06 00 01 00][F7 FF 01 00 64 00][F8 FF 01 00 64 00][D4 FF 25 00][1B FF 0A 00]@Finally, you talk to me.[02 FF]@Listen [0D FF].[02 FF]@I'm going to tell you[01 FF]  something very important.[02 FF]@You may want to take notes.[02 FF]@Ready?[02 FF][1B FF 3C 00][01 FF]@You're the chosen one.[02 FF]@Your destiny is not only yours...[02 FF]@It's the destiny of the whole[01 FF]  universe.[02 FF]@There will be a time in which all[01 FF]  of you in the universe will[01 FF]  overlap each other.[02 FF]@Do you remember <Giant Step>[01 FF]  in Onett?[02 FF]@That is one of[01 FF]  <Your Sanctuary.>[02 FF]@It is a spot which gives you[01 FF]  power and allows you to realize[01 FF]  all your skills.[02 FF]@There was a monster that[01 FF]  protected it.[02 FF]@The monster was influenced by[01 FF]  the power of the place.[02 FF]@You must have beaten those[01 FF]  monsters.[02 FF]@You must reach all of the eight[01 FF]  power spots in the world...[02 FF]@When the Sound Stone records[01 FF]  the melodies of all eight power[01 FF]  spots, you can finally see[01 FF]  <Your World.>[02 FF]^L3377^@I'll tell you all of the power[01 FF]  spots.[02 FF][1B FF 3C 00][01 FF]@1. <Giant Step> in Onett.[02 FF][1B FF 1E 00][01 FF]@2. <Lilliput Steps> in Peaceful[01 FF]  Rest Valley near Twoson.[02 FF][1B FF 1E 00][01 FF]@3. <Milky Well> in Grapefruit[01 FF]  Falls in Saturn Valley.[02 FF][1B FF 1E 00][01 FF]@4. <Rainy Circle> found by[01 FF]  [0F FF] in Winters.[02 FF][1B FF 1E 00][01 FF]@5. <Magnet Hill> at the edge of[01 FF]  the city of Fourside.[02 FF][1B FF 1E 00][01 FF]@6. <Pink Cloud> which[01 FF]  [10 FF] knows.[02 FF][1B FF 1E 00][01 FF]@7. and... <Lumine Hole> where[01 FF]  the shining lichen lives in the[01 FF]  cave.[02 FF][1B FF 1E 00][01 FF]@8. A new place is now going to[01 FF]  be opened up to you.[02 FF]@<Fire Spring,> located[01 FF]  southwest of here.[02 FF][1B FF 3C 00][01 FF]@Listen to the melodies of all[01 FF]  eight power spots.[02 FF]@If you do not fail, you may[01 FF]  upset Giygas' plans...[02 FF]@Understand, [0D FF]?[00 FF]
+^L919^@The bird right there says[01 FF]  strange words like <Hello?>[01 FF]  and <click beep beep beep.>[1D FF][00 FF]
+^L920^[1C FF 49 00 _L3389_]@Here, the dinosaurs don't come[01 FF]  and attack me. So, I can relax.[02 FF]@...Except now I can't get out.[1D FF][00 FF]
+^L921^@Ring, ring, rrriiing!![02 FF][86 FF _L3351_][00 FF]
+^L922^[BB FF 64][87 FF]@Thank you for coming all the[01 FF]  way into this primitive country.[02 FF]@You must be tired.[01 FF]  To stay, it'll run you[01 FF]  $[B8 FF 00][1A FF 04 00].[02 FF]@You are going to stay,[01 FF]  aren't you?[86 FF _L5100_][04 FF _L5118_][05 FF _L5119_]^L5119^[01 FF]@Please come again...[01 FF]  Mr. Traveler.[1D FF][00 FF]
 ^L923^@(Don't feed the dinosaurs in the[01 FF]  cage![01 FF][1B FF 14 00]  The Boss)[1D FF][00 FF]
 ^L924^@(In case of danger, evacuate[01 FF]  here![1B FF 14 00]  The Boss)[1D FF][00 FF]
 ^L925^[86 FF _L3390_][00 FF]
@@ -1044,8 +1043,8 @@
 ^L1047^[AB FF 00 00][87 FF][9A FF 97 00][81 FF _L3095_][80 FF _L2288_]
 ^L1048^[AB FF 00 00][87 FF][9A FF 98 00][81 FF _L3148_][80 FF _L2288_]
 ^L1049^[AB FF 00 00][87 FF][9A FF AC 00][82 FF _L2288_][BC FF 04 00][86 FF _L2177_][81 FF _L2288_][80 FF _L3221_]
-^L1050^[86 FF _L3287_][9A FF 8D 00][82 FF _L3288_][89 FF][86 FF _L3289_][D4 FF 76 00][8B FF][B9 FF 00 00 00 00]@(How strange![1B FF 14 00][01 FF]  The rabbits and carrots[01 FF]  disappeared all at once!)[1D FF][D4 FF 21 00][85 FF 53 04 08 00][85 FF 54 04 08 00][85 FF 55 04 08 00][08 FF 8C 02][00 FF]
-^L1051^
+^L1050^[86 FF _L3287_][9A FF 8D 00][82 FF _L3288_][89 FF][86 FF _L3289_][D4 FF 76 00][8B FF][B9 FF 00 00 00 00]@(How strange![1B FF 14 00] The rabbits and[01 FF]  carrots disappeared all at[01 FF]  once!)[1D FF][D4 FF 21 00][85 FF 53 04 08 00][85 FF 54 04 08 00][85 FF 55 04 08 00][08 FF 8C 02][00 FF]
+^L1051^[88 FF][1C FF 5E 02 _L3311_][89 FF][86 FF _L3287_][9A FF B5 00][82 FF _L3312_][89 FF][86 FF _L3289_]@(The key worked to open the[01 FF]  door. You may enter.)[1D FF][08 FF 5E 02][D4 FF 77 00][C6 FF][14 FF 55 00][86 FF _L3310_][00 FF]
 ^L1052^[AB FF 00 00][87 FF][9A FF 92 00][81 FF _L3352_][80 FF _L2288_]
 ^L1053^[88 FF][1C FF 9B 00 _L2288_][89 FF][AB FF 00 00][87 FF][9A FF D1 00][81 FF _L3361_][80 FF _L2288_]
 ^L1054^[00 FF]
@@ -2314,7 +2313,7 @@
 ^L2371^[C6 FF][A7 FF C0 01][00 FF]
 ^L2372^[C6 FF][A7 FF C1 01][00 FF]
 ^L2373^
-^L2380^
+^L2380^@Only [0D FF] can absorb[01 FF]  the power of this place.[1D FF][00 FF]
 ^L2381^[C6 FF][A7 FF C2 01][00 FF]
 ^L2382^[00 FF]
 ^L2383^
@@ -3119,26 +3118,26 @@
 ^L3262^[08 FF 51 02][6B FF 03 00][1B FF 78 00][C4 FF 00 0D][A0 FF 03 00 04 02 01 00][CB FF FF 00 06 00][9E FF][AE FF 01][AE FF 02][AE FF 03][AF FF 04][CB FF FF 00 06 00][14 FF 52 00][EA FF FF 00][7E FF 07 00][CC FF FF 00 01 00]^L5613^[A0 FF 03 00 05 02 01 00][9E FF][09 FF 51 02][C4 FF 00 04][AA FF 03 00][86 FF _L4175_][C6 FF][AE FF 04][CB FF 04 00 06 00][A6 FF 03 00 15 00][9E FF][A5 FF 03 00 06 00][CC FF 04 00 01 00][C4 FF 00 0B][1B FF 78 00][1B FF 78 00][1B FF 78 00][1B FF 3C 00][C5 FF]@[10 FF] joined you.[02 FF][C6 FF][09 FF 0B 00][08 FF F2 01][64 FF][EB FF FF 00][00 FF]
 ^L3263^@We understand that you've[01 FF]  experienced hardship in the[01 FF]  past.[02 FF]@No one could fight the evil[01 FF]  entity, except you.[02 FF]@We are proud.[1B FF 14 00][01 FF] We are happy.[1D FF][00 FF]
 ^L3264^@Didn't you meet up with many[01 FF]  monsters along the way?[02 FF]@Recently, several bad incidents[01 FF]  occurred in this peaceful[01 FF]  country...[1D FF][00 FF]
-^L3265^
-^L3266^
+^L3265^@But, it was empty.[1D FF][00 FF]
+^L3266^@But, you can't carry anything[01 FF]  else.[00 FF]
 ^L3267^
 ^L3268^
 ^L3269^
 ^L3271^@I didn't eat any garlic today,[01 FF]  so the room doesn't stink.[1D FF][00 FF]
 ^L3272^@Hello.[02 FF]@Congratulations.[02 FF]@Thank you...[02 FF]@...Oh,[1B FF 0F 00] my foreign language[01 FF]  skills worked![1D FF][00 FF]
 ^L3273^@We have difficulty[01 FF]  communicating with foreigners.[1D FF][00 FF]
-^L3276^
-^L3277^
-^L3278^
+^L3276^@I'm a little embarrassed to[01 FF]  say it, but I'll tell you anyway...[02 FF]@I thought <Philosophy> was[01 FF]  the study of stones.[02 FF]@I now realize it's about studying[01 FF]  all night...[02 FF]@...What?[1B FF 14 00] It's not?[1D FF][00 FF]
+^L3277^@What's the difference between[01 FF]  <existing> and <exiting>?[02 FF]@.....Nothing?[02 FF]@Mmmmm Mmmmm[1D FF][00 FF]
+^L3278^@I wonder if[01 FF]  Prince [10 FF] succeeded[01 FF]  in <Moo Training>?[02 FF]@I wanted him to come by[01 FF]  and show me his best[01 FF]  barnyard impression.[1D FF][00 FF]
 ^L3279^
 ^L3280^[C6 FF][A7 FF D0 01][00 FF]
-^L3281^
-^L3282^
-^L3283^
-^L3286^
+^L3281^@Prince [10 FF] has good[01 FF]  relationships with foreigners.[02 FF]@...What an international person![1D FF][00 FF]
+^L3282^@Prince [10 FF] is so cool,[01 FF]  but you're also young and[01 FF]  tough.[1D FF][00 FF]
+^L3283^@There are so many monsters[01 FF]  around recently, we can't relax[01 FF]  and have fun.[02 FF]@(weep)[1D FF][00 FF]
+^L3286^@I'm waiting for[01 FF]  Prince [10 FF] to see me[01 FF]  and say <I love you.>[1D FF][00 FF]
 ^L3287^[8A FF][AB FF 00 00][88 FF][87 FF][00 FF]
-^L3288^
-^L3289^
+^L3288^@That won't move the rabbits.[1D FF][00 FF]
+^L3289^[87 FF]@[90 FF 00][1A FF 01 00] used[01 FF]  the [87 FF][90 FF 00][1A FF 02 00].[02 FF][00 FF]
 ^L3290^[08 FF 0F 01][86 FF _L4325_][09 FF 0F 01][00 FF]
 ^L3291^[08 FF 46 01][08 FF 90 02][86 FF _L4325_][09 FF 46 01][09 FF 90 02][00 FF]
 ^L3292^[08 FF 0A 00][BC FF C8 00][86 FF _L5051_][00 FF]
@@ -3147,7 +3146,7 @@
 ^L3298^
 ^L3299^[08 FF 44 01][08 FF 90 02][86 FF _L4326_][09 FF 44 01][09 FF 90 02][00 FF]
 ^L3300^[08 FF 45 01][08 FF 90 02][86 FF _L4325_][09 FF 45 01][09 FF 90 02][00 FF]
-^L3301^
+^L3301^@Oh![02 FF]@You have the mark of bad luck[01 FF]  on your face...[02 FF]@Yet, I could be wrong, as you[01 FF]  didn't wash your face lately.[1D FF][00 FF]
 ^L3302^[86 FF _L4216_][A9 FF 03 00][9E FF][AA FF 03 00][DA FF 03 00 01 00][86 FF _L4217_][A5 FF 4E 00 06 00][D4 FF 63 00][A0 FF B3 00 19 02 01 00][A5 FF 03 00 06 00][A0 FF B3 00 1A 02 01 00][9E FF][7E FF 08 00][09 FF 0B 00][86 FF _L3558_][BE FF 04 00 A9 00][82 FF _L2197_][08 FF B3 02][6D FF 04 00 A9 00][00 FF]
 ^L3303^
 ^L3304^
@@ -3156,17 +3155,17 @@
 ^L3308^
 ^L3309^[C6 FF][1B FF 01 00][14 FF 55 00][86 FF _L3310_][00 FF]
 ^L3310^[09 FF 0A 03][FE FF][00 FF]
-^L3311^
-^L3312^
-^L3313^
+^L3311^@(The door's already opened.)[1D FF][00 FF]
+^L3312^@(The key doesn't fit!)[1D FF][00 FF]
+^L3313^@You returned from exploring the[01 FF]  Deep Darkness?[02 FF]@I cannot believe you made it[01 FF]  back alive.[1D FF][00 FF]
 ^L3314^
 ^L3315^
-^L3317^
-^L3318^
-^L3319^
+^L3317^@There's an old submarine at the[01 FF]  back of the dungeon.[02 FF]@It can be used to cross the[01 FF]  river.[02 FF]@There's a <Goodbye Exit>[01 FF]  ...over there.[02 FF]@It will take you to the[01 FF]  submarine.[02 FF]@Don't make a mistake on which[01 FF]  exit you take.[02 FF]@You need to take the[01 FF]  <Goodbye Exit!>[1B FF 14 00] Hope to see you[01 FF]  again![1D FF][00 FF]
+^L3318^@I don't know how, but my[01 FF]  homemade dungeon helped you[01 FF]  out.[02 FF]@I'm glad.[1D FF][C6 FF][00 FF]
+^L3319^[1B FF 14 00]@Guargh![1B FF 14 00] Oh no!  I... am...[02 FF]@getting caught in the palm[01 FF]  trees![1B FF 14 00] Mmm... I cannot move.[02 FF]@Well,[1B FF 14 00] if I cannot move, it is[01 FF]  okay.[02 FF][8D FF 01 00][A8 FF 00]@[90 FF 00][1A FF 01 00], it makes me[01 FF]  sad, but I must say goodbye[01 FF]  here,[1B FF 14 00] at my eternal resting[01 FF]  place.[02 FF][C6 FF][1B FF 14 00][AF FF 0A][84 FF 80 04 0C 00 01 00][08 FF 12 01][86 FF _L3558_][09 FF F4 02][D4 FF 11 00][09 FF 96 02][EB FF FF 00][1B FF 14 00][D4 FF 05 00][86 FF _L2201_][C5 FF][00 FF]
 ^L3320^
-^L3321^
-^L3322^
+^L3321^@<Good Night Bench.>[02 FF]@May you relax and recover[01 FF]  your health and spirits.[1D FF][00 FF]
+^L3322^@[C2 FF][1A FF 05 00]'s health is[01 FF]  restored.[1D FF][C6 FF][00 FF]
 ^L3323^
 ^L3324^
 ^L3325^
@@ -3216,20 +3215,19 @@
 ^L3373^
 ^L3374^[86 FF _L3375_][00 FF]
 ^L3375^
-^L3376^
-^L3377^
+^L3376^@I don't need words anymore.[02 FF]@I'll turn back into a simple rock.[1D FF][08 FF A7 01][00 FF]
 ^L3378^[C6 FF][A7 FF D6 01][00 FF]
 ^L3379^[C6 FF][A7 FF D7 01][00 FF]
-^L3380^
-^L3381^
-^L3382^
-^L3383^
-^L3384^
-^L3385^
-^L3386^
-^L3387^
-^L3388^
-^L3389^
+^L3380^@The rock suddenly stopped[01 FF]  talking.[02 FF]@In other words...[02 FF]@it's not saying anything.[1D FF][00 FF]
+^L3381^@A rock that doesn't talk is no[01 FF]  fun at all.[1D FF][00 FF]
+^L3382^@Why don't you see the talkative[01 FF]  mystery rock.[02 FF]@That rock really jabbers away!![1D FF][00 FF]
+^L3383^@It may be my imagination,[1B FF 0F 00] but I[01 FF]  think I hear the sound of other[01 FF] Tenda talking up above.[02 FF]@I wonder... have they overcome[01 FF]  their shyness?[1D FF][00 FF]
+^L3384^@Tenda women up above ground[01 FF]  are pretty, but the men seem[01 FF]  kind of run down.[1D FF][00 FF]
+^L3385^@Hey! Strange fellow.[02 FF]@After an earthquake, the hot[01 FF]  springs erupt out of the ground.[02 FF]@Have you ever noticed that?[02 FF]@The blue springs are great for[01 FF]  recovering health.[02 FF]@The red springs are perfect for[01 FF]  healing paralysis or drawing out[01 FF]  poison.[1D FF][00 FF]
+^L3386^@You guys helped the upper tribe[01 FF]  and the lower tribe gain unity[01 FF]  again.[02 FF]@Soon, we'll be one village again![1B FF 14 00][01 FF]  Thank you.[1D FF][00 FF]
+^L3387^@Hot springs rock![1D FF][00 FF]
+^L3388^[1C FF 02 00 _L5335_][08 FF 02 00]@You're a foreigner, aren't you?[02 FF]@I am a world-wise Tenda.[02 FF]@I was an exchange student who[01 FF]  traveled to a country that is[01 FF]  known as an economic[01 FF]  superpower.[02 FF]@My name is Ay-go Stikke.[02 FF]@Let me know if I can do[01 FF]  anything for you.[02 FF]^L5353^[01 FF]@Shall I loan you some money?[22 FF][86 FF _L2485_][04 FF _L5336_][05 FF _L5337_]^L5337^[01 FF]@I don't feel strange about it at[01 FF]  all.[02 FF]@Please ask me any time.[1D FF][00 FF]
+^L3389^@Without dinosaurs, this place[01 FF]  seems like it is missing[01 FF]   something big.[1D FF][00 FF]
 ^L3390^[08 FF DC 02][08 FF 90 02][86 FF _L4325_][09 FF DC 02][09 FF 90 02][00 FF]
 ^L3391^[8D FF 02 00][88 FF][9A FF 0B 00][81 FF _L3403_][89 FF][9A FF 0C 00][81 FF _L3403_][89 FF][9A FF 0D 00][81 FF _L3403_][89 FF][9A FF 0E 00][81 FF _L3403_][89 FF][9A FF 0F 00]^L3403^[00 FF]
 ^L3392^@Did you want to talk to me?[02 FF]@I'm sorry,[1B FF 0F 00] there's really not[01 FF] much to say...[1D FF][00 FF]
@@ -4006,8 +4004,7 @@
 ^L4215^
 ^L4216^
 ^L4217^
-^L4218^
-^L4219^
+^L4219^@A submarine?[02 FF]@I believe...[1B FF 0F 00] that I have one in my[01 FF]  old vehicle collection.[02 FF]@Please enter...[1D FF][C6 FF][1B FF 01 00]^L4218^[14 FF 55 00][86 FF _L3310_][00 FF]
 ^L4220^
 ^L4221^
 ^L4222^
@@ -4096,12 +4093,6 @@
 ^L4308^[C4 FF 00 7F][84 FF FB 04 59 02 04 00][1B FF 78 00][1B FF 3C 00][84 FF F8 04 5A 02 01 00][84 FF F5 04 5B 02 01 00][84 FF F7 04 5C 02 01 00][9E FF][C5 FF][DB FF F5 04 01 00 FF 00][CE FF F5 04 00 00][A4 FF F8 04][A4 FF F5 04][A4 FF F7 04][86 FF _L4309_][08 FF 48 01][08 FF 49 01][08 FF 4A 01][08 FF 47 01][00 FF]
 ^L4309^
 ^L4310^[C6 FF][85 FF F5 04 06 00][84 FF F6 04 5D 02 01 00][1B FF 96 00][08 FF 4B 01][09 FF 48 01][00 FF]
-^L4311^
-^L4312^
-^L4313^
-^L4314^
-^L4315^
-^L4316^
 ^L4317^
 ^L4318^[A7 FF DB 01][00 FF]
 ^L4319^
@@ -4863,8 +4854,8 @@
 ^L5099^@Did you have a relaxing sleep?[02 FF]@The sound of the ocean[01 FF]  waves didn't disturb you,[01 FF]  I trust.[1D FF][00 FF]
 ^L5101^[99 FF 00 00 00 00][81 FF _L5103_][9B FF 00 00 00 00][9C FF][D4 FF 76 00]@Excellent choice![02 FF]@We hope you enjoy our[01 FF]  wonderful ocean view.[1D FF][86 FF _L2883_][C5 FF][14 FF 57 00][86 FF _L2185_][00 FF]
 ^L5103^@If you do not have enough cash[01 FF]  with you, please feel free to[01 FF]  use the ATM just over there.[1D FF][00 FF]
-^L5104^
-^L5105^
+^L5104^@Good morning![02 FF]@This sure is some nice weather[01 FF]  we're having in Scaraba lately.[1D FF][00 FF]
+^L5105^[99 FF 00 00 00 00][81 FF _L5107_][9B FF 00 00 00 00][9C FF][D4 FF 76 00]@Please let us know if you find[01 FF]  any scorpions...[02 FF]@It's very unlikely that they will[01 FF]  come out, but you never can[01 FF]  tell...[1D FF][C6 FF][1B FF 01 00][86 FF _L2883_][C5 FF][14 FF 56 00][86 FF _L2185_][00 FF]
 ^L5106^
 ^L5107^[86 FF _L5106_][00 FF]
 ^L5108^@Thanks.[1D FF][00 FF]
@@ -4877,9 +4868,8 @@
 ^L5115^
 ^L5116^
 ^L5117^
-^L5118^
-^L5119^
-^L5120^
+^L5118^[99 FF 00 00 00 00][81 FF _L5120_][9B FF 00 00 00 00][9C FF][D4 FF 76 00]@Well, make yourself[01 FF]  comfortable.[1D FF][C6 FF][86 FF _L2183_][14 FF 60 00][09 FF 7F 01][00 FF]
+^L5120^@Money rules even at the end of[01 FF]  the world.[02 FF]@We cannot accept a guest who[01 FF]  has no money.[1D FF][00 FF]
 ^L5121^@.....[02 FF]@[0D FF]?[02 FF]@...[02 FF]@[0D FF][02 FF][1B FF 3C 00][01 FF][1B FF 3C 00][01 FF]@...[0D FF]...[02 FF]@I'm a friend who you have[01 FF]  never met before...[02 FF]@My name is [0E FF].[02 FF][02 FF][1B FF 3C 00][01 FF]@Can you hear me calling you?[02 FF]@I am [0E FF]...[02 FF]@...[02 FF][1B FF 3C 00][01 FF][1B FF 3C 00][01 FF]@.....[1D FF][C6 FF][1B FF 01 00][09 FF 7A 02][80 FF _L3999_]
 ^L5122^@.....[02 FF]@[0D FF]![02 FF]@I...[0E FF]...[02 FF]@I am [0E FF]...[02 FF]@Can you hear me calling you?[02 FF]@Help![02 FF]@Come and help me![02 FF]@Um, I don't know where I am...[02 FF]@I can hear water running in the[01 FF]  distance...[02 FF][1B FF 14 00][01 FF][1B FF 3C 00][01 FF]@[0D FF], please help me![1D FF][C6 FF][1B FF 01 00][09 FF 7B 02][80 FF _L3999_]
 ^L5123^@You are a friend who I have[01 FF]  never met before...[02 FF]@[0F FF]...[02 FF]@Head south...[02 FF]@I am [0E FF]...[02 FF]@If you hear this message, go to[01 FF]  the south...[1D FF][C6 FF][09 FF 7C 02][80 FF _L3999_]
@@ -5060,25 +5050,20 @@
 ^L5332^
 ^L5333^
 ^L5334^
-^L5335^
-^L5336^
-^L5337^
-^L5338^
-^L5339^
-^L5340^
-^L5341^
-^L5342^
-^L5343^
-^L5344^
-^L5345^
+^L5335^@Hi! I'm Ay-go.[02 FF][80 FF _L5353_]
+^L5336^@If you want to withdraw.....[02 FF]@I will charge you a handling fee[01 FF]  that is equal to the amount of[01 FF]  your withdrawal.[02 FF]@Is that okay with you?[86 FF _L2485_][04 FF _L5338_][05 FF _L5339_]^L5339^[01 FF]@I don't think you've ever really[01 FF]  gotten into bad trouble.[1D FF][00 FF]
+^L5338^@You have $[23 FF] in your[01 FF]  account now.[03 FF 13 00][04 FF _L5340_][05 FF _L5341_][80 FF _L5337_]^L5341^[D0 FF 7F 96 98 00][82 FF _L5342_][86 FF _L5343_][82 FF _L5337_][87 FF][99 FF 00 00 00 00][81 FF _L5344_][9B FF 00 00 00 00][D1 FF 00 00 00 00][9C FF][D4 FF 76 00][1B FF 0A 00][01 FF]@I have registered your deposit[01 FF]  of $[B8 FF 00][1A FF 04 00].[02 FF][80 FF _L5345_]
+^L5340^[D0 FF 01 00 00 00][81 FF _L5346_][99 FF 9F 86 01 00][82 FF _L5347_][86 FF _L5348_][82 FF _L5337_][87 FF][D0 FF 00 00 00 00][81 FF _L5349_][D3 FF 00 00][D0 FF 00 00 00 00][81 FF _L5350_]@Your withdrawal is[01 FF]  $[B8 FF 00][1A FF 04 00],[02 FF]@and the handling fee is[01 FF]  $[B8 FF 00][1A FF 04 00].[02 FF]@Is it okay if I subtract this[01 FF]  amount from your account?[86 FF _L2485_][04 FF _L5351_][05 FF _L5352_]^L5352^[D1 FF 00 00 00 00][80 FF _L5339_]
+^L5342^@I don't think you can deposit[01 FF]  any more money.[02 FF][80 FF _L5337_]
+^L5343^@How much do you want to[01 FF]  withdraw?[01 FF][86 FF _L5138_][00 FF]
+^L5344^@I don't think you have that[01 FF]  much money.[02 FF][80 FF _L5341_]
+^L5345^@It was a very good opportunity[01 FF]  for the both of us.[02 FF]@Please come again.[1D FF][00 FF]
 ^L5346^
 ^L5347^
 ^L5348^
 ^L5349^
 ^L5350^
 ^L5351^
-^L5352^
-^L5353^
 ^L5354^
 ^L5355^
 ^L5356^
