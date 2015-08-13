@@ -706,78 +706,78 @@
 ^L709^
 ^L710^
 ^L711^
-^L712^
-^L713^
-^L714^
-^L715^
-^L716^
-^L717^
-^L718^
-^L719^
+^L712^@You don't understand what the[01 FF]   hey everyone is talking about,[01 FF]  do you?[02 FF]@I don't either,[01 FF]  but I try to be patient[01 FF]  with the customers.[02 FF]@They pay high prices just for[01 FF]  a glass of water[02 FF]@and the chance to have serious,[01 FF]  intellectual discussions.[02 FF]@Actually, it's an easy business.[02 FF]@You want a drink?[02 FF]@We only serve water, though...[1D FF][00 FF]
+^L713^@The show?[1B FF 14 00] It's already started.[02 FF]@Everyone stares at the stone[01 FF]  on stage and philosophizes.[02 FF]@...Doesn't it sound stupid?[1C FF 10 00 _L3207_][1D FF][00 FF]
+^L714^@I've finally awakened the inner[01 FF]  me, the true self.[02 FF]@The patrons of this club are[01 FF]  able to stare into their own[01 FF]  soul hard[02 FF]@enough to burn a hole in their[01 FF]  psyche.[02 FF]@I'm now comfortable enough[01 FF]  to stare at the real me,[01 FF]  the true self,[02 FF]@and burn the impression into[01 FF]  my super-ego.[02 FF]@I want to be in this[01 FF]  comfort zone at any time,[01 FF]  all the time or at no time.[02 FF]@My id is telling me...[1C FF 3D 00 _L3254_][1D FF][00 FF]
+^L715^@Across the sea, there's[01 FF]  a town called Scaraba.[02 FF]@It's a mysterious town.[1B FF 0F 00][01 FF]  It's my dream town.[1D FF][00 FF]
+^L716^@I'm a grave robber.[02 FF]@I was scared of the pyramid[01 FF]  in Scaraba...[02 FF]@so, I didn't go in...[02 FF]@but I tell people that I saw[01 FF]  mummy-type monsters with[01 FF]  my very own eyes![1D FF][00 FF]
+^L717^[1C FF 69 02 _L3208_]@Do you know the Stoic Club,[01 FF]  in Summers?[02 FF]@You need to call[01 FF]  a secret number for a[01 FF]  reservation if you want[01 FF]  to get in.[00 FF]
+^L718^@If you come closer,[1B FF 0F 00][01 FF]  I'll play the trumpet![02 FF]@.....[02 FF]@Uhhh, I don't know how to[01 FF]  play yet.[1D FF][00 FF]
+^L719^@Bow...[02 FF]@...now brown cow?[1D FF][00 FF]
 ^L720^[86 FF _L3209_][00 FF]
 ^L721^[86 FF _L3210_][00 FF]
-^L722^
-^L723^
-^L724^
-^L725^
-^L726^
+^L722^@There's a big monster living[01 FF]  in the sea between here [01 FF]  and Scaraba.[02 FF]@I've seen a picture of it.[1D FF][00 FF]
+^L723^@How annoying![1B FF 14 00][01 FF]   Why are you[01 FF]  wandering around?[00 FF]
+^L724^@Don't get too excited about[01 FF]  this town.[1B FF 14 00]  It's a tourist trap.[02 FF]@Everyone seems to be nice,[1B FF 0F 00][01 FF]  but they're just doing it for[01 FF]  the money.[02 FF]@I know from experience.[1D FF][00 FF]
+^L725^@Excuse me.[1D FF][00 FF]
+^L726^[1C FF 57 01 _L3213_]@I heard the security guard in the[01 FF]  Scaraba Cultural Museum isn't[01 FF]  very nice.[02 FF]@But he can be helpful.[1D FF][00 FF]
 ^L727^[86 FF _L5662_][A8 FF 01][87 FF][BD FF 1D _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5749_ _L5750_ _L5751_ _L5752_ _L5753_ _L5754_ _L5755_ _L5756_][00 FF]
-^L728^
-^L729^
-^L730^
+^L728^[1C FF 7F 01 _L5099_][BB FF 96][87 FF]@Welcome to[01 FF]  L'hotel de Summers.[02 FF]@My name is[01 FF]  Risosha Richmonde,[02 FF]@and I am the[01 FF]  assistant manager.[02 FF]@I'm sorry [B8 FF 00][1A FF 04 00],[01 FF]  but I'm afraid that we do not[01 FF]  have any reservations[01 FF]  under your name.[02 FF]@However, we can offer you a[01 FF]  room at $[B8 FF 00][1A FF 04 00] a night.[02 FF]@Would you be interested in[01 FF]  a room?[86 FF _L5100_][04 FF _L5101_][05 FF _L5102_]^L5102^@That's too bad.[02 FF]@Please keep us in mind the[01 FF]  next time you come here[01 FF]  on your holiday.[1D FF][00 FF]
+^L729^@Thank you again, Poke...[02 FF]@Uhhh, [1A FF 01 00].[1D FF][00 FF]
+^L730^@I can't believe you pronounce[01 FF]  Hotel as <Hotel.>[02 FF]@In this country, Hotel[01 FF]  is pronounced <otel.>[02 FF]@...What?[02 FF]@So then in your country,[01 FF]  is otter pronounced as[01 FF]  <Hotter>?[02 FF]@'Ow should I know[01 FF]  these things?[1D FF][00 FF]
 ^L731^[86 FF _L3214_][00 FF]
-^L732^
-^L733^
-^L734^
-^L735^
-^L736^
-^L737^
-^L738^
+^L732^[11 FF]?[1B FF 14 00][01 FF]@Please... we do not have such[01 FF]  trash on our menu.[1D FF][00 FF]
+^L733^@Hey, talking to people at[01 FF]  another table in a restaurant[01 FF]  is like...[02 FF]@breaking into their room[01 FF]  and checking their drawers[01 FF]  for valuables.[02 FF]@Yeah, other people on important[01 FF]  adventures do such things,[02 FF]@but you have to admit that[01 FF]  it's bizarre![1D FF][00 FF]
+^L734^@I like the atmosphere in this[01 FF]  restaurant.[1B FF 14 00][01 FF]  They have good food, too.[1D FF][00 FF]
+^L735^@I'll have the Braised Boa[01 FF]  Over Minced Baby Leeks...[02 FF]@Oh, you're not the waiter.[1D FF][00 FF]
+^L736^@I have fake teeth,[01 FF]  so I like soft foods.[02 FF]@Not like rocks or stones.[1B FF 14 00][01 FF]  They're too hard.[1D FF][00 FF]
+^L737^@Pooooweeeet![1B FF 3C 00][01 FF]  Oooo... sorry...[02 FF]@Y'know, I can't quite describe[01 FF]  it...[02 FF]@Drinking glass after glass of[01 FF]  ice coffee is... well...[02 FF]@Buuuurp![1B FF 5A 00][01 FF]  Oooo... 'scuse me...[1D FF][00 FF]
+^L738^[1C FF 00 03 _L3215_]@Right now, part of the[01 FF]  Scaraba Cultural Museum is[01 FF]  being remodeled.[02 FF]@Do you still want to enter?[22 FF][03 FF 00 00][04 FF _L3216_][05 FF _L3217_]^L3217^[01 FF]@Since the Hieroglyph[01 FF]  display is closed,[1B FF 0F 00][01 FF]  people haven't wanted to visit.[1D FF][00 FF]^L3216^[01 FF]@Three dollars per person.[9C FF][03 FF 00 00][04 FF _L3218_][05 FF _L3217_][80 FF _L3217_]^L3218^[BB FF 03][87 FF][99 FF 00 00 00 00][81 FF _L3219_][D4 FF 76 00][9B FF 00 00 00 00][9C FF][1C FF 49 00 _L3220_][6E FF 01 00]^L3220^[08 FF 00 03][00 FF]
 ^L739^[BC FF 07 00][1C FF AF 02 _L3974_][80 FF _L40_]
-^L740^
-^L741^
-^L742^
-^L743^
+^L740^[1C FF 49 00 _L3229_][1C FF 3A 00 _L3230_]@...mumble, mumble...[02 FF]@Why would Mr. Spoon from[01 FF]  the Fourside museum try to[01 FF]  call me?[02 FF]@I bet he just wants to[01 FF]  brag about something...[02 FF]@Well,[1B FF 0F 00] let him try...[1B FF 14 00][01 FF]  I wonder what he wants to[01 FF]  tell me?[02 FF]  @Bah![1B FF 14 00] I dare him to try and[01 FF]  upstage me...[02 FF]@Oh![1B FF 14 00] Pardon me...[1B FF 14 00][01 FF]  I was just talking to myself...[01 FF]  *cough*[1D FF][D4 FF 72 00][1D FF][00 FF]
+^L741^[1C FF 49 00 _L3231_]@I saw a chubby kid about[01 FF]  your age here.[02 FF]@He looked like he was[01 FF]  awfully wealthy.[01 FF]  He was being extravagant![1D FF][00 FF]
+^L742^@This room is being remodeled,[01 FF]  so I can't show it to you...[02 FF][1C FF 10 00 _L3221_]^L3222^@I can't... well, I usually don't...[1B FF 14 00][01 FF]  show this room...[02 FF]@Once you hit adulthood,[01 FF]  you'll understand.[02 FF]@I do,[1B FF 0F 00] however,[1B FF 0F 00] like jewelry.[02 FF]@Perhaps a little, shall we say,[01 FF]  <under the table deal>[01 FF]  would be in order...[1D FF][00 FF]
+^L743^[1C FF 0A 00 _L3226_]@Excellent![02 FF]@Do you feel like you're really[01 FF]  experiencing this great[01 FF]  historical period?[02 FF]@The experience is more valuable[01 FF]  than a small gem...[01 FF]  Ha ha ha![02 FF]@The other day, a rich kid[01 FF]  came to Summers by[01 FF]  helicopter...[02 FF]@He also took a picture of[01 FF]  the Hieroglyphs.[02 FF]@I got lots of money from him.[01 FF]   Heh heh heh.[1D FF][00 FF]
 ^L744^[1C FF 59 02 _L2156_][C6 FF][A7 FF BA 01][81 FF _L1108_][08 FF 59 02][1B FF 01 00][A1 FF 0F 04 29 00][00 FF]
 ^L745^[1C FF 5A 02 _L2156_][C6 FF][A7 FF BA 01][81 FF _L1108_][08 FF 5A 02][1B FF 01 00][A1 FF 10 04 29 00][00 FF]
 ^L746^[86 FF _L3232_][00 FF]
 ^L747^[08 FF E7 00][86 FF _L5392_][09 FF E7 00][00 FF]
 ^L748^[86 FF _L3233_][00 FF]
-^L749^
-^L750^
-^L751^
-^L752^
-^L753^
-^L754^
-^L755^
-^L756^
-^L757^
-^L758^
-^L759^
+^L749^@My cousin is a nurse in Twoson.[02 FF]@She's not good at administering[01 FF]  shots.[02 FF]@The one she gave me was[01 FF]  painful.[1D FF][00 FF]
+^L750^@Wake up in the morning,[01 FF]  fall in love.[02 FF]@Eat lunch, fall in love...[02 FF]@And at night,[1B FF 0F 00] fall in love again...[02 FF]@That's my dream life.[1D FF][00 FF]
+^L751^@The guy next to me is really[01 FF]  bugging me.[1B FF 14 00]  He keeps following[01 FF]  me around.[1D FF][00 FF]
+^L752^@I wonder why such serious[01 FF]  looking kids as you would come[01 FF]  to this resort town...[02 FF]@You guys are spoiling the[01 FF]  atmosphere...[1D FF][00 FF]
+^L753^@I'm actually a surfer.[1B FF 14 00]  But you[01 FF]  can't surf at this beach.[02 FF]@Should I become a porter so[01 FF]  that I can get tips from all the[01 FF]  old folks?[1D FF][00 FF]
+^L754^@Are you from Eagleland?[02 FF]@If you like adventure,[1B FF 0F 00] this isn't[01 FF]  your kind of place.[02 FF]@You should travel across the[01 FF]  sea to Scaraba from Toto,[01 FF]  the port town.[1D FF][00 FF]
+^L755^[1C FF 10 00 _L3234_]^L3235^@Don't talk to me.[02 FF]@My mind is a complete blank.[1D FF][00 FF]
+^L756^@You look so serious...[02 FF]@You're in Summers,[01 FF]  a dream paradise.[02 FF]@Relax, and have some fun.[1D FF][00 FF]
+^L757^@The sky's blue and the sun is[01 FF]  high.[02 FF]@The prices here are so high,[01 FF]  it'll make your face turn blue![02 FF]@That's Summers![1D FF][00 FF]
+^L758^@If you're bored, go check out[01 FF]  the <Scaraba Cultural Museum.>[02 FF]@It may be helpful to you.[02 FF]@They have a hieroglyph from a[01 FF]  pyramid.[1D FF][00 FF]
+^L759^@Another nice day.[02 FF]@Summers always has sunny[01 FF]  days.[1D FF][00 FF]
 ^L760^[08 FF 0C 01][08 FF 90 02][86 FF _L4327_][09 FF 0C 01][09 FF 90 02][00 FF]
-^L761^
-^L762^
-^L763^
-^L764^
-^L765^
-^L766^
-^L767^
-^L768^
-^L769^
+^L761^@(It's a Myna bird!)[02 FF][F6 FF 05 00][95 FF 05 _L751_ _L755_ _L754_ _L758_ _L762_][80 FF _L750_]
+^L762^[1C FF D9 00 _L3241_]@To go to Scaraba,[1B FF 0F 00] you need to[01 FF]  cross the sea.[02 FF]@However, a monster named[01 FF]  Kraken lives in the open sea.[02 FF]@He attacks ships that pass[01 FF]  through.[02 FF]@Are you scared?[1D FF][00 FF]
+^L763^@Dinosaurs existed![1B FF 14 00]  I saw one![02 FF]@It had been out of the[01 FF]  underground when it dried out.[02 FF]@Of course, it was dead![02 FF]@Believe what I'm saying![1D FF][00 FF]
+^L764^[1C FF D9 00 _L3242_][1C FF 10 00 _L3243_][1C FF 0A 00 _L3244_]@Would you like a boat ride?[03 FF 00 00][04 FF _L3245_][05 FF _L3246_]^L3246^[01 FF]@Ok, I understand.[83 FF 0A 00][82 FF _L3247_][1D FF][00 FF]^L3247^[02 FF]^L3245^@I don't feel like sending a ship[01 FF]  out.[02 FF]@I'm worried about my wife...[02 FF]@I'm not afraid of the Kraken![02 FF]@.....[02 FF][1B FF 3C 00][01 FF]@My wife's totally ignoring her[01 FF]  Magic cake business.[02 FF]@These days she spends her[01 FF]  time hanging out in a strange[01 FF]  club.[02 FF]@We no longer have any mutual[01 FF]  interests to discuss.[02 FF]@Is our relationship over?[02 FF]@...*Sigh*[1D FF][08 FF 0A 00][00 FF]
+^L765^@Only a tanning pro like me[01 FF]  is able to get an actual suntan[01 FF]  on the palms of his hands![1D FF][00 FF]
+^L766^@Fsst Fsst.[1D FF][00 FF]
+^L767^@Meow.[1D FF][00 FF]
+^L768^[1C FF 49 00 _L3236_][1C FF 10 00 _L3237_][FC FF 05 00]@I don't know who told you.[02 FF]@You came from far off just to[01 FF]  eat my Magic cake?...[02 FF]@I thought making cakes would[01 FF]  be the best career for me.[02 FF]@Dig in![02 FF]@I used all leftover materials.[1B FF 14 00][01 FF]  This is a very special[01 FF]  Magic cake![02 FF][C6 FF][09 FF 3D 00][80 FF _L3238_]
+^L769^@I'm just trying to take a nap[01 FF]  in the shade.[1B FF 14 00][01 FF]  Don't bother me![1D FF][00 FF]
 ^L770^[08 FF AD 02][08 FF 90 02][BC FF 96 00][86 FF _L5848_][09 FF 90 02][00 FF]
-^L771^
-^L772^
-^L773^
-^L774^
-^L775^
+^L771^@(East of here is the port town[01 FF]  of Toto)[02 FF]@...No, no...[01 FF]  I'm not a billboard...[1D FF][02 FF][00 FF]
+^L772^@Hey, hey!![02 FF]@Stop putting your grimy[01 FF]  fingerprints all over my car,[01 FF]  you little punk![1D FF][00 FF]
+^L773^@<L'hotel du Summer>[02 FF]@150 dollars per night[01 FF]  for a single room.[1D FF][00 FF]
+^L774^[1C FF 49 00 _L3257_][1C FF 10 00 _L3258_][1C FF 11 01 _L3259_][1C FF 0A 00 _L3260_]@I won't say anything.[02 FF]@Go to <Mu,> the place of[01 FF]  emptiness again.[1D FF][86 FF _L3261_][00 FF]
+^L775^[1C FF 49 00 _L3263_][1C FF 10 00 _L3264_]@Use the treasures of Dalaam[01 FF]  as you wish.[02 FF]@Go in peace.[1D FF][00 FF]
 ^L776^[1C FF 10 00 _L40_][80 FF _L1860_]
-^L777^
+^L777^@You're here![02 FF]@We have little, but stay[01 FF]  and rest for a while.[02 FF][86 FF _L2866_][D4 FF 25 00][1B FF 5A 00]@But I'm impressed![1B FF 14 00] You did so[01 FF]  well for one who hasn't had[01 FF]  much training.[1D FF][00 FF]
 ^L778^[1C FF 49 00 _L3267_][BC FF 01 00]^L3270^[A8 FF 01][96 FF 00][81 FF _L3268_][8D FF 00 00][9A FF 04 00][81 FF _L3269_][C0 FF][80 FF _L3270_]
-^L779^
-^L780^
-^L781^
+^L779^@Please come in.[02 FF]@Look around the house[01 FF]  as much as you want.[1D FF][00 FF]
+^L780^[1C FF 10 00 _L3271_]@I just roasted some garlic and[01 FF]  ate it,[02 FF]@so the room still stinks.[1D FF][00 FF]
+^L781^[1C FF 49 00 _L3272_][BC FF 04 00][86 FF _L2177_][81 FF _L3273_]@You know that you do do [01 FF] everything well, right?[02 FF]@Do do?[1B FF 14 00] Ooops.[02 FF]@Say, Prince [10 FF],[01 FF]  are you still popular with the[01 FF]  girls?[03 FF 00 00][04 FF _L3274_][05 FF _L3275_]^L3275^[01 FF]@You've been acting very[01 FF]  serious lately.[1D FF][00 FF]^L3274^[01 FF]@I heard you're living a more[01 FF]  serious lifestyle these days.[1D FF][00 FF]
 ^L782^[86 FF _L5300_][00 FF]
-^L783^
+^L783^@I wish I could recover my PP[01 FF]  just by drinking water...[02 FF]@Even though I have never seen[01 FF]  him before, I heard that the[01 FF]  prince can do that.[02 FF]@I guess I need more training...[02 FF]@By the way, just what is PP[01 FF]  anyway?...[1D FF][00 FF]
 ^L784^
 ^L785^
 ^L786^
@@ -3116,74 +3116,55 @@
 ^L3204^
 ^L3205^
 ^L3206^
-^L3207^
-^L3208^
+^L3207^[02 FF]@If you just want water,[01 FF]  go to the drug store.[1B FF 14 00]It's a lot cheaper there.[1D FF][00 FF]
+^L3208^@I think this is a nice town.[1B FF 14 00] [01 FF]  Come back when you grow up![1D FF][00 FF]
 ^L3209^[08 FF 0B 01][86 FF _L4325_][09 FF 0B 01][00 FF]
 ^L3210^[08 FF 09 01][86 FF _L4325_][09 FF 09 01][00 FF]
 ^L3211^
 ^L3212^
 ^L3213^
 ^L3214^[08 FF 0A 01][08 FF 90 02][86 FF _L4326_][09 FF 0A 01][09 FF 90 02][00 FF]
-^L3215^
-^L3216^
-^L3217^
-^L3218^
+^L3215^@Since the Hieroglyph display[01 FF]  is closed,[1B FF 0F 00] people haven't[01 FF]  wanted to visit.[1D FF][00 FF]
 ^L3219^
-^L3220^
-^L3221^
-^L3222^
-^L3223^
-^L3224^
+^L3221^[BC FF 04 00][86 FF _L2177_][81 FF _L3222_]@Oh, the samurai kid is here.[02 FF]@Will he be giving me that gem?[03 FF 00 00][04 FF _L3223_][05 FF _L3224_]^L3224^[01 FF]@So, what he just handed me[01 FF]  is not a gem.[02 FF]@Hah ha ha.[02 FF]@I'm going to really enjoy the[01 FF]  <cookie> that I just got.[02 FF]@Let's pretend this conversation[01 FF]  never took place...[02 FF]@While I'm pretending,[01 FF]  you go on in...[02 FF][80 FF _L3225_][00 FF]
+^L3223^[D4 FF 76 00]@You're such a good student.[02 FF]@I'm impressed by your passion[01 FF]  for learning.[1B FF 14 00] Come in.[02 FF][80 FF _L3225_]
 ^L3225^[CE FF 0D 04 01 00][1B FF 1E 00][D4 FF 08 00][85 FF 0D 04 06 00][6D FF FF 00 AC 00][08 FF 5A 01][00 FF]
-^L3226^
-^L3227^
+^L3226^@Here's a picture of the[01 FF]  hieroglyphs, just for you.[02 FF]@It's a reward for studying[01 FF]  so hard.[02 FF][91 FF FF][82 FF _L3227_][01 FF][93 FF 00 C1][86 FF _L2233_][02 FF]@Use it in your Human Civilization[01 FF]  class. Ha ha ha![1D FF][08 FF 57 01][09 FF 0A 00][1C FF 8C 00 _L2197_][08 FF AF 02][00 FF]
+^L3227^[D4 FF 05 00]@Oh, you can't carry it 'cause[01 FF]  you have too much stuff.[02 FF]@It's a pity.[1B FF 14 00]  You're such a hard[01 FF]  worker.[02 FF]@Ha ha ha![1D FF][08 FF 0A 00][00 FF]
 ^L3228^
-^L3229^
-^L3230^
-^L3231^
+^L3229^@You have a good reputation.[02 FF]@Wouldn't you like to focus your[01 FF]  hard working energy in the[01 FF]  exciting field of archaeology?[1D FF][00 FF]
+^L3230^@It must be something[01 FF]  teeny weeny that Mr. Spoon[01 FF]  has found.[02 FF]@I don't need to know[01 FF]  the specifics.[1D FF][00 FF]
+^L3231^@It's nice seeing you in such good[01 FF]  shape.[02 FF]@I wonder what porky Pokey's[01 FF]  doing.[02 FF]@Yeah, that's the boy I met[01 FF] before.[1D FF][00 FF]
 ^L3232^[BC FF B4 00][86 FF _L5051_][00 FF]
 ^L3233^[BC FF 46 00][86 FF _L5049_][00 FF]
-^L3234^
-^L3235^
-^L3236^
+^L3234^[1C FF 49 00 _L3235_][BC FF 04 00][86 FF _L2177_][81 FF _L3235_]@Asian boy, you're so cool...[02 FF]@Don't look at me like that...[1D FF][00 FF]
+^L3236^@I can't make anymore[01 FF]  Magic cakes.[02 FF]@If you want to try something[01 FF]  tastier...[02 FF]@I have a Magic tart.[02 FF]@Try it.[02 FF][91 FF FF][82 FF _L3239_][93 FF FF 79][D4 FF 74 00]@...I could make one extra good[01 FF]  today.[1D FF][00 FF]
 ^L3237^[86 FF _L5293_][00 FF]
-^L3238^
-^L3239^
+^L3238^[86 FF _L2200_][C4 FF 00 C1][C7 FF][1B FF 01 00][A0 FF D0 07 FA 01 01 00][9E FF][CB FF FF 00 06 00][85 FF 39 04 06 00][14 FF 6E 00][1B FF 78 00][FC FF 3F 00][8D FF 01 00][A8 FF 00]@([90 FF 00][1A FF 01 00] had a dream,[01 FF]  it was a very clear,[1B FF 0F 00][01 FF]  and very strange,[1B FF 05 00] dream.)[02 FF][A0 FF D0 07 13 00 01 00][9E FF][C6 FF][65 FF][AE FF 04][AF FF 01][AF FF 02][AF FF 03][CB FF FF 00 06 00][08 FF 0B 00][6B FF 03 00][1B FF 3C 00][14 FF 4D 00][A0 FF D0 07 FB 01 01 00][86 FF _L4040_][14 FF 4E 00][A0 FF D0 07 FC 01 01 00][86 FF _L4040_][CC FF FF 00 01 00][14 FF 4F 00][EA FF FF 00][A4 FF 41 04][A4 FF 42 04][1B FF 78 00][6B FF 03 00][1B FF 78 00][CE FF 41 04 07 00][1B FF 0A 00][CE FF 41 04 03 00][C4 FF 00 77][1B FF 78 00][08 FF 95 00]@Prince [10 FF],[1B FF 0F 00] the time[01 FF]  has now come for you to[01 FF]  undertake your final trial.[02 FF]@Go to the <Place of Emptiness>[01 FF]  and endure this final test.[02 FF]@I am praying for your success[01 FF]  in this final stage of your[01 FF]  training.[1D FF][C6 FF][08 FF 96 00][08 FF 0A 00][9D FF 01 01 _L3899_][09 FF 0B 00][FC FF 06 00][08 FF D8 00][7E FF 09 00][6B FF 03 00][1B FF 3C 00][C5 FF][EB FF FF 00][00 FF]
+^L3239^@You seem to have too much[01 FF]  stuff to carry.[02 FF]@Come back after you get[01 FF]  rid of something.[1D FF][00 FF]
 ^L3240^[86 FF _L760_][00 FF]
-^L3241^
-^L3242^
-^L3243^
-^L3244^
-^L3245^
-^L3246^
-^L3247^
-^L3248^
-^L3249^
-^L3250^
-^L3251^
-^L3252^
-^L3253^
-^L3254^
-^L3255^
-^L3256^
-^L3257^
-^L3258^
-^L3259^
-^L3260^
+^L3241^@I'm a mighty sailor man[02 FF]@A mountain man I'm not[02 FF]@The open sea is home for me[02 FF]@And mountains aren't[01 FF]  worth snot[02 FF]@...I'm writing a song for sailors.[1D FF][00 FF]
+^L3242^@Compared to the olden days,[01 FF]  this boat ride is like being on a[01 FF]  luxury liner.[02 FF]@Do you want another ride?[02 FF]@I'll give you a ride if you want,[01 FF]  since you destroyed the[01 FF]  Kraken.[02 FF][80 FF _L3253_]
+^L3244^@Do you wanna hear the same[01 FF]  story again?[03 FF 00 00][04 FF _L3245_][05 FF _L3246_][80 FF _L3246_]^L3243^[1C FF 2D 02 _L3248_][02 FF]@Thank you![1B FF 14 00][01 FF]  You made my wife wake up.[02 FF]@She quit talking about all that[01 FF]  serious crap...[02 FF]@Yeah![1B FF 14 00] Let's work hard![02 FF][08 FF 2D 02]^L3248^@If you're courageous,[01 FF]  get on this boat.[02 FF]@You'll probably see the Kraken[01 FF]  and experience getting seasick![02 FF]@After all, it could only cost you[01 FF]  your life, and you got that[01 FF]  for free![02 FF]@Luck will determine the[01 FF]  outcome of this voyage.[02 FF]@So, do you want to sail[01 FF]  the seas to Scaraba?[02 FF]^L3253^@Twenty bucks per person is[01 FF]  fine with me.[9C FF][03 FF 00 00][04 FF _L3249_][05 FF _L3250_]^L3250^@I understand.[02 FF]@Stay here and shiver in[01 FF]  fear for your future![02 FF]@Ha ha ha ha ha ha![1D FF][00 FF]^L3249^[BB FF 14][87 FF][99 FF 00 00 00 00][81 FF _L3251_][D4 FF 76 00][9B FF 00 00 00 00][9C FF][01 FF]@Ready![1B FF 14 00][01 FF]  We're reckless, baby![02 FF]@Bon Voyage![1D FF][C6 FF][80 FF _L3252_]
+^L3251^@What?[1B FF 14 00] You have no money?![02 FF]@Come back after you make[01 FF]  some money.[1D FF][00 FF]
+^L3252^[FC FF 21 00][FC FF 05 00][08 FF 0B 00][A1 FF 29 04 06 02][A0 FF D0 07 07 02 01 00][86 FF _L4040_][CB FF FF 00 06 00][86 FF _L2201_][08 FF 1E 02][C5 FF][A1 FF 40 04 08 02][E6 FF 40 04][EB FF FF 00][9E FF][CA FF][EA FF FF 00][14 FF 53 00][A0 FF C1 00 09 02 01 00][1B FF 01 00][C9 FF C1 00][EB FF FF 00][9E FF][AA FF C1 00][86 FF _L4188_][A9 FF C1 00][9E FF][A0 FF 4F 01 0A 02 01 00][9E FF][AA FF C1 00][1C FF D9 00 _L4189_][08 FF 1F 02][09 FF 1E 02]@H...[1B FF 05 00]h...[1B FF 01 00]here it coooomes![02 FF][C6 FF][FC FF 47 00][86 FF _L4190_][81 FF _L4191_][FC FF 48 00][A6 FF 4F 01 29 00][1B FF 3C 00]@Oh, man![02 FF]@I thought you guys were just[01 FF]  everyday little kids,[02 FF]@but you defeated the Kraken![02 FF]@I also helped in the battle...[02 FF]@I threw my slippers at the[01 FF]  beast...[1B FF 14 00]  Maybe you didn't[01 FF]  notice.[1D FF][C6 FF][1B FF 01 00][FC FF 40 00]^L4189^[A9 FF C1 00][9E FF][CA FF][EA FF FF 00][14 FF 54 00][FC FF 41 00][A0 FF 51 01 0B 02 01 00][1B FF 01 00][C9 FF 51 01][EB FF FF 00][9E FF][A0 FF D0 07 0C 02 01 00][1B FF 01 00][C9 FF D0 07][CC FF FF 00 01 00][9E FF][CA FF][09 FF 1E 02][09 FF 1F 02][6B FF 03 00][1B FF 3C 00][C5 FF][09 FF 0B 00][FC FF 06 00][08 FF D9 00][00 FF]
+^L3254^[02 FF]@What? What?[1B FF 0F 00] Magic Cake?[02 FF]@You came all this way just[01 FF]  to eat my Magic Cake?[22 FF][03 FF 00 00][04 FF _L3255_][05 FF _L3256_]^L3256^[01 FF]@Okay then,[1B FF 14 00] don't get in my way[01 FF]  while I search for the little girl[01 FF]  within me...[1D FF][00 FF]^L3255^[01 FF]@I[1B FF 0F 00] see...[1B FF 1E 00] okay...[02 FF]@Why don't you stop by[01 FF]  a little cart out on the beach[01 FF]   later?[02 FF][C6 FF][A1 FF EA 03 F9 01][9E FF][08 FF 69 02][00 FF]
+^L3257^@As I thought, the prophecy[01 FF]  foretold of our only chance for[01 FF]  success.[02 FF]@Please enjoy the life ahead of[01 FF]  you as a regular boy.[1D FF][00 FF]
+^L3258^@Your future battle will be[01 FF]  considerably more dangerous[01 FF]  than you expect.[02 FF]@Don't be careless...[C6 FF][86 FF _L2866_][D4 FF 25 00][1B FF 5A 00][14 FF 90 00][00 FF]
+^L3259^@I am proud.[02 FF]@You have completed your Mu[01 FF]  training.[02 FF]@There is nothing more to teach[01 FF]  you from the holy writings.[1D FF][C7 FF][86 FF _L2201_][C4 FF 00 77][1B FF 3C 00][01 FF]@Prince [10 FF],[02 FF]@I shall relay a message to you[01 FF]  from Eternity.[02 FF]@The evil entity that controls[01 FF]  all wickedness is preparing for[01 FF]  the greatest struggle of all[01 FF]  time...[02 FF]@The only ones who can[01 FF]  challenge the entity are three[01 FF]  boys and one girl.[02 FF]@One named [0D FF] is the[01 FF] leader of the four.[02 FF]@One of the boys is you,[01 FF]  Prince [10 FF].[02 FF]@Now that you've completed[01 FF]  your training, search out[01 FF]  [0D FF] at once.[02 FF]@For all beings, for the earth[01 FF]  herself...[02 FF]@I pray for growth in the might[01 FF]  of the four.[1D FF][C6 FF][1B FF 01 00][E9 FF 04 00 70 17 00 00][C6 FF][80 FF _L3262_]
+^L3260^@Go quickly![1D FF][00 FF]
 ^L3261^[9D FF 01 01 _L3899_][00 FF]
-^L3262^
-^L3263^
-^L3264^
+^L3262^[08 FF 51 02][6B FF 03 00][1B FF 78 00][C4 FF 00 0D][A0 FF 03 00 04 02 01 00][CB FF FF 00 06 00][9E FF][AE FF 01][AE FF 02][AE FF 03][AF FF 04][CB FF FF 00 06 00][14 FF 52 00][EA FF FF 00][7E FF 07 00][CC FF FF 00 01 00]^L5613^[A0 FF 03 00 05 02 01 00][9E FF][09 FF 51 02][C4 FF 00 04][AA FF 03 00][86 FF _L4175_][C6 FF][AE FF 04][CB FF 04 00 06 00][A6 FF 03 00 15 00][9E FF][A5 FF 03 00 06 00][CC FF 04 00 01 00][C4 FF 00 0B][1B FF 78 00][1B FF 78 00][1B FF 78 00][1B FF 3C 00][C5 FF]@[10 FF] joined you.[02 FF][C6 FF][09 FF 0B 00][08 FF F2 01][64 FF][EB FF FF 00][00 FF]
+^L3263^@We understand that you've[01 FF]  experienced hardship in the[01 FF]  past.[02 FF]@No one could fight the evil[01 FF]  entity, except you.[02 FF]@We are proud.[1B FF 14 00][01 FF] We are happy.[1D FF][00 FF]
+^L3264^@Didn't you meet up with many[01 FF]  monsters along the way?[02 FF]@Recently, several bad incidents[01 FF]  occurred in this peaceful[01 FF]  country...[1D FF][00 FF]
 ^L3265^
 ^L3266^
 ^L3267^
 ^L3268^
 ^L3269^
-^L3271^
-^L3272^
-^L3273^
-^L3274^
-^L3275^
+^L3271^@I didn't eat any garlic today,[01 FF]  so the room doesn't stink.[1D FF][00 FF]
+^L3272^@Hello.[02 FF]@Congratulations.[02 FF]@Thank you...[02 FF]@...Oh,[1B FF 0F 00] my foreign language[01 FF]  skills worked![1D FF][00 FF]
+^L3273^@We have difficulty[01 FF]  communicating with foreigners.[1D FF][00 FF]
 ^L3276^
 ^L3277^
 ^L3278^
@@ -4029,7 +4010,7 @@
 ^L4172^
 ^L4173^
 ^L4174^
-^L4175^
+^L4175^@My name is [10 FF].[1B FF 14 00][01 FF]  I am the one who will fight[01 FF]  beside you.[02 FF]@I am the servant of[01 FF]  [0D FF].[1B FF 0F 00][01 FF]  I will obey [0D FF].[02 FF]@[0D FF]! My life is in[01 FF]  your hands.[02 FF][BC FF 01 00][86 FF _L2177_][81 FF _L4186_][C6 FF][08 FF 10 00][08 FF F8 01][08 FF F3 01][00 FF]
 ^L4176^
 ^L4177^
 ^L4178^[C7 FF][D4 FF 3F 00][69 FF][1B FF 0A 00][F9 FF 04 00 50 00][D4 FF 3D 00][1B FF 5A 00][D4 FF 2E 00][1B FF 1E 00][00 FF]
@@ -4040,14 +4021,11 @@
 ^L4183^
 ^L4184^[C6 FF][00 FF]
 ^L4185^
-^L4186^
-^L4188^
-^L4189^
+^L4186^@.....[02 FF]@I just communicated with[01 FF]  [0D FF]'s soul.[1B FF 14 00][01 FF]  Do not mind me...[02 FF][C6 FF][08 FF 10 00][08 FF F2 01][08 FF F3 01][00 FF]
+^L4188^@WA[1B FF 05 00]A[1B FF 05 00]A[1B FF 05 00]AIT! Wait![1B FF 0F 00] Wait...[02 FF]@I need to stop the boat.[02 FF]@It's been a long time since I was[01 FF]  out on the open sea,[1B FF 14 00] so I feel[01 FF]  seasick...[02 FF]@Oh, man, what am I going[01 FF]  to do?[1B FF 0F 00] A sailor who gets[01 FF]  seasick?[02 FF][02 FF][1B FF 3C 00][01 FF]@So how come you guys are all[01 FF]  right?[02 FF][1C FF 49 00 _L4192_][1C FF 11 00 _L4193_]^L4194^@So... that bald guy over there...[02 FF]@your buddy, right?...[1B FF 14 00] He came[01 FF]  from Dalaam?[02 FF]@You guys must be quite the[01 FF]  adventurers![02 FF][1C FF BB 00 _L4192_]@Aren't there times when you'd[01 FF]  just like to go back home?[02 FF]@So, you're not some[01 FF]  mama's boy...[02 FF]@Well, it wouldn't hurt you[01 FF]  to go back and visit[01 FF]  once in a while.[BE FF FF 00 8D 00][82 FF _L4192_][01 FF]@Hey, that's an awfully strange[01 FF]  carrot.[1B FF 14 00] What kind of bunny[01 FF]  would eat that?[02 FF]^L4192^@Hahaha![1B FF 14 00] I'm feeling much better[01 FF]  now![02 FF]@Anchors aweigh![02 FF][C6 FF][00 FF]
 ^L4190^[C6 FF][A7 FF D3 01][00 FF]
 ^L4191^[CA FF][CC FF FF 00 01 00][09 FF 1E 02][09 FF 0B 00][FC FF 06 00][00 FF]
-^L4192^
 ^L4193^[1C FF 14 01 _L4194_][80 FF _L4192_]
-^L4194^
 ^L4195^[00 FF]
 ^L4197^[1C FF 06 00 _L4198_][1C FF 05 00 _L4199_][1C FF 04 00 _L4199_][1C FF 03 00 _L4199_][1C FF 02 00 _L4200_][08 FF 02 00][D4 FF 69 00][00 FF]
 ^L4198^[D4 FF 6E 00][1B FF B4 00][08 FF 56 01][86 FF _L3457_][C7 FF][1B FF 01 00][D4 FF 79 00][A1 FF 77 04 29 00][00 FF]
@@ -4925,10 +4903,9 @@
 ^L5096^
 ^L5097^
 ^L5098^[86 FF _L5069_][00 FF]
-^L5099^
-^L5101^
-^L5102^
-^L5103^
+^L5099^@Did you have a relaxing sleep?[02 FF]@The sound of the ocean[01 FF]  waves didn't disturb you,[01 FF]  I trust.[1D FF][00 FF]
+^L5101^[99 FF 00 00 00 00][81 FF _L5103_][9B FF 00 00 00 00][9C FF][D4 FF 76 00]@Excellent choice![02 FF]@We hope you enjoy our[01 FF]  wonderful ocean view.[1D FF][86 FF _L2883_][C5 FF][14 FF 57 00][86 FF _L2185_][00 FF]
+^L5103^@If you do not have enough cash[01 FF]  with you, please feel free to[01 FF]  use the ATM just over there.[1D FF][00 FF]
 ^L5104^
 ^L5105^
 ^L5106^
@@ -5390,7 +5367,6 @@
 ^L5610^
 ^L5611^[1C FF 1F 01 _L5612_][1B FF 1E 00][CD FF 0D 00 00 00 78 00][08 FF 1F 01][A0 FF CF 00 15 01 01 00][A0 FF CF 00 16 01 01 00][A0 FF CF 00 16 01 01 00][A0 FF CF 00 16 01 01 00][00 FF]
 ^L5612^[A0 FF CF 00 15 01 01 00][A0 FF CF 00 16 01 01 00][A0 FF CF 00 16 01 01 00][A0 FF CF 00 16 01 01 00][80 FF _L2197_]
-^L5613^
 ^L5614^
 ^L5615^[14 FF 5B 00][1B FF 01 00][7E FF 08 00][00 FF]
 ^L5616^[14 FF 5A 00][00 FF]

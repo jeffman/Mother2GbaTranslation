@@ -8,6 +8,7 @@ Text conversion:
   EBrent
   Pitch
   MalBound
+  imthegeek37
 
 Special thanks:
   TragicManner
