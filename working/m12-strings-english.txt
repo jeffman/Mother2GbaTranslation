@@ -778,22 +778,22 @@
 ^L781^[1C FF 49 00 _L3272_][BC FF 04 00][86 FF _L2177_][81 FF _L3273_]@You know that you do do [01 FF] everything well, right?[02 FF]@Do do?[1B FF 14 00] Ooops.[02 FF]@Say, Prince [10 FF],[01 FF]  are you still popular with the[01 FF]  girls?[03 FF 00 00][04 FF _L3274_][05 FF _L3275_]^L3275^[01 FF]@You've been acting very[01 FF]  serious lately.[1D FF][00 FF]^L3274^[01 FF]@I heard you're living a more[01 FF]  serious lifestyle these days.[1D FF][00 FF]
 ^L782^[86 FF _L5300_][00 FF]
 ^L783^@I wish I could recover my PP[01 FF]  just by drinking water...[02 FF]@Even though I have never seen[01 FF]  him before, I heard that the[01 FF]  prince can do that.[02 FF]@I guess I need more training...[02 FF]@By the way, just what is PP[01 FF]  anyway?...[1D FF][00 FF]
-^L784^
-^L785^
-^L786^
+^L784^@.....[02 FF][1B FF 3C 00]@preeet!...[01 FF]  [1B FF 14 00]pooooot!...[1D ff][00 FF]
+^L785^[1C FF 49 00 _L3276_][1C FF 10 00 _L3277_]@What is immortality.....?[02 FF]@Is it everlasting life?[02 FF]@Mmmmm Mmmmm.[1D FF][00 FF]
+^L786^[1C FF 10 00 _L3278_]@I heard that prince[01 FF]  [10 FF] is deeply into[01 FF]  <Moo Training.>[02 FF]@...I want to help him,[01 FF]  if I can.[1D FF][00 FF]
 ^L787^[86 FF _L4185_][C6 FF][85 FF 4F 04 06 00][D4 FF 63 00][A0 FF B3 00 FD 01 01 00][9E FF][00 FF]
-^L788^
-^L789^
-^L790^
-^L791^
-^L792^
-^L793^
-^L794^
+^L788^[1C FF 10 00 _L3281_]@Oh! Prince [10 FF]![01 FF]  I'm surprised you're[01 FF]  not in training![02 FF]@It seems like that's[01 FF]  all you do these days.[02 FF]@Why don't you take some time[01 FF]  to play with me?[02 FF]@I'm so lonely without you...[1D FF][00 FF]
+^L789^[1C FF 49 00 _L3282_][1C FF 10 00 _L3283_]@Oh, Prince [10 FF].[02 FF]@Do you have time[01 FF]  to play with me?[22 FF][03 FF 00 00][04 FF _L3284_][05 FF _L3285_]^L3285^[01 FF]@Hah, I knew it.[01 FF]  <Training> changed you![02 FF]@I'm jealous of your <training>![1D FF][00 FF]^L3284^[01 FF]@Happy me![1B FF 14 00][01 FF]  (patty cake, patty cake...)[1D FF][00 FF]
+^L790^[1C FF 10 00 _L3286_]@Prince [10 FF]... (blush).[02 FF]@You are such a hunk.[1D FF][00 FF]
+^L791^@(As strange as this may sound,[01 FF]  there are statues of[01 FF]  rabbits blocking your way.)[1D FF][00 FF]
+^L792^@(This is Mu, the place of[01 FF]  nothingness.[02 FF]@People who train here[01 FF]  must first clear everything[01 FF]  from their mind.[02 FF]@If you can make your mine blank[01 FF]  and learn the true[01 FF]  meaning of <Mu,>[02 FF]@you'll pass through.[02 FF]  Mu is Mu...)[1D FF][00 FF]
+^L793^@Dalaam Restaurant.[02 FF]@(We accept $ dollars.)[1D FF][00 FF]
+^L794^[1C FF C3 00 _L2156_][BC FF 01 00][86 FF _L2177_][81 FF _L2380_][C4 FF 00 9B]@You finally got here.[02 FF]@This is the sixth[01 FF]  <Your Sanctuary> location.[02 FF]  But it's mine now.[02 FF]@Take it from me,[01 FF]  if you dare...[02 FF][86 FF _L3280_][81 FF _L2161_][85 FF 5E 04 08 00][1B FF 78 00][08 FF C3 00][00 FF]
 ^L795^[86 FF _L3290_][00 FF]
-^L796^
+^L796^[1C FF 7F 01 _L5104_]@Welcome to the <Great[01 FF]  Southern International[01 FF]  Resort Hotel.>[02 FF]@Our rooms range in price[00 FF]
 ^L797^[86 FF _L3291_][00 FF]
 ^L798^[86 FF _L5662_][A8 FF 01][87 FF][BD FF 1D _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5759_ _L5760_ _L5761_ _L5762_ _L5763_ _L5764_ _L5765_][00 FF]
-^L799^
+^L799^@No, I don't want any[01 FF]  mummy bandages![02 FF]@No soliciting allowed please![1D FF][00 FF]
 ^L800^@I've never seen you around[01 FF]  here.[02 FF]@What do you want?[1B FF 14 00] I do[01 FF]  not have anything you would[01 FF]  want.[1D FF][00 FF]
 ^L801^[86 FF _L3292_][00 FF]
 ^L802^[86 FF _L3293_][00 FF]
@@ -1044,7 +1044,7 @@
 ^L1047^[AB FF 00 00][87 FF][9A FF 97 00][81 FF _L3095_][80 FF _L2288_]
 ^L1048^[AB FF 00 00][87 FF][9A FF 98 00][81 FF _L3148_][80 FF _L2288_]
 ^L1049^[AB FF 00 00][87 FF][9A FF AC 00][82 FF _L2288_][BC FF 04 00][86 FF _L2177_][81 FF _L2288_][80 FF _L3221_]
-^L1050^
+^L1050^[86 FF _L3287_][9A FF 8D 00][82 FF _L3288_][89 FF][86 FF _L3289_][D4 FF 76 00][8B FF][B9 FF 00 00 00 00]@(How strange![1B FF 14 00][01 FF]  The rabbits and carrots[01 FF]  disappeared all at once!)[1D FF][D4 FF 21 00][85 FF 53 04 08 00][85 FF 54 04 08 00][85 FF 55 04 08 00][08 FF 8C 02][00 FF]
 ^L1051^
 ^L1052^[AB FF 00 00][87 FF][9A FF 92 00][81 FF _L3352_][80 FF _L2288_]
 ^L1053^[88 FF][1C FF 9B 00 _L2288_][89 FF][AB FF 00 00][87 FF][9A FF D1 00][81 FF _L3361_][80 FF _L2288_]
@@ -3135,8 +3135,6 @@
 ^L3281^
 ^L3282^
 ^L3283^
-^L3284^
-^L3285^
 ^L3286^
 ^L3287^[8A FF][AB FF 00 00][88 FF][87 FF][00 FF]
 ^L3288^

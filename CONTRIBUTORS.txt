@@ -9,6 +9,7 @@ Text conversion:
   Pitch
   MalBound
   imthegeek37
+  Tasos500
 
 Special thanks:
   TragicManner
