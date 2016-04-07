@@ -641,7 +641,6 @@
 ^L643^@Wheeee![1B FF 14 00]  Hic![02 FF]@[0D FF].[02 FF]@Pokey left me, his own dad, and[01 FF]  just disappeared.[02 FF]@If you see him, tell him that he[01 FF]  should take better care of his[01 FF]  father.[02 FF]@Don't tell my wife in Onett[01 FF]  that I've been spending my[01 FF]  time here.[02 FF]@Hic![1B FF 0F 00] Wheeeee![1D FF][00 FF]
 ^L644^@Seems like it's just for[01 FF]  decoration.[1D FF][00 FF]
 ^L645^[1C FF 8F 00 _L3204_]@(You were wandering around[01 FF]  the warehouse with a vacant,[01 FF]  far away look in your eyes.[02 FF]@Were you daydreaming?)[1D FF][00 FF]
-^L646^@(It is a golden statue that you[01 FF]  have seen before.)[02 FF][86 FF _L3437_][81 FF _L2161_][1B FF 01 00][86 FF _L2200_][08 FF 3B 00][08 FF 4B 00][14 FF 41 00][FC FF 05 00][EA FF FF 00][1B FF 14 00]^L646^@(The Mani Mani statue was[01 FF]  actually a device that created[01 FF]  illusions.[02 FF]@The illusion device was[01 FF]  destroyed.)[1D FF][C6 FF][7E FF 05 00][EB FF FF 00][00 FF]
 ^L647^[1C FF 00 03 _L3141_]@The Dinosaur Museum doesn't[01 FF]  have any real dinosaurs...[1B FF 14 00][01 FF]  They're all replicas.[02 FF]@I'm sure everyone knows that.[02 FF]@If you still want to go see the[01 FF]  dinosaurs,[02 FF]@pay 5 dollars apiece for the[01 FF]  entrance fee.[1B FF 14 00]  Is that okay?[22 FF][9C FF][03 FF 00 00][04 FF _L3142_][05 FF _L3143_]^L3143^[02 FF][BB FF 05][87 FF]@Maybe you think [B8 FF 00][1A FF 04 00][01 FF]  dollars is too much.[02 FF]@Or are you just not interested[01 FF]  in dinosaurs.[1B FF 14 00]  You're strange,[01 FF]  kid![1D FF][00 FF]^L3142^[02 FF][BB FF 05][87 FF][99 FF 00 00 00 00][81 FF _L3144_][D4 FF 76 00][1B FF 01 00][9B FF 00 00 00 00][9C FF]@Please enter.[1B FF 14 00]  You'll find an[01 FF]  academic researcher inside.[02 FF][1C FF 49 00 _L3145_][6E FF 01 00]^L3145^[08 FF 00 03][00 FF]
 ^L648^[1C FF 02 00 _L3146_][1C FF D7 00 _L3147_]@I'm so happy there are some[01 FF]  visitors today.[1B FF 0F 00]  These days,[01 FF]  few people come here.[02 FF]@...I'm Mr. Spoon, the academic[01 FF]  researcher.[02 FF][1B FF 3C 00][01 FF]@I wonder if there are any[01 FF]  famous stars here today?[02 FF][1B FF 3C 00][01 FF]@Dinosaurs...[02 FF]@Huge,[1B FF 0F 00] aren't they?[1B FF 14 00]  Well, that's[01 FF]  all I've gotten out of my[01 FF]  research![02 FF]@You wanna hear more?[02 FF]@(Whispering) To tell you the[01 FF]  truth...[02 FF]@I heard that dinosaurs were[01 FF]  found near the lower side of[01 FF]  Scaraba,[02 FF]@and there were lots of them.[02 FF]@There are unconfirmed reports[02 FF]@that the dinosaurs ate some of[01 FF]  the natives there.[02 FF]@If you go,[1B FF 0F 00] please try to find the[01 FF]  dinosaurs and bring back[01 FF]  photographs.[02 FF][80 FF _L3146_]
 ^L649^[1C FF DC 00 _L3149_][80 FF _L3146_]
@@ -2345,19 +2344,14 @@
 ^L2418^
 ^L2419^
 ^L2420^
-^L2421^
 ^L2422^
-^L2423^
-^L2424^
 ^L2425^
 ^L2426^
 ^L2427^
-^L2428^
 ^L2429^
 ^L2430^
 ^L2431^
 ^L2432^
-^L2433^
 ^L2434^
 ^L2435^
 ^L2436^
@@ -2384,8 +2378,6 @@
 ^L2457^
 ^L2458^
 ^L2459^
-^L2460^
-^L2461^
 ^L2462^[C6 FF][A1 FF D9 00 43 00][9E FF][A4 FF D9 00][8D FF 01 00][C3 FF 00 02 D9 00][D8 FF 00 00 00 00][00 FF]
 ^L2463^
 ^L2464^
@@ -2508,8 +2500,6 @@
 ^L2582^
 ^L2583^
 ^L2584^
-^L2585^
-^L2586^
 ^L2587^
 ^L2588^
 ^L2589^
@@ -2521,20 +2511,11 @@
 ^L2595^
 ^L2596^[08 FF EB 00][08 FF 90 02][86 FF _L4325_][09 FF EB 00][09 FF 90 02][00 FF]
 ^L2597^
-^L2598^
-^L2599^
 ^L2600^
 ^L2601^
-^L2602^
-^L2603^
-^L2604^
 ^L2605^
 ^L2606^
-^L2607^
-^L2608^
-^L2609^
 ^L2610^[8D FF 01 00][BD FF 04 _L2614_ _L2615_ _L2614_ _L2614_][00 FF]
-^L2611^
 ^L2612^
 ^L2613^
 ^L2614^
@@ -2558,8 +2539,6 @@
 ^L2632^
 ^L2633^
 ^L2634^
-^L2635^
-^L2636^
 ^L2637^
 ^L2638^
 ^L2639^
@@ -2573,8 +2552,6 @@
 ^L2647^
 ^L2648^
 ^L2649^
-^L2650^
-^L2651^
 ^L2652^[BE FF FF 00 C6 00][81 FF _L3983_][C6 FF][1B FF 01 00][C4 FF 00 7C][A0 FF D0 07 04 01 01 00][1B FF 46 00][CB FF FF 00 06 00][1B FF 50 00][14 FF 07 00][CC FF FF 00 02 00][08 FF 0A 00][00 FF]
 ^L2653^
 ^L2654^
@@ -2617,7 +2594,6 @@
 ^L2691^
 ^L2692^
 ^L2693^
-^L2694^
 ^L2695^
 ^L2696^
 ^L2697^
@@ -2991,19 +2967,13 @@
 ^L3139^
 ^L3140^
 ^L3141^
-^L3142^
-^L3143^
 ^L3144^
-^L3145^
 ^L3146^
 ^L3147^
 ^L3148^
 ^L3149^
 ^L3150^[BC FF 96 00][86 FF _L5051_][00 FF]
 ^L3151^[BC FF 3C 00][86 FF _L5049_][00 FF]
-^L3152^
-^L3153^
-^L3154^
 ^L3155^
 ^L3156^
 ^L3157^[08 FF 00 01][86 FF _L4325_][09 FF 00 01][00 FF]
@@ -3013,8 +2983,6 @@
 ^L3161^[08 FF 06 01][86 FF _L4326_][09 FF 06 01][00 FF]
 ^L3162^
 ^L3163^
-^L3164^
-^L3165^
 ^L3166^
 ^L3167^[C6 FF][A7 FF CC 01][00 FF]
 ^L3168^
@@ -3032,20 +3000,13 @@
 ^L3180^
 ^L3181^
 ^L3182^
-^L3183^
-^L3184^
-^L3185^
 ^L3186^[C6 FF][08 FF 0B 00][85 FF B8 03 06 00][A0 FF 33 00 AC 01 01 00][09 FF 02 00][1B FF 28 00][A1 FF B9 03 AD 01][A1 FF BA 03 AE 01][1B FF 5E 00][08 FF 02 00][9E FF][A1 FF BD 03 AF 01][A1 FF BE 03 B0 01][9E FF][A1 FF BD 03 02 00][A1 FF BE 03 02 00][A1 FF B9 03 02 00][A1 FF BA 03 02 00][A1 FF BB 03 02 00][A1 FF BC 03 02 00][09 FF 0B 00][86 FF _L4156_][00 FF]
 ^L3187^
 ^L3188^
 ^L3189^
 ^L3190^
 ^L3191^
-^L3192^
-^L3193^
 ^L3194^
-^L3195^
-^L3196^
 ^L3197^[C6 FF][A1 FF BC 03 AB 01][9E FF][A1 FF BC 03 9B 01][00 FF]
 ^L3198^
 ^L3199^
@@ -3810,8 +3771,6 @@
 ^L4026^
 ^L4027^@Woof Woof![02 FF]@I'm Ruffini the dog.[02 FF]@Here comes the spirit of the[01 FF]  game designer again...[02 FF]@Ruff![02 FF]@(You're finally almost to the[01 FF]  end of the game.[02 FF]@If you want to tell me[01 FF]  your comments on this game,[02 FF]@you may write to me using[01 FF]  Nintendo's address on the box.[02 FF]@Send your comments attention[01 FF]  EarthBound, Ruffini the dog.[02 FF]@Now, get ready for the ending![02 FF]@It's all that's left... Enjoy it![02 FF]@Bow woow wow![02 FF]@Well, I told you some[01 FF]  strange info again...[02 FF]@I'll go back to being a[01 FF]  normal dog now...)[02 FF]@Woof![1D FF][00 FF]
 ^L4030^
-^L4031^
-^L4032^
 ^L4033^[14 FF 81 00][FC FF 16 00][AE FF 04][EA FF FF 00][A0 FF D0 07 B7 02 01 00][A0 FF 47 01 9B 01 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][00 FF]
 ^L4034^[14 FF 82 00][FC FF 16 00][EA FF FF 00][CB FF FF 00 06 00][A0 FF 5F 01 B9 02 01 00][A0 FF 5D 01 BA 02 01 00][1B FF 01 00][C9 FF 5F 01][EB FF FF 00][9E FF][FC FF 17 00][9E FF][80 FF _L4035_]
 ^L4035^[14 FF 83 00][FC FF 16 00][CC FF FF 00 01 00][EA FF FF 00][A0 FF D0 07 BB 02 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][9E FF][FC FF 17 00][9E FF][80 FF _L4036_]
@@ -3931,7 +3890,6 @@
 ^L4158^
 ^L4159^
 ^L4160^
-^L4161^
 ^L4162^
 ^L4163^
 ^L4164^
@@ -4834,7 +4792,6 @@
 ^L5103^@If you do not have enough cash[01 FF]  with you, please feel free to[01 FF]  use the ATM just over there.[1D FF][00 FF]
 ^L5104^@Good morning![02 FF]@This sure is some nice weather[01 FF]  we're having in Scaraba lately.[1D FF][00 FF]
 ^L5105^[99 FF 00 00 00 00][81 FF _L5107_][9B FF 00 00 00 00][9C FF][D4 FF 76 00]@Please let us know if you find[01 FF]  any scorpions...[02 FF]@It's very unlikely that they will[01 FF]  come out, but you never can[01 FF]  tell...[1D FF][C6 FF][1B FF 01 00][86 FF _L2883_][C5 FF][14 FF 56 00][86 FF _L2185_][00 FF]
-^L5106^
 ^L5107^[86 FF _L5106_][00 FF]
 ^L5108^@Thanks.[1D FF][00 FF]
 ^L5109^@You're actually going to try to[01 FF]  stay up...?  Hah hah hah![1D FF][00 FF]
