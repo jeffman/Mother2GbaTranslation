@@ -1945,23 +1945,23 @@
 ^L1950^[CB FF FF 00 06 00][86 FF _L5556_][00 FF]
 ^L1951^[83 FF C5 00][82 FF _L2197_][08 FF 0C 02][A2 FF _L5617_][FC FF 05 00][1C FF 80 01 _L2197_][9D FF 01 1F _L5625_][00 FF]
 ^L1952^[1C FF 49 00 _L2197_][9D FF 01 0E _L5614_][00 FF]
-^L1953^
-^L1954^
-^L1955^
-^L1956^
-^L1957^
-^L1958^
-^L1959^
-^L1960^
-^L1961^
-^L1962^
-^L1963^
-^L1964^
-^L1965^
-^L1966^
-^L1967^
-^L1968^
-^L1969^
+^L1953^@[9F FF] attacked![02 FF][00 FF]
+^L1954^@[9F FF] trapped you![02 FF][00 FF]
+^L1955^@[AD FF] turned back to normal![D4 FF 21 00][00 FF]
+^L1956^@[AD FF] was defeated![D4 FF 21 00][00 FF]
+^L1957^@[AD FF] became tame![D4 FF 21 00][00 FF]
+^L1958^@You encounter [9F FF].[02 FF][00 FF]
+^L1959^@[AD FF] stopped moving![D4 FF 21 00][00 FF]
+^L1960^@You confront [9F FF].[02 FF][00 FF]
+^L1961^@[AD FF] was broken into pieces![D4 FF 21 00][00 FF]
+^L1962^@The figure of [AD FF] melted into thin air![D4 FF 21 00][00 FF]
+^L1963^@[AD FF] disappeared![D4 FF 21 00][00 FF]
+^L1964^@[AD FF] was destroyed![D4 FF 21 00][00 FF]
+^L1965^@[AD FF] was totally scrapped![D4 FF 21 00][00 FF]
+^L1966^@[AD FF] returned to the dust of the earth![D4 FF 21 00][00 FF]
+^L1967^@[AD FF] got hurt[01 FF]  and collapsed...[D4 FF 20 00][09 FF 4B 02][02 FF][1C FF CF 00 _L3582_][1C FF CE 00 _L3583_][1C FF CD 00 _L3584_][1C FF CC 00 _L3585_][08 FF CC 00][86 FF _L3586_][00 FF]
+^L1968^@[AD FF] became[01 FF]  a pile of fluff...[D4 FF 20 00][02 FF][6D FF FF 00 B9 00][00 FF]
+^L1969^@[AD FF] became[01 FF]  a big pile of fluff...[D4 FF 20 00][02 FF][6D FF FF 00 B1 00][00 FF]
 ^L1970^
 ^L1971^
 ^L1972^
