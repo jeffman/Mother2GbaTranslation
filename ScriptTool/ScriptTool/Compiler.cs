@@ -149,7 +149,7 @@ namespace ScriptTool
                     string label = str.Substring(i + 1, str.IndexOf('^', i + 1) - i - 1);
 
                     if (AddressMap.ContainsKey(label))
-                        throw new Exception("Label already defined: position " + i);
+                        throw new Exception("Label " + label + " already defined: position " + i);
 
                     if (!scanCodesOnly)
                         AddressMap.Add(label, referenceAddress);
