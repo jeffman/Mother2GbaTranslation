@@ -2116,8 +2116,8 @@
 ^L2121^
 ^L2122^
 ^L2123^
-^L2124^
-^L2125^
+^L2124^@The enemy left a present![22 FF][01 FF][D4 FF 10 00][1B FF 01 00]@Inside the present,[01 FF][C1 FF][87 FF]  there was a [90 FF 00][1A FF 02 00]![22 FF][01 FF][91 FF FF][82 FF _L3632_][88 FF][86 FF _L3633_][81 FF _L3634_][89 FF][87 FF]@[90 FF 00][1A FF 01 00] took it.[93 FF 00 00][D4 FF 74 00][22 FF][00 FF]
+^L2125^@[9F FF] saw[01 FF]  a present behind the enemy.[02 FF][D4 FF 10 00]@Inside the present,[01 FF][C1 FF][87 FF]  there was a [90 FF 00][1A FF 02 00].[02 FF]@[90 FF 03][1A FF 01 00] takes it.[93 FF 03 00][D4 FF 74 00][02 FF][00 FF]
 ^L2126^
 ^L2127^
 ^L2128^[09 FF B6 02][09 FF F2 02][00 FF]
