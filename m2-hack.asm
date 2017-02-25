@@ -211,6 +211,23 @@ mul     r1,r2
 nop
 nop
 
+// Enemy name length:
+
+// Start of battle
+org $80DB04E; add sp,#-0x20
+org $80DB058; mov r2,#0x1D
+org $80DB08C; mov r2,#0x19
+org $80DB116; mov r1,#0x1D
+org $80DB15A; add sp,#0x20
+
+// Bash target
+org $80DCD02; add sp,#-0x20
+org $80DCD0C; mov r2,#0x1B
+org $80DCD64; mov r2,#0x19
+org $80DCDA2; mov r1,#0x1D
+
+org $80DCDA8; add sp,#0x20
+
 //==============================================================================
 // Data files
 //==============================================================================
