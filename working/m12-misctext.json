@@ -363,22 +363,22 @@
       "Index": 51,
       "OffsetLocation": 11632564,
       "OldPointer": 11630391,
-      "Old": "◆イラッシャイマセ[03 FF 01 00][7F FF]へぁ[7E FF 38 00]◆アリガトウゴザイマシタ[00 FF]",
-      "New": "misc33"
+      "Old": "◆イラッシャイマセ[03 FF 01 00]",
+      "New": "misc33[03 FF 01 00]"
     },
     {
       "Index": 52,
       "OffsetLocation": 11632568,
       "OldPointer": 11630404,
       "Old": "[7F FF]へぁ[7E FF 38 00]◆アリガトウゴザイマシタ[00 FF]",
-      "New": "misc34"
+      "New": "[7F FF]misc34[7E FF 38 00][00 FF]"
     },
     {
       "Index": 53,
       "OffsetLocation": 11632572,
       "OldPointer": 11630408,
       "Old": "[7E FF 38 00]◆アリガトウゴザイマシタ[00 FF]",
-      "New": "misc35"
+      "New": "[7E FF 38 00]misc35[00 FF]"
     },
     {
       "Index": 54,
@@ -929,63 +929,63 @@
       "OffsetLocation": 11632880,
       "OldPointer": 11632104,
       "Old": "しびれている[00 FF]",
-      "New": "Numb[00 FF]"
+      "New": "Paralyzed[00 FF]"
     },
     {
       "Index": 131,
       "OffsetLocation": 11632884,
       "OldPointer": 11632112,
       "Old": "きもちがわるい[00 FF]",
-      "New": "Nausea[00 FF]"
+      "New": "Nauseous[00 FF]"
     },
     {
       "Index": 132,
       "OffsetLocation": 11632888,
       "OldPointer": 11632121,
       "Old": "どくにくるしんでる[00 FF]",
-      "New": "misc84[00 FF]"
+      "New": "Poisoned[00 FF]"
     },
     {
       "Index": 133,
       "OffsetLocation": 11632892,
       "OldPointer": 11632132,
       "Old": "にっしゃびょう[00 FF]",
-      "New": "misc85[00 FF]"
+      "New": "Sunstroke[00 FF]"
     },
     {
       "Index": 134,
       "OffsetLocation": 11632896,
       "OldPointer": 11632141,
       "Old": "かぜをひいている[00 FF]",
-      "New": "misc86[00 FF]"
+      "New": "Sniffling[00 FF]"
     },
     {
       "Index": 135,
       "OffsetLocation": 11632900,
       "OldPointer": 11632151,
       "Old": "きのこがはえている[00 FF]",
-      "New": "misc87[00 FF]"
+      "New": "Mashroomized[00 FF]"
     },
     {
       "Index": 136,
       "OffsetLocation": 11632904,
       "OldPointer": 11632162,
       "Old": "とりつかれている[00 FF]",
-      "New": "misc88[00 FF]"
+      "New": "Possessed[00 FF]"
     },
     {
       "Index": 137,
       "OffsetLocation": 11632908,
       "OldPointer": 11632172,
       "Old": "ホームシック[00 FF]",
-      "New": "misc89[00 FF]"
+      "New": "Homesick[00 FF]"
     },
     {
       "Index": 138,
       "OffsetLocation": 11632912,
       "OldPointer": 11632180,
       "Old": "          [00 FF]",
-      "New": "misc8A[00 FF]"
+      "New": "          [00 FF]"
     },
     {
       "Index": 139,
@@ -1027,7 +1027,7 @@
       "OffsetLocation": 11632936,
       "OldPointer": 11632244,
       "Old": "どこに?[00 FF]",
-      "New": "misc90[00 FF]"
+      "New": "Where?[00 FF]"
     },
     {
       "Index": 145,
@@ -1048,28 +1048,28 @@
       "OffsetLocation": 11632948,
       "OldPointer": 11632274,
       "Old": "ネス[00 FF]",
-      "New": "misc93[00 FF]"
+      "New": "Ness[00 FF]"
     },
     {
       "Index": 148,
       "OffsetLocation": 11632952,
       "OldPointer": 11632278,
       "Old": "ポーラ[00 FF]",
-      "New": "misc94[00 FF]"
+      "New": "Paula[00 FF]"
     },
     {
       "Index": 149,
       "OffsetLocation": 11632956,
       "OldPointer": 11632283,
       "Old": "ジェフ[00 FF]",
-      "New": "misc95[00 FF]"
+      "New": "Jeff[00 FF]"
     },
     {
       "Index": 150,
       "OffsetLocation": 11632960,
       "OldPointer": 11632288,
       "Old": "ぷー[00 FF]",
-      "New": "misc96[00 FF]"
+      "New": "Poo[00 FF]"
     },
     {
       "Index": 151,
