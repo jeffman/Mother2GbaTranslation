@@ -1,0 +1,53 @@
+General notes
+=============
+
+
+Font palette:
+- Standard text windows:     0x4 = background, 0xF = foreground
+- File select/setup windows: 0x1 = background, 0x9 = foreground
+
+Hard-coded characters:
+- 0xFD: bullet (tile 0x1DD)
+- 0xFE: equip (tile 0x1DE)
+- Null (tile 0x1DF)
+- Background (tile 0x1FF)
+
+0x30051EC: tile offset (usually 0x100)
+0x3005228: current text palette, << 0xC
+0x3005230: addresses of all 11 windows
+0x3005270: address of tilemap start in WRAM, can use this to figure out X and Y
+
+LDRB Rx,[Ry,#n]: n has range 0-31
+LDRH Rx,[Ry,#n]: n has range 0-62
+LDR Rx,[Ry,#n]: n has range 0-124 (0-1020 for SP- and PC-relative)
+
+
+Subroutines
+-----------
+
+
+Windows
+-------
+
+Window structure:
+  0x00 - 0x03:  bitfield
+    0x00000001: enable
+    0xFFFFFFFE: ?
+  0x04 - 0x07:  start address of text being displayed
+  0x08 - 0x0B:  same as above?
+  0x0C - 0x13:  unused?
+  0x14 - 0x1B:  ?
+  0x1C - 0x1F:  unused?
+  0x20 - 0x21:  area (width*height)
+  0x22 - 0x23:  text area X
+  0x24 - 0x25:  text area Y
+  0x26 - 0x27:  window width
+  0x28 - 0x29:  window height
+  0x2A - 0x2B:  relative text X
+  0x2C - 0x2D:  relative text Y
+  0x2E - 0x33:  ?
+  0x34 - 0x35:  cursor X
+  0x36 - 0x37:  cursor Y
+  0x38 - 0x43:  unused?
+  0x44:         ?
+  0x45 - 0x4F:  unused?
