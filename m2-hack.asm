@@ -29,9 +29,31 @@ org $8B1B913; db $8F // omega
 // VWF hacks
 //==============================================================================
 
+// 32- to 16-bit access change for window flags
 org $80BE16A; strh r2,[r4,#0]
 org $80BE1FA; strh r2,[r6,#0]
 org $80BE222; strh r6,[r1,#0]
+
+//---------------------------------------------------------
+// C980C hacks
+//---------------------------------------------------------
+
+// Custom codes check
+org     $80CA2BC
+bl      m2_vwf_entries.c980c_custom_codes
+
+// Clear pixel X
+org     $80CA2E6
+bl      m2_vwf_entries.c980c_resetx
+
+// Welding entry
+org     $80CA448
+bl      m2_vwf_entries.c980c_weld_entry
+b       $80CA46C
+
+// Disable X coordinate incrementing
+org     $80CA48E
+nop
 
 
 //==============================================================================
@@ -91,5 +113,6 @@ m2_custom_wram:
 
 org $80FCE6C
 incsrc m2-vwf.asm
+incsrc m2-vwf-entries.asm
 incsrc m2-formatting.asm
 incsrc m2-customcodes.asm

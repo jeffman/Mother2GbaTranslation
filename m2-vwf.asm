@@ -29,3 +29,488 @@ ldrh    r0,[r4,#0]
 lsl     r2,r2,#5
 add     r0,r0,r2
 pop     {r1-r5,pc}
+
+
+//==============================================================================
+// void weld_entry(WINDOW* window, byte* chr)
+//    In:
+//        r0: address of window data
+//        r1: address of char to print
+//==============================================================================
+
+//--------------------------------
+.weld_entry:
+push    {r0-r7,lr}
+add     sp,#-28
+mov     r5,r0
+
+//--------------------------------
+// Get the char
+ldrb    r0,[r1,#0]
+sub     r0,#0x50
+bpl     +
+mov     r0,#0x1F            // Replace char with ? if it's invalid
+b       .char_custom
++
+cmp     r0,#0x60
+bcc     .char_custom
+mov     r0,#0x1F
+
+.char_custom:
+str     r0,[sp,#0x0]
+// [sp+0] = char
+
+//--------------------------------
+// Get the current X
+ldrh    r1,[r5,#0x22]
+ldrh    r2,[r5,#0x2A]
+add     r1,r1,r2
+str     r1,[sp,#4]
+lsl     r0,r1,#3
+ldrh    r1,[r5,#2]
+str     r1,[sp,#24]
+add     r0,r0,r1             // Current pixel X
+str     r0,[sp,#20]
+
+// Get the current Y
+ldrh    r1,[r5,#0x24]
+ldrh    r3,[r5,#0x2C]
+add     r1,r1,r3
+str     r1,[sp,#8]
+lsl     r1,r1,#3
+
+//--------------------------------
+// Print
+ldr     r2,[sp,#0x0]
+mov     r3,#0
+bl      .print_character
+str     r0,[sp,#12]
+
+//--------------------------------
+// Figure out new window coords
+ldr     r0,[sp,#20]
+ldr     r1,[sp,#12]
+add     r0,r0,r1
+
+// Store new window coords
+lsr     r1,r0,#3
+ldrh    r2,[r5,#0x22]
+sub     r1,r1,r2
+strh    r1,[r5,#0x2A]
+
+// Store new pixel X
+lsl     r0,r0,#29
+lsr     r0,r0,#29
+strh    r0,[r5,#2]
+
+//--------------------------------
+add     sp,#28
+pop     {r0-r7,pc}
+
+
+//=============================================================================
+// void print_character(int x, int y, int chr, int font)
+// In:
+//    r0: x (pixel)
+//    r1: y (pixel)
+//    r2: character
+//    r3: font
+//        0: main
+//        1: saturn
+//        2: tiny
+// Out:
+//    r0: virtual width
+//=============================================================================
+
+.print_character:
+
+push    {r1-r7,lr}
+mov     r4,r8
+mov     r5,r9
+mov     r6,r10
+mov     r7,r11
+push    {r4-r7}
+mov     r4,r12
+push    {r4}
+add     sp,#-24
+
+mov     r10,r0
+mov     r11,r1
+mov     r12,r2
+mov     r5,r3
+
+//----------------------------------------
+ldr     r3,=#0x30051EC
+ldrh    r4,[r3,#0]           // Tile offset
+add     r3,#0x3C
+ldrh    r6,[r3,#0]           // Palette mask
+add     r3,#0x48
+ldr     r7,[r3,#0]           // Tilemap address
+lsr     r0,r0,#3
+lsr     r1,r1,#3
+lsl     r1,r1,#5
+add     r0,r0,r1
+lsl     r0,r0,#1
+add     r7,r7,r0             // Local tilemap address
+mov     r8,r4
+
+//----------------------------------------
+ldr     r0,=#m2_widths_table
+lsl     r1,r5,#2             // Font number * 4
+ldr     r0,[r0,r1]
+mov     r3,r12               // Character
+lsl     r2,r3,#1
+ldrb    r1,[r0,r2]           // Virtual width
+mov     r9,r1
+add     r2,r2,#1
+ldrb    r0,[r0,r2]           // Render width
+cmp     r0,#0
+beq     +                    // Don't bother rendering a zero-width character
+ldr     r2,=#m2_height_table
+ldrb    r2,[r2,r5]
+str     r2,[sp,#16]          // No more registers, gotta store this on the stack
+mov     r3,sp
+strb    r0,[r3,#9]
+strb    r2,[r3,#12]
+mov     r1,r10
+lsl     r1,r1,#29
+lsr     r1,r1,#29
+strb    r1,[r3,#8]
+mov     r1,#4
+strb    r1,[r3,#10]
+mov     r1,#0xF
+strb    r1,[r3,#11]
+
+//----------------------------------------
+mov     r0,r10
+mov     r1,r11
+lsr     r0,r0,#3
+lsr     r1,r1,#3
+bl      .get_tile_number
+add     r4,r0,r4
+lsl     r0,r4,#5
+mov     r1,#6
+lsl     r1,r1,#0x18
+add     r0,r0,r1             // VRAM address
+str     r0,[sp,#0]
+
+//----------------------------------------
+ldr     r0,=#m2_font_table
+lsl     r1,r5,#2
+ldr     r0,[r0,r1]
+mov     r1,r12
+lsl     r1,r1,#5
+add     r0,r0,r1             // Glyph address
+str     r0,[sp,#4]
+
+//----------------------------------------
+// Render left portion
+mov     r0,sp
+bl      .print_left
+
+//----------------------------------------
+// Update the map
+orr     r4,r6
+mov     r1,r7
+-
+strh    r4,[r1,#0]
+add     r4,#0x20
+add     r1,#0x40
+sub     r2,r2,#1
+bne     -
+add     r7,r7,#2
+
+//----------------------------------------
+// Now we've rendered the left portion;
+// we need to determine whether or not to render the right portion
+ldrb    r1,[r0,#8]           // VRAM x offset
+str     r1,[sp,#20]          // No more registers, gotta store this on the stack
+ldrb    r2,[r0,#9]           // Render width
+add     r2,r1,r2
+cmp     r2,#8
+bls     +
+
+// We still have more to render; figure out how much we already rendered
+mov     r3,#8
+sub     r3,r3,r1
+strb    r3,[r0,#8]
+
+// Allocate a new tile
+mov     r0,r10
+mov     r1,r11
+lsr     r0,r0,#3
+add     r0,r0,#1
+lsr     r1,r1,#3
+bl      .get_tile_number
+add     r0,r8
+mov     r4,r0
+lsl     r0,r0,#5
+mov     r1,#6
+lsl     r1,r1,#0x18
+add     r0,r0,r1
+str     r0,[sp,#0]
+mov     r0,sp
+bl      .print_right
+
+//----------------------------------------
+// Update the map
+orr     r4,r6
+mov     r1,r7
+ldr     r2,[sp,#16]
+-
+strh    r4,[r1,#0]
+add     r4,#0x20
+add     r1,#0x40
+sub     r2,r2,#1
+bne     -
+add     r7,r7,#2
+
+//----------------------------------------
+// Now we've rendered the left and right portions;
+// we need to determin whether or not to do a final
+// right portion for super wide characters
+ldr     r1,[sp,#20]          // Original pixel X offset
+ldrb    r2,[r0,#9]           // Render width
+add     r2,r1,r2             // Right side of glyph
+cmp     r2,#16
+bls     +
+
+// We have one more chunk to render; figure out how much we already rendered
+mov     r3,#16
+sub     r3,r3,r1
+strb    r3,[r0,#8]
+
+// Allocate a new tile
+mov     r0,r10
+mov     r1,r11
+lsr     r0,r0,#3
+add     r0,r0,#2
+lsr     r1,r1,#3
+bl      .get_tile_number
+add     r0,r8
+mov     r4,r0
+lsl     r0,r0,#5
+mov     r1,#6
+lsl     r1,r1,#0x18
+add     r0,r0,r1
+str     r0,[sp,#0]
+mov     r0,sp
+bl      .print_right
+
+//----------------------------------------
+// Update the map
+orr     r4,r6
+mov     r1,r7
+ldr     r2,[sp,#16]
+-
+strh    r4,[r1,#0]
+add     r4,#0x20
+add     r1,#0x40
+sub     r2,r2,#1
+bne     -
+add     r7,r7,#2
+
+//----------------------------------------
++
+mov     r0,r9
+add     sp,#24
+pop     {r4}
+mov     r12,r4
+pop     {r4-r7}
+mov     r8,r4
+mov     r9,r5
+mov     r10,r6
+mov     r11,r7
+pop     {r1-r7,pc}
+
+
+//=============================================================================
+// void print_left(void* structPointer)
+//=============================================================================
+
+// In:
+// r0: struct pointer
+// [r0+0]: VRAM address
+// [r0+4]: glyph address
+// [r0+8]: VRAM x offset (byte)
+// [r0+9]: render width (byte)
+// [r0+10]: background index (byte)
+// [r0+11]: foreground index (byte)
+// [r0+12]: height in tiles (byte)
+// [r0+13]: <unused> (3 bytes)
+
+.print_left:
+
+push    {r0-r7,lr}
+mov     r7,r0
+
+//----------------------------------------
+ldr     r6,[r7,#0]           // VRAM address
+ldr     r3,[r7,#4]           // Glyph address
+ldrb    r4,[r7,#12]          // Height in tiles
+
+.print_left_loop:
+mov     r5,#8
+-
+ldr     r0,[r6,#0]           // 4BPP VRAM row
+ldrb    r1,[r7,#11]          // Foreground index
+bl      .reduce_bit_depth    // Returns r0 = 1BPP VRAM row
+ldrb    r1,[r7,#9]           // Glyph render width
+mov     r2,#32
+sub     r2,r2,r1
+ldrb    r1,[r3,#0]           // Glyph row
+lsl     r1,r2                // Cut off the pixels we don't want to render
+lsr     r1,r2
+ldrb    r2,[r7,#8]           // X offset
+lsl     r1,r2
+lsl     r1,r1,#0x18
+lsr     r1,r1,#0x18
+orr     r0,r1
+ldrb    r1,[r7,#10]
+ldrb    r2,[r7,#11]
+bl      .expand_bit_depth
+str     r0,[r6,#0]
+add     r6,r6,#4
+add     r3,r3,#1
+sub     r5,r5,#1
+bne     -
+mov     r0,#0x1F
+lsl     r0,r0,#5
+add     r6,r0,r6
+add     r3,#8
+sub     r4,r4,#1
+bne     .print_left_loop
+
+//----------------------------------------
+pop     {r0-r7,pc}
+
+
+//=============================================================================
+// void print_right(void* structPointer)
+//=============================================================================
+
+// In:
+// r0: struct pointer
+// [r0+0]: VRAM address
+// [r0+4]: glyph address
+// [r0+8]: glyph x offset (byte)
+// [r0+9]: render width (byte)
+// [r0+10]: background index (byte)
+// [r0+11]: foreground index (byte)
+// [r0+12]: height in tiles (byte)
+// [r0+13]: <unused> (3 bytes)
+
+.print_right:
+
+push    {r0-r7,lr}
+mov     r7,r0
+
+//----------------------------------------
+ldr     r6,[r7,#0]           // VRAM address
+ldr     r3,[r7,#4]           // Glyph address
+ldrb    r4,[r7,#12]          // Height in tiles
+
+.print_right_loop:
+mov     r5,#8
+-
+ldr     r0,[r6,#0]           // 4BPP VRAM row
+ldrb    r1,[r7,#11]          // Foreground index
+bl      .reduce_bit_depth    // Returns r0 = 1BPP VRAM row
+ldrb    r1,[r7,#9]           // Glyph render width
+mov     r2,#32
+sub     r2,r2,r1
+ldrb    r1,[r3,#0]           // Glyph row
+lsl     r1,r2                // Cut off the pixels we don't want to render
+lsr     r1,r2
+ldrb    r2,[r7,#8]           // X offset
+lsr     r1,r2
+lsl     r1,r1,#0x18
+lsr     r1,r1,#0x18
+orr     r0,r1
+ldrb    r1,[r7,#10]
+ldrb    r2,[r7,#11]
+bl      .expand_bit_depth
+str     r0,[r6,#0]
+add     r6,r6,#4
+add     r3,r3,#1
+sub     r5,r5,#1
+bne     -
+mov     r0,#0x1F
+lsl     r0,r0,#5
+add     r6,r0,r6
+add     r3,#8
+sub     r4,r4,#1
+bne     .print_right_loop
+
+//----------------------------------------
+pop     {r0-r7,pc}
+
+
+//==============================================================================
+// byte reduce_bit_depth(int pixels)
+// In:
+//    r0: row of 4BPP pixels
+//    r1: foreground index
+// Out:
+//    r0: row of 1BPP pixels
+//==============================================================================
+
+.reduce_bit_depth:
+push    {r1-r6,lr}
+mov     r3,r0
+mov     r0,#0
+mov     r4,#0xF
+mov     r5,#1
+mov     r6,#28
+
+//--------------------------------
+-
+mov     r2,r3
+lsr     r2,r6
+and     r2,r4
+cmp     r1,r2
+bne     +
+orr     r0,r5
++
+sub     r6,r6,#4
+bmi     +
+lsl     r0,r0,#1
+b       -
+
+//--------------------------------
++
+pop     {r1-r6,pc}
+
+
+//==============================================================================
+// int expand_bit_depth(byte pixels)
+// In:
+//    r0: row of 1BPP pixels
+//    r1: background index
+//    r2: foreground index
+// Out:
+//    r0: row of 4BPP pixels
+//==============================================================================
+
+.expand_bit_depth:
+push    {r1-r6,lr}
+ldr     r6,=#m2_bits_to_nybbles
+
+// Foreground
+lsl     r4,r2,#10
+lsl     r3,r0,#2
+add     r5,r4,r6
+ldr     r2,[r5,r3]
+
+// Background
+lsl     r4,r1,#10
+add     r5,r4,r6
+mov     r4,#0xFF
+eor     r0,r4
+lsl     r3,r0,#2
+ldr     r1,[r5,r3]
+
+orr     r2,r1
+mov     r0,r2
+
+pop     {r1-r6,pc}
