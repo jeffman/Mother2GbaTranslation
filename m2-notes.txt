@@ -1,7 +1,6 @@
 General notes
 =============
 
-
 Font palette:
 - Standard text windows:     0x4 = background, 0xF = foreground
 - File select/setup windows: 0x1 = background, 0x9 = foreground
@@ -21,6 +20,8 @@ LDRB Rx,[Ry,#n]: n has range 0-31 (0x0-0x1F)
 LDRH Rx,[Ry,#n]: n has range 0-62 (0x0-0x3E)
 LDR Rx,[Ry,#n]: n has range 0-124 (0x0-0x7C) (0-1020 for SP- and PC-relative)
 
+Custom WRAM: 2027FC0
+
 
 Subroutines
 -----------
@@ -35,7 +36,10 @@ Windows
 Window structure:
   0x00 - 0x03:  bitfield
     0x00000001: enable
-    0xFFFFFFFE: ?
+    0x0000FFFE: ?
+    0xFFFF0000: we're stealing these for our hacks
+      0x0007:   pixel X value
+      0xFFF8:   unused
   0x04 - 0x07:  start address of text being displayed
   0x08 - 0x0B:  same as above?
   0x0C - 0x13:  unused?
