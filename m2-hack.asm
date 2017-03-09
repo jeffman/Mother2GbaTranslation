@@ -70,6 +70,8 @@ incbin m2-widths-main.bin
 m2_widths_saturn:
 // tbd
 
+m2_bits_to_nybbles:
+incbin m2-bits-to-nybbles.bin
 
 //==============================================================================
 // Misc
