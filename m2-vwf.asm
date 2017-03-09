@@ -10,7 +10,6 @@ m2_vwf:
 //==============================================================================
 
 .get_tile_number:
-print   "m2vwf.get_tile_number:        $",pc
 
 push    {r1-r5,lr}
 ldr     r4,=#m2_coord_table

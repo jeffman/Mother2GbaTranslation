@@ -212,7 +212,7 @@ pop     {r1-r4,pc}
 //==============================================================================
 
 .format_cash:
-print   "m2formatting.format_cash:     $", pc
+
 push    {r1-r7,lr}
 mov     r4,r1
 mov     r6,r2
