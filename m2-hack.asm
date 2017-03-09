@@ -59,6 +59,10 @@ incbin m2-font-main.bin
 m2_font_saturn:
 incbin m2-font-saturn.bin
 
+// EB font heights
+m2_height_table:
+db     $02, $02, $01, $00    // last byte for alignment
+
 // EB font widths
 m2_widths_table:
 dd     m2_widths_main
