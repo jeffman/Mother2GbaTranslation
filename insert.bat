@@ -4,4 +4,5 @@ pushd working
 ..\xkas\xkas.exe ..\m12.gba m12-includes.asm
 popd
 resize m12.gba 16777216
+SymbolTableBuilder\SymbolTableBuilder\bin\Debug\symbols.exe m12.sym m12-symbols.sym xkas-symbols.sym
 pause

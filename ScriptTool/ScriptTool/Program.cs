@@ -386,7 +386,7 @@ namespace ScriptTool
 
         static void CompileM12Misc()
         {
-            int referenceAddress = 0xB3C000;
+            int referenceAddress = 0xB70000;
 
             // Item names
             CompileM12MiscStringCollection("m12-itemnames", ref referenceAddress);
