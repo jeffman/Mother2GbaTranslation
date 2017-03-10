@@ -511,9 +511,20 @@ dd      m2_nybbles_to_bits
 //    r0: row of 4BPP pixels
 //==============================================================================
 
+// - similar to reduce_bit_depth, we go fast using a lookup table
+// - there are really 16 lookup tables, one for each possible value of r1/r2
+// - we simply look up the word at (table + (r0*4) + (r1*1024)) to get the 4BPP
+//   expanded version of r0 using colour index r1 (or r2)
+// - do it once for foreground, then invert r0 and do it again for background
+// - XOR the two values together to get the final 4BPP row of pixels
+// - this uses 61 cycles while the previous method used 287 cycles
+
+// Alignment hack
+ldr     r0,=#0xDEADBEEF
+
 .expand_bit_depth:
 push    {r1-r6,lr}
-ldr     r6,=#m2_bits_to_nybbles
+ldr     r6,[pc,#36] // m2_bits_to_nybbles
 
 // Foreground
 lsl     r4,r2,#10
@@ -533,3 +544,7 @@ orr     r2,r1
 mov     r0,r2
 
 pop     {r1-r6,pc}
+
+// Literal pool
+ldr     r0,=#0xDEADBEEF
+dd      m2_bits_to_nybbles
