@@ -624,7 +624,11 @@ mov     r0,#6
 lsl     r0,r0,#24
 add     r1,r0,r1 // VRAM dest address
 add     r0,r3,#4 // source address
-ldr     r2,=#0x1000008 // set the fixed source address flag + copy 8 words
+mov     r2,#1
+lsl     r2,r2,#21
+add     r2,r2,#1
+lsl     r2,r2,#3 // r2 = 0x1000008
+                 // set the fixed source address flag + copy 8 words
 swi     #0xC // CpuFastSet
 
 pop     {r0-r3,pc}
