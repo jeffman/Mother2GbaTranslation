@@ -26,6 +26,7 @@ Custom WRAM: 2027FC0
 Subroutines
 -----------
 
+80C87D0: draw blank window and border (r0: window pointer)
 80C980C: print next character (r0: window pointer)
 80CA4BC: scroll text upwards (r0: window pointer)
 
