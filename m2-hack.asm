@@ -99,6 +99,10 @@ m2_widths_saturn:
 m2_bits_to_nybbles:
 incbin m2-bits-to-nybbles.bin
 
+m2_nybbles_to_bits:
+incbin m2-nybbles-to-bits.bin
+
+
 //==============================================================================
 // Misc
 //==============================================================================

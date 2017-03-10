@@ -455,31 +455,50 @@ pop     {r0-r7,pc}
 //    r0: row of 1BPP pixels
 //==============================================================================
 
+// Some notes:
+// - to go faster, load in constants manually using PC-relative loads
+//   instead of the ldr rX,=#Y pseudoinstruction (which implicitly branches)
+// - in order to do this properly the instructions need to be 32-bit aligned,
+//   hence there are some alignment hacks below
+// - the goal is to reduce the 4BPP row of pixels in r0 to a 1BPP row according
+//   to the foreground index in r1
+// - this is achieved quickly using a lookup
+// - first step is to set all foreground pixels (each pixel is a nybble in r0) to 0,
+//   and all background pixels to non-zero
+// - this is done by XOR-ing r0 with a row of foreground pixels, where a row of
+//   foreground pixels is just r1*0x11111111
+// - when we index into the lookup table using the resulting XOR-ed value, we'll get
+//   a 1BPP value where each corresponding 0-nybble (a foreground pixel) is a 1
+//   and any corresponding non-zero-nybble is a 0
+// - to keep the lookup table at a reasonable size we'll go 4 pixels at a time:
+//   there are thus 16^4 = 65536 possible index values and the lookup table will be 64KB
+// - this uses 63 cycles while the previous method used 273 cycles
+
+// Alignment hack
+ldr     r0,=#0xDEADBEEF
+
 .reduce_bit_depth:
-push    {r1-r6,lr}
-mov     r3,r0
-mov     r0,#0
-mov     r4,#0xF
-mov     r5,#1
-mov     r6,#28
+push    {r1-r3,lr}
 
-//--------------------------------
--
-mov     r2,r3
-lsr     r2,r6
-and     r2,r4
-cmp     r1,r2
-bne     +
-orr     r0,r5
-+
-sub     r6,r6,#4
-bmi     +
-lsl     r0,r0,#1
-b       -
+ldr     r3,[pc,#32] // 0x11111111
+mul     r1,r3
+ldr     r2,[pc,#32] // m2_nybbles_to_bits
+eor     r0,r1
 
-//--------------------------------
-+
-pop     {r1-r6,pc}
+lsl     r1,r0,#16
+lsr     r1,r1,#16
+lsr     r0,r0,#16
+ldrb    r3,[r2,r0]
+ldrb    r0,[r2,r1]
+lsl     r3,r3,#4
+orr     r0,r3
+
+pop     {r1-r3,pc}
+
+// Literal pool
+ldr     r0,=#0xDEADBEEF
+dd      0x11111111
+dd      m2_nybbles_to_bits
 
 
 //==============================================================================
