@@ -548,3 +548,83 @@ pop     {r1-r6,pc}
 // Literal pool
 ldr     r0,=#0xDEADBEEF
 dd      m2_bits_to_nybbles
+
+
+//==============================================================================
+// void clear_window(WINDOW* window)
+// In:
+//    r0: window pointer
+//    r1: background index
+//==============================================================================
+
+// - clears all VWF-ified tiles in a window
+.clear_window:
+push    {r0-r6,lr}
+add     sp,#-12
+mov     r3,r0
+mov     r0,sp
+ldr     r2,=#0x30051EC
+ldrh    r2,[r2,#0] // tile offset
+strh    r2,[r0,#8]
+ldr     r2,=#0x11111111
+mul     r1,r2
+str     r1,[r0,#4] // empty row of pixels
+
+ldrh    r1,[r3,#0x22] // window X
+ldrh    r2,[r3,#0x24] // window Y
+ldrh    r4,[r3,#0x26] // window width
+mov     r6,r4
+ldrh    r5,[r3,#0x28] // window height
+mov     r3,r1
+
+.clear_window_loop:
+cmp     r5,#0
+beq     .clear_window_end
+strh    r2,[r0,#2]
+-
+strh    r1,[r0,#0]
+bl      .clear_tile_internal
+add     r1,r1,#1
+sub     r4,r4,#1
+bne     -
+add     r2,r2,#1
+sub     r5,r5,#1
+mov     r4,r6
+mov     r1,r3
+b       .clear_window_loop
+
+.clear_window_end:
+add     sp,#12
+pop     {r0-r6,pc}
+
+
+//==============================================================================
+// void clear_tile_internal(CLEAR_STRUCT* data)
+// In:
+//    r0: data pointer
+//       [r0+0x00]: x
+//       [r0+0x02]: y
+//       [r0+0x04]: empty row of pixels
+//       [r0+0x08]: tile offset
+//==============================================================================
+
+// - clears a VWF tile at (x,y)
+
+.clear_tile_internal:
+push    {r0-r3,lr}
+
+mov     r3,r0
+ldrh    r0,[r3,#0]
+ldrh    r1,[r3,#2]
+bl      .get_tile_number
+ldrh    r1,[r3,#8]
+add     r0,r0,r1
+lsl     r1,r0,#5
+mov     r0,#6
+lsl     r0,r0,#24
+add     r1,r0,r1 // VRAM dest address
+add     r0,r3,#4 // source address
+ldr     r2,=#0x1000008 // set the fixed source address flag + copy 8 words
+swi     #0xC // CpuFastSet
+
+pop     {r0-r3,pc}
