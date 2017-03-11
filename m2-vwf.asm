@@ -551,7 +551,7 @@ dd      m2_bits_to_nybbles
 
 
 //==============================================================================
-// void clear_window(WINDOW* window)
+// void clear_window(WINDOW* window, int bgIndex)
 // In:
 //    r0: window pointer
 //    r1: background index
@@ -559,8 +559,8 @@ dd      m2_bits_to_nybbles
 
 // - clears all VWF-ified tiles in a window
 .clear_window:
-push    {r0-r6,lr}
-add     sp,#-12
+push    {r0-r3,lr}
+add     sp,#-16
 mov     r3,r0
 mov     r0,sp
 ldr     r2,=#0x30051EC
@@ -571,30 +571,65 @@ mul     r1,r2
 str     r1,[r0,#4] // empty row of pixels
 
 ldrh    r1,[r3,#0x22] // window X
-ldrh    r2,[r3,#0x24] // window Y
-ldrh    r4,[r3,#0x26] // window width
-mov     r6,r4
-ldrh    r5,[r3,#0x28] // window height
-mov     r3,r1
-
-.clear_window_loop:
-cmp     r5,#0
-beq     .clear_window_end
-strh    r2,[r0,#2]
--
 strh    r1,[r0,#0]
-bl      .clear_tile_internal
-add     r1,r1,#1
-sub     r4,r4,#1
-bne     -
-add     r2,r2,#1
-sub     r5,r5,#1
-mov     r4,r6
-mov     r1,r3
-b       .clear_window_loop
+ldrh    r1,[r3,#0x24] // window Y
+strh    r1,[r0,#2]
+ldrh    r1,[r3,#0x26] // window width
+strh    r1,[r0,#0xC]
+ldrh    r1,[r3,#0x28] // window height
+strh    r1,[r0,#0xE]
+
+bl      .clear_rect
 
 .clear_window_end:
-add     sp,#12
+add     sp,#16
+pop     {r0-r3,pc}
+
+
+//==============================================================================
+// void clear_rect(CLEAR_RECT_STRUCT* data)
+// In:
+//    r0: data pointer
+//       [r0+0x00]: x
+//       [r0+0x02]: y
+//       [r0+0x04]: empty row of pixels
+//       [r0+0x08]: tile offset
+//       [r0+0x0C]: width
+//       [r0+0x0E]: height
+//==============================================================================
+
+// - clears a rectangle
+
+.clear_rect:
+push    {r0-r6,lr}
+
+ldrh    r1,[r0,#0xC] // width
+ldrh    r2,[r0,#0xE] // height
+ldrh    r6,[r0,#0]   // initial X
+mov     r3,#0 // current row
+.clear_rect_outer_start:
+cmp     r3,r2
+bge     .clear_rect_end
+mov     r4,#0 // current col
+-
+cmp     r4,r1
+bge     .clear_rect_inner_end
+bl      .clear_tile_internal
+ldrh    r5,[r0,#0]
+add     r5,r5,#1
+strh    r5,[r0,#0]
+add     r4,r4,#1
+b       -
+.clear_rect_inner_end:
+ldrh    r5,[r0,#2]
+add     r5,r5,#1
+strh    r5,[r0,#2]
+mov     r5,r6
+strh    r5,[r0,#0]
+add     r3,r3,#1
+b       .clear_rect_outer_start
+
+.clear_rect_end:
 pop     {r0-r6,pc}
 
 
