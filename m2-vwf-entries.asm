@@ -82,6 +82,7 @@ mul     r0,r1
 add     r6,r0,r6
 add     r6,#0x75
 ldrb    r0,[r6,#0]
+cmp     r0,#0
 bne     +
 
 // Weapon
@@ -94,6 +95,7 @@ bl      $80C9634
 
 +
 ldrb    r0,[r6,#1]
+cmp     r0,#0
 bne     +
 
 // Body
@@ -106,6 +108,7 @@ bl      $80C9634
 
 +
 ldrb    r0,[r6,#2]
+cmp     r0,#0
 bne     +
 
 // Arms
@@ -118,6 +121,7 @@ bl      $80C9634
 
 +
 ldrb    r0,[r6,#3]
+cmp     r0,#0
 bne     +
 
 // Other
