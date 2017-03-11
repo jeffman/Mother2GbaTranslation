@@ -59,3 +59,77 @@ strh    r4,[r6,#2]
 // Clobbered code
 strh    r5,[r1,#0]
 pop     {pc}
+
+//==============================================================================
+.c4b2c_skip_nones:
+push    {r7,lr}
+add     sp,#-4
+mov     r7,#0
+
+// Get the (none) pointer
+mov     r0,r4
+mov     r1,r10
+mov     r2,#0x2A
+bl      $80BE260
+mov     r5,r0
+
+// Check each equip slot
+ldr     r6,=#0x3001D40
+ldr     r3,=#0x3005264
+ldrh    r0,[r3,#0] // active party character
+mov     r1,#0x6C
+mul     r0,r1
+add     r6,r0,r6
+add     r6,#0x75
+ldrb    r0,[r6,#0]
+bne     +
+
+// Weapon
+mov     r0,r8
+mov     r1,r5
+mov     r2,#0x6
+mov     r3,#0
+str     r7,[sp,#0]
+bl      $80C9634
+
++
+ldrb    r0,[r6,#1]
+bne     +
+
+// Body
+mov     r0,r8
+mov     r1,r5
+mov     r2,#0x6
+mov     r3,#1
+str     r7,[sp,#0]
+bl      $80C9634
+
++
+ldrb    r0,[r6,#2]
+bne     +
+
+// Arms
+mov     r0,r8
+mov     r1,r5
+mov     r2,#0x6
+mov     r3,#2
+str     r7,[sp,#0]
+bl      $80C9634
+
++
+ldrb    r0,[r6,#3]
+bne     +
+
+// Other
+mov     r0,r8
+mov     r1,r5
+mov     r2,#0x6
+mov     r3,#3
+str     r7,[sp,#0]
+bl      $80C9634
+
++
+mov     r0,#0
+mov     r10,r0
+add     sp,#4
+pop     {r7,pc}

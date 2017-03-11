@@ -35,6 +35,21 @@ org $80BE1FA; strh r2,[r6,#0]
 org $80BE222; strh r6,[r1,#0]
 
 //---------------------------------------------------------
+// C4B2C hacks (Equip window)
+//---------------------------------------------------------
+
+// Start equipment at the 6th tile instead of 5th
+org $80C4C96; mov r2,#6 // Weapon
+org $80C4D1C; mov r2,#6 // Body
+org $80C4DA4; mov r2,#6 // Arms
+org $80C4E2C; mov r2,#6 // Other
+
+// Only render (None) if necessary
+org     $80C4C0C
+bl      m2_vwf_entries.c4b2c_skip_nones
+b       $80C4C58
+
+//---------------------------------------------------------
 // C980C hacks
 //---------------------------------------------------------
 

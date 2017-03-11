@@ -14,6 +14,7 @@ Hard-coded characters:
 0x30051EC: tile offset (usually 0x100)
 0x3005228: current text palette, << 0xC
 0x3005230: addresses of all 11 windows
+0x3005264: active window party member
 0x3005270: address of tilemap start in WRAM, can use this to figure out X and Y
 
 LDRB Rx,[Ry,#n]: n has range 0-31 (0x0-0x1F)
@@ -21,6 +22,8 @@ LDRH Rx,[Ry,#n]: n has range 0-62 (0x0-0x3E)
 LDR Rx,[Ry,#n]: n has range 0-124 (0x0-0x7C) (0-1020 for SP- and PC-relative)
 
 Custom WRAM: 2027FC0
+
+80C4C24: equip window renders four (None)s in a row
 
 
 Subroutines
