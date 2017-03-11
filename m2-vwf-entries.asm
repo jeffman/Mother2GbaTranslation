@@ -137,3 +137,55 @@ mov     r0,#0
 mov     r10,r0
 add     sp,#4
 pop     {r7,pc}
+
+//==============================================================================
+// r0 = window pointer
+.clear_equipment:
+push    {r0-r2,lr}
+add     sp,#-16
+mov     r1,r0
+mov     r0,sp
+
+ldrh    r2,[r1,#0x22] // window X
+add     r2,#6         // horizontal offset
+strh    r2,[r0,#0]
+ldrh    r2,[r1,#0x24] // window Y
+strh    r2,[r0,#2]
+ldrh    r2,[r1,#0x26] // window width
+sub     r2,#6
+strh    r2,[r0,#0xC]
+ldrh    r2,[r1,#0x28] // window height
+strh    r2,[r0,#0xE]
+
+ldr     r2,=#0x44444444
+str     r2,[r0,#4]
+ldr     r2,=#0x30051EC
+ldrh    r2,[r2,#0]
+strh    r2,[r0,#8]
+
+bl      m2_vwf.clear_rect
+
+add     sp,#16
+pop     {r0-r2,pc}
+
+
+//==============================================================================
+// r6 = window pointer
+
+.c4b2c_clear_left:
+mov     r0,r6
+bl      .clear_equipment
+
+// Clobbered code
+strh    r1,[r3,#0]
+ldr     r0,=#0x80C4F3B
+bx      r0
+
+.c4b2c_clear_right:
+mov     r0,r6
+bl      .clear_equipment
+
+// Clobbered code
+strh    r1,[r3,#0]
+ldr     r0,=#0x80C4EFF
+bx      r0

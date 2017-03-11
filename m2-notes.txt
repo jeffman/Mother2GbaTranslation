@@ -23,8 +23,12 @@ LDR Rx,[Ry,#n]: n has range 0-124 (0x0-0x7C) (0-1020 for SP- and PC-relative)
 
 Custom WRAM: 2027FC0
 
-80C4C24: equip window renders four (None)s in a row
+Code sequences
+--------------
 
+80C4C24: equip window renders four (None)s in a row
+80C4F80: going left in equip window
+80C4F84: going right in equip window
 
 Subroutines
 -----------
