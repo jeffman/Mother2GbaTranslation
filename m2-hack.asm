@@ -49,6 +49,16 @@ org     $80C4C0C
 bl      m2_vwf_entries.c4b2c_skip_nones
 b       $80C4C58
 
+// Don't render equip symbols
+org $80C4CD0; nop
+org $80C4CDE; nop
+org $80C4D58; nop
+org $80C4D66; nop
+org $80C4DE0; nop
+org $80C4DEE; nop
+org $80C4E68; nop
+org $80C4E76; nop
+
 //---------------------------------------------------------
 // C980C hacks
 //---------------------------------------------------------
