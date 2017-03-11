@@ -27,6 +27,7 @@ Subroutines
 -----------
 
 80C87D0: draw blank window and border (r0: window pointer)
+80C9634: render string (r1) to window (r0) at (x,y) (r2,r3)
 80C980C: print next character (r0: window pointer)
 80CA4BC: scroll text upwards (r0: window pointer)
 
@@ -37,7 +38,8 @@ Windows
 Window structure:
   0x00 - 0x03:  bitfield
     0x00000001: enable
-    0x0000FFFE: ?
+    0x00000020: signals to redraw the window and borders (cleared by C87D0)
+    0x0000FFDE: ?
     0xFFFF0000: we're stealing these for our hacks
       0x0007:   pixel X value
       0xFFF8:   unused

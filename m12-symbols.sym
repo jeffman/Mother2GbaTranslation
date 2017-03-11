@@ -7,5 +7,6 @@
 03001F3A m2_rockin
 03001F50 m2_player1
 080C87D0 m2_drawwindow
+080C9634 m2_printstr
 080C980C m2_printnextch
 080CA4BC m2_scrolltext

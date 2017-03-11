@@ -49,3 +49,13 @@ bl      m2_vwf.clear_window
 ldr     r4,=#0x3005270
 mov     r1,#0x24
 pop     {pc}
+
+//==============================================================================
+.c9634_resetx:
+push    {lr}
+mov     r4,#0
+strh    r4,[r6,#2]
+
+// Clobbered code
+strh    r5,[r1,#0]
+pop     {pc}
