@@ -61,6 +61,7 @@ strh    r5,[r1,#0]
 pop     {pc}
 
 //==============================================================================
+// Only render the (None) strings in the equip window if there's nothing equipped
 .c4b2c_skip_nones:
 push    {r7,lr}
 add     sp,#-4
@@ -139,6 +140,7 @@ add     sp,#4
 pop     {r7,pc}
 
 //==============================================================================
+// Clears the equipment portion of the equip window
 // r0 = window pointer
 .clear_equipment:
 push    {r0-r2,lr}
@@ -170,8 +172,8 @@ pop     {r0-r2,pc}
 
 
 //==============================================================================
+// Clear equipment when moving left/right on equip screen
 // r6 = window pointer
-
 .c4b2c_clear_left:
 mov     r0,r6
 bl      .clear_equipment
