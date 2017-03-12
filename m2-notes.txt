@@ -33,9 +33,10 @@ Code sequences
 Subroutines
 -----------
 
+80C1FBC: draw PSI window 
 80C87D0: draw blank window and border (r0: window pointer)
 80C9634: render string (r1) to window (r0) at (x,y) (r2,r3)
-80C96F0: render string (r1) to window (r0) at (x,y) (r2,r3) using highlight [sp]
+80C96F0: render string (r1) to window (r0) at (x,2y) (r2,r3) using highlight [sp]
          (does not modify any window values)
 80C980C: print next character (r0: window pointer)
 80CA4BC: scroll text upwards (r0: window pointer)

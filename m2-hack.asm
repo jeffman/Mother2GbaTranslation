@@ -106,6 +106,7 @@ bl      m2_vwf_entries.c9634_resetx
 //---------------------------------------------------------
 
 org     $80C9714
+lsl     r3,r3,#1 // change from row coords to tile coords
 ldrh    r1,[r0,#0x22]
 add     r1,r1,r2
 lsl     r1,r1,#3 // r1 = tile_x * 8
