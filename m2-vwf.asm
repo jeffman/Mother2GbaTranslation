@@ -109,6 +109,39 @@ pop     {r0-r7,pc}
 
 
 //=============================================================================
+// void print_string(char* str, int x, int y)
+// In:
+//    r0: address of string to print
+//    r1: x (pixel)
+//    r2: y (pixel)
+// Out:
+//    r0: number of characters printed
+//=============================================================================
+
+.print_string:
+push    {r1-r5,lr}
+
+mov     r3,#0
+mov     r5,r3
+mov     r4,r0
+-
+ldrb    r0,[r4,#1]
+cmp     r0,#0xFF
+beq     .print_string_end
+ldrb    r0,[r4,#0]
+sub     r0,#0x50
+bl      .print_character
+add     r1,r0,r1
+add     r4,#1
+add     r5,#1
+b       -
+
+.print_string_end:
+mov     r0,r5
+pop     {r1-r5,pc}
+
+
+//=============================================================================
 // void print_character(int x, int y, int chr, int font)
 // In:
 //    r0: x (pixel)
