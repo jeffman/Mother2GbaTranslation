@@ -40,72 +40,51 @@ pop     {r1-r5,pc}
 
 //--------------------------------
 .weld_entry:
-push    {r0-r7,lr}
-add     sp,#-28
-mov     r5,r0
+push    {r0-r5,lr}
 
-//--------------------------------
-// Get the char
+// Check for valid character value
+mov     r4,r0
 ldrb    r0,[r1,#0]
 sub     r0,#0x50
 bpl     +
-mov     r0,#0x1F            // Replace char with ? if it's invalid
-b       .char_custom
+mov     r0,#0x1F
+b       .weld_entry_valid
 +
 cmp     r0,#0x60
-bcc     .char_custom
+bcc     .weld_entry_valid
 mov     r0,#0x1F
 
-.char_custom:
-str     r0,[sp,#0x0]
-// [sp+0] = char
+.weld_entry_valid:
 
-//--------------------------------
-// Get the current X
-ldrh    r1,[r5,#0x22]
-ldrh    r2,[r5,#0x2A]
+// Calculate X coord
+ldrh    r1,[r4,#0x22] // window_X
+mov     r5,r1
+ldrh    r2,[r4,#0x2A] // text_X
 add     r1,r1,r2
-str     r1,[sp,#4]
 lsl     r1,r1,#3
-ldrh    r2,[r5,#2]
-str     r2,[sp,#24]
-add     r1,r1,r2             // Current pixel X
-str     r1,[sp,#20]
+ldrh    r2,[r4,#2]    // pixel_X
+add     r1,r1,r2      // screen pixel X
 
-// Get the current Y
-ldrh    r2,[r5,#0x24]
-ldrh    r3,[r5,#0x2C]
+// Calculate Y coord
+ldrh    r2,[r4,#0x24] // window_Y
+ldrh    r3,[r4,#0x2C] // text_Y
 add     r2,r2,r3
-str     r2,[sp,#8]
 lsl     r2,r2,#3
 
-//--------------------------------
 // Print
-ldr     r0,[sp,#0x0]
-mov     r3,#0
+mov     r3,#0         // font
 bl      .print_character
-str     r0,[sp,#12]
 
-//--------------------------------
-// Figure out new window coords
-ldr     r0,[sp,#20]
-ldr     r1,[sp,#12]
-add     r0,r0,r1
-
-// Store new window coords
+// Store new X coords
+add     r0,r0,r1      // new screen pixel_X
 lsr     r1,r0,#3
-ldrh    r2,[r5,#0x22]
-sub     r1,r1,r2
-strh    r1,[r5,#0x2A]
-
-// Store new pixel X
+sub     r1,r1,r5      // new text_X
+strh    r1,[r4,#0x2A]
 lsl     r0,r0,#29
-lsr     r0,r0,#29
-strh    r0,[r5,#2]
+lsr     r0,r0,#29     // new pixel_X
+strh    r0,[r4,#2]
 
-//--------------------------------
-add     sp,#28
-pop     {r0-r7,pc}
+pop     {r0-r5,pc}
 
 
 //=============================================================================
