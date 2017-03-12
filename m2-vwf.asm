@@ -66,22 +66,22 @@ ldrh    r1,[r5,#0x22]
 ldrh    r2,[r5,#0x2A]
 add     r1,r1,r2
 str     r1,[sp,#4]
-lsl     r0,r1,#3
-ldrh    r1,[r5,#2]
-str     r1,[sp,#24]
-add     r0,r0,r1             // Current pixel X
-str     r0,[sp,#20]
+lsl     r1,r1,#3
+ldrh    r2,[r5,#2]
+str     r2,[sp,#24]
+add     r1,r1,r2             // Current pixel X
+str     r1,[sp,#20]
 
 // Get the current Y
-ldrh    r1,[r5,#0x24]
+ldrh    r2,[r5,#0x24]
 ldrh    r3,[r5,#0x2C]
-add     r1,r1,r3
-str     r1,[sp,#8]
-lsl     r1,r1,#3
+add     r2,r2,r3
+str     r2,[sp,#8]
+lsl     r2,r2,#3
 
 //--------------------------------
 // Print
-ldr     r2,[sp,#0x0]
+ldr     r0,[sp,#0x0]
 mov     r3,#0
 bl      .print_character
 str     r0,[sp,#12]
@@ -144,9 +144,9 @@ pop     {r1-r5,pc}
 //=============================================================================
 // void print_character(int x, int y, int chr, int font)
 // In:
-//    r0: x (pixel)
-//    r1: y (pixel)
-//    r2: character
+//    r0: character
+//    r1: x (pixel)
+//    r2: y (pixel)
 //    r3: font
 //        0: main
 //        1: saturn
@@ -167,9 +167,9 @@ mov     r4,r12
 push    {r4}
 add     sp,#-24
 
-mov     r10,r0
-mov     r11,r1
-mov     r12,r2
+mov     r10,r1
+mov     r11,r2
+mov     r12,r0
 mov     r5,r3
 
 //----------------------------------------
@@ -179,12 +179,12 @@ add     r3,#0x3C
 ldrh    r6,[r3,#0]           // Palette mask
 add     r3,#0x48
 ldr     r7,[r3,#0]           // Tilemap address
-lsr     r0,r0,#3
 lsr     r1,r1,#3
-lsl     r1,r1,#5
-add     r0,r0,r1
-lsl     r0,r0,#1
-add     r7,r7,r0             // Local tilemap address
+lsr     r2,r2,#3
+lsl     r2,r2,#5
+add     r1,r1,r2
+lsl     r1,r1,#1
+add     r7,r7,r1             // Local tilemap address
 mov     r8,r4
 
 //----------------------------------------
