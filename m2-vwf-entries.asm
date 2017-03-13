@@ -191,3 +191,57 @@ bl      .clear_equipment
 strh    r1,[r3,#0]
 ldr     r0,=#0x80C4EFF
 bx      r0
+
+//==============================================================================
+// Clear PSI target window when moving left/right on PSI screen
+.c438c_moveright:
+push    {r0-r1,lr}
+ldr     r1,=#0x3005230
+ldr     r0,[r1,#0x24] // PSI target window pointer
+mov     r1,#4
+bl      m2_vwf.clear_window
+pop     {r0-r1}
+
+// Clobbered code
+add     r0,#1
+strh    r0,[r5,#0x34]
+pop     {pc}
+
+.c438c_moveleft:
+push    {r0-r1,lr}
+ldr     r1,=#0x3005230
+ldr     r0,[r1,#0x24] // PSI target window pointer
+mov     r1,#4
+bl      m2_vwf.clear_window
+pop     {r0-r1}
+
+// Clobbered code
+sub     r0,#1
+strh    r0,[r5,#0x34]
+pop     {pc}
+
+.c438c_moveup:
+push    {r0-r1,lr}
+ldr     r1,=#0x3005230
+ldr     r0,[r1,#0x24] // PSI target window pointer
+mov     r1,#4
+bl      m2_vwf.clear_window
+pop     {r0-r1}
+
+// Clobbered code
+sub     r0,#1
+strh    r0,[r5,#0x36]
+pop     {pc}
+
+.c438c_movedown:
+push    {r0-r1,lr}
+ldr     r1,=#0x3005230
+ldr     r0,[r1,#0x24] // PSI target window pointer
+mov     r1,#4
+bl      m2_vwf.clear_window
+pop     {r0-r1}
+
+// Clobbered code
+add     r0,#1
+strh    r0,[r5,#0x36]
+pop     {pc}

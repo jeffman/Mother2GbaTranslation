@@ -44,6 +44,37 @@ org $80C224A; mov r1,#0x14
 org $80C229E; mov r1,#0x14
 
 //---------------------------------------------------------
+// C438C hacks (PSI window cursor movement)
+//---------------------------------------------------------
+
+org $80C4580; bl m2_vwf_entries.c438c_moveup
+org $80C4642; bl m2_vwf_entries.c438c_movedown
+org $80C4768; bl m2_vwf_entries.c438c_moveright
+org $80C48B2; bl m2_vwf_entries.c438c_moveleft
+
+//---------------------------------------------------------
+// PSI target window hacks
+//---------------------------------------------------------
+
+// PSI target length hack
+org $80B8B12; mov r0,#0x14
+
+// Fix PSI target offset calculation
+org $80B8B08
+mov     r1,#100
+mul     r1,r2
+nop
+nop
+
+// Make PP cost use correct number values
+org     $80CA732
+add     r1,#0x60
+
+// Make PP cost use the correct space value if there's only one digit
+org     $80CA712
+mov     r0,#0x50
+
+//---------------------------------------------------------
 // C4B2C hacks (Equip window render)
 //---------------------------------------------------------
 
