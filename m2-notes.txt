@@ -11,9 +11,24 @@ Hard-coded characters:
 - Null (tile 0x1DF)
 - Background (tile 0x1FF)
 
+0x3000A00: Current PSI list when displaying a PSI window?
+0x3001F6A: Ness PSI flags?
+           0x01: Teleport alpha
+           0x08: Teleport beta
 0x30051EC: tile offset (usually 0x100)
 0x3005228: current text palette, << 0xC
 0x3005230: addresses of all 11 windows
+           [00]: A menu
+           [01]: Money
+           [02]: ?
+           [03]: Action subject ("Who?", etc.)
+           [04]: New equipment selection
+           [05]: Offense/Defense
+           [06]: Equip
+           [07]: PSI list
+           [08]: PSI classes
+           [09]: PSI target/PP cost
+           [0A]: PSI help
 0x3005264: active window party member
 0x3005270: address of tilemap start in WRAM, can use this to figure out X and Y
 
@@ -26,6 +41,7 @@ Custom WRAM: 2027FC0
 Code sequences
 --------------
 
+80BAB64: draw and render PSI party target window
 80C4C24: equip window renders four (None)s in a row
 80C4F80: going left in equip window
 80C4F84: going right in equip window
@@ -33,14 +49,16 @@ Code sequences
 Subroutines
 -----------
 
-80C1FBC: draw PSI window 
+80B8AE0: draw PSI target/PP cost window with PSI index r0
+80C1FBC: draw PSI window for character r0
+80C438C: check for cursor movements in PSI window
 80C87D0: draw blank window and border (r0: window pointer)
 80C9634: render string (r1) to window (r0) at (x,y) (r2,r3)
 80C96F0: render string (r1) to window (r0) at (x,2y) (r2,r3) using highlight [sp]
          (does not modify any window values)
 80C980C: print next character (r0: window pointer)
 80CA4BC: scroll text upwards (r0: window pointer)
-
+80D2E94: print party character name
 
 Windows
 -------
