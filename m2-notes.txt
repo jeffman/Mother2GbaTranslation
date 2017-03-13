@@ -53,6 +53,7 @@ Subroutines
 80C1FBC: draw PSI window for character r0
 80C438C: check for cursor movements in PSI window
 80C87D0: draw blank window and border (r0: window pointer)
+80C8FFC: render string to window r0
 80C9634: render string (r1) to window (r0) at (x,y) (r2,r3)
 80C96F0: render string (r1) to window (r0) at (x,2y) (r2,r3) using highlight [sp]
          (does not modify any window values)

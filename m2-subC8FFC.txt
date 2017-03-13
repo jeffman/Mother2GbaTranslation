@@ -1,0 +1,228 @@
+    080C8FFC (T)  push    {r4-r7,r14}                                 ;9  213
+    080C8FFE (T)  mov     r7,r9                                       ;2  215
+    080C9000 (T)  mov     r6,r8                                       ;2  217
+    080C9002 (T)  push    {r6,r7}                                     ;6  223
+    080C9004 (T)  mov     r4,r0                                       ;2  225
+    
+    // Check if flag 0x20 is set
+    080C9006 (T)  ldr     r0,[r4]                                     ;4  229
+    080C9008 (T)  mov     r1,#0x20                                    ;2  231
+    080C900A (T)  and     r0,r1                                       ;2  233
+    080C900C (T)  cmp     r0,#0x0                                     ;2  235
+    080C900E (T)  beq     #0x80C9016                                  ;8  243
+    
+        // If set, draw the window
+        080C9010 (T)  mov     r0,r4                                       ;2  245
+        080C9012 (T)  bl      m2_drawwindow                               ;10 255
+    
+    // If ([window+0x44] == 0) OR ([window+0x44] != 0 AND [0x3004F08] != 0)
+    080C9016 (T)  mov     r0,r4                                       ;2  257
+    080C9018 (T)  add     r0,#0x44                                    ;2  259
+    080C901A (T)  ldrb    r1,[r0]                                     ;6  265
+    080C901C (T)  mov     r9,r0                                       ;2  267
+    080C901E (T)  cmp     r1,#0x0                                     ;2  269
+    080C9020 (T)  beq     #0x80C9036                                  ;8  277
+    080C9022 (T)  ldr     r0,=#0x3004F08                              ;9  286
+    080C9024 (T)  ldrb    r0,[r0]                                     ;6  292
+    080C9026 (T)  cmp     r0,#0x0                                     ;2  294
+    080C9028 (T)  beq     #0x80C903A                                  ;8  302
+    080C902A (T)  b       #0x80C9036                                  ;8  310
+    080C902C (T)  ldr     r7,=#0x222C8DA7                             ;9  319
+    080C902E (T)  lsl     r0,r0,#0xC                                  ;2  321
+    
+    // loop2:
+    080C9030 (T)  mov     r0,#0x0                                     ;2  323
+    080C9032 (T)  mov     r1,r9                                       ;2  325
+    080C9034 (T)  strb    r0,[r1]                                     ;8  333
+    
+        // then:  return 0
+        080C9036 (T)  mov     r0,#0x0                                     ;2  335
+        080C9038 (T)  b       #0x80C9158                                  ;8  343
+    
+    // Get Y tile
+    080C903A (T)  mov     r2,#0x24                                    ;2  345
+    080C903C (T)  ldsh    r0,[r4,r2]                                  ;4  349
+    080C903E (T)  mov     r5,#0x2C                                    ;2  351
+    080C9040 (T)  ldsh    r1,[r4,r5]                                  ;4  355
+    080C9042 (T)  add     r0,r0,r1                                    ;2  357
+    080C9044 (T)  lsl     r0,r0,#0x15                                 ;2  359
+    080C9046 (T)  lsr     r6,r0,#0x10 // r6 = (window_y + text_y) * 32
+    
+    // ?
+    080C9048 (T)  mov     r7,#0x0                                     ;2  363
+    080C904A (T)  mov     r8,r7                                       ;2  365
+    
+    // loop1:
+    080C904C (T)  mov     r0,r8                                       ;2  367
+    080C904E (T)  strh    r0,[r4,#0x30]                               ;5  372
+    
+    // Scroll text check
+    080C9050 (T)  ldrh    r7,[r4,#0x2C]                               ;4  376
+    080C9052 (T)  mov     r2,#0x2C                                    ;2  378
+    080C9054 (T)  ldsh    r1,[r4,r2]                                  ;4  382
+    080C9056 (T)  mov     r5,#0x28                                    ;2  384
+    080C9058 (T)  ldsh    r0,[r4,r5]                                  ;4  388
+    080C905A (T)  cmp     r1,r0                                       ;2  390
+    080C905C (T)  bge     #0x80C906C                                  ;8  398
+    080C905E (T)  mov     r1,#0x24                                    ;2  400
+    080C9060 (T)  ldsh    r0,[r4,r1]                                  ;8  408
+    080C9062 (T)  mov     r2,#0x2C                                    ;2  410
+    080C9064 (T)  ldsh    r1,[r4,r2]                                  ;4  414
+    080C9066 (T)  add     r0,r0,r1                                    ;2  416
+    080C9068 (T)  cmp     r0,#0x1F                                    ;2  418
+    080C906A (T)  ble     #0x80C907E                                  ;8  426
+    
+        // Scroll
+        080C906C (T)  mov     r0,r4                                       ;2  428
+        080C906E (T)  bl      m2_scrolltext                               ;10 438
+        080C9072 (T)  ldrh    r0,[r4,#0x2C]                               ;4  442
+        080C9074 (T)  sub     r0,#0x2                                     ;2  444
+        080C9076 (T)  strh    r0,[r4,#0x2C]                               ;5  449
+        080C9078 (T)  mov     r5,r8                                       ;2  451
+        080C907A (T)  strh    r5,[r4,#0x2A]                               ;5  456
+        080C907C (T)  b       #0x80C904C // loop1
+        
+    080C907E (T)  ldr     r3,=#0x3005270                              ;9  473
+    080C9080 (T)  lsl     r0,r6,#0x1                                  ;2  475
+    080C9082 (T)  ldr     r2,[r3] // tilemap
+    080C9084 (T)  add     r2,r2,r0                                    ;2  486
+    080C9086 (T)  mov     r1,#0x22                                    ;2  488
+    080C9088 (T)  ldsh    r0,[r4,r1] // window_X
+    080C908A (T)  mov     r5,#0x2A                                    ;2  498
+    080C908C (T)  ldsh    r1,[r4,r5] // text_X
+    080C908E (T)  add     r0,r0,r1                                    ;2  504
+    080C9090 (T)  lsl     r0,r0,#0x1                                  ;2  506
+    080C9092 (T)  add     r5,r2,r0   // final tilemap address
+    
+    // If control code,
+    080C9094 (T)  ldr     r0,[r4,#0x4]                                ;4  512
+    080C9096 (T)  ldr     r1,[r4,#0x14]                               ;4  516
+    080C9098 (T)  add     r2,r0,r1   // text address
+    080C909A (T)  ldrb    r0,[r2,#0x1]                                ;4  522
+    080C909C (T)  mov     r12,r1                                      ;2  524
+    080C909E (T)  cmp     r0,#0xFF                                    ;2  526
+    080C90A0 (T)  bne     #0x80C90D0                                  ;8  534
+    
+        // then: if newline,
+        080C90A2 (T)  ldrb    r0,[r2]                                     ;4  538
+        080C90A4 (T)  cmp     r0,#0x1                                     ;2  540
+        080C90A6 (T)  bne     #0x80C90CC                                  ;8  548
+        
+            // Newline
+            080C90A8 (T)  add     r0,r7,2                                     ;2  550
+            080C90AA (T)  strh    r0,[r4,#0x2C]                               ;5  555
+            080C90AC (T)  mov     r7,r8                                       ;2  557
+            080C90AE (T)  strh    r7,[r4,#0x2A]                               ;5  562
+            080C90B0 (T)  mov     r1,#0x24                                    ;2  564
+            080C90B2 (T)  ldsh    r0,[r4,r1]                                  ;8  572
+            080C90B4 (T)  mov     r2,#0x2C                                    ;2  574
+            080C90B6 (T)  ldsh    r1,[r4,r2]                                  ;4  578
+            080C90B8 (T)  add     r0,r0,r1                                    ;2  580
+            080C90BA (T)  lsl     r0,r0,#0x15                                 ;2  582
+            080C90BC (T)  lsr     r6,r0,#0x10                                 ;2  584
+            080C90BE (T)  mov     r0,r12                                      ;2  586
+            080C90C0 (T)  add     r0,#0x2                                     ;2  588
+            080C90C2 (T)  str     r0,[r4,#0x14]                               ;5  593
+            080C90C4 (T)  b       #0x80C904C // loop1
+            080C90C6 (T)  lsl     r0,r0,#0x0                                  ;2  603
+            080C90C8 (T)  strh    r0,[r6,r1]                                  ;8  611
+            080C90CA (T)  lsl     r0,r0,#0xC                                  ;2  613
+        
+        // else if: end,
+        080C90CC (T)  cmp     r0,#0x0                                     ;2  615
+        080C90CE (T)  beq     #0x80C9030 // loop2
+    
+    // If (text_X < window_width) || (text_X + window_X > 0x1F),
+    080C90D0 (T)  mov     r7,#0x2A                                    ;2  625
+    080C90D2 (T)  ldsh    r1,[r4,r7]                                  ;8  633
+    080C90D4 (T)  mov     r7,#0x26                                    ;2  635
+    080C90D6 (T)  ldsh    r0,[r4,r7]                                  ;8  643
+    080C90D8 (T)  cmp     r1,r0                                       ;2  645
+    080C90DA (T)  bge     #0x80C90EA                                  ;8  653
+    080C90DC (T)  mov     r1,#0x22                                    ;2  655
+    080C90DE (T)  ldsh    r0,[r4,r1]                                  ;8  663
+    080C90E0 (T)  mov     r7,#0x2A                                    ;2  665
+    080C90E2 (T)  ldsh    r1,[r4,r7]                                  ;8  673
+    080C90E4 (T)  add     r0,r0,r1                                    ;2  675
+    080C90E6 (T)  cmp     r0,#0x1F                                    ;2  677
+    080C90E8 (T)  ble     #0x80C9114                                  ;8  685
+    
+        // then:
+        // Increment text_Y
+        080C90EA (T)  ldrh    r0,[r4,#0x2C]                               ;4  689
+        080C90EC (T)  add     r0,#0x2                                     ;2  691
+        080C90EE (T)  strh    r0,[r4,#0x2C]                               ;5  696
+        
+        // text_X = 0
+        080C90F0 (T)  mov     r0,r8                                       ;2  698
+        080C90F2 (T)  strh    r0,[r4,#0x2A]                               ;5  703
+        
+        080C90F4 (T)  mov     r1,#0x24                                    ;2  705
+        080C90F6 (T)  ldsh    r0,[r4,r1]                                  ;8  713
+        080C90F8 (T)  mov     r5,#0x2C                                    ;2  715
+        080C90FA (T)  ldsh    r1,[r4,r5]                                  ;4  719
+        080C90FC (T)  add     r0,r0,r1                                    ;2  721
+        080C90FE (T)  lsl     r0,r0,#0x15                                 ;2  723
+        080C9100 (T)  lsr     r6,r0,#0x10                                 ;2  725
+        080C9102 (T)  mov     r7,#0x22                                    ;2  727
+        080C9104 (T)  ldsh    r0,[r4,r7]                                  ;8  735
+        080C9106 (T)  mov     r5,#0x2A                                    ;2  737
+        080C9108 (T)  ldsh    r1,[r4,r5]                                  ;4  741
+        080C910A (T)  add     r0,r0,r1                                    ;2  743
+        080C910C (T)  add     r0,r6,r0                                    ;2  745
+        080C910E (T)  lsl     r0,r0,#0x1                                  ;2  747
+        080C9110 (T)  ldr     r1,[r3]                                     ;9  756
+        080C9112 (T)  add     r5,r1,r0 // recompute tilemap address
+    
+    // Prepare tile value
+    080C9114 (T)  ldr     r0,=#0x8B1B4B0                              ;9  767
+    080C9116 (T)  ldrb    r2,[r2]                                     ;4  771
+    080C9118 (T)  lsl     r2,r2,#0x1                                  ;2  773
+    080C911A (T)  add     r2,r2,r0                                    ;2  775
+    080C911C (T)  ldr     r0,=#0x30051EC                              ;9  784
+    080C911E (T)  ldrh    r1,[r0]                                     ;6  790
+    080C9120 (T)  ldrh    r2,[r2]                                     ;4  794
+    080C9122 (T)  add     r1,r1,r2                                    ;2  796
+    080C9124 (T)  lsl     r1,r1,#0x10                                 ;2  798
+    080C9126 (T)  lsr     r1,r1,#0x10                                 ;2  800
+    080C9128 (T)  ldr     r3,=#0x3005228                              ;9  809
+    080C912A (T)  ldrh    r2,[r3]                                     ;6  815
+    080C912C (T)  mov     r0,r1                                       ;2  817
+    080C912E (T)  orr     r0,r2                                       ;2  819
+    
+    // Store
+    080C9130 (T)  strh    r0,[r5]                                     ;5  824
+    080C9132 (T)  mov     r2,r5                                       ;2  826
+    080C9134 (T)  add     r2,#0x40                                    ;2  828
+    080C9136 (T)  add     r1,#0x20                                    ;2  830
+    080C9138 (T)  ldrh    r0,[r3]                                     ;6  836
+    080C913A (T)  orr     r1,r0                                       ;2  838
+    
+    // Store second row
+    080C913C (T)  strh    r1,[r2]                                     ;5  843
+    
+    // Increment X
+    080C913E (T)  ldrh    r0,[r4,#0x2A]                               ;4  847
+    080C9140 (T)  add     r0,#0x1                                     ;2  849
+    080C9142 (T)  strh    r0,[r4,#0x2A]                               ;5  854
+    
+    // Increment offset
+    080C9144 (T)  mov     r0,r12                                      ;2  856
+    080C9146 (T)  add     r0,#0x1                                     ;2  858
+    080C9148 (T)  str     r0,[r4,#0x14]                               ;5  863
+    080C914A (T)  b       #0x80C904C // loop1
+    
+    080C914C (T)  push    {r4,r5,r7}                                  ;18 889
+    080C914E (T)  lsr     r1,r6,#0x2                                  ;2  891
+    080C9150 (T)  str     r4,[r5,r7]                                  ;10 901
+    080C9152 (T)  lsl     r0,r0,#0xC                                  ;2  903
+    080C9154 (T)  strh    r0,[r5,r0]                                  ;7  910
+    080C9156 (T)  lsl     r0,r0,#0xC                                  ;2  912
+    
+    // End
+    080C9158 (T)  pop     {r3,r4}                                     ;15 927
+    080C915A (T)  mov     r8,r3                                       ;2  929
+    080C915C (T)  mov     r9,r4                                       ;2  931
+    080C915E (T)  pop     {r4-r7}                                     ;27 958
+    080C9160 (T)  pop     {r1}                                        ;9  967
+    080C9162 (T)  bx      r1                                          ;8  975
