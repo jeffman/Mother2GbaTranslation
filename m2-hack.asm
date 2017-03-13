@@ -110,11 +110,15 @@ org $80C4F84; bl m2_vwf_entries.c4b2c_clear_right
 // C980C hacks
 //---------------------------------------------------------
 
+// Reset pixel X during a newline
+org     $80C9CC4
+bl      m2_vwf_entries.c980c_resetx_newline
+
 // Custom codes check
 org     $80CA2BC
 bl      m2_vwf_entries.c980c_custom_codes
 
-// Clear pixel X
+// Reset pixel X when redrawing the window
 org     $80CA2E6
 bl      m2_vwf_entries.c980c_resetx
 
