@@ -132,6 +132,24 @@ org     $80CA48E
 nop
 
 //---------------------------------------------------------
+// C8FFC hacks
+//---------------------------------------------------------
+
+// Custom codes check
+org     $80C90A2
+bl      m2_vwf_entries.c8ffc_custom_codes
+
+// Welding entry
+org     $80C9114
+bl      m2_vwf_entries.c8ffc_weld_entry
+b       $80C9144
+
+// Integer-to-char changes
+org $80CA78A; mov r0,#0x60
+org $80CA7AC; mov r2,#0x69
+org $80CA7EC; sub r1,#0xA0
+
+//---------------------------------------------------------
 // C87D0 hacks
 //---------------------------------------------------------
 

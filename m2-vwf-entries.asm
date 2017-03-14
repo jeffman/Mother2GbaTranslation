@@ -25,6 +25,36 @@ bl      m2_vwf.weld_entry
 pop     {r0-r1,pc}
 
 //==============================================================================
+.c8ffc_custom_codes:
+push    {r2,r5,lr}
+ldrb    r0,[r2,#0]
+mov     r5,r0
+mov     r1,r2
+mov     r2,r4
+bl      m2_customcodes.parse
+cmp     r0,#0
+beq     +
+mov     r2,r12
+add     r0,r0,r2
+strh    r0,[r4,#0x14]
+pop     {r2,r5}
+add     sp,#4
+ldr     r1,=#0x80C904D
+bx      r1
++
+mov     r0,r5
+cmp     r0,#1
+pop     {r2,r5,pc}
+
+//==============================================================================
+.c8ffc_weld_entry:
+push    {r0-r1,lr}
+mov     r0,r4
+mov     r1,r2
+bl      m2_vwf.weld_entry
+pop     {r0-r1,pc}
+
+//==============================================================================
 .c980c_resetx:
 push    {r1,lr}
 mov     r1,#0
