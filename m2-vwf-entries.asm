@@ -284,3 +284,23 @@ pop     {r0-r1}
 add     r0,#1
 strh    r0,[r5,#0x36]
 pop     {pc}
+
+//==============================================================================
+// Prints a string in the status window
+.c0a5c_printstr:
+push    {r0-r2,lr}
+mov     r0,r1
+mov     r1,r2
+mov     r2,r3
+bl      m2_vwf.print_string
+pop     {r0-r2,pc}
+
+//==============================================================================
+// Prints an empty space instead of the "Press A for PSI info" string
+.c0a5c_psi_info_blank:
+push    {lr}
+mov     r0,#5
+mov     r1,#0xF
+mov     r2,#0x14
+bl      m2_vwf.print_blankstr
+pop     {pc}
