@@ -679,3 +679,33 @@ lsl     r2,r2,#3 // r2 = 0x1000008
 swi     #0xC // CpuFastSet
 
 pop     {r0-r3,pc}
+
+//==============================================================================
+// void print_blankstr(int x, int y, int width)
+// In:
+//    r0: x (tile)
+//    r1: y (tile)
+//    r2: width (tile)
+//==============================================================================
+
+// - prints a blank string at (x,y) of width tiles
+.print_blankstr:
+push    {r0-r5,lr}
+add     sp,#-16
+mov     r4,r0
+mov     r0,sp
+
+strh    r4,[r0,#0]
+strh    r1,[r0,#2]
+ldr     r1,=#0x44444444
+str     r1,[r0,#4]
+ldr     r1,=#0x30051EC
+ldrh    r1,[r1,#0]
+str     r1,[r0,#8]
+strh    r2,[r0,#0xC]
+mov     r2,#2
+strh    r2,[r0,#0xE]
+bl      .clear_rect
+
+add     sp,#16
+pop     {r0-r5,pc}
