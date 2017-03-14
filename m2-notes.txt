@@ -12,6 +12,36 @@ Hard-coded characters:
 - Background (tile 0x1FF)
 
 0x3000A00: Current PSI list when displaying a PSI window?
+0x3001D70: Ness EXP
+0x3001D80: Ness level
+0x3001D84: Ness max HP
+0x3001D86: Ness current HP
+0x3001D8C: Ness max PP
+0x3001D8E: Ness current PP
+0x3001D94: Ailment?
+           00: conscious
+           01: unconscious
+           02: diamondized
+           03: paralyzed
+           04: nauseous
+           05: poisoned
+           06: sunstroke
+           07: sniffling
+           08: mashroomized
+           09: possessed
+           0A: homesick
+0x3001D95: Mashroomized flag?
+0x3001D96: Sleep flag?
+0x3001D97: Strange flag?
+0x3001D98: Can't concentrate flag?
+0x3001D99: Homesick flag?
+0x3001DA3: Ness offense
+0x3001DA4: Ness defense
+0x3001DA5: Ness speed
+0x3001DA6: Ness guts
+0x3001DA7: Ness luck
+0x3001DA8: Ness vitality
+0x3001DA9: Ness IQ
 0x3001F6A: Ness PSI flags?
            0x01: Teleport alpha
            0x08: Teleport beta
