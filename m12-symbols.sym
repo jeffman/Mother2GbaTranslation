@@ -6,6 +6,11 @@
 03001F30 m2_food
 03001F3A m2_rockin
 03001F50 m2_player1
+080B8AE0 m2_psitargetwindow
+080BD7AC m2_swapwindowbuf
+080BE260 m2_strlookup
+080BE458 m2_initwindow
+080C0A5C m2_statuswindow_numbers
 080C1FBC m2_psiwindow
 080C87D0 m2_drawwindow
 080C9634 m2_printstr

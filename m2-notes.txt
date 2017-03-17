@@ -12,6 +12,7 @@ Hard-coded characters:
 - Background (tile 0x1FF)
 
 0x3000A00: Current PSI list when displaying a PSI window?
+0x3000AA2: number of party members?
 0x3001D70: Ness EXP
 0x3001D80: Ness level
 0x3001D84: Ness max HP
@@ -42,6 +43,7 @@ Hard-coded characters:
 0x3001DA7: Ness luck
 0x3001DA8: Ness vitality
 0x3001DA9: Ness IQ
+0x3001F0C: Active party member flags
 0x3001F6A: Ness PSI flags?
            0x01: Teleport alpha
            0x08: Teleport beta
@@ -80,6 +82,18 @@ Subroutines
 -----------
 
 80B8AE0: draw PSI target/PP cost window with PSI index r0
+80BD7AC: copy window buffer
+         r0 = 0: copy from primary (2028A58) to secondary (2030A40)
+         r0 = 1: copy from secondary to primary
+80BE260: compute string pointer
+         r0: pointer table
+         r1: text base
+         r2: index
+80BE458: initialize window. If text pointer == 0, also draw window borders.
+         r0: window pointer
+         r1: text pointer
+         r2: mystery halfword that gets copied to +0x2E
+80C0A5C: render numbers on status window
 80C1FBC: draw PSI window for character r0
 80C438C: check for cursor movements in PSI window
 80C87D0: draw blank window and border (r0: window pointer)
@@ -90,6 +104,8 @@ Subroutines
 80C980C: print next character (r0: window pointer)
 80CA4BC: scroll text upwards (r0: window pointer)
 80D2E94: print party character name
+80D7154: count party members and store to 3000AA2
+         then do some other stuff to the windows -- possibly drawing the HP/PP boxes?
 
 Windows
 -------
