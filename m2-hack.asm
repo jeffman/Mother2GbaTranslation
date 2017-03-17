@@ -34,6 +34,12 @@ org $80BE16A; strh r2,[r4,#0]
 org $80BE1FA; strh r2,[r6,#0]
 org $80BE222; strh r6,[r1,#0]
 
+// PSI class window size
+org     $80B7820
+mov     r1,#4
+mov     r2,#1
+mov     r3,#6
+
 //---------------------------------------------------------
 // C0A5C hacks (status window)
 //---------------------------------------------------------
