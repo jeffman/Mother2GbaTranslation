@@ -304,3 +304,34 @@ mov     r1,#0xF
 mov     r2,#0x14
 bl      m2_vwf.print_blankstr
 pop     {pc}
+
+//==============================================================================
+// Redraws the status window (when exiting the PSI submenu, etc.)
+.bac18_redraw_status:
+push    {r4,lr}
+
+ldr     r4,=#0x3005230
+ldr     r4,[r4,#0x18]
+
+// Get the address of the status text
+ldr     r0,=#0x8B17EE4
+ldr     r1,=#0x8B17424
+mov     r2,#0x11
+bl      $80BE260
+
+// Prepare the window for parsing
+mov     r1,r0
+mov     r0,r4
+mov     r2,#0
+bl      $80BE458
+
+// Render text
+mov     r0,r4
+bl      $80C8FFC
+
+// Render numbers
+mov     r0,r4
+mov     r1,#0
+bl      $80C0A5C
+
+pop     {r4,pc}

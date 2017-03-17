@@ -35,11 +35,18 @@ org $80BE1FA; strh r2,[r6,#0]
 org $80BE222; strh r6,[r1,#0]
 
 //---------------------------------------------------------
-// C0A5C (status window)
+// C0A5C hacks (status window)
 //---------------------------------------------------------
 
 incsrc m2-status-initial.asm
 incsrc m2-status-switch.asm
+
+//---------------------------------------------------------
+// BAC18 hacks (status window switching)
+//---------------------------------------------------------
+
+org $80BACFC; bl m2_vwf_entries.bac18_redraw_status
+org $80BADE6; bl m2_vwf_entries.bac18_redraw_status
 
 //---------------------------------------------------------
 // C1FBC hacks (PSI window)
