@@ -47,6 +47,7 @@ incsrc m2-status-switch.asm
 
 org $80BACFC; bl m2_vwf_entries.bac18_redraw_status
 org $80BADE6; bl m2_vwf_entries.bac18_redraw_status
+org $80BACEE; bl m2_vwf_entries.bac18_clear_psi
 
 //---------------------------------------------------------
 // C1FBC hacks (PSI window)
@@ -132,7 +133,7 @@ org $80C4F80; bl m2_vwf_entries.c4b2c_clear_left
 org $80C4F84; bl m2_vwf_entries.c4b2c_clear_right
 
 //---------------------------------------------------------
-// C980C hacks
+// C980C hacks (main character printing)
 //---------------------------------------------------------
 
 // Reset pixel X during a newline
@@ -157,7 +158,7 @@ org     $80CA48E
 nop
 
 //---------------------------------------------------------
-// C8FFC hacks
+// C8FFC hacks (main string printing)
 //---------------------------------------------------------
 
 // Custom codes check
@@ -175,21 +176,21 @@ org $80CA7AC; mov r2,#0x69
 org $80CA7EC; sub r1,#0xA0
 
 //---------------------------------------------------------
-// C87D0 hacks
+// C87D0 hacks (draw blank window)
 //---------------------------------------------------------
 
 org     $80C87DC
 bl      m2_vwf_entries.c87d0_clear_entry
 
 //---------------------------------------------------------
-// C9634 hacks
+// C9634 hacks (string printing)
 //---------------------------------------------------------
 
 org     $80C967E
 bl      m2_vwf_entries.c9634_resetx
 
 //---------------------------------------------------------
-// C96F0 hacks
+// C96F0 hacks (string printing with highlight)
 //---------------------------------------------------------
 
 org     $80C9714

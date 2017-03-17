@@ -335,3 +335,27 @@ mov     r1,#0
 bl      $80C0A5C
 
 pop     {r4,pc}
+
+//==============================================================================
+// Clears the PSI window when switching classes
+// r5 = 0x3005230
+.bac18_clear_psi:
+push    {r0,lr}
+ldr     r0,[r5,#0x20] // PSI class window pointer
+ldrb    r0,[r0,#0]
+mov     r1,#0x10
+and     r0,r1
+cmp     r0,#0
+beq     +
+
+// If flag 0x10 is set, clear the PSI window
+ldr     r0,[r5,#0x1C] // PSI window
+mov     r1,#4
+bl      m2_vwf.clear_window
+
++
+// Clobbered code
+pop     {r0}
+lsl     r0,r0,#0x10
+asr     r4,r0,#0x10
+pop     {pc}
