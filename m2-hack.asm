@@ -48,6 +48,9 @@ incsrc m2-status-switch.asm
 org $80BACFC; bl m2_vwf_entries.bac18_redraw_status
 org $80BADE6; bl m2_vwf_entries.bac18_redraw_status
 org $80BACEE; bl m2_vwf_entries.bac18_clear_psi
+org     $80BADC8
+bl      m2_vwf_entries.bac18_check_button
+b       $80BADD8
 
 //---------------------------------------------------------
 // C1FBC hacks (PSI window)
