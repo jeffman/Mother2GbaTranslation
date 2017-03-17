@@ -57,6 +57,17 @@ org $80C21B4; mov r1,#0x14
 org $80C224A; mov r1,#0x14
 org $80C229E; mov r1,#0x14
 
+// Draw PSI Rockin
+org     $80C2192
+mov     r2,r8
+str     r2,[sp,#0]
+mov     r2,#0xFD
+lsl     r2,r2,#1
+add     r0,r6,r2
+mov     r1,#0x71
+mov     r2,#8
+bl      m2_vwf.print_string
+
 //---------------------------------------------------------
 // C438C hacks (PSI window cursor movement)
 //---------------------------------------------------------
