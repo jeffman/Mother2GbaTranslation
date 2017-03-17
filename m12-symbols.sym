@@ -6,6 +6,7 @@
 03001F30 m2_food
 03001F3A m2_rockin
 03001F50 m2_player1
+08001720 m2_soundeffect
 080B8AE0 m2_psitargetwindow
 080BD7AC m2_swapwindowbuf
 080BE260 m2_strlookup

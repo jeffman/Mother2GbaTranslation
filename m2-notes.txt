@@ -47,7 +47,9 @@ Hard-coded characters:
 0x3001F6A: Ness PSI flags?
            0x01: Teleport alpha
            0x08: Teleport beta
+0x3002500: buttons being pressed
 0x30051EC: tile offset (usually 0x100)
+0x3005224: menu depth
 0x3005228: current text palette, << 0xC
 0x3005230: addresses of all 11 windows
            [00]: A menu
@@ -81,6 +83,7 @@ Code sequences
 Subroutines
 -----------
 
+8001720: play sound effect r0
 80B8AE0: draw PSI target/PP cost window with PSI index r0
 80BD7AC: copy window buffer
          r0 = 0: copy from primary (2028A58) to secondary (2030A40)
