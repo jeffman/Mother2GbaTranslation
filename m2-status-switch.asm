@@ -19,10 +19,10 @@ mov     r0,#0x10
 mov     r1,#7
 mov     r2,#3
 bl      m2_vwf.print_blankstr
-mov     r5,#6
-mul     r4,r5
-mov     r5,#147
-sub     r4,r5,r4
+mov     r3,#6
+mul     r4,r3
+mov     r3,#147
+sub     r4,r3,r4
 
 org     $80C1406
 mov     r3,#56
@@ -34,10 +34,10 @@ mov     r0,#0xC
 mov     r1,#7
 mov     r2,#3
 bl      m2_vwf.print_blankstr
-mov     r5,#6
-mul     r4,r5
-mov     r5,#120
-sub     r4,r5,r4
+mov     r3,#6
+mul     r4,r3
+mov     r3,#120
+sub     r4,r3,r4
 
 org     $80C1462
 mov     r3,#56
@@ -64,12 +64,12 @@ mov     r0,#0xC
 mov     r1,#9
 mov     r2,#3
 bl      m2_vwf.print_blankstr
-mov     r5,#6
-mul     r4,r5
-mov     r5,#120
+mov     r3,#6
+mul     r4,r3
+mov     r3,#120
 
-org     $80C1518
-sub     r2,r5,r4
+org     $80C1516
+sub     r2,r3,r4
 mov     r3,#72
 bl      m2_vwf_entries.c0a5c_printstr
 
@@ -94,10 +94,10 @@ mov     r0,#2
 mov     r1,#0xD
 mov     r2,#6
 bl      m2_vwf.print_blankstr
-mov     r3,#6
-mul     r4,r3
-mov     r3,#61
-sub     r4,r3,r4
+mov     r0,#6
+mul     r4,r0
+mov     r0,#61
+sub     r4,r0,r4
 
 org     $80C15FC
 mov     r3,#104
