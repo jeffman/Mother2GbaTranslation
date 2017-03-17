@@ -134,6 +134,10 @@ org $80C4DEE; nop
 org $80C4E68; nop
 org $80C4E76; nop
 
+// Widen the who/where/etc window
+org $80B77B4; mov r3,#5
+org $80BA9E2; mov r3,#5
+
 //---------------------------------------------------------
 // C4B2C hacks (Equip window loop)
 //---------------------------------------------------------
@@ -180,8 +184,10 @@ bl      m2_vwf_entries.c8ffc_weld_entry
 b       $80C9144
 
 // Integer-to-char changes
-org $80CA78A; mov r0,#0x60
-org $80CA7AC; mov r2,#0x69
+org $80CA67C; mov r3,#0x50 // space
+org $80CA69C; mov r2,#0x60 // zero
+org $80CA78A; mov r0,#0x60 // zero
+org $80CA7AC; mov r2,#0x69 // nine
 org $80CA7EC; sub r1,#0xA0
 
 //---------------------------------------------------------
