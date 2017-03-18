@@ -211,11 +211,21 @@ pop     {r0-r2,pc}
 
 
 //==============================================================================
-// Clear equipment when moving left/right on equip screen
+// Clear equipment and offense/defense when moving left/right on equip screen
 // r6 = window pointer
 .c4b2c_clear_left:
 mov     r0,r6
 bl      .clear_equipment
+
+// Clear offense/defense
+push    {r0-r2}
+mov     r0,#8
+mov     r2,r0
+mov     r1,#0xB
+bl      m2_vwf.print_blankstr
+add     r1,#2
+bl      m2_vwf.print_blankstr
+pop     {r0-r2}
 
 // Clobbered code
 strh    r1,[r3,#0]
@@ -225,6 +235,16 @@ bx      r0
 .c4b2c_clear_right:
 mov     r0,r6
 bl      .clear_equipment
+
+// Clear offense/defense
+push    {r0-r2}
+mov     r0,#8
+mov     r2,r0
+mov     r1,#0xB
+bl      m2_vwf.print_blankstr
+add     r1,#2
+bl      m2_vwf.print_blankstr
+pop     {r0-r2}
 
 // Clobbered code
 strh    r1,[r3,#0]
