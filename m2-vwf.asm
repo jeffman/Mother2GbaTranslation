@@ -726,3 +726,54 @@ mov     r1,sp
 bl      .weld_entry
 add     sp,#4
 pop     {r0-r1,pc}
+
+//==============================================================================
+// void copy_tile(int x1, int y1, int x2, int y2)
+// In:
+//    r0,r1: x1,y1
+//    r2,r3: x2,y2
+//==============================================================================
+
+// - copies a tile from (x1,y1) to (x2,y2)
+.copy_tile:
+push    {r0-r4,lr}
+
+// Get the source and dest tile numbers + offset
+bl      .get_tile_number
+mov     r4,r0
+mov     r0,r2
+mov     r1,r3
+bl      .get_tile_number
+mov     r3,r0
+ldr     r0,=#0x30051EC
+ldrh    r1,[r0,#0]
+add     r0,r1,r4 // source tile
+add     r1,r1,r3 // dest tile
+
+// Get VRAM addresses
+mov     r2,#6
+lsl     r2,r2,#0x18 // VRAM tile base
+lsl     r0,r0,#5
+lsl     r1,r1,#5
+add     r0,r0,r2 // VRAM source address
+add     r1,r1,r2 // VRAM dest address
+
+// Copy
+mov     r2,#8
+swi     #0xC
+
+pop     {r0-r4,pc}
+
+//==============================================================================
+// void copy_tile_up(int x, int y)
+// In:
+//    r0,r1: x,y
+//==============================================================================
+
+// - copies a tile upward by one line (16 pixels)
+.copy_tile_up:
+push    {r2-r3,lr}
+sub     r3,r1,#2
+mov     r2,r0
+bl      .copy_tile
+pop     {r2-r3,pc}

@@ -552,3 +552,93 @@ bl      m2_vwf.print_space
 ldrb    r1,[r3,#1]
 lsl     r0,r1,#1
 pop     {pc}
+
+//==============================================================================
+// Copy a tile up one line
+// r4: (x << 16) (relative)
+// r5: dest tilemap
+// r6: window
+// r7: source tilemap
+// r8: y (dest, relative)
+// r10: 3005270
+.ca4bc_copy_tile_up:
+push    {r4-r7,lr}
+
+// Four cases:
+// 1) copy blank to blank
+// 2) copy blank to non-blank
+// 3) copy non-blank to blank
+// 4) copy non-blank to non-blank
+
+// 1) we don't have to do anything: pixels are blank for source and dest,
+//    and the tilemap won't change either
+// 2) we have to erase dest pixels and set dest tilemap to 0xE2FF
+// 3) we have to copy source pixels to dest pixels and set dest tilemap
+//    to the proper tile index
+// 4) we only have to copy the source pixels to dest pixels
+
+// Check blank by comparing tilemap with 0xE2FF
+// 0xE2FF is already stored to [sp+(# of regs pushed * 4)]
+ldr     r0,[sp,#20]
+ldrh    r1,[r7,#0]
+ldrh    r2,[r5,#0]
+
+cmp     r1,r0
+bne     +
+cmp     r2,r0
+bne     .ca4bc_blank_to_nonblank
+
+// Case 1: blank to blank
+b       .ca4bc_end
+
++
+cmp     r2,r0
+bne     .ca4bc_nonblank_to_nonblank
+
+// Case 3: non-blank to blank
+.ca4bc_nonblank_to_blank:
+
+    // Copy pixels up
+    ldrh    r0,[r6,#0x22]
+    lsl     r0,r0,#16
+    add     r0,r0,r4
+    lsr     r0,r0,#16 // x
+    ldrh    r1,[r6,#0x24]
+    add     r1,r8 // dest y
+    mov     r4,r1
+    add     r1,#2 // source y
+    bl      m2_vwf.copy_tile_up
+
+    // Set proper tilemap
+    mov     r1,r4 // dest y
+    bl      m2_vwf.get_tile_number
+    ldr     r1,=#0x30051EC
+    ldrh    r2,[r1,#0]
+    add     r0,r0,r2 // dest tile number
+    ldrh    r1,[r1,#0x3C] // 0xE000
+    orr     r0,r1
+    strh    r0,[r5,#0]
+    b       .ca4bc_end
+
+// Case 2: blank to non-blank
+.ca4bc_blank_to_nonblank:
+
+    // Set dest tilemap to 0xE2FF
+    strh    r0,[r5,#0]
+
+// Case 4: non-blank to non-blank
+.ca4bc_nonblank_to_nonblank:
+
+    // Copy pixels up
+    ldrh    r0,[r6,#0x22]
+    lsl     r0,r0,#16
+    add     r0,r0,r4
+    lsr     r0,r0,#16 // x
+    ldrh    r1,[r6,#0x24]
+    add     r1,r8 // dest y
+    add     r1,#2 // source y
+    bl      m2_vwf.copy_tile_up
+    b       .ca4bc_end
+
+.ca4bc_end:
+pop     {r4-r7,pc}
