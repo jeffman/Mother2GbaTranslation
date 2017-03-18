@@ -287,6 +287,21 @@ b       $80D2F52
 // Disable X increment
 org $80D2F5A; nop
 
+//---------------------------------------------------------
+// D3934 hacks (print PSI name)
+//---------------------------------------------------------
+
+org $80D39BA; mov r0,#0x14 // PSI name length
+
+// Weld entry
+org     $80D39E2
+mov     r0,r4
+mov     r1,r5
+bl      m2_vwf.weld_entry
+b       $80D3A14
+
+// Print a space before the Greek letter
+org $80D39D4; bl m2_vwf_entries.d3934_print_space
 
 //==============================================================================
 // Data files

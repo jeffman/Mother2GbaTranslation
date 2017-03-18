@@ -501,3 +501,15 @@ bl      $80BD7F8
 
 add     sp,#4
 pop     {r1-r4,pc}
+
+//==============================================================================
+// Print a space before the Greek letter
+.d3934_print_space:
+push    {lr}
+mov     r0,r4
+bl      m2_vwf.print_space
+
+// Clobbered code
+ldrb    r1,[r3,#1]
+lsl     r0,r1,#1
+pop     {pc}

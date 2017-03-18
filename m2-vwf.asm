@@ -709,3 +709,20 @@ bl      .clear_rect
 
 add     sp,#16
 pop     {r0-r5,pc}
+
+//==============================================================================
+// void print_space(WINDOW* window)
+// In:
+//    r0: window pointer
+//==============================================================================
+
+// - prints a space character to window
+.print_space:
+push    {r0-r1,lr}
+add     sp,#-4
+mov     r1,#0x50
+str     r1,[sp,#0]
+mov     r1,sp
+bl      .weld_entry
+add     sp,#4
+pop     {r0-r1,pc}
