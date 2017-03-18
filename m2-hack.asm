@@ -201,9 +201,24 @@ org $80C4F84; bl m2_vwf_entries.c4b2c_clear_right
 // C980C hacks (main character printing)
 //---------------------------------------------------------
 
+// Reset pixel X during scroll
+org $80C9858; bl m2_vwf_entries.c980c_resetx_newline
+org $80C9BF0; bl m2_vwf_entries.c980c_resetx_scroll
+org $80C9D18; bl m2_vwf_entries.c980c_resetx_newline
+org $80CA336; bl m2_vwf_entries.c980c_resetx_newline
+
 // Reset pixel X during a newline
 org     $80C9CC4
 bl      m2_vwf_entries.c980c_resetx_newline
+
+// Other reset X
+org $80C9D62; bl m2_vwf_entries.c980c_resetx_other
+org $80C9D76; bl m2_vwf_entries.c980c_resetx_other2
+org $80C9EEC; bl m2_vwf_entries.c980c_resetx_other3
+org $80C9F34; bl m2_vwf_entries.c980c_resetx_other3
+org $80CA204; bl m2_vwf_entries.c980c_resetx_other4
+org $80CA274; bl m2_vwf_entries.c980c_resetx_other4
+org $80CA30E; bl m2_vwf_entries.c980c_resetx_newline
 
 // Custom codes check
 org     $80CA2BC
