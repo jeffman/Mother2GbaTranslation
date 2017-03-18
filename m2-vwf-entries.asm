@@ -449,3 +449,29 @@ pop     {r1}
 mov     r0,#2
 strh    r0,[r1,#0]
 pop     {pc}
+
+//==============================================================================
+// Redraw main menu when exiting PSI target window
+.b8bbc_redraw_menu:
+push    {r1-r4,lr}
+add     sp,#-4
+
+// Copied from 80B7A74
+mov     r0,#0
+str     r0,[sp,#0]
+ldr     r0,=#0x3005230
+ldr     r0,[r0,#0] // main menu window pointer
+ldr     r1,[r0,#4] // text pointer
+mov     r2,#5
+mov     r3,#2
+mov     r4,r0
+bl      $80BE4C8
+mov     r0,r4
+bl      $80C8BE4
+
+// Clobbered code (restore the window borders, etc.)
+mov     r0,#1
+bl      $80BD7AC
+
+add     sp,#4
+pop     {r1-r4,pc}

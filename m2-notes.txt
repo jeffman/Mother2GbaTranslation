@@ -97,10 +97,17 @@ Subroutines
          r0: window pointer
          r1: text pointer
          r2: mystery halfword that gets copied to +0x2E
+80BE4C8: initialize window. If text pointer == 0, also draw window borders.
+         r0: window pointer
+         r1: text pointer
+         r2: mystery byte that gets copied to +0x42
+         r3: mystery halfword that gets copied to +0x3E
+         sp+0: mystery halfword that gets copied to +0x34 and +0x40 if the window enable flag is unset
 80C0A5C: render numbers on status window
 80C1FBC: draw PSI window for character r0
 80C438C: check for cursor movements in PSI window
 80C87D0: draw blank window and border (r0: window pointer)
+80C8BE4: render main menu string to window r0
 80C8FFC: render string to window r0
 80C9634: render string (r1) to window (r0) at (x,y) (r2,r3)
 80C96F0: render string (r1) to window (r0) at (x,2y) (r2,r3) using highlight [sp]
