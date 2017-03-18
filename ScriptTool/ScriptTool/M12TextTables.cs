@@ -560,6 +560,8 @@ namespace ScriptTool
             AddAsmRef(rom, refs, index++, 0x1F514); // 0x846FB (related to using a battle item outside)
             AddAsmRef(rom, refs, index++, 0xB9C94); // 0x846FB (related to using a battle item outside)
 
+            AddAsmRef(rom, refs, index++, 0xEA978); // 0x60801 (related to recovering HP)
+
             return refs.ToArray();
         }
 

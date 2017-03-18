@@ -241,14 +241,18 @@ namespace ScriptTool
             m12Decompiler.ScanRange(m12Rom, 0x3697F, 0x8C4B0);
             strings.Add(m12Decompiler.DecompileRange(m12Rom, 0x3697F, 0x8C4B0, true));
 
-            // Update labels for all refs and write to JSON
+            // Update labels for all refs
             foreach (var refList in allRefs)
             {
                 foreach (var stringRef in refList.Item2)
                     stringRef.Label = m12Decompiler.LabelMap.Labels[stringRef.OldPointer];
+            }
 
+            // Write to JSON
+            foreach (var refList in allRefs)
+            {
                 File.WriteAllText(Path.Combine(options.WorkingDirectory, refList.Item1 + ".json"),
-                    JsonConvert.SerializeObject(refList.Item2, Formatting.Indented));
+                   JsonConvert.SerializeObject(refList.Item2, Formatting.Indented));
             }
 
             // Write the strings
