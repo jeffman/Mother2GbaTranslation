@@ -384,12 +384,6 @@ pop     {pc}
 // Only clear+redraw the PSI help if a button has been pressed
 .bac18_check_button:
 push    {lr}
-
-// Copy the thing that was on the stack from the caller
-add     sp,#-4
-ldr     r0,[sp,#8]
-str     r0,[sp,#0]
-
 ldr     r0,=#0x3002500
 ldrh    r0,[r0,#0]
 cmp     r0,#0
@@ -406,5 +400,4 @@ ldr     r0,[r5,#0x28]
 bl      $80C8BE4
 
 +
-add     sp,#4
 pop     {pc}
