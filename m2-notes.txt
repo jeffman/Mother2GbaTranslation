@@ -12,7 +12,8 @@ Hard-coded characters:
 - Background (tile 0x1FF)
 
 0x3000A00: Current PSI list when displaying a PSI window?
-0x3000AA2: number of party members?
+0x3000AA2: number of party members
+0x3001D54: Ness items (16 bits each)
 0x3001D70: Ness EXP
 0x3001D80: Ness level
 0x3001D84: Ness max HP
