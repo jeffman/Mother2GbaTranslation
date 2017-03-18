@@ -155,7 +155,11 @@ mov     r0,#0x50
 //---------------------------------------------------------
 
 // Redraw main menu when exiting PSI target window
-org $80B8E3A; bl m2_vwf_entries.b8bbc_redraw_menu
+org $80B8E3A; bl m2_vwf_entries.b8bbc_redraw_menu_2to1
+
+// Redraw main menu when entering PSI target window
+org $80B8CF8; bl m2_vwf_entries.b8bbc_redraw_menu_13to2 // 1 to 2
+org $80B920C; bl m2_vwf_entries.b8bbc_redraw_menu_13to2 // 3 to 2
 
 //---------------------------------------------------------
 // C4B2C hacks (Equip window render)

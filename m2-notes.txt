@@ -86,9 +86,12 @@ Subroutines
 
 8001720: play sound effect r0
 80B8AE0: draw PSI target/PP cost window with PSI index r0
-80BD7AC: copy window buffer
+80BD7AC: copy window buffer (primary/secondary)
          r0 = 0: copy from primary (2028A58) to secondary (2030A40)
          r0 = 1: copy from secondary to primary
+80BD7AC: copy window buffer (primary/tertiary)
+         r0 = 0: copy from primary (2028A58) to tertiary (2031248)
+         r0 = 1: copy from tertiary to primary
 80BE260: compute string pointer
          r0: pointer table
          r1: text base
