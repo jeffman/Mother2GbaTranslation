@@ -59,6 +59,47 @@ bl      m2_vwf_entries.bac18_check_button
 b       $80BADD8
 
 //---------------------------------------------------------
+// BAEF8 hacks (equip window)
+//---------------------------------------------------------
+
+// Erase offense change
+define erase_offense "mov r0,#0xC; mov r1,#0xB; mov r2,#4; bl m2_vwf.print_blankstr"
+org $80BB216; {erase_offense}
+org $80BB38C; {erase_offense}
+org $80BB4C6; {erase_offense}
+org $80BB5FC; {erase_offense}
+org $80BBAAE; {erase_offense}
+org $80BBBF6; {erase_offense}
+org $80BBD54; {erase_offense}
+
+// Erase defense change
+define erase_defense "mov r0,#0xC; mov r1,#0xD; mov r2,#4; bl m2_vwf.print_blankstr"
+org $80BB226; {erase_defense}
+org $80BBABE; {erase_defense}
+org $80BBC06; {erase_defense}
+org $80BBD64; {erase_defense}
+
+// Erase offense/defense after changing equipment
+org $80BB3E2; bl m2_vwf_entries.baef8_reequip_erase
+org $80BB518; bl m2_vwf_entries.baef8_reequip_erase
+org $80BBB12; bl m2_vwf_entries.baef8_reequip_erase
+org $80BBC70; bl m2_vwf_entries.baef8_reequip_erase
+
+//80B80EE
+
+//---------------------------------------------------------
+// C5500 hacks (equip window switching)
+//---------------------------------------------------------
+
+// Clear offense/defense changes when moving cursor
+org $80C5AA2; bl m2_vwf_entries.c5500_clear_up
+org $80C5B12; bl m2_vwf_entries.c5500_clear_down
+
+// Don't draw equip icon
+org $80C5A1A; nop
+org $80C5A28; nop
+
+//---------------------------------------------------------
 // C1FBC hacks (PSI window)
 //---------------------------------------------------------
 

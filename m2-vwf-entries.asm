@@ -401,3 +401,51 @@ bl      $80C8BE4
 
 +
 pop     {pc}
+
+//==============================================================================
+// Clear offense/defense changes when switching in equip select window
+.c5500_clear_up:
+push    {r1-r2,lr}
+mov     r0,#0xD
+mov     r1,#0xB
+mov     r2,#0x3
+bl      m2_vwf.print_blankstr
+add     r1,#2
+bl      m2_vwf.print_blankstr
+
+// Clobbered code
+sub     r0,r3,#1
+strh    r0,[r7,#0x36]
+pop     {r1-r2,pc}
+
+.c5500_clear_down:
+push    {r0-r2,lr}
+mov     r0,#0xD
+mov     r1,#0xB
+mov     r2,#0x3
+bl      m2_vwf.print_blankstr
+add     r1,#2
+bl      m2_vwf.print_blankstr
+
+// Clobbered code
+pop     {r0-r2}
+add     r0,#1
+strh    r0,[r7,#0x36]
+pop     {pc}
+
+//==============================================================================
+// Clear offense/defense when re-equipping (or un-equipping) something
+.baef8_reequip_erase:
+push    {r1,lr}
+mov     r0,#8
+mov     r1,#0xB
+mov     r2,#3
+bl      m2_vwf.print_blankstr
+add     r1,#2
+bl      m2_vwf.print_blankstr
+
+// Clobbered code
+pop     {r1}
+mov     r0,#2
+strh    r0,[r1,#0]
+pop     {pc}
