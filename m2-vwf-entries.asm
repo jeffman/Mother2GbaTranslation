@@ -439,7 +439,7 @@ pop     {pc}
 push    {r1,lr}
 mov     r0,#8
 mov     r1,#0xB
-mov     r2,#3
+mov     r2,#4
 bl      m2_vwf.print_blankstr
 add     r1,#2
 bl      m2_vwf.print_blankstr
