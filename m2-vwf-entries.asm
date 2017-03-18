@@ -642,3 +642,52 @@ bne     .ca4bc_nonblank_to_nonblank
 
 .ca4bc_end:
 pop     {r4-r7,pc}
+
+//==============================================================================
+// Erase tile (for short windows)
+// r2: 100
+// r4: (x << 16) (relative)
+// r5: dest tilemap
+// r6: window
+// r8: y (dest, relative)
+.ca4bc_erase_tile_short:
+push    {lr}
+add     sp,#-12
+
+// Clobbered code
+orr     r0,r1 // 0xE2FF
+strh    r0,[r5,#0] // dest tilemap
+
+// We need to erase the pixels
+.ca4bc_erase_tile_common:
+mov     r0,sp
+strh    r2,[r0,#8] // tile offset
+ldr     r2,=#0x44444444
+str     r2,[r0,#4] // empty row of pixels
+ldrh    r2,[r6,#0x22]
+lsl     r2,r2,#16
+add     r2,r2,r4
+lsr     r2,r2,#16 // x
+ldrh    r1,[r6,#0x24]
+add     r1,r8 // y
+strh    r2,[r0,#0]
+strh    r1,[r0,#2]
+bl      m2_vwf.clear_tile_internal
+
+add     sp,#12
+pop     {pc}
+
+//==============================================================================
+// Erase tile
+.ca4bc_erase_tile:
+push    {lr}
+add     sp,#-12
+
+// Clobbered code
+ldrh    r1,[r1,#0]
+strh    r1,[r5,#0]
+
+// We need to erase the pixels
+ldr     r2,=#0x30051EC
+ldrh    r2,[r2,#0]
+b       .ca4bc_erase_tile_common

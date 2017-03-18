@@ -292,7 +292,9 @@ b       $80C9788
 // CA4BC hacks (scroll text)
 //---------------------------------------------------------
 
+org $80CA55E; bl m2_vwf_entries.ca4bc_erase_tile_short
 org $80CA60E; bl m2_vwf_entries.ca4bc_copy_tile_up
+org $80CA626; bl m2_vwf_entries.ca4bc_erase_tile
 
 //---------------------------------------------------------
 // D2E94 hacks (print party character name)
