@@ -668,11 +668,11 @@ namespace ScriptTool
             var table = ReadFixedStringTable(rom, 0xB1B916, 0x12, 0xD);
             table.TablePointers = new int[] {
                 0xC211C,
-	            0xC22F0,
-	            0xC2398,
-	            0xC2478,
-	            0xC2528,
-	            0xD39D0
+                0xC22F0,
+                0xC2398,
+                0xC2478,
+                0xC2528,
+                0xD39D0
             };
             return table;
         }

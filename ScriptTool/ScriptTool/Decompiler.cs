@@ -129,7 +129,8 @@ namespace ScriptTool
                 }
                 else
                 {
-                    builder.Append(GetChar(rom[address++]));
+                    string str = GetChar(rom[address++]);
+                    builder.Append(str);
                 }
 
                 if (!readUntilEnd && address >= endAddress)
