@@ -67,6 +67,8 @@ Hard-coded characters:
 0x3005264: active window party member
 0x3005270: address of tilemap start in WRAM, can use this to figure out X and Y
 
+0x872E404: door destinations?
+
 LDRB Rx,[Ry,#n]: n has range 0-31 (0x0-0x1F)
 LDRH Rx,[Ry,#n]: n has range 0-62 (0x0-0x3E)
 LDR Rx,[Ry,#n]: n has range 0-124 (0x0-0x7C) (0-1020 for SP- and PC-relative)
@@ -85,6 +87,7 @@ Subroutines
 -----------
 
 8001720: play sound effect r0
+80A2E00: door-related? r0 = source, r1 = dest
 80B8AE0: draw PSI target/PP cost window with PSI index r0
 80BD7AC: copy window buffer (primary/secondary)
          r0 = 0: copy from primary (2028A58) to secondary (2030A40)
