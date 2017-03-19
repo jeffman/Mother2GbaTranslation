@@ -38,5 +38,11 @@ namespace ScriptTool
             list.Add((byte)((value >> 16) & 0xFF));
             list.Add((byte)((value >> 24) & 0xFF));
         }
+
+        public static int ReadShort(this byte[] rom, int address)
+        {
+            int value = rom[address] | (rom[address + 1] << 8);
+            return value;
+        }
     }
 }

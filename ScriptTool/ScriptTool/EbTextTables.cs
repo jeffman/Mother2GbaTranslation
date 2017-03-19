@@ -158,5 +158,137 @@ namespace ScriptTool
                 StringsLocation = 0x159589
             };
         }
+
+        public static MainStringRef[][] ReadDoors(byte[] rom)
+        {
+            var doorRefs = new List<MainStringRef>();
+            int doorConfigAddress = 0xF0000;
+
+            int[][] gaps = new int[][] {
+                new int[] { 0xF0580, 0xF05AC },
+                new int[] { 0xF05D8, 0xF05F8 },
+                new int[] { 0xF0624, 0xF0648 },
+                new int[] { 0xF0997, 0xF09B7 },
+                new int[] { 0xF0ACA, 0xF0AD2 },
+                new int[] { 0xF0DDF, 0xF0DE7 },
+                new int[] { 0xF0E34, 0xF0E58 },
+                new int[] { 0xF0EF2, 0xF0EF6 },
+                new int[] { 0xF127C, 0xF1280 },
+                new int[] { 0xF13A9, 0xF13AD },
+                new int[] { 0xF1B74, 0xF1B80 },
+                new int[] { 0xF1B8B, 0xF1BA3 },
+                new int[] { 0xF1DB3, 0xF1DD3 },
+                new int[] { 0xF1DE9, 0xF1DF5 },
+                new int[] { 0xF1F4A, 0xF1F6C },
+                new int[] { 0xF20E2, 0xF20F7 },
+                new int[] { 0xF21E9, 0xF2299 },
+                new int[] { 0xF23B7, 0xF23C3 },
+                new int[] { 0xF25A7, 0xF25BF },
+                new int[] { 0xF2643, 0xF264F } };
+
+            int index = 0;
+            while (doorConfigAddress < 0xF264F)
+            {
+                // Check if we're at a gap
+                var gapMatch = gaps.FirstOrDefault(g => g[0] == doorConfigAddress);
+                if (gapMatch != null)
+                {
+                    doorConfigAddress = gapMatch[1];
+                    continue;
+                }
+
+                // Read current door
+                int pointer = rom.ReadSnesPointer(doorConfigAddress);
+                int flag = rom.ReadShort(doorConfigAddress + 4);
+                int temp = rom.ReadShort(doorConfigAddress + 6);
+                int y = temp & 0x3FFF;
+                int direction = (temp >> 14) & 3;
+                int x = rom.ReadShort(doorConfigAddress + 8);
+                int style = rom[doorConfigAddress + 10];
+
+                doorRefs.Add(new MainStringRef
+                {
+                    Index = index,
+                    OldPointer = pointer,
+                    PointerLocation = doorConfigAddress
+                });
+
+                doorConfigAddress += 11;
+                index++;
+            }
+
+            // The first 14 gaps are just pointer arrays
+            var doorGapRefs = new List<MainStringRef>();
+            var dungeonManRefs = new List<MainStringRef>();
+            int gapIndex = 0;
+            for (int i = 0; i < 14; i++)
+            {
+                var gap = gaps[i];
+                for (int address = gap[0]; address < gap[1]; address += 4)
+                    doorGapRefs.Add(new MainStringRef
+                    {
+                        Index = gapIndex++,
+                        OldPointer = rom.ReadSnesPointer(address),
+                        PointerLocation = address
+                    });
+            }
+
+            // The 15th gap is an array of (pointer, flag), except the last element, which is just a pointer
+            for (int address = gaps[14][0]; address < gaps[14][1]; address += 6)
+                doorGapRefs.Add(new MainStringRef
+                {
+                    Index = gapIndex++,
+                    OldPointer = rom.ReadSnesPointer(address),
+                    PointerLocation = address
+                });
+
+            // 16th gap is fucky, there's a pointer at the start and two at the end, with garbage in between
+            int gapAddress = gaps[15][0];
+            doorGapRefs.Add(new MainStringRef
+            {
+                Index = gapIndex++,
+                OldPointer = rom.ReadSnesPointer(gapAddress),
+                PointerLocation = gapAddress
+            });
+            doorGapRefs.Add(new MainStringRef
+            {
+                Index = gapIndex++,
+                OldPointer = rom.ReadSnesPointer(gapAddress + 13),
+                PointerLocation = gapAddress + 13
+            });
+            doorGapRefs.Add(new MainStringRef
+            {
+                Index = gapIndex++,
+                OldPointer = rom.ReadSnesPointer(gapAddress + 17),
+                PointerLocation = gapAddress + 17
+            });
+
+            // 17th gap is Dungeon Man signs
+            int dungeonManIndex = 0;
+            for (int address = gaps[16][0]; address < gaps[16][1]; address += 4)
+            {
+                dungeonManRefs.Add(new ScriptTool.MainStringRef
+                {
+                    Index = dungeonManIndex++,
+                    OldPointer = rom.ReadSnesPointer(address),
+                    PointerLocation = address
+                });
+            }
+
+            // Remaining gaps are pointer arrays
+            for (int i = 17; i < 20; i++)
+            {
+                var gap = gaps[i];
+                for (int address = gap[0]; address < gap[1]; address += 4)
+                    doorGapRefs.Add(new MainStringRef
+                    {
+                        Index = gapIndex++,
+                        OldPointer = rom.ReadSnesPointer(address),
+                        PointerLocation = address
+                    });
+            }
+
+            return new MainStringRef[][] { doorRefs.ToArray(), doorGapRefs.ToArray(), dungeonManRefs.ToArray() };
+        }
     }
 }

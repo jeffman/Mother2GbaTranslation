@@ -1,0 +1,560 @@
+[
+  {
+    "Index": 0,
+    "PointerLocation": 984448,
+    "OldPointer": 549708,
+    "Label": "L5474"
+  },
+  {
+    "Index": 1,
+    "PointerLocation": 984452,
+    "OldPointer": 549785,
+    "Label": "L5475"
+  },
+  {
+    "Index": 2,
+    "PointerLocation": 984456,
+    "OldPointer": 555888,
+    "Label": "L5476"
+  },
+  {
+    "Index": 3,
+    "PointerLocation": 984460,
+    "OldPointer": 549850,
+    "Label": "L5477"
+  },
+  {
+    "Index": 4,
+    "PointerLocation": 984464,
+    "OldPointer": 555934,
+    "Label": "L5478"
+  },
+  {
+    "Index": 5,
+    "PointerLocation": 984468,
+    "OldPointer": 549913,
+    "Label": "L5479"
+  },
+  {
+    "Index": 6,
+    "PointerLocation": 984472,
+    "OldPointer": 555983,
+    "Label": "L5480"
+  },
+  {
+    "Index": 7,
+    "PointerLocation": 984476,
+    "OldPointer": 549937,
+    "Label": "L5481"
+  },
+  {
+    "Index": 8,
+    "PointerLocation": 984480,
+    "OldPointer": 549991,
+    "Label": "L5482"
+  },
+  {
+    "Index": 9,
+    "PointerLocation": 984484,
+    "OldPointer": 550007,
+    "Label": "L5483"
+  },
+  {
+    "Index": 10,
+    "PointerLocation": 984488,
+    "OldPointer": 550019,
+    "Label": "L5484"
+  },
+  {
+    "Index": 11,
+    "PointerLocation": 984536,
+    "OldPointer": 556021,
+    "Label": "L5485"
+  },
+  {
+    "Index": 12,
+    "PointerLocation": 984540,
+    "OldPointer": 550055,
+    "Label": "L5486"
+  },
+  {
+    "Index": 13,
+    "PointerLocation": 984544,
+    "OldPointer": 550118,
+    "Label": "L5487"
+  },
+  {
+    "Index": 14,
+    "PointerLocation": 984548,
+    "OldPointer": 556061,
+    "Label": "L5488"
+  },
+  {
+    "Index": 15,
+    "PointerLocation": 984552,
+    "OldPointer": 556119,
+    "Label": "L5489"
+  },
+  {
+    "Index": 16,
+    "PointerLocation": 984556,
+    "OldPointer": 550161,
+    "Label": "L5490"
+  },
+  {
+    "Index": 17,
+    "PointerLocation": 984560,
+    "OldPointer": 550186,
+    "Label": "L5491"
+  },
+  {
+    "Index": 18,
+    "PointerLocation": 984564,
+    "OldPointer": 549497,
+    "Label": "L145"
+  },
+  {
+    "Index": 19,
+    "PointerLocation": 984612,
+    "OldPointer": 551639,
+    "Label": "L5492"
+  },
+  {
+    "Index": 20,
+    "PointerLocation": 984616,
+    "OldPointer": 551696,
+    "Label": "L5493"
+  },
+  {
+    "Index": 21,
+    "PointerLocation": 984620,
+    "OldPointer": 556543,
+    "Label": "L5494"
+  },
+  {
+    "Index": 22,
+    "PointerLocation": 984624,
+    "OldPointer": 556543,
+    "Label": "L5494"
+  },
+  {
+    "Index": 23,
+    "PointerLocation": 984628,
+    "OldPointer": 556543,
+    "Label": "L5494"
+  },
+  {
+    "Index": 24,
+    "PointerLocation": 984632,
+    "OldPointer": 556599,
+    "Label": "L5495"
+  },
+  {
+    "Index": 25,
+    "PointerLocation": 984636,
+    "OldPointer": 556543,
+    "Label": "L5494"
+  },
+  {
+    "Index": 26,
+    "PointerLocation": 984640,
+    "OldPointer": 556543,
+    "Label": "L5494"
+  },
+  {
+    "Index": 27,
+    "PointerLocation": 984644,
+    "OldPointer": 425024,
+    "Label": "L5496"
+  },
+  {
+    "Index": 28,
+    "PointerLocation": 985495,
+    "OldPointer": 550347,
+    "Label": "L5497"
+  },
+  {
+    "Index": 29,
+    "PointerLocation": 985499,
+    "OldPointer": 556172,
+    "Label": "L5498"
+  },
+  {
+    "Index": 30,
+    "PointerLocation": 985503,
+    "OldPointer": 556216,
+    "Label": "L5499"
+  },
+  {
+    "Index": 31,
+    "PointerLocation": 985507,
+    "OldPointer": 556249,
+    "Label": "L5500"
+  },
+  {
+    "Index": 32,
+    "PointerLocation": 985511,
+    "OldPointer": 550427,
+    "Label": "L5501"
+  },
+  {
+    "Index": 33,
+    "PointerLocation": 985515,
+    "OldPointer": 550499,
+    "Label": "L5502"
+  },
+  {
+    "Index": 34,
+    "PointerLocation": 985519,
+    "OldPointer": 550537,
+    "Label": "L5503"
+  },
+  {
+    "Index": 35,
+    "PointerLocation": 985523,
+    "OldPointer": 552281,
+    "Label": "L5504"
+  },
+  {
+    "Index": 36,
+    "PointerLocation": 985802,
+    "OldPointer": 550228,
+    "Label": "L5505"
+  },
+  {
+    "Index": 37,
+    "PointerLocation": 985806,
+    "OldPointer": 550248,
+    "Label": "L5506"
+  },
+  {
+    "Index": 38,
+    "PointerLocation": 986591,
+    "OldPointer": 550973,
+    "Label": "L5507"
+  },
+  {
+    "Index": 39,
+    "PointerLocation": 986595,
+    "OldPointer": 552180,
+    "Label": "L5508"
+  },
+  {
+    "Index": 40,
+    "PointerLocation": 986676,
+    "OldPointer": 550701,
+    "Label": "L5509"
+  },
+  {
+    "Index": 41,
+    "PointerLocation": 986680,
+    "OldPointer": 556319,
+    "Label": "L5510"
+  },
+  {
+    "Index": 42,
+    "PointerLocation": 986684,
+    "OldPointer": 550931,
+    "Label": "L5511"
+  },
+  {
+    "Index": 43,
+    "PointerLocation": 986688,
+    "OldPointer": 556436,
+    "Label": "L5512"
+  },
+  {
+    "Index": 44,
+    "PointerLocation": 986692,
+    "OldPointer": 550791,
+    "Label": "L5513"
+  },
+  {
+    "Index": 45,
+    "PointerLocation": 986696,
+    "OldPointer": 550853,
+    "Label": "L5514"
+  },
+  {
+    "Index": 46,
+    "PointerLocation": 986700,
+    "OldPointer": 556468,
+    "Label": "L5515"
+  },
+  {
+    "Index": 47,
+    "PointerLocation": 986704,
+    "OldPointer": 550643,
+    "Label": "L5516"
+  },
+  {
+    "Index": 48,
+    "PointerLocation": 986708,
+    "OldPointer": 550621,
+    "Label": "L5517"
+  },
+  {
+    "Index": 49,
+    "PointerLocation": 986866,
+    "OldPointer": 446567,
+    "Label": "L5518"
+  },
+  {
+    "Index": 50,
+    "PointerLocation": 987772,
+    "OldPointer": 555787,
+    "Label": "L5519"
+  },
+  {
+    "Index": 51,
+    "PointerLocation": 988073,
+    "OldPointer": 404771,
+    "Label": "L5520"
+  },
+  {
+    "Index": 52,
+    "PointerLocation": 990068,
+    "OldPointer": 551085,
+    "Label": "L5521"
+  },
+  {
+    "Index": 53,
+    "PointerLocation": 990072,
+    "OldPointer": 551168,
+    "Label": "L5522"
+  },
+  {
+    "Index": 54,
+    "PointerLocation": 990076,
+    "OldPointer": 551265,
+    "Label": "L5523"
+  },
+  {
+    "Index": 55,
+    "PointerLocation": 990091,
+    "OldPointer": 551461,
+    "Label": "L5524"
+  },
+  {
+    "Index": 56,
+    "PointerLocation": 990095,
+    "OldPointer": 551602,
+    "Label": "L5525"
+  },
+  {
+    "Index": 57,
+    "PointerLocation": 990099,
+    "OldPointer": 551603,
+    "Label": "L5526"
+  },
+  {
+    "Index": 58,
+    "PointerLocation": 990103,
+    "OldPointer": 552360,
+    "Label": "L5527"
+  },
+  {
+    "Index": 59,
+    "PointerLocation": 990107,
+    "OldPointer": 552443,
+    "Label": "L5528"
+  },
+  {
+    "Index": 60,
+    "PointerLocation": 990111,
+    "OldPointer": 472982,
+    "Label": "L83"
+  },
+  {
+    "Index": 61,
+    "PointerLocation": 990643,
+    "OldPointer": 553301,
+    "Label": "L5529"
+  },
+  {
+    "Index": 62,
+    "PointerLocation": 990647,
+    "OldPointer": 553334,
+    "Label": "L5530"
+  },
+  {
+    "Index": 63,
+    "PointerLocation": 990651,
+    "OldPointer": 553394,
+    "Label": "L5531"
+  },
+  {
+    "Index": 64,
+    "PointerLocation": 990655,
+    "OldPointer": 553421,
+    "Label": "L5532"
+  },
+  {
+    "Index": 65,
+    "PointerLocation": 990659,
+    "OldPointer": 553364,
+    "Label": "L5533"
+  },
+  {
+    "Index": 66,
+    "PointerLocation": 990663,
+    "OldPointer": 553449,
+    "Label": "L5534"
+  },
+  {
+    "Index": 67,
+    "PointerLocation": 990667,
+    "OldPointer": 552509,
+    "Label": "L5535"
+  },
+  {
+    "Index": 68,
+    "PointerLocation": 990671,
+    "OldPointer": 552116,
+    "Label": "L5536"
+  },
+  {
+    "Index": 69,
+    "PointerLocation": 990697,
+    "OldPointer": 572305,
+    "Label": "L5537"
+  },
+  {
+    "Index": 70,
+    "PointerLocation": 990701,
+    "OldPointer": 551389,
+    "Label": "L5538"
+  },
+  {
+    "Index": 71,
+    "PointerLocation": 990705,
+    "OldPointer": 572370,
+    "Label": "L5539"
+  },
+  {
+    "Index": 72,
+    "PointerLocation": 991050,
+    "OldPointer": 553474,
+    "Label": "L4675"
+  },
+  {
+    "Index": 73,
+    "PointerLocation": 991056,
+    "OldPointer": 602048,
+    "Label": "L5540"
+  },
+  {
+    "Index": 74,
+    "PointerLocation": 991062,
+    "OldPointer": 602215,
+    "Label": "L5541"
+  },
+  {
+    "Index": 75,
+    "PointerLocation": 991068,
+    "OldPointer": 602318,
+    "Label": "L5542"
+  },
+  {
+    "Index": 76,
+    "PointerLocation": 991074,
+    "OldPointer": 602153,
+    "Label": "L5543"
+  },
+  {
+    "Index": 77,
+    "PointerLocation": 991080,
+    "OldPointer": 602270,
+    "Label": "L5544"
+  },
+  {
+    "Index": 78,
+    "PointerLocation": 991458,
+    "OldPointer": 634483,
+    "Label": "L5545"
+  },
+  {
+    "Index": 79,
+    "PointerLocation": 991471,
+    "OldPointer": 602414,
+    "Label": "L5546"
+  },
+  {
+    "Index": 80,
+    "PointerLocation": 991475,
+    "OldPointer": 602497,
+    "Label": "L5547"
+  },
+  {
+    "Index": 81,
+    "PointerLocation": 992183,
+    "OldPointer": 555827,
+    "Label": "L5548"
+  },
+  {
+    "Index": 82,
+    "PointerLocation": 992187,
+    "OldPointer": 555862,
+    "Label": "L5549"
+  },
+  {
+    "Index": 83,
+    "PointerLocation": 992191,
+    "OldPointer": 555872,
+    "Label": "L5550"
+  },
+  {
+    "Index": 84,
+    "PointerLocation": 992679,
+    "OldPointer": 551358,
+    "Label": "L5551"
+  },
+  {
+    "Index": 85,
+    "PointerLocation": 992683,
+    "OldPointer": 551371,
+    "Label": "L5552"
+  },
+  {
+    "Index": 86,
+    "PointerLocation": 992687,
+    "OldPointer": 490587,
+    "Label": "L5553"
+  },
+  {
+    "Index": 87,
+    "PointerLocation": 992691,
+    "OldPointer": 490628,
+    "Label": "L5554"
+  },
+  {
+    "Index": 88,
+    "PointerLocation": 992695,
+    "OldPointer": 490680,
+    "Label": "L5555"
+  },
+  {
+    "Index": 89,
+    "PointerLocation": 992699,
+    "OldPointer": 490704,
+    "Label": "L5556"
+  },
+  {
+    "Index": 90,
+    "PointerLocation": 992835,
+    "OldPointer": 621365,
+    "Label": "L5557"
+  },
+  {
+    "Index": 91,
+    "PointerLocation": 992839,
+    "OldPointer": 551317,
+    "Label": "L5558"
+  },
+  {
+    "Index": 92,
+    "PointerLocation": 992843,
+    "OldPointer": 509342,
+    "Label": "L3055"
+  }
+]

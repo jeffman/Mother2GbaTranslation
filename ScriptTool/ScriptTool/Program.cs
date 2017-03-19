@@ -194,6 +194,13 @@ namespace ScriptTool
                 ebDecompiler.ScanRange(ebRom, range[0], range[1]);
             }
 
+            // Bit of a hack for now -- to avoid messing up label order, add new refs *after* scanning the ROM
+            var doorStuff = EbTextTables.ReadDoors(ebRom);
+            allRefs.Add(Tuple.Create("eb-doors", doorStuff[0]));
+            allRefs.Add(Tuple.Create("eb-doorgaps", doorStuff[1]));
+            allRefs.Add(Tuple.Create("eb-dungeonman", doorStuff[2]));
+            ebDecompiler.LabelMap.AddRange(allRefs.Skip(9).SelectMany(r1 => r1.Item2).Select(r => r.OldPointer));
+
             foreach (var range in textRanges)
             {
                 strings.Add(ebDecompiler.DecompileRange(ebRom, range[0], range[1], true));
