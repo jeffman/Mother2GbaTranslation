@@ -2011,98 +2011,98 @@
 ^L2016^@Drained [AC FF] HP[01 FF]  from [AD FF]![02 FF][00 FF]
 ^L2017^@Drained [AC FF] PP[01 FF]  from [AD FF]![02 FF][00 FF]
 ^L2018^@[AD FF] lost[01 FF]  [AC FF] PP![02 FF][00 FF]
-^L2019^
-^L2020^
-^L2021^
-^L2022^
-^L2023^
-^L2024^
-^L2025^
-^L2026^
-^L2027^
-^L2028^
-^L2029^
-^L2030^
-^L2031^
-^L2032^
-^L2033^
-^L2034^
-^L2035^
-^L2036^
-^L2037^
-^L2038^
-^L2039^
-^L2040^
-^L2041^
-^L2042^
-^L2043^
-^L2044^
-^L2045^
-^L2046^
-^L2047^
-^L2048^
-^L2049^
-^L2050^
-^L2051^
-^L2052^
-^L2053^
-^L2054^
-^L2055^
-^L2056^
-^L2057^
-^L2058^
-^L2059^
-^L2060^
-^L2061^
-^L2062^
-^L2063^
-^L2064^
-^L2065^
-^L2066^
-^L2067^
-^L2068^
-^L2069^
-^L2070^
-^L2071^
-^L2072^
-^L2073^
-^L2074^
-^L2075^
-^L2076^
-^L2077^
-^L2078^
-^L2079^
-^L2080^
-^L2081^
-^L2082^
-^L2083^
-^L2084^
-^L2085^
-^L2086^
-^L2087^
-^L2088^
-^L2089^
-^L2090^
-^L2091^
-^L2092^
-^L2093^
-^L2094^
-^L2095^
-^L2096^
-^L2097^
-^L2098^
-^L2099^
-^L2100^
-^L2101^
-^L2102^
-^L2103^
-^L2104^
-^L2105^
-^L2106^
-^L2107^
-^L2108^
-^L2109^
-^L2110^
+^L2019^@[9F FF] felt sick[01 FF]  and took [AC FF] HP damage![02 FF][00 FF]
+^L2020^@[AD FF] felt pain[01 FF]  from the poison[02 FF]  and took [AC FF] HP damage.[02 FF][00 FF]
+^L2021^@[AD FF] felt dizzy[01 FF]  and weak and received [AC FF] HP damage![02 FF][00 FF]
+^L2022^@[AD FF] sneezed[01 FF]  and received [AC FF] HP damage![02 FF][00 FF]
+^L2023^@[AD FF] recovered[01 FF]  [AC FF] HP![D4 FF 24 00][02 FF][00 FF]
+^L2024^@[AD FF] recovered[01 FF]  [AC FF] PP![D4 FF 24 00][02 FF][00 FF]
+^L2025^@[AD FF]'s[01 FF]  Offense is [AC FF]![02 FF][00 FF]
+^L2026^@Defense is [AC FF]![02 FF][00 FF]
+^L2027^@Vulnerable to PSI Fire![02 FF][00 FF]
+^L2028^@Vulnerable to PSI Freeze![02 FF][00 FF]
+^L2029^@Vulnerable to PSI Flash![02 FF][00 FF]
+^L2030^@Vulnerable to Paralysis![02 FF][00 FF]
+^L2031^@Open to Hypnosis![02 FF][00 FF]
+^L2032^@Susceptible to Brain Shock.[02 FF][00 FF]
+^L2033^@Yikes! [9F FF] turned into[01 FF]  [AD FF]![02 FF][00 FF]
+^L2034^@[9F FF] could not turn[01 FF]  into [AD FF]![02 FF][00 FF]
+^L2035^@[AD FF] was[01 FF]  diamondized![D4 FF 53 00][02 FF][00 FF]
+^L2036^@[AD FF]'s body[01 FF]  became numb![D4 FF 53 00][02 FF][00 FF]
+^L2037^@[AD FF] felt[01 FF]  somewhat nauseous...[D4 FF 53 00][02 FF][00 FF]
+^L2038^@[AD FF] got[01 FF]  poisoned![D4 FF 53 00][02 FF][00 FF]
+^L2039^@[AD FF] caught a cold![D4 FF 53 00][02 FF][00 FF]
+^L2040^@[AD FF] began to[01 FF]  feel strange![D4 FF 53 00][02 FF][00 FF]
+^L2041^@[AD FF] was[01 FF]  possessed by a mini-ghost![D4 FF 53 00][02 FF][00 FF]
+^L2042^@[AD FF] could not[01 FF]  stop crying![D4 FF 53 00][02 FF][00 FF]
+^L2043^@[AD FF] suddenly[01 FF]  could not move![D4 FF 53 00][02 FF][00 FF]
+^L2044^@[AD FF]'s body[01 FF]  solidified![D4 FF 53 00][02 FF][00 FF]
+^L2045^@[AD FF] was[01 FF]  not able to concentrate![D4 FF 53 00][02 FF]@[AD FF] was[01 FF]  not able to use PSI![02 FF][00 FF]
+^L2046^@[AD FF] felt[01 FF]  a little strange...[D4 FF 53 00][02 FF][00 FF]
+^L2047^@[AD FF] fell[01 FF]  asleep![D4 FF 53 00][02 FF][00 FF]
+^L2048^@[AD FF] got hurt and collapsed...[D4 FF 20 00][02 FF][00 FF]
+^L2049^@[AD FF]'s body[01 FF]  returned to normal![D4 FF 25 00][02 FF][00 FF]
+^L2050^@[AD FF]'s[01 FF]  numbness is gone![D4 FF 25 00][02 FF][00 FF]
+^L2051^@[AD FF] felt[01 FF]  much better![D4 FF 25 00][02 FF][00 FF]
+^L2052^@The poison was removed from[01 FF]  [AD FF]'s body![D4 FF 25 00][02 FF][00 FF]
+^L2053^@[AD FF] got over[01 FF]  the cold![D4 FF 25 00][02 FF][00 FF]
+^L2054^@[AD FF] finally[01 FF]  stopped crying...[D4 FF 25 00][02 FF][00 FF]
+^L2055^@[AD FF]'s body[01 FF]  again moved freely![D4 FF 25 00][02 FF][00 FF]
+^L2056^@[AD FF] went[01 FF]  back to normal![D4 FF 25 00][02 FF][00 FF]
+^L2057^@[AD FF]'s[01 FF]  sunstroke was cured![D4 FF 25 00][02 FF][00 FF]
+^L2058^@[AD FF] woke up![D4 FF 25 00][02 FF][00 FF]
+^L2059^@[AD FF] was[01 FF]  able to concentrate![D4 FF 25 00][02 FF][00 FF]
+^L2060^@[AD FF] was revived![D4 FF 25 00][02 FF][00 FF]
+^L2061^@It didn't work...[02 FF][00 FF]
+^L2062^@[AD FF]'s body was protected by the shield of light![02 FF][00 FF]
+^L2063^@[AD FF]'s shield became stronger![02 FF][00 FF]
+^L2064^@[AD FF]'s body was protected by the power shield![02 FF][00 FF]
+^L2065^@[AD FF]'s power shield became stronger![02 FF][00 FF]
+^L2066^@[AD FF]'s body was protected by the psychic shield![02 FF][00 FF]
+^L2067^@[AD FF]'s psychic shield became stronger![02 FF][00 FF]
+^L2068^@[AD FF]'s body was protected by[02 FF]  the psychic power shield![02 FF][00 FF]
+^L2069^@[AD FF]'s psychic power shield became stronger![02 FF][00 FF]
+^L2070^@[AD FF]'s shield[01 FF]  disappeared![02 FF][00 FF]
+^L2071^@The power shield[01 FF]  deflected the attack![D4 FF 5D 00][1B FF 1E 00][02 FF][00 FF]
+^L2072^@The psychic power shield[01 FF]  deflected [C1 FF][87 FF][2D FF]![D4 FF 5D 00][02 FF][00 FF]
+^L2073^@[AD FF]'s psychic shield made [C1 FF][87 FF][2D FF] disappear![02 FF][00 FF]
+^L2074^@The effects of PSI on[01 FF]  [AD FF] is gone![D4 FF 29 00][02 FF][00 FF]
+^L2075^@[10 FF] returned[01 FF]  to his original form![02 FF][00 FF]
+^L2076^@The Franklin Badge deflected[01 FF]  the lightning![D4 FF 5D 00][02 FF][00 FF]
+^L2077^@[AD FF]'s offense[01 FF]  went up by [AC FF]![D4 FF 28 00][02 FF][00 FF]
+^L2078^@[AD FF]'s defense[01 FF]  went up by [AC FF]![D4 FF 28 00][02 FF][00 FF]
+^L2079^@[AD FF]'s IQ[01 FF]  went up by [AC FF]![D4 FF 28 00][02 FF][00 FF]
+^L2080^@[AD FF]'s guts[01 FF]  went up by [AC FF]![D4 FF 28 00][02 FF][00 FF]
+^L2081^@[AD FF]'s guts[01 FF]  went down by [AC FF]![D4 FF 29 00][02 FF][00 FF]
+^L2082^@Amazingly enough,[01 FF]  [AD FF]'s guts became [AC FF]![D4 FF 28 00][02 FF][00 FF]
+^L2083^@[AD FF]'s speed[01 FF]  went up by [AC FF]![D4 FF 28 00][02 FF][00 FF]
+^L2084^@[AD FF]'s vitality[01 FF]  went up by [AC FF]![D4 FF 28 00][02 FF][00 FF]
+^L2085^@[AD FF]'s luck[01 FF]  went up by [AC FF]![D4 FF 28 00][02 FF][00 FF]
+^L2086^@[AD FF]'s offense[01 FF]  went down by [AC FF]![D4 FF 29 00][02 FF][00 FF]
+^L2087^@[AD FF]'s defense[01 FF]  went down by [AC FF]![D4 FF 29 00][02 FF][00 FF]
+^L2088^@[9F FF] opened[01 FF]  the jar of <Fly Honey>![02 FF]@Master Belch grabbed[01 FF]  the <Fly Honey>![02 FF][00 FF]
+^L2089^@[9F FF] opened[01 FF]  the jar of <Fly Honey>![02 FF]@It didn't smell like[01 FF]  something they would like![02 FF][00 FF]
+^L2090^@Not enough PP![02 FF][00 FF]
+^L2091^@It didn't hit anyone![02 FF][00 FF]
+^L2092^@[AD FF] does not[01 FF]  have any PP![02 FF][00 FF]
+^L2093^[FC FF 2A 00][1B FF 50 00]@So, isn't this terrifying?[1B FF 1E 00][01 FF]  I'm terrified, too.[22 FF][01 FF]@Giygas cannot think[01 FF]  rationally any more,[22 FF][01 FF]@and he isn't even aware[01 FF]  of what he is doing now.[22 FF][01 FF]@His own mind was destroyed[01 FF]  by his incredible power.[22 FF][01 FF]@What an all-mighty idiot![1B FF 1E 00][22 FF][01 FF]@Yep, that's what he is![22 FF][01 FF]@Heh heh heh heh...[1B FF 1E 00][01 FF]  and you... you will be...[1B FF 1E 00][01 FF]  just another meal to him![1B FF 96 00][C7 FF][FC FF 2B 00][69 FF][00 FF]
+^L2094^[C7 FF][FC FF 2A 00][69 FF][1B FF 3C 00]@Heh heh heh heh.[1B FF 1E 00][01 FF]  You must really be[01 FF]  at the end of your rope.[22 FF][01 FF]@In this bizarre dimension,[01 FF]  you four are the only force[01 FF]  fighting for justice...[22 FF][01 FF]@And here you stand,[22 FF][01 FF]@waiting to be burned up with all[01 FF]  the rest of the garbage of[01 FF]  this universe...[22 FF][01 FF]@Haaaaah![1B FF 1E 00][01 FF]  That's so sad. I can't help[01 FF]  but shed a tear.[22 FF][01 FF]@You know, my heart is beating[01 FF]  incredibly fast,[1B FF 1E 00][01 FF][22 FF][01 FF]@...I must be experiencing[01 FF]  absolute terror![22 FF][01 FF]@Do you want to scream for[01 FF]  help here in the dark?![22 FF][01 FF]@Ha ha ha ha ha![22 FF][01 FF]@Why not call your mommy,[01 FF]  [0D FF]![22 FF][01 FF]@Say, <Mommy!  Daddy![01 FF]  I'm so frightened!  [1B FF 1E 00]I think[01 FF]  I'm gonna wet my pants!>[22 FF][01 FF]@I know you have telepathy, or[01 FF]  something, so just try and call[01 FF]  for help,[22 FF][01 FF]@you pathetically weak[01 FF]  heroes of so-called justice![22 FF][01 FF]@No one will help you now![22 FF][01 FF]@Ha ha ha haah...[22 FF][01 FF]@Don't worry, your pitiful[01 FF]  suffering will be over soon![1B FF 96 00][C7 FF][FC FF 2B 00][00 FF]
+^L2095^[C7 FF][FC FF 2A 00][1B FF 3C 00]@[0D FF]![1B FF 1E 00] Now, I...[01 FF]  well... [1B FF 14 00]It's going to seem like[01 FF]  I'm running away.[22 FF][01 FF]@But perhaps I'll just sneak away[01 FF]  to another era to think about[01 FF]  my next plan.[22 FF][01 FF]@It's a good bet that we will see[01 FF]  each other again...[22 FF][1B FF 1E 00][01 FF]@All right!  I'll be seeing you![22 FF][01 FF]@So now which one of us do you[01 FF]  think is the cool guy?![1B FF 96 00][D4 FF 41 00][C7 FF][FC FF 2B 00][00 FF]
+^L2096^[1B FF 3C 00]@[0E FF]'s call[1B FF 1E 00][01 FF]  was absorbed[1B FF 1E 00][01 FF]  by the darkness.[1B FF 96 00][C6 FF][00 FF]
+^L2097^[1B FF 3C 00]@[0E FF] and her friends'[01 FF]  calls touched the heart of[BC FF 01 00]^L3608^[67 FF][82 FF _L3606_][87 FF][F6 FF 63 00][DD FF 3C 00 00 00 00 00 00 00][82 FF _L3607_][1F FF 00 00]^L3612^[C0 FF][80 FF _L3608_]
+^L2098^[1B FF 3C 00]@[BC FF 01 00]^L3616^[67 FF][82 FF _L3614_][87 FF][F6 FF 63 00][DD FF 28 00 00 00 00 00 00 00][82 FF _L3615_][1F FF 00 00]^L3617^[C0 FF][80 FF _L3616_]
+^L2099^[1B FF 3C 00]@[BC FF 01 00]^L3620^[67 FF][82 FF _L3618_][87 FF][F6 FF 63 00][DD FF 14 00 00 00 00 00 00 00][82 FF _L3619_][1F FF 00 00]^L3621^[C0 FF][80 FF _L3620_]
+^L2100^[1B FF 3C 00]@[2E FF] kept praying.[1B FF 96 00][C6 FF][00 FF]
+^L2101^@Giygas' defense became[01 FF]  unstable.[D4 FF 5A 00][1B FF 46 00][D4 FF 5A 00][1B FF 41 00][D4 FF 5A 00][1B FF 4A 00][D4 FF 5A 00][00 FF]
+^L2102^@[AD FF] joined the battle.[02 FF][00 FF]
+^L2103^@[AD FF] started[01 FF]  to grow.[02 FF][00 FF]
+^L2104^@But no one came.[02 FF][00 FF]
+^L2105^@But, the seed didn't sprout.[02 FF][00 FF]
+^L2106^[C4 FF 00 62]@Time started again.[02 FF][00 FF]
+^L2107^@Here is a chance[01 FF]  for a surprise opening attack![02 FF][00 FF]
+^L2108^@Here is [9F FF]'s opening attack![02 FF][00 FF]
+^L2109^[68 FF][C4 FF 00 05][01 FF]              [21 FF][1B FF 78 00]^L3625^[FC FF 11 00][81 FF _L3622_]^L3624^[02 FF]@[C2 FF][1A FF 05 00][86 FF _L3623_] gained [AC FF] exp.[22 FF][00 FF]
+^L2110^[68 FF][C4 FF 00 B8][01 FF]              [21 FF][1B FF 78 00][80 FF _L3625_]
 ^L2111^
 ^L2112^
 ^L2113^
@@ -3345,26 +3345,16 @@
 ^L3603^
 ^L3604^
 ^L3605^
-^L3606^
-^L3607^
-^L3608^
-^L3609^
-^L3610^
-^L3611^
-^L3612^
-^L3613^
-^L3614^
-^L3615^
-^L3616^
-^L3617^
-^L3618^
-^L3619^
-^L3620^
-^L3621^
+^L3606^.[22 FF][1B FF 78 00][68 FF]@[BC FF 01 00]^L3611^[67 FF][82 FF _L3609_][87 FF][F6 FF 63 00][DD FF 3C 00 00 00 00 00 00 00][82 FF _L3610_][1F FF 00 00]^L3613^[C0 FF][80 FF _L3611_]
+^L3607^[80 FF _L3612_]
+^L3609^[1B FF 1E 00] prayed for the kids,[01 FF]  having never even met them[01 FF]  before.[1B FF 96 00][C6 FF][00 FF]
+^L3610^[80 FF _L3613_]
+^L3614^[1B FF 1E 00] kept praying.[1B FF 96 00][C6 FF][00 FF]
+^L3615^[80 FF _L3617_]
+^L3618^[1B FF 1E 00] kept praying.[1B FF 96 00][C6 FF][00 FF]
+^L3619^[80 FF _L3621_]
 ^L3622^[EE FF 01 00 06 00 02 00][80 FF _L3624_]
 ^L3623^
-^L3624^
-^L3625^
 ^L3626^
 ^L3627^
 ^L3628^
