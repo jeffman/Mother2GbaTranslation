@@ -53,7 +53,7 @@
             this.lineOpsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.copyCodesButton = new System.Windows.Forms.Button();
             this.previewButton = new System.Windows.Forms.Button();
-            this.previewer = new ScriptToolGui.StringPreviewer();
+            this.translateButton = new System.Windows.Forms.Button();
             this.codeSplitContainer = new System.Windows.Forms.SplitContainer();
             this.codeList = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,6 +65,7 @@
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.writeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.writeTimer = new System.Windows.Forms.Timer(this.components);
+            this.previewer = new ScriptToolGui.StringPreviewer();
             this.mainMenu.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
@@ -121,7 +122,7 @@
             this.checkCompletionMenu,
             this.autosaveMenu});
             this.toolsMenu.Name = "toolsMenu";
-            this.toolsMenu.Size = new System.Drawing.Size(48, 20);
+            this.toolsMenu.Size = new System.Drawing.Size(47, 20);
             this.toolsMenu.Text = "Tools";
             // 
             // resolveDuplicateLabelsMenu
@@ -337,6 +338,7 @@
             this.lineOpsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lineOpsPanel.Controls.Add(this.copyCodesButton);
             this.lineOpsPanel.Controls.Add(this.previewButton);
+            this.lineOpsPanel.Controls.Add(this.translateButton);
             this.lineOpsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lineOpsPanel.Location = new System.Drawing.Point(0, 489);
             this.lineOpsPanel.Name = "lineOpsPanel";
@@ -363,18 +365,15 @@
             this.previewButton.UseVisualStyleBackColor = true;
             this.previewButton.Click += new System.EventHandler(this.previewButton_Click);
             // 
-            // previewer
+            // translateButton
             // 
-            this.previewer.AutoScroll = true;
-            this.previewer.CharLookup = null;
-            this.previewer.DisplayedString = null;
-            this.previewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.previewer.Location = new System.Drawing.Point(0, 0);
-            this.previewer.M12Compiler = null;
-            this.previewer.MaxWidth = 0;
-            this.previewer.Name = "previewer";
-            this.previewer.Size = new System.Drawing.Size(796, 133);
-            this.previewer.TabIndex = 0;
+            this.translateButton.Location = new System.Drawing.Point(214, 3);
+            this.translateButton.Name = "translateButton";
+            this.translateButton.Size = new System.Drawing.Size(114, 23);
+            this.translateButton.TabIndex = 2;
+            this.translateButton.Text = "Google Translate";
+            this.translateButton.UseVisualStyleBackColor = true;
+            this.translateButton.Click += new System.EventHandler(this.translateButton_Click);
             // 
             // codeSplitContainer
             // 
@@ -500,6 +499,18 @@
             this.writeTimer.Interval = 10000;
             this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
             // 
+            // previewer
+            // 
+            this.previewer.AutoScroll = true;
+            this.previewer.CharLookup = null;
+            this.previewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previewer.Location = new System.Drawing.Point(0, 0);
+            this.previewer.M12Compiler = null;
+            this.previewer.MaxWidth = 0;
+            this.previewer.Name = "previewer";
+            this.previewer.Size = new System.Drawing.Size(796, 133);
+            this.previewer.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -584,6 +595,7 @@
         private System.Windows.Forms.Button prevButton;
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.ToolStripMenuItem autosaveMenu;
+        private System.Windows.Forms.Button translateButton;
     }
 }
 

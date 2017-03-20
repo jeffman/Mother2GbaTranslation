@@ -18,30 +18,16 @@ namespace ScriptToolGui
 
         public int MaxWidth { get; set; }
 
-        private string text;
-        public string DisplayedString
-        {
-            get
-            {
-                return text;
-            }
-            set
-            {
-                text = value;
-                Redraw();
-            }
-        }
-
         public StringPreviewer()
         {
             InitializeComponent();
         }
 
-        private void Redraw()
+        private void RedrawFancy(string str)
         {
             stringPanel.Controls.Clear();
 
-            if (M12Compiler == null || CharLookup == null || text == null)
+            if (M12Compiler == null || CharLookup == null || str == null)
             {
                 return;
             }
@@ -49,7 +35,7 @@ namespace ScriptToolGui
             try
             {
                 IList<int> widths;
-                IList<string> parsed = M12Compiler.FormatPreviewM12(text, out widths, CharLookup);
+                IList<string> parsed = M12Compiler.FormatPreviewM12(str, out widths, CharLookup);
 
                 for (int i = 0; i < parsed.Count; i++)
                 {
@@ -76,6 +62,29 @@ namespace ScriptToolGui
 
                 stringPanel.Controls.Add(errLabel);
             }
+        }
+
+        private void RedrawPlain(string str)
+        {
+            stringPanel.Controls.Clear();
+
+            if (str == null)
+                return;
+
+            var label = new Label
+            {
+                AutoSize = true,
+                Text = str
+            };
+            stringPanel.Controls.Add(label);
+        }
+
+        public void DisplayString(string str, bool fancy)
+        {
+            if (fancy)
+                RedrawFancy(str);
+            else
+                RedrawPlain(str);
         }
     }
 }

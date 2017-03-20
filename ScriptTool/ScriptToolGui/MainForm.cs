@@ -23,6 +23,7 @@ namespace ScriptToolGui
         static Compiler ebCompiler = new Compiler(EbControlCode.Codes, (rom, address) => rom[address] < 0x20);
         static readonly Game[] validGames;
         static IDictionary<byte, string> ebCharLookup;
+        static IDictionary<byte, string> m12CharLookup;
 
         // Lookups
         Dictionary<Game, TextBox> textboxLookup;
@@ -64,12 +65,13 @@ namespace ScriptToolGui
         {
             validGames = new Game[] { Game.Eb, Game.M12, Game.M12English };
             ebCharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("eb-char-lookup.json"));
+            m12CharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("m12-char-lookup.json"));
         }
 
         string ReadEbString(byte[] rom, int address, int length)
         {
             var sb = new StringBuilder();
-            for(int i=0;i<length && rom[address] != 0; i++)
+            for (int i = 0; i < length && rom[address] != 0; i++)
             {
                 sb.Append((char)(rom[address++] - 0x30));
             }
@@ -730,7 +732,7 @@ namespace ScriptToolGui
             if (collectionSelector.SelectedIndex == -1)
             {
                 groupSelector.Items.Clear();
-                previewer.DisplayedString = null;
+                previewer.DisplayString(null, false);
             }
             else
             {
@@ -765,7 +767,7 @@ namespace ScriptToolGui
 
         private void previewButton_Click(object sender, EventArgs e)
         {
-            previewer.DisplayedString = m12StringEnglish.Text;
+            previewer.DisplayString(m12StringEnglish.Text, true);
         }
 
         private void m12StringEnglish_MouseClick(object sender, MouseEventArgs e)
@@ -932,6 +934,55 @@ namespace ScriptToolGui
         private void autosaveMenu_Click(object sender, EventArgs e)
         {
             writeTimer.Enabled = autosaveMenu.Checked;
+        }
+
+        private void translateButton_Click(object sender, EventArgs e)
+        {
+            string toTranslate = StripCodes(m12String.Text);
+            Translate(toTranslate);
+        }
+
+        private void Translate(string toTranslate)
+        {
+            var builder = new StringBuilder();
+            builder.Append("https://translate.google.com/#ja/en/");
+
+            var bytes = Encoding.UTF8.GetBytes(toTranslate);
+            foreach (byte b in bytes)
+            {
+                builder.Append('%');
+                builder.Append(b.ToString("X2"));
+            }
+
+            System.Diagnostics.Process.Start(builder.ToString());
+        }
+
+        private string StripCodes(string str)
+        {
+            var builder = new StringBuilder();
+            bool inCode = false;
+            foreach(char c in str)
+            {
+                if (c == '[')
+                {
+                    inCode = true;
+                }
+                else if (c == ']')
+                {
+                    inCode = false;
+                    builder.Append(' ');
+                }
+                else if (c == '^')
+                {
+                    inCode = !inCode;
+                }
+                else
+                {
+                    if (!inCode)
+                        builder.Append(c);
+                }
+            }
+            return builder.ToString();
         }
     }
 
