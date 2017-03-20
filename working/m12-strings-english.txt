@@ -1566,7 +1566,7 @@
 ^L1571^[A3 FF 13 00][9E FF][A4 FF 13 00][80 FF _L16_]
 ^L1572^[08 FF 77 01][C5 FF][84 FF 16 00 40 00 01 00][00 FF]
 ^L1573^
-^L1574^
+^L1574^[D4 FF 22 00]@Just missed![02 FF][00 FF]
 ^L1575^[1C FF FB 02 _L4041_][74 FF][D4 FF 08 00][A0 FF D0 07 14 00 01 00][86 FF _L4040_][84 FF 11 00 FA 02 01 00][85 FF 16 00 06 00][D4 FF 09 00][CA FF][DB FF 11 00 01 00 01 00][CE FF 11 00 00 00][C3 FF 01 02 11 00][D8 FF 01 00 00 00][EA FF FF 00][1B FF 01 00][A4 FF 11 00][08 FF 61 00][08 FF 2D 01][09 FF 27 01][08 FF D3 01][08 FF 13 02][09 FF D9 01][86 FF _L16_][C6 FF][00 FF]
 ^L1576^@[AD FF]'s HP are[01 FF]  maxed out![D4 FF 24 00][02 FF][00 FF]
 ^L1577^
@@ -1995,22 +1995,22 @@
 ^L2000^
 ^L2001^
 ^L2002^
-^L2003^
-^L2004^
-^L2005^
-^L2006^
-^L2007^
+^L2003^[D4 FF 2E 00]@[AC FF] HP of damage[01 FF]  to [AD FF]![02 FF][00 FF]
+^L2004^[D4 FF 1E 00]@[AC FF] HP of damage[01 FF]  to [AD FF]![02 FF][00 FF]
+^L2005^[D4 FF 2E 00]@[AC FF] HP of damage[01 FF]  to [AD FF]![02 FF][00 FF]
+^L2006^[D4 FF 1E 00]@[AC FF] HP of damage[01 FF]  to [AD FF]![02 FF][00 FF]
+^L2007^[D4 FF 2F 00]@[AC FF] HP of mortal damage[01 FF]  to [AD FF]![02 FF][00 FF]
 ^L2008^[D4 FF 1F 00][20 FF][02 FF][00 FF]
 ^L2009^[20 FF][D4 FF 2F 00][02 FF][00 FF]
-^L2010^
-^L2011^
-^L2012^
-^L2013^
-^L2014^
-^L2015^
-^L2016^
-^L2017^
-^L2018^
+^L2010^[D4 FF 23 00]@[AD FF] dodged[01 FF]  quickly![02 FF][00 FF]
+^L2011^@It did not work[01 FF]  on [AD FF]![02 FF][00 FF]
+^L2012^@It had no visible effect[01 FF]  on [AD FF]![02 FF][00 FF]
+^L2013^[D4 FF 22 00]@...narrowly missed[01 FF]  hitting the target![02 FF][00 FF]
+^L2014^@But [AD FF] was[01 FF]  already gone...[02 FF][00 FF]
+^L2015^@[9F FF] drained their own HP![02 FF][00 FF]
+^L2016^@Drained [AC FF] HP[01 FF]  from [AD FF]![02 FF][00 FF]
+^L2017^@Drained [AC FF] PP[01 FF]  from [AD FF]![02 FF][00 FF]
+^L2018^@[AD FF] lost[01 FF]  [AC FF] PP![02 FF][00 FF]
 ^L2019^
 ^L2020^
 ^L2021^
