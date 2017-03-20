@@ -134,6 +134,7 @@ org $80C48B2; bl m2_vwf_entries.c438c_moveleft
 
 // PSI target length hack
 org $80B8B12; mov r0,#0x14
+org $80C24EE; mov r1,#0x14
 
 // Fix PSI target offset calculation
 org $80B8B08
