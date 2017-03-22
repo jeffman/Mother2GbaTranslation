@@ -70,7 +70,7 @@
       "OffsetLocation": 11639436,
       "OldPointer": 11639116,
       "Old": "     すてる       すてない[00 FF]",
-      "New": "     tbd9[00 FF]"
+      "New": "     Throw away     Don't do it[00 FF]"
     },
     {
       "Index": 10,

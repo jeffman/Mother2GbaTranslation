@@ -2101,39 +2101,39 @@
 ^L2106^[C4 FF 00 62]@Time started again.[02 FF][00 FF]
 ^L2107^@Here is a chance[01 FF]  for a surprise opening attack![02 FF][00 FF]
 ^L2108^@Here is [9F FF]'s opening attack![02 FF][00 FF]
-^L2109^[68 FF][C4 FF 00 05][01 FF]              [21 FF][1B FF 78 00]^L3625^[FC FF 11 00][81 FF _L3622_]^L3624^[02 FF]@[C2 FF][1A FF 05 00][86 FF _L3623_] gained [AC FF] exp.[22 FF][00 FF]
-^L2110^[68 FF][C4 FF 00 B8][01 FF]              [21 FF][1B FF 78 00][80 FF _L3625_]
-^L2111^
-^L2112^
-^L2113^
-^L2114^
-^L2115^
-^L2116^
-^L2117^
-^L2118^
-^L2119^
-^L2120^
-^L2121^
-^L2122^
-^L2123^
+^L2109^a[68 FF]b[C4 FF 00 05]c[01 FF]d              [21 FF]e[1B FF 78 00]f^L3625^g[FC FF 11 00]h[81 FF _L3622_]i^L3624^j[02 FF]@[C2 FF]k[1A FF 05 00]l[86 FF _L3623_] gained [AC FF] exp.[22 FF][00 FF]
+^L2110^[68 FF]u[C4 FF 00 B8]t[01 FF]              [21 FF]s[1B FF 78 00]r[80 FF _L3625_]
+^L2111^[68 FF]j[01 FF]k              [21 FF][1B FF 5A 00]@[C2 FF]l[1A FF 05 00]m[86 FF _L3623_] gained [AC FF] exp[22 FF][00 FF]
+^L2112^[1B FF 0A 00][C4 FF 00 07] lost the battle...[22 FF][00 FF]
+^L2113^@[AD FF]'s level is[01 FF]  now [AC FF]![22 FF][00 FF]
+^L2114^@[86 FF _L3626_]Offense went up by [AC FF]![22 FF][00 FF]
+^L2115^[86 FF _L3626_]Defense went up by [AC FF]![22 FF][00 FF]
+^L2116^[86 FF _L3626_]Speed went up by [AC FF]![22 FF][00 FF]
+^L2117^[86 FF _L3626_]Guts went up by [AC FF]![22 FF][00 FF]
+^L2118^[86 FF _L3626_]Vitality went up by [AC FF]![22 FF][00 FF]
+^L2119^[86 FF _L3626_]IQ went up by [AC FF]![22 FF][00 FF]
+^L2120^[86 FF _L3626_]Luck went up by [AC FF]![22 FF][00 FF]
+^L2121^[86 FF _L3627_]Maximum HP went up by [AC FF]![22 FF][00 FF]
+^L2122^[86 FF _L3628_]Maximum PP went up by [AC FF]![22 FF][00 FF]
+^L2123^[D4 FF 67 00][C1 FF][87 FF]@[AD FF] realized the power of[01 FF]  [2D FF].[22 FF][00 FF]
 ^L2124^@The enemy left a present![22 FF][01 FF][D4 FF 10 00][1B FF 01 00]@Inside the present,[01 FF][C1 FF][87 FF]  there was a [90 FF 00][1A FF 02 00]![22 FF][01 FF][91 FF FF][82 FF _L3632_][88 FF][86 FF _L3633_][81 FF _L3634_][89 FF][87 FF]@[90 FF 00][1A FF 01 00] took it.[93 FF 00 00][D4 FF 74 00][22 FF][00 FF]
 ^L2125^@[9F FF] saw[01 FF]  a present behind the enemy.[02 FF][D4 FF 10 00]@Inside the present,[01 FF][C1 FF][87 FF]  there was a [90 FF 00][1A FF 02 00].[02 FF]@[90 FF 03][1A FF 01 00] takes it.[93 FF 03 00][D4 FF 74 00][02 FF][00 FF]
-^L2126^
-^L2127^
+^L2126^@Escargo Express![02 FF]@<We treat your package like it[01 FF]  was our only child>...[02 FF]@I'm here with your Pencil[01 FF]  Eraser.[02 FF][91 FF FF][82 FF _L4022_][93 FF 00 AA][D4 FF 76 00]@Here you are.[02 FF]@Thank you very much![1D FF][09 FF B6 02][09 FF B4 02][C6 FF][86 FF _L4023_][86 FF _L4024_][00 FF]
+^L2127^@Escargo Express.[02 FF]@<We treat your package like it[01 FF]  was our only child>...[02 FF]@I'm here to deliver[01 FF]  the (????).[91 FF FF][82 FF _L4025_][93 FF 00 A9][D4 FF 76 00]@Here you are.[02 FF]@Thank you very much![1D FF][C6 FF][09 FF B7 02][09 FF B5 02][86 FF _L4023_][86 FF _L4024_][00 FF]
 ^L2128^[09 FF B6 02][09 FF F2 02][00 FF]
 ^L2129^[09 FF B7 02][09 FF F2 02][00 FF]
-^L2130^
+^L2130^[A0 FF F1 03 2C 02 01 00][9E FF]@The Magic Butterfly made[01 FF]  [C2 FF][1A FF 05 00] relax.[1D FF][C6 FF][A6 FF F1 03 2D 02][00 FF]
 ^L2131^[08 FF D5 01][08 FF 0B 00][CB FF FF 00 06 00][A0 FF D0 07 85 00 01 00][86 FF _L4040_][14 FF 0D 00][A0 FF D0 07 86 00 01 00][86 FF _L4040_][14 FF 0E 00][A0 FF D0 07 87 00 01 00][86 FF _L4040_][08 FF DD 01][08 FF 14 02][08 FF ED 02][14 FF 0F 00][A3 FF 1A 00][1B FF 78 00][1B FF 78 00][1B FF 78 00][1B FF 78 00][1B FF 78 00][1B FF 3C 00][A1 FF 1A 00 B3 00][A0 FF D0 07 89 00 01 00][09 FF 14 02][08 FF 15 02][C5 FF][9E FF][85 FF 1A 00 06 00][CC FF FF 00 01 00][A6 FF D0 07 8A 00][C9 FF D0 07][EB FF FF 00][9E FF][CA FF][08 FF DC 01][09 FF DD 01][09 FF D5 01][7F FF][00 FF]
-^L2132^
+^L2132^@While delivering pizza, this[01 FF]   weird guy asked me to[01 FF]  help him out...[02 FF]@He wanted me to deliver this to[01 FF]  someone named [0D FF].[02 FF]@...who is wandering around[01 FF]  Threed.[02 FF]@No one else knows about this,[01 FF]  right?[02 FF]@Let's just pretend that you're[01 FF]  [0D FF],[1B FF 0F 00] and I'll give this[01 FF]  to you.[02 FF]@Oh![1B FF 0F 00]  Hello, [0D FF]![02 FF]@I made the decision that you're[01 FF]  [0D FF],[1B FF 0F 00] no matter[01 FF]  what...[02 FF][91 FF FF][82 FF _L4227_][01 FF]^L4232^[93 FF 00 A6][86 FF _L2238_][02 FF]@That's right, [0D FF]...[01 FF]  *wink, wink*[02 FF]@I've done my duty and given[01 FF]  you Apple Kid's thingamajig...[02 FF]@Well, goodbye!...[02 FF][C6 FF][09 FF A3 02][08 FF 28 02][86 FF _L4023_][09 FF F2 02][00 FF]
 ^L2133^[CF FF 08 00][00 FF]
 ^L2134^[09 FF BE 01][08 FF E2 00][86 FF _L4899_][09 FF E2 00][86 FF _L4024_][00 FF]
 ^L2135^[09 FF 86 02][08 FF E3 00][86 FF _L4899_][09 FF E3 00][86 FF _L4024_][00 FF]
 ^L2136^[09 FF 87 02][08 FF E4 00][86 FF _L4899_][09 FF E4 00][86 FF _L4024_][00 FF]
 ^L2137^[09 FF 88 02][08 FF E5 00][86 FF _L4899_][09 FF E5 00][86 FF _L4024_][00 FF]
-^L2138^
+^L2138^[86 FF _L4937_][09 FF BE 01][09 FF 86 02][09 FF 87 02][09 FF 88 02]@Hello![01 FF]  (gasp... pant...)[02 FF]@I saw your sign[01 FF]  (gasp... pant...),[02 FF]@and thought I should stop by[01 FF]  and buy something.[02 FF]@I tried and tried to find it[01 FF]  (gasp... pant...)[01 FF]  but no such luck.[02 FF]@I think you should give this up[01 FF]  and go home.[02 FF]@If you took your business more[01 FF]  seriously,[02 FF]@you would be more considerate[01 FF]  of your customers![02 FF][86 FF _L4938_][09 FF F2 02][00 FF]
 ^L2139^[00 FF]
-^L2140^
-^L2141^
+^L2140^[86 FF _L4002_][09 FF B5 00][09 FF 85 02][86 FF _L4937_]@Hello![01 FF]  This is Escargo Express.[01 FF]  (hee, ha, he, ha)[02 FF]@I just (hee, ha, he, ha)[01 FF]  couldn't find your location...[02 FF]@...You must be somewhere[01 FF]  really strange.[01 FF]  (hee, ha, he, ha)[02 FF]@I've decided, honestly, that...[01 FF]  I should give up.[02 FF]@I'm outta here.[01 FF]  (hee, ha, he, ha)[02 FF]@Sometimes this happens,[01 FF]  you know?[02 FF][86 FF _L4938_][86 FF _L4024_][00 FF]
+^L2141^[09 FF B4 00][09 FF B3 00][86 FF _L4937_]@Hello![01 FF]  This is Mach Pizza.[01 FF]  (hee, ha, he, ha)[02 FF]@...You must be somewhere[01 FF]  really strange,[01 FF]  (hee, ha, he, ha)...[02 FF]@I couldn't deliver the pizza.[01 FF]  The pizza got really cold and[01 FF] hard, and my legs are tired...[02 FF]@I am going to give up and[01 FF]  go back.[02 FF]@...I hope I can find the way[01 FF]  home...[01 FF]  (hee, ha, he, ha)[02 FF][86 FF _L4938_][86 FF _L4024_][00 FF]
 ^L2142^
 ^L2143^
 ^L2144^
@@ -3354,24 +3354,18 @@
 ^L3618^[1B FF 1E 00] kept praying.[1B FF 96 00][C6 FF][00 FF]
 ^L3619^[80 FF _L3621_]
 ^L3622^[EE FF 01 00 06 00 02 00][80 FF _L3624_]
-^L3623^
+^L3623^[96 FF 02]z[81 FF _L3643_]y[8D FF 02 00]x[92 FF 00 01 02]w[81 FF _L3643_]each^L3643^v[00 FF]
 ^L3626^
 ^L3627^
 ^L3628^
 ^L3629^
 ^L3630^
 ^L3631^
-^L3632^
-^L3634^
-^L3635^
-^L3636^
-^L3637^
-^L3638^
-^L3639^
+^L3632^@But, [C2 FF][1A FF 05 00] cannot carry anymore stuff.[22 FF][01 FF]^L3639^@Do you want to throw[01 FF]  something away?[03 FF 18 00][04 FF _L3635_][05 FF _L3636_]^L3636^[C1 FF][87 FF]@Then, will you leave[01 FF]  the [90 FF 00][1A FF 02 00] behind?[03 FF 18 00][04 FF _L3637_][05 FF _L3638_]^L3638^[22 FF][01 FF][80 FF _L3639_]^L3637^[C2 FF][1A FF 05 00][01 FF][90 FF 00][1A FF 02 00][22 FF][00 FF]
+^L3634^[8D FF 01 00][87 FF]@[90 FF 00][1A FF 01 00] added[89 FF][87 FF] the [90 FF 00][1A FF 01 00] to[01 FF]  [87 FF][90 FF 00][1A FF 02 00]'s stuff.[93 FF 00 00][D4 FF 74 00][22 FF][00 FF]
+^L3635^@What do you want to throw away?[22 FF][86 FF _L3640_][01 FF][82 FF _L3636_][88 FF][AB FF 00 00][B7 FF 00][82 FF _L3641_][89 FF][AB FF 00 00][90 FF 00]@So you want to throw away the [1A FF 02 00]?[03 FF 09 00][04 FF _L3642_][05 FF _L3636_][80 FF _L3636_]^L3642^[89 FF][B9 FF 00 00 00 00][87 FF]@[90 FF 00][1A FF 01 00] threw the [87 FF][90 FF 00][1A FF 02 00]away[02 FF]@and took the [87 FF][C1 FF][87 FF][90 FF 00][1A FF 02 00].[93 FF 00 00][D4 FF 74 00][1B FF 01 00][02 FF][00 FF]
 ^L3640^[96 FF 02][81 FF _L5044_][80 FF _L5044_]
 ^L3641^
-^L3642^
-^L3643^
 ^L3644^@You're much stronger *whirrr*[01 FF]  than our intelligence indicated...[02 FF]@We were not *beep* prepared[01 FF]  for that eventuality...[02 FF]@The Prophecy from the *click*[01 FF]  Apple of Enlightenment may be[01 FF]  true...[02 FF]@but you must not *whirrr*[01 FF]  underestimate us.[02 FF][C6 FF][00 FF]
 ^L3645^[C6 FF][1B FF 3C 00][C4 FF 00 91][1B FF 8C 00][A0 FF D1 07 62 00 01 00][1B FF 01 00][C9 FF D1 07][EB FF FF 00][A0 FF D0 07 28 02 01 00][FC FF 38 00][9E FF][CA FF][EA FF FF 00][A5 FF D1 07 06 00][FC FF 37 00][1B FF 04 00][FC FF 38 00][FC FF 2F 00][FC FF 39 00][CD FF 1B 00 04 00 B4 00][8D FF 01 00][A8 FF 00][C4 FF 00 C5]@When you defeated the[01 FF]  Starman DX, the Stonehenge[01 FF]  base ceased functioning.[02 FF][C6 FF][08 FF 46 00][08 FF 7E 00][08 FF 33 00][08 FF 37 00][08 FF FE 02][C5 FF][83 FF DB 00][82 FF _L2197_][08 FF 1A 02][00 FF]
 ^L3646^
@@ -3735,10 +3729,10 @@
 ^L4019^
 ^L4020^
 ^L4021^
-^L4022^
+^L4022^@You've really got too much[01 FF]  stuff already.[02 FF]@I hope I can deliver this to you[01 FF]  soon![02 FF][C6 FF][09 FF B6 02][86 FF _L4023_][86 FF _L4024_][00 FF]
 ^L4023^[A3 FF 1F 05][9E FF][00 FF]
 ^L4024^[1C FF 0B 03 _L2197_][09 FF F2 02][00 FF]
-^L4025^
+^L4025^@Looks like you've got too much stuff already.[02 FF]@I hope I can deliver this to you soon![02 FF][C6 FF][09 FF B7 02][86 FF _L4023_][86 FF _L4024_][00 FF]
 ^L4026^
 ^L4027^@Woof Woof![02 FF]@I'm Ruffini the dog.[02 FF]@Here comes the spirit of the[01 FF]  game designer again...[02 FF]@Ruff![02 FF]@(You're finally almost to the[01 FF]  end of the game.[02 FF]@If you want to tell me[01 FF]  your comments on this game,[02 FF]@you may write to me using[01 FF]  Nintendo's address on the box.[02 FF]@Send your comments attention[01 FF]  EarthBound, Ruffini the dog.[02 FF]@Now, get ready for the ending![02 FF]@It's all that's left... Enjoy it![02 FF]@Bow woow wow![02 FF]@Well, I told you some[01 FF]  strange info again...[02 FF]@I'll go back to being a[01 FF]  normal dog now...)[02 FF]@Woof![1D FF][00 FF]
 ^L4030^
@@ -3919,12 +3913,9 @@
 ^L4224^
 ^L4225^
 ^L4226^
-^L4227^
-^L4228^
-^L4229^
-^L4230^
-^L4231^
-^L4232^
+^L4227^@You have too much stuff, so I[01 FF]  can't give this to you...[02 FF]@Why don't you get rid of[01 FF]  something?[03 FF 00 00][04 FF _L4228_][05 FF _L4229_]^L4229^@Look, this is really important![02 FF]@You've got to dump something!![03 FF 00 00][04 FF _L4228_][05 FF _L4230_][80 FF _L4230_]^L4228^[86 FF _L2489_][82 FF _L4229_][88 FF][AB FF 00 00][B7 FF 00][82 FF _L4231_][89 FF][B9 FF 00 00 00 00][80 FF _L4232_]
+^L4230^@All righty, I'm just going to[01 FF]  hang out around here, then.[02 FF]@Ya gotta have some space for[01 FF]  this thing by the time I come[01 FF]  back, okay?[02 FF][C6 FF][86 FF _L4023_][09 FF F2 02][00 FF]
+^L4231^@Hang on![1B FF 14 00]  That's way too cool[01 FF]  to just throw away![1B FF 14 00]  Keep it![02 FF][80 FF _L4228_]
 ^L4233^
 ^L4234^
 ^L4235^
@@ -5124,7 +5115,7 @@
 ^L5526^[8D FF 01 00][87 FF]@([90 FF 00][1A FF 01 00] added the[01 FF] [87 FF][AB FF 00 00] [90 FF 00][1A FF 02 00] to[01 FF] [89 FF][87 FF] [90 FF 00][1A FF 01 00]'s stuff.)[00 FF]
 ^L5527^[6A FF 01 00][00 FF]
 ^L5531^[09 FF 7F 01][09 FF 1E 02][09 FF 1F 02][08 FF 0A 03][1C FF F4 02 _L5529_][09 FF F2 02][09 FF 0B 03]^L5529^[00 FF]
-^L5530^
+^L5530^@click!  Beeeeeeep...[1D FF][D4 FF 0B 00][00 FF]
 ^L5532^[1C FF 0E 00 _L5536_][83 FF 80 00][82 FF _L5536_][BC FF 03 00][A8 FF 01][00 FF]
 ^L5533^
 ^L5534^
