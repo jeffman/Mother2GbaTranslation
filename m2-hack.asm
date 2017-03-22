@@ -312,6 +312,32 @@ b       $80D2F52
 org $80D2F5A; nop
 
 //---------------------------------------------------------
+// D30C4 hacks (print number)
+//---------------------------------------------------------
+
+org     $80D314A
+mov     r0,r5
+mov     r1,r7
+bl      m2_vwf.weld_entry
+b       $80D3178
+
+// Disable X increment
+org $80D3180; nop
+
+//---------------------------------------------------------
+// D332C hacks (print name)
+//---------------------------------------------------------
+
+org     $80D34E8
+mov     r0,r5
+mov     r1,r4
+bl      m2_vwf.weld_entry
+b       $80D3514
+
+// Disable X increment
+org $80D351A; nop
+
+//---------------------------------------------------------
 // D3934 hacks (print PSI name)
 //---------------------------------------------------------
 
@@ -326,6 +352,15 @@ b       $80D3A14
 
 // Print a space before the Greek letter
 org $80D39D4; bl m2_vwf_entries.d3934_print_space
+
+// Allocate extra space for enemy names
+org $80DB04E; add sp,#-0x20
+org $80DB058; mov r2,#0x1E
+org $80DB08C; mov r2,#0x1A
+org $80DB116; mov r1,#0x1E
+org $80DB15A; app sp,#0x20
+
+//80DB116: length of name + end code
 
 //==============================================================================
 // Data files
