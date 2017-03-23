@@ -52,6 +52,7 @@
     <Compile Include="CommandOptions.cs" />
     <Compile Include="EbControlCode.cs" />
     <Compile Include="FixedStringCollection.cs" />
+    <Compile Include="HardcodedString.cs" />
     <Compile Include="ICompiler.cs" />
     <Compile Include="IControlCode.cs" />
     <Compile Include="IDecompiler.cs" />

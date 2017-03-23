@@ -1,0 +1,151 @@
+[
+  {
+    "OldPointer": 11662440,
+    "PointerLocations": [
+      901040,
+      901792,
+      901904,
+      902848,
+      903040,
+      903208,
+      903408,
+      903652,
+      919016
+    ],
+    "Old": "たたく[00 FF]",
+    "New": "Bash[00 FF]"
+  },
+  {
+    "OldPointer": 11662447,
+    "PointerLocations": [
+      901400
+    ],
+    "Old": "グッズ[00 FF]",
+    "New": "Goods[00 FF]"
+  },
+  {
+    "OldPointer": 11662454,
+    "PointerLocations": [
+      901412
+    ],
+    "Old": "オ-ト[00 FF]",
+    "New": "Auto Fight[00 FF]"
+  },
+  {
+    "OldPointer": 11662461,
+    "PointerLocations": [
+      901612
+    ],
+    "Old": "PSI[00 FF]",
+    "New": "PSI[00 FF]"
+  },
+  {
+    "OldPointer": 11662468,
+    "PointerLocations": [],
+    "Old": "ガ-ド[00 FF]",
+    "New": "Defend[00 FF]"
+  },
+  {
+    "OldPointer": 11662477,
+    "PointerLocations": [
+      901624
+    ],
+    "Old": "る[00 FF]",
+    "New": "batl1[00 FF]"
+  },
+  {
+    "OldPointer": 11662482,
+    "PointerLocations": [
+      901084
+    ],
+    "Old": "うつ[00 FF]",
+    "New": "batl2[00 FF]"
+  },
+  {
+    "OldPointer": 11662489,
+    "PointerLocations": [
+      901428
+    ],
+    "Old": "チェック[00 FF]",
+    "New": "batl3[00 FF]"
+  },
+  {
+    "OldPointer": 11662496,
+    "PointerLocations": [],
+    "Old": "にげる[00 FF]",
+    "New": "Run Away[00 FF]"
+  },
+  {
+    "OldPointer": 11662503,
+    "PointerLocations": [
+      901632
+    ],
+    "Old": "へんしん[00 FF]",
+    "New": "Mirror[00 FF]"
+  },
+  {
+    "OldPointer": 11662521,
+    "PointerLocations": [
+      901384,
+      902804,
+      902996,
+      903164,
+      903364,
+      903600,
+      918972
+    ],
+    "Old": "なにもしない[00 FF]",
+    "New": "Do Nothing[00 FF]"
+  },
+  {
+    "OldPointer": 11662542,
+    "PointerLocations": [
+      904268
+    ],
+    "Old": "どのてきに?:[00 FF]",
+    "New": "batl4[00 FF]"
+  },
+  {
+    "OldPointer": 11662551,
+    "PointerLocations": [
+      904440
+    ],
+    "Old": "ぜんれつ[00 FF]",
+    "New": "batl5[00 FF]"
+  },
+  {
+    "OldPointer": 11662557,
+    "PointerLocations": [
+      904444
+    ],
+    "Old": "こうれつ[00 FF]",
+    "New": "batl6[00 FF]"
+  },
+  {
+    "OldPointer": 11662563,
+    "PointerLocations": [
+      904272
+    ],
+    "Old": "            [00 FF]",
+    "New": "batl7[00 FF]"
+  },
+  {
+    "OldPointer": 11662577,
+    "PointerLocations": [
+      919436,
+      919748,
+      920200,
+      920432
+    ],
+    "Old": " こうげき[01 FF] かいふく[01 FF] アシスト[00 FF]",
+    "New": "batl8[00 FF]"
+  },
+  {
+    "OldPointer": 11662584,
+    "PointerLocations": [
+      904272
+    ],
+    "Old": " かいふく[01 FF] アシスト[00 FF]",
+    "New": "batl9[00 FF]"
+  }
+]

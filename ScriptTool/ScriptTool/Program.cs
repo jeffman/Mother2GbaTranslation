@@ -434,6 +434,11 @@ namespace ScriptTool
 
             // PSI targets
             CompileM12FixedStringCollection("m12-psitargets", ref referenceAddress);
+
+            // Battle command strings
+            int[] battleCommandAddresses = CompileM12HardcodedStringCollection("m12-battle-commands", ref referenceAddress);
+            IncludeFile.WriteLine("org $80DC038; add r5,#0x" + (battleCommandAddresses[4] - battleCommandAddresses[1]).ToString("X2")); // Defend (- Goods)
+            IncludeFile.WriteLine("org $80DC0A8; add r1,#0x" + (battleCommandAddresses[8] - battleCommandAddresses[2]).ToString("X2")); // Run Away (- Auto Fight)
         }
 
         static void CompileM12MiscStringCollection(string name, ref int referenceAddress)
@@ -510,6 +515,49 @@ namespace ScriptTool
             IncludeFile.WriteLine("incsrc " + name + ".asm");
 
             return newPointers;
+        }
+
+        static int[] CompileM12HardcodedStringCollection(string name, ref int referenceAddress)
+        {
+            int baseAddress = referenceAddress;
+            var buffer = new List<byte>();
+
+            // Read the JSON
+            var hardcodedStrings = JsonConvert.DeserializeObject<HardcodedString[]>(
+                File.ReadAllText(Path.Combine(options.WorkingDirectory, name + ".json")));
+
+            var stringAddresses = new int[hardcodedStrings.Length];
+
+            // Open the data ASM file
+            using (var offsetFile = File.CreateText(Path.Combine(options.WorkingDirectory, name + ".asm")))
+            {
+                // Include the binfile
+                offsetFile.WriteLine(String.Format("org ${0:X}; incbin {1}.bin",
+                    baseAddress | 0x8000000, name));
+                offsetFile.WriteLine();
+
+                // Compile all strings
+                int i = 0;
+                foreach (var str in hardcodedStrings)
+                {
+                    foreach (int ptr in str.PointerLocations)
+                    {
+                        offsetFile.WriteLine(String.Format("org ${0:X}; dd ${1:X8}",
+                            ptr | 0x8000000, referenceAddress | 0x8000000));
+                    }
+
+                    stringAddresses[i++] = referenceAddress;
+                    m12Compiler.CompileString(str.New, buffer, ref referenceAddress, ebCharLookup);
+                }
+            }
+
+            // Write the buffer
+            File.WriteAllBytes(Path.Combine(options.WorkingDirectory, name + ".bin"), buffer.ToArray());
+
+            // Add to the include file
+            IncludeFile.WriteLine("incsrc " + name + ".asm");
+
+            return stringAddresses;
         }
     }
 }
