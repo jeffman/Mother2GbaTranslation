@@ -358,7 +358,7 @@ org $80DB04E; add sp,#-0x20
 org $80DB058; mov r2,#0x1E
 org $80DB08C; mov r2,#0x1A
 org $80DB116; mov r1,#0x1E
-org $80DB15A; app sp,#0x20
+org $80DB15A; add sp,#0x20
 
 //80DB116: length of name + end code
 
