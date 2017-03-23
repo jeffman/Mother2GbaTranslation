@@ -362,6 +362,9 @@ org $80DB15A; add sp,#0x20
 
 //80DB116: length of name + end code
 
+// Re-position battle commands
+org $8B1F4C8; db $11 // Extend width by two tiles
+
 //==============================================================================
 // Data files
 //==============================================================================
