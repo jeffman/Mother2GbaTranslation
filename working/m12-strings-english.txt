@@ -1565,7 +1565,7 @@
 ^L1570^ <Charm coin>[02 FF][86 FF _L3957_][1D FF][00 FF]
 ^L1571^[A3 FF 13 00][9E FF][A4 FF 13 00][80 FF _L16_]
 ^L1572^[08 FF 77 01][C5 FF][84 FF 16 00 40 00 01 00][00 FF]
-^L1573^
+^L1573^@...So [0D FF] buddy,[1B FF 0F 00] I've[01 FF] found proof of a great[01 FF]  treasure... a huge haul...[02 FF]@yah,[1B FF 0F 00] hah,[1B FF 0A 00] hah...[1B FF 14 00][01 FF]  I'll show you,[1B FF 0F 00] but you're the[01 FF]  only one.[1B FF 14 00]  C'mon.[02 FF][C6 FF][86 FF _L2382_][09 FF 33 01][08 FF 34 01][00 FF]
 ^L1574^[D4 FF 22 00]@Just missed![02 FF][00 FF]
 ^L1575^[1C FF FB 02 _L4041_][74 FF][D4 FF 08 00][A0 FF D0 07 14 00 01 00][86 FF _L4040_][84 FF 11 00 FA 02 01 00][85 FF 16 00 06 00][D4 FF 09 00][CA FF][DB FF 11 00 01 00 01 00][CE FF 11 00 00 00][C3 FF 01 02 11 00][D8 FF 01 00 00 00][EA FF FF 00][1B FF 01 00][A4 FF 11 00][08 FF 61 00][08 FF 2D 01][09 FF 27 01][08 FF D3 01][08 FF 13 02][09 FF D9 01][86 FF _L16_][C6 FF][00 FF]
 ^L1576^@[AD FF]'s HP are[01 FF]  maxed out![D4 FF 24 00][02 FF][00 FF]
@@ -2143,7 +2143,7 @@
 ^L2148^
 ^L2149^
 ^L2150^
-^L2151^
+^L2151^[1C FF F2 02 _L5460_]@You cannot teleport here.[1D FF][00 FF]
 ^L2152^
 ^L2153^
 ^L2154^
@@ -5051,11 +5051,11 @@
 ^L5457^
 ^L5458^
 ^L5459^
-^L5460^
-^L5461^
-^L5462^
-^L5463^
-^L5464^
+^L5460^[1C FF F4 02 _L5461_][1C FF B4 00 _L5462_][1C FF B5 00 _L5463_][1C FF 85 02 _L5463_][1C FF BE 01 _L5464_][1C FF 86 02 _L5464_][1C FF 87 02 _L5464_][1C FF 88 02 _L5464_][1C FF A3 02 _L5463_][1C FF B6 02 _L5463_][1C FF B7 02 _L5463_]@You cannot teleport now.[1D FF][00 FF]
+^L5461^@You should wait to teleport[01 FF]  until after the pizza arrives.[1D FF][00 FF]
+^L5462^@You should wait to teleport[01 FF]  until after a customer has[01 FF]  shown up.[1D FF][00 FF]
+^L5463^@You should wait to teleport[01 FF]  until after Escargo Express[01 FF]  arrives.[1D FF][00 FF]
+^L5464^@You cannot teleport while[01 FF]  Dungeon Man is with you.[1D FF][00 FF]
 ^L5465^
 ^L5466^
 ^L5467^
