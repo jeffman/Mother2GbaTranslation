@@ -362,13 +362,18 @@ org $80DB15A; add sp,#0x20
 
 //80DB116: length of name + end code
 
-// Re-position battle commands
-org $8B1F4C8; db $11 // Extend width by two tiles
+// Battle command hacks
+org $8B1F4C8; db $11 // Extend command window width two tiles (Normal)
+org $8B1F4CC; db $16 // Extend command window width two tiles (Paula paralyzed leader)
+org $80D7A56; mov r1,#4 // Move PSI class window left one tile
+org $80D7A5A; mov r3,#6 // Extend PSI class window width one tile
 org $80DC038; add r5,#0x30 // String address calculation
 org $80DC0A8; add r1,#0x60 // String address calculation
 
 org $80DC27C; lsl r1,r2,#4; nop // String address calculation
 org $80DC2AC; lsl r1,r2,#4; nop // String address calculation
+
+org $80E079E; bl m2_vwf_entries.e06ec_clear_window
 
 //==============================================================================
 // Data files

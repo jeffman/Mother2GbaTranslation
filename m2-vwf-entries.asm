@@ -691,3 +691,24 @@ strh    r1,[r5,#0]
 ldr     r2,=#0x30051EC
 ldrh    r2,[r2,#0]
 b       .ca4bc_erase_tile_common
+
+//==============================================================================
+// Clear PSI window when scrolling through classes
+.e06ec_clear_window:
+push    {r0-r1,lr}
+ldr     r0,=#0x3002500
+ldrh    r0,[r0,#0]
+cmp     r0,#0
+beq     +
+ldr     r0,=#0x3005230
+ldr     r0,[r0,#0x1C]
+mov     r1,#4
+bl      m2_vwf.clear_window
+
++
+pop     {r0-r1}
+
+// Clobbered code
+lsl     r0,r0,#0x10
+asr     r4,r0,#0x10
+pop     {pc}
