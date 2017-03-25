@@ -46,12 +46,12 @@
     "New": "Defend[00 FF]"
   },
   {
-    "OldPointer": 11662477,
+    "OldPointer": 11662475,
     "PointerLocations": [
       901624
     ],
-    "Old": "る[00 FF]",
-    "New": "batl1[00 FF]"
+    "Old": "いのる[00 FF]",
+    "New": "Pray[00 FF]"
   },
   {
     "OldPointer": 11662482,
@@ -59,7 +59,7 @@
       901084
     ],
     "Old": "うつ[00 FF]",
-    "New": "batl2[00 FF]"
+    "New": "Shoot[00 FF]"
   },
   {
     "OldPointer": 11662489,
@@ -67,7 +67,7 @@
       901428
     ],
     "Old": "チェック[00 FF]",
-    "New": "batl3[00 FF]"
+    "New": "Spy[00 FF]"
   },
   {
     "OldPointer": 11662496,
@@ -103,7 +103,7 @@
       904268
     ],
     "Old": "どのてきに?:[00 FF]",
-    "New": "batl4[00 FF]"
+    "New": "To [00 FF]"
   },
   {
     "OldPointer": 11662551,
@@ -111,7 +111,7 @@
       904440
     ],
     "Old": "ぜんれつ[00 FF]",
-    "New": "batl5[00 FF]"
+    "New": "the Front Row[00 FF]"
   },
   {
     "OldPointer": 11662557,
@@ -119,7 +119,7 @@
       904444
     ],
     "Old": "こうれつ[00 FF]",
-    "New": "batl6[00 FF]"
+    "New": "the Back Row[00 FF]"
   },
   {
     "OldPointer": 11662563,
@@ -127,7 +127,7 @@
       904272
     ],
     "Old": "            [00 FF]",
-    "New": "batl7[00 FF]"
+    "New": " [00 FF]"
   },
   {
     "OldPointer": 11662577,
@@ -138,14 +138,6 @@
       920432
     ],
     "Old": " こうげき[01 FF] かいふく[01 FF] アシスト[00 FF]",
-    "New": "batl8[00 FF]"
-  },
-  {
-    "OldPointer": 11662584,
-    "PointerLocations": [
-      904272
-    ],
-    "Old": " かいふく[01 FF] アシスト[00 FF]",
-    "New": "batl9[00 FF]"
+    "New": "[5F FF 08]Offense[01 FF][5F FF 08]Recover[01 FF][5F FF 08]Assist[00 FF]"
   }
 ]

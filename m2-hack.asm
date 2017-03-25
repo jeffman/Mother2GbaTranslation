@@ -364,6 +364,11 @@ org $80DB15A; add sp,#0x20
 
 // Re-position battle commands
 org $8B1F4C8; db $11 // Extend width by two tiles
+org $80DC038; add r5,#0x30 // String address calculation
+org $80DC0A8; add r1,#0x60 // String address calculation
+
+org $80DC27C; lsl r1,r2,#4; nop // String address calculation
+org $80DC2AC; lsl r1,r2,#4; nop // String address calculation
 
 //==============================================================================
 // Data files
