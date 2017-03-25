@@ -712,3 +712,84 @@ pop     {r0-r1}
 lsl     r0,r0,#0x10
 asr     r4,r0,#0x10
 pop     {pc}
+
+//==============================================================================
+// Redraw PSI command when exiting PSI subwindow
+.e06ec_redraw_psi:
+push    {r0-r3,lr}
+
+// Clear old tiles
+mov     r0,#2
+mov     r1,#3
+mov     r2,#1
+bl      m2_vwf.print_blankstr
+
+// Render PSI string
+add     sp,#-4
+ldr     r0,=#0x80DC1EC // address of PSI string pointer
+ldr     r1,[r0,#0] // PSI string pointer
+ldr     r0,=#0x3005230
+ldr     r0,[r0,#0] // window pointer
+mov     r2,#1 // highlight
+str     r2,[sp,#0]
+mov     r2,#1
+mov     r3,#1
+bl      $80C96F0 // render string
+add     sp,#4
+
+// Clobbered code
+pop     {r0-r3}
+bl      $80BD7F8 // restore tilemaps
+pop     {pc}
+
+//==============================================================================
+// Redraw Bash/Do Nothing and PSI commands when exiting PSI ally target subwindow
+.e06ec_redraw_bash_psi:
+push    {r0-r3,lr}
+add     sp,#-4
+
+// Clear old tiles
+mov     r0,#2
+mov     r1,#1
+mov     r2,#1
+bl      m2_vwf.print_blankstr
+add     r1,#2
+bl      m2_vwf.print_blankstr
+
+// We need to figure out whether to draw Bash or Do Nothing
+// If [0x2025122] == 2, draw Do Nothing; else, draw Bash
+// We'll never draw Shoot because Jeff doesn't use PSI
+ldr     r0,=#0x2025122
+ldrh    r0,[r0,#0]
+cmp     r0,#2
+beq     .e06ec_redraw_donothing
+ldr     r0,=#0x80DBFB0
+b       +
+.e06ec_redraw_donothing:
+ldr     r0,=#0x80DC108
++
+ldr     r1,[r0,#0]
+ldr     r0,=#0x3005230
+ldr     r0,[r0,#0] // window pointer
+mov     r2,#0 // no highlight
+str     r2,[sp,#0]
+mov     r2,#1
+mov     r3,#0
+bl      $80C96F0 // render string
+
+// Render PSI string
+ldr     r0,=#0x80DC1EC // address of PSI string pointer
+ldr     r1,[r0,#0] // PSI string pointer
+ldr     r0,=#0x3005230
+ldr     r0,[r0,#0] // window pointer
+mov     r2,#1 // highlight
+str     r2,[sp,#0]
+mov     r2,#1
+mov     r3,#1
+bl      $80C96F0 // render string
+add     sp,#4
+
+// Clobbered code
+pop     {r0-r3}
+bl      $80BD7F8 // restore tilemaps
+pop     {pc}
