@@ -16,6 +16,7 @@ workingold/
 mother12/
 vwf_src/
 temp/
+fresh/
 working/*.asm
 working/*.bin
 xkas-symbols.sym
