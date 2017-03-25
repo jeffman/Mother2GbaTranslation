@@ -92,7 +92,7 @@ Subroutines
 80BD7AC: copy window buffer (primary/secondary)
          r0 = 0: copy from primary (2028A58) to secondary (2030A40)
          r0 = 1: copy from secondary to primary
-80BD7AC: copy window buffer (primary/tertiary)
+80BD7F8: copy window buffer (primary/tertiary)
          r0 = 0: copy from primary (2028A58) to tertiary (2031248)
          r0 = 1: copy from tertiary to primary
 80BE260: compute string pointer
