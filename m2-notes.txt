@@ -87,6 +87,7 @@ Subroutines
 -----------
 
 8001720: play sound effect r0
+8005B9C: malloc? r0 = byte count
 80A2E00: door-related? r0 = source, r1 = dest
 80B8AE0: draw PSI target/PP cost window with PSI index r0
 80BD7AC: copy window buffer (primary/secondary)
