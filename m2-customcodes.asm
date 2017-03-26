@@ -60,6 +60,32 @@ b       .store_x
 
 +
 
+//--------------------------------
+// 5E FF XX: Load value into memory
+cmp     r4,#0x5E
+bne     +
+mov     r3,#3
+
+// Get the argument
+ldrb    r4,[r1,#2]
+cmp     r4,#1
+bne     .parse_5e_next01
+
+// 01: load enemy plurality
+ldr     r1,=#0x2025038
+ldrb    r1,[r1,#0] // number of enemies at start of battle
+cmp     r1,#4
+blt     .parse_5e_01_small
+mov     r1,#3
+.parse_5e_01_small:
+mov     r0,r1 // the jump table is 1-indexed
+mov     r4,r3
+bl      $80A334C // store to window memory
+mov     r3,r4
+
+.parse_5e_next01:
+
++
 
 //--------------------------------
 .parse_end:

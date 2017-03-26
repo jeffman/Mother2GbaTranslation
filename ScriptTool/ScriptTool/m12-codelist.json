@@ -203,6 +203,11 @@
     "Length": 2
   },
   {
+    "Identifier": 0x5E,
+    "Description": "Load value into memory (custom code)",
+    "Length": 3
+  },
+  {
     "Identifier": 0x5F,
     "Description": "Set the current rendering location to {0:X} (custom code)",
     "Length": 3

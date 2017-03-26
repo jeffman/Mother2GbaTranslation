@@ -11,6 +11,7 @@ Hard-coded characters:
 - Null (tile 0x1DF)
 - Background (tile 0x1FF)
 
+0x2025038: enemy count (initial, not current)
 0x3000A00: Current PSI list when displaying a PSI window?
 0x3000AA2: number of party members
 0x3001D54: Ness items (16 bits each)
@@ -88,7 +89,9 @@ Subroutines
 
 8001720: play sound effect r0
 8005B9C: malloc? r0 = byte count
+801C104: return random number from 0 to r0 (exclusive)
 80A2E00: door-related? r0 = source, r1 = dest
+80A334C: store r0 to window memory
 80B8AE0: draw PSI target/PP cost window with PSI index r0
 80BD7AC: copy window buffer (primary/secondary)
          r0 = 0: copy from primary (2028A58) to secondary (2030A40)
@@ -160,3 +163,13 @@ Window structure:
   0x38 - 0x43:  ?
   0x44:         ?
   0x45 - 0x4F:  ?
+
+Custom codes
+------------
+5E FF xx: load value into memory
+      01: plurality of enemies:
+          01 = one
+          02 = two
+          03 = three or more
+5F FF xx: set current rendering location to xx
+60 FF xx: add xx to current rendering location
