@@ -447,6 +447,11 @@ org $80DCD64; mov r2,#0x3A
 org $80DCDA2; mov r1,#0x3E
 org $80DCDA8; add sp,#0x40
 
+// Add a space between enemy name and letter
+org $80DCD94; bl m2_vwf_entries.dcd00_enemy_letter
+org $80DCD9A; strb r0,[r5,#2]
+org $80DCD9E; strb r0,[r5,#3]
+
 
 //==============================================================================
 // Data files

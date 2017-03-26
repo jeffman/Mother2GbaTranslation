@@ -884,3 +884,12 @@ mov     r7,#0x50
 lsl     r7,r7,#4
 add     r0,r0,r7
 bx      lr
+
+//==============================================================================
+// Add a space between enemy name and letter in multi-enemy fights
+.dcd00_enemy_letter:
+sub     r0,#0x90
+strb    r0,[r5,#1]
+mov     r0,#0x50
+strb    r0,[r5,#0]
+bx      lr
