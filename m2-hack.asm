@@ -390,6 +390,9 @@ org $80DC0A8; add r1,#0x60 // String address calculation
 org $80DC27C; lsl r1,r2,#4; nop // String address calculation
 org $80DC2AC; lsl r1,r2,#4; nop // String address calculation
 
+org $80DCC36; mov r2,#2 // "to X" position
+org $80DCCE0; mov r2,#2 // "to the Front Row" position
+
 org $80E079E; bl m2_vwf_entries.e06ec_clear_window
 org $80E0888; bl m2_vwf_entries.e06ec_redraw_psi
 org $80E0A16; bl m2_vwf_entries.e06ec_redraw_bash_psi
