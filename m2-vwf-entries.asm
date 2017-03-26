@@ -793,3 +793,16 @@ add     sp,#4
 pop     {r0-r3}
 bl      $80BD7F8 // restore tilemaps
 pop     {pc}
+
+//==============================================================================
+// Print "PSI "
+.c239c_print_psi:
+push    {lr}
+add     sp,#-4
+mov     r2,#0
+str     r2,[sp,#0]
+mov     r2,r4
+lsl     r3,r3,#3 // tiles-to-pixels
+bl      m2_vwf.print_string_hlight_pixels
+add     sp,#4
+pop     {pc}

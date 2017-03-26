@@ -103,7 +103,7 @@ org $80C5A28; nop
 // C1FBC hacks (PSI window)
 //---------------------------------------------------------
 
-org $80C203E; mov r1,#0x14 // new entry length
+org $80C203E; mov r1,#0x14 // new PSI name entry length
 org $80C21B4; mov r1,#0x14
 org $80C224A; mov r1,#0x14
 org $80C229E; mov r1,#0x14
@@ -123,7 +123,18 @@ bl      m2_vwf.print_string
 // C239C hacks (print PSI name)
 //---------------------------------------------------------
 
-org $80C242E; mov r0,#0x14
+org $80C23AA; lsr r2,r2,#0xD // tiles-to-pixels
+org $80C23AE; lsr r6,r3,#0xD // tiles-to-pixels
+org $80C23CE; bl m2_vwf_entries.c239c_print_psi; nop; nop; nop
+org $80C23DA; add r4,#17 // pixel width of "PSI "
+org $80C23F0; bl m2_vwf.print_string_hlight_pixels // print rockin'
+org $80C2402; mov r0,#3; lsl r0,r0,#0x10 // pixel width of space
+org $80C242E; mov r0,#0x14 // new PSI name entry length
+org     $80C2448
+bl      m2_vwf.print_string_hlight_pixels // print PSI name
+mov     r2,r1 // record X width
+add     r2,#3 // add a space
+org $80C2468; bl m2_vwf.print_string_hlight_pixels
 
 //---------------------------------------------------------
 // C438C hacks (PSI window cursor movement)
