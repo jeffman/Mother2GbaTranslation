@@ -806,3 +806,81 @@ lsl     r3,r3,#3 // tiles-to-pixels
 bl      m2_vwf.print_string_hlight_pixels
 add     sp,#4
 pop     {pc}
+
+//==============================================================================
+// Use new pointer for user/target strings
+.ebfd4_user_pointer:
+push    {lr}
+mov     r4,#0x4C
+lsl     r4,r4,#4
+add     r0,r0,r4
+mov     r5,r0
+lsl     r4,r1,#0x10
+asr     r4,r4,#0x10
+mov     r1,r2
+mov     r2,r4
+bl      $80F4C78
+add     r0,r4,r5
+mov     r1,#0
+strb    r1,[r0,#0]
+mov     r1,#0xFF
+strb    r1,[r0,#1]
+pop     {pc}
+
+.ec004_user_pointer:
+push    {r1}
+ldr     r1,[sp,#4]
+mov     lr,r1
+pop     {r1}
+add     sp,#4
+ldr     r0,=#0x3005220
+ldr     r0,[r0,#0]
+mov     r1,#0x4C
+lsl     r1,r1,#4
+add     r0,r0,r1
+bx      lr
+
+.ec010_target_pointer:
+push    {lr}
+mov     r4,#0x50
+lsl     r4,r4,#4
+add     r0,r0,r4
+mov     r5,r0
+lsl     r4,r1,#0x10
+asr     r4,r4,#0x10
+mov     r1,r2
+mov     r2,r4
+bl      $80F4C78
+add     r0,r4,r5
+mov     r1,#0
+strb    r1,[r0,#0]
+mov     r1,#0xFF
+strb    r1,[r0,#1]
+pop     {pc}
+
+.ec046_target_pointer:
+push    {r1}
+ldr     r1,[sp,#4]
+mov     lr,r1
+pop     {r1}
+add     sp,#4
+ldr     r0,[r0,#0]
+mov     r1,#0x50
+lsl     r1,r1,#4
+add     r0,r0,r1
+bx      lr
+
+.c980c_user_pointer:
+ldr     r1,[r0,#0]
+mov     r0,#0x4C
+lsl     r0,r0,#4
+add     r1,r0,r1
+ldr     r0,[r5,#0x1C]
+bx      lr
+
+.c980c_target_pointer:
+ldr     r0,[r0,#0]
+mov     r7,#0x50
+lsl     r7,r7,#4
+add     r0,r0,r7
+bx      lr

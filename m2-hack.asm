@@ -416,51 +416,37 @@ org $80E0A16; bl m2_vwf_entries.e06ec_redraw_bash_psi
 // " and its cohorts" makes that 46
 // Let's round it to a nice 64: we need to allocate that many bytes for user
 // and target strings on the heap. The game only allocates 16 each.
-// Goal: allocate an extra 96 bytes and fix all the offsets to the user/target
-// strings and other data stored after the strings
-// Due to the range of LDR/STR, we'll store:
-// the user string from +0x00 to +0x3F,
-// the misc variables from +0x40 to +0x57,
-// the target string from +0x58 to +0x97,
-// the tile data at +0x98,
-org $80BD97A; mov r0,#0xA4 // malloc an extra 96 bytes for longer user/target strings
-org $80BDB0E; add r0,#0x98
-org $80BDB18; mov r5,#0xA3
-org $80BDB60; dd $519
-org $80C9954; add r1,#0x58
-org $80D2AA2; add r0,#0x42
-org $80D2B9E; add r3,#0x42
-org $80D2CB2; add r0,#0x42
-org $80D30F6; ldr r0,[r0,#0x48]
-org $80D61E8; add r0,#0x43
-org $80D61F6; add r0,#0x42
-org $80D622C; add r0,#0x46
-org $80D62B2; add r0,#0x46
-org $80D6308; add r0,#0x46
-org $80D63B8; add r0,#0x46
-org $80D6404; add r1,#0x46
-org $80D64AE; add r0,#0x42
-org $80D666E; add r0,#0x45
-org $80D6724; add r0,#0x44
-org $80D6744; add r0,#0x43
-org $80D6754; add r0,#0x45
-org $80D6766; add r2,#0x45
-org $80D676C; add r0,#0x43
-org $80D7D02; add r1,#0x42
-org $80D8826; add r0,#0x42
-org $80D882C; add r0,#0x46
-org $80DB3AE; add r0,#0x42
-org $80EC01C; add r0,#0x58
-org $80EC048; add r0,#0x58
-org $80EC054; add r1,#0x41
-org $80EC064; add r0,#0x41
-org $80EC074; str r0,[r1,#0x48]
-org $80EC080; ldr r0,[r0,#0x48]
-org $80ED840; add r1,#0x98
-org $80ED850; mov r3,#0xB6
-org $80EF534; add r0,#0x42
-org $80F1214; add r0,#0x42
-org $80F1C22; add r0,#0x42
+// Goal: allocate an extra 128 bytes and fix all the offsets to the user/target
+// strings. We'll store the user string at +0x4C0 and the target string at +0x500.
+org $80BD97A; mov r0,#0xA8 // malloc an extra 128 bytes for longer user/target strings
+
+// Fix user/target pointers
+org $80C9942; bl m2_vwf_entries.c980c_user_pointer
+org $80C9954; bl m2_vwf_entries.c980c_target_pointer
+org $80EBFDC; bl m2_vwf_entries.ebfd4_user_pointer; b $80EBFFA
+org $80EC004; push {lr}; bl m2_vwf_entries.ec004_user_pointer
+org $80EC018; bl m2_vwf_entries.ec010_target_pointer; b $80EC038
+org $80EC046; push {lr}; bl m2_vwf_entries.ec046_target_pointer
+
+// Length fixes
+org $80DAE02; add sp,#-0x40
+org $80DAE08; mov r2,#0x3E
+org $80DAE38; mov r2,#0x3A
+org $80DAEA2; mov r1,#0x3E
+org $80DAEDE; add sp,#0x40
+
+org $80DB04E; add sp,#-0x40
+org $80DB058; mov r2,#0x3E
+org $80DB08C; mov r2,#0x3A
+org $80DB116; mov r1,#0x3E
+org $80DB15A; add sp,#0x40
+
+org $80DCD02; add sp,#-0x40
+org $80DCD0C; mov r2,#0x3C
+org $80DCD64; mov r2,#0x3A
+org $80DCDA2; mov r1,#0x3E
+org $80DCDA8; add sp,#0x40
+
 
 //==============================================================================
 // Data files
