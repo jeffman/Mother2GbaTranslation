@@ -371,17 +371,23 @@ b       $80D3A14
 org $80D39D4; bl m2_vwf_entries.d3934_print_space
 
 // Allocate extra space for enemy names
-org $80DB04E; add sp,#-0x20
-org $80DB058; mov r2,#0x1E
-org $80DB08C; mov r2,#0x1A
-org $80DB116; mov r1,#0x1E
-org $80DB15A; add sp,#0x20
-
-org $80DCD02; add sp,#-0x20
-org $80DCD0C; mov r2,#0x1E
-org $80DCD64; mov r2,#0x1A
-org $80DCDA2; mov r1,#0x1E
-org $80DCDA8; add sp,#0x20
+//org $80DAE02; add sp,#-0x20
+//org $80DAE08; mov r2,#0x1E
+//org $80DAE38; mov r2,#0x1A
+//org $80DAEA2; mov r1,#0x1E
+//org $80DAEDE; add sp,#0x20
+//
+//org $80DB04E; add sp,#-0x20
+//org $80DB058; mov r2,#0x1E
+//org $80DB08C; mov r2,#0x1A
+//org $80DB116; mov r1,#0x1E
+//org $80DB15A; add sp,#0x20
+//
+//org $80DCD02; add sp,#-0x20
+//org $80DCD0C; mov r2,#0x1E
+//org $80DCD64; mov r2,#0x1A
+//org $80DCDA2; mov r1,#0x1E
+//org $80DCDA8; add sp,#0x20
 
 //80DB116: length of name + end code
 
