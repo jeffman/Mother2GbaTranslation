@@ -452,6 +452,9 @@ org $80DCD94; bl m2_vwf_entries.dcd00_enemy_letter
 org $80DCD9A; strb r0,[r5,#2]
 org $80DCD9E; strb r0,[r5,#3]
 
+// Ignore the hard-coded Japanese "and cohorts"
+org $80DB0E6; b $80DB0FE
+
 
 //==============================================================================
 // Data files
