@@ -124,6 +124,68 @@ pop     {r2-r6,pc}
 
 
 //=============================================================================
+// void print_string_hlight_pixels(WINDOW* window, char* str, int x,
+//                                       int y, bool highlight)
+// In:
+//    r0: window
+//    r1: address of string to print
+//    r2: x (pixel)
+//    r3: y (pixel)
+//    sp: highlight
+// Out:
+//    r0: number of characters printed
+//    r1: number of pixels printed
+//=============================================================================
+
+.print_string_hlight_pixels:
+// Copied from C96F0
+// Basically it's the exact same subroutine, only in pixels instead of tiles
+push    {r4-r7,lr}
+mov     r7,r8
+push    {r7}
+mov     r6,r1
+ldr     r1,[sp,#0x18]
+lsl     r1,r1,#0x10
+mov     r7,#0
+ldr     r5,=#0x3005228
+ldrh    r4,[r5,#0]
+lsl     r4,r4,#0x10
+asr     r4,r4,#0x1C
+mov     r8,r4
+lsr     r4,r1,#0x10
+mov     r12,r4
+asr     r1,r1,#0x10
+add     r1,r8
+lsl     r1,r1,#0xC
+strh    r1,[r5,#0]
+ldrh    r1,[r0,#0x22]
+lsl     r1,r1,#3
+add     r1,r1,r2
+ldrh    r2,[r0,#0x24]
+lsl     r2,r2,#3
+add     r2,r2,r3
+mov     r0,r6
+bl      .print_string
+mov     r7,r0
+ldrh    r0,[r5,#0]
+lsl     r0,r0,#0x10
+asr     r0,r0,#0x1C
+mov     r4,r12
+lsl     r3,r4,#0x10
+asr     r3,r3,#0x10
+sub     r0,r0,r3
+lsl     r0,r0,#0xC
+strh    r0,[r5,#0]
+lsl     r0,r7,#0x10
+asr     r0,r0,#0x10
+pop     {r3}
+mov     r8,r3
+pop     {r4-r7}
+pop     {r2}
+bx      r2
+
+
+//=============================================================================
 // void print_character(int x, int y, int chr, int font)
 // In:
 //    r0: character
