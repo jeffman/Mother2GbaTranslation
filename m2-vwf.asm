@@ -95,13 +95,15 @@ pop     {r0-r5,pc}
 //    r2: y (pixel)
 // Out:
 //    r0: number of characters printed
+//    r1: number of pixels printed
 //=============================================================================
 
 .print_string:
-push    {r1-r5,lr}
+push    {r2-r6,lr}
 
 mov     r3,#0
 mov     r5,r3
+mov     r6,r1
 mov     r4,r0
 -
 ldrb    r0,[r4,#1]
@@ -117,7 +119,8 @@ b       -
 
 .print_string_end:
 mov     r0,r5
-pop     {r1-r5,pc}
+sub     r1,r1,r6
+pop     {r2-r6,pc}
 
 
 //=============================================================================
