@@ -377,6 +377,12 @@ org $80DB08C; mov r2,#0x1A
 org $80DB116; mov r1,#0x1E
 org $80DB15A; add sp,#0x20
 
+org $80DCD02; add sp,#-0x20
+org $80DCD0C; mov r2,#0x1E
+org $80DCD64; mov r2,#0x1A
+org $80DCDA2; mov r1,#0x1E
+org $80DCDA8; add sp,#0x20
+
 //80DB116: length of name + end code
 
 // Battle command hacks
