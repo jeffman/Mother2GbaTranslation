@@ -893,3 +893,29 @@ strb    r0,[r5,#1]
 mov     r0,#0x50
 strb    r0,[r5,#0]
 bx      lr
+
+//==============================================================================
+// "The" flag checks
+.db04c_theflag:
+push    {r4,lr}
+
+// Clobbered code: get enemy string pointer
+lsl     r4,r2,#1
+bl      $80BE260
+mov     r1,r0
+mov     r0,sp
+add     r0,#8
+
+// Check for "The" flag
+ldr     r3,=#m2_enemy_attributes
+ldrb    r3,[r3,r4] // "The" flag
+cmp     r3,#0
+beq     +
+
+// Write "The " before the enemy name
+ldr     r2,=#0x50959884
+str     r2,[r0,#0]
+add     r0,#4
+
++
+pop     {r4,pc}
