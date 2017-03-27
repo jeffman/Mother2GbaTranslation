@@ -11,8 +11,7 @@ Hard-coded characters:
 - Null (tile 0x1DF)
 - Background (tile 0x1FF)
 
-0x2021152: attacking enemy
-0x20211A0: currently selected row in-battle?
+0x2020C70: enemy data slots in-battle? separated by 0x94 bytes
 0x2025038: enemy count (initial, not current)
 0x3000A00: Current PSI list when displaying a PSI window?
 0x3000AA2: number of party members
@@ -132,6 +131,10 @@ Subroutines
 80D332C: related to printing names in battle (r0 = window)
 80D7154: count party members and store to 3000AA2
          then do some other stuff to the windows -- possibly drawing the HP/PP boxes?
+80EBFD4: copy string from r0, of max length r1, to battle user slot, and terminate with [00 FF]
+80EC004: get user string pointer
+80EC010: copy string from r0, of max length r1, to battle target slot, and terminate with [00 FF]
+80EC046: get target string pointer
 
 Windows
 -------
