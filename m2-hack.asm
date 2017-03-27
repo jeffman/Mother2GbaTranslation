@@ -502,6 +502,9 @@ incbin m2-bits-to-nybbles.bin
 m2_nybbles_to_bits:
 incbin m2-nybbles-to-bits.bin
 
+m2_enemy_attributes:
+incbin m2-enemy-attributes.bin
+
 
 //==============================================================================
 // Misc
