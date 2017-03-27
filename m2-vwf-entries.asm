@@ -894,6 +894,13 @@ mov     r0,#0x50
 strb    r0,[r5,#0]
 bx      lr
 
+.dae00_enemy_letter:
+sub     r0,#0x90
+strb    r0,[r4,#1]
+mov     r0,#0x50
+strb    r0,[r4,#0]
+bx      lr
+
 //==============================================================================
 // "The" flag checks
 .db04c_theflag:
