@@ -448,6 +448,10 @@ org $80DAE7E; bl m2_vwf_entries.dae00_enemy_letter
 org $80DAE84; strb r0,[r4,#2]
 org $80DAE88; strb r0,[r4,#3]
 
+org $80DB0CE; bl m2_vwf_entries.dae00_enemy_letter
+org $80DB0D2; strb r5,[r4,#2]
+org $80DB0D6; strb r0,[r4,#3]
+
 // "The" flag checks
 org $80DB084; bl m2_vwf_entries.db04c_theflag; nop; nop
 
