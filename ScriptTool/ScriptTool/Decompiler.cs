@@ -59,7 +59,14 @@ namespace ScriptTool
             var codeByte = codeString as CodeByte;
             if (codeByte != null)
                 return codeByte.Value.ToString("X2");
-            return "_" + LabelMap.Labels[((CodeReference)codeString).Address] + "_";
+
+            int address = ((CodeReference)codeString).Address;
+            string label;
+            if (!LabelMap.Labels.TryGetValue(address, out label))
+            {
+                label = "????";
+            }
+            return "_" + label + "_";
         }
 
         public string DecompileRange(byte[] rom, int startAddress, int endAddress, bool newLines)
