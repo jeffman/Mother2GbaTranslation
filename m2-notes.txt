@@ -77,6 +77,11 @@ LDR Rx,[Ry,#n]: n has range 0-124 (0x0-0x7C) (0-1020 for SP- and PC-relative)
 
 Custom WRAM: 2027FC0
 
+Game code:         ~0x0     - ~0x264FB
+Movement-y stuff?: ~0x264FC - ~0x3697E
+Text:               0x3697F -  0x8C4B0
+More code:          0xA1F6C -  0xFCE6B
+
 Code sequences
 --------------
 
