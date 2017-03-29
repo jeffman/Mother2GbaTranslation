@@ -7,19 +7,12 @@
 *.bak
 Thumbs.db
 snapshots/
-xkas/
-new/
 notes/
-resize/
-ignore/
-workingold/
-mother12/
-vwf_src/
-temp/
 fresh/
 working/*.asm
 working/*.bin
-xkas-symbols.sym
+armips.exe
+armips-symbols.sym
 m12.sym
 
 ## Ignore Visual Studio temporary files, build results, and

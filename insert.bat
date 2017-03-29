@@ -1,8 +1,7 @@
 copy /Y m12fresh.gba m12.gba
-xkas\xkas.exe m12.gba m2-hack.asm xkas-symbols.sym
+armips.exe m2-hack.asm -sym armips-symbols.sym
 pushd working
-..\xkas\xkas.exe ..\m12.gba m12-includes.asm
+..\armips.exe m12-includes.asm
 popd
-resize m12.gba 16777216
-SymbolTableBuilder\SymbolTableBuilder\bin\Debug\symbols.exe m12.sym m12-symbols.sym xkas-symbols.sym
+SymbolTableBuilder\SymbolTableBuilder\bin\Debug\symbols.exe m12.sym m12-symbols.sym armips-symbols.sym
 pause

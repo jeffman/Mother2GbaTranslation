@@ -71,7 +71,8 @@ namespace ScriptTool
 
                 using (IncludeFile = File.CreateText(Path.Combine(options.WorkingDirectory, "m12-includes.asm")))
                 {
-                    IncludeFile.WriteLine("arch gba.thumb");
+                    IncludeFile.WriteLine(".gba");
+                    IncludeFile.WriteLine(".open \"../m12.gba\",0x8000000");
 
                     // Compile main string tables
                     if (options.DoMainText)
@@ -84,6 +85,8 @@ namespace ScriptTool
                     {
                         CompileM12Misc();
                     }
+
+                    IncludeFile.WriteLine(".close");
                 }
             }
         }
@@ -376,7 +379,7 @@ namespace ScriptTool
 
             using (var labelAsmFile = File.CreateText(Path.Combine(options.WorkingDirectory, "m12-main-strings.asm")))
             {
-                labelAsmFile.WriteLine(String.Format("org ${0:X}; incbin m12-main-strings.bin", baseAddress | 0x8000000));
+                labelAsmFile.WriteLine(String.Format(".org 0x{0:X} :: .incbin \"m12-main-strings.bin\"", baseAddress | 0x8000000));
                 labelAsmFile.WriteLine();
                 
                 foreach (var file in labelFiles)
@@ -386,13 +389,13 @@ namespace ScriptTool
 
                     foreach (var stringRef in mainStringRefs)
                     {
-                        labelAsmFile.WriteLine(String.Format("org ${0:X}; dd ${1:X8}",
+                        labelAsmFile.WriteLine(String.Format(".org 0x{0:X} :: dw 0x{1:X8}",
                             stringRef.PointerLocation | 0x8000000, m12Compiler.AddressMap[stringRef.Label] | 0x8000000));
                     }
                 }
             }
 
-            IncludeFile.WriteLine("incsrc m12-main-strings.asm");
+            IncludeFile.WriteLine(".include \"m12-main-strings.asm\"");
         }
 
         static void CompileM12Misc()
@@ -428,7 +431,7 @@ namespace ScriptTool
             IncludeFile.WriteLine("// Fix pointers to \"PSI \"");
             foreach (var address in updateAddresses)
             {
-                IncludeFile.WriteLine(String.Format("org ${0:X}; dd ${1:X8}",
+                IncludeFile.WriteLine(String.Format(".org 0x{0:X} :: dw 0x{1:X8}",
                     address | 0x8000000, psiPointer | 0x8000000));
             }
 
@@ -452,14 +455,14 @@ namespace ScriptTool
             using (var offsetFile = File.CreateText(Path.Combine(options.WorkingDirectory, name + ".asm")))
             {
                 // Include the binfile
-                offsetFile.WriteLine(String.Format("org ${0:X}; incbin {1}.bin",
+                offsetFile.WriteLine(String.Format(".org 0x{0:X} :: .incbin \"{1}.bin\"",
                     baseAddress | 0x8000000, name));
                 offsetFile.WriteLine();
 
                 // Compile all strings
                 foreach (var str in stringCollection.StringRefs.OrderBy(s => s.Index))
                 {
-                    offsetFile.WriteLine(String.Format("org ${0:X}; dd ${1:X8}",
+                    offsetFile.WriteLine(String.Format(".org 0x{0:X} :: dw 0x{1:X8}",
                         str.OffsetLocation | 0x8000000, referenceAddress - stringCollection.StringsLocation));
 
                     m12Compiler.CompileString(str.New, buffer, ref referenceAddress, ebCharLookup);
@@ -470,7 +473,7 @@ namespace ScriptTool
             File.WriteAllBytes(Path.Combine(options.WorkingDirectory, name + ".bin"), buffer.ToArray());
 
             // Add to the include file
-            IncludeFile.WriteLine("incsrc " + name + ".asm");
+            IncludeFile.WriteLine(".include \"" + name + ".asm\"");
         }
 
         static IList<int> CompileM12FixedStringCollection(string name, ref int referenceAddress)
@@ -487,14 +490,14 @@ namespace ScriptTool
             using (var offsetFile = File.CreateText(Path.Combine(options.WorkingDirectory, name + ".asm")))
             {
                 // Include the binfile
-                offsetFile.WriteLine(String.Format("org ${0:X}; incbin {1}.bin",
+                offsetFile.WriteLine(String.Format(".org 0x{0:X} :: .incbin \"{1}.bin\"",
                     baseAddress | 0x8000000, name));
                 offsetFile.WriteLine();
 
                 // Update table pointers
                 foreach (int tablePointer in stringCollection.TablePointers)
                 {
-                    offsetFile.WriteLine(String.Format("org ${0:X}; dd ${1:X8}",
+                    offsetFile.WriteLine(String.Format(".org 0x{0:X} :: dw 0x{1:X8}",
                         tablePointer | 0x8000000, baseAddress | 0x8000000));
                 }
 
@@ -510,7 +513,7 @@ namespace ScriptTool
             File.WriteAllBytes(Path.Combine(options.WorkingDirectory, name + ".bin"), buffer.ToArray());
 
             // Add to the include file
-            IncludeFile.WriteLine("incsrc " + name + ".asm");
+            IncludeFile.WriteLine(".include \"" + name + ".asm\"");
 
             return newPointers;
         }
@@ -530,7 +533,7 @@ namespace ScriptTool
             using (var offsetFile = File.CreateText(Path.Combine(options.WorkingDirectory, name + ".asm")))
             {
                 // Include the binfile
-                offsetFile.WriteLine(String.Format("org ${0:X}; incbin {1}.bin",
+                offsetFile.WriteLine(String.Format(".org 0x{0:X} :: .incbin \"{1}.bin\"",
                     baseAddress | 0x8000000, name));
                 offsetFile.WriteLine();
 
@@ -540,7 +543,7 @@ namespace ScriptTool
                 {
                     foreach (int ptr in str.PointerLocations)
                     {
-                        offsetFile.WriteLine(String.Format("org ${0:X}; dd ${1:X8}",
+                        offsetFile.WriteLine(String.Format(".org 0x{0:X} :: dw 0x{1:X8}",
                             ptr | 0x8000000, referenceAddress | 0x8000000));
                     }
 
@@ -553,7 +556,7 @@ namespace ScriptTool
             File.WriteAllBytes(Path.Combine(options.WorkingDirectory, name + ".bin"), buffer.ToArray());
 
             // Add to the include file
-            IncludeFile.WriteLine("incsrc " + name + ".asm");
+            IncludeFile.WriteLine(".include \"" + name + ".asm\"");
 
             return stringAddresses;
         }
@@ -571,7 +574,7 @@ namespace ScriptTool
             using (var offsetFile = File.CreateText(Path.Combine(options.WorkingDirectory, name + ".asm")))
             {
                 // Include the binfile
-                offsetFile.WriteLine(String.Format("org ${0:X}; incbin {1}.bin",
+                offsetFile.WriteLine(String.Format(".org 0x{0:X} :: .incbin \"{1}.bin\"",
                     baseAddress | 0x8000000, name));
                 offsetFile.WriteLine();
 
@@ -583,7 +586,7 @@ namespace ScriptTool
 
                     foreach (int ptr in str.PointerLocations)
                     {
-                        offsetFile.WriteLine(String.Format("org ${0:X}; dd ${1:X8}",
+                        offsetFile.WriteLine(String.Format(".org 0x{0:X} :: dw 0x{1:X8}",
                             ptr | 0x8000000, referenceAddress | 0x8000000));
                     }
 
@@ -598,7 +601,7 @@ namespace ScriptTool
             File.WriteAllBytes(Path.Combine(options.WorkingDirectory, name + ".bin"), buffer.ToArray());
 
             // Add to the include file
-            IncludeFile.WriteLine("incsrc " + name + ".asm");
+            IncludeFile.WriteLine(".include \"" + name + ".asm\"");
         }
     }
 }
