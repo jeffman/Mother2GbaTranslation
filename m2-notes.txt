@@ -10,9 +10,11 @@ Hard-coded characters:
 - 0xFE: equip (tile 0x1DE)
 - Null (tile 0x1DF)
 - Background (tile 0x1FF)
+- 0xB4 - 0xBC: YOU WON! (tile 0x154)
 
 0x2020C70: enemy data slots in-battle? separated by 0x94 bytes
 0x2025038: enemy count (initial, not current)
+0x20251D8: item drop
 0x3000A00: Current PSI list when displaying a PSI window?
 0x3000AA2: number of party members
 0x3001D54: Ness items (16 bits each)
@@ -46,6 +48,8 @@ Hard-coded characters:
 0x3001DA7: Ness luck
 0x3001DA8: Ness vitality
 0x3001DA9: Ness IQ
+0x3001F04: Current party
+0x3001F0B: Party character count
 0x3001F0C: Active party member flags
 0x3001F6A: Ness PSI flags?
            0x01: Teleport alpha
@@ -140,6 +144,21 @@ Subroutines
 80EC004: get user string pointer
 80EC010: copy string from r0, of max length r1, to battle target slot, and terminate with [00 FF]
 80EC046: get target string pointer
+
+8B1B8B8 has a jump table with 13 entries for the [1A FF xx 00] code:
+  00: ?
+  01: PC name
+  02: item name
+  03: ?
+  04: ?
+  05: PC name
+  06: ?
+  07: ?
+  08: ?
+  09: ?
+  0A: ?
+  0B: ?
+
 
 Windows
 -------

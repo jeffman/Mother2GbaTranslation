@@ -671,7 +671,7 @@
   },
   {
     "Identifier": 0xB8,
-    "Description": "Load {0:X} into memory as a decimal string (related to 1C 0A)",
+    "Description": "Store {0:X} to string slot (for 1A FF printing). If 00, store secondary memory to string slot.",
     "Length": 3
   },
   {
@@ -723,7 +723,7 @@
   },
   {
     "Identifier": 0xC2,
-    "Description": "Unknown, appears before 1A FF 05 00 (1C 11 69)",
+    "Description": "Copy party leader to memory; appears before 1A FF 05 00 (1C 11 69)",
     "Length": 2
   },
   {
