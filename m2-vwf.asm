@@ -48,9 +48,17 @@ sub     r0,0x50
 bpl     @@next
 mov     r0,0x1F
 b       @@valid
+
 @@next:
 cmp     r0,0x60
 bcc     @@valid
+cmp     r0,0x64
+bcc     @@invalid
+cmp     r0,0x6D
+bcs     @@invalid
+b       @@valid
+
+@@invalid:
 mov     r0,0x1F
 
 @@valid:
@@ -231,6 +239,48 @@ lsl     r1,r1,1
 add     r7,r7,r1            // Local tilemap address
 mov     r8,r4
 
+//----------------------------------------
+// Check for "YOU WON!" graphics
+cmp     r0,0x64
+bcc     @@next2
+cmp     r0,0x6D
+bcs     @@next2
+
+// Copy pixel data from the fixed YOU WON! graphic in VRAM
+add     r0,0xF0              // tile number
+add     r0,r0,r4             // tile number with offset
+ldr     r3,=0x6000000
+lsl     r0,r0,5
+add     r2,r0,r3             // VRAM address of YOU WON! graphic
+mov     r0,r10
+mov     r1,r11
+lsr     r0,r0,3
+lsr     r1,r1,3
+bl      get_tile_number      // get dest tile number
+add     r0,r0,r4
+orr     r6,r0
+strh    r6,[r7]              // update tilemap
+add     r6,0x20
+add     r7,0x40
+strh    r6,[r7]
+lsl     r0,r0,5
+add     r1,r0,r3             // dest VRAM address
+mov     r0,r2
+mov     r2,8
+mov     r4,r0
+mov     r5,r1
+swi     0xC
+ldr     r3,=0x3E0
+add     r0,r0,r3
+add     r1,r1,r3
+swi     0xC
+
+// End (return 8 as the width)
+mov     r0,8
+mov     r9,r0
+b       @@end
+
+@@next2:
 //----------------------------------------
 ldr     r0,=m2_widths_table
 lsl     r1,r5,2             // Font number * 4
