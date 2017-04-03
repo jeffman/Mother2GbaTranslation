@@ -56,22 +56,22 @@ mov     r0,0x1F
 @@valid:
 
 // Calculate X coord
-ldrh    r1,[r4,0x22] // window_X
+ldrh    r1,[r4,0x22]  // window_X
 mov     r5,r1
-ldrh    r2,[r4,0x2A] // text_X
+ldrh    r2,[r4,0x2A]  // text_X
 add     r1,r1,r2
 lsl     r1,r1,3
-ldrh    r2,[r4,2]    // pixel_X
+ldrh    r2,[r4,2]     // pixel_X
 add     r1,r1,r2      // screen pixel X
 
 // Calculate Y coord
-ldrh    r2,[r4,0x24] // window_Y
-ldrh    r3,[r4,0x2C] // text_Y
+ldrh    r2,[r4,0x24]  // window_Y
+ldrh    r3,[r4,0x2C]  // text_Y
 add     r2,r2,r3
 lsl     r2,r2,3
 
 // Print
-mov     r3,0         // font
+mov     r3,0          // font
 bl      print_character
 
 // Store new X coords
@@ -80,7 +80,7 @@ lsr     r1,r0,3
 sub     r1,r1,r5      // new text_X
 strh    r1,[r4,0x2A]
 lsl     r0,r0,29
-lsr     r0,r0,29     // new pixel_X
+lsr     r0,r0,29      // new pixel_X
 strh    r0,[r4,2]
 
 pop     {r0-r5,pc}
@@ -228,7 +228,7 @@ lsr     r2,r2,3
 lsl     r2,r2,5
 add     r1,r1,r2
 lsl     r1,r1,1
-add     r7,r7,r1             // Local tilemap address
+add     r7,r7,r1            // Local tilemap address
 mov     r8,r4
 
 //----------------------------------------
@@ -242,7 +242,7 @@ mov     r9,r1
 add     r2,r2,1
 ldrb    r0,[r0,r2]           // Render width
 cmp     r0,0
-beq     @@next                    // Don't bother rendering a zero-width character
+beq     @@end                    // Don't bother rendering a zero-width character
 ldr     r2,=m2_height_table
 ldrb    r2,[r2,r5]
 str     r2,[sp,16]          // No more registers, gotta store this on the stack
@@ -305,7 +305,7 @@ str     r1,[sp,20]          // No more registers, gotta store this on the stack
 ldrb    r2,[r0,9]           // Render width
 add     r2,r1,r2
 cmp     r2,8
-bls     @@next
+bls     @@end
 
 // We still have more to render; figure out how much we already rendered
 mov     r3,8
@@ -350,7 +350,7 @@ ldr     r1,[sp,20]          // Original pixel X offset
 ldrb    r2,[r0,9]           // Render width
 add     r2,r1,r2             // Right side of glyph
 cmp     r2,16
-bls     @@next
+bls     @@end
 
 // We have one more chunk to render; figure out how much we already rendered
 mov     r3,16
@@ -388,7 +388,7 @@ bne     @@prev4
 add     r7,r7,2
 
 //----------------------------------------
-@@next:
+@@end:
 mov     r0,r9
 add     sp,24
 pop     {r4}

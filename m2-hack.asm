@@ -31,9 +31,9 @@
 //==============================================================================
 
 // 32- to 16-bit access change for window flags
-.org 0x80BE16A :: strh r2,[r4,0]
-.org 0x80BE1FA :: strh r2,[r6,0]
-.org 0x80BE222 :: strh r6,[r1,0]
+.org 0x80BE16A :: strh r2,[r4]
+.org 0x80BE1FA :: strh r2,[r6]
+.org 0x80BE222 :: strh r6,[r1]
 
 // PSI class window size
 .org    0x80B7820
@@ -110,7 +110,7 @@ erase_defense equ mov r0,0xC :: mov r1,0xD :: mov r2,4 :: bl print_blankstr
 // Draw PSI Rockin
 .org    0x80C2192
 mov     r2,r8
-str     r2,[sp,0]
+str     r2,[sp]
 mov     r2,0xFD
 lsl     r2,r2,1
 add     r0,r6,r2

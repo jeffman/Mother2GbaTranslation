@@ -4,7 +4,7 @@ push    {r1-r2,lr}
 mov     r1,r7
 mov     r2,r5
 bl      customcodes_parse
-ldr     r1,[r6,0]
+ldr     r1,[r6]
 
 // If 0, return [r6]+2; otherwise, return [r6]+r0
 beq     @@next
@@ -25,7 +25,7 @@ pop     {r0-r1,pc}
 //==============================================================================
 c8ffc_custom_codes:
 push    {r2,r5,lr}
-ldrb    r0,[r2,0]
+ldrb    r0,[r2]
 mov     r5,r0
 mov     r1,r2
 mov     r2,r4
@@ -137,7 +137,7 @@ mov     r4,0
 strh    r4,[r6,2]
 
 // Clobbered code
-strh    r5,[r1,0]
+strh    r5,[r1]
 pop     {pc}
 
 //==============================================================================
@@ -157,12 +157,12 @@ mov     r5,r0
 // Check each equip slot
 ldr     r6,=0x3001D40
 ldr     r3,=0x3005264
-ldrh    r0,[r3,0] // active party character
+ldrh    r0,[r3] // active party character
 mov     r1,0x6C
 mul     r0,r1
 add     r6,r0,r6
 add     r6,0x75
-ldrb    r0,[r6,0]
+ldrb    r0,[r6]
 cmp     r0,0
 bne     @@next
 
@@ -171,7 +171,7 @@ mov     r0,r8
 mov     r1,r5
 mov     r2,0x6
 mov     r3,0
-str     r7,[sp,0]
+str     r7,[sp]
 bl      0x80C9634
 
 @@next:
@@ -184,7 +184,7 @@ mov     r0,r8
 mov     r1,r5
 mov     r2,0x6
 mov     r3,1
-str     r7,[sp,0]
+str     r7,[sp]
 bl      0x80C9634
 
 @@next2:
@@ -197,7 +197,7 @@ mov     r0,r8
 mov     r1,r5
 mov     r2,0x6
 mov     r3,2
-str     r7,[sp,0]
+str     r7,[sp]
 bl      0x80C9634
 
 @@next3:
@@ -210,7 +210,7 @@ mov     r0,r8
 mov     r1,r5
 mov     r2,0x6
 mov     r3,3
-str     r7,[sp,0]
+str     r7,[sp]
 bl      0x80C9634
 
 @@next4:
@@ -232,7 +232,7 @@ mov     r0,sp
 
 ldrh    r2,[r1,0x22] // window X
 add     r2,6         // horizontal offset
-strh    r2,[r0,0]
+strh    r2,[r0]
 ldrh    r2,[r1,0x24] // window Y
 strh    r2,[r0,2]
 ldrh    r2,[r1,0x26] // window width
@@ -244,7 +244,7 @@ strh    r2,[r0,0xE]
 ldr     r2,=0x44444444
 str     r2,[r0,4]
 ldr     r2,=0x30051EC
-ldrh    r2,[r2,0]
+ldrh    r2,[r2]
 strh    r2,[r0,8]
 
 bl      clear_rect
@@ -272,7 +272,7 @@ bl      print_blankstr
 pop     {r0-r2}
 
 // Clobbered code
-strh    r1,[r3,0]
+strh    r1,[r3]
 ldr     r0,=0x80C4F3B
 bx      r0
 
@@ -291,7 +291,7 @@ bl      print_blankstr
 pop     {r0-r2}
 
 // Clobbered code
-strh    r1,[r3,0]
+strh    r1,[r3]
 ldr     r0,=0x80C4EFF
 bx      r0
 .pool
@@ -412,7 +412,7 @@ pop     {r4,pc}
 bac18_clear_psi:
 push    {r0,lr}
 ldr     r0,[r5,0x20] // PSI class window pointer
-ldrb    r0,[r0,0]
+ldrb    r0,[r0]
 mov     r1,0x10
 and     r0,r1
 cmp     r0,0
@@ -435,7 +435,7 @@ pop     {pc}
 bac18_check_button:
 push    {lr}
 ldr     r0,=0x3002500
-ldrh    r0,[r0,0]
+ldrh    r0,[r0]
 cmp     r0,0
 beq     @@next
 
@@ -498,7 +498,7 @@ bl      print_blankstr
 // Clobbered code
 pop     {r1}
 mov     r0,2
-strh    r0,[r1,0]
+strh    r0,[r1]
 pop     {pc}
 
 //==============================================================================
@@ -509,9 +509,9 @@ add     sp,-4
 
 // Copied from 80B7A74
 mov     r0,0
-str     r0,[sp,0]
+str     r0,[sp]
 ldr     r0,=0x3005230
-ldr     r0,[r0,0] // main menu window pointer
+ldr     r0,[r0] // main menu window pointer
 ldr     r1,[r0,4] // text pointer
 mov     r2,5
 mov     r3,2
@@ -536,9 +536,9 @@ add     sp,-4
 
 // Copied from 80B7A74
 mov     r0,0
-str     r0,[sp,0]
+str     r0,[sp]
 ldr     r0,=0x3005230
-ldr     r0,[r0,0] // main menu window pointer
+ldr     r0,[r0] // main menu window pointer
 ldr     r1,[r0,4] // text pointer
 mov     r2,5
 mov     r3,2
@@ -594,8 +594,8 @@ push    {r4-r7,lr}
 // Check blank by comparing tilemap with 0xE2FF
 // 0xE2FF is already stored to [sp+(# of regs pushed * 4)]
 ldr     r0,[sp,20]
-ldrh    r1,[r7,0]
-ldrh    r2,[r5,0]
+ldrh    r1,[r7]
+ldrh    r2,[r5]
 
 cmp     r1,r0
 bne     @@next
@@ -627,18 +627,18 @@ bne     @@nonblank_to_nonblank
     mov     r1,r4 // dest y
     bl      get_tile_number
     ldr     r1,=0x30051EC
-    ldrh    r2,[r1,0]
+    ldrh    r2,[r1]
     add     r0,r0,r2 // dest tile number
     ldrh    r1,[r1,0x3C] // 0xE000
     orr     r0,r1
-    strh    r0,[r5,0]
+    strh    r0,[r5]
     b       @@end
 
 // Case 2: blank to non-blank
 @@blank_to_nonblank:
 
     // Set dest tilemap to 0xE2FF
-    strh    r0,[r5,0]
+    strh    r0,[r5]
 
 // Case 4: non-blank to non-blank
 @@nonblank_to_nonblank:
@@ -671,7 +671,7 @@ add     sp,-12
 
 // Clobbered code
 orr     r0,r1 // 0xE2FF
-strh    r0,[r5,0] // dest tilemap
+strh    r0,[r5] // dest tilemap
 
 // We need to erase the pixels
 ca4bc_erase_tile_common:
@@ -685,7 +685,7 @@ add     r2,r2,r4
 lsr     r2,r2,16 // x
 ldrh    r1,[r6,0x24]
 add     r1,r8 // y
-strh    r2,[r0,0]
+strh    r2,[r0]
 strh    r1,[r0,2]
 bl      clear_tile_internal
 
@@ -700,12 +700,12 @@ push    {lr}
 add     sp,-12
 
 // Clobbered code
-ldrh    r1,[r1,0]
-strh    r1,[r5,0]
+ldrh    r1,[r1]
+strh    r1,[r5]
 
 // We need to erase the pixels
 ldr     r2,=0x30051EC
-ldrh    r2,[r2,0]
+ldrh    r2,[r2]
 b       ca4bc_erase_tile_common
 .pool
 
@@ -714,7 +714,7 @@ b       ca4bc_erase_tile_common
 e06ec_clear_window:
 push    {r0-r1,lr}
 ldr     r0,=0x3002500
-ldrh    r0,[r0,0]
+ldrh    r0,[r0]
 cmp     r0,0
 beq     @@next
 ldr     r0,=0x3005230
@@ -745,11 +745,11 @@ bl      print_blankstr
 // Render PSI string
 add     sp,-4
 ldr     r0,=0x80DC1EC // address of PSI string pointer
-ldr     r1,[r0,0] // PSI string pointer
+ldr     r1,[r0] // PSI string pointer
 ldr     r0,=0x3005230
-ldr     r0,[r0,0] // window pointer
+ldr     r0,[r0] // window pointer
 mov     r2,1 // highlight
-str     r2,[sp,0]
+str     r2,[sp]
 mov     r2,1
 mov     r3,1
 bl      0x80C96F0 // render string
@@ -779,7 +779,7 @@ bl      print_blankstr
 // If [0x2025122] == 2, draw Do Nothing; else, draw Bash
 // We'll never draw Shoot because Jeff doesn't use PSI
 ldr     r0,=0x2025122
-ldrh    r0,[r0,0]
+ldrh    r0,[r0]
 cmp     r0,2
 beq     @@donothing
 ldr     r0,=0x80DBFB0
@@ -787,22 +787,22 @@ b       @@next
 @@donothing:
 ldr     r0,=0x80DC108
 @@next:
-ldr     r1,[r0,0]
+ldr     r1,[r0]
 ldr     r0,=0x3005230
-ldr     r0,[r0,0] // window pointer
+ldr     r0,[r0] // window pointer
 mov     r2,0 // no highlight
-str     r2,[sp,0]
+str     r2,[sp]
 mov     r2,1
 mov     r3,0
 bl      0x80C96F0 // render string
 
 // Render PSI string
 ldr     r0,=0x80DC1EC // address of PSI string pointer
-ldr     r1,[r0,0] // PSI string pointer
+ldr     r1,[r0] // PSI string pointer
 ldr     r0,=0x3005230
-ldr     r0,[r0,0] // window pointer
+ldr     r0,[r0] // window pointer
 mov     r2,1 // highlight
-str     r2,[sp,0]
+str     r2,[sp]
 mov     r2,1
 mov     r3,1
 bl      0x80C96F0 // render string
@@ -820,7 +820,7 @@ c239c_print_psi:
 push    {lr}
 add     sp,-4
 mov     r2,0
-str     r2,[sp,0]
+str     r2,[sp]
 mov     r2,r4
 lsl     r3,r3,3 // tiles-to-pixels
 bl      print_string_hlight_pixels
@@ -842,7 +842,7 @@ mov     r2,r4
 bl      0x80F4C78
 add     r0,r4,r5
 mov     r1,0
-strb    r1,[r0,0]
+strb    r1,[r0]
 mov     r1,0xFF
 strb    r1,[r0,1]
 pop     {pc}
@@ -854,7 +854,7 @@ mov     lr,r1
 pop     {r1}
 add     sp,4
 ldr     r0,=0x3005220
-ldr     r0,[r0,0]
+ldr     r0,[r0]
 mov     r1,0x4C
 lsl     r1,r1,4
 add     r0,r0,r1
@@ -873,7 +873,7 @@ mov     r2,r4
 bl      0x80F4C78
 add     r0,r4,r5
 mov     r1,0
-strb    r1,[r0,0]
+strb    r1,[r0]
 mov     r1,0xFF
 strb    r1,[r0,1]
 pop     {pc}
@@ -884,14 +884,14 @@ ldr     r1,[sp,4]
 mov     lr,r1
 pop     {r1}
 add     sp,4
-ldr     r0,[r0,0]
+ldr     r0,[r0]
 mov     r1,0x50
 lsl     r1,r1,4
 add     r0,r0,r1
 bx      lr
 
 c980c_user_pointer:
-ldr     r1,[r0,0]
+ldr     r1,[r0]
 mov     r0,0x4C
 lsl     r0,r0,4
 add     r1,r0,r1
@@ -899,7 +899,7 @@ ldr     r0,[r5,0x1C]
 bx      lr
 
 c980c_target_pointer:
-ldr     r0,[r0,0]
+ldr     r0,[r0]
 mov     r7,0x50
 lsl     r7,r7,4
 add     r0,r0,r7
@@ -912,14 +912,14 @@ dcd00_enemy_letter:
 sub     r0,0x90
 strb    r0,[r5,1]
 mov     r0,0x50
-strb    r0,[r5,0]
+strb    r0,[r5]
 bx      lr
 
 dae00_enemy_letter:
 sub     r0,0x90
 strb    r0,[r4,1]
 mov     r0,0x50
-strb    r0,[r4,0]
+strb    r0,[r4]
 bx      lr
 
 //==============================================================================
@@ -942,7 +942,7 @@ beq     @@next
 
 // Write "The " before the enemy name
 ldr     r2,=0x50959884
-str     r2,[r0,0]
+str     r2,[r0]
 add     r0,4
 
 @@next:

@@ -71,7 +71,7 @@ bne     @@end
 
 // 01: load enemy plurality
 ldr     r1,=0x2025038
-ldrb    r1,[r1,0] // number of enemies at start of battle
+ldrb    r1,[r1] // number of enemies at start of battle
 cmp     r1,4
 blt     @@small
 mov     r1,3
