@@ -3370,7 +3370,7 @@
 ^L3630^
 ^L3631^
 ^L3632^@But, [C2 FF][1A FF 05 00] cannot carry anymore stuff.[22 FF][01 FF]^L3639^@Do you want to throw[01 FF]  something away?[03 FF 18 00][04 FF _L3635_][05 FF _L3636_]^L3636^[C1 FF][87 FF]@Then, will you leave[01 FF]  the [90 FF 00][1A FF 02 00] behind?[03 FF 18 00][04 FF _L3637_][05 FF _L3638_]^L3638^[22 FF][01 FF][80 FF _L3639_]^L3637^[C2 FF][1A FF 05 00][01 FF][90 FF 00][1A FF 02 00][22 FF][00 FF]
-^L3634^[8D FF 01 00][87 FF]@[90 FF 00][1A FF 01 00] added[89 FF][87 FF] the [90 FF 00][1A FF 01 00] to[01 FF]  [87 FF][90 FF 00][1A FF 02 00]'s stuff.[93 FF 00 00][D4 FF 74 00][22 FF][00 FF]
+^L3634^[8D FF 01 00][87 FF]@[90 FF 00][1A FF 01 00] added[89 FF] the [90 FF 00][1A FF 02 00] to[01 FF]  [87 FF][90 FF 00][1A FF 01 00]'s stuff.[93 FF 00 00][D4 FF 74 00][22 FF][00 FF]
 ^L3635^@What do you want to throw away?[22 FF][86 FF _L3640_][01 FF][82 FF _L3636_][88 FF][AB FF 00 00][B7 FF 00][82 FF _L3641_][89 FF][AB FF 00 00][90 FF 00]@So you want to throw away the [1A FF 02 00]?[03 FF 09 00][04 FF _L3642_][05 FF _L3636_][80 FF _L3636_]^L3642^[89 FF][B9 FF 00 00 00 00][87 FF]@[90 FF 00][1A FF 01 00] threw the [87 FF][90 FF 00][1A FF 02 00]away[02 FF]@and took the [87 FF][C1 FF][87 FF][90 FF 00][1A FF 02 00].[93 FF 00 00][D4 FF 74 00][1B FF 01 00][02 FF][00 FF]
 ^L3640^[96 FF 02][81 FF _L5044_][80 FF _L5044_]
 ^L3641^
