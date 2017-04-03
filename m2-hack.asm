@@ -366,6 +366,9 @@ b       0x80D3514
 // Disable X increment
 .org 0x80D351A :: nop
 
+// Don't print [1E 20] after the name if there are multiple people
+.org 0x80D3418 :: b 0x80D348C
+
 //---------------------------------------------------------
 // D3934 hacks (print PSI name)
 //---------------------------------------------------------
