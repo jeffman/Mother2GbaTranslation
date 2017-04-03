@@ -64,7 +64,20 @@ b       0x80BADD8
 //---------------------------------------------------------
 
 // Erase offense change
-erase_offense equ mov r0,0xC :: mov r1,0xB :: mov r2,4 :: bl print_blankstr
+.macro erase_offense
+    mov     r0,0xC
+    mov     r1,0xB
+    mov     r2,4
+    bl      print_blankstr
+.endmacro
+
+.macro erase_defense
+    mov     r0,0xC
+    mov     r1,0xD
+    mov     r2,4
+    bl      print_blankstr
+.endmacro
+
 .org 0x80BB216 :: erase_offense
 .org 0x80BB38C :: erase_offense
 .org 0x80BB4C6 :: erase_offense
@@ -74,7 +87,6 @@ erase_offense equ mov r0,0xC :: mov r1,0xB :: mov r2,4 :: bl print_blankstr
 .org 0x80BBD54 :: erase_offense
 
 // Erase defense change
-erase_defense equ mov r0,0xC :: mov r1,0xD :: mov r2,4 :: bl print_blankstr
 .org 0x80BB226 :: erase_defense
 .org 0x80BBABE :: erase_defense
 .org 0x80BBC06 :: erase_defense
