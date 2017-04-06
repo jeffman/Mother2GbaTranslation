@@ -215,10 +215,6 @@ b       0x80C4C58
 .org 0x80C4E68 :: nop
 .org 0x80C4E76 :: nop
 
-// Widen the who/where/etc window
-.org 0x80B77B4 :: mov r3,5
-.org 0x80BA9E2 :: mov r3,5
-
 //---------------------------------------------------------
 // C4B2C hacks (Equip window loop)
 //---------------------------------------------------------
@@ -248,6 +244,9 @@ bl      c980c_resetx_newline
 .org 0x80CA204 :: bl c980c_resetx_other4
 .org 0x80CA274 :: bl c980c_resetx_other4
 .org 0x80CA30E :: bl c980c_resetx_newline
+
+// Disable newline if the text overflows
+.org 0x80CA2FA :: nop
 
 // Custom codes check
 .org    0x80CA2BC
