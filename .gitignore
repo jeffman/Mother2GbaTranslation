@@ -9,6 +9,7 @@ Thumbs.db
 snapshots/
 notes/
 fresh/
+armtest/
 working/*.asm
 working/*.bin
 armips.exe
