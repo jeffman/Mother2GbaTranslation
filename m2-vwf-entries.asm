@@ -625,7 +625,9 @@ bne     @@nonblank_to_nonblank
 
     // Set proper tilemap
     mov     r1,r4 // dest y
+    push    {r1-r3}
     bl      get_tile_number
+    pop     {r1-r3}
     ldr     r1,=0x30051EC
     ldrh    r2,[r1]
     add     r0,r0,r2 // dest tile number

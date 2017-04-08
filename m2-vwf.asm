@@ -1,36 +1,4 @@
 //==============================================================================
-// int get_tile_number(int x, int y)
-//    In:
-//        r0: x
-//        r1: y
-//    Out:
-//        r0: tile number
-//==============================================================================
-
-get_tile_number:
-
-push    {r1-r5,lr}
-ldr     r4,=m2_coord_table
-sub     r0,r0,1
-sub     r1,r1,1
-lsl     r2,r1,0x1F
-lsr     r2,r2,0x1F
-lsr     r1,r1,1
-lsl     r5,r1,4
-sub     r5,r5,r1
-sub     r5,r5,r1
-lsl     r5,r5,2
-lsl     r0,r0,1
-add     r4,r4,r0
-add     r4,r4,r5
-ldrh    r0,[r4,0]
-lsl     r2,r2,5
-add     r0,r0,r2
-pop     {r1-r5,pc}
-.pool
-
-
-//==============================================================================
 // void weld_entry(WINDOW* window, byte* chr)
 //    In:
 //        r0: address of window data
@@ -256,7 +224,9 @@ mov     r0,r10
 mov     r1,r11
 lsr     r0,r0,3
 lsr     r1,r1,3
+push    {r1-r3}
 bl      get_tile_number      // get dest tile number
+pop     {r1-r3}
 add     r0,r0,r4
 orr     r6,r0
 strh    r6,[r7]              // update tilemap
@@ -313,7 +283,9 @@ mov     r0,r10
 mov     r1,r11
 lsr     r0,r0,3
 lsr     r1,r1,3
+push    {r1-r3}
 bl      get_tile_number
+pop     {r1-r3}
 add     r4,r0,r4
 lsl     r0,r4,5
 mov     r1,6
@@ -368,7 +340,9 @@ mov     r1,r11
 lsr     r0,r0,3
 add     r0,r0,1
 lsr     r1,r1,3
+push    {r1-r3}
 bl      get_tile_number
+pop     {r1-r3}
 add     r0,r8
 mov     r4,r0
 lsl     r0,r0,5
@@ -413,7 +387,9 @@ mov     r1,r11
 lsr     r0,r0,3
 add     r0,r0,2
 lsr     r1,r1,3
+push    {r1-r3}
 bl      get_tile_number
+pop     {r1-r3}
 add     r0,r8
 mov     r4,r0
 lsl     r0,r0,5
@@ -764,7 +740,9 @@ push    {r0-r3,lr}
 mov     r3,r0
 ldrh    r0,[r3,0]
 ldrh    r1,[r3,2]
+push    {r1-r3}
 bl      get_tile_number
+pop     {r1-r3}
 ldrh    r1,[r3,8]
 add     r0,r0,r1
 lsl     r1,r0,5
@@ -841,11 +819,15 @@ copy_tile:
 push    {r0-r4,lr}
 
 // Get the source and dest tile numbers @@next offset
+push    {r1-r3}
 bl      get_tile_number
+pop     {r1-r3}
 mov     r4,r0
 mov     r0,r2
 mov     r1,r3
+push    {r1-r3}
 bl      get_tile_number
+pop     {r1-r3}
 mov     r3,r0
 ldr     r0,=0x30051EC
 ldrh    r1,[r0,0]
