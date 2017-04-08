@@ -1,0 +1,12 @@
+Workflow:
+- Compile vwf.c and ext.c (and others as desired) to object files. Don't link yet
+- Generate m2-compiled-labels.asm:
+  - Get function symbol addresses (objdump -t). Don't forget to offset by the compiled base address (i.e., 0x8100000)
+  - For each address, emit ".definelabel <function name>,<address>
+- Run armips on m2-hack.asm. Generate an armips symbol table
+- Emit "SECTIONS { .text 0x8000000 : { *(.text .rodata) }" to the linker script
+- Pull all undefined symbols from code object files (vwf.o, ext.o, etc.)
+  - For each undefined symbol, look up value in armips symbol table. Output to linker script: "<symbol name> = <value>;"
+- Run the linker on the compiled code (vwf.o and ext.o)
+- Extract the .text section of linked.o and place directly into the ROM at the compiled address
+- Remove the symbol table entry that says the compiled code section is data
