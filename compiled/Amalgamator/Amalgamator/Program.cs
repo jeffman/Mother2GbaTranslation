@@ -43,7 +43,6 @@ namespace Amalgamator
             var functionSymbols = new Dictionary<string, int>();
             var undefinedSymbols = new HashSet<string>();
             var linkerScript = new StringBuilder();
-            //var compiledAsm = new StringBuilder();
 
             foreach (string codeFile in options.CodeFiles)
             {
