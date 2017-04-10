@@ -8,6 +8,7 @@ using System.IO;
 using System.Diagnostics;
 using Fclp;
 using ELFSharp.ELF;
+using ELFSharp.ELF.Sections;
 
 namespace Amalgamator
 {
@@ -15,7 +16,6 @@ namespace Amalgamator
     {
         const string GccExec = "arm-none-eabi-gcc";
         const string LdExec = "arm-none-eabi-ld";
-        const string ObjDumpExec = "arm-none-eabi-objdump";
         const string CompiledAsmFile = "m2-compiled.asm";
         const string ArmipsExec = "armips.exe";
         const string HackFile = "m2-hack.asm";
@@ -23,8 +23,6 @@ namespace Amalgamator
         const string LinkerScript = "linker.ld";
         const string LinkedObjectFile = "linked.o";
 
-        const string FunctionSymbolRegex = @"([0-9a-fA-F]{8})\s.{6}F\s(?:\.text)\t[0-9a-fA-F]{8}\s(\S+)";
-        const string UndefinedSymbolRegex = @"[0-9a-fA-F]{8}\s.{7}\s\*UND\*\t[0-9a-fA-F]{8}\s(\S+)";
         const string ArmipsSymbolRegex = @"([0-9a-fA-F]{8}) ([^\.@]\S+)";
 
         static int Main(string[] args)
@@ -40,7 +38,7 @@ namespace Amalgamator
             if (options == null)
                 return 1;
 
-            var functionSymbols = new Dictionary<string, int>();
+            var functionSymbols = new Dictionary<string, uint>();
             var undefinedSymbols = new HashSet<string>();
             var linkerScript = new StringBuilder();
 
@@ -57,11 +55,20 @@ namespace Amalgamator
                 if (codeFile == "ext.c")
                     continue;
 
-                foreach (var kv in EnumerateFunctionSymbols(GetObjectFileName(codeFile)))
-                    functionSymbols.Add(kv.Key, kv.Value);
+                var elf = ELFReader.Load(GetObjectFileName(codeFile));
+                var symbols = elf.GetSection(".symtab") as SymbolTable<uint>;
 
-                foreach (var sym in EnumerateUndefinedSymbols(GetObjectFileName(codeFile)))
-                    undefinedSymbols.Add(sym);
+                foreach (var symbol in symbols.Entries.Where(
+                    s => s.Type == SymbolType.Function && s.Binding.HasFlag(SymbolBinding.Global)))
+                {
+                    functionSymbols.Add(symbol.Name, symbol.Value);
+                }
+
+                foreach (var symbol in symbols.Entries.Where(
+                    s => s.Type == SymbolType.NotSpecified && s.Binding.HasFlag(SymbolBinding.Global) && s.PointedSectionIndex == 0))
+                {
+                    undefinedSymbols.Add(symbol.Name);
+                }
             }
 
             GenerateCompiledLabelsFile(options.GetRootFile(CompiledAsmFile),
@@ -211,18 +218,6 @@ namespace Amalgamator
                 "-mno-long-calls") == 0;
         }
 
-        static IEnumerable<Match> MatchObjDump(string objectFile, string regexString)
-        {
-            string dumpOutput;
-            if (RunProcess(ObjDumpExec, out dumpOutput, "-t", objectFile) != 0)
-                return null;
-
-            var regex = new Regex(regexString);
-            var matches = regex.Matches(dumpOutput);
-
-            return matches.Cast<Match>();
-        }
-
         static IEnumerable<KeyValuePair<string, int>> ParseAddressSymbolMatches(IEnumerable<Match> matches)
         {
             var symbols = new Dictionary<string, int>();
@@ -243,29 +238,6 @@ namespace Amalgamator
             return symbols;
         }
 
-        static IEnumerable<KeyValuePair<string, int>> EnumerateFunctionSymbols(string objectFile)
-        {
-            var matches = MatchObjDump(objectFile, FunctionSymbolRegex);
-            return ParseAddressSymbolMatches(matches);
-        }
-
-        static IEnumerable<string> EnumerateUndefinedSymbols(string objectFile)
-        {
-            var matches = MatchObjDump(objectFile, UndefinedSymbolRegex);
-            var undefinedSymbols = new List<string>();
-
-            foreach (var match in matches)
-            {
-                if (match.Groups.Count != 2)
-                    continue;
-
-                string symbolName = match.Groups[1].Value;
-                undefinedSymbols.Add(symbolName);
-            }
-
-            return undefinedSymbols;
-        }
-
         static IEnumerable<KeyValuePair<string, int>> EnumerateArmipsSymbols(string armipsSymbolsFile)
         {
             string armipsSymbols = File.ReadAllText(armipsSymbolsFile);
@@ -276,12 +248,13 @@ namespace Amalgamator
         }
 
         static void GenerateCompiledLabelsFile(string fileName,
-            IEnumerable<KeyValuePair<string, int>> functionSymbols, int compiledAddress)
+            IEnumerable<KeyValuePair<string, uint>> functionSymbols, int compiledAddress)
         {
             using (var writer = File.CreateText(fileName))
             {
+                // Need to clear the 1 bit because armips requires aligned label addresses
                 foreach (var kv in functionSymbols)
-                    writer.WriteLine($".definelabel {kv.Key},0x{kv.Value + compiledAddress:X}");
+                    writer.WriteLine($".definelabel {kv.Key},0x{(kv.Value & ~1) + compiledAddress:X}");
             }
         }
 
