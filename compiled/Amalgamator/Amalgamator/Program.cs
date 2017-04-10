@@ -70,7 +70,7 @@ namespace Amalgamator
             if (!RunAssembler(options.RootDirectory))
                 return 3;
 
-            linkerScript.AppendLine(@"SECTIONS { .text 0x8000000 : { *(.text .rodata) } }");
+            linkerScript.AppendLine($"SECTIONS {{ .text 0x{options.CompiledAddress:X} : {{ *(.text .rodata) }} }}");
 
             foreach (var sym in EnumerateArmipsSymbols(options.GetRootFile(ArmipsSymFile))
                 .Where(s => undefinedSymbols.Contains(s.Key)))
