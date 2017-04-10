@@ -215,6 +215,7 @@ namespace Amalgamator
                 "-march=armv4t",
                 "-mtune=arm7tdmi",
                 "-mthumb",
+                "-ffixed-r12",
                 "-mno-long-calls") == 0;
         }
 
