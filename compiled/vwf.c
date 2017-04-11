@@ -1,7 +1,7 @@
 #include "window.h"
 #include "vwf.h"
 
-int get_tile_number(int x, int y)
+int __attribute__((noinline)) get_tile_number(int x, int y)
 {
     x--;
     y--;
