@@ -8,7 +8,7 @@ echo Compiling and assembling...
 pushd compiled
 Amalgamator\Amalgamator\bin\Debug\Amalgamator.exe -r m12.gba -c 0x8100000 -d "../" -i vwf.c ext.c
 popd
-if errorlevel 1 goto :eof
+if errorlevel 1 (pause && goto :eof)
 
 :: Assemble includes
 echo Assembling includes...
