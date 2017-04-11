@@ -1,3 +1,4 @@
+#include "window.h"
 #include "vwf.h"
 
 int get_tile_number(int x, int y)
@@ -24,7 +25,7 @@ byte reduce_bit_depth(int row, int foreground)
     return lower | (upper << 4);
 }
 
-byte print_character(byte chr, byte x, byte y, byte font, byte foreground)
+byte __attribute__ ((noinline)) print_character(byte chr, byte x, byte y, byte font, byte foreground)
 {
     int tileOffset = *tile_offset;
     int paletteMask = *palette_mask;
@@ -96,4 +97,24 @@ byte print_character(byte chr, byte x, byte y, byte font, byte foreground)
     }
 
     return virtualWidth;
+}
+
+void weld_entry(WINDOW *window, byte *str)
+{
+    weld_entry_custom(window, str, 0, 0xF);
+}
+
+void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground)
+{
+    int chr = *str - 0x50;
+    if ((chr < 0) || ((chr >= 0x60) && (chr < 0x64)) || (chr >= 0x6D))
+        chr = QUESTION_MARK;
+
+    int x = window->pixel_x + (window->window_x + window->text_x) * 8;
+    int y = (window->window_y + window->text_y) * 8;
+
+    x += print_character(chr, x, y, font, foreground);
+
+    window->pixel_x = x & 7;
+    window->text_x = (x >> 3) - window->window_x;
 }
