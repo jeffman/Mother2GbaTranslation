@@ -177,3 +177,9 @@ void copy_tile_up(int x, int y)
 {
     copy_tile(x, y, x, y - 2);
 }
+
+void print_space(WINDOW *window)
+{
+    byte space = 0x50;
+    weld_entry(window, &space);
+}

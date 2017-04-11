@@ -540,9 +540,10 @@ pop     {r1-r4,pc}
 //==============================================================================
 // Print a space before the Greek letter
 d3934_print_space:
-push    {lr}
+push    {r2-r3,lr}
 mov     r0,r4
 bl      print_space
+pop     {r2-r3}
 
 // Clobbered code
 ldrb    r1,[r3,1]
