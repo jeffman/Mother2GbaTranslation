@@ -1,5 +1,6 @@
 typedef unsigned char byte;
 #define QUESTION_MARK 0x1F;
+#define CPUFASTSET_FILL (0x1000000)
 
 unsigned short *tile_offset = (unsigned short*)0x30051EC;
 unsigned short *palette_mask = (unsigned short*)0x3005228;
@@ -19,3 +20,5 @@ extern const byte m2_nybbles_to_bits[];
 extern const byte *m2_font_table[];
 extern const byte m2_font_heights[];
 extern unsigned short const *m2_widths_table[];
+
+extern void cpufastset(void *source, void *dest, int mode);

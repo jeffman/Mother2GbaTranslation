@@ -579,6 +579,7 @@ m2_enemy_attributes:
 //==============================================================================
 
 .org 0x80FCE6C
+.include "syscalls.asm"
 .include "m2-vwf.asm"
 .include "m2-vwf-entries.asm"
 .include "m2-formatting.asm"
