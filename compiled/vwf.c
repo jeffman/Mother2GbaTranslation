@@ -118,3 +118,22 @@ void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground)
     window->pixel_x = x & 7;
     window->text_x = (x >> 3) - window->window_x;
 }
+
+// Returns: ____XXXX = number of characters printed
+//          XXXX____ = number of pixels printed
+int print_string(byte *str, int x, int y)
+{
+    byte chr;
+    int initial_x = x;
+    int charCount = 0;
+
+    while ((chr = str[1]) != 0xFF)
+    {
+        chr = *str++;
+        x += print_character(chr - 0x50, x, y, 0, 0xF);
+        charCount++;
+    }
+
+    int totalWidth = x - initial_x;
+    return (charCount & 0xFFFF) | (totalWidth << 16);
+}

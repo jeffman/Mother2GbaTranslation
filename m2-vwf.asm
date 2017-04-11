@@ -1,48 +1,4 @@
 //=============================================================================
-// void print_string(char* str, int x, int y)
-// In:
-//    r0: address of string to print
-//    r1: x (pixel)
-//    r2: y (pixel)
-// Out:
-//    r0: number of characters printed
-//    r1: number of pixels printed
-//=============================================================================
-
-print_string:
-push    {r2-r6,lr}
-
-mov     r5,0
-mov     r6,r1
-mov     r4,r0
-@@prev:
-ldrb    r0,[r4,1]
-cmp     r0,0xFF
-beq     @@end
-ldrb    r0,[r4,0]
-sub     r0,0x50
-
-push    {r1-r3}
-add     sp,-4
-mov     r3,0xF
-str     r3,[sp]
-mov     r3,0
-bl      print_character
-add     sp,4
-pop     {r1-r3}
-
-add     r1,r0,r1
-add     r4,1
-add     r5,1
-b       @@prev
-
-@@end:
-mov     r0,r5
-sub     r1,r1,r6
-pop     {r2-r6,pc}
-
-
-//=============================================================================
 // void print_string_hlight_pixels(WINDOW* window, char* str, int x,
 //                                       int y, bool highlight)
 // In:
@@ -85,7 +41,9 @@ lsl     r2,r2,3
 add     r2,r2,r3
 mov     r0,r6
 bl      print_string
-mov     r7,r0
+lsr     r1,r0,16
+lsl     r0,r0,16
+lsr     r7,r0,16
 ldrh    r0,[r5,0]
 lsl     r0,r0,0x10
 asr     r0,r0,0x1C

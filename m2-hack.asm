@@ -362,7 +362,8 @@ add     r2,r2,r3
 lsl     r2,r2,3 // r2 = tile_y * 8
 mov     r0,r6
 bl      print_string
-mov     r7,r0
+lsl     r0,r0,16
+lsr     r7,r0,16
 b       0x80C9788
 
 //---------------------------------------------------------
