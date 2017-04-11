@@ -120,7 +120,6 @@ mov     r1,0
 strh    r1,[r0,2]
 
 // Clear window
-mov     r1,4
 bl      clear_window
 
 // Clobbered code
@@ -225,32 +224,20 @@ pop     {r7,pc}
 // Clears the equipment portion of the equip window
 // r0 = window pointer
 clear_equipment:
-push    {r0-r2,lr}
-add     sp,-16
-mov     r1,r0
-mov     r0,sp
-
-ldrh    r2,[r1,0x22] // window X
-add     r2,6         // horizontal offset
-strh    r2,[r0]
-ldrh    r2,[r1,0x24] // window Y
-strh    r2,[r0,2]
-ldrh    r2,[r1,0x26] // window width
+push    {r0-r4,lr}
+add     sp,-4
+mov     r3,r0
+ldr     r0,=0x44444444
+str     r0,[sp]
+ldrh    r0,[r3,0x22]
+add     r0,6
+ldrh    r1,[r3,0x24]
+ldrh    r2,[r3,0x26]
 sub     r2,6
-strh    r2,[r0,0xC]
-ldrh    r2,[r1,0x28] // window height
-strh    r2,[r0,0xE]
-
-ldr     r2,=0x44444444
-str     r2,[r0,4]
-ldr     r2,=0x30051EC
-ldrh    r2,[r2]
-strh    r2,[r0,8]
-
+ldrh    r3,[r3,0x28]
 bl      clear_rect
-
-add     sp,16
-pop     {r0-r2,pc}
+add     sp,4
+pop     {r0-r4,pc}
 .pool
 
 
@@ -303,7 +290,6 @@ c438c_moveright:
 push    {r0-r1,lr}
 ldr     r1,=0x3005230
 ldr     r0,[r1,0x24] // PSI target window pointer
-mov     r1,4
 bl      clear_window
 pop     {r0-r1}
 
@@ -316,7 +302,6 @@ c438c_moveleft:
 push    {r0-r1,lr}
 ldr     r1,=0x3005230
 ldr     r0,[r1,0x24] // PSI target window pointer
-mov     r1,4
 bl      clear_window
 pop     {r0-r1}
 
@@ -329,7 +314,6 @@ c438c_moveup:
 push    {r0-r1,lr}
 ldr     r1,=0x3005230
 ldr     r0,[r1,0x24] // PSI target window pointer
-mov     r1,4
 bl      clear_window
 pop     {r0-r1}
 
@@ -342,7 +326,6 @@ c438c_movedown:
 push    {r0-r1,lr}
 ldr     r1,=0x3005230
 ldr     r0,[r1,0x24] // PSI target window pointer
-mov     r1,4
 bl      clear_window
 pop     {r0-r1}
 
@@ -420,7 +403,6 @@ beq     @@next
 
 // If flag 0x10 is set, clear the PSI window
 ldr     r0,[r5,0x1C] // PSI window
-mov     r1,4
 bl      clear_window
 
 @@next:
@@ -621,13 +603,13 @@ bne     @@nonblank_to_nonblank
     add     r1,r8 // dest y
     mov     r4,r1
     add     r1,2 // source y
+    mov     r6,r0
     bl      copy_tile_up
 
     // Set proper tilemap
+    mov     r0,r6 // dest x
     mov     r1,r4 // dest y
-    push    {r1-r3}
     bl      get_tile_number
-    pop     {r1-r3}
     ldr     r1,=0x30051EC
     ldrh    r2,[r1]
     add     r0,r0,r2 // dest tile number
@@ -654,7 +636,6 @@ bne     @@nonblank_to_nonblank
     add     r1,r8 // dest y
     add     r1,2 // source y
     bl      copy_tile_up
-    b       @@end
 
 @@end:
 pop     {r4-r7,pc}
@@ -668,8 +649,7 @@ pop     {r4-r7,pc}
 // r6: window
 // r8: y (dest, relative)
 ca4bc_erase_tile_short:
-push    {lr}
-add     sp,-12
+push    {r0-r1,lr}
 
 // Clobbered code
 orr     r0,r1 // 0xE2FF
@@ -677,37 +657,28 @@ strh    r0,[r5] // dest tilemap
 
 // We need to erase the pixels
 ca4bc_erase_tile_common:
-mov     r0,sp
-strh    r2,[r0,8] // tile offset
-ldr     r2,=0x44444444
-str     r2,[r0,4] // empty row of pixels
 ldrh    r2,[r6,0x22]
 lsl     r2,r2,16
 add     r2,r2,r4
-lsr     r2,r2,16 // x
+lsr     r0,r2,16 // x
 ldrh    r1,[r6,0x24]
 add     r1,r8 // y
-strh    r2,[r0]
-strh    r1,[r0,2]
-bl      clear_tile_internal
+ldr     r2,=0x44444444
+bl      clear_tile
 
-add     sp,12
-pop     {pc}
+pop     {r0-r1,pc}
 .pool
 
 //==============================================================================
 // Erase tile
 ca4bc_erase_tile:
-push    {lr}
-add     sp,-12
+push    {r0-r1,lr}
 
 // Clobbered code
 ldrh    r1,[r1]
 strh    r1,[r5]
 
 // We need to erase the pixels
-ldr     r2,=0x30051EC
-ldrh    r2,[r2]
 b       ca4bc_erase_tile_common
 .pool
 
@@ -721,7 +692,6 @@ cmp     r0,0
 beq     @@next
 ldr     r0,=0x3005230
 ldr     r0,[r0,0x1C]
-mov     r1,4
 bl      clear_window
 
 @@next:
@@ -774,7 +744,9 @@ mov     r0,2
 mov     r1,1
 mov     r2,1
 bl      print_blankstr
-add     r1,2
+mov     r0,2
+mov     r1,3
+mov     r2,1
 bl      print_blankstr
 
 // We need to figure out whether to draw Bash or Do Nothing

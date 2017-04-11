@@ -133,5 +133,47 @@ int print_string(byte *str, int x, int y)
     }
 
     int totalWidth = x - initialX;
+
     return (charCount & 0xFFFF) | (totalWidth << 16);
+}
+
+void clear_tile(int x, int y, int pixels)
+{
+    int tileIndex = get_tile_number(x, y) + *tile_offset;
+    cpufastset(&pixels, &vram[tileIndex * 8], CPUFASTSET_FILL | 8);
+}
+
+void clear_rect(int x, int y, int width, int height, int pixels)
+{
+    for (int tileY = 0; tileY < height; tileY++)
+    {
+        for (int tileX = 0; tileX < width; tileX++)
+        {
+            clear_tile(x + tileX, y + tileY, pixels);
+        }
+    }
+}
+
+void clear_window(WINDOW *window)
+{
+    clear_rect(window->window_x, window->window_y,
+        window->window_width, window->window_height,
+        0x44444444);
+}
+
+void print_blankstr(int x, int y, int width)
+{
+    clear_rect(x, y, width, 2, 0x44444444);
+}
+
+void copy_tile(int xSource, int ySource, int xDest, int yDest)
+{
+    int sourceTileIndex = get_tile_number(xSource, ySource) + *tile_offset;
+    int destTileIndex = get_tile_number(xDest, yDest) + *tile_offset;
+    cpufastset(&vram[sourceTileIndex * 8], &vram[destTileIndex * 8], 8);
+}
+
+void copy_tile_up(int x, int y)
+{
+    copy_tile(x, y, x, y - 2);
 }

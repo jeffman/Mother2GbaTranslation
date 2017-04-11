@@ -13,6 +13,12 @@ byte reduce_bit_depth(int row, int foreground);
 byte print_character(byte chr, byte x, byte y, byte font, byte foreground);
 void weld_entry(WINDOW *window, byte *str);
 void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground);
+void clear_tile(int x, int y, int pixels);
+void clear_rect(int x, int y, int width, int height, int pixels);
+void clear_window(WINDOW *window);
+void print_blankstr(int x, int y, int width);
+void copy_tile(int xSource, int ySource, int xDest, int yDest);
+void copy_tile_up(int x, int y);
 
 extern unsigned short const m2_coord_table[];
 extern int const m2_bits_to_nybbles[];
