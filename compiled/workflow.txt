@@ -20,3 +20,5 @@ to be called from C should be defined in vwf.h as (for example):
 linker, *also* defined in ext.c as:
 
     __attribute__((naked)) void copy_tile_up(int x, int y){}
+
+Because armips exports all symbols in lower-case, all such extern functions must be lower-case.
