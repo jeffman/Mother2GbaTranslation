@@ -13,9 +13,9 @@ byte print_character(byte chr, byte x, byte y, byte font, byte foreground);
 void weld_entry(WINDOW *window, byte *str);
 void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground);
 
-extern unsigned short m2_coord_table[];
-extern int m2_bits_to_nybbles[];
-extern byte m2_nybbles_to_bits[];
-extern byte *m2_font_table[];
-extern byte m2_font_heights[];
-extern unsigned short *m2_widths_table[];
+extern unsigned short const m2_coord_table[];
+extern int const m2_bits_to_nybbles[];
+extern const byte m2_nybbles_to_bits[];
+extern const byte *m2_font_table[];
+extern const byte m2_font_heights[];
+extern unsigned short const *m2_widths_table[];

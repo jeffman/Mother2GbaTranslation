@@ -29,7 +29,7 @@ byte __attribute__ ((noinline)) print_character(byte chr, byte x, byte y, byte f
 {
     int tileOffset = *tile_offset;
     int paletteMask = *palette_mask;
-    byte *glyphRows = &m2_font_table[font][chr * 32];
+    byte const *glyphRows = &m2_font_table[font][chr * 32];
 
     int widths = m2_widths_table[font][chr];
     int virtualWidth = widths & 0xFF;
