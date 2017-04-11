@@ -54,12 +54,11 @@ byte __attribute__ ((noinline)) print_character(byte chr, byte x, byte y, byte f
             for (int row = 0; row < 8; row++)
             {
                 int canvasRow = vram[(tileIndex * 8) + row];
-                byte reducedCanvasRow = reduce_bit_depth(canvasRow, foreground);
                 byte glyphRow = glyphRows[row + (dTileY * 16) + (dTileX * 8)] & ((1 << leftPortionWidth) - 1);
                 glyphRow <<= (8 - leftPortionWidth);
 
                 int expandedGlyphRow = expand_bit_depth(glyphRow, foreground);
-                int expandedGlyphRowMask = expand_bit_depth(glyphRow, 0xF) ^ 0xFFFFFFFF;
+                int expandedGlyphRowMask = ~expand_bit_depth(glyphRow, 0xF);
                 canvasRow &= expandedGlyphRowMask;
                 canvasRow |= expandedGlyphRow;
 
@@ -77,11 +76,10 @@ byte __attribute__ ((noinline)) print_character(byte chr, byte x, byte y, byte f
                 for (int row = 0; row < 8; row++)
                 {
                     int canvasRow = vram[(tileIndex * 8) + row];
-                    byte reducedCanvasRow = reduce_bit_depth(canvasRow, foreground);
                     byte glyphRow = glyphRows[row + (dTileY * 16) + (dTileX * 8)] >> leftPortionWidth;
 
                     int expandedGlyphRow = expand_bit_depth(glyphRow, foreground);
-                    int expandedGlyphRowMask = expand_bit_depth(glyphRow, 0xF) ^ 0xFFFFFFFF;
+                    int expandedGlyphRowMask = ~expand_bit_depth(glyphRow, 0xF);
                     canvasRow &= expandedGlyphRowMask;
                     canvasRow |= expandedGlyphRow;
 
@@ -124,16 +122,16 @@ void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground)
 int print_string(byte *str, int x, int y)
 {
     byte chr;
-    int initial_x = x;
+    int initialX = x;
     int charCount = 0;
 
-    while ((chr = str[1]) != 0xFF)
+    while (str[1] != 0xFF)
     {
         chr = *str++;
         x += print_character(chr - 0x50, x, y, 0, 0xF);
         charCount++;
     }
 
-    int totalWidth = x - initial_x;
+    int totalWidth = x - initialX;
     return (charCount & 0xFFFF) | (totalWidth << 16);
 }
