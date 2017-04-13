@@ -27,19 +27,19 @@ byte reduce_bit_depth(int row, int foreground)
 
 byte __attribute__ ((noinline)) print_character(byte chr, byte x, byte y, byte font, byte foreground)
 {
+    int tileWidth = m2_font_widths[font];
+    int tileHeight = m2_font_heights[font];
+    int widths = m2_widths_table[font][chr];
+
     int tileOffset = *tile_offset;
     int paletteMask = *palette_mask;
-    byte const *glyphRows = &m2_font_table[font][chr * 32];
+    byte const *glyphRows = &m2_font_table[font][chr * tileWidth * tileHeight * 8];
 
-    int widths = m2_widths_table[font][chr];
     int virtualWidth = widths & 0xFF;
-
-    int tileHeight = m2_font_heights[font];
+    int leftPortionWidth = 8 - (x & 7);
 
     int tileX = x >> 3;
     int tileY = y >> 3;
-
-    int leftPortionWidth = 8 - (x & 7);
 
     for (int dTileY = 0; dTileY < tileHeight; dTileY++) // dest tile Y
     {
@@ -54,7 +54,7 @@ byte __attribute__ ((noinline)) print_character(byte chr, byte x, byte y, byte f
             for (int row = 0; row < 8; row++)
             {
                 int canvasRow = vram[(tileIndex * 8) + row];
-                byte glyphRow = glyphRows[row + (dTileY * 16) + (dTileX * 8)] & ((1 << leftPortionWidth) - 1);
+                byte glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] & ((1 << leftPortionWidth) - 1);
                 glyphRow <<= (8 - leftPortionWidth);
 
                 int expandedGlyphRow = expand_bit_depth(glyphRow, foreground);
@@ -76,7 +76,7 @@ byte __attribute__ ((noinline)) print_character(byte chr, byte x, byte y, byte f
                 for (int row = 0; row < 8; row++)
                 {
                     int canvasRow = vram[(tileIndex * 8) + row];
-                    byte glyphRow = glyphRows[row + (dTileY * 16) + (dTileX * 8)] >> leftPortionWidth;
+                    byte glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] >> leftPortionWidth;
 
                     int expandedGlyphRow = expand_bit_depth(glyphRow, foreground);
                     int expandedGlyphRowMask = ~expand_bit_depth(glyphRow, 0xF);

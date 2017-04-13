@@ -25,6 +25,7 @@ extern unsigned short const m2_coord_table[];
 extern int const m2_bits_to_nybbles[];
 extern const byte m2_nybbles_to_bits[];
 extern const byte *m2_font_table[];
+extern const byte m2_font_widths[];
 extern const byte m2_font_heights[];
 extern unsigned short const *m2_widths_table[];
 
