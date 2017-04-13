@@ -540,29 +540,50 @@ m2_coord_table:
 
 // EB fonts
 m2_font_table:
-dw     m2_font_main
-dw     m2_font_saturn
+dw      m2_font_main
+dw      m2_font_saturn
+dw      m2_font_big
+dw      m2_font_battle
+dw      m2_font_tiny
 
 m2_font_main:
 .incbin "m2-font-main.bin"
-
 m2_font_saturn:
 .incbin "m2-font-saturn.bin"
+m2_font_big:
+.incbin "m2-font-big.bin"
+m2_font_battle:
+.incbin "m2-font-battle.bin"
+m2_font_tiny:
+.incbin "m2-font-tiny.bin"
 
-// EB font heights
+// EB font dimensions
+m2_font_widths:
+db      2, 2, 2, 1, 1
+.align 4
+
 m2_font_heights:
-db     0x02, 0x02, 0x01, 0x00    // last byte for alignment
+db      2, 2, 2, 2, 1
+.align 4
 
 // EB font widths
 m2_widths_table:
-dw     m2_widths_main
-dw     m2_widths_saturn
+dw      m2_widths_main
+dw      m2_widths_saturn
+dw      m2_widths_big
+dw      m2_widths_battle
+dw      m2_widths_tiny
 
 m2_widths_main:
 .incbin "m2-widths-main.bin"
-
 m2_widths_saturn:
-// tbd
+.incbin "m2-widths-saturn.bin"
+m2_widths_big:
+.incbin "m2-widths-big.bin"
+m2_widths_battle:
+.incbin "m2-widths-battle.bin"
+m2_widths_tiny:
+.incbin "m2-widths-tiny.bin"
 
 m2_bits_to_nybbles:
 .incbin "m2-bits-to-nybbles.bin"
