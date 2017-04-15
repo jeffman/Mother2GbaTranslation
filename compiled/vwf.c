@@ -46,12 +46,34 @@ byte reduce_bit_depth(int row, int foreground)
 
 byte print_character(byte chr, int x, int y, int font, int foreground)
 {
+    // 0x64 to 0x6C (inclusive) is YOU WON
+    if ((chr >= 0x64) && (chr <= 0x6C))
+    {
+        print_special_character(chr + 0xF0, x, y);
+        return 8;
+    }
+
     return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, TRUE);
 }
 
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground)
 {
     return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, FALSE);
+}
+
+void print_special_character(int tile, int x, int y)
+{
+    // Special graphics must be tile-aligned
+    x >>= 3;
+    y >>= 3;
+    unsigned short sourceTileIndex = tile + *tile_offset;
+    unsigned short destTileIndex = get_tile_number(x, y) + *tile_offset;
+
+    (*tilemap)[x + (y * 32)] = destTileIndex | *palette_mask;
+    (*tilemap)[x + ((y + 1) * 32)] = (destTileIndex + 32) | *palette_mask;
+
+    cpufastset(&vram[sourceTileIndex * 8], &vram[destTileIndex * 8], 8);
+    cpufastset(&vram[(sourceTileIndex + 32) * 8], &vram[(destTileIndex + 32) * 8], 8);
 }
 
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,

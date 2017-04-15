@@ -14,6 +14,7 @@ int get_tile_number(int x, int y);
 int expand_bit_depth(byte row, int foreground);
 byte reduce_bit_depth(int row, int foreground);
 byte print_character(byte chr, int x, int y, int font, int foreground);
+void print_special_character(int tile, int x, int y);
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
     int *dest, int (*getTileCallback)(int, int), int useTilemap);
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground);
