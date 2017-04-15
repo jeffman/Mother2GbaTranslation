@@ -135,6 +135,8 @@ Subroutines
          (does not modify any window values)
 80C980C: print next character (r0: window pointer)
 80CA4BC: scroll text upwards (r0: window pointer)
+80CAB90: print window header string (r1) to RAM (r0) at tile ((r2 * 32) + r3)
+80CABF8: print checkboard string (r1) to RAM (r0) at tile ((r2 * 32) + r3)
 80D2E94: print party character name
 80D30C4: related to printing numbers points in battle (r0 = window)
 80D332C: related to printing names in battle (r0 = window)
