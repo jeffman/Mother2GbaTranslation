@@ -375,6 +375,45 @@ b       0x80C9788
 .org 0x80CA626 :: bl ca4bc_erase_tile
 
 //---------------------------------------------------------
+// CABF8 hacks (print checkerboard string)
+//---------------------------------------------------------
+
+.org 0x80CABF8 :: push {r4-r7,lr}
+.org    0x80CAC0C
+mov     r7,0
+add     sp,-4
+b       @@print_checkerboard_check
+
+@@print_checkerboard_skip:
+add     r4,1
+
+@@print_checkerboard_loop:
+ldrb    r0,[r4]
+sub     r0,0x50
+mov     r1,r5
+add     r2,r6,1
+mov     r3,6
+str     r3,[sp]
+mov     r3,3
+bl      print_character_to_ram
+add     r6,r0,r6
+add     r7,1
+add     r4,1
+
+@@print_checkerboard_check:
+ldrb    r0,[r4,1]
+cmp     r0,0xFF
+bne     @@print_checkerboard_loop
+ldrb    r0,[r4]
+cmp     r0,0
+bne     @@print_checkerboard_skip
+
+add     r0,r6,7
+lsr     r0,r0,3 // number of tiles used
+add     sp,4
+pop     {r4-r7,pc}
+
+//---------------------------------------------------------
 // D2E94 hacks (print party character name)
 //---------------------------------------------------------
 
