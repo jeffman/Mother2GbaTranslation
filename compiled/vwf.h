@@ -7,6 +7,7 @@ unsigned short *palette_mask = (unsigned short*)0x3005228;
 unsigned short **tilemap = (unsigned short**)0x3005270;
 int *vram = (int*)0x6000000;
 
+byte decode_character(byte chr);
 int get_tile_number(int x, int y);
 int expand_bit_depth(byte row, int foreground);
 byte reduce_bit_depth(int row, int foreground);

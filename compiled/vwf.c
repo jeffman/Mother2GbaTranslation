@@ -1,6 +1,15 @@
 #include "window.h"
 #include "vwf.h"
 
+byte decode_character(byte chr)
+{
+    int c = chr - 0x50;
+    if ((c < 0) || ((c >= 0x60) && (c < 0x64)) || (c >= 0x6D))
+        c = QUESTION_MARK;
+
+    return c;
+}
+
 int get_tile_number(int x, int y)
 {
     x--;
@@ -104,9 +113,7 @@ void weld_entry(WINDOW *window, byte *str)
 
 void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground)
 {
-    int chr = *str - 0x50;
-    if ((chr < 0) || ((chr >= 0x60) && (chr < 0x64)) || (chr >= 0x6D))
-        chr = QUESTION_MARK;
+    int chr = decode_character(*str);
 
     int x = window->pixel_x + (window->window_x + window->text_x) * 8;
     int y = (window->window_y + window->text_y) * 8;
@@ -127,8 +134,7 @@ int print_string(byte *str, int x, int y)
 
     while (str[1] != 0xFF)
     {
-        chr = *str++;
-        x += print_character(chr - 0x50, x, y, 0, 0xF);
+        x += print_character(decode_character(*str++), x, y, 0, 0xF);
         charCount++;
     }
 
