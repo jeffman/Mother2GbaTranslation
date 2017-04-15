@@ -17,6 +17,16 @@ int get_tile_number(int x, int y)
     return m2_coord_table[x + ((y >> 1) * 28)] + (y & 1) * 32;
 }
 
+int get_tile_number_with_offset(int x, int y)
+{
+    return get_tile_number(x, y) + *tile_offset;
+}
+
+int get_tile_number_grid(int x, int y)
+{
+    return x + (y * 32);
+}
+
 int expand_bit_depth(byte row, int foreground)
 {
     foreground &= 0xF;
@@ -36,11 +46,21 @@ byte reduce_bit_depth(int row, int foreground)
 
 byte print_character(byte chr, byte x, byte y, byte font, byte foreground)
 {
+    return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, TRUE);
+}
+
+byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground)
+{
+    return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, FALSE);
+}
+
+byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
+    int *dest, int (*getTileCallback)(int, int), int useTilemap)
+{
     int tileWidth = m2_font_widths[font];
     int tileHeight = m2_font_heights[font];
     int widths = m2_widths_table[font][chr];
 
-    int tileOffset = *tile_offset;
     int paletteMask = *palette_mask;
     byte const *glyphRows = &m2_font_table[font][chr * tileWidth * tileHeight * 8];
 
@@ -58,11 +78,11 @@ byte print_character(byte chr, byte x, byte y, byte font, byte foreground)
         while (renderedWidth > 0)
         {
             // Glue the leftmost part of the glyph onto the rightmost part of the canvas
-            int tileIndex = get_tile_number(tileX + dTileX, tileY + dTileY) + tileOffset;
+            int tileIndex = getTileCallback(tileX + dTileX, tileY + dTileY); //get_tile_number(tileX + dTileX, tileY + dTileY) + tileOffset;
 
             for (int row = 0; row < 8; row++)
             {
-                int canvasRow = vram[(tileIndex * 8) + row];
+                int canvasRow = dest[(tileIndex * 8) + row];
                 byte glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] & ((1 << leftPortionWidth) - 1);
                 glyphRow <<= (8 - leftPortionWidth);
 
@@ -71,20 +91,21 @@ byte print_character(byte chr, byte x, byte y, byte font, byte foreground)
                 canvasRow &= expandedGlyphRowMask;
                 canvasRow |= expandedGlyphRow;
 
-                vram[(tileIndex * 8) + row] = canvasRow;
+                dest[(tileIndex * 8) + row] = canvasRow;
             }
 
-            (*tilemap)[tileX + dTileX + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
+            if (useTilemap)
+                (*tilemap)[tileX + dTileX + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
 
             if (renderedWidth - leftPortionWidth > 0 && leftPortionWidth < 8)
             {
                 // Glue the rightmost part of the glyph onto the leftmost part of the next tile
                 // on the canvas
-                tileIndex = get_tile_number(tileX + dTileX + 1, tileY + dTileY) + tileOffset;
+                tileIndex = getTileCallback(tileX + dTileX + 1, tileY + dTileY); //get_tile_number(tileX + dTileX + 1, tileY + dTileY) + tileOffset;
 
                 for (int row = 0; row < 8; row++)
                 {
-                    int canvasRow = vram[(tileIndex * 8) + row];
+                    int canvasRow = dest[(tileIndex * 8) + row];
                     byte glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] >> leftPortionWidth;
 
                     int expandedGlyphRow = expand_bit_depth(glyphRow, foreground);
@@ -92,10 +113,11 @@ byte print_character(byte chr, byte x, byte y, byte font, byte foreground)
                     canvasRow &= expandedGlyphRowMask;
                     canvasRow |= expandedGlyphRow;
 
-                    vram[(tileIndex * 8) + row] = canvasRow;
+                    dest[(tileIndex * 8) + row] = canvasRow;
                 }
 
-                (*tilemap)[tileX + dTileX + 1 + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
+                if (useTilemap)
+                    (*tilemap)[tileX + dTileX + 1 + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
             }
 
             renderedWidth -= 8;
