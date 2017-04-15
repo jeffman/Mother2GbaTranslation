@@ -147,6 +147,9 @@ b       0x80BFB84 // Skip the remaining nonsense
 // Skip the blank tile drawing after item names
 .org 0x80BFBDA :: b 0x80BFBFA
 
+// Only use as many tiles as needed in the tilemap for name headers
+.org 0x80BFA52 :: bl bf858_name_header :: b 0x80BFA86
+
 //---------------------------------------------------------
 // C5500 hacks (equip window switching)
 //---------------------------------------------------------
@@ -373,6 +376,47 @@ b       0x80C9788
 .org 0x80CA55E :: bl ca4bc_erase_tile_short
 .org 0x80CA60E :: bl ca4bc_copy_tile_up
 .org 0x80CA626 :: bl ca4bc_erase_tile
+
+//---------------------------------------------------------
+// CAB90 hacks (print window header string)
+//---------------------------------------------------------
+
+.org 0x80CAB90 :: push {r4-r7,lr}
+.org    0x80CABA0
+add     r5,r0,r3
+mov     r6,0
+mov     r7,0
+add     sp,-4
+b       @@print_header_check
+
+@@print_header_skip:
+add     r4,1
+
+@@print_header_loop:
+ldrb    r0,[r4]
+sub     r0,0x50
+mov     r1,r5
+mov     r2,r6
+mov     r3,0xF
+str     r3,[sp]
+mov     r3,4
+bl      print_character_to_ram
+add     r6,r0,r6
+add     r7,1
+add     r4,1
+
+@@print_header_check:
+ldrb    r0,[r4,1]
+cmp     r0,0xFF
+bne     @@print_header_loop
+ldrb    r0,[r4]
+cmp     r0,0
+bne     @@print_header_skip
+
+add     r0,r6,7
+lsr     r0,r0,3 // number of tiles used
+add     sp,4
+pop     {r4-r7,pc}
 
 //---------------------------------------------------------
 // CABF8 hacks (print checkerboard string)

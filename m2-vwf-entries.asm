@@ -923,3 +923,37 @@ add     r0,4
 @@next:
 pop     {r4,pc}
 .pool
+
+//==============================================================================
+bf858_name_header:
+push    {lr}
+mov     r2,0
+ldr     r0,=m2_widths_tiny
+sub     r4,r1,1
+
+@@bf858_name_header_loop:
+ldrb    r1,[r4,1]
+cmp     r1,0xFF
+beq     @@bf858_name_header_next
+ldrb    r1,[r4]
+lsl     r1,r1,2
+ldrb    r1,[r0]
+add     r2,r1,r2
+add     r4,1
+b       @@bf858_name_header_loop
+
+@@bf858_name_header_next:
+add     r2,7
+lsr     r2,r2,3 // total number of tiles to use
+
+@@bf858_name_header_print_loop:
+cmp     r2,0
+beq     @@bf858_name_header_end
+strh    r5,[r6]
+add     r5,1
+add     r6,2
+sub     r2,1
+b       @@bf858_name_header_print_loop
+
+@@bf858_name_header_end:
+pop     {pc}
