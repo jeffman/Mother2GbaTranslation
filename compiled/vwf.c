@@ -44,7 +44,7 @@ byte reduce_bit_depth(int row, int foreground)
     return lower | (upper << 4);
 }
 
-byte print_character(byte chr, byte x, byte y, byte font, byte foreground)
+byte print_character(byte chr, int x, int y, int font, int foreground)
 {
     return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, TRUE);
 }
