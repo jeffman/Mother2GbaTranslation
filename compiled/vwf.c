@@ -1,7 +1,7 @@
 #include "window.h"
 #include "vwf.h"
 
-int __attribute__((noinline)) get_tile_number(int x, int y)
+int get_tile_number(int x, int y)
 {
     x--;
     y--;
@@ -25,7 +25,7 @@ byte reduce_bit_depth(int row, int foreground)
     return lower | (upper << 4);
 }
 
-byte __attribute__ ((noinline)) print_character(byte chr, byte x, byte y, byte font, byte foreground)
+byte print_character(byte chr, byte x, byte y, byte font, byte foreground)
 {
     int tileWidth = m2_font_widths[font];
     int tileHeight = m2_font_heights[font];

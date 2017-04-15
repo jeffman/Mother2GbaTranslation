@@ -211,6 +211,8 @@ namespace Amalgamator
                 "-o", objectName,
                 "-c",
                 "-O3",
+                "-fno-ipa-cp",
+                "-fno-inline",
                 fileName,
                 "-march=armv4t",
                 "-mtune=arm7tdmi",
