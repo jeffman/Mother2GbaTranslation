@@ -599,6 +599,8 @@ namespace ScriptTool
                 int i = 0;
                 foreach (var str in hardcodedStrings)
                 {
+                    offsetFile.WriteLine($".definelabel {name.Replace('-', '_')}_str{i},0x{referenceAddress | 0x8000000:X}");
+
                     foreach (int ptr in str.PointerLocations)
                     {
                         offsetFile.WriteLine(String.Format(".org 0x{0:X} :: dw 0x{1:X8}",

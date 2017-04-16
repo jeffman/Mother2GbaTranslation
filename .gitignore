@@ -15,8 +15,7 @@ armtest/
 working/*.asm
 working/*.bin
 armips.exe
-armips-symbols.sym
-m12.sym
+*.sym
 m2-compiled.asm
 
 ## Ignore Visual Studio temporary files, build results, and

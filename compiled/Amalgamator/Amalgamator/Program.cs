@@ -20,6 +20,7 @@ namespace Amalgamator
         const string ArmipsExec = "armips.exe";
         const string HackFile = "m2-hack.asm";
         const string ArmipsSymFile = "armips-symbols.sym";
+        const string IncludesSymFile = "working\\includes-symbols.sym";
         const string LinkerScript = "linker.ld";
         const string LinkedObjectFile = "linked.o";
 
@@ -80,6 +81,7 @@ namespace Amalgamator
             linkerScript.AppendLine($"SECTIONS {{ .text 0x{options.CompiledAddress:X} : {{ *(.text .data .rodata) }} }}");
 
             foreach (var sym in EnumerateArmipsSymbols(options.GetRootFile(ArmipsSymFile))
+                .Concat(EnumerateArmipsSymbols(options.GetRootFile(IncludesSymFile)))
                 .Where(s => undefinedSymbols.Contains(s.Key)))
             {
                 linkerScript.AppendLine($"{sym.Key} = 0x{sym.Value:X};");

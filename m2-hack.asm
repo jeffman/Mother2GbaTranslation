@@ -645,6 +645,32 @@ m2_enemy_attributes:
 
 
 //==============================================================================
+// Existing subroutines/data
+//==============================================================================
+
+.definelabel m2_ness_name           ,0x3001F10
+.definelabel m2_paula_name          ,0x3001F16
+.definelabel m2_jeff_name           ,0x3001F1C
+.definelabel m2_poo_name            ,0x3001F22
+.definelabel m2_king_name           ,0x3001F28
+.definelabel m2_food                ,0x3001F30
+.definelabel m2_rockin              ,0x3001F3A
+.definelabel m2_player1             ,0x3001F50
+.definelabel m2_soundeffect         ,0x8001720
+.definelabel m2_psitargetwindow     ,0x80B8AE0
+.definelabel m2_swapwindowbuf       ,0x80BD7AC
+.definelabel m2_strlookup           ,0x80BE260
+.definelabel m2_initwindow          ,0x80BE458
+.definelabel m2_statuswindow_numbers,0x80C0A5C
+.definelabel m2_psiwindow           ,0x80C1FBC
+.definelabel m2_drawwindow          ,0x80C87D0
+.definelabel m2_printstr            ,0x80C9634
+.definelabel m2_printstr_hlight     ,0x80C96F0
+.definelabel m2_printnextch         ,0x80C980C
+.definelabel m2_scrolltext          ,0x80CA4BC
+
+
+//==============================================================================
 // Code files
 //==============================================================================
 
