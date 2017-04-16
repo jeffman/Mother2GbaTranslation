@@ -17,6 +17,7 @@
 .org 0x8B0F424 :: .incbin "m2-mainfont2-empty.bin"
 .org 0x8B13424 :: .incbin "m2-mainfont3-empty.bin"
 .org 0x8B088A4 :: .incbin "m2-shifted-cursor.bin"
+.org 0x8B03384 :: .incbin "m2-header-bg.bin"
 
 // Greek letters
 .org 0x8B1B907 :: db 0x8B // alpha
