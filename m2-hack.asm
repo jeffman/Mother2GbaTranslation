@@ -382,7 +382,14 @@ b       0x80C9788
 // CAB90 hacks (print window header string)
 //---------------------------------------------------------
 
-.org 0x80CAB90 :: push {lr} :: bl print_window_header_string :: pop {pc}
+.org    0x80CAB90
+push    {lr}
+lsl     r2,r2,3
+lsl     r3,r3,3 // tiles to pixels
+bl      print_window_header_string
+add     r0,7
+lsr     r0,r0,3 // pixels to tiles
+pop     {pc}
 
 //---------------------------------------------------------
 // CABF8 hacks (print checkerboard string)

@@ -159,8 +159,8 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
 
 int print_window_header_string(int *dest, byte *str, int x, int y)
 {
-    int pixelX = 0;
-    int *destOffset = dest + (x + (y * 32)) * 8;
+    int pixelX = x & 7;
+    int *destOffset = dest + ((x & ~7) + (y * 32));
 
     for (;;)
     {
@@ -177,7 +177,7 @@ int print_window_header_string(int *dest, byte *str, int x, int y)
         pixelX += print_character_to_ram(decode_character(*str++), destOffset, pixelX, 4, 0xF);
     }
 
-    return (pixelX + 7) >> 3;
+    return pixelX - (x & 7);
 }
 
 void weld_entry(WINDOW *window, byte *str)
