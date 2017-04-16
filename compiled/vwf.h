@@ -38,3 +38,4 @@ extern byte m2_font_heights[];
 extern unsigned short *m2_widths_table[];
 
 extern void cpufastset(void *source, void *dest, int mode);
+extern byte* m2_strlookup(int *offset_table, byte *strings, int index);
