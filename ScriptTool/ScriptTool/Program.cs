@@ -321,7 +321,11 @@ namespace ScriptTool
                 0xB1BA2C,
                 0xB1BA36,
                 0xB1BA40,
-                0xB1BA4A);
+                0xB1BA4A,
+                0xB1BA54,
+                0xB1BA61,
+                0xB1BA6E,
+                0xB1BA7B);
         }
 
         static void DecompileM12MiscStringCollection(string name, MiscStringCollection miscStringCollection)
