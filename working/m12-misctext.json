@@ -999,21 +999,21 @@
       "OffsetLocation": 11632920,
       "OldPointer": 11632220,
       "Old": "(1)へ[00 FF]",
-      "New": "To:(1)[00 FF]"
+      "New": "(1)[00 FF]"
     },
     {
       "Index": 141,
       "OffsetLocation": 11632924,
       "OldPointer": 11632226,
       "Old": "(2)へ[00 FF]",
-      "New": "To:(2)[00 FF]"
+      "New": "(2)[00 FF]"
     },
     {
       "Index": 142,
       "OffsetLocation": 11632928,
       "OldPointer": 11632232,
       "Old": "(3)へ[00 FF]",
-      "New": "To:(3)[00 FF]"
+      "New": "(3)[00 FF]"
     },
     {
       "Index": 143,
