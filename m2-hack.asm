@@ -163,6 +163,20 @@ b       0x80BFB84 // Skip the remaining nonsense
 .org 0x80C5A1A :: nop
 .org 0x80C5A28 :: nop
 
+// Draw equipment window header
+.org 0x80C55CE :: b 0x80C55F8
+.org    0x80C55F8
+mov     r4,r0
+mov     r0,r9
+bl      clear_window_header
+mov     r0,r4
+mov     r1,r6 // tilemap
+mov     r2,r9 // vram
+mov     r3,r7 // window
+bl      print_equip_header
+mov     r6,r0
+b       0x80C5726
+
 //---------------------------------------------------------
 // C1FBC hacks (PSI window)
 //---------------------------------------------------------

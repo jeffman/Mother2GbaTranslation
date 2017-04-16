@@ -186,6 +186,55 @@ void clear_window_header(int *dest)
     clear_rect_ram(dest, 16, 0x33333333);
 }
 
+unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned int *dest, WINDOW *window)
+{
+    byte *str = 0;
+
+    switch (type)
+    {
+        case 3:
+            str = m12_other_str5; // Weapon
+            break;
+        case 4:
+            str = m12_other_str6; // Body
+            break;
+        case 5:
+            str = m12_other_str7; // Arms
+            break;
+        case 6:
+            str = m12_other_str8; // Other
+            break;
+    }
+
+    if (str != 0)
+    {
+        int startX = 0x10 * 8;
+        int startY = 0x11 * 8;
+        int width = 0;
+
+        width += print_window_header_string(dest, str, startX + width, startY);
+
+        // Print (X)
+        if (window->cursor_x > 6)
+        {
+            int page = window->page;
+            str = m2_strlookup(m2_misc_offsets, m2_misc_strings, page + 0x8C);
+            width += print_window_header_string(dest, str, startX + width, startY);
+        }
+
+        // Do tilemap
+        int tiles = (width + 7) >> 3;
+        int tileIndex = 0x230 + *tile_offset;
+
+        for (int i = 0; i < tiles; i++)
+        {
+            *tilemap++ = tileIndex++ | *palette_mask;
+        }
+    }
+
+    return tilemap;
+}
+
 void weld_entry(WINDOW *window, byte *str)
 {
     weld_entry_custom(window, str, 0, 0xF);
