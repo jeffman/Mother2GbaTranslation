@@ -4,7 +4,7 @@
 byte decode_character(byte chr)
 {
     int c = chr - 0x50;
-    if ((c < 0) || ((c >= 0x60) && (c < 0x64)) || (c >= 0x6D))
+    if ((c < 0) || ((c >= 0x60) && (c < 0x64)) || (c >= 0x6E))
         c = QUESTION_MARK;
 
     return c;
@@ -50,6 +50,13 @@ byte print_character(byte chr, int x, int y, int font, int foreground)
     if ((chr >= 0x64) && (chr <= 0x6C))
     {
         print_special_character(chr + 0xF0, x, y);
+        return 8;
+    }
+
+    // 0x6D is an arrow ->
+    else if (chr == 0x6D)
+    {
+        print_special_character(0x9D, x, y);
         return 8;
     }
 
