@@ -76,8 +76,8 @@ void print_special_character(int tile, int x, int y)
     unsigned short sourceTileIndex = tile + *tile_offset;
     unsigned short destTileIndex = get_tile_number(x, y) + *tile_offset;
 
-    (*tilemap)[x + (y * 32)] = destTileIndex | *palette_mask;
-    (*tilemap)[x + ((y + 1) * 32)] = (destTileIndex + 32) | *palette_mask;
+    (*tilemap_pointer)[x + (y * 32)] = destTileIndex | *palette_mask;
+    (*tilemap_pointer)[x + ((y + 1) * 32)] = (destTileIndex + 32) | *palette_mask;
 
     cpufastset(&vram[sourceTileIndex * 8], &vram[destTileIndex * 8], 8);
     cpufastset(&vram[(sourceTileIndex + 32) * 8], &vram[(destTileIndex + 32) * 8], 8);
@@ -91,7 +91,7 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
     int widths = m2_widths_table[font][chr];
 
     int paletteMask = *palette_mask;
-    byte const *glyphRows = &m2_font_table[font][chr * tileWidth * tileHeight * 8];
+    byte *glyphRows = &m2_font_table[font][chr * tileWidth * tileHeight * 8];
 
     int virtualWidth = widths & 0xFF;
     int leftPortionWidth = 8 - (x & 7);
@@ -124,7 +124,7 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
             }
 
             if (useTilemap)
-                (*tilemap)[tileX + dTileX + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
+                (*tilemap_pointer)[tileX + dTileX + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
 
             if (renderedWidth - leftPortionWidth > 0 && leftPortionWidth < 8)
             {
@@ -146,7 +146,7 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                 }
 
                 if (useTilemap)
-                    (*tilemap)[tileX + dTileX + 1 + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
+                    (*tilemap_pointer)[tileX + dTileX + 1 + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
             }
 
             renderedWidth -= 8;

@@ -6,7 +6,7 @@ typedef unsigned char byte;
 
 unsigned short *tile_offset = (unsigned short*)0x30051EC;
 unsigned short *palette_mask = (unsigned short*)0x3005228;
-unsigned short **tilemap = (unsigned short**)0x3005270;
+unsigned short **tilemap_pointer = (unsigned short**)0x3005270;
 int *vram = (int*)0x6000000;
 
 byte decode_character(byte chr);
@@ -29,12 +29,12 @@ void copy_tile(int xSource, int ySource, int xDest, int yDest);
 void copy_tile_up(int x, int y);
 void print_space(WINDOW *window);
 
-extern unsigned short const m2_coord_table[];
-extern int const m2_bits_to_nybbles[];
-extern const byte m2_nybbles_to_bits[];
-extern const byte *m2_font_table[];
-extern const byte m2_font_widths[];
-extern const byte m2_font_heights[];
-extern unsigned short const *m2_widths_table[];
+extern unsigned short m2_coord_table[];
+extern int m2_bits_to_nybbles[];
+extern byte m2_nybbles_to_bits[];
+extern byte *m2_font_table[];
+extern byte m2_font_widths[];
+extern byte m2_font_heights[];
+extern unsigned short *m2_widths_table[];
 
 extern void cpufastset(void *source, void *dest, int mode);
