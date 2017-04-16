@@ -54,6 +54,7 @@ Hard-coded characters:
 0x3001F6A: Ness PSI flags?
            0x01: Teleport alpha
            0x08: Teleport beta
+0x3001FA4: Escargo Express items (36 of them)
 0x3002500: buttons being pressed
 0x30051EC: tile offset (usually 0x100)
 0x3005224: menu depth
