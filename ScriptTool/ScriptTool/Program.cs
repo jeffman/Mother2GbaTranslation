@@ -302,6 +302,26 @@ namespace ScriptTool
             // PSI targets
             var miscText2 = M12TextTables.ReadPsiTargets(m12Rom);
             DecompileFixedStringCollection(m12Decompiler, m12Rom, "m12-psitargets", miscText2);
+
+            // Other
+            DecompileHardcodedStringCollection(m12Decompiler, m12Rom, "m12-other",
+                0xB1B492,
+                0xB1B497,
+                0xB1B49C,
+                0xB1B4A1,
+                0xB1B4A6,
+                0xB1BA00,
+                0xB1BA05,
+                0xB1BA0A,
+                0xB1BA0F,
+                0xB1BA14,
+                0xB1BA1A,
+                0xB1BA20,
+                0xB1BA26,
+                0xB1BA2C,
+                0xB1BA36,
+                0xB1BA40,
+                0xB1BA4A);
         }
 
         static void DecompileM12MiscStringCollection(string name, MiscStringCollection miscStringCollection)
@@ -343,6 +363,41 @@ namespace ScriptTool
             // Write JSON
             File.WriteAllText(Path.Combine(options.WorkingDirectory, name + ".json"),
                 JsonConvert.SerializeObject(fixedStringCollection, Formatting.Indented));
+        }
+
+        static void DecompileHardcodedStringCollection(IDecompiler decompiler, byte[] rom, string name,
+            params int[] pointers)
+        {
+            var hardcodedRefs = new List<HardcodedString>();
+
+            foreach (int pointer in pointers)
+            {
+                string str = decompiler.DecompileString(rom, pointer, false);
+                var references = new List<int>();
+
+                // Search for all references
+                for (int refAddress = 0; refAddress < 0x100000; refAddress += 4)
+                {
+                    int value = rom.ReadGbaPointer(refAddress);
+                    if (value == pointer)
+                    {
+                        references.Add(refAddress);
+                    }
+                }
+
+                var hardcodedRef = new HardcodedString
+                {
+                    Old = str,
+                    New = "",
+                    PointerLocations = references.ToArray(),
+                    OldPointer = pointer
+                };
+
+                hardcodedRefs.Add(hardcodedRef);
+            }
+
+            File.WriteAllText(Path.Combine(options.WorkingDirectory, name + ".json"),
+                JsonConvert.SerializeObject(hardcodedRefs, Formatting.Indented));
         }
 
         static void CompileM12()
@@ -440,6 +495,9 @@ namespace ScriptTool
 
             // Battle command strings
             CompileM12BattleCommands("m12-battle-commands", ref referenceAddress);
+
+            // Other
+            CompileM12HardcodedStringCollection("m12-other", ref referenceAddress);
         }
 
         static void CompileM12MiscStringCollection(string name, ref int referenceAddress)

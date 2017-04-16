@@ -1,0 +1,131 @@
+[
+  {
+    "OldPointer": 11646098,
+    "PointerLocations": [
+      766280
+    ],
+    "Old": "ぶき[00 FF]",
+    "New": "Weapons[00 FF]"
+  },
+  {
+    "OldPointer": 11646103,
+    "PointerLocations": [],
+    "Old": "ボディ[00 FF]",
+    "New": "Body[00 FF]"
+  },
+  {
+    "OldPointer": 11646108,
+    "PointerLocations": [],
+    "Old": "うで[00 FF]",
+    "New": "Arms[00 FF]"
+  },
+  {
+    "OldPointer": 11646113,
+    "PointerLocations": [],
+    "Old": "そのた[00 FF]",
+    "New": "Other[00 FF]"
+  },
+  {
+    "OldPointer": 11646118,
+    "PointerLocations": [
+      774896
+    ],
+    "Old": "かけさき[00 FF]",
+    "New": "Call:[00 FF]"
+  },
+  {
+    "OldPointer": 11647488,
+    "PointerLocations": [
+      808484
+    ],
+    "Old": "ぶき[00 FF]",
+    "New": "Weapons[00 FF]"
+  },
+  {
+    "OldPointer": 11647493,
+    "PointerLocations": [
+      808508
+    ],
+    "Old": "ボディ[00 FF]",
+    "New": "Body[00 FF]"
+  },
+  {
+    "OldPointer": 11647498,
+    "PointerLocations": [
+      808548
+    ],
+    "Old": "うで[00 FF]",
+    "New": "Arms[00 FF]"
+  },
+  {
+    "OldPointer": 11647503,
+    "PointerLocations": [
+      808812
+    ],
+    "Old": "そのた[00 FF]",
+    "New": "Other[00 FF]"
+  },
+  {
+    "OldPointer": 11647508,
+    "PointerLocations": [
+      809128
+    ],
+    "Old": "➨ぶき[00 FF]",
+    "New": "➨Weapons[00 FF]"
+  },
+  {
+    "OldPointer": 11647514,
+    "PointerLocations": [
+      809136
+    ],
+    "Old": "➨ボディ[00 FF]",
+    "New": "➨Body[00 FF]"
+  },
+  {
+    "OldPointer": 11647520,
+    "PointerLocations": [
+      809144
+    ],
+    "Old": "➨うで[00 FF]",
+    "New": "➨Arms[00 FF]"
+  },
+  {
+    "OldPointer": 11647526,
+    "PointerLocations": [
+      809228
+    ],
+    "Old": "➨そのた[00 FF]",
+    "New": "➨Other[00 FF]"
+  },
+  {
+    "OldPointer": 11647532,
+    "PointerLocations": [
+      811460
+    ],
+    "Old": "➨ばしょ(1)へ[00 FF]",
+    "New": "➨To:(1)[00 FF]"
+  },
+  {
+    "OldPointer": 11647542,
+    "PointerLocations": [
+      811048,
+      811524
+    ],
+    "Old": "➨ばしょ(2)へ[00 FF]",
+    "New": "➨To:(2)[00 FF]"
+  },
+  {
+    "OldPointer": 11647552,
+    "PointerLocations": [],
+    "Old": "➨ばしょ(3)へ[00 FF]",
+    "New": "➨To:(3)[00 FF]"
+  },
+  {
+    "OldPointer": 11647562,
+    "PointerLocations": [
+      810724
+    ],
+    "Old": "ばしょ[00 FF]",
+    "New": "Location[00 FF]"
+  }
+]
