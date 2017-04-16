@@ -48,6 +48,7 @@ Hard-coded characters:
 0x3001DA7: Ness luck
 0x3001DA8: Ness vitality
 0x3001DA9: Ness IQ
+0x3001DB5: Ness equipment
 0x3001F04: Current party
 0x3001F0B: Party character count
 0x3001F0C: Active party member flags
@@ -86,6 +87,8 @@ Game code:         ~0x0     - ~0x264FB
 Movement-y stuff?: ~0x264FC - ~0x3697E
 Text:               0x3697F -  0x8C4B0
 More code:          0xA1F6C -  0xFCE6B
+
+EarthBound, Ness' Items: 7E99F1
 
 Code sequences
 --------------

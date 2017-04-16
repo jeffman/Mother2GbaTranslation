@@ -1,0 +1,26 @@
+80C55CC: load 3005224
+
+case <3: print nothing
+
+case 3:
+  print Weapons at (0x14, 0x12)
+  render 2 tiles (0x254)
+
+case 4:
+  print Body at (0x14, 0x12)
+  render 3 tiles (0x254)
+
+case 5:
+  print Arms at (0x14, 0x12)
+  render 2 tiles (0x254)
+
+case 6:
+  print Other at (0x14, 0x12)
+  render 3 tiles (0x254)
+
+case >6: print nothing
+
+load window+0x34 (number of items in list?)
+if greater than 6,
+  print "(X)" at (0xE, 0x14)
+  render 3 tiles (0x236)
