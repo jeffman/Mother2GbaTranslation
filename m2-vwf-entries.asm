@@ -249,14 +249,16 @@ mov     r0,r6
 bl      clear_equipment
 
 // Clear offense/defense
-push    {r0-r2}
+push    {r0-r3}
 mov     r0,8
-mov     r2,r0
 mov     r1,0xB
+mov     r2,8
 bl      print_blankstr
-add     r1,2
+mov     r0,8
+mov     r1,0xD
+mov     r2,8
 bl      print_blankstr
-pop     {r0-r2}
+pop     {r0-r3}
 
 // Clobbered code
 strh    r1,[r3]
@@ -268,14 +270,16 @@ mov     r0,r6
 bl      clear_equipment
 
 // Clear offense/defense
-push    {r0-r2}
+push    {r0-r3}
 mov     r0,8
-mov     r2,r0
 mov     r1,0xB
+mov     r2,8
 bl      print_blankstr
-add     r1,2
+mov     r0,8
+mov     r1,0xD
+mov     r2,8
 bl      print_blankstr
-pop     {r0-r2}
+pop     {r0-r3}
 
 // Clobbered code
 strh    r1,[r3]
@@ -349,12 +353,12 @@ pop     {r0-r2,pc}
 //==============================================================================
 // Prints an empty space instead of the "Press A for PSI info" string
 c0a5c_psi_info_blank:
-push    {lr}
+push    {r0-r3,lr}
 mov     r0,5
 mov     r1,0xF
 mov     r2,0x14
 bl      print_blankstr
-pop     {pc}
+pop     {r0-r3,pc}
 
 //==============================================================================
 // Redraws the status window (when exiting the PSI submenu, etc.)
@@ -438,30 +442,34 @@ pop     {pc}
 //==============================================================================
 // Clear offense/defense changes when switching in equip select window
 c5500_clear_up:
-push    {r1-r2,lr}
+push    {r1-r3,lr}
 mov     r0,0xD
 mov     r1,0xB
 mov     r2,0x3
 bl      print_blankstr
-add     r1,2
+mov     r0,0xD
+mov     r1,0xD
+mov     r2,0x3
 bl      print_blankstr
 
 // Clobbered code
 sub     r0,r3,1
 strh    r0,[r7,0x36]
-pop     {r1-r2,pc}
+pop     {r1-r3,pc}
 
 c5500_clear_down:
-push    {r0-r2,lr}
+push    {r0-r3,lr}
 mov     r0,0xD
 mov     r1,0xB
 mov     r2,0x3
 bl      print_blankstr
-add     r1,2
+mov     r0,0xD
+mov     r1,0xD
+mov     r2,0x3
 bl      print_blankstr
 
 // Clobbered code
-pop     {r0-r2}
+pop     {r0-r3}
 add     r0,1
 strh    r0,[r7,0x36]
 pop     {pc}
@@ -469,16 +477,18 @@ pop     {pc}
 //==============================================================================
 // Clear offense/defense when re-equipping (or un-equipping) something
 baef8_reequip_erase:
-push    {r1,lr}
+push    {r0-r3,lr}
 mov     r0,8
 mov     r1,0xB
 mov     r2,4
 bl      print_blankstr
-add     r1,2
+mov     r0,8
+mov     r1,0xD
+mov     r2,4
 bl      print_blankstr
 
 // Clobbered code
-pop     {r1}
+pop     {r0-r3}
 mov     r0,2
 strh    r0,[r1]
 pop     {pc}
