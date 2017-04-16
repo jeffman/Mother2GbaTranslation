@@ -19,10 +19,12 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
     int *dest, int (*getTileCallback)(int, int), int useTilemap);
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground);
 int print_window_header_string(int *dest, byte *str, int x, int y);
+void clear_window_header(int *dest);
 void weld_entry(WINDOW *window, byte *str);
 void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground);
 void clear_tile(int x, int y, int pixels);
 void clear_rect(int x, int y, int width, int height, int pixels);
+void clear_rect_ram(int *dest, int tileCount, int pixels);
 void clear_window(WINDOW *window);
 void print_blankstr(int x, int y, int width);
 void copy_tile(int xSource, int ySource, int xDest, int yDest);

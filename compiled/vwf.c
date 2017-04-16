@@ -180,6 +180,12 @@ int print_window_header_string(int *dest, byte *str, int x, int y)
     return pixelX - (x & 7);
 }
 
+void clear_window_header(int *dest)
+{
+    dest += (0x10 + (0x11 * 32)) * 8;
+    clear_rect_ram(dest, 16, 0x33333333);
+}
+
 void weld_entry(WINDOW *window, byte *str)
 {
     weld_entry_custom(window, str, 0, 0xF);
@@ -232,6 +238,11 @@ void clear_rect(int x, int y, int width, int height, int pixels)
             clear_tile(x + tileX, y + tileY, pixels);
         }
     }
+}
+
+void clear_rect_ram(int *dest, int tileCount, int pixels)
+{
+    cpufastset(&pixels, dest, CPUFASTSET_FILL | (tileCount * 8));
 }
 
 void clear_window(WINDOW *window)
