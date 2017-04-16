@@ -3,8 +3,8 @@
 
 byte decode_character(byte chr)
 {
-    int c = chr - 0x50;
-    if ((c < 0) || ((c >= 0x60) && (c < 0x64)) || (c >= 0x6E))
+    int c = chr - CHAR_OFFSET;
+    if ((c < 0) || ((c >= CHAR_END) && (c < YOUWON_START)) || (c > ARROW))
         c = QUESTION_MARK;
 
     return c;
@@ -47,16 +47,16 @@ byte reduce_bit_depth(int row, int foreground)
 byte print_character(byte chr, int x, int y, int font, int foreground)
 {
     // 0x64 to 0x6C (inclusive) is YOU WON
-    if ((chr >= 0x64) && (chr <= 0x6C))
+    if ((chr >= YOUWON_START) && (chr <= YOUWON_END))
     {
         print_special_character(chr + 0xF0, x, y);
         return 8;
     }
 
     // 0x6D is an arrow ->
-    else if (chr == 0x6D)
+    else if (chr == ARROW)
     {
-        print_special_character(0x9D, x, y);
+        print_special_character(ARROW + 0x30, x, y);
         return 8;
     }
 
@@ -182,8 +182,8 @@ int print_window_header_string(int *dest, byte *str, int x, int y)
 
 void clear_window_header(int *dest)
 {
-    dest += (0x10 + (0x11 * 32)) * 8;
-    clear_rect_ram(dest, 16, 0x33333333);
+    dest += (WINDOW_HEADER_X + (WINDOW_HEADER_Y * 32)) * 8;
+    clear_rect_ram(dest, 16, WINDOW_HEADER_BG);
 }
 
 unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned int *dest, WINDOW *window)
@@ -208,8 +208,8 @@ unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned i
 
     if (str != 0)
     {
-        int startX = 0x10 * 8;
-        int startY = 0x11 * 8;
+        int startX = WINDOW_HEADER_X * 8;
+        int startY = WINDOW_HEADER_Y * 8;
         int width = 0;
 
         width += print_window_header_string(dest, str, startX + width, startY);
@@ -222,9 +222,9 @@ unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned i
             width += print_window_header_string(dest, str, startX + width, startY);
         }
 
-        // Do tilemap
+        // Update tilemap
         int tiles = (width + 7) >> 3;
-        int tileIndex = 0x230 + *tile_offset;
+        int tileIndex = WINDOW_HEADER_TILE + *tile_offset;
 
         for (int i = 0; i < tiles; i++)
         {
@@ -298,12 +298,12 @@ void clear_window(WINDOW *window)
 {
     clear_rect(window->window_x, window->window_y,
         window->window_width, window->window_height,
-        0x44444444);
+        WINDOW_AREA_BG);
 }
 
 void print_blankstr(int x, int y, int width)
 {
-    clear_rect(x, y, width, 2, 0x44444444);
+    clear_rect(x, y, width, 2, WINDOW_AREA_BG);
 }
 
 void copy_tile(int xSource, int ySource, int xDest, int yDest)
@@ -320,6 +320,6 @@ void copy_tile_up(int x, int y)
 
 void print_space(WINDOW *window)
 {
-    byte space = 0x50;
+    byte space = SPACE;
     weld_entry(window, &space);
 }

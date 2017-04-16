@@ -4,6 +4,19 @@ typedef unsigned char byte;
 #define TRUE 1
 #define FALSE 0
 
+#define CHAR_OFFSET 0x50
+#define CHAR_END 0x60
+#define YOUWON_START 0x64
+#define YOUWON_END 0x6C
+#define ARROW 0x6D
+#define SPACE 0x50
+
+#define WINDOW_AREA_BG 0x44444444
+#define WINDOW_HEADER_BG 0x33333333
+#define WINDOW_HEADER_X 0x10
+#define WINDOW_HEADER_Y 0x11
+#define WINDOW_HEADER_TILE (WINDOW_HEADER_X + (WINDOW_HEADER_Y * 32))
+
 unsigned short *tile_offset = (unsigned short*)0x30051EC;
 unsigned short *palette_mask = (unsigned short*)0x3005228;
 unsigned short **tilemap_pointer = (unsigned short**)0x3005270;
