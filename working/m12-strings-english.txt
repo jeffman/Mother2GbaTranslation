@@ -184,7 +184,7 @@
 ^L186^[1C FF 03 00 _L2529_][1C FF 3F 01 _L2529_][1C FF 02 00 _L2530_]@I wrote the lyrics to most of[01 FF]  the Runaway Five songs.[02 FF]^L2530^@Money, [1B FF 14 00]that's what I want[1B FF 14 00][01 FF]  money, [1B FF 14 00]that's what is hot[1B FF 14 00][01 FF]  money, [1B FF 14 00]that's what I want[02 FF]@money, [1B FF 14 00]it's what we ain't got[01 FF]  'cept freedom, freedom,[02 FF]@freedom is what we've really[01 FF]  sought![1D FF][08 FF 02 00][00 FF]
 ^L187^[1C FF 25 02 _L2532_]^L2537^[1C FF 77 00 _L2533_]@The Runaway Five owe me a lot[01 FF]  of money.[02 FF]@They'll stay here until they pay[01 FF]  me back.[02 FF]@They might be here for 100[01 FF]  years,[02 FF]@unless you decide to pay off[01 FF]  their debt...  Heh, heh, heh.[1D FF][00 FF]
 ^L188^[1C FF 55 00 _L2538_][1C FF 0C 00 _L2539_][1C FF 0D 00 _L2540_][1C FF 42 00 _L2541_]@Wah ha ha ha ha![1B FF 14 00][01 FF]  Why don't we chat later-after[01 FF]  we've locked horns![02 FF][86 FF _L2542_][81 FF _L2161_]@Yes, I'm Everdred, boss of[01 FF]  Burglin Park.[02 FF]@When I jumped off the roof,[1B FF 0F 00] I[01 FF]  twisted my ankle.[02 FF]@Anyway, I lost and nothing will[01 FF]  change that.[02 FF]@You know,[1B FF 0F 00] you're pretty[01 FF]  strong.[02 FF]@Yeah, I know that you want to[01 FF]  find out about a girl named[01 FF]  [0E FF].[02 FF]@She went off to a secret[01 FF]  hideout in the Peaceful Rest[01 FF]  Valley.[02 FF]@A chubby boy and a weird guy[01 FF]  in a blue outfit have kidnapped[01 FF]  her, though.[02 FF]@They said that they were going[01 FF]  to make [0E FF] some[01 FF]  sort of human sacrifice.[02 FF]@They were definitely hard-core[01 FF]  strange.[02 FF]@You know, she might be gone[01 FF]  already.[1B FF 14 00][01 FF]  You'd better hurry.[02 FF]^L2541^@If you save [0E FF],[1B FF 0F 00] be[01 FF]  sure to come back here, okay?[1B FF 0F 00][01 FF]  Don't[1B FF 14 00] forget![1D FF][C6 FF][08 FF 42 00][00 FF]
-^L189^[1C FF 49 00 _L2547_][1C FF CA 00 _L2548_]@Welcome to Mach Pizza![02 FF]@We don't sell pizza here.[1B FF 14 00][01 FF]  We only deliver.[02 FF]@Let me give you our number[01 FF]  so you can place an order[01 FF]  sometime.[02 FF]@The best pizza is Mach Pizza.[1B FF 14 00][01 FF]  The number is... *psst psst[01 FF]  psst*.[02 FF]@You got that?[1D FF][D4 FF 74 00][08 FF CA 00][00 FF]
+^L189^[1C FF 49 00 _L2547_][1C FF CA 00 _L2548_]@Welcome to Mach Pizza![02 FF]@We don't sell pizza here.[1B FF 14 00]  We[01 FF]  only deliver.[02 FF]@Let me give you our number so[01 FF]  you can place an order[01 FF]  sometime.[02 FF]@The best pizza is Mach Pizza.[1B FF 14 00][01 FF]  The number is... *psst psst[01 FF]  psst*.[02 FF]@You got that?[1D FF][D4 FF 74 00][08 FF CA 00][00 FF]
 ^L190^[1C FF 7F 01 _L5071_][BB FF 32][87 FF]@Welcome to Hotel Twoson.[02 FF][86 FF _L5063_][04 FF _L5072_][05 FF _L5073_]^L5073^[86 FF _L5066_][00 FF]
 ^L191^@You must be quite a rich boy to[01 FF]  stay at such a nice,[1B FF 0F 00] first class[01 FF]  hotel like this one.[1D FF][00 FF]
 ^L192^[86 FF _L5662_][A8 FF 01][87 FF][BD FF 1D _L5690_ _L5690_ _L5690_ _L5690_ _L5690_ _L5690_ _L5691_ _L5692_ _L5693_ _L5694_ _L5695_ _L5695_ _L5695_ _L5695_ _L5695_ _L5696_ _L5696_ _L5697_ _L5698_ _L5699_ _L5700_ _L5701_ _L5702_ _L5703_ _L5704_ _L5705_ _L5706_ _L5707_ _L5708_][00 FF]
@@ -404,7 +404,7 @@
 ^L406^@Sweet![1D FF][00 FF]
 ^L407^@All righty![1D FF][00 FF]
 ^L408^[1C FF 49 00 _L2788_]@I heard there is a guy who is[01 FF]  digging for buried treasure in[01 FF]  Dusty Dunes desert.[02 FF]@A share of that treasure[01 FF]  <share> would be nice.[1D FF][00 FF]
-^L409^@I'm a detective from Twoson.[02 FF]@The statue called Mani Mani or[01 FF]  something or other[02 FF]@was stolen from the Happy-[01 FF]  Happyism headquarters.[02 FF]@Do you have any clues for me?[01 FF][03 FF 00 00][04 FF _L2789_][05 FF _L2790_]^L2790^@Oh, I see...[1D FF][00 FF]^L2789^@Don't try to feed me your lies![1D FF][00 FF]
+^L409^@I'm a detective from Twoson.[02 FF]@The statue called Mani Mani or[01 FF]  something or other[02 FF]@was stolen from the Happy-[01 FF]  Happyism headquarters.[02 FF]@Do you have any clues for me?[03 FF 00 00][04 FF _L2789_][05 FF _L2790_]^L2790^@Oh, I see...[1D FF][00 FF]^L2789^@Don't try to feed me your lies![1D FF][00 FF]
 ^L410^[1C FF D6 00 _L5595_]@Finally, we can again breathe[01 FF]  deep the outside air,[02 FF]@now that the zombies are gone.[02 FF]@*SNORT*[1B FF 14 00] Ahhhh![1B FF 0F 00]  The outdoors[01 FF]  is so[1B FF 05 00]o[1B FF 05 00]o refreshing![1D FF][00 FF]
 ^L411^[83 FF 47 00][82 FF _L4070_][86 FF _L4071_][81 FF _L4068_][8D FF 01 00][A8 FF 00]@([90 FF 00][1A FF 01 00] checked the bus[01 FF]  schedule.)[02 FF][1C FF 0A 00 _L4069_]@(It looks like the next bus will[01 FF]  come pretty soon.)[02 FF][C6 FF][A0 FF 5F 01 3C 01 01 00][9E FF][08 FF 0A 00][00 FF]
 ^L412^[83 FF 47 00][82 FF _L4070_][86 FF _L4072_][81 FF _L4068_][8D FF 01 00][A8 FF 00]@([90 FF 00][1A FF 01 00] checked the bus[01 FF]  schedule.)[02 FF][1C FF 0A 00 _L4069_]@(It looks like the next bus will[01 FF]  come pretty soon.)[02 FF][C6 FF][A0 FF 5F 01 40 01 01 00][9E FF][08 FF 0A 00][00 FF]
@@ -612,7 +612,7 @@
 ^L614^[BC FF 01 00][86 FF _L2177_][81 FF _L3111_]@You haven't changed much,[01 FF] [0D FF].[02 FF][80 FF _L3112_]
 ^L615^[1C FF 0A 00 _L3113_][1C FF 8F 00 _L3114_]@Shhh! Quiet![01 FF][8D FF 01 00][A8 FF 00]  Aren't you [90 FF 00][1A FF 01 00]?[1B FF 0F 00][01 FF]@Mr. Monotoli's maid, Electra,[01 FF]  told me about you.[02 FF]@I'll take you to Mr. Monotoli's[01 FF]  office on the 48th floor.[02 FF]@Only you may go.[02 FF]^L3116^[C6 FF][CE FF 65 03 01 00][CE FF 34 06 01 00][C4 FF 00 89][A0 FF D1 07 62 00 01 00][1B FF 01 00][EB FF FF 00][A0 FF D0 07 B1 01 01 00][9E FF][C4 FF 00 8B][1B FF 5A 00][CA FF][EA FF FF 00][A5 FF D1 07 06 00][08 FF 5E 01][08 FF 0A 00][00 FF]
 ^L616^[1C FF 0A 00 _L3118_][1C FF D7 00 _L3119_][1C FF 8F 00 _L3120_]@You might run into the maid,[01 FF]  Electra.[02 FF]@I wonder what your relationship[01 FF]  is...(smile)[02 FF]@This elevator takes you to[01 FF]  the 47th floor.[02 FF]^L3122^[C6 FF][CE FF 66 03 01 00][CE FF 35 06 01 00][C4 FF 00 8A][A0 FF D1 07 62 00 01 00][1B FF 01 00][EB FF FF 00][A0 FF D0 07 B2 01 01 00][9E FF][C4 FF 00 8B][1B FF 5A 00][CA FF][EA FF FF 00][A5 FF D1 07 06 00][08 FF 5E 01][08 FF 0A 00][00 FF]
-^L617^[1C FF 02 00 _L3123_][1C FF 8D 00 _L3124_][91 FF FF][82 FF _L3123_][93 FF 00 89]@Your Trout-flavored yogurt,[02 FF][08 FF 8D 00][08 FF 02 00][86 FF _L2233_][02 FF]^L3123^@Master Pokey's cool![02 FF]@He gave me something the[01 FF]  other day, and said <this is fit[01 FF]  for a maid...>[1D FF][00 FF]
+^L617^[1C FF 02 00 _L3123_][1C FF 8D 00 _L3124_][91 FF FF][82 FF _L3123_][93 FF 00 89]@Your Trout-flavored yogurt,[01 FF]  [88 FF][8D FF 01 00][86 FF _sirmaam_][02 FF][89 FF][08 FF 8D 00][08 FF 02 00][86 FF _L2233_][02 FF]^L3123^@Master Pokey's cool![02 FF]@He gave me something the[01 FF]  other day, and said <this is fit[01 FF]  for a maid...>[1D FF][00 FF]
 ^L618^[1C FF A0 02 _L3125_][1C FF 0F 00 _L3126_]@Look at my skinny arms,[1B FF 14 00][01 FF]  thin body,[1B FF 14 00] and gray hair...[02 FF]@I've become so weak since I[01 FF]  lost the Mani Mani Statue.[02 FF]@I'm sorry I kidnapped[01 FF]  [0E FF].[02 FF]@I haven't done anything to her.[02 FF]@...[0E FF]  is a nice girl.[02 FF][C6 FF][1B FF 3C 00][CE FF 68 03 03 00][1B FF 0A 00]@[0E FF].[02 FF]@Return to [0D FF].[02 FF]@I'm sorry I've created so[01 FF]  much trouble for you.[02 FF][C6 FF][1B FF 3C 00][86 FF _L3127_][08 FF 0F 00][09 FF 08 03][DB FF 68 03 01 00 FF 00][CE FF 68 03 00 00][C5 FF][1B FF 78 00]^L3128^@.....[02 FF]@I'll tell you everything.[02 FF]@The Mani Mani Statue creates[01 FF]  an illusion.[02 FF]@It attracts evil spirits and[01 FF]  weakens your heart.[02 FF]@The power scared me so much,[01 FF]  I hid the statue in the[01 FF]  warehouse at Jackie's Cafe.[02 FF]@I often went there to pray.[02 FF]@.....[02 FF]@Cryptic words appeared to me[01 FF]  while I was in the illusion.[02 FF]@[0D FF], your name[01 FF]  appeared in the cryptic[01 FF]  messages.[02 FF]@<Stop [0D FF], and do so[01 FF]  by your own hand.>[02 FF]@Or...[02 FF]@<Don't let them go to[01 FF]  Summers.>[02 FF]@Or...[02 FF]@<Make sure they know nothing[01 FF]  of the Pyramid>...[02 FF]@I don't fully understand the[01 FF]  messages,[02 FF]@but someone obviously doesn't[01 FF]  want you to go to Summers.[02 FF]@...Evil... Giygas... or[01 FF]  something... I could hear the[01 FF]  name...[02 FF]@Anyway, the evil side would be[01 FF]  in trouble if you visit[01 FF]  Summers...[02 FF]@Oh!  On the contrary, you[01 FF]  should definitely go to[01 FF]  Summers,[02 FF]@especially because they don't[01 FF]  want you to make it there.[02 FF]@.....[02 FF]@...Would you like to hear[01 FF]  the whole story again?[01 FF][03 FF 00 00][04 FF _L3128_][05 FF _L3129_]^L3129^@Summers is located across the[01 FF]  ocean.[1B FF 14 00]  Take my helicopter.[02 FF]@I'll open the door to my[01 FF]  heliport.[02 FF][C6 FF][1B FF 01 00][A1 FF 68 03 BD 01][9E FF][A1 FF 6C 03 BE 01][9E FF][A1 FF 6C 03 9B 01][A4 FF 68 03][6B FF 03 00][1B FF B4 00][C4 FF 00 55][A1 FF 6D 03 BF 01][9E FF][A1 FF 6D 03 0C 00][85 FF 6D 03 06 00][84 FF 6E 03 0C 00 01 00][6B FF 02 00][1B FF 1E 00][D4 FF 1C 00][1B FF 3C 00][C5 FF][A3 FF 68 03][9E FF][A1 FF 68 03 0C 00][DB FF 68 03 01 00 FF 00][CE FF 68 03 00 00]@You must go on![02 FF]@[0D FF]![02 FF]@This is your destiny.[02 FF][08 FF 98 02][08 FF E5 02][85 FF 68 03 06 00][84 FF 6A 03 0C 00 01 00]^L3126^@[0E FF], it's time we said[01 FF]  goodbye.[02 FF]@Take care.[1D FF][C6 FF][08 FF 65 01][08 FF 66 01][08 FF 67 01][08 FF 68 01][08 FF 69 01][08 FF 6A 01][08 FF 0B 00][08 FF F2 02][08 FF 0B 03][09 FF F7 02][00 FF][01 FF]^L3125^@Pokey took the helicopter...[02 FF]@I hope he's okay...[1D FF][00 FF]
 ^L619^[8D FF 01 00][A8 FF 00]@...[90 FF 00][1A FF 01 00]![02 FF]@You finally made it here![02 FF]@...I'm fine.[02 FF]@I believed you'd come and save[01 FF]  me.[02 FF]@Mr. Monotoli isn't really a[01 FF]  bad person.[02 FF]@Take some time to listen to[01 FF]  him.[1D FF][08 FF 0A 00][00 FF]
 ^L620^@You've brought the town of[01 FF]  Fourside back to life.[02 FF]@I appreciate it from the[01 FF]  bottom of my heart.[02 FF]@Thank you.[1D FF][00 FF]
@@ -629,7 +629,7 @@
 ^L631^@We don't have any money...[1B FF 0F 00][01 FF]  we are strong,[1B FF 0F 00] however...[1D FF][00 FF]
 ^L632^[1C FF 69 01 _L2156_][86 FF _L3130_][86 FF _L3131_][81 FF _L2161_][1B FF 01 00][A1 FF 79 03 29 00][08 FF 69 01][00 FF]
 ^L633^[1C FF 7F 01 _L5093_][BB FF 4B][87 FF][1C FF 49 00 _L5094_]@Welcome to the Monotoli[01 FF]  Grand Hotel.[02 FF]^L5097^[86 FF _L5063_][04 FF _L5095_][05 FF _L5096_]^L5096^[86 FF _L5066_][00 FF]
-^L634^[8D FF 01 00][A8 FF 00]@[90 FF 00][1A FF 01 00]...[02 FF]@Are you staying here tonight?[02 FF]@Thanks for being so generous[01 FF]  with your tips...[02 FF]@...You never gave me a tip?...[01 FF]  nevermind...[1D FF][00 FF]
+^L634^[8D FF 01 00][A8 FF 00]@[90 FF 00][1A FF 01 00], [87 FF][86 FF _sirmaam_]...[02 FF]@Are you staying here tonight?[02 FF]@Thanks for being so generous[01 FF]  with your tips...[02 FF]@...You never gave me a tip?...[01 FF]  never mind...[1D FF][00 FF]
 ^L635^@Hey, you!...[02 FF]@If you meet a beautiful,[01 FF]  seductive woman who's looking[01 FF]  for me,[1B FF 0F 00] tell her I said <hi.>[02 FF]@...Anyway, I don't think a[01 FF]  woman like that would be[01 FF]  looking for me...[1D FF][00 FF]
 ^L636^[86 FF _L5662_][A8 FF 01][87 FF][BD FF 1D _L5733_ _L5733_ _L5733_ _L5733_ _L5733_ _L5733_ _L5733_ _L5733_ _L5733_ _L5733_ _L5733_ _L5733_ _L5733_ _L5733_ _L5733_ _L5733_ _L5733_ _L5734_ _L5735_ _L5736_ _L5737_ _L5738_ _L5739_ _L5740_ _L5741_ _L5742_ _L5743_ _L5744_ _L5745_][00 FF]
 ^L637^[1C FF 8F 00 _L3134_]@What?[02 FF]@Does Mr. Geldegarde Monotoli[01 FF]  come here often?[02 FF]@Hello![1B FF 14 00]  Time to get up!![02 FF]@It could never happen!...[01 FF]  Well actually that's not true.[01 FF][1D FF][00 FF]
@@ -723,7 +723,7 @@
 ^L725^@Excuse me.[1D FF][00 FF]
 ^L726^[1C FF 57 01 _L3213_]@I heard the security guard in the[01 FF]  Scaraba Cultural Museum isn't[01 FF]  very nice.[02 FF]@But he can be helpful.[1D FF][00 FF]
 ^L727^[86 FF _L5662_][A8 FF 01][87 FF][BD FF 1D _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5748_ _L5749_ _L5750_ _L5751_ _L5752_ _L5753_ _L5754_ _L5755_ _L5756_][00 FF]
-^L728^[1C FF 7F 01 _L5099_][BB FF 96][87 FF]@Welcome to[01 FF]  L'hotel de Summers.[02 FF]@My name is[01 FF]  Risosha Richmonde,[02 FF]@and I am the[01 FF]  assistant manager.[02 FF]@I'm sorry [B8 FF 00][1A FF 04 00],[01 FF]  but I'm afraid that we do not[01 FF]  have any reservations[01 FF]  under your name.[02 FF]@However, we can offer you a[01 FF]  room at $[B8 FF 00][1A FF 04 00] a night.[02 FF]@Would you be interested in[01 FF]  a room?[86 FF _L5100_][04 FF _L5101_][05 FF _L5102_]^L5102^@That's too bad.[02 FF]@Please keep us in mind the[01 FF]  next time you come here[01 FF]  on your holiday.[1D FF][00 FF]
+^L728^[1C FF 7F 01 _L5099_][BB FF 96][87 FF]@Welcome to[01 FF]  L'hotel de Summers.[02 FF]@My name is Risosha Richmonde,[02 FF]@and I am the assistant[01 FF]  manager.[02 FF]@I'm sorry [8D FF 01 00][86 FF _sirmaam_], but I'm afraid[01 FF]  that we do not have any[01 FF]  reservation under your name.[02 FF]@However, we can offer you a[01 FF]  room at $[B8 FF 00][1A FF 04 00] a night.[02 FF]@Would you be interested in a[01 FF]  room?[86 FF _L5100_][04 FF _L5101_][05 FF _L5102_]^L5102^@That's too bad, [8D FF 01 00][86 FF _sirmaam_].[02 FF]@Please keep us in mind the next[01 FF]  time you come here on your[01 FF]  holiday.[1D FF][00 FF]
 ^L729^@Thank you again, Poke...[02 FF]@Uhhh, [1A FF 01 00].[1D FF][00 FF]
 ^L730^@I can't believe you pronounce[01 FF]  Hotel as <Hotel.>[02 FF]@In this country, Hotel[01 FF]  is pronounced <otel.>[02 FF]@...What?[02 FF]@So then in your country,[01 FF]  is otter pronounced as[01 FF]  <Hotter>?[02 FF]@'Ow should I know[01 FF]  these things?[1D FF][00 FF]
 ^L731^[86 FF _L3214_][00 FF]
@@ -803,7 +803,7 @@
 ^L805^@Snakes are so unpleasant,[01 FF]  but so cute...[02 FF]@Oh, I don't know what I[01 FF]  may be saying.[1D FF][00 FF]
 ^L806^@Should I keep a snake[01 FF]  at home?[02 FF]@Perhaps I should <asp>[01 FF]  an expert.[1D FF][00 FF]
 ^L807^@Poisonous snakes cost[01 FF]  more.[02 FF]@Why would a fine young[00 FF]
-^L808^@The Snake bag can hold live[01 FF]  snakes![1B FF 14 00]  There are snakes in[01 FF]  the sack![02 FF]@Please, it is a very useful item![02 FF]@Shall you buy one?[1B FF 14 00]  I am humbly[01 FF]  offering it to you...[22 FF][03 FF 00 00][04 FF _L3294_][05 FF _L3295_]^L3295^@You are afraid of snakes,[1B FF 0F 00] are[01 FF]  you not?  Heh heh heh.[1D FF][00 FF]^L3294^[91 FF FF][82 FF _L3296_]@That is 290 dollars, kind[01 FF]  (PRONOUN).[9C FF][03 FF 00 00][04 FF _L3297_][05 FF _L3295_][80 FF _L3295_]^L3297^[99 FF 22 01 00 00][81 FF _L3298_][91 FF FF][93 FF 00 CA][D4 FF 76 00][9B FF 62 00 00 00][9C FF][D4 FF 78 00]@I'll give you a discount as the[01 FF]  sack has a hole in it.[02 FF]@(Snake sack dealer marked the[01 FF]  price down to 98 dollars from[01 FF]  290 dollars.)[1D FF][00 FF]
+^L808^@The Snake bag can hold live[01 FF]  snakes![1B FF 14 00]  There are snakes in[01 FF]  the sack![02 FF]@Please, it is a very useful item![02 FF]@Shall you buy one?[1B FF 14 00]  I am humbly[01 FF]  offering it to you...[22 FF][03 FF 00 00][04 FF _L3294_][05 FF _L3295_]^L3295^@You are afraid of snakes,[1B FF 0F 00] are[01 FF]  you not?  Heh heh heh.[1D FF][00 FF]^L3294^[91 FF FF][82 FF _L3296_]@That is 290 dollars, kind[01 FF]  [8D FF 01 00][86 FF _sirmaam_].[9C FF][03 FF 00 00][04 FF _L3297_][05 FF _L3295_][80 FF _L3295_]^L3297^[99 FF 22 01 00 00][81 FF _L3298_][91 FF FF][93 FF 00 CA][D4 FF 76 00][9B FF 62 00 00 00][9C FF][D4 FF 78 00]@I'll give you a discount as the[01 FF]  sack has a hole in it.[02 FF]@(Snake sack dealer marked the[01 FF]  price down to 98 dollars from[01 FF]  290 dollars.)[1D FF][00 FF]
 ^L809^[86 FF _L3299_][00 FF]
 ^L810^[86 FF _L3300_][00 FF]
 ^L811^@I bought a <Piggy nose.>[02 FF]@This will help out a large[01 FF]  amount while I am humbly[01 FF]  searching for the Magic truffle[01 FF]  in the Deep Darkness.[02 FF]@You too can learn how to use a[01 FF]  Piggy nose with the <Use>[01 FF]  command under <Goods.>[02 FF]@So please rest easy.[1D FF][00 FF]
@@ -978,7 +978,7 @@
 ^L981^[1C FF 7F 01 _L5108_][BB FF 4B][87 FF]@This is the Dark Moon Hotel.[02 FF]@One sleep period is $[B8 FF 00][1A FF 04 00].[02 FF]@Do you want to sleep?[86 FF _L5100_][04 FF _L5109_][05 FF _L5110_][80 FF _L5110_]
 ^L982^@Good morn...[1B FF 0A 00]  Uhhh... not[01 FF]  morning.[1B FF 0A 00][02 FF]@Here[1B FF 05 00] in Moonside, it's always[01 FF]  the middle of the night.[02 FF]@This is a headline from tonight's[01 FF]  Moonside Press...[02 FF]@<Mani Mani is [1B FF 0A 00] always Mani[01 FF]  Mani [1B FF 0A 00] at Mani Mani with all [1B FF 0A 00][01 FF]   Mani Mani [1B FF 0A 00] Mani>[1D FF][00 FF]
 ^L983^[86 FF _L5302_][00 FF]
-^L984^[BC FF 00 00][A8 FF 01]@Welcome to the Automatic[01 FF]  Teller Machine.[02 FF]@Please select a transaction:[01 FF][03 FF 01 00][04 FF _L5125_][05 FF _L5126_]^L5129^@Thank you very much.^L5131^[1D FF][00 FF]^L5126^[D0 FF 7F 96 98 00][82 FF _L5127_][86 FF _L5128_][82 FF _L5129_][A8 FF 00][99 FF 00 00 00 00][81 FF _L5130_][9B FF 00 00 00 00][D1 FF 00 00 00 00][9C FF][D4 FF 76 00][1B FF 0A 00]@Your account will be credited[01 FF]  $[B8 FF 00][1A FF 04 00].[02 FF]@Thank you very much.[02 FF][80 FF _L5131_]
+^L984^[BC FF 00 00][A8 FF 01]@Welcome to the Automatic[01 FF]  Teller Machine.[02 FF]@Please select a transaction:[03 FF 01 00][04 FF _L5125_][05 FF _L5126_]^L5129^@Thank you very much.^L5131^[1D FF][00 FF]^L5126^[D0 FF 7F 96 98 00][82 FF _L5127_][86 FF _L5128_][82 FF _L5129_][A8 FF 00][99 FF 00 00 00 00][81 FF _L5130_][9B FF 00 00 00 00][D1 FF 00 00 00 00][9C FF][D4 FF 76 00][1B FF 0A 00]@Your account will be credited[01 FF]  $[B8 FF 00][1A FF 04 00].[02 FF]@Thank you very much.[02 FF][80 FF _L5131_]
 ^L985^[1C FF A5 00 _L3427_]@I'm really busy doing nothing, so[01 FF]  I don't have time to talk to you.[02 FF]@If you need something, talk to[01 FF]  my partner.[02 FF]@He's right over there... see?[02 FF]@You mean you can't see him?[1D FF][00 FF]
 ^L986^@Can you see me?[03 FF 00 00][04 FF _L3428_][05 FF _L3429_]^L3429^@Ha ha.[01 FF]  You can, huh?[02 FF]@He he.  You've become a real[01 FF]  Moonsidian, haven't you?[1D FF][08 FF A5 00][9D FF 01 20 _L3430_][FC FF 05 00][08 FF 0B 00][00 FF]^L3428^@Ha ha.[01 FF]  You can't?[02 FF]@You're definitely not from[01 FF]  around here.[02 FF]@Hee hee.  Get going now.[1B FF 14 00][01 FF]  Here's your hat, what's your[01 FF]  hurry...[1D FF][00 FF]
 ^L987^@Welcome to Moonside.[02 FF]@Wel[1B FF 0F 00]  come[1B FF 0F 00]  to moo[1B FF 14 00]   nsi[1B FF 0F 00]  ns[1B FF 0F 00][01 FF]  dem[1B FF 05 00] oons[1B FF 05 00] ide.[1D FF][00 FF]
@@ -1857,7 +1857,7 @@
 ^L1861^
 ^L1862^[1C FF 02 03 _L2214_][1C FF 49 00 _L5169_][1C FF B5 00 _L5170_][1C FF 85 02 _L5170_][1C FF B6 02 _L5170_][1C FF B7 02 _L5170_][86 FF _L3541_][81 FF _L5170_][1C FF B4 02 _L5171_][1C FF B5 02 _L5172_][86 FF _L5173_]^L5258^[86 FF _L5174_][03 FF 11 00][04 FF _L5175_][05 FF _L5176_]^L5182^[86 FF _L5177_][86 FF _L5178_][00 FF]^L5175^[F4 FF 01 00 01 00][DD FF 02 00 00 00 00 00 00 00][81 FF _L5179_][86 FF _L5180_][08 FF 85 02][CF FF 03 00][86 FF _L5178_][08 FF F2 02][00 FF]
 ^L1863^
-^L1864^
+^L1864^[1C FF 49 00 _L5465_][8D FF 01 00][87 FF]@Hello,[1B FF 0F 00] this is the Stoic Club.[02 FF]@Oh,[1B FF 0F 00] [90 FF 00][1A FF 01 00], [87 FF][86 FF _sirmaam_]![1B FF 14 00][01 FF]  Would you like to make a[01 FF]  reservation?[02 FF]@Certainly.[02 FF]@We are looking forward to[01 FF]  having you here.[1B FF 0F 00]  Thank you.[02 FF]@Click!  Beep-beep-beep... [1D FF][D4 FF 0B 00][08 FF 51 01][00 FF]
 ^L1865^[00 FF]
 ^L1866^[1C FF D1 00 _L2197_][1C FF 05 02 _L2197_][A2 FF _L5538_][00 FF]
 ^L1867^[08 FF EE 02][09 FF 7F 01][83 FF 15 02][86 FF _L5546_][83 FF D5 01][82 FF _L2197_][1C FF 62 00 _L5547_][1C FF 5F 00 _L5548_][83 FF 1E 00][82 FF _L2197_][A1 FF 15 00 7B 00][08 FF 5F 00][08 FF F1 02][1B FF 78 00][00 FF]
@@ -2667,7 +2667,7 @@
 ^L2762^@I had to run all over to escape[01 FF]  the zombies.[02 FF]@Now I can't remember where[01 FF]  my house is...[1D FF][00 FF]
 ^L2763^@I thought there was something[01 FF]  more to you than just your[01 FF]  smile.[1D FF][00 FF]
 ^L2764^@I wanted to catch one of the[01 FF]  ghosts in the tunnel and keep it[01 FF]  as a pet.[02 FF]@I'm just teasin'.  I can tease[01 FF]  like that now that they're gone.[1D FF][00 FF]
-^L2765^@...Since then, I've really[01 FF]  matured.[02 FF]@I am doing well in the health[01 FF]  food business.[02 FF]@People can get over any illness[01 FF]  they might catch.[02 FF]@Don't you think it's a great[01 FF]  business?[01 FF][03 FF 00 00][04 FF _L2768_][05 FF _L2769_]^L2769^@Okay... so it's not for you.[1D FF][00 FF]^L2768^@I could make you believe[01 FF]  anything...[1D FF][00 FF]
+^L2765^@...Since then, I've really[01 FF]  matured.[02 FF]@I am doing well in the health[01 FF]  food business.[02 FF]@People can get over any illness[01 FF]  they might catch.[02 FF]@Don't you think it's a great[01 FF]  business?[03 FF 00 00][04 FF _L2768_][05 FF _L2769_]^L2769^@Okay... so it's not for you.[1D FF][00 FF]^L2768^@I could make you believe[01 FF]  anything...[1D FF][00 FF]
 ^L2766^@I heard that you beat the[01 FF]  zombie leader[02 FF]@after you got some important[01 FF]  info from me.[02 FF]@Heh heh heh...[02 FF]@You should at least thank me...[01 FF]  or how about a shoulder[01 FF]  massage...[02 FF]@Why are you giving me such a[01 FF]  dirty look, you brat![1B FF 0A 00]  Ptooie![1D FF][00 FF]
 ^L2767^[1D FF][00 FF]
 ^L2768^
@@ -2926,7 +2926,7 @@
 ^L3075^[1C FF A8 02 _L3078_]@Oh, you again...[02 FF]@Look, I'm busy right now.[02 FF]@I'll give you an autograph next[01 FF]  time.[02 FF]@Are you here to see my show?[01 FF][03 FF 00 00][04 FF _L3079_][05 FF _L3080_]^L3080^@...Oh, I see.[02 FF]^L3074^@Looks like you aren't too busy.[1B FF 14 00][01 FF]  Make yourself at home for a[01 FF]  while.[1D FF][00 FF]^L3079^@Okay.[02 FF]^L3078^@...Then, you should give me a[01 FF]  big hand.[1D FF][08 FF A8 02][00 FF]
 ^L3076^@Oh, you want an autograph?[02 FF]@Okay,[1B FF 0F 00] I'll give you my[01 FF]  autograph on this banana peel...[02 FF]@[1B FF 14 00]Here you go.[02 FF][91 FF FF][82 FF _L3077_][01 FF][93 FF 00 98][86 FF _L2238_][02 FF][1B FF 3C 00][01 FF][1D FF][C6 FF][08 FF 5B 00][08 FF 0A 00][00 FF]
 ^L3077^@Oh, uh huh...[02 FF]@I can't give you the banana[01 FF]  'cause you have too much[01 FF]  stuff.[1D FF][00 FF]
-^L3084^@Excuse me sir, but your hands[01 FF]  are full...[1D FF][00 FF]
+^L3084^@Excuse me [8D FF 01 00][86 FF _sirmaam_], but your[01 FF]  hands are full...[1D FF][00 FF]
 ^L3085^@I'm sorry sir...[02 FF][CE FF 99 03 07 00]@We don't just give away the[01 FF]  tickets... you must pay 30[01 FF]  dollars.[1D FF][00 FF]
 ^L3086^@Are you enjoying yourself?[1D FF][00 FF]
 ^L3088^[1C FF 93 00 _L3090_]@Boys and girls, ladies and[01 FF]  gents... this is a very special[01 FF]  show,[02 FF]@the final Runaway Five show[01 FF]  here at the Topolla![02 FF]@Please, please, please don't[01 FF]  miss this once in a lifetime[01 FF]  chance to see their show.[01 FF][1D FF][00 FF]
@@ -2999,8 +2999,8 @@
 ^L3177^
 ^L3178^
 ^L3179^
-^L3180^
-^L3181^
+^L3180^@I misjudged you guys.[02 FF]@I thought you were little[01 FF]  snot-nosed punks.[02 FF]@...I know better now.[1D FF][00 FF]
+^L3181^@Oh, that rude comment was a[01 FF]  slip of the tongue.[02 FF]@Now I feel like Monotoli should[01 FF]  eat my shorts.[02 FF][8D FF 01 00][A8 FF 00]@[90 FF 00][1A FF 01 00], [87 FF][86 FF _sirmaam_].[1D FF][00 FF]
 ^L3182^
 ^L3186^[C6 FF][08 FF 0B 00][85 FF B8 03 06 00][A0 FF 33 00 AC 01 01 00][09 FF 02 00][1B FF 28 00][A1 FF B9 03 AD 01][A1 FF BA 03 AE 01][1B FF 5E 00][08 FF 02 00][9E FF][A1 FF BD 03 AF 01][A1 FF BE 03 B0 01][9E FF][A1 FF BD 03 02 00][A1 FF BE 03 02 00][A1 FF B9 03 02 00][A1 FF BA 03 02 00][A1 FF BB 03 02 00][A1 FF BC 03 02 00][09 FF 0B 00][86 FF _L4156_][00 FF]
 ^L3187^
@@ -4509,7 +4509,7 @@
 ^L4815^@Thank you very, very much![02 FF][00 FF]
 ^L4816^@I think it was a good buy![02 FF][00 FF]
 ^L4817^@Hey, thanks![02 FF][00 FF]
-^L4818^
+^L4818^[8D FF 01 00]@Thank you very much,[01 FF]  [86 FF _sirmaam_].[02 FF][00 FF]^sirmaam^[9A FF 02 00][81 FF _maam_]sir[00 FF]^maam^ma'am[00 FF]
 ^L4819^@Thank you![02 FF][00 FF]
 ^L4820^@Thanks.[02 FF][00 FF]
 ^L4821^@Do you need anything else from[01 FF]  me?[01 FF][00 FF]
@@ -4720,7 +4720,7 @@
 ^L5046^[00 FF]
 ^L5047^[8B FF][00 FF]
 ^L5048^[87 FF][62 FF][87 FF][8A FF][82 FF _L5047_][87 FF][91 FF 00][81 FF _L5047_][8B FF][87 FF][89 FF][80 FF _L5048_]
-^L5049^[A8 FF 01][88 FF]@I can examine one of you for[01 FF]  $[B8 FF 00][1A FF 04 00].[01 FF][9C FF][69 FF][03 FF 15 00][86 FF _L4957_][95 FF 02 _L5354_ _L5355_]^L5355^@You really don't need any[01 FF]  treatment?[01 FF]  All right.^L5367^[86 FF _L5356_][1D FF][00 FF]^L5354^[99 FF 00 00 00 00][81 FF _L5357_][96 FF 02][81 FF _L5358_]@Who is sick?[69 FF][EC FF][01 FF][82 FF _L5355_]^L5366^[88 FF][ED FF 00 00 01 00][95 FF 08 _L5359_ _L5360_ _L5361_ _L5361_ _L5362_ _L5363_ _L5364_ _L5365_]^L5358^[8D FF 01 00][80 FF _L5366_]
+^L5049^[A8 FF 01][88 FF]@I can examine one of you for[01 FF]  $[B8 FF 00][1A FF 04 00].[9C FF][69 FF][03 FF 15 00][86 FF _L4957_][95 FF 02 _L5354_ _L5355_]^L5355^@You really don't need any[01 FF]  treatment?[01 FF]  All right.^L5367^[86 FF _L5356_][1D FF][00 FF]^L5354^[99 FF 00 00 00 00][81 FF _L5357_][96 FF 02][81 FF _L5358_]@Who is sick?[69 FF][EC FF][01 FF][82 FF _L5355_]^L5366^[88 FF][ED FF 00 00 01 00][95 FF 08 _L5359_ _L5360_ _L5361_ _L5361_ _L5362_ _L5363_ _L5364_ _L5365_]^L5358^[8D FF 01 00][80 FF _L5366_]
 ^L5050^
 ^L5051^
 ^L5052^
@@ -4734,7 +4734,7 @@
 ^L5060^
 ^L5061^[86 FF _L2866_][86 FF _L2184_][86 FF _L5385_][09 FF A9 00][00 FF]
 ^L5062^[86 FF _L5070_][00 FF]
-^L5063^@A one night stay will cost[01 FF]  you $[B8 FF 00][1A FF 04 00].[02 FF]@Would you like to stay?^L5100^[86 FF _L2492_][00 FF]
+^L5063^@A one night stay will cost you[01 FF]  $[B8 FF 00][1A FF 04 00].[02 FF]@Would you like to stay?^L5100^[86 FF _L2492_][00 FF]
 ^L5064^[99 FF 00 00 00 00][81 FF _L5067_][86 FF _L5068_][C5 FF][14 FF 05 00][86 FF _L2185_][00 FF]
 ^L5066^@See you next time.[1D FF][00 FF]
 ^L5067^[86 FF _L5069_][00 FF]
@@ -4765,8 +4765,8 @@
 ^L5094^@Welcome to the Enrich[01 FF]  Grand Hotel.[02 FF][80 FF _L5097_]
 ^L5095^[99 FF 00 00 00 00][81 FF _L5098_][86 FF _L5068_][C5 FF][14 FF 8A 00][86 FF _L2185_][00 FF]
 ^L5098^[86 FF _L5069_][00 FF]
-^L5099^@Did you have a relaxing sleep?[02 FF]@The sound of the ocean[01 FF]  waves didn't disturb you,[01 FF]  I trust.[1D FF][00 FF]
-^L5101^[99 FF 00 00 00 00][81 FF _L5103_][9B FF 00 00 00 00][9C FF][D4 FF 76 00]@Excellent choice![02 FF]@We hope you enjoy our[01 FF]  wonderful ocean view.[1D FF][86 FF _L2883_][C5 FF][14 FF 57 00][86 FF _L2185_][00 FF]
+^L5099^@Did you have a relaxing sleep?[02 FF]@The sound of the ocean waves[01 FF]  didn't disturb you, I trust.[1D FF][00 FF]
+^L5101^[99 FF 00 00 00 00][81 FF _L5103_][9B FF 00 00 00 00][9C FF][D4 FF 76 00]@Excellent choice, [8D FF 01 00][86 FF _sirmaam_]![02 FF]@We hope you enjoy our[01 FF]  wonderful ocean view.[1D FF][86 FF _L2883_][C5 FF][14 FF 57 00][86 FF _L2185_][00 FF]
 ^L5103^@If you do not have enough cash[01 FF]  with you, please feel free to[01 FF]  use the ATM just over there.[1D FF][00 FF]
 ^L5104^@Good morning![02 FF]@This sure is some nice weather[01 FF]  we're having in Scaraba lately.[1D FF][00 FF]
 ^L5105^[99 FF 00 00 00 00][81 FF _L5107_][9B FF 00 00 00 00][9C FF][D4 FF 76 00]@Please let us know if you find[01 FF]  any scorpions...[02 FF]@It's very unlikely that they will[01 FF]  come out, but you never can[01 FF]  tell...[1D FF][C6 FF][1B FF 01 00][86 FF _L2883_][C5 FF][14 FF 56 00][86 FF _L2185_][00 FF]
@@ -5073,7 +5073,7 @@
 ^L5462^@You should wait to teleport[01 FF]  until after a customer has[01 FF]  shown up.[1D FF][00 FF]
 ^L5463^@You should wait to teleport[01 FF]  until after Escargo Express[01 FF]  arrives.[1D FF][00 FF]
 ^L5464^@You cannot teleport while[01 FF]  Dungeon Man is with you.[1D FF][00 FF]
-^L5465^
+^L5465^@Yo, this is the <The Lazy[01 FF]  Cowpoke Stop 'n Go>[02 FF]@Yeah, we're a new truck stop...[01 FF]  we just opened...[02 FF]@What's that?  The Stoic Club?![01 FF]  That lame old place shut down[01 FF]  ages ago![02 FF]@We totally remodeled the place![02 FF]@Now we've got loud music,[01 FF]  great food, and really rowdy[01 FF]  crowds...[02 FF]@Listen, buddy, I'm too busy to[01 FF]  talk to you right now![02 FF]@Just drop by anytime![01 FF]  You come, you enjoy... I[01 FF]  promise![02 FF]@Click!  Beep-beep-beep...[1D FF][D4 FF 0B 00][00 FF]
 ^L5466^
 ^L5467^
 ^L5468^
@@ -5105,7 +5105,7 @@
 ^L5494^[86 FF _L5496_][93 FF 00 00][D4 FF 74 00][00 FF]
 ^L5495^@[90 FF 00][1A FF 01 00] takes it.[87 FF][1D FF][00 FF]
 ^L5496^[8D FF 01 00][87 FF]@[90 FF 00][1A FF 01 00] added the[89 FF][01 FF]  [90 FF 00][1A FF 01 00] [01 FF]  to [87 FF][90 FF 00][1A FF 02 00]'s stuff.[87 FF][1D FF][00 FF]
-^L5497^
+^L5497^[8D FF 01 00]@But, [86 FF _itemheshe_] has got too much[01 FF]  stuff already.[1D FF][00 FF]^itemheshe^[9A FF 02 00][81 FF _she_]he[00 FF]^she^she[00 FF]
 ^L5498^
 ^L5499^[1C FF E2 00 _L5508_][1C FF E3 00 _L5509_][1C FF E4 00 _L5510_][1C FF E5 00 _L5511_][00 FF]
 ^L5500^
@@ -5443,13 +5443,13 @@
 ^L5839^@Maybe ...[01 FF]  where you should visit is[02 FF]@Saturn Valley...[86 FF _L5856_][00 FF]
 ^L5840^@A very special substance is[01 FF]  necessary to complete the[01 FF]  Phase Distorter.[02 FF]@You know, I wonder if the site[01 FF]  in Onett[02 FF]@where the meteorite landed has[01 FF]  something to do with this?[02 FF]@I say, go there and check out[01 FF]  the site.[86 FF _L5856_][00 FF]
 ^L5841^@I have no more hints for you.[02 FF]@You've done such a good job to[01 FF]  this point.[02 FF]@From here on out...[02 FF]@Trust your judgement, and also[01 FF]  your luck.[1D FF][00 FF]
-^L5842^@Well, I want to thank you for all[01 FF]  the times[02 FF]@that you used the hint shop.[01 FF]  It's been a while since I first[01 FF]  saw you...[02 FF]@This is my final day in business.[02 FF]@[1B FF 0A 00]..[1B FF 0A 00]..[1B FF 0A 00]..[1B FF 0A 00]..[1B FF 1E 00]..[02 FF]@Well, so long kid,[01 FF]  No, no... Master [90 FF 01][1A FF 01 00].[02 FF]@See you again,[01 FF]  if fate allows it.[1D FF][00 FF]
+^L5842^@Well, I want to thank you for all[01 FF]  the times[02 FF]@that you used the hint shop.[01 FF]  It's been a while since I first[01 FF]  saw you...[02 FF]@This is my final day in business.[02 FF]@[1B FF 0A 00]..[1B FF 0A 00]..[1B FF 0A 00]..[1B FF 0A 00]..[1B FF 1E 00]..[02 FF]@Well, so long kid,[01 FF]  No, no... Master [0D FF].[02 FF]@See you again,[01 FF]  if fate allows it.[1D FF][00 FF]
 ^L5843^[1C FF BA 00 _L5847_][1C FF 3A 00 _L5846_][1C FF 5B 00 _L5845_][1C FF 8C 00 _L5844_]^L5843^@At the Dinosaur Museum in[01 FF]  Fourside...[02 FF]@A man called called Mr. Spoon[01 FF]  has a heavy mustache...[86 FF _L5856_][00 FF]
 ^L5844^@If you want to meet Venus, you[01 FF]  should go backstage at the[01 FF]  Topolla Theater.[86 FF _L5856_][00 FF]
 ^L5845^@An autograph with a banana![01 FF]  I mean,[01 FF]  A banana with an autograph![02 FF]@You'd better get this to Mr.[01 FF]  Spoon right away![86 FF _L5856_][00 FF]
 ^L5846^@Heck, since the door to the[01 FF]  sewer is open,[02 FF]@why not go all the way inside[01 FF]  and look around?[02 FF]@I know the stink and the vermin[01 FF]  could overpower you,[02 FF]@but it might make you tougher,[01 FF]  too.[86 FF _L5856_][00 FF]
 ^L5847^@If you have the Carrot Key, [02 FF]@you should go to Dalaam and[01 FF]  give it to the bunny at Pink[01 FF]  Cloud.[02 FF]@If you don't have the Carrot[01 FF]  Key, you should go to Magnet[01 FF]  Hill.[02 FF]@You should be able to find the[01 FF]  Carrot Key there.[86 FF _L5856_][00 FF]
-^L5848^[1C FF 49 00 _L5842_][1C FF 4F 00 _L5481_][A8 FF 01][1C FF 08 00 _L5849_][86 FF _L5850_]@I could give you a great hint for[01 FF]  just $[B8 FF 00][1A FF 04 00].[02 FF]@You'd like a hint, wouldn't you?[01 FF][86 FF _L2492_][04 FF _L5851_][05 FF _L5852_]^L5852^@So you're telling me that you[01 FF]  don't want a hint?[02 FF]@You're either awfully confident[01 FF]  or $[B8 FF 00][1A FF 04 00] is too much[01 FF]  to pay.[02 FF]@Anyway, a young man like you[01 FF]  is very unusual these days.[02 FF]@If you happen to need a hint,[01 FF]  c'mon back![02 FF]@I'm here all the time...[1D FF][00 FF]
+^L5848^[1C FF 49 00 _L5842_][1C FF 4F 00 _L5481_][A8 FF 01][1C FF 08 00 _L5849_][86 FF _L5850_]@I could give you a great hint for[01 FF]  just $[B8 FF 00][1A FF 04 00].[02 FF]@You'd like a hint, wouldn't you?[86 FF _L2492_][04 FF _L5851_][05 FF _L5852_]^L5852^@So you're telling me that you[01 FF]  don't want a hint?[02 FF]@You're either awfully confident[01 FF]  or $[B8 FF 00][1A FF 04 00] is too much[01 FF]  to pay.[02 FF]@Anyway, a young man like you[01 FF]  is very unusual these days.[02 FF]@If you happen to need a hint,[01 FF]  c'mon back![02 FF]@I'm here all the time...[1D FF][00 FF]
 ^L5849^@Do you want to hear the hint[01 FF]  once more?[02 FF]@This is a special service just[01 FF]  for you...[02 FF][80 FF _L5863_]
 ^L5850^@Now wait a minute, youngster![02 FF][00 FF]
 ^L5851^
