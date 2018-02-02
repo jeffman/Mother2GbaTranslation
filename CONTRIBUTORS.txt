@@ -13,6 +13,7 @@ Text conversion:
   ThePoltergeist
   ShadowOne333
   PhoenixBound
+  Pidgin
 
 Special thanks:
   TragicManner
