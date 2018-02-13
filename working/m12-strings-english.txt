@@ -1605,21 +1605,21 @@
 ^L1610^[CA FF][14 FF 26 00][A0 FF 5F 01 42 01 FF 00][C9 FF 5F 01][00 FF]
 ^L1611^[CA FF][14 FF 27 00][A0 FF 5F 01 43 01 FF 00][C9 FF 5F 01][00 FF]
 ^L1612^[CA FF][14 FF 28 00][A0 FF 5F 01 44 01 FF 00][C9 FF 5F 01][00 FF]
-^L1613^
+^L1613^[CA FF][14 FF 28 00][A0 FF 5F 01 45 01 FF 00][C9 FF 5F 01][9E FF][AA FF 5F 01][A0 FF BB 00 F1 00 01 00]@...This bus continues on to[01 FF]  Fourside.[02 FF]@Do you want to get off here?[22 FF][03 FF 00 00][04 FF _L4097_][05 FF _L4098_]^L4098^[C6 FF][A5 FF BB 00 06 00][80 FF _L4099_]^L4097^[C6 FF][A5 FF BB 00 06 00][09 FF 16 02][C5 FF][A0 FF D0 07 4B 01 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][CC FF FF 00 01 00][9E FF][CA FF][EA FF FF 00][A9 FF 5F 01][9E FF][09 FF 0B 00][FC FF 06 00][A0 FF D3 07 05 03 01 00][00 FF]
 ^L1614^[CA FF][14 FF 32 00][A0 FF 62 01 D5 01 FF 00][C9 FF 62 01][00 FF]
 ^L1615^[CA FF][14 FF 33 00][A0 FF 62 01 D6 01 FF 00][C9 FF 62 01][00 FF]
 ^L1616^[CA FF][14 FF 34 00][A0 FF 62 01 D7 01 FF 00][C9 FF 62 01][00 FF]
 ^L1617^[6B FF 03 00][1B FF 3C 00][09 FF 17 02][C5 FF][A0 FF D0 07 D6 00 01 00][1B FF 01 00][C9 FF D0 07][CC FF FF 00 01 00][EB FF FF 00][9E FF][D8 FF 01 00 01 00][D8 FF 02 00 01 00][D8 FF 03 00 01 00][CA FF][EA FF FF 00][A0 FF 36 00 D7 00 01 00][9E FF][1B FF 1E 00][AA FF 36 00][86 FF _L4163_][1B FF 14 00][A6 FF 36 00 D8 00][9E FF][1B FF 1E 00][A9 FF 62 01][9E FF][09 FF 0B 00][FC FF 06 00][A0 FF D3 07 05 03 01 00][86 FF _L3558_][00 FF]
-^L1618^
-^L1619^
+^L1618^[FC FF 33 00][B0 FF 4F 02 CC 00][1B FF 3C 00][B3 FF 4F 02][1B FF 1E 00][85 FF 4F 02 06 00][A0 FF 5D 00 92 00 01 00][1B FF 01 00][AA FF 5D 00]@[0F FF],[1B FF 14 00] where are you[01 FF]  going in the middle of the night?[02 FF][C6 FF][A9 FF 5D 00][9E FF][AA FF 5D 00]@You know the dorm rules,[01 FF]  right?[02 FF]@If you get caught,[1B FF 0F 00] you'll get[01 FF]  punished big time...[02 FF]@W.[1B FF 05 00].[1B FF 05 00].[1B FF 05 00] what's wrong,[01 FF]  [0F FF].[02 FF][C3 FF 03 03 5D 00][D8 FF 03 00 00 00]@[1B FF 14 00]...All right.[02 FF]@There must be some reason[01 FF]  that I don't understand.[1B FF 14 00]  I won't[01 FF]  stop you.[02 FF]@But it's dangerous to leave[01 FF]  without taking anything along.[02 FF]@Hey,[1B FF 0F 00] I think there's some stuff[01 FF]  in the locker room that you[01 FF]  should get.[02 FF]@I'll help you get out of here...[02 FF][C6 FF][AE FF 08][CB FF 08 00 06 00][A6 FF 5D 00 15 00][9E FF][A5 FF 5D 00 06 00][CC FF 08 00 01 00][C4 FF 00 7B][1B FF 78 00][1B FF 3C 00]@(Tony joined you.)[02 FF][C6 FF][08 FF 17 00][C5 FF][FC FF 34 00][00 FF]
+^L1619^[FC FF 33 00][A4 FF 78 02][D8 FF 09 00 05 00][B2 FF 09 00 CC 00][1B FF 3C 00][B5 FF 09 00]@@Kye uki kukyi[01 FF]  (Now she's my type...)[02 FF]@Ki kukkyo uke[01 FF]  (I think I'll ask her for a date!)[02 FF][C6 FF][AF FF 09][A0 FF 54 00 AF 00 01 00][1B FF 04 00][A3 FF 78 02][9E FF][09 FF 16 00][FC FF 34 00][00 FF]
 ^L1620^[08 FF 0B 00][FC FF 05 00][86 FF _L2200_][A0 FF D0 07 B2 00 01 00][C9 FF D0 07][EB FF FF 00][9E FF][CB FF FF 00 06 00][86 FF _L2201_][08 FF 8F 02][C5 FF][CA FF][EA FF FF 00][A1 FF 67 02 B4 00][9E FF][1C FF B8 00 _L4138_][09 FF 09 00][A1 FF 67 02 B5 00][9E FF][1C FF 09 00 _L4138_][86 FF _L4139_]^L4138^[00 FF]
-^L1621^
+^L1621^[A0 FF D3 07 04 03 01 00][A3 FF 6F 02][9E FF][1B FF 1E 00][85 FF 6D 02 06 00][9E FF][14 FF 15 00][A0 FF 5C 01 B6 00 FF 00][EB FF FF 00][1B FF 01 00][9E FF][CA FF][14 FF 48 00][A0 FF 5C 01 DD 01 FF 00][C9 FF 5C 01][EB FF FF 00][1B FF 01 00][9E FF][CA FF][14 FF 49 00][A0 FF 5C 01 EF 01 FF 00][A0 FF 30 01 F0 01 FF 00][EB FF FF 00][1B FF 01 00][9E FF][CA FF][14 FF 48 00][A0 FF 5C 01 DE 01 FF 00][C9 FF 5C 01][EB FF FF 00][1B FF 01 00][9E FF][CA FF][14 FF 4A 00][A0 FF 5C 01 F1 01 FF 00][A0 FF 30 01 F2 01 FF 00][EB FF FF 00][1B FF 01 00][9E FF][CA FF][14 FF 48 00][A0 FF 5C 01 DF 01 FF 00][C9 FF 5C 01][EB FF FF 00][1B FF 01 00][9E FF][CA FF][14 FF 16 00][A0 FF 5C 01 B7 00 FF 00][A0 FF 30 01 B8 00 FF 00][9E FF][AA FF 5C 01][AA FF 30 01][86 FF _L4140_][1B FF 0F 00][86 FF _L4140_][A9 FF 5C 01][A9 FF 30 01][9E FF][AA FF 5C 01][AA FF 30 01][09 FF 8F 02][C4 FF 00 6D][EB FF FF 00][A9 FF 5C 01][A9 FF 30 01][9E FF][A5 FF 5C 01 FF 00][A5 FF 30 01 FF 00][08 FF 2F 00][FC FF 36 00][CA FF][14 FF 10 00][EA FF FF 00][AE FF 01][AE FF 02][AF FF 03][CC FF FF 00 01 00][86 FF _L2866_][A0 FF 08 00 B9 00 FF 00][C5 FF][1B FF 1E 00][A0 FF D0 07 BB 00 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][9E FF][CA FF][EA FF FF 00][A5 FF 08 00 06 00][A0 FF 02 00 BA 00 01 00][1B FF 01 00][AA FF 02 00]@Man,[1B FF 0F 00] oh,[1B FF 0F 00] man,[1B FF 14 00] did that ever[01 FF]  scare me!...[02 FF]@The Sky Runner...[1B FF 14 00]  I guess it[01 FF] took a little damage while[01 FF]  landing...[02 FF]@Oh well...[02 FF][C6 FF][A9 FF 02 00][9E FF]@You don't have to explain a[01 FF]  thing...[1B FF 14 00]  I'm [0F FF].[02 FF]@I came because you[01 FF]  called me.[02 FF]@I'm not very strong,[1B FF 0F 00] really near-[01 FF]  sighted,[1B FF 0F 00] kind of shy,[02 FF]@and I tend to be a little [01 FF]  reckless.[1B FF 14 00]  This is just the way I[01 FF]  am...[02 FF]@I hope you want me to be your[01 FF]  friend... okay?[03 FF 00 00][04 FF _L4141_][05 FF _L4142_]^L4142^@...So why did you call me?[1B FF 14 00][01 FF]  Are you just making fun of me?[02 FF]@This is just the way I am...[02 FF]@I hope you want me to be your[01 FF]  friend... okay?[03 FF 00 00][04 FF _L4141_][05 FF _L4142_][80 FF _L4142_]^L4141^@All right![1B FF 14 00]  Let's get back to the[01 FF]  journey, then![02 FF][C6 FF][1B FF 01 00][AE FF 03][CB FF 03 00 06 00][A6 FF 02 00 15 00][9E FF][A5 FF 02 00 06 00][CC FF 03 00 01 00][C4 FF 00 0B][1B FF 78 00][1B FF 78 00][1B FF 78 00][1B FF 3C 00][C5 FF]@[0F FF] joined you.[02 FF][C6 FF][1B FF 01 00][A0 FF D3 07 05 03 01 00][08 FF 0E 00][08 FF 31 00][08 FF 4D 02][08 FF 72 02][08 FF 6E 02][08 FF EC 02][09 FF 32 00][09 FF 7C 02][7E FF 03 00][09 FF 0B 00][FC FF 06 00][64 FF][00 FF]
 ^L1622^[08 FF 0B 00][FC FF 05 00][A0 FF D3 07 04 03 01 00][86 FF _L2200_][A3 FF 6F 02][9E FF][1B FF 1E 00][85 FF 6D 02 06 00][9E FF][14 FF 15 00][A0 FF 5C 01 B6 00 FF 00][9E FF][CA FF][14 FF 48 00][A0 FF 5C 01 DD 01 FF 00][C9 FF 5C 01][9E FF][CA FF][14 FF 4B 00][A0 FF 5C 01 F4 01 FF 00][A0 FF 30 01 F5 01 FF 00][9E FF][09 FF 8F 02][08 FF 17 02][C5 FF][9E FF][C4 FF 00 6E][9E FF][CA FF][09 FF 17 02][14 FF 4C 00][CC FF FF 00 01 00][A0 FF 11 01 F6 01 FF 00][EB FF FF 00][1B FF 01 00][7E FF 07 00][08 FF EC 02][08 FF D7 00][09 FF 0B 00][FC FF 06 00][A0 FF D3 07 05 03 01 00][00 FF]
-^L1623^
-^L1624^
+^L1623^@Okay... you may enter.[02 FF][C6 FF][1B FF 01 00][14 FF 22 00][08 FF 71 01][86 FF _L3310_][00 FF]
+^L1624^[A0 FF D0 07 51 02 01 00][86 FF _L4040_][CB FF FF 00 06 00][C4 FF 00 5B][A3 FF E5 02][9E FF][C4 FF 00 7E][1B FF 64 00][EE FF 01 00 08 00 02 00][A0 FF D0 07 52 02 01 00][CC FF FF 00 01 00][86 FF _L4040_][1B FF 78 00][A1 FF D8 02 53 02][9E FF][C5 FF][A4 FF D8 02]@Hmmm... it doesn't work.[1B FF 14 00]  One[01 FF]  thing is missing...[02 FF]@But that one material cannot[01 FF]  normally be found on the earth.[02 FF]@The material I'm thinking of[01 FF]  came from a meteorite[02 FF]@that fell when I was much[01 FF]  younger.[02 FF]^L4307^@Have you seen a meteorite[01 FF]  anywhere recently?[22 FF][03 FF 0C 00][04 FF _L4305_][05 FF _L4306_]^L4306^@Hmmm...[1B FF 14 00] so are we just going[01 FF]  to wait for a meteorite[02 FF]@to suddenly fall from the sky?[02 FF]@Mmm...[1B FF 1E 00] you haven't seen a[01 FF]  meteorite...[1B FF 14 00] Hm... think for a[01 FF]  minute...[02 FF][80 FF _L4307_]^L4305^@Eureka![1B FF 0F 00]  That's it![02 FF]@With even just a piece of the[01 FF]  meteorite,[1B FF 0F 00] I can synthesize the[01 FF]  material Zexonyte.[02 FF]@...I doubt that your mortal[01 FF]  enemy Giygas,[02 FF]@or whatever, will allow you to[01 FF]  go to Onett and get a piece of[01 FF]  the meteorite.[02 FF]@By now, Onett is in his evil[01 FF]  hands.[02 FF]@You must go,[1B FF 05 00] though,[1B FF 0F 00] so[01 FF]  take every possible precaution.[02 FF]@The Mr. Saturns have[01 FF]  introduced some of their new[01 FF]  developments at their shop.[02 FF]@Please check them out before[01 FF]  you leave.[02 FF]@...I wonder what Onett is like[01 FF]  at this point in time?...[1D FF][C6 FF][08 FF 84 00][08 FF 78 02][08 FF D4 01][09 FF 6C 00][09 FF 79 02][09 FF A6 01][09 FF 05 02][EE FF 01 00 08 00 00 00][83 FF 63 00][82 FF _L2197_][09 FF EA 02][00 FF]
 ^L1625^[08 FF 07 03][86 FF _L2200_][A0 FF D0 07 54 02 01 00][86 FF _L4040_][CB FF FF 00 06 00][08 FF F8 02][C5 FF][85 FF E5 02 09 00][1B FF B4 00][14 FF 68 00][1B FF 64 00][84 FF FA 04 56 02 04 00][1B FF 50 00][86 FF _L2201_][09 FF F8 02][C5 FF][CC FF FF 00 01 00][A0 FF D0 07 55 02 01 00][86 FF _L4040_][7E FF 01 00][9D FF 01 07 _L3901_][9D FF 02 29 _L3902_][08 FF 4C 01][00 FF]
-^L1626^
-^L1627^
+^L1626^[A4 FF E6 02][8D FF 01 00][A8 FF 00][1C FF 75 02 _L2939_]@(You enjoyed the hot springs[01 FF]  immensely.[1B FF 14 00]  It made you feel[01 FF]  reborn.)[1D FF]^L2942^[86 FF _L2941_][C6 FF][A3 FF E6 02][00 FF]
+^L1627^[09 FF 16 02][C5 FF][A0 FF BB 00 F1 00 01 00]@Man![1B FF 0F 00]  It's bumper to bumper![02 FF]@My job is to drive,[1B FF 0F 00] so I can't[01 FF]  get off the bus...[02 FF]@It's up to you if you want to[01 FF]  get off the bus and walk[01 FF]  around in the desert...[02 FF]@Hey,[1B FF 0F 00] it's a free country.[02 FF][C6 FF][A5 FF BB 00 06 00][A0 FF D0 07 F7 00 01 00][1B FF 01 00][C9 FF D0 07][CC FF FF 00 01 00][EB FF FF 00][9E FF][CA FF][EA FF FF 00][A9 FF 5F 01][9E FF][9D FF 01 06 _L4145_][09 FF 0B 00][A0 FF D3 07 05 03 01 00][08 FF 72 01][FC FF 06 00][00 FF]
 ^L1628^[CA FF][14 FF 29 00][A0 FF 5F 01 47 01 FF 00][C9 FF 5F 01][00 FF]
 ^L1629^[CA FF][14 FF 2A 00][A0 FF 5F 01 48 01 FF 00][C9 FF 5F 01][00 FF]
 ^L1630^[CA FF][14 FF 2B 00][A0 FF 5F 01 49 01 FF 00][C9 FF 5F 01][00 FF]
@@ -2798,7 +2798,6 @@
 ^L2939^
 ^L2940^
 ^L2941^[BC FF 01 00]^L5391^[A8 FF 01][96 FF 00][81 FF _L5389_][8D FF 00 00][88 FF][92 FF 00 01 02][82 FF _L5390_][89 FF][EE FF 00 00 01 00 01 00][87 FF][F7 FF 00 00 64 00][F8 FF 00 00 64 00]^L5390^[89 FF][EE FF 00 00 01 00 01 00][EE FF 00 00 02 00 01 00][EE FF 00 00 06 00 01 00][D4 FF 25 00][C0 FF][80 FF _L5391_]
-^L2942^
 ^L2943^[08 FF FB 00][86 FF _L4325_][09 FF FB 00][00 FF]
 ^L2944^
 ^L2945^
@@ -3790,8 +3789,6 @@
 ^L4094^[8D FF 01 00][C3 FF 00 02 17 03][86 FF _L4074_][00 FF]
 ^L4095^
 ^L4096^
-^L4097^
-^L4098^
 ^L4099^
 ^L4100^[8D FF 01 00][C3 FF 00 02 CC 03][86 FF _L4073_][00 FF]
 ^L4101^
@@ -3832,8 +3829,6 @@
 ^L4137^[CB FF 09 00 06 00][A0 FF C8 00 98 00 01 00][9E FF][A5 FF C8 00 06 00][A0 FF C8 00 A8 00 01 00][A0 FF B4 02 9A 00 01 00][9E FF][A6 FF B4 02 A9 00][9E FF][A5 FF C8 00 06 00][A5 FF B4 02 06 00][A0 FF 54 00 AA 00 01 00][9E FF][85 FF A5 02 06 00][84 FF 30 06 AD 00 01 00][9E FF][85 FF 30 06 06 00][84 FF 39 06 0C 00 01 00][A5 FF 54 00 06 00][A0 FF D3 02 AB 00 01 00][9E FF][A5 FF D3 02 06 00][A0 FF 54 00 AC 00 01 00][9E FF][A5 FF 54 00 06 00][CC FF 09 00 01 00][09 FF 52 01][08 FF 37 01][00 FF]
 ^L4139^
 ^L4140^[D4 FF 4D 00][B1 FF 5C 01 CA 00][1B FF 0A 00][B4 FF 5C 01][1B FF 03 00][B1 FF 5C 01 CA 00][1B FF 0A 00][B4 FF 5C 01][1B FF 3C 00][00 FF]
-^L4141^
-^L4142^
 ^L4143^
 ^L4144^
 ^L4145^[08 FF 88 00][6E FF 01 00][00 FF]
@@ -3980,9 +3975,6 @@
 ^L4300^[9E FF]@What happened, [0D FF]?[1B FF 14 00][01 FF]  You've been unconscious for a[01 FF]  long time...[02 FF][C6 FF][1B FF 1E 00][00 FF]
 ^L4301^[9E FF]@You kept saying something...[02 FF][C6 FF][1B FF 1E 00][00 FF]
 ^L4302^[9E FF]@...Saturn Valley?[1B FF 1E 00][01 FF]  What's waiting for us there?[02 FF]@Anyway, we need to teleport...[02 FF][C6 FF][1B FF 1E 00][00 FF]
-^L4305^
-^L4306^
-^L4307^
 ^L4308^[C4 FF 00 7F][84 FF FB 04 59 02 04 00][1B FF 78 00][1B FF 3C 00][84 FF F8 04 5A 02 01 00][84 FF F5 04 5B 02 01 00][84 FF F7 04 5C 02 01 00][9E FF][C5 FF][DB FF F5 04 01 00 FF 00][CE FF F5 04 00 00][A4 FF F8 04][A4 FF F5 04][A4 FF F7 04][86 FF _L4309_][08 FF 48 01][08 FF 49 01][08 FF 4A 01][08 FF 47 01][00 FF]
 ^L4309^
 ^L4310^[C6 FF][85 FF F5 04 06 00][84 FF F6 04 5D 02 01 00][1B FF 96 00][08 FF 4B 01][09 FF 48 01][00 FF]
