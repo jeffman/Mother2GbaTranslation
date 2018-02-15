@@ -1692,24 +1692,24 @@
 ^L1697^[1C FF 78 02 _L1871_][D4 FF 6F 00][1B FF 28 00]@<Psss. Whisper.>[02 FF]@<Whisper pssst psssssss.>[02 FF]@<Shhhhh, what if someone[01 FF]  overhears us...?>[02 FF]@<Right.[1B FF 14 00]  Whisper.>[02 FF]@<Psst. Pss.  Wa Ha ha!>[1B FF 1E 00][01 FF]  <You jerk.>[02 FF]@<Because...>[02 FF]@<Heh heh he>[02 FF]@<Heh heh heh>[1D FF][00 FF]
 ^L1698^[1C FF 78 02 _L1871_]@(Open Soon![01 FF]  Mach Pizza Onett Branch.)[02 FF][C7 FF][00 FF]
 ^L1699^[1C FF 78 02 _L1871_][D4 FF 6F 00][1B FF 28 00]@W-[1B FF 05 00]Wh-[1B FF 01 00]Who's there?[1B FF 0E 00]  It's creepy[01 FF]  in here.[1B FF 14 00]  What, you won't[01 FF]  answer?[1D FF][00 FF]
-^L1700^
-^L1701^
-^L1702^
-^L1703^
-^L1704^
-^L1705^
-^L1706^
-^L1707^
-^L1708^
-^L1709^
-^L1710^
-^L1711^
-^L1712^
-^L1713^
-^L1714^
-^L1715^
-^L1716^
-^L1717^
+^L1700^@South to the suburbs of Onett.[1D FF][00 FF]
+^L1701^@<Onett Public Library>[1B FF 14 00][01 FF]  Use the library more![1D FF][00 FF]
+^L1702^@(Help Wanted - Policemen to[01 FF]  close roads.[01 FF]  Onett Police Dept.)[1D FF][00 FF]
+^L1703^@(Good and Strong, the kids[01 FF]  of Onett...[01 FF]  B.H. Pirkle)[1D FF][00 FF]
+^L1704^@(Clean, quiet and beautiful[01 FF]  Onett-- run by Mayor Pirkle...)[1D FF][00 FF]
+^L1705^@(If you have any trouble,[01 FF]  consult your kind-hearted[01 FF]  mayor!)[1D FF][00 FF]
+^L1706^@(The people of Onett are[01 FF]  proud of B.H. Pirkle![02 FF]@The Mayor is proud of the[01 FF]  people of Onett.)[1D FF][00 FF]
+^L1707^@Mom's really cooking now.[01 FF]  <Down Home Burgers>[1D FF][00 FF]
+^L1708^@Break the course of violence.[01 FF]  Don't break the wind of change.[02 FF]@<Fresh Breeze Movement>[1D FF][00 FF]
+^L1709^@Don't wander this far away[01 FF] from town.[01 FF]  <Fresh Breeze Movement>[1D FF][00 FF]
+^L1710^@(The flowers in the garden are[01 FF]  representative of those in your[01 FF]  heart.[02 FF]@Treat them both nice.)[1D FF][00 FF]
+^L1711^@(Welcome to beautiful Onett,[01 FF]  the wild flower of Eagleland.)[1D FF][00 FF]
+^L1712^@<Bush Hospital>[02 FF]@The best hospital care in Onett![1B FF 0F 00][01 FF]  We put our life into operating on[01 FF]  you![1D FF][00 FF]
+^L1713^@Even if you're poor, come and[01 FF]  see how easy it is to own a[01 FF]  luxurious second home![02 FF]@<Beak Point Real Estate>[1D FF][00 FF]
+^L1714^@Onett City Hall[1D FF][00 FF]
+^L1715^@<Giant Step>[02 FF]@North, at the top of the[01 FF]  mountain[01 FF]  Danger!  Do Not Enter![1D FF][00 FF]
+^L1716^@Traveling entertainer's shack.[1D FF][00 FF]
+^L1717^@Road to Twoson.[1D FF][00 FF]
 ^L1718^[1C FF 59 00 _L1859_][1C FF 7E 00 _L3460_][86 FF _L1859_][00 FF]
 ^L1719^[1C FF 59 00 _L1859_][1C FF 7E 00 _L3459_][86 FF _L1859_][00 FF]
 ^L1720^
