@@ -1618,7 +1618,7 @@
 ^L1623^@Okay... you may enter.[02 FF][C6 FF][1B FF 01 00][14 FF 22 00][08 FF 71 01][86 FF _L3310_][00 FF]
 ^L1624^[A0 FF D0 07 51 02 01 00][86 FF _L4040_][CB FF FF 00 06 00][C4 FF 00 5B][A3 FF E5 02][9E FF][C4 FF 00 7E][1B FF 64 00][EE FF 01 00 08 00 02 00][A0 FF D0 07 52 02 01 00][CC FF FF 00 01 00][86 FF _L4040_][1B FF 78 00][A1 FF D8 02 53 02][9E FF][C5 FF][A4 FF D8 02]@Hmmm... it doesn't work.[1B FF 14 00]  One[01 FF]  thing is missing...[02 FF]@But that one material cannot[01 FF]  normally be found on the earth.[02 FF]@The material I'm thinking of[01 FF]  came from a meteorite[02 FF]@that fell when I was much[01 FF]  younger.[02 FF]^L4307^@Have you seen a meteorite[01 FF]  anywhere recently?[22 FF][03 FF 0C 00][04 FF _L4305_][05 FF _L4306_]^L4306^@Hmmm...[1B FF 14 00] so are we just going[01 FF]  to wait for a meteorite[02 FF]@to suddenly fall from the sky?[02 FF]@Mmm...[1B FF 1E 00] you haven't seen a[01 FF]  meteorite...[1B FF 14 00] Hm... think for a[01 FF]  minute...[02 FF][80 FF _L4307_]^L4305^@Eureka![1B FF 0F 00]  That's it![02 FF]@With even just a piece of the[01 FF]  meteorite,[1B FF 0F 00] I can synthesize the[01 FF]  material Zexonyte.[02 FF]@...I doubt that your mortal[01 FF]  enemy Giygas,[02 FF]@or whatever, will allow you to[01 FF]  go to Onett and get a piece of[01 FF]  the meteorite.[02 FF]@By now, Onett is in his evil[01 FF]  hands.[02 FF]@You must go,[1B FF 05 00] though,[1B FF 0F 00] so[01 FF]  take every possible precaution.[02 FF]@The Mr. Saturns have[01 FF]  introduced some of their new[01 FF]  developments at their shop.[02 FF]@Please check them out before[01 FF]  you leave.[02 FF]@...I wonder what Onett is like[01 FF]  at this point in time?...[1D FF][C6 FF][08 FF 84 00][08 FF 78 02][08 FF D4 01][09 FF 6C 00][09 FF 79 02][09 FF A6 01][09 FF 05 02][EE FF 01 00 08 00 00 00][83 FF 63 00][82 FF _L2197_][09 FF EA 02][00 FF]
 ^L1625^[08 FF 07 03][86 FF _L2200_][A0 FF D0 07 54 02 01 00][86 FF _L4040_][CB FF FF 00 06 00][08 FF F8 02][C5 FF][85 FF E5 02 09 00][1B FF B4 00][14 FF 68 00][1B FF 64 00][84 FF FA 04 56 02 04 00][1B FF 50 00][86 FF _L2201_][09 FF F8 02][C5 FF][CC FF FF 00 01 00][A0 FF D0 07 55 02 01 00][86 FF _L4040_][7E FF 01 00][9D FF 01 07 _L3901_][9D FF 02 29 _L3902_][08 FF 4C 01][00 FF]
-^L1626^[A4 FF E6 02][8D FF 01 00][A8 FF 00][1C FF 75 02 _L2939_]@(You enjoyed the hot springs[01 FF]  immensely.[1B FF 14 00]  It made you feel[01 FF]  reborn.)[1D FF]^L2942^[86 FF _L2941_][C6 FF][A3 FF E6 02][00 FF]
+^L1626^[A4 FF E6 02][8D FF 01 00][A8 FF 00][1C FF 75 02 _L2939_]@(You enjoyed the hot springs[01 FF]  immensely.[01 FF] [90 FF 00][1A FF 01 00][86 FF _L2940_][01 FF][1B FF 14 00]  It made you feel[01 FF]  reborn.)[1D FF]^L2942^[86 FF _L2941_][C6 FF][A3 FF E6 02][00 FF]
 ^L1627^[09 FF 16 02][C5 FF][A0 FF BB 00 F1 00 01 00]@Man![1B FF 0F 00]  It's bumper to bumper![02 FF]@My job is to drive,[1B FF 0F 00] so I can't[01 FF]  get off the bus...[02 FF]@It's up to you if you want to[01 FF]  get off the bus and walk[01 FF]  around in the desert...[02 FF]@Hey,[1B FF 0F 00] it's a free country.[02 FF][C6 FF][A5 FF BB 00 06 00][A0 FF D0 07 F7 00 01 00][1B FF 01 00][C9 FF D0 07][CC FF FF 00 01 00][EB FF FF 00][9E FF][CA FF][EA FF FF 00][A9 FF 5F 01][9E FF][9D FF 01 06 _L4145_][09 FF 0B 00][A0 FF D3 07 05 03 01 00][08 FF 72 01][FC FF 06 00][00 FF]
 ^L1628^[CA FF][14 FF 29 00][A0 FF 5F 01 47 01 FF 00][C9 FF 5F 01][00 FF]
 ^L1629^[CA FF][14 FF 2A 00][A0 FF 5F 01 48 01 FF 00][C9 FF 5F 01][00 FF]
@@ -1645,12 +1645,12 @@
 ^L1650^[CA FF][A0 FF D0 07 05 03 01 00][00 FF]
 ^L1651^[CE FF BA 03 07 00][A1 FF BA 03 0C 00][A9 FF D0 07][9E FF][FC FF 17 00][9E FF][80 FF _L4039_]
 ^L1652^[CE FF 29 04 03 00][A1 FF 29 04 0C 00][A0 FF D0 07 B6 02 01 00][9E FF][FC FF 17 00][9E FF][80 FF _L4033_]
-^L1653^
+^L1653^[A4 FF F3 04][8D FF 01 00][A8 FF 00]@(You enjoyed the hot springs[01 FF]  immensely.[01 FF]  [90 FF 00][1A FF 01 00][86 FF _L2940_][01 FF][1B FF 14 00]  It made you feel reborn.)[1D FF][86 FF _L2941_][C6 FF][A3 FF F3 04][00 FF]
 ^L1654^[A6 FF 47 01 B8 02][A9 FF D0 07][9E FF][FC FF 17 00][9E FF][80 FF _L4034_]
-^L1655^
-^L1656^
-^L1657^
-^L1658^
+^L1655^[B0 FF 03 05 CC 00][1B FF 3C 00][B3 FF 03 05][A3 FF 03 05][9E FF][A4 FF 03 05]@You guys smell really good![1B FF 0F 00][01 FF]  *sniff, sniff, sniff*[02 FF]@Who am I?[1B FF 14 00]  I'm a  Tenda![1D FF][C7 FF][1B FF 0A 00][A1 FF 04 05 40 02][9E FF][A4 FF 04 05]@Hey![1B FF 14 00]  What are you doing inside[01 FF]  our dinosaur cage?[02 FF]@I'm going to open the door, and[01 FF]  you get out of there right now![02 FF]@I'm the boss,[1B FF 0F 00] so I will let you[01 FF]  out.[1D FF][C7 FF][A3 FF 04 05][9E FF][A4 FF 04 05][85 FF 13 05 06 00][08 FF 8B 02]@Thank you for the Tendakraut.[02 FF][D4 FF 76 00][6D FF FF 00 92 00][08 FF 68 02][8D FF 01 00][A8 FF 00]@([90 FF 00][1A FF 01 00]'s Tendakraut[01 FF]  was stolen.)[02 FF]@(The awful smell surrounding[01 FF]  the group is now gone.)[02 FF][C6 FF][00 FF]
+^L1656^[86 FF _L4243_][83 FF 0E 02][82 FF _L4244_][A0 FF D0 07 FD 02 01 00][86 FF _L4040_][CB FF FF 00 06 00][A3 FF 17 05][86 FF _L4245_][A4 FF 17 05][1B FF 01 00]@(The hot spring energizes you[01 FF]  completely.)[1D FF][C6 FF][86 FF _L2185_][A3 FF 17 05][EB FF FF 00][00 FF]
+^L1657^[86 FF _L4243_][83 FF 0F 02][82 FF _L4246_][A0 FF D0 07 FE 02 01 00][86 FF _L4040_][CB FF FF 00 06 00][A3 FF 18 05][86 FF _L4245_][A4 FF 18 05][1B FF 01 00]@(The hot spring energizes you[01 FF]  completely.)[1D FF][C6 FF][86 FF _L2941_][A3 FF 18 05][EB FF FF 00][86 FF _L2941_][00 FF]
+^L1658^[86 FF _L4243_][83 FF 10 02][82 FF _L4247_][A0 FF D0 07 FF 02 01 00][86 FF _L4040_][CB FF FF 00 06 00][A3 FF 19 05][86 FF _L4245_][A4 FF 19 05][1B FF 01 00]@(The hot spring cured you[01 FF]  completely.)[1D FF][C6 FF][86 FF _L2185_][A3 FF 19 05][EB FF FF 00][00 FF]
 ^L1659^[09 FF DF 01][E2 FF 01 00][86 FF _L3995_][08 FF BA 02][00 FF]
 ^L1660^[09 FF E0 01][E2 FF 02 00][86 FF _L3995_][08 FF BB 02][00 FF]
 ^L1661^[09 FF E1 01][E2 FF 03 00][86 FF _L3995_][08 FF BC 02][00 FF]
@@ -1683,15 +1683,15 @@
 ^L1688^[09 FF FC 01][E2 FF 1E 00][86 FF _L3995_][08 FF D7 02][00 FF]
 ^L1689^[E2 FF 1F 00][86 FF _L3995_][08 FF D8 02][09 FF FD 01][00 FF]
 ^L1690^[E2 FF 20 00][86 FF _L3995_][09 FF FE 01][08 FF D9 02][00 FF]
-^L1691^
-^L1692^
-^L1693^
-^L1694^
-^L1695^
-^L1696^
-^L1697^
-^L1698^
-^L1699^
+^L1691^[FC FF 33 00][B2 FF 05 00 CC 00][1B FF 3C 00][B5 FF 05 00]@Hey [0D FF]![1B FF 14 00][C3 FF 01 01 05 00][D8 FF 01 00 00 00]  So, are you[01 FF]  just gonna wander around[01 FF]  wherever you please?[02 FF]@Don't you think we should focus[01 FF]  on getting Picky home?[02 FF][C6 FF][FC FF 34 00][00 FF]
+^L1692^[1C FF 78 02 _L1871_][D4 FF 6F 00][1B FF 28 00]@The drug store is to the east![1B FF 14 00][01 FF]  ...East is the opposite of west![1D FF][00 FF]
+^L1693^[1C FF 78 02 _L1871_][D4 FF 6F 00][1B FF 28 00]@If you're trying to sell us the[01 FF]  newspaper, go away![1B FF 14 00][01 FF]  We don't read the paper![02 FF]@And we don't want any milk,[01 FF]  either![1D FF][00 FF]
+^L1694^[1C FF 78 02 _L1871_][D4 FF 6F 00][1B FF 28 00]@Are you[0D FF]?[1B FF 0F 00][01 FF]  My son said something about[01 FF]  going to a hide-out.[02 FF]@I don't know what he was[01 FF]  talking about.[1D FF][00 FF]
+^L1695^[1C FF 78 02 _L1871_][D4 FF 6F 00][1B FF 28 00]@Say something funny.[1B FF 0F 00]  I'll listen.[02 FF]@.....[02 FF]@.....[02 FF]@Mmm,[1B FF 0F 00] I can't wait any longer![01 FF]  I'm going back to watching the[01 FF]  news--it's funnier than you.[1D FF][00 FF]
+^L1696^[1C FF 78 02 _L1871_][D4 FF 6F 00][1B FF 28 00]@OK,[1B FF 0F 00] pop quiz![1B FF 1E 00][01 FF]  <A Beatles song,[1B FF 0F 00] XXXterday.>[02 FF]@Can you fill in the blanks?[03 FF 00 00][04 FF _L5587_][05 FF _L5588_]^L5588^@Buzzzzt![1B FF 14 00][01 FF]  <A Beatles song,[1B FF 0F 00] Noterday.>[01 FF]  Wrong![1D FF][00 FF]^L5587^@That's correct![1B FF 14 00]  I'm impressed.[1D FF][00 FF]
+^L1697^[1C FF 78 02 _L1871_][D4 FF 6F 00][1B FF 28 00]@<Psss. Whisper.>[02 FF]@<Whisper pssst psssssss.>[02 FF]@<Shhhhh, what if someone[01 FF]  overhears us...?>[02 FF]@<Right.[1B FF 14 00]  Whisper.>[02 FF]@<Psst. Pss.  Wa Ha ha!>[1B FF 1E 00][01 FF]  <You jerk.>[02 FF]@<Because...>[02 FF]@<Heh heh he>[02 FF]@<Heh heh heh>[1D FF][00 FF]
+^L1698^[1C FF 78 02 _L1871_]@(Open Soon![01 FF]  Mach Pizza Onett Branch.)[02 FF][C7 FF][00 FF]
+^L1699^[1C FF 78 02 _L1871_][D4 FF 6F 00][1B FF 28 00]@W-[1B FF 05 00]Wh-[1B FF 01 00]Who's there?[1B FF 0E 00]  It's creepy[01 FF]  in here.[1B FF 14 00]  What, you won't[01 FF]  answer?[1D FF][00 FF]
 ^L1700^
 ^L1701^
 ^L1702^
@@ -5138,8 +5138,6 @@
 ^L5584^[A2 FF _L5585_][00 FF]
 ^L5585^[84 FF 85 01 0F 01 01 00][84 FF 86 01 11 01 01 00][84 FF 87 01 10 01 01 00][84 FF 88 01 0E 01 01 00][84 FF 89 01 0D 01 01 00][00 FF]
 ^L5586^
-^L5587^
-^L5588^
 ^L5589^
 ^L5590^
 ^L5591^
