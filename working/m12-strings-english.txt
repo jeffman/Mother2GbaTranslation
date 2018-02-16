@@ -1712,23 +1712,23 @@
 ^L1717^@Road to Twoson.[1D FF][00 FF]
 ^L1718^[1C FF 59 00 _L1859_][1C FF 7E 00 _L3460_][86 FF _L1859_][00 FF]
 ^L1719^[1C FF 59 00 _L1859_][1C FF 7E 00 _L3459_][86 FF _L1859_][00 FF]
-^L1720^
-^L1721^
-^L1722^
-^L1723^
-^L1724^
-^L1725^
-^L1726^
-^L1727^
-^L1728^
-^L1729^
-^L1730^
-^L1731^
-^L1732^
-^L1733^
-^L1734^
-^L1735^
-^L1736^
+^L1720^[D4 FF 6F 00][1B FF 28 00]@Don't talk to me.[1B FF 14 00]  I... I'm[01 FF]  thinking...![1D FF][C7 FF][00 FF]
+^L1721^[D4 FF 6F 00][1B FF 28 00]@Uh no, I'm in here.[02 FF]@Don't try to come in...[01 FF]  especially if you don't need to[01 FF]  use the bathroom![1D FF][C6 FF][00 FF]
+^L1722^@(Aren't you stuck?[1B FF 14 00]  If you want[01 FF]  a hint, come and get it![02 FF]@Eagleland Hint Union)[1D FF][00 FF]
+^L1723^[D4 FF 6F 00][1B FF 28 00]@Hey, I'm in here![1B FF 0A 00]  Go and find[01 FF]  another can![1B FF 0A 00]  Ha,[1B FF 0F 00] I was just[01 FF]  joking![1D FF][C7 FF][00 FF]
+^L1724^[D4 FF 6F 00][1B FF 28 00]@This is a jail![1B FF 14 00]  You guys have[01 FF]  no business being here.[1D FF][C7 FF][00 FF]
+^L1725^@(<Tombstone Blow-out Sale>[01 FF]  We have a special discount[02 FF]@for those who have passed on[01 FF]  in this hospital.[02 FF]@What would you like written on[01 FF]  your tombstone?[02 FF]@Onett Hospital Surgery Team)[1D FF][00 FF]
+^L1726^@You've found an old magazine.[02 FF]@Are you going to read it?[03 FF 00 00][04 FF _L2417_][05 FF _L2418_]^L2418^@Good.[1B FF 14 00]  That may be the best[01 FF]  choice.[1D FF][00 FF]^L2417^@<My Secret Life,[1B FF 0F 00] chapter[01 FF]  three.>[1B FF 14 00] (Story from the[01 FF]  previous chapter.)[02 FF]@I was neither a murder suspect,[02 FF]@nor a target for an international[01 FF]  spy organization.[02 FF]@But I drove a car down the[01 FF]  Jersey Turnpike at 80 mph.[02 FF]@...A police officer pulled me[01 FF]  over and asked for my driver's[01 FF]  license.[02 FF]@He said I was going 20 mph[01 FF]  over the speed limit.[02 FF]@I instantly pointed to my wife[01 FF]  and said <I'm in a hurry,[1B FF 0F 00] my[01 FF]  wife is in labor.>[02 FF]@Fortunately,[1B FF 0F 00] my wife actually[01 FF]  had a big stomach.[02 FF]@I hoped he'd let me go with[01 FF]  this excuse.[02 FF]@<Oh,[1B FF 0F 00] since it's an emergency.[02 FF]@I'll lead you to the hospital with[01 FF]  my police car,>[1B FF 0F 00] he said.[02 FF]@<No,[1B FF 0F 00] it's not necessary.>[1B FF 14 00][01 FF]   <Why not?>[1B FF 0F 00] asked the officer.[02 FF]@<Uh...[1B FF 0F 00] well...>[1B FF 1E 00][01 FF]  <Let's get going,>[1B FF 0F 00] said the[01 FF]  officer...[02 FF]@<No,[1B FF 0F 00] no![1B FF 14 00]  We can't![1B FF 1E 00]  This baby[01 FF]  is a demon child!>[1D FF][00 FF]
+^L1727^[D4 FF 6F 00][1B FF 28 00]@If you're looking for Venus's[01 FF]  house, it's next door.[1D FF][00 FF]
+^L1728^[D4 FF 6F 00][1B FF 28 00][1C FF 44 00 _L5589_]@I've told you a thousand times.[01 FF]  *munch, munch*[02 FF]@I won't join the Happy Happy[01 FF]  Religious Group.[01 FF]  *munch,munch, munch*[02 FF]@If you get pushy with me, I'll[01 FF]  pelt you with peanuts![01 FF]  *munch, munch*[1D FF][00 FF]
+^L1729^@(Tonight, the boogie is back![01 FF]  It's the Runaway Five's night!)[1D FF][00 FF]
+^L1730^@(Do you play some sports?[01 FF]  ...If you do, that's fine by us.[02 FF]@<Twoson Athletic Committee>)[1D FF][00 FF]
+^L1731^@If you have time to read this,[01 FF]  go to the Chaos Theater[01 FF]  immediately.[1D FF][00 FF]
+^L1732^@(Twoson is different from[01 FF]  Onett.  We have Burglin Park.)[1D FF][00 FF]
+^L1733^@Twoson--[01 FF]  we got this name because we[01 FF]  weren't first.[1D FF][00 FF]
+^L1734^@Are you happy now?[1B FF 14 00][01 FF]  <Happy Happy Religious Group>[1D FF][00 FF]
+^L1735^@<Two-Three Tunnel>[1B FF 14 00][01 FF]  To the town of Threed.[1D FF][00 FF]
+^L1736^@(To recover or not depends on[01 FF]  luck.[02 FF]@Believe in your luck.[01 FF]  Believe your doctor also.[02 FF]@The Doctor believes in his luck.)[1D FF][00 FF]
 ^L1737^
 ^L1738^
 ^L1739^
@@ -2358,8 +2358,6 @@
 ^L2413^@Have I told you this joke[01 FF]  already?[1B FF 0F 00]  Oh, sorry...[1D FF][00 FF]
 ^L2414^
 ^L2416^@It's you again.[1D FF][00 FF]
-^L2417^
-^L2418^
 ^L2419^
 ^L2420^
 ^L2422^
