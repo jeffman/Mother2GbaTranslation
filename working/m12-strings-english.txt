@@ -1729,26 +1729,25 @@
 ^L1734^@Are you happy now?[1B FF 14 00][01 FF]  <Happy Happy Religious Group>[1D FF][00 FF]
 ^L1735^@<Two-Three Tunnel>[1B FF 14 00][01 FF]  To the town of Threed.[1D FF][00 FF]
 ^L1736^@(To recover or not depends on[01 FF]  luck.[02 FF]@Believe in your luck.[01 FF]  Believe your doctor also.[02 FF]@The Doctor believes in his luck.)[1D FF][00 FF]
-^L1737^
-^L1738^
-^L1739^
-^L1740^
-^L1741^
-^L1742^
-^L1743^
-^L1744^
-^L1745^
-^L1746^
-^L1747^
-^L1748^
-^L1749^
-^L1750^
-^L1751^
-^L1752^
-^L1753^
-^L1754^
-^L1755^
-^L1756^
+^L1737^@Welcome to Happy Happy[01 FF]  Village![1D FF][00 FF]
+^L1738^@<Meager Livin' Farm>[01 FF]  (Lodgings available)[1D FF][00 FF]
+^L1739^@No one is here now![1D FF][00 FF]
+^L1741^[D4 FF 6F 00][1B FF 28 00]@Aaaa[1B FF 05 00]ye[1B FF 05 00]e[1B FF 05 00]e[1B FF 05 00]e[1B FF 05 00]e[1B FF 05 00]e![1B FF 14 00]  A zombie![02 FF]@[1B FF 78 00]...I'm watching a zombie movie.[1B FF 14 00][01 FF]  Can you come by later?![1D FF][00 FF]
+^L1742^[D4 FF 6F 00][1B FF 28 00][1C FF 47 00 _L5592_]@I am a wimpy, little guy.[1B FF 14 00][01 FF]  So, I can't open the door.[02 FF]@...You know, it's scary.[1D FF][00 FF]
+^L1743^[1C FF 47 00 _L5594_][D4 FF 6F 00][1B FF 28 00]@I'm sorry, but I think you ought[01 FF]  to leave now...[02 FF]@I have no guarantee that you're[01 FF]  not a zombie out looking for a[01 FF]  lunch.[1D FF][00 FF]
+^L1744^[D4 FF 6F 00][1B FF 28 00][1C FF 47 00 _L5593_]@Hi... hello?[1D FF][00 FF]
+^L1745^[D4 FF 6F 00][1B FF 28 00][1C FF 47 00 _L5596_]@It's none of your business that[01 FF]  we have a small house...[02 FF]@Just keep all that whispering[01 FF]  quiet out there...[1D FF][C7 FF][00 FF]
+^L1746^@<Hint Shop Realization>[1D FF][00 FF]
+^L1747^@(I won't say anything to you[01 FF]  adults,[02 FF]@but I would stress to you young[01 FF]  kids, don't play for more than[01 FF]  two hours.[02 FF]@Anything excessive is no good.[02 FF]@Parents Opposing Obsession[01 FF]  Plan)[1D FF][00 FF]
+^L1748^@(Want to escape to the Beach?[1B FF 0F 00][01 FF]  If this is your big dream...[02 FF]@Come to Carrillon Beach in[01 FF]  Summers![1B FF 14 00][01 FF]  Summers Tourism Bureau.)[1D FF][00 FF]
+^L1749^@(This Bulletin Board[01 FF]  greets you this evening.[01 FF]  All is well, Good Night.)[1D FF][00 FF]
+^L1750^@If you miss a nice, cozy bed,[01 FF]  walk to the west...  We're right[01 FF]  there![02 FF]@<Threed Sunset Hotel>[1D FF][00 FF]
+^L1751^@(<Horses say <neigh,> but the[01 FF]  Hint Shop says <yea> to giving[01 FF]  you a hint.>[02 FF]@Eagleland Hint Union)[1D FF][00 FF]
+^L1752^@There's graffiti here.[02 FF]@(Software Development House[01 FF]  where you can see Mt. Fuji[01 FF]  - HAL Laboratory)[1D FF][00 FF]
+^L1753^@There's graffiti here.[02 FF]@(...Just play it!)[1D FF][00 FF]
+^L1754^@No pitching of tents in this area[01 FF]  without permission.[1D FF][00 FF]
+^L1755^@(There is a well-known theory[01 FF]  that if you are bitten by[01 FF]  zombies,[02 FF]@bite back and you can recover.[02 FF]@Of course, there is no scientific[01 FF]  evidence to support this[01 FF]  theory.)[1D FF][00 FF]
+^L1756^@[90 FF 00][1A FF 01 00] checked the[01 FF]  drawers.[02 FF][1C FF F3 02 _L3448_][8D FF 01 00][87 FF]@There was an Insignificant[01 FF]  item in the drawer.[02 FF][91 FF FF][82 FF _L3449_][01 FF][93 FF 00 A7][86 FF _L2233_][08 FF F3 02][1D FF][00 FF]
 ^L1757^
 ^L1758^
 ^L1759^
@@ -5136,8 +5135,7 @@
 ^L5584^[A2 FF _L5585_][00 FF]
 ^L5585^[84 FF 85 01 0F 01 01 00][84 FF 86 01 11 01 01 00][84 FF 87 01 10 01 01 00][84 FF 88 01 0E 01 01 00][84 FF 89 01 0D 01 01 00][00 FF]
 ^L5586^
-^L5589^
-^L5590^
+^L5589^@Peanuts, Walnuts...[01 FF]  Hazelnuts...[01 FF]  Pecans...[02 FF]@Macadamia nuts...[01 FF]  Cashews...[01 FF]  Almonds...[02 FF]@Giant Pine Nuts...[01 FF]  Pine Nuts...[01 FF]  Sun Flower Seeds[02 FF]@Pumpkin Seeds...[01 FF]  Pistachios...[02 FF]@...Which one do you like?[22 FF][03 FF 00 00][04 FF _L5590_][05 FF _L5590_]^L5590^@I asked you <Which one do[01 FF]  you like?>...[1D FF][00 FF]^L1740^[D4 FF 6F 00][1B FF 28 00][1C FF 47 00 _L5591_]@You a zombie?[02 FF]@My mom telled me no open the[01 FF]  door, 'cause zombies are[01 FF]  comin'.[1D FF][00 FF]
 ^L5591^
 ^L5592^
 ^L5593^
