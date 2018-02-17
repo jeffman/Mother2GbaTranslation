@@ -1748,20 +1748,20 @@
 ^L1754^@No pitching of tents in this area[01 FF]  without permission.[1D FF][00 FF]
 ^L1755^@(There is a well-known theory[01 FF]  that if you are bitten by[01 FF]  zombies,[02 FF]@bite back and you can recover.[02 FF]@Of course, there is no scientific[01 FF]  evidence to support this[01 FF]  theory.)[1D FF][00 FF]
 ^L1756^@[90 FF 00][1A FF 01 00] checked the[01 FF]  drawers.[02 FF][1C FF F3 02 _L3448_][8D FF 01 00][87 FF]@There was an Insignificant[01 FF]  item in the drawer.[02 FF][91 FF FF][82 FF _L3449_][01 FF][93 FF 00 A7][86 FF _L2233_][08 FF F3 02][1D FF][00 FF]
-^L1757^
-^L1758^
-^L1759^
-^L1760^
-^L1761^
-^L1762^
-^L1763^
-^L1764^
-^L1765^
-^L1766^
-^L1767^
-^L1768^
-^L1769^
-^L1770^
+^L1757^@(Drug Store <Best Friend>)[1D FF][00 FF]
+^L1758^@(<Safety First>[01 FF]  Don't get injured!  Burp!)[1D FF][00 FF]
+^L1759^@(East to Fourside.)[1D FF][00 FF]
+^L1760^@(There is lots of junk like this[01 FF]  bulletin board at the junk shop[01 FF]  <Busted Up,>[02 FF]@located in the back alley of the[01 FF]  department store.)[1D FF][00 FF]
+^L1761^@(Planning Meeting for[02 FF]  EarthBound 2.[02 FF]@Only those who are related to[01 FF]  this project are allowed to[01 FF]  enter.[02 FF]@APE Software Development[01 FF]  Team)[1D FF][00 FF]
+^L1762^@First Floor <Fourside Bakery>[02 FF]@Second Floor <2F of the[01 FF]  Bakery>[1D FF][00 FF]
+^L1763^@(Dinosaur bones believed to be[01 FF]  from southern Scaraba.[02 FF]@Don't ask for any details.[01 FF]  Our research is continuing.)[1D FF][00 FF]
+^L1764^[D4 FF 6F 00][1B FF 28 00]@*Groan*...[1D FF][C7 FF][00 FF]
+^L1765^@(Recently, a strange fellow has[01 FF]  been wandering around this[01 FF]  hospital saying[02 FF]@he can cure you of the[01 FF]  afflictions that we can't treat.[02 FF]@Please be informed that he has[01 FF]  no connection to the hospital.[02 FF]@Fourside Hospital Management)[1D FF][00 FF]
+^L1766^@This is not a hotel.[01 FF]  Staying for the night is not[01 FF]  permitted.[1D FF][00 FF]
+^L1767^[1C FF 4B 00 _L3450_][1C FF 91 00 _L3451_]@No problem here.[1D FF][00 FF]
+^L1768^@(I can sense...[01 FF]  that... you have a controller...[01 FF]  in your... hands...)[1D FF][00 FF]
+^L1769^@Welcome to Moonside![01 FF]  Why did you come to Moonside?[02 FF]@How long are you staying in[01 FF]  Moonside?[1D FF][00 FF]
+^L1770^@(Have a fantastic vacation![02 FF]@At least until you run out of[01 FF]  money.[01 FF]      Hotel Du Summers)[1D FF][00 FF]
 ^L1771^
 ^L1772^
 ^L1773^
