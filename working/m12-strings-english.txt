@@ -343,7 +343,7 @@
 ^L345^@*Gasp* *Gasp*[1D FF][00 FF]
 ^L346^@I don't care if I pass away...[02 FF]@Ha!  I'm dead already![1D FF][00 FF]
 ^L347^[1C FF 47 00 _L2779_][1C FF 7D 00 _L2780_][1C FF 7C 00 _L2781_][1C FF 28 02 _L2782_]@Frankly, I'm running scared.[02 FF]@I don't mean that I actually run[01 FF]  around.[1B FF 14 00] I just mean I am[01 FF]  frightened.[02 FF]@Conditions in the town are[01 FF]  getting worse.[1D FF][00 FF]
-^L348^[1C FF 47 00 _L2783_][1C FF 7D 00 _2784_][1C FF 28 02 _L2785_]@People used to call me evil, but[01 FF]  these zombies are much more[01 FF]  scary.[02 FF]@I left my wife and kids at home[01 FF]  to escape to this tent.[02 FF]@That's how scary the zombies[01 FF]  are.[1D FF][00 FF]
+^L348^[1C FF 47 00 _L2783_][1C FF 7D 00 _L2784_][1C FF 28 02 _L2785_]@People used to call me evil, but[01 FF]  these zombies are much more[01 FF]  scary.[02 FF]@I left my wife and kids at home[01 FF]  to escape to this tent.[02 FF]@That's how scary the zombies[01 FF]  are.[1D FF][00 FF]
 ^L349^@We painted over all the[01 FF]  damaged parts of the Sky[01 FF]  Runner.[02 FF]@Now I wonder how you start[01 FF]  this thing up?[1D FF][00 FF]
 ^L350^@I want you to stay,[1B FF 0F 00] but if you[01 FF]  can't ...so long![02 FF]@Thanks for every little ol' thing.[1D FF][00 FF]
 ^L351^[1C FF 1D 02 _L2197_][86 FF _L3561_][1C FF 0E 00 _L2197_][C6 FF][1B FF 01 00][86 FF _L3571_][00 FF]
@@ -366,7 +366,7 @@
 ^L368^[08 FF AB 02][BC FF 3C 00][86 FF _L5848_][00 FF]
 ^L369^@Hey, do you remember me?[02 FF]@I had to run all over to escape[01 FF]  the zombies.[02 FF]@Now I can't remember where[01 FF]  my house is...[02 FF]@I told you this before,[01 FF]  remember?[02 FF]@Huh?  I never saw you before?[02 FF]@I guess I can't remember[01 FF]  anything right.[1D FF][00 FF]
 ^L370^@Yeah, I worked for the zombies,[02 FF]@but I betrayed them too.[1B FF 14 00]  I'm a[01 FF]  con man, so I know the score.[02 FF]@Belch gives life to the zombies,[01 FF]  but Belch works for Giygas,[02 FF]@who I heard might be female.[02 FF]@Well, I'm not really sure[01 FF]  whether Giygas is a male or a[01 FF]  female.[02 FF]@I'm a helpful con man, don't you[01 FF]  think?[1D FF][00 FF]
-^L371^[1C FF D6 00 _2775_][1C FF 47 00 _L2776_]@I overheard the zombies[01 FF]  whisper,[02 FF]@<Master Belch will give us our[01 FF]  lives back.>[02 FF]@...Master Belch is the zombie[01 FF]  leader.[1B FF 0F 00]  He must be really[01 FF]  pukey.[1D FF][00 FF]
+^L371^[1C FF D6 00 _L2775_][1C FF 47 00 _L2776_]@I overheard the zombies[01 FF]  whisper,[02 FF]@<Master Belch will give us our[01 FF]  lives back.>[02 FF]@...Master Belch is the zombie[01 FF]  leader.[1B FF 0F 00]  He must be really[01 FF]  pukey.[1D FF][00 FF]
 ^L372^[1C FF 49 00 _L2777_][1C FF 47 00 _L2778_]@That's right, there is a rumor[01 FF]  that a monster called Belch is[01 FF]  screwing up the town.[02 FF]@Belch![1B FF 14 00]  That's a gross,[1B FF 0F 00] twisted[01 FF]  name even for a monster![1D FF][00 FF]
 ^L373^[1C FF 47 00 _L2752_]@Zombies and ghosts are on the[01 FF]  loose here.[1B FF 14 00]  Welcome to[01 FF]  Threed.[1D FF][00 FF]
 ^L374^[1C FF 47 00 _L2753_][1C FF 7D 00 _L2754_]@Zombies and ghosts are on the[01 FF]  loose here, so I can't get to[01 FF]  Twoson or Fourside.[02 FF]@Maybe the hidden road in the[01 FF]  graveyard is safe...[1D FF][00 FF]
@@ -3306,7 +3306,7 @@
 ^L3566^[89 FF][87 FF][9A FF B0 00][00 FF]
 ^L3567^[89 FF][87 FF]@[90 FF 00][1A FF 01 00] opened the locker[01 FF]  using the Bad key machine.[D4 FF 77 00][02 FF][00 FF]
 ^L3568^@(Unfortunately, there is nothing[01 FF]  in this locker.)[1D FF][00 FF]
-^L3569^[A8 FF 01]@There was a [90 FF 00][1A FF 02 00] in[01 FF]  the locker.[02 FF][91 FF FF][82 FF _L3570_][88 FF][93 FF 0000][89 FF][87 FF]@[90 FF 00][1A FF 01 00][87 FF] got it.[1D FF][D4 FF 74 00][1B FF 01 00][00 FF]
+^L3569^[A8 FF 01]@There was a [90 FF 00][1A FF 02 00] in[01 FF]  the locker.[02 FF][91 FF FF][82 FF _L3570_][88 FF][93 FF 00 00][89 FF][87 FF]@[90 FF 00][1A FF 01 00][87 FF] got it.[1D FF][D4 FF 74 00][1B FF 01 00][00 FF]
 ^L3570^@However, you already have too[01 FF]  many things to carry.[02 FF][8D FF 01 00][87 FF]@[90 FF 00][1A FF 01 00][87 FF] left it in the[01 FF]  locker.[1D FF][00 FF]
 ^L3571^
 ^L3572^
