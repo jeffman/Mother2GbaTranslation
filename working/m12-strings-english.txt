@@ -1374,7 +1374,7 @@
 ^L1378^ <Pixie's bracelet>[02 FF][86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
 ^L1379^ <Cherub's band>[02 FF][86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
 ^L1380^ <Goddess band>[02 FF][86 FF _L3953_][02 FF][86 FF _L3954_][1D FF][00 FF]
-^L1381^ <Bracer of kings>[02 FF]@To be equipped on[01 FF]  [90 FF 04][1A FF 01 00]'s arm.[02 FF]@Helps protect from being[01 FF]  hypnotized, and Luck goes up.[02 FF]@Of course,[01 FF]  Defense also goes up.[1D FF][00 FF]
+^L1381^ <Bracer of kings>[02 FF]@To be equipped on[01 FF]  [90 FF 04][1A FF 01 00]'s arm.[02 FF]@Helps protect from being[01 FF]  hypnotized, and Luck goes up.[02 FF]@Of course, Defense also[01 FF]  goes up.[1D FF][00 FF]
 ^L1382^ <Baseball cap>[02 FF][86 FF _L3955_][02 FF]@It has the logo of your[01 FF]  favorite baseball team.[1D FF][00 FF]
 ^L1383^ <Holmes hat>[02 FF][86 FF _L3955_][02 FF]@It makes you feel like the[01 FF]  great detective, Sherlock[01 FF]  Holmes, when equipped.[1D FF][00 FF]
 ^L1384^ <Mr. Baseball cap>[02 FF][86 FF _L3955_][02 FF]@It is said to have been given[01 FF]  to your friend by a famous[01 FF]  player at the ballpark.[1D FF][00 FF]
@@ -1401,10 +1401,10 @@
 ^L1405^ <Bag of fries>[02 FF][86 FF _L3959_]24[86 FF _L3960_][1D FF][00 FF]
 ^L1406^ <Plain roll>[02 FF]@I don't have a lot[01 FF]  to say about this.[02 FF]@I guess there are some people[01 FF]  who think it is good.[02 FF][86 FF _L3959_]80[86 FF _L3960_][1D FF][00 FF]
 ^L1407^ <Bread roll>[02 FF][86 FF _L3959_]30[86 FF _L3960_][1D FF][00 FF]
-^L1408^ <Gelato de resort>[02 FF]@Ice cream that is[01 FF]  all the rage among fashionable,[01 FF]  young women.[02 FF][86 FF _L3959_][86 FF _L3960_][1D FF][00 FF]
+^L1408^ <Gelato de resort>[02 FF]@Ice cream that is[01 FF]  all the rage among fashionable,[01 FF]  young women.[02 FF][86 FF _L3959_]30[86 FF _L3960_][1D FF][00 FF]
 ^L1409^ <Boiled egg>[02 FF][86 FF _L3959_]40[86 FF _L3960_][1D FF][00 FF]
 ^L1410^ <Bean croquette>[02 FF]@A croquette made with[01 FF]  mashed chick peas.[02 FF]@then breaded and deep fried.[02 FF]@Gen-san in Scaraba[01 FF]  loves to cook this.[02 FF]@Salt improves it and the[01 FF]  olive oil gives it a wonderful[01 FF]  flavor[02 FF][86 FF _L3959_]40[86 FF _L3960_][1D FF][00 FF]
-^L1411^ <Cup of noodles>[02 FF]@You know what this is...[02 FF][86 FF _L3959_][86 FF _L3960_][1D FF][00 FF]
+^L1411^ <Cup of noodles>[02 FF]@You know what this is...[02 FF][86 FF _L3959_]40[86 FF _L3960_][1D FF][00 FF]
 ^L1412^ <Hamburger>[02 FF][86 FF _L3959_]50[86 FF _L3960_][02 FF]@100% beef.[1D FF][00 FF]
 ^L1413^ <Croissant>[02 FF][86 FF _L3959_]60[86 FF _L3960_][1D FF][00 FF]
 ^L1414^ <Calorie stick>[02 FF][86 FF _L3959_]60[86 FF _L3960_][1D FF][00 FF]
@@ -1448,7 +1448,7 @@
 ^L1452^ <Jar of delisauce>[02 FF]@Use by sprinkling it over food.[02 FF]@It tastes good with[01 FF]  any kind of food, thereby[02 FF]@increasing the recovery power[01 FF]  of the food.[1D FF][00 FF]
 ^L1453^ <Exit mouse>[02 FF]@If you use this in a dungeon[01 FF]  or some such place,[02 FF]@the mouse brings you back[01 FF]  to the place where you entered.[02 FF]@It's a very smart mouse.[1D FF][00 FF]
 ^L1454^ <Counter-PSI unit>[02 FF][86 FF _L3968_][02 FF]@Contains the enemy's PSI[01 FF]  during a battle.[02 FF][86 FF _L3969_][1D FF][00 FF]
-^L1455^ <Trout yogurt>[02 FF]@A fashionable treat for snobby[01 FF]  haute cuisine people[02 FF]@in some big cities.[02 FF][86 FF _L3959_][86 FF _L3960_][1D FF][00 FF]
+^L1455^ <Trout yogurt>[02 FF]@A fashionable treat for snobby[01 FF]  haute cuisine people[02 FF]@in some big cities.[02 FF][86 FF _L3959_]30[86 FF _L3960_][1D FF][00 FF]
 ^L1456^ <Cup of lifenoodles>[02 FF]@Revives a friend who[01 FF]  is unconscious.[02 FF][86 FF _L3965_][86 FF _L3963_][86 FF _L3967_][02 FF][86 FF _L3966_][1D FF][00 FF]
 ^L1457^ <Sudden guts pill>[02 FF]@Doubles your guts during battle.[02 FF]@However, after a battle,[01 FF]  your guts return to normal.[02 FF][86 FF _L3971_][1D FF][00 FF]
 ^L1458^ <Meteorite piece>[02 FF]@It looks like a plain old rock,[01 FF]  but for someone[01 FF]  who knows about it,[02 FF]@it is actually a very precious[01 FF]  unusual element.[1D FF][00 FF]
@@ -1762,17 +1762,17 @@
 ^L1768^@(I can sense...[01 FF]  that... you have a controller...[01 FF]  in your... hands...)[1D FF][00 FF]
 ^L1769^@Welcome to Moonside![01 FF]  Why did you come to Moonside?[02 FF]@How long are you staying in[01 FF]  Moonside?[1D FF][00 FF]
 ^L1770^@(Have a fantastic vacation![02 FF]@At least until you run out of[01 FF]  money.[01 FF]      Hotel Du Summers)[1D FF][00 FF]
-^L1771^
-^L1772^
-^L1773^
-^L1774^
-^L1775^
-^L1776^
-^L1777^
-^L1778^
-^L1779^
-^L1780^
-^L1781^
+^L1771^@Scaraba Cultural Museum[02 FF]@(Hieroglyph exhibition currently[01 FF]  under re-construction.)[1D FF][00 FF]
+^L1772^@There is graffiti on the board...[01 FF]  The handwriting is hard to[01 FF]  read...[02 FF]@([0D FF] can eat my[01 FF]  shorts![1B FF 14 00][01 FF]  For a neighbor, he's a loser!)[1D FF][00 FF]
+^L1773^[D4 FF 6F 00][1B FF 28 00][1C FF D9 00 _L5600_]@I don't want to go out to sea[01 FF]  because of the Kraken.[02 FF]@I mean, any normal person[01 FF]  would feel the same way.[1D FF][C7 FF][00 FF]
+^L1774^[D4 FF 6F 00][1B FF 28 00]@Meow.[1D FF][C7 FF][00 FF]
+^L1775^@(Ram Raisin the fifth's training[01 FF]  pot.)[1D FF][00 FF]
+^L1776^@(Ram Raisin the fourth's[01 FF]  casket.)[1D FF][00 FF]
+^L1777^@(Ram Raisin the third's casket.)[1D FF][00 FF]
+^L1778^@(Toten Karmen's lunch box.)[1D FF][00 FF]
+^L1779^@(Toten Karmen's pencil box.)[1D FF][00 FF]
+^L1780^@(Toten Karmen's casket.)[1D FF][00 FF]
+^L1781^[BC FF 04 00][86 FF _L2177_][81 FF _L3452_][1C FF 49 00 _L3453_][1C FF 11 00 _L3452_]^L3456^@[10 FF] read the[01 FF]  hieroglyphs.[02 FF]@<To fight against the invaders,[01 FF]  we built this pyramid fortress.[02 FF]@However, our efforts were[01 FF]  futile, and we lost.[02 FF]@Nonetheless, our pyramid was[01 FF]  protected by the gods of[01 FF]  Scaraba.[02 FF]@The invaders will be reborn[01 FF]  every millennium and will attack[01 FF]  again.[02 FF]@Even now, the invaders hide[01 FF]  beyond space and time and build[01 FF]  their evil stronghold.[02 FF]@A place out of time is beyond[01 FF]  the Dark, and is even farther[01 FF]  beyond the Lost Underworld.[02 FF]@The Deep Darkness is[01 FF]  shrouded, it is without light.[02 FF]@Only one with the Hawk eye[01 FF]  can pierce the dark.[02 FF]@The Sphinx now watches over[01 FF]  everything,[02 FF]@waiting for the coming of a[01 FF]  truly brave hero.[02 FF]@  #[01 FF]  4   3[01 FF]   2 5[02 FF]@Dance in front of the Sphinx!>[1C FF 94 00 _L3454_][02 FF][C6 FF][1B FF 78 00][B2 FF 04 00 CD 00][1B FF 0A 00][C3 FF 01 01 04 00][D8 FF 01 00 00 00][C3 FF 02 01 04 00][D8 FF 02 00 00 00][C3 FF 03 01 04 00][D8 FF 03 00 00 00][1B FF 32 00][B5 FF 04 00][1B FF 1E 00][8D FF 01 00][A8 FF 00]@[90 FF 00][1A FF 01 00]! Let's go to[01 FF]  Scaraba[1B FF 0F 00]  The pyramid is the[01 FF]  key![1D FF][08 FF 94 00][9D FF 01 31 _L3455_][00 FF]
 ^L1782^
 ^L1783^[1C FF 56 01 _L4195_][1C FF 07 00 _L4196_][86 FF _L1788_]^L4196^[1C FF 98 00 _L4197_]^L4200^[00 FF]
 ^L1784^[1C FF 56 01 _L4195_][1C FF 98 00 _L4201_][00 FF]
@@ -3197,7 +3197,6 @@
 ^L3453^
 ^L3454^[1D FF][00 FF]
 ^L3455^
-^L3456^
 ^L3457^
 ^L3458^
 ^L3459^
