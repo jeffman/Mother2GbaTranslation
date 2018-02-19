@@ -1773,25 +1773,25 @@
 ^L1779^@(Toten Karmen's pencil box.)[1D FF][00 FF]
 ^L1780^@(Toten Karmen's casket.)[1D FF][00 FF]
 ^L1781^[BC FF 04 00][86 FF _L2177_][81 FF _L3452_][1C FF 49 00 _L3453_][1C FF 11 00 _L3452_]^L3456^@[10 FF] read the[01 FF]  hieroglyphs.[02 FF]@<To fight against the invaders,[01 FF]  we built this pyramid fortress.[02 FF]@However, our efforts were[01 FF]  futile, and we lost.[02 FF]@Nonetheless, our pyramid was[01 FF]  protected by the gods of[01 FF]  Scaraba.[02 FF]@The invaders will be reborn[01 FF]  every millennium and will attack[01 FF]  again.[02 FF]@Even now, the invaders hide[01 FF]  beyond space and time and build[01 FF]  their evil stronghold.[02 FF]@A place out of time is beyond[01 FF]  the Dark, and is even farther[01 FF]  beyond the Lost Underworld.[02 FF]@The Deep Darkness is[01 FF]  shrouded, it is without light.[02 FF]@Only one with the Hawk eye[01 FF]  can pierce the dark.[02 FF]@The Sphinx now watches over[01 FF]  everything,[02 FF]@waiting for the coming of a[01 FF]  truly brave hero.[02 FF]@  #[01 FF]  4   3[01 FF]   2 5[02 FF]@Dance in front of the Sphinx!>[1C FF 94 00 _L3454_][02 FF][C6 FF][1B FF 78 00][B2 FF 04 00 CD 00][1B FF 0A 00][C3 FF 01 01 04 00][D8 FF 01 00 00 00][C3 FF 02 01 04 00][D8 FF 02 00 00 00][C3 FF 03 01 04 00][D8 FF 03 00 00 00][1B FF 32 00][B5 FF 04 00][1B FF 1E 00][8D FF 01 00][A8 FF 00]@[90 FF 00][1A FF 01 00]! Let's go to[01 FF]  Scaraba[1B FF 0F 00]  The pyramid is the[01 FF]  key![1D FF][08 FF 94 00][9D FF 01 31 _L3455_][00 FF]
-^L1782^
+^L1782^@(Relax, take it easy![01 FF]  It's all in your head...[02 FF]@A healthy mind is a healthy[01 FF]  body.)[1D FF][00 FF]
 ^L1783^[1C FF 56 01 _L4195_][1C FF 07 00 _L4196_][86 FF _L1788_]^L4196^[1C FF 98 00 _L4197_]^L4200^[00 FF]
 ^L1784^[1C FF 56 01 _L4195_][1C FF 98 00 _L4201_][00 FF]
 ^L1785^[1C FF 56 01 _L4195_][1C FF 98 00 _L4203_][00 FF]
 ^L1786^[1C FF 56 01 _L4195_][1C FF 98 00 _L4205_][00 FF]
 ^L1787^[1C FF 56 01 _L4195_][1C FF 98 00 _L4207_][00 FF]
-^L1788^
-^L1789^
-^L1790^
-^L1791^
-^L1792^
-^L1793^
-^L1794^
-^L1795^
-^L1796^
-^L1797^
-^L1798^
-^L1799^
-^L1800^
+^L1788^[1C FF 5C 01 _L2197_][1C FF 56 01 _L3457_][1C FF 94 00 _L3458_]@.....[1D FF][C6 FF][00 FF]
+^L1789^[1C FF 5B 01 _L4209_]@(Someone must have stepped[01 FF]  on a switch!)[02 FF][D4 FF 75 00]@(It sounds like something up[01 FF]  above is moving.)[1D FF][C6 FF][D4 FF 72 00][08 FF 5B 01][00 FF]
+^L1790^[1C FF 5C 01 _L4210_]@(There is something on the[01 FF]  platform.[02 FF]@Do you want to get it?)[86 FF _L2485_][04 FF _L4211_][05 FF _L4212_]^L4212^@(Wasn't it the whole reason[01 FF]  you came here?)[1D FF][00 FF]
+^L1791^[D4 FF 6F 00][1B FF 28 00]@I wonder why I'm in this rest[01 FF]  room right here[02 FF]@Just who am I?[1B FF 0A 00][01 FF]  What is life all about?...[02 FF]@ Oh, I'm sorry.[1B FF 14 00]  Did I make[01 FF]  you nervous?[1B FF 0F 00]  I'm not[01 FF]  dangerous.  Don't worry.[1D FF][00 FF]
+^L1792^@Welcome.[01 FF]  You are inside of my body.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1793^@My statistics show about 70%[01 FF]  of the people go to the right[01 FF]  first.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1794^@It is a dungeon owner's[01 FF]  obligation to hire a doctor[01 FF]  and a nurse.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1795^@Keep this board in mind.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1796^@Even though you can't get up[01 FF]  there now, you might be able to[01 FF]  later.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1797^@Your first goal is to reach the[01 FF]  four ropes.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1798^@Place an item at the dead end.[01 FF]  You are free to take it[01 FF]  whenever you want.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1799^@Once a dungeon is built,[01 FF]  monsters always start moving[01 FF]  in.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1800^@You have a long way to go.[01 FF]  Getting some rest and[01 FF]  relaxation may save you.[02 FF]@                      ...Brick Road[1D FF][00 FF]
 ^L1801^
 ^L1802^
 ^L1803^
@@ -3883,7 +3883,6 @@
 ^L4209^[00 FF]
 ^L4210^[80 FF _L1859_]
 ^L4211^[91 FF FF][82 FF _L4213_][93 FF 00 A9][86 FF _L2238_][1D FF][08 FF 5C 01][1B FF 0A 00][85 FF AB 04 06 00][00 FF]
-^L4212^
 ^L4213^
 ^L4214^
 ^L4215^
