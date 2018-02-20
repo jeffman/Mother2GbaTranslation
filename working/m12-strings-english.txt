@@ -1792,41 +1792,41 @@
 ^L1798^@Place an item at the dead end.[01 FF]  You are free to take it[01 FF]  whenever you want.[02 FF]@                      ...Brick Road[1D FF][00 FF]
 ^L1799^@Once a dungeon is built,[01 FF]  monsters always start moving[01 FF]  in.[02 FF]@                      ...Brick Road[1D FF][00 FF]
 ^L1800^@You have a long way to go.[01 FF]  Getting some rest and[01 FF]  relaxation may save you.[02 FF]@                      ...Brick Road[1D FF][00 FF]
-^L1801^
-^L1802^
-^L1803^
-^L1804^
-^L1805^
-^L1806^
-^L1807^
-^L1808^
-^L1809^
-^L1810^
-^L1811^
-^L1812^
-^L1813^
-^L1814^
-^L1815^
-^L1816^
-^L1817^
-^L1818^
-^L1819^
-^L1820^
-^L1821^
-^L1822^
-^L1823^
-^L1824^
-^L1825^
-^L1826^
-^L1827^
-^L1828^
-^L1829^
-^L1830^
-^L1831^
-^L1832^
-^L1833^
-^L1834^
-^L1835^
+^L1801^@While you explore the dungeon,[01 FF]  why don't you make a pit stop?[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1802^@There is a useful item at the[01 FF]  dead-end after you make quite[01 FF]  a long walk.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1803^@Items that are easy to get to[01 FF]  are usually disappointing.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1804^@I built a bulletin board without a[01 FF]  message.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1805^@The grass is always greener on[01 FF]  the other rope...  I wonder why[01 FF]  that is...[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1806^@Don't be a slacker...  If you[01 FF]  work hard, you'll get good[01 FF]  stuff.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1807^@I couldn't agree more with the[01 FF]  opinion on the left bill board.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1808^@I set up a telephone line in the[01 FF]  dungeon.  I wonder if that's[01 FF]  controversial.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1809^@Old Vehicle Collection.[01 FF]  This is my secret hobby.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1810^@Taxi with no engine.[01 FF]  Beautiful, even though the[01 FF]  thing doesn't run.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1811^@Rusty Bicycle.[01 FF]  Rust is the perfect brake.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1812^@This is a gift from Dr.[01 FF]  Andonuts.  Be careful how you[01 FF]  use it.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1813^@Broken down, old submarine.[01 FF]  The yellow color is purely[01 FF]  coincidental.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1814^@If you work hard, you don't[01 FF]  have time to get burned.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1815^@Learn from your mistakes.[02 FF]@Follow this, and you're bound[01 FF]  to be successful in EarthBound.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1816^@You have a strong-looking body.[01 FF]   Wouldn't you like to be a[01 FF]  dungeon worker?[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1817^@This is the second floor of my[01 FF]  body.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1818^@What's a dungeon?[01 FF]  That is my eternal question.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1819^@I put out a bulletin board, but[01 FF]  it's probably unnecessary.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1820^@That's a hole down below.[01 FF]  You don't have to worry about[01 FF]  this for now.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1821^@Inside the dungeon, flash[01 FF]  photography is prohibited.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1822^@You are standing right around[01 FF]  my belly button.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1823^@This music is one of my[01 FF]  greatest accomplishments.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1824^@It smells like flowers here.[01 FF]  If you can't smell it, your nose[01 FF]  must be stuffy.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1825^@There is an item at the dead[01 FF] end,[02 FF]@but I have been known to be[01 FF]  wrong occasionally.  Sorry.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1826^@Dungeon exploration is tough,[01 FF]  but it's also fun.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1827^@There are lots of monsters up[01 FF]  there, but don't stress out.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1828^@This is the third floor of my[01 FF]  body.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1829^@<Mad Duck>[01 FF]  They can be a nice pet if they[01 FF]  stay far away.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1830^@<Gruff Goat>[01 FF]  They are a really gruff kind of[01 FF]  goat.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1831^@<Slimy Little Pile>[01 FF]  He has a bad habit of burping.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1832^@Why don't you take a nice,[01 FF]  little rest here?[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1833^@<Good job, you finally made it!>[02 FF]@There is a board upstairs that[01 FF]  says that.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1834^@Good job,[01 FF]  you finally made it.[02 FF]@                      ...Brick Road[1D FF][00 FF]
+^L1835^@<Return Hole>[01 FF]  Jump in with all your courage.[02 FF]@                      ...Brick Road[1D FF][00 FF]
 ^L1836^
 ^L1837^
 ^L1838^
@@ -3085,7 +3085,7 @@
 ^L3317^@There's an old submarine at the[01 FF]  back of the dungeon.[02 FF]@It can be used to cross the[01 FF]  river.[02 FF]@There's a <Goodbye Exit>[01 FF]  ...over there.[02 FF]@It will take you to the[01 FF]  submarine.[02 FF]@Don't make a mistake on which[01 FF]  exit you take.[02 FF]@You need to take the[01 FF]  <Goodbye Exit!>[1B FF 14 00] Hope to see you[01 FF]  again![1D FF][00 FF]
 ^L3318^@I don't know how, but my[01 FF]  homemade dungeon helped you[01 FF]  out.[02 FF]@I'm glad.[1D FF][C6 FF][00 FF]
 ^L3319^[1B FF 14 00]@Guargh![1B FF 14 00] Oh no!  I... am...[02 FF]@getting caught in the palm[01 FF]  trees![1B FF 14 00] Mmm... I cannot move.[02 FF]@Well,[1B FF 14 00] if I cannot move, it is[01 FF]  okay.[02 FF][8D FF 01 00][A8 FF 00]@[90 FF 00][1A FF 01 00], it makes me[01 FF]  sad, but I must say goodbye[01 FF]  here,[1B FF 14 00] at my eternal resting[01 FF]  place.[02 FF][C6 FF][1B FF 14 00][AF FF 0A][84 FF 80 04 0C 00 01 00][08 FF 12 01][86 FF _L3558_][09 FF F4 02][D4 FF 11 00][09 FF 96 02][EB FF FF 00][1B FF 14 00][D4 FF 05 00][86 FF _L2201_][C5 FF][00 FF]
-^L3320^
+^L3320^@This path is closed.[02 FF]@...Brick Road.[1D FF][00 FF]
 ^L3321^@<Good Night Bench.>[02 FF]@May you relax and recover[01 FF]  your health and spirits.[1D FF][00 FF]
 ^L3322^@[C2 FF][1A FF 05 00]'s health is[01 FF]  restored.[1D FF][C6 FF][00 FF]
 ^L3323^
