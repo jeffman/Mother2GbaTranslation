@@ -1969,33 +1969,33 @@
 ^L1967^@[AD FF] got hurt[01 FF]  and collapsed...[D4 FF 20 00][09 FF 4B 02][02 FF][1C FF CF 00 _L3582_][1C FF CE 00 _L3583_][1C FF CD 00 _L3584_][1C FF CC 00 _L3585_][08 FF CC 00][86 FF _L3586_][00 FF]
 ^L1968^@[AD FF] became[01 FF]  a pile of fluff...[D4 FF 20 00][02 FF][6D FF FF 00 B9 00][00 FF]
 ^L1969^@[AD FF] became[01 FF]  a big pile of fluff...[D4 FF 20 00][02 FF][6D FF FF 00 B1 00][00 FF]
-^L1970^
-^L1971^
-^L1972^
-^L1973^
-^L1974^
-^L1975^
-^L1976^
-^L1977^
-^L1978^
-^L1979^
+^L1970^@A very subtle light engulfed[01 FF]  [C2 FF][1A FF 05 00]![02 FF][00 FF]
+^L1971^@A warm light surrounded[01 FF]  [C2 FF][1A FF 05 00]![02 FF][00 FF]
+^L1972^@A mysterious light enveloped[01 FF]  [C2 FF][1A FF 05 00]![02 FF][00 FF]
+^L1973^@A golden light poured[01 FF]  over the area![02 FF][00 FF]
+^L1974^@The dazzling light chased[01 FF]  the enemy![02 FF][00 FF]
+^L1975^@A dazzling light enveloped[01 FF]  [C2 FF][1A FF 05 00]![02 FF][00 FF]
+^L1976^@Rainbow colored light[01 FF]  shone into the area![02 FF][00 FF]
+^L1977^@A mysterious aroma wafted[01 FF]  into the area![02 FF][00 FF]
+^L1978^@A terrible, heaven rending[01 FF]  sound,[01 FF]  echoed in the area![02 FF][00 FF]
+^L1979^@Some heavy air flowed[01 FF]  into the area![02 FF][00 FF]
 ^L1980^@Who are you talking to?[1D FF][00 FF]
 ^L1981^@No problem here.[1D FF][00 FF]
-^L1982^
-^L1983^
+^L1982^[86 FF _L3287_]@[90 FF 00][1A FF 01 00] used[01 FF]  the [87 FF] [90 FF 00][1A FF 02 00].[02 FF]@But nothing happened.[1D FF][00 FF]
+^L1983^@[0D FF] learned how to[01 FF]  use PSI Teleportation.[1D FF][C6 FF][E8 FF 01 00 01 00][08 FF 13 01][DB FF 05 03 01 00 FF 00][CE FF 05 03 00 00][B0 FF 05 03 CC 00][1B FF 3C 00][B3 FF 05 03][A1 FF 05 03 4C 00][9E FF]@Kyaho![02 FF]@(Great![1B FF 14 00]  Okay,[1B FF 0F 00] the teacher is[01 FF]  going home now.)[1D FF][C6 FF][A1 FF 05 03 F8 02][09 FF 02 00][09 FF 67 02][09 FF 65 02][00 FF]
 ^L1984^[80 FF _L1267_]
 ^L1985^[00 FF]
-^L1986^
-^L1987^
-^L1988^
-^L1989^
+^L1986^@[AD FF] began to[01 FF]  feel strange![02 FF][00 FF]
+^L1987^@[9F FF] began to[01 FF]  feel strange![02 FF][00 FF]
+^L1988^@[9F FF] felt[01 FF] a little strange...[02 FF][00 FF]
+^L1989^@[C2 FF][1A FF 05 00] tried to get[01 FF]  away,[1B FF 3C 00][02 FF]@but couldn't![02 FF][00 FF]
 ^L1990^[D4 FF 3D 00][F0 FF 2E 00 21 00][1B FF 16 00][D4 FF 3F 00][1B FF 1E 00][00 FF]
 ^L1991^[D4 FF 3E 00][F0 FF 2E 00 22 00][1B FF 16 00][D4 FF 3F 00][1B FF 17 00][D4 FF 3F 00][1B FF 1E 00][00 FF]
 ^L1992^[D4 FF 3C 00][1B FF 3C 00][00 FF]
-^L1993^
-^L1994^
-^L1995^
-^L1996^
+^L1993^[E5 FF][82 FF _L3519_]@It was pretty good.[02 FF]^L3519^[00 FF]
+^L1994^[E5 FF][82 FF _L3520_]@It didn't taste very good.[02 FF]^L3520^[00 FF]
+^L1995^ The Teleport Box started to[01 FF]  groan.[D4 FF 63 00][02 FF][01 FF][F0 FF 30 00 00 00] The Teleport Box shattered into[01 FF]  pieces with a loud explosion.[D4 FF 63 00][F0 FF 23 00 00 00][1D FF][00 FF]
+^L1996^ The Teleport Box began to[01 FF]  groan.[D4 FF 63 00][02 FF][01 FF][F0 FF 30 00 00 00] The Teleport Box didn't work[01 FF]  quite right...[D4 FF 05 00][1D FF][00 FF]
 ^L1997^
 ^L1998^
 ^L1999^
@@ -3257,8 +3257,6 @@
 ^L3516^
 ^L3517^
 ^L3518^
-^L3519^
-^L3520^
 ^L3521^
 ^L3522^
 ^L3523^
