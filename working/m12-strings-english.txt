@@ -1827,15 +1827,15 @@
 ^L1833^@<Good job, you finally made it!>[02 FF]@There is a board upstairs that[01 FF]  says that.[02 FF]@                      ...Brick Road[1D FF][00 FF]
 ^L1834^@Good job,[01 FF]  you finally made it.[02 FF]@                      ...Brick Road[1D FF][00 FF]
 ^L1835^@<Return Hole>[01 FF]  Jump in with all your courage.[02 FF]@                      ...Brick Road[1D FF][00 FF]
-^L1836^
-^L1837^
-^L1838^
-^L1839^
-^L1840^
-^L1841^
-^L1842^
-^L1843^
-^L1844^
+^L1836^@(Item shop here.)[1D FF][00 FF]
+^L1837^@(Hotel here.)[1D FF][00 FF]
+^L1838^@(Weird junk.)[1D FF][00 FF]
+^L1839^@Hey!  It's Magicant![1D FF][00 FF]
+^L1840^@Come on in to Magicant![1D FF][00 FF]
+^L1841^@We had fun one snowy day.[02 FF]@I melted, but I am still real in[01 FF]  your memory.[1D FF][00 FF]
+^L1842^@I know the name of the girl[01 FF]  you used to like.[1D FF][00 FF]
+^L1843^@Thank you for remembering me.[1D FF][00 FF]
+^L1844^@[0D FF]![02 FF]@Did you learn how to tell what[01 FF]  time I'm indicating?[1D FF][00 FF]
 ^L1845^
 ^L1846^
 ^L1847^
@@ -1850,17 +1850,17 @@
 ^L1856^[1C FF 5E 01 _L5629_][00 FF]
 ^L1857^[00 FF]
 ^L1858^[00 FF]
-^L1859^
+^L1859^[1C FF B0 01 _L5453_]@No problem here.[1D FF][00 FF]
 ^L1860^[1C FF 04 03 _L2214_][1C FF 49 00 _L5152_][A8 FF 01][8A FF][8D FF 01 00][9A FF 01 00][81 FF _L5153_]@Hello?[02 FF]@...Is that you, [0D FF][1B FF 0A 00]?[02 FF]@Why are you disguising your[01 FF]  voice like that?[02 FF]@Who are you pretending to be?[02 FF]@Oh, well.  It's not a big deal.[02 FF]@I suppose you need to have a[01 FF] sense of humor at a time like[01 FF]  this.[02 FF][80 FF _L5154_]
-^L1861^
+^L1861^[8D FF 01 00][A8 FF 00][9A FF 01 00][82 FF _L5466_][1C FF 49 00 _L5467_][83 FF B0 02][82 FF _L5468_][92 FF 01 06 02][81 FF _L5469_][92 FF 01 01 08][81 FF _L5470_][1C FF B1 02 _L5471_][F6 FF 07 00][95 FF 07 _L5472_ _L5472_ _L5473_ _L5473_ _L5474_ _L5474_ _L5475_]^L5472^@[0D FF]?[02 FF]@.....[02 FF]@Don't say a word; I know[01 FF]  exactly what you're thinking.[02 FF]@My son, who'd have thought[01 FF]  he was such a brave kid?[02 FF]@Oh, yeah... you're a hero,[01 FF]  honey!...[02 FF]@Click!  Beep-beep-beep...[1D FF][D4 FF 0B 00][00 FF]
 ^L1862^[1C FF 02 03 _L2214_][1C FF 49 00 _L5169_][1C FF B5 00 _L5170_][1C FF 85 02 _L5170_][1C FF B6 02 _L5170_][1C FF B7 02 _L5170_][86 FF _L3541_][81 FF _L5170_][1C FF B4 02 _L5171_][1C FF B5 02 _L5172_][86 FF _L5173_]^L5258^[86 FF _L5174_][03 FF 11 00][04 FF _L5175_][05 FF _L5176_]^L5182^[86 FF _L5177_][86 FF _L5178_][00 FF]^L5175^[F4 FF 01 00 01 00][DD FF 02 00 00 00 00 00 00 00][81 FF _L5179_][86 FF _L5180_][08 FF 85 02][CF FF 03 00][86 FF _L5178_][08 FF F2 02][00 FF]
-^L1863^
+^L1863^@Hello! This is Mach Pizza![01 FF][1C FF 49 00 _L5261_][86 FF _L3541_][81 FF _L5262_][1C FF B4 00 _L5262_]^L5267^  What would you like to order?[22 FF][01 FF][E7 FF 00 00][8A FF][8B FF][95 FF 03 _L5263_ _L5264_ _L5265_]^L5269^@Call again![02 FF][80 FF _L5266_]
 ^L1864^[1C FF 49 00 _L5465_][8D FF 01 00][87 FF]@Hello,[1B FF 0F 00] this is the Stoic Club.[02 FF]@Oh,[1B FF 0F 00] [90 FF 00][1A FF 01 00], [87 FF][86 FF _sirmaam_]![1B FF 14 00][01 FF]  Would you like to make a[01 FF]  reservation?[02 FF]@Certainly.[02 FF]@We are looking forward to[01 FF]  having you here.[1B FF 0F 00]  Thank you.[02 FF]@Click!  Beep-beep-beep... [1D FF][D4 FF 0B 00][08 FF 51 01][00 FF]
 ^L1865^[00 FF]
 ^L1866^[1C FF D1 00 _L2197_][1C FF 05 02 _L2197_][A2 FF _L5538_][00 FF]
 ^L1867^[08 FF EE 02][09 FF 7F 01][83 FF 15 02][86 FF _L5546_][83 FF D5 01][82 FF _L2197_][1C FF 62 00 _L5547_][1C FF 5F 00 _L5548_][83 FF 1E 00][82 FF _L2197_][A1 FF 15 00 7B 00][08 FF 5F 00][08 FF F1 02][1B FF 78 00][00 FF]
 ^L1868^[08 FF 01 02][83 FF D5 01][82 FF _L2197_][1C FF 1E 00 _L5539_][83 FF 61 00][82 FF _L2197_][1C FF 25 03 _L5540_][00 FF]
-^L1869^
+^L1869^[1C FF 78 02 _L1871_][83 FF D5 01][82 FF _L2197_][1C FF 68 00 _L2197_][1C FF 12 00 _L2197_][FC FF 33 00][1C FF 02 00 _L5542_]@Hey [0D FF]![01 FF][C3 FF 01 01 05 00][D8 FF 01 00 00 00]  Like I said, my dad isn't home[01 FF]  yet![02 FF]@You've got to bring Picky back[01 FF]  before he comes home![02 FF]@I'll try to help you a little.[1D FF][C6 FF][08 FF 02 00][FC FF 34 00][00 FF]
 ^L1870^[83 FF 6B 00][82 FF _L2197_][A2 FF _L5543_][00 FF]
 ^L1871^[83 FF 78 02][82 FF _L2197_][D4 FF 6F 00][1B FF 28 00][00 FF]
 ^L1872^[09 FF 67 00][00 FF]
@@ -1880,15 +1880,15 @@
 ^L1886^[09 FF 7F 01][83 FF 63 02][82 FF _L2197_][A2 FF _L5569_][00 FF]
 ^L1887^[1C FF D3 00 _L5545_][08 FF 2B 00][83 FF 35 01][82 FF _L2197_][6E FF 01 00][00 FF]
 ^L1888^[1C FF 3F 01 _L2197_][08 FF 3F 01][08 FF EF 02][A2 FF _L5575_][00 FF]
-^L1889^
+^L1889^[1C FF 77 00 _L2197_][D4 FF 6F 00][1B FF 28 00][1C FF 73 00 _L5574_]@I'm changing my clothes now.[01 FF]  Don't come in![1D FF][C6 FF][00 FF]
 ^L1890^[1C FF 55 01 _L2197_][83 FF 52 00][82 FF _L2197_][A2 FF _L5559_][00 FF]
 ^L1891^[86 FF _L1850_][1C FF 47 00 _L2197_][08 FF 38 01][00 FF]
 ^L1892^[09 FF 38 01][00 FF]
 ^L1893^[09 FF 3B 01][00 FF]
 ^L1894^[08 FF E7 02][00 FF]
-^L1895^
+^L1895^[1C FF D5 00 _L2197_][1C FF 44 00 _L5582_][D4 FF 6F 00][1B FF 28 00][7B FF]@I not sure.[1B FF 14 00][01 FF]  Boing![02 FF]@Friends[02 FF]@in valley[01 FF]  behind Threed.[02 FF]@Ding! Ding![1D FF][7C FF][00 FF]
 ^L1896^[83 FF BF 00][82 FF _L2197_][08 FF 0C 02][A2 FF _L5617_][08 FF F2 02][08 FF 0B 03][FC FF 05 00][1C FF 80 01 _L2197_][9D FF 01 19 _L5619_][00 FF]
-^L1897^
+^L1897^[83 FF D3 00][82 FF _L5583_]^L5586^[83 FF 44 00][82 FF _L5584_]@(The Happy Happy Religious[01 FF]  Group has broken up.[02 FF]@This building is temporarily[01 FF]  closed.)[1D FF][00 FF]
 ^L1898^[09 FF 94 02][83 FF 2C 00][82 FF _L2197_][FC FF 05 00][A2 FF _L306_][00 FF]
 ^L1899^[83 FF 44 00][82 FF _L5584_][08 FF 94 02][00 FF]
 ^L1900^[09 FF 94 02][00 FF]
@@ -1909,7 +1909,7 @@
 ^L1915^[83 FF D6 00][82 FF _L2197_][80 FF _L1914_]
 ^L1916^[09 FF 76 01][09 FF 18 02][00 FF]
 ^L1917^[FC FF 06 00][09 FF 2C 02][83 FF B2 02][82 FF _L2197_][A2 FF _L3308_][00 FF]
-^L1918^
+^L1918^[1C FF 8E 00 _L5601_]@(Private elevator![02 FF]@Not for operation by the[01 FF]  general public.[02 FF]@Monotoli Building Manager.)[1D FF][C6 FF][00 FF]
 ^L1919^[83 FF 8B 00][82 FF _L2197_][83 FF 2B 02][82 FF _L2197_][A2 FF _L5578_][00 FF]
 ^L1920^[1C FF 92 00 _L5565_][A2 FF _L5566_][00 FF]
 ^L1921^[1C FF 92 00 _L5561_][00 FF]
@@ -1928,15 +1928,15 @@
 ^L1934^[09 FF 00 03][1C FF 49 00 _L2197_][83 FF AF 02][81 FF _L5631_][9D FF 01 32 _L4241_][00 FF]
 ^L1935^[83 FF AF 02][82 FF _L2197_][A2 FF _L5632_][00 FF]
 ^L1936^[09 FF 7F 01][00 FF]
-^L1937^
+^L1937^[1C FF 49 00 _L5633_][1C FF 51 01 _L2197_]@This is not the Stoic Club.[1B FF 14 00][01 FF]  Please be on your way...[1D FF][C6 FF][00 FF]
 ^L1938^[6B FF 08 00][00 FF]
 ^L1939^[6B FF 08 00][1C FF 1B 02 _L2197_][A2 FF _L5630_][00 FF]
 ^L1940^[83 FF C3 00][82 FF _L2197_][08 FF 0C 02][A2 FF _L5617_][08 FF F2 02][08 FF 0B 03][FC FF 05 00][1C FF 80 01 _L2197_][9D FF 01 1D _L5623_][00 FF]
 ^L1941^[09 FF 7F 01][83 FF 11 01][82 FF _L2197_][1C FF 10 00 _L2197_][A2 FF _L5613_][00 FF]
-^L1942^
+^L1942^[1C FF 5C 01 _L2197_]@Didn't you come here to look[01 FF]  for the <Hawk eye>?[1D FF][C6 FF][00 FF]
 ^L1943^[08 FF 86 01][08 FF 87 01][08 FF 88 01][08 FF 89 01][08 FF 8A 01][08 FF 8B 01][08 FF 8C 01][08 FF 8D 01][08 FF 8E 01][08 FF 8F 01][08 FF 90 01][08 FF 91 01][08 FF 92 01][08 FF 93 01][08 FF 94 01][08 FF 95 01][08 FF 96 01][08 FF 97 01][08 FF 98 01][08 FF 99 01][08 FF 9A 01][08 FF 9B 01][08 FF 9C 01][08 FF 9D 01][08 FF 9E 01][08 FF 9F 01][1C FF 11 00 _L2197_][9D FF 01 10 _L3903_][08 FF F2 02][08 FF 0B 03][00 FF]
 ^L1944^[1C FF 12 01 _L5615_][83 FF 18 00][82 FF _L5616_][08 FF 3E 00][AE FF 0A][08 FF 96 02][08 FF F2 02][08 FF 0B 03][08 FF F4 02][14 FF 5A 00][1B FF 01 00][7E FF 08 00][00 FF]
-^L1945^
+^L1945^[83 FF F4 02][82 FF _L1850_]@(You can't fit through this small[01 FF]  entrance with the Dungeon[01 FF]  Man.[02 FF]@...Don't you know?!)[1D FF][C6 FF][00 FF]
 ^L1946^[08 FF DB 00][86 FF _L1850_][83 FF 7E 00][82 FF _L2197_][08 FF 1A 02][00 FF]
 ^L1947^[09 FF 7F 01][1C FF 7B 01 _L2197_][A2 FF _L5551_][00 FF]
 ^L1948^[1C FF 89 02 _L5554_][86 FF _L5555_][00 FF]
@@ -4842,15 +4842,11 @@
 ^L5257^
 ^L5259^
 ^L5260^
-^L5261^
-^L5262^
-^L5263^
-^L5264^
-^L5265^
-^L5266^
-^L5267^
-^L5268^
-^L5269^
+^L5261^[22 FF]@Our delivery men got tired and[01 FF]  quit.[02 FF]@So, we decided to close the[01 FF]  shop.[02 FF]@Thank you for consistently[01 FF]  using us for all of your pizza[01 FF]  needs.[1B FF 14 00][01 FF][D4 FF 0B 00]  (Click!)[1D FF][00 FF]
+^L5262^[02 FF]@Our deliverymen are not[01 FF]  available right now.[02 FF]@We can't deliver any pizza[01 FF]  for the time being.[02 FF][80 FF _L5269_]
+^L5263^@You want one small pizza?[01 FF][80 FF _L5268_]
+^L5264^@Sorry, they are all sold out.[01 FF][80 FF _L5267_]
+^L5265^@You want one large pizza?[01 FF][08 FF B3 00]^L5268^[A8 FF 00]  We'll deliver it within 3[01 FF]  minutes.[02 FF][08 FF B4 00][CF FF 01 00][08 FF F2 02]^L5266^[D4 FF 0B 00]@(Click!)[1D FF][00 FF]
 ^L5270^
 ^L5271^[09 FF B3 00][BC FF 74 00][80 FF _L5274_]
 ^L5272^
@@ -5025,7 +5021,6 @@
 ^L5469^
 ^L5470^
 ^L5471^
-^L5472^
 ^L5473^
 ^L5474^
 ^L5475^
@@ -5132,7 +5127,6 @@
 ^L5583^[1C FF 44 00 _L2197_][08 FF 94 02][80 FF _L5586_]
 ^L5584^[A2 FF _L5585_][00 FF]
 ^L5585^[84 FF 85 01 0F 01 01 00][84 FF 86 01 11 01 01 00][84 FF 87 01 10 01 01 00][84 FF 88 01 0E 01 01 00][84 FF 89 01 0D 01 01 00][00 FF]
-^L5586^
 ^L5589^@Peanuts, Walnuts...[01 FF]  Hazelnuts...[01 FF]  Pecans...[02 FF]@Macadamia nuts...[01 FF]  Cashews...[01 FF]  Almonds...[02 FF]@Giant Pine Nuts...[01 FF]  Pine Nuts...[01 FF]  Sun Flower Seeds[02 FF]@Pumpkin Seeds...[01 FF]  Pistachios...[02 FF]@...Which one do you like?[22 FF][03 FF 00 00][04 FF _L5590_][05 FF _L5590_]^L5590^@I asked you <Which one do[01 FF]  you like?>...[1D FF][00 FF]^L1740^[D4 FF 6F 00][1B FF 28 00][1C FF 47 00 _L5591_]@You a zombie?[02 FF]@My mom telled me no open the[01 FF]  door, 'cause zombies are[01 FF]  comin'.[1D FF][00 FF]
 ^L5591^
 ^L5592^
