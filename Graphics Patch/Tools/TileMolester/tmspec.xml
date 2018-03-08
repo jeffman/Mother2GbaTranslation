@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE tmspec SYSTEM "tmspec.dtd">
+
+<tmspec>
+
+    <colorformats>
+
+        <directcolor id="CF00" bpp="15" rmask="001F" gmask="03E0" bmask="7C00">
+            <description>15bpp BGR (555)</description>
+        </directcolor>
+        <directcolor id="CF01" bpp="24" rmask="FF0000" gmask="00FF00" bmask="0000FF">
+            <description>24bpp RGB (888)</description>
+        </directcolor>
+        <directcolor id="CF05" bpp="16" rmask="000E" gmask="00E0" bmask="0E00">
+            <description>9bpp BGR (Genesis)</description>
+        </directcolor>
+        <directcolor id="CF06" bpp="32" rmask="00FF0000" gmask="0000FF00" bmask="000000FF">
+            <description>32bpp RGB (888)</description>
+        </directcolor>
+        <directcolor id="CF07" bpp="32" rmask="0038" gmask="01C0" bmask="0007">
+            <description>9bpp GRB (PCE)</description>
+        </directcolor>
+        <indexedcolor id="CF02" bpp="6" endianness="big">
+            <data>757575271B8F0000AB47009F8F0077AB0013A700007F0B00432F00004700005100003F171B3F5F000000000000000000BCBCBC0073EF233BEF8300F3BF00BFE7005BDB2B00CB4F0F8B730000970000AB0000933B00838B000000000000000000FFFFFF3FBFFF5F97FFA78BFDF77BFFFF77B7FF7763FF9B3BF3BF3F83D3134FDF4B58F89800EBDB000000000000000000FFFFFFABE7FFC7D7FFD7CBFFFFC7FFFFC7DBFFBFB3FFDBABFFE7A3E3FFA3ABF3BFB3FFCF9FFFF3000000000000000000</data>
+            <description>Nintendo (NES)</description>
+        </indexedcolor>
+        <indexedcolor id="CF03" bpp="4" endianness="big">
+            <data>000000990000009900CC6600000099990099009999CCCCCC666666FF666666FF66FFFF666666FFFF66FF66FFFFFFFFFF</data>
+            <description>Enhanced Graphics Adapter (EGA)</description>
+        </indexedcolor>
+
+    </colorformats>
+
+    <tileformats>
+
+      <!-- planar, palette-indexed tile formats. -->
+        <planartile id="PL00" bpp="1" planeorder="0">
+            <description>1bpp planar</description>
+        </planartile>
+        <planartile id="PL01" bpp="2" planeorder="0,1">
+            <description>2bpp planar</description>
+        </planartile>
+        <planartile id="PL02" bpp="3" planeorder="0,1,2">
+            <description>3bpp planar</description>
+        </planartile>
+        <planartile id="PL03" bpp="4" planeorder="0,1,2,3">
+            <description>4bpp planar</description>
+        </planartile>
+        <planartile id="PL04" bpp="5" planeorder="0,1,2,3,4">
+            <description>5bpp planar</description>
+        </planartile>
+        <planartile id="PL05" bpp="6" planeorder="0,1,2,3,4,5">
+            <description>6bpp planar</description>
+        </planartile>
+        <planartile id="PL06" bpp="7" planeorder="0,1,2,3,4,5,6">
+            <description>7bpp planar</description>
+        </planartile>
+        <planartile id="PL07" bpp="8" planeorder="0,1,2,3,4,5,6,7">
+            <description>8bpp planar</description>
+        </planartile>
+
+      <!-- planar composite tile formats. -->
+        <compositetile id="CP00" formats="PL00,PL00">
+            <description>2bpp planar, composite</description>
+        </compositetile>
+        <compositetile id="CP01" formats="PL01,PL00">
+            <description>3bpp planar, composite (2bpp+1bpp)</description>
+        </compositetile>
+        <compositetile id="CP02" formats="PL01,PL01">
+            <description>4bpp planar, composite (2x2bpp)</description>
+        </compositetile>
+        <compositetile id="CP03" formats="PL01,PL01,PL01,PL01">
+            <description>8bpp planar, composite (4x2bpp)</description>
+        </compositetile>
+
+      <!-- linear, 1,2,4,8bpp palette-indexed tile formats. -->
+        <lineartile id="LN00" bpp="1">
+            <description>1bpp linear</description>
+        </lineartile>
+        <lineartile id="LN01" bpp="1" ordering="reverse">
+            <description>1bpp linear, reverse-order</description>
+        </lineartile>
+        <lineartile id="LN02" bpp="2">
+            <description>2bpp linear</description>
+        </lineartile>
+        <lineartile id="LN03" bpp="2" ordering="reverse">
+            <description>2bpp linear, reverse-order</description>
+        </lineartile>
+        <lineartile id="LN04" bpp="4">
+            <description>4bpp linear</description>
+        </lineartile>
+        <lineartile id="LN05" bpp="4" ordering="reverse">
+            <description>4bpp linear, reverse-order</description>
+        </lineartile>
+        <lineartile id="LN06" bpp="8">
+            <description>8bpp linear</description>
+        </lineartile>
+
+      <!-- direct-color tile formats. -->
+        <directcolortile id="DC00" bpp="15" rmask="7C00" gmask="03E0" bmask="001F">
+            <description>15bpp RGB (555)</description>
+        </directcolortile>
+        <directcolortile id="DC01" bpp="15" rmask="001F" gmask="03E0" bmask="7C00">
+            <description>15bpp BGR (555)</description>
+        </directcolortile>
+        <directcolortile id="DC02" bpp="16" rmask="F800" gmask="07E0" bmask="001F">
+            <description>16bpp RGB (565)</description>
+        </directcolortile>
+        <directcolortile id="DC03" bpp="16" rmask="001F" gmask="07E0" bmask="F800">
+            <description>16bpp BGR (565)</description>
+        </directcolortile>
+        <directcolortile id="DC04" bpp="16" rmask="7C00" gmask="03E0" bmask="001F" amask="8000">
+            <description>16bpp ARGB (1555)</description>
+        </directcolortile>
+        <directcolortile id="DC05" bpp="16" rmask="001F" gmask="03E0" bmask="7C00" amask="8000">
+            <description>16bpp ABGR (1555)</description>
+        </directcolortile>
+        <directcolortile id="DC06" bpp="16" rmask="F800" gmask="07C0" bmask="003E" amask="0001">
+            <description>16bpp RGBA (5551)</description>
+        </directcolortile>
+        <directcolortile id="DC07" bpp="16" rmask="003E" gmask="07C0" bmask="F800" amask="0001">
+            <description>16bpp BGRA (5551)</description>
+        </directcolortile>
+        <directcolortile id="DC08" bpp="24" rmask="FF0000" gmask="00FF00" bmask="0000FF">
+            <description>24bpp RGB (888)</description>
+        </directcolortile>
+        <directcolortile id="DC09" bpp="24" rmask="0000FF" gmask="00FF00" bmask="FF0000">
+            <description>24bpp BGR (888)</description>
+        </directcolortile>
+        <directcolortile id="DC10" bpp="32" rmask="00FF0000" gmask="0000FF00" bmask="000000FF" amask="FF000000">
+            <description>32bpp ARGB (8888)</description>
+        </directcolortile>
+        <directcolortile id="DC11" bpp="32" rmask="000000FF" gmask="0000FF00" bmask="00FF0000" amask="FF000000">
+            <description>32bpp ABGR (8888)</description>
+        </directcolortile>
+        <directcolortile id="DC12" bpp="32" rmask="FF000000" gmask="00FF0000" bmask="0000FF00" amask="000000FF">
+            <description>32bpp RGBA (8888)</description>
+        </directcolortile>
+        <directcolortile id="DC13" bpp="32" rmask="0000FF00" gmask="00FF0000" bmask="FF000000" amask="000000FF">
+            <description>32bpp BGRA (8888)</description>
+        </directcolortile>
+
+    </tileformats>
+
+    <filefilters>
+
+        <filefilter extensions="gb,gbc,sgb" tileformat="PL01" mode="1D">
+            <description>Game Boy (*.gb, *.gbc, *.sgb)</description>
+        </filefilter>
+        <filefilter extensions="ws,wsc" tileformat="PL01" mode="1D">
+            <description>WonderSwan (*.ws, *.wsc)</description>
+        </filefilter>
+        <filefilter extensions="nes,chr" tileformat="CP00" mode="1D">
+            <description>Nintendo (*.nes, *.chr)</description>
+        </filefilter>
+        <filefilter extensions="fds" tileformat="CP00" mode="1D">
+            <description>Famicom Disk System (*.fds)</description>
+        </filefilter>
+        <filefilter extensions="sms" tileformat="PL03" mode="1D">
+            <description>Sega Master System (*.sms)</description>
+        </filefilter>
+        <filefilter extensions="gg" tileformat="PL03" mode="1D">
+            <description>Sega Game Gear (*.gg)</description>
+        </filefilter>
+        <filefilter extensions="fig,smc,sfc" tileformat="CP02" mode="1D">
+            <description>Super Nintendo (*.fig, *.sfc, *.smc)</description>
+        </filefilter>
+        <filefilter extensions="pce" tileformat="CP02" mode="1D">
+            <description>Turbo Grafx-16 (*.pce)</description>
+        </filefilter>
+        <filefilter extensions="ngp,ngpc" tileformat="LN02" mode="1D">
+            <description>NeoGeo Pocket (*.ngp, *.ngpc)</description>
+        </filefilter>
+        <filefilter extensions="vb" tileformat="LN03" mode="1D">
+            <description>Virtual Boy (*.vb)</description>
+        </filefilter>
+        <filefilter extensions="smd" tileformat="LN04" mode="1D">
+            <description>Sega Genesis / Mega Drive / 32X (*.smd, *.md)</description>
+        </filefilter>
+        <filefilter extensions="xdf" tileformat="LN04" mode="1D">
+            <description>X68000 (*.xdf)</description>
+        </filefilter>
+        <filefilter extensions="gba" tileformat="LN05" mode="1D">
+            <description>Game Boy Advance (*.gba)</description>
+        </filefilter>
+        <filefilter extensions="n64,v64,z64" tileformat="DC06" mode="2D">
+            <description>Nintendo 64 (*.n64, *.v64, *.z64)</description>
+        </filefilter>
+
+    </filefilters>
+
+    <palettefilters>
+
+        <palettefilter extensions="fc?" colorformat="CF02" size="32" offset="4276">
+            <description>FCEUltra Save States (*.fc?)</description>
+        </palettefilter>
+
+        <palettefilter extensions="gs?" colorformat="CF05" size="64" offset="274" endianness="little">
+            <description>Genecyst/Kega/Gens Save States (*.gs?)</description>
+        </palettefilter>
+
+        <palettefilter extensions="me?" colorformat="CF07" size="512" offset="30996">
+            <description>Magic Engine Save States (*.me?)</description>
+        </palettefilter>
+
+        <palettefilter extensions="st?" colorformat="CF02" size="32" offset="22791">
+            <description>NESticle Save States (*.st?)</description>
+        </palettefilter>
+
+        <palettefilter extensions="zs?" colorformat="CF00" size="256" offset="1560" endianness="little">
+            <description>ZSNES Save States (*.zs?)</description>
+        </palettefilter>
+
+    </palettefilters>
+
+    <filelisteners>
+
+        <filelistener classname="GameBoyFileListener"/>
+        <filelistener classname="GameBoyAdvanceFileListener"/>
+        <filelistener classname="SegaMasterSystemFileListener"/>
+        <filelistener classname="SegaGenesisFileListener"/>
+
+    </filelisteners>
+
+</tmspec>

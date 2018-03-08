@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!ELEMENT settings (property*)>
+
+<!ELEMENT property EMPTY>
+<!ATTLIST property
+            key             CDATA       #REQUIRED
+            value           CDATA       #REQUIRED
+>

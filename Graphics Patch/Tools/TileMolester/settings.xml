@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE settings SYSTEM "settings.dtd">
+<settings>
+  <property key="locale" value="en_US"/>
+  <property key="viewStatusBar" value="true"/>
+  <property key="viewToolBar" value="true"/>
+  <property key="maxRecentFiles" value="10"/>
+  <property key="recentFile" value="C:\Users\nickm\Desktop\Code\Game Boy Advance\Mother 1+2 VWF\Graphics Patch\Mother 1+2 VWF.gba"/>
+  <property key="recentFile" value="C:\Users\nickm\Desktop\Code\Game Boy Advance\Mother 1+2 VWF\Graphics Patch\old.gba"/>
+  <property key="recentFile" value="C:\Users\nickm\Desktop\Code\Game Boy Advance\Mother 1+2 VWF\Graphics Patch\Mother 1+2 English.gba"/>
+</settings>

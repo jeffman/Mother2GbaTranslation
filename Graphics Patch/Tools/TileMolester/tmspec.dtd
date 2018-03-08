@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!ELEMENT tmspec (colorformats?, tileformats?, filefilters?, palettefilters?, filelisteners?)>
+
+<!ELEMENT colorformats (directcolor | indexedcolor)*>
+
+<!ELEMENT directcolor (description)>
+<!ATTLIST directcolor
+            id              ID          #REQUIRED
+            bpp             CDATA       #REQUIRED
+            rmask           CDATA       #REQUIRED
+            gmask           CDATA       #REQUIRED
+            bmask           CDATA       #REQUIRED
+            amask           CDATA       #IMPLIED
+>
+
+<!ELEMENT indexedcolor (data, description)>
+<!ATTLIST indexedcolor
+            id              ID          #REQUIRED
+            bpp             CDATA       #REQUIRED
+            format          IDREF       #IMPLIED
+            endianness      (little | big) "little"
+>
+
+<!ELEMENT tileformats (planartile | lineartile | directcolortile | compositetile)*>
+
+<!ELEMENT planartile (description)>
+<!ATTLIST planartile
+            id              ID          #REQUIRED
+            bpp             CDATA       #REQUIRED
+            planeorder      CDATA       #REQUIRED
+>
+
+<!ELEMENT lineartile (description)>
+<!ATTLIST lineartile
+            id              ID          #REQUIRED
+            bpp             CDATA       #REQUIRED
+            ordering        (in | reverse) "in"
+>
+
+<!ELEMENT directcolortile (description)>
+<!ATTLIST directcolortile
+            id              ID          #REQUIRED
+            bpp             CDATA       #REQUIRED
+            rmask           CDATA       #REQUIRED
+            gmask           CDATA       #REQUIRED
+            bmask           CDATA       #REQUIRED
+            amask           CDATA       #IMPLIED
+>
+
+<!ELEMENT compositetile (description)>
+<!ATTLIST compositetile
+            id              ID          #REQUIRED
+            formats         CDATA       #REQUIRED
+>
+
+<!ELEMENT filefilters (filefilter*)>
+
+<!ELEMENT filefilter (description)>
+<!ATTLIST filefilter
+            extensions      CDATA       #REQUIRED
+            tileformat      IDREF       #REQUIRED
+            mode            (1D | 2D)   #IMPLIED
+>
+
+<!ELEMENT palettefilters (palettefilter*)>
+
+<!ELEMENT palettefilter (description)>
+<!ATTLIST palettefilter
+            extensions      CDATA       #REQUIRED
+            colorformat     IDREF       #REQUIRED
+            size            CDATA       #REQUIRED
+            offset          CDATA       #REQUIRED
+            endianness      (little | big) "little"
+>
+
+<!ELEMENT filelisteners (filelistener*)>
+
+<!ELEMENT filelistener EMPTY>
+<!ATTLIST filelistener
+            classname       CDATA       #REQUIRED
+>
+
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT data (#PCDATA)>

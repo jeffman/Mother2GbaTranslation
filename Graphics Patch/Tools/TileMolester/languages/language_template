@@ -1,0 +1,213 @@
+#################### Language template for Tile Molester #####################
+
+# File Menu
+
+File = 
+New = 
+Open = 
+Reopen = 
+Close = 
+Close_All = 
+Save = 
+Save_As = 
+Save_All = 
+Exit = 
+
+# View Menu
+
+View = 
+Statusbar = 
+Toolbar = 
+Codec = 
+Zoom = 
+In = 
+Out = 
+1_Dimensional = 
+2_Dimensional = 
+Block_Size =
+Full_Canvas = 
+Custom_Block_Size = 
+Row_Interleave_Blocks = 
+Block_Grid = 
+Tile_Grid = 
+Pixel_Grid = 
+
+# Edit Menu
+
+Edit = 
+Undo = 
+Redo = 
+Cant_Undo = 
+Cant_Redo = 
+Cut = 
+Copy = 
+Paste = 
+Clear = 
+Select_All = 
+Copy_To = 
+Paste_From = 
+
+# Image Menu
+
+Image = 
+Mirror = 
+Flip = 
+Rotate_Right = 
+Rotate_Left = 
+Shift_Left = 
+Shift_Right = 
+Shift_Up = 
+Shift_Down = 
+Stretch = 
+Canvas_Size = 
+
+# Navigate Menu
+
+Navigate = 
+Go_To = 
+Go_To_Again = 
+Add_To_Bookmarks = 
+Organize_Bookmarks = 
+Bookmarks = 
+
+# Palette menu
+
+Palette = 
+Edit_Colors = 
+Format = 
+Size = 
+Import_From = 
+This_File = 
+Another_File = 
+Add_To_Palettes = 
+Organize_Palettes = 
+
+# Window Menu
+
+Window = 
+New_Window = 
+Tile = 
+Cascade = 
+Arrange_Icons = 
+
+# Help Menu
+
+Help = 
+Help_Topics = 
+Tip_of_the_Millennium = 
+About_Tile_Molester = 
+
+# Tools
+
+Selection = 
+Dropper = 
+Brush = 
+Line = 
+Flood_Fill = 
+Color_Replacer = 
+Mover = 
+
+# Navigation button tooltips
+
+Page_Back = 
+Page_Forward = 
+Row_Back = 
+Row_Forward = 
+Tile_Back = 
+Tile_Forward = 
+Byte_Back = 
+Byte_Forward = 
+
+# Messages
+
+Save_Changes_To = 
+Load_File_Error = 
+Save_File_Error = 
+Load_Bitmap_Error = 
+Save_Bitmap_Error = 
+Save_Settings_Error = 
+Load_Settings_Error = 
+Save_Resources_Error = 
+Load_Resources_Error = 
+File_Write_Error = 
+Palette_Read_Error = 
+Parser_Config_Error = 
+Parser_Parse_Error = 
+Parser_IO_Error = 
+Out_Of_Memory = 
+Drugs_Message = 
+
+# Built-in File Filter Names
+
+All_Supported_Formats = 
+All_Files = 
+
+# Bookmark/palette organization
+
+Create_In = 
+New_Folder = 
+Rename = 
+Move = 
+Delete = 
+
+# Confirmation button captions
+
+Yes = 
+No = 
+OK = 
+Cancel = 
+
+# Endianness
+
+Endianness = 
+Little_Endian = 
+Big_Endian = 
+
+# Dialog titles
+
+New_File_Dialog_Title = 
+New_Folder_Dialog_Title = 
+Open_File_Dialog_Title = 
+Save_As_Dialog_Title = 
+Copy_To_Dialog_Title = 
+Paste_From_Dialog_Title = 
+Go_To_Dialog_Title = 
+Stretch_Image_Dialog_Title = 
+Canvas_Size_Dialog_Title = 
+Block_Size_Dialog_Title = 
+Add_To_Bookmarks_Dialog_Title = 
+Organize_Bookmarks_Dialog_Title = 
+Add_To_Palettes_Dialog_Title = 
+Organize_Palettes_Dialog_Title = 
+Edit_Colors_Dialog_Title = 
+Palette_Size_Dialog_Title = 
+New_Palette_Dialog_Title = 
+Import_Internal_Palette_Dialog_Title = 
+Open_Palette_Dialog_Title = 
+
+# Incremental Canvas Size
+
+Decrease_Width = 
+Increase_Width = 
+Decrease_Height = 
+Increase_Height = 
+
+# Input field labels
+
+Folder_Name_Prompt = 
+Description_Prompt = 
+Offset_Prompt = 
+Size_Prompt = 
+Columns_Prompt = 
+Rows_Prompt = 
+
+# Other
+
+Empty = 
+Offset = 
+Mode = 
+Radix = 
+Hex = 
+Dec = 
+Absolute = 
+Relative = 
