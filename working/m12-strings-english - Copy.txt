@@ -101,7 +101,7 @@
 ^L103^[1C FF 49 00 _L2331_][BC FF 01 00][86 FF _L2177_][81 FF _L2332_][8D FF 01 00][A8 FF 00]@[90 FF 00][1A FF 01 00],[1B FF 0F 00] I'm doing[01 FF]  watch-out duty for the hideout.[02 FF]@Can you take over?[22 FF][03 FF 00 00][04 FF _L2333_][05 FF _L2334_]^L2334^@You're busy.[1B FF 0F 00]  I understand.[1D FF][00 FF]^L2333^@Just kidding.[1B FF 0F 00]  Being watch-out[01 FF]  is my job.[1D FF][00 FF]
 ^L104^[1C FF 6C 00 _L2338_]@This shack was locked by[01 FF]  someone from City Hall,[1B FF 0F 00] so[01 FF]  we can't use it.[02 FF]@The reason it was closed was[01 FF]  'cause a punk named Frank may[01 FF]  have trashed the place.[02 FF]@We can't even change our[01 FF]  clothes,[1B FF 0F 00] and hotels are too[01 FF]  expensive...[1D FF][00 FF]
 ^L105^[1C FF 49 00 _L2341_][1C FF 09 00 _L2342_][1C FF FF 01 _L2343_]^L2344^@A library is a nice place to[01 FF]  learn stuff.[02 FF]@I got a lot of info about[01 FF]  EarthBound.[02 FF]@You can borrow maps for[01 FF]  nothing![1D FF][00 FF]
-^L106^@(I am not your enemy.[02 FF]@I am simply your average[01 FF]  run-of-the-mill mole.[02 FF]@Would you like some hints on[01 FF]  fighting enemies?)[03 FF 00 00][04 FF _L4028_][05 FF _L4029_]^L4029^@(Ah, I see...[02 FF]@You've already got a good[01 FF]  grasp of how to fight[01 FF]  effectively.[1D FF][00 FF]^L4028^@(Listen carefully.[02 FF]@My hint involves which way[01 FF]  you are facing when a battle[01 FF]  with an enemy occurs.[02 FF]@If you allow enemies to[01 FF]  approach you from your back[01 FF]  or side,[02 FF]@they may get a surprise[01 FF]  opening attack.[02 FF]@When they approach you this[01 FF]  way, your Game Boy screen, no... no...[02 FF]@I mean the world in front of[01 FF]  you will show a red swirl for[01 FF]  a second.[02 FF]@On the other hand, if you[01 FF]  approach an enemy from the[01 FF]  back or side,[02 FF]@You may get a surprise opening[01 FF]  attack.[02 FF]@In that case, your TV...[01 FF]  Oops again![02 FF]@...The world in front of you[01 FF]  shows a green swirl.[02 FF]@The point is, try to fight so[01 FF]  that you always have the[01 FF]  advantage.[1D FF][00 FF]
+^L106^@(I am not your enemy.[02 FF]@I am simply your average[01 FF]  run-of-the-mill mole.[02 FF]@Would you like some hints on[01 FF]  fighting enemies?)[03 FF 00 00][04 FF _L4028_][05 FF _L4029_]^L4029^@(Ah, I see...[02 FF]@You've already got a good[01 FF]  grasp of how to fight[01 FF]  effectively.[1D FF][00 FF]^L4028^@(Listen carefully.[02 FF]@My hint involves which way[01 FF]  you are facing when a battle[01 FF]  with an enemy occurs.[02 FF]@If you allow enemies to[01 FF]  approach you from your back[01 FF]  or side,[02 FF]@they may get a surprise[01 FF]  opening attack.[02 FF]@When they approach you this[01 FF]  way, your Game Boy screen, no... no...[02 FF]@I mean the world in front of[01 FF]  you will show a red swirl for[01 FF]  a second.[02 FF]@On the other hand, if you[01 FF]  approach an enemy from the[01 FF]  back or side,[02 FF]@You may get a surprise opening[01 FF]  attack.[02 FF]@In that case, your Game Boy...[01 FF]  Oops again![02 FF]@...The world in front of you[01 FF]  shows a green swirl.[02 FF]@The point is, try to fight so[01 FF]  that you always have the[01 FF]  advantage.[1D FF][00 FF]
 ^L107^[1C FF 40 00 _L2347_]@The arcade is full of Sharks.[1B FF 14 00][01 FF]  I can't play there.[1D FF][00 FF]
 ^L108^[1C FF 0C 00 _L2348_][1C FF 0D 00 _L2348_]^L2349^@A girl named [0E FF][01 FF]  lives in Twoson.[02 FF]@Her mother runs a preschool[01 FF]  out of their home.[02 FF]@I can't remember the name[01 FF]  of the school,[1B FF 0F 00]  but I heard[01 FF]  [0E FF]'s really special.[02 FF]@Why is she special?[02 FF]@I forgot to ask.[1B FF 0F 00]  Oh, well...[1D FF][00 FF]
 ^L109^@The point overlooking the sea[01 FF]  has beautiful scenery.[1B FF 0F 00]  It's over[01 FF]  thataway.[02 FF]@Such a beautiful place gets[01 FF]  me all choked up.[1D FF][00 FF]
@@ -1281,11 +1281,11 @@
 ^L1284^[FC FF 07 00][82 FF _L3559_][00 FF]
 ^L1285^[D4 FF 19 00]@[9F FF] discharged[01 FF]  a very stinky gas![00 FF]
 ^L1286^[86 FF _L1314_][68 FF]@You cannot grasp the true form[01 FF]  of [9F FF]' attack![F0 FF 31 00 00 00][1B FF 78 00][F0 FF 36 00 00 00][D4 FF 51 00][1B FF 28 00][D4 FF 51 00][00 FF]
-^L1287^[FC FF 2A 00][C7 FF][69 FF][1B FF 28 00]@I understand you guys are [01 FF]  already claiming to be heroes.[22 FF][01 FF]@Well, it is a gazillion years too [01 FF]  early for you to oppose Giygas![22 FF][01 FF]@You must feel pretty stupid to [01 FF]  keep fighting without even[22 FF][01 FF]  knowing what Giygas looks like![22 FF][01 FF]@If you were to ever see Giygas, [01 FF]  you'd be so petrified with fear,[22 FF][01 FF]  you'd never be able to run[01 FF]  away![22 FF][01 FF]@...That's how scary it is![22 FF][01 FF]@So, do you want me to turn off [01 FF]  the <Devil's Machine?>[22 FF][01 FF]@Well, prepare to be amazed![D4 FF 4A 00][1B FF 96 00][C7 FF][FC FF 2B 00][69 FF][00 FF]
+^L1287^[FC FF 2A 00][C7 FF][69 FF][1B FF 28 00]@I understand you guys are [01 FF]  already claiming to be heroes.[22 FF][01 FF]@Well, it is a gazillion years too [01 FF]  early for you to oppose Giygas![22 FF][01 FF]@You must feel pretty stupid to [01 FF]  keep fighting without even[01 FF]  knowing what Giygas looks like![22 FF][01 FF]@If you were to ever see[01 FF]  Giygas, you'd be so petrified[22 FF][01 FF]  with fear, you'd never be able[01 FF]  to run away![22 FF][01 FF]@...That's how scary it is![22 FF][01 FF]@So, do you want me to turn off [01 FF]  the <Devil's Machine?>[22 FF][01 FF]@Well, prepare to be amazed![D4 FF 4A 00][1B FF 96 00][C7 FF][FC FF 2B 00][69 FF][00 FF]
 ^L1288^@[C2 FF][1A FF 05 00] tried to get away,[1B FF 3C 00][02 FF]@and did![02 FF][00 FF]
 ^L1289^@[9F FF] relaxed[01 FF]  and took a deep breath.[02 FF][00 FF]
 ^L1290^@The Suporma sang the song[01 FF]  <Ode to Orange Kid.>[02 FF]@As soon as it finished, the machine[01 FF]  broke down.[6D FF FF 00 94 00][1D FF][00 FF]
-^L1291^@By using the Insignificant Present, you[01 FF]  had a very fruitful experience[02 FF]@that cannot be understood by someone[01 FF]  who does not use something[01 FF]  insignificant.[1D FF][00 FF]
+^L1291^@By using the Insignificant [01 FF]  Present, you had a very fruitful[01 FF]  experience, that cannot be[01 FF]  understood by someone who[01 FF]  does not use something[01 FF]  insignificant.[1D FF][00 FF]
 ^L1292^@[9F FF] used the Monkey Love.[02 FF]@All of a sudden, a monkey came along,[02 FF]  and pinned the enemy down with its[01 FF]  tiny monkey body.[02 FF][00 FF]
 ^L1293^@It smelled so unbelievably bad that[01 FF]  you could not eat it.[1D FF][00 FF]
 ^L1294^@You would probably regret it if you ate[01 FF]  this now...[02 FF][00 FF]
@@ -1298,8 +1298,8 @@
 ^L1301^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please give us strength![22 FF][01 FF]@Anyone who can hear our plea...[01 FF]  Help us...>[61 FF 01 00][1B FF 96 00][00 FF]
 ^L1302^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please give us strength![22 FF][01 FF]@Speed this prayer[01 FF]  to all the people of the earth.>[61 FF 01 00][1B FF 96 00][00 FF]
 ^L1303^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please give us strength![22 FF][01 FF]@Anyone who can hear our plea...[01 FF]  Help us...>[61 FF 01 00][1B FF 96 00][00 FF]
-^L1304^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please grant us power![22 FF][01 FF]@Anyone who can hear our plea...[01 FF]  Help us...>[61 FF 01 00][1B FF 96 00][00 FF]
-^L1305^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please grant us strength![22 FF][01 FF]@Anyone who can hear our plea...[01 FF]  We ask for this...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1304^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please grant us power![22 FF][01 FF]@Anyone who can hear our plea..[01 FF]  Help us...>[61 FF 01 00][1B FF 96 00][00 FF]
+^L1305^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please grant us strength![22 FF][01 FF]@Anyone who can hear our plea..[01 FF]  We ask for this...>[61 FF 01 00][1B FF 96 00][00 FF]
 ^L1306^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<...Please grant us power![22 FF][01 FF]@Speed this prayer[01 FF]  to all the people of the earth...>[61 FF 01 00][1B FF 96 00][00 FF]
 ^L1307^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<I can't think of[01 FF]  anyone else...[22 FF][01 FF]@...Someone, anyone...[01 FF]  ...please help us.>[61 FF 01 00][1B FF 96 00][C6 FF][00 FF]
 ^L1308^[D4 FF 1C 00]@[9F FF] prayed[01 FF]  from the bottom of her heart![02 FF][1B FF 3C 00][61 FF 02 00]@<Someone... can you hear me?![22 FF][01 FF]@Please, give us strength!>[61 FF 01 00][1B FF 96 00][00 FF]
@@ -1759,7 +1759,7 @@
 ^L1765^@(Recently, a strange fellow has[01 FF]  been wandering around this[01 FF]  hospital saying[02 FF]@he can cure you of the[01 FF]  afflictions that we can't treat.[02 FF]@Please be informed that he has[01 FF]  no connection to the hospital.[02 FF]@Fourside Hospital Management)[1D FF][00 FF]
 ^L1766^@This is not a hotel.[01 FF]  Staying for the night is not[01 FF]  permitted.[1D FF][00 FF]
 ^L1767^[1C FF 4B 00 _L3450_][1C FF 91 00 _L3451_]@No problem here.[1D FF][00 FF]
-^L1768^@(I can sense...[01 FF]  that... you have a controller...[01 FF]  in your... hands...)[1D FF][00 FF]
+^L1768^@(I can sense...[01 FF]  that... you have a Game Boy...[01 FF]  in your... hands...)[1D FF][00 FF]
 ^L1769^@Welcome to Moonside![01 FF]  Why did you come to Moonside?[02 FF]@How long are you staying in[01 FF]  Moonside?[1D FF][00 FF]
 ^L1770^@(Have a fantastic vacation![02 FF]@At least until you run out of[01 FF]  money.[01 FF]      Hotel Du Summers)[1D FF][00 FF]
 ^L1771^@Scaraba Cultural Museum[02 FF]@(Hieroglyph exhibition currently[01 FF]  under re-construction.)[1D FF][00 FF]
@@ -2093,7 +2093,7 @@
 ^L2091^@It didn't hit anyone![02 FF][00 FF]
 ^L2092^@[AD FF] does not[01 FF]  have any PP![02 FF][00 FF]
 ^L2093^[FC FF 2A 00][1B FF 50 00]@So, isn't this terrifying?[1B FF 1E 00][01 FF]  I'm terrified, too.[22 FF][01 FF]@Giygas cannot think[01 FF]  rationally any more,[22 FF][01 FF]@and he isn't even aware[01 FF]  of what he is doing now.[22 FF][01 FF]@His own mind was destroyed[01 FF]  by his incredible power.[22 FF][01 FF]@What an all-mighty idiot![1B FF 1E 00][22 FF][01 FF]@Yep, that's what he is![22 FF][01 FF]@Heh heh heh heh...[1B FF 1E 00][01 FF]  and you... you will be...[1B FF 1E 00][01 FF]  just another meal to him![1B FF 96 00][C7 FF][FC FF 2B 00][69 FF][00 FF]
-^L2094^[C7 FF][FC FF 2A 00][69 FF][1B FF 3C 00]@Heh heh heh heh.[1B FF 1E 00][01 FF]  You must really be[01 FF]  at the end of your rope.[22 FF][01 FF]@In this bizarre dimension,[01 FF]  you four are the only force[01 FF]  fighting for justice...[22 FF][01 FF]@And here you stand,[22 FF][01 FF]@waiting to be burned up with all[01 FF]  the rest of the garbage of[01 FF]  this universe...[22 FF][01 FF]@Haaaaah![1B FF 1E 00][01 FF]  That's so sad. I can't help[01 FF]  but shed a tear.[22 FF][01 FF]@You know, my heart is beating[01 FF]  incredibly fast,[1B FF 1E 00][01 FF][22 FF][01 FF]@...I must be experiencing[01 FF]  absolute terror![22 FF][01 FF]@Do you want to scream for[01 FF]  help here in the dark?![22 FF][01 FF]@Ha ha ha ha ha![22 FF][01 FF]@Why not call your mommy,[01 FF]  [0D FF]![22 FF][01 FF]@Say, <Mommy!  Daddy![01 FF]  I'm so frightened!  [1B FF 1E 00]I think[01 FF]  I'm gonna wet my pants!>[22 FF][01 FF]@I know you have telepathy, or[01 FF]  something, so just try and call[01 FF]  for help.[22 FF][01 FF]@You pathetically weak[01 FF]  heroes of so-called justice![22 FF][01 FF]@No one will help you now![22 FF][01 FF]@Ha ha ha haah...[22 FF][01 FF]@Don't worry, your pitiful[01 FF]  suffering will be over soon![1B FF 96 00][C7 FF][FC FF 2B 00][00 FF]
+^L2094^[C7 FF][FC FF 2A 00][69 FF][1B FF 3C 00]@Heh heh heh heh.[1B FF 1E 00][01 FF]  You must really be[01 FF]  at the end of your rope.[22 FF][01 FF]@In this bizarre dimension,[01 FF]  you four are the only force[01 FF]  fighting for justice...[22 FF][01 FF]@And here you stand,[22 FF][01 FF]@waiting to be burned up with all[01 FF]  the rest of the garbage of[01 FF]  this universe...[22 FF][01 FF]@Haaaaah![1B FF 1E 00][01 FF]  That's so sad. I can't help[01 FF]  but shed a tear.[22 FF][01 FF]@You know, my heart is beating[01 FF]  incredibly fast,[1B FF 1E 00][01 FF][22 FF][01 FF]@...I must be experiencing[01 FF]  absolute terror![22 FF][01 FF]@Do you want to scream for[01 FF]  help here in the dark?![22 FF][01 FF]@Ha ha ha ha ha![22 FF][01 FF]@Why not call your mommy,[01 FF]  [0D FF]![22 FF][01 FF]@Say, <Mommy!  Daddy![01 FF]  I'm so frightened!  [1B FF 1E 00]I think[01 FF]  I'm gonna wet my pants!>[22 FF][01 FF]@I know you have telepathy, or[01 FF]  something, so just try and call[01 FF]  for help,[22 FF][01 FF]@you pathetically weak[01 FF]  heroes of so-called justice![22 FF][01 FF]@No one will help you now![22 FF][01 FF]@Ha ha ha haah...[22 FF][01 FF]@Don't worry, your pitiful[01 FF]  suffering will be over soon![1B FF 96 00][C7 FF][FC FF 2B 00][00 FF]
 ^L2095^[C7 FF][FC FF 2A 00][1B FF 3C 00]@[0D FF]![1B FF 1E 00] Now, I...[01 FF]  well... [1B FF 14 00]It's going to seem like[01 FF]  I'm running away.[22 FF][01 FF]@But perhaps I'll just sneak away[01 FF]  to another era to think about[01 FF]  my next plan.[22 FF][01 FF]@It's a good bet that we will see[01 FF]  each other again...[22 FF][1B FF 1E 00][01 FF]@All right!  I'll be seeing you![22 FF][01 FF]@So now which one of us do you[01 FF]  think is the cool guy?![1B FF 96 00][D4 FF 41 00][C7 FF][FC FF 2B 00][00 FF]
 ^L2096^[1B FF 3C 00]@[0E FF]'s call[1B FF 1E 00][01 FF]  was absorbed[1B FF 1E 00][01 FF]  by the darkness.[1B FF 96 00][C6 FF][00 FF]
 ^L2097^[1B FF 3C 00]@[0E FF] and her friends'[01 FF]  calls touched the heart of[BC FF 01 00]^L3608^[67 FF][82 FF _L3606_][87 FF][F6 FF 63 00][DD FF 3C 00 00 00 00 00 00 00][82 FF _L3607_][1F FF 00 00]^L3612^[C0 FF][80 FF _L3608_]
@@ -2103,7 +2103,7 @@
 ^L2101^@Giygas' defense became[01 FF]  unstable.[D4 FF 5A 00][1B FF 46 00][D4 FF 5A 00][1B FF 41 00][D4 FF 5A 00][1B FF 4A 00][D4 FF 5A 00][00 FF]
 ^L2102^@[AD FF] joined the battle.[02 FF][00 FF]
 ^L2103^@[AD FF] started[01 FF]  to grow.[02 FF][00 FF]
-^L2104^@But no one came.[02 FF][00 FF]
+^L2104^@But nobody came.[02 FF][00 FF]
 ^L2105^@But, the seed didn't sprout.[02 FF][00 FF]
 ^L2106^[C4 FF 00 62]@Time started again.[02 FF][00 FF]
 ^L2107^@Here is a chance[01 FF]  for a surprise opening attack![02 FF][00 FF]
@@ -2133,7 +2133,7 @@
 ^L2120^[86 FF _L3626_]Luck went up by [AC FF]![22 FF][00 FF]
 ^L2121^[86 FF _L3627_]Maximum HP went up by [AC FF]![22 FF][00 FF]
 ^L2122^[86 FF _L3628_]Maximum PP went up by [AC FF]![22 FF][00 FF]
-^L2123^[D4 FF 67 00][C1 FF][87 FF]@[AD FF] realized the power of[01 FF]  [2D FF].[22 FF][00 FF]
+^L2123^[D4 FF 67 00][C1 FF][87 FF]@[AD FF] learned the power of[01 FF]  [2D FF].[22 FF][00 FF]
 ^L2124^@The enemy left a present![22 FF][01 FF][D4 FF 10 00][1B FF 01 00]@Inside the present,[01 FF][C1 FF][87 FF]  there was a [90 FF 00][1A FF 02 00]![22 FF][01 FF][91 FF FF][82 FF _L3632_][88 FF][86 FF _L3633_][81 FF _L3634_][89 FF][87 FF]@[90 FF 00][1A FF 01 00] took it.[93 FF 00 00][D4 FF 74 00][22 FF][00 FF]
 ^L2125^@[9F FF] saw[01 FF]  a present behind the enemy.[02 FF][D4 FF 10 00]@Inside the present,[01 FF][C1 FF][87 FF]  there was a [90 FF 00][1A FF 02 00].[02 FF]@[90 FF 03][1A FF 01 00] takes it.[93 FF 03 00][D4 FF 74 00][02 FF][00 FF]
 ^L2126^@Escargo Express![02 FF]@<We treat your package like it[01 FF]  was our only child>...[02 FF]@I'm here with your Pencil[01 FF]  Eraser.[02 FF][91 FF FF][82 FF _L4022_][93 FF 00 AA][D4 FF 76 00]@Here you are.[02 FF]@Thank you very much![1D FF][09 FF B6 02][09 FF B4 02][C6 FF][86 FF _L4023_][86 FF _L4024_][00 FF]
@@ -2152,7 +2152,7 @@
 ^L2139^[00 FF]
 ^L2140^[86 FF _L4002_][09 FF B5 00][09 FF 85 02][86 FF _L4937_]@Hello![01 FF]  This is Escargo Express.[01 FF]  (hee, ha, he, ha)[02 FF]@I just (hee, ha, he, ha)[01 FF]  couldn't find your location...[02 FF]@...You must be somewhere[01 FF]  really strange.[01 FF]  (hee, ha, he, ha)[02 FF]@I've decided, honestly, that...[01 FF]  I should give up.[02 FF]@I'm outta here.[01 FF]  (hee, ha, he, ha)[02 FF]@Sometimes this happens,[01 FF]  you know?[02 FF][86 FF _L4938_][86 FF _L4024_][00 FF]
 ^L2141^[09 FF B4 00][09 FF B3 00][86 FF _L4937_]@Hello![01 FF]  This is Mach Pizza.[01 FF]  (hee, ha, he, ha)[02 FF]@...You must be somewhere[01 FF]  really strange,[01 FF]  (hee, ha, he, ha)...[02 FF]@I couldn't deliver the pizza.[01 FF]  The pizza got really cold and[01 FF] hard, and my legs are tired...[02 FF]@I am going to give up and[01 FF]  go back.[02 FF]@...I hope I can find the way[01 FF]  home...[01 FF]  (hee, ha, he, ha)[02 FF][86 FF _L4938_][86 FF _L4024_][00 FF]
-^L2142^
+^L2142^[AB FF 00 00][88 FF][86 FF _L3633_][81 FF _L5454_][89 FF][87 FF]@[90 FF 00][1A FF 01 00]The[01 FF][87 FF][90 FF 00][1A FF 02 00][01 FF][00 FF]
 ^L2143^
 ^L2144^
 ^L2145^
@@ -2330,7 +2330,7 @@
 ^L2370^@It's you again...[02 FF]@Do you really think you[01 FF]  can beat Franky's <Frankystein[01 FF]  Mark II>?[02 FF][03 FF 00 00][04 FF _L2375_][05 FF _L2376_]^L2376^@Did you come here feeling[01 FF]  not-so-fit?[02 FF]@Don't even think of looking[01 FF]  beyond me,[1B FF 0F 00] chump.[02 FF]^L2378^@Go![1B FF 14 00]  <Frankystein Mark II>![01 FF][86 FF _L2372_][81 FF _L2161_][80 FF _L2377_]^L2375^@Aren't you overconfident?[02 FF][80 FF _L2378_]
 ^L2371^[C6 FF][A7 FF C0 01][00 FF]
 ^L2372^[C6 FF][A7 FF C1 01][00 FF]
-^L2373^
+^L2373^[00 FF]
 ^L2380^@Only [0D FF] can absorb[01 FF]  the power of this place.[1D FF][00 FF]
 ^L2381^[C6 FF][A7 FF C2 01][00 FF]
 ^L2382^[00 FF]
@@ -3284,7 +3284,7 @@
 ^L3545^[CF FF 07 00][08 FF 88 02][08 FF F2 02][00 FF]
 ^L3546^[CD FF 06 00 03 00 78 00][00 FF]
 ^L3547^[86 FF _L3549_][00 FF]
-^L3548^
+^L3548^@If you are not feeling well,[01 FF]  you should not ride a bicycle.[1D FF][00 FF]
 ^L3549^
 ^L3550^
 ^L3551^
@@ -3296,7 +3296,7 @@
 ^L3557^
 ^L3558^[09 FF 0B 03][86 FF _L3541_][81 FF _L2197_][09 FF F2 02][00 FF]
 ^L3559^
-^L3561^
+^L3561^@(The door is locked.)[00 FF]
 ^L3562^@It wasn't the right key.[1D FF][00 FF]
 ^L3563^
 ^L3564^[86 FF _L3287_][9A FF D6 00][00 FF]
@@ -3332,7 +3332,7 @@
 ^L3594^
 ^L3595^
 ^L3596^
-^L3597^[61 FF 02 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF], [1B FF 01 00][0D FF][1B FF 05 00].[1B FF 0F 00]...[61 FF 01 00][02 FF][00 FF]
+^L3597^
 ^L3598^
 ^L3599^
 ^L3600^
@@ -3342,7 +3342,7 @@
 ^L3604^
 ^L3605^
 ^L3606^.[22 FF][1B FF 78 00][68 FF]@[BC FF 01 00]^L3611^[67 FF][82 FF _L3609_][87 FF][F6 FF 63 00][DD FF 3C 00 00 00 00 00 00 00][82 FF _L3610_][1F FF 00 00]^L3613^[C0 FF][80 FF _L3611_]
-^L3607^[80 FF _L3612_][00 FF]
+^L3607^[80 FF _L3612_]
 ^L3609^[1B FF 1E 00] prayed for the kids,[01 FF]  having never even met them[01 FF]  before.[1B FF 96 00][C6 FF][00 FF]
 ^L3610^[80 FF _L3613_]
 ^L3614^[1B FF 1E 00] kept praying.[1B FF 96 00][C6 FF][00 FF]
@@ -3351,12 +3351,12 @@
 ^L3619^[80 FF _L3621_]
 ^L3622^[EE FF 01 00 06 00 02 00][80 FF _L3624_]
 ^L3623^[96 FF 02][81 FF _L3643_][8D FF 02 00][92 FF 00 01 02][81 FF _L3643_]each^L3643^[00 FF]
-^L3626^
-^L3627^
-^L3628^
-^L3629^
-^L3630^
-^L3631^
+^L3626^[00 FF]
+^L3627^[00 FF]
+^L3628^[00 FF]
+^L3629^[00 FF]
+^L3630^[00 FF]
+^L3631^[00 FF]
 ^L3632^@But, [C2 FF][1A FF 05 00] cannot carry anymore stuff.[22 FF][01 FF]^L3639^@Do you want to throw[01 FF]  something away?[03 FF 18 00][04 FF _L3635_][05 FF _L3636_]^L3636^[C1 FF][87 FF]@Then, will you leave[01 FF]  the [90 FF 00][1A FF 02 00] behind?[03 FF 18 00][04 FF _L3637_][05 FF _L3638_]^L3638^[22 FF][01 FF][80 FF _L3639_]^L3637^[C2 FF][1A FF 05 00][01 FF][90 FF 00][1A FF 02 00][22 FF][00 FF]
 ^L3634^[8D FF 01 00][87 FF]@[90 FF 00][1A FF 01 00] added[89 FF] the [90 FF 00][1A FF 02 00] to[01 FF]  [87 FF][90 FF 00][1A FF 01 00]'s stuff.[93 FF 00 00][D4 FF 74 00][22 FF][00 FF]
 ^L3635^@What do you want to throw away?[22 FF][86 FF _L3640_][01 FF][82 FF _L3636_][88 FF][AB FF 00 00][B7 FF 00][82 FF _L3641_][89 FF][AB FF 00 00][90 FF 00]@So you want to throw away the [1A FF 02 00]?[03 FF 09 00][04 FF _L3642_][05 FF _L3636_][80 FF _L3636_]^L3642^[89 FF][B9 FF 00 00 00 00][87 FF]@[90 FF 00][1A FF 01 00] threw the [87 FF][90 FF 00][1A FF 02 00]away[02 FF]@and took the [87 FF][C1 FF][87 FF][90 FF 00][1A FF 02 00].[93 FF 00 00][D4 FF 74 00][1B FF 01 00][02 FF][00 FF]
@@ -5046,7 +5046,7 @@
 ^L5497^[8D FF 01 00]@But, [86 FF _itemheshe_] has got too much[01 FF]  stuff already.[1D FF][00 FF]^itemheshe^[9A FF 02 00][81 FF _she_]he[00 FF]^she^she[00 FF]
 ^L5498^
 ^L5499^[1C FF E2 00 _L5508_][1C FF E3 00 _L5509_][1C FF E4 00 _L5510_][1C FF E5 00 _L5511_][00 FF]
-^L5500^@[90 FF 00][1A FF 01 00] opened the present.[01 FF][00 FF]
+^L5500^@[90 FF 00][1A FF 01 00] opened the present.[00 FF]
 ^L5501^@[90 FF 00][1A FF 01 00] dug around in the[01 FF]  trash can.[00 FF]
 ^L5502^
 ^L5503^
