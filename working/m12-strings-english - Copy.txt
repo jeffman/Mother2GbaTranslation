@@ -2156,9 +2156,9 @@
 ^L2143^
 ^L2144^
 ^L2145^
-^L2146^
+^L2146^[88 FF][AB FF 00 00][87 FF][9A FF C4 00][81 FF _L5456_][89 FF][AB FF 00 00][B7 FF 00][82 FF _L5457_][89 FF][B9 FF 00 00 00 00][88 FF][86 FF _L3633_][81 FF _L5458_][89 FF][87 FF]@The [90 FF 00][1A FF 01 00][01 FF] was thrown away.[87 FF][1D FF][00 FF]
 ^L2147^
-^L2148^
+^L2148^[AB FF 00 00]@[90 FF 00][1A FF 02 00] was horribly[01 FF]  poisoned and collapsed.[02 FF][00 FF]
 ^L2149^@Alert![02 FF]@[9F FF]'s condition is[01 FF]  critical.[02 FF]@[9F FF] will collapse if[01 FF][1B FF 14 00]  condition isn't treated. [01 FF]@Be careful![1D FF][00 FF]
 ^L2150^
 ^L2151^[1C FF F2 02 _L5460_]@You cannot teleport here.[1D FF][00 FF]
@@ -2449,7 +2449,7 @@
 ^L2551^@Don't you think I look stylish[01 FF]  with the mushroom?[1D FF][00 FF]
 ^L2554^[BC FF 64 00][86 FF _L5051_][00 FF]
 ^L2555^[BC FF 1E 00][86 FF _L5049_][00 FF]
-^L2556^
+^L2556^@To get to Threed,[1D FF][01 FF]  the bus is most convenient.[1D FF][00 FF]
 ^L2557^@To take the bus, or not to take[01 FF]  the bus... hmm.[02 FF]@I get sick pretty easily...[1D FF][00 FF]
 ^L2558^  chubs.[00 FF]
 ^L2559^  girlie girl.[00 FF]
@@ -2575,7 +2575,7 @@
 ^L2703^
 ^L2704^
 ^L2705^
-^L2706^
+^L2706^@(I have mo[1B FF 05 00]o[1B FF 05 00]o[1B FF 05 00]o[1B FF 05 00]re respect for[01 FF]  Mr. Carpainter than others.[02 FF]@Even if I become someone's[01 FF]  steak dinner,[1B FF 0F 00] I'll still respect[01 FF]  him.)[1D FF][00 FF]
 ^L2707^
 ^L2708^
 ^L2709^
@@ -2806,7 +2806,7 @@
 ^L2978^[1C FF 0B 02 _L2979_][80 FF _L2974_]
 ^L2979^
 ^L2980^
-^L2981^
+^L2981^[02 FF]@(What?[1B FF 14 00]  The white sesame[01 FF]  still... loves me?![01 FF]  Weep, weep...[1D FF][C6 FF][08 FF 87 00][1C FF C6 02 _L2197_][1B FF 3C 00][86 FF _L1671_][00 FF]
 ^L2982^
 ^L2983^
 ^L2984^[08 FF FE 00][08 FF 90 02][86 FF _L4325_][09 FF FE 00][09 FF 90 02][00 FF]
@@ -2962,9 +2962,9 @@
 ^L3187^
 ^L3188^
 ^L3189^
-^L3190^
+^L3190^@Don't you feel better since you[01 FF]  had the chance to talk with[01 FF]  your friend?[02 FF]@I helped you find him.[1D FF][00 FF]
 ^L3191^
-^L3194^
+^L3194^@Give me somethin' that[01 FF]  makes me really happy![1B FF 14 00][01 FF]@And do it in a nice way![1D FF][00 FF]
 ^L3197^[C6 FF][A1 FF BC 03 AB 01][9E FF][A1 FF BC 03 9B 01][00 FF]
 ^L3198^
 ^L3199^
@@ -3097,20 +3097,18 @@
 ^L3358^
 ^L3359^
 ^L3360^
-^L3361^
-^L3362^
-^L3363^
+^L3361^[FC FF 05 00]@.....![02 FF]@Book![02 FF]@Can fix shyness.[02 FF]@Thanks.[02 FF]@Relax.[02 FF]@I'll read to everyone.[02 FF]@Oh![02 FF]@Just holding this book in my[01 FF]  hands makes me feel like[02 FF]@I'm overcoming my shyness[01 FF]  already![02 FF]@I'll really take time to read it to[01 FF]  everyone![D4 FF 79 00][02 FF][FC FF 43 00][C6 FF][A0 FF D0 07 13 00 01 00][9E FF]@(The leader of the Tenda tribe[01 FF]  read <Overcoming Shyness> to[01 FF]  everyone.)[02 FF][C6 FF][86 FF _L2185_][14 FF 5F 00][CE FF E4 04 07 00][EA FF FF 00][1B FF 01 00][C5 FF]@Chat, Chat whisper, whisper[02 FF]@I'd like to give you some[01 FF]  <Tendakraut> in return.[02 FF]@<Tendakraut> is a type of dish[01 FF]  that all Tenda like.[02 FF]@It stinks, but it tastes[01 FF]  wonderful.[02 FF][1B FF 01 00][01 FF][6D FF FF 00 D1 00][93 FF 00 92][8A FF][D4 FF 74 00][1B FF 3C 00][C7 FF]@[0D FF] lends the leader[01 FF]  of the Tenda tribe the book[01 FF]  <Overcoming Shyness.>[02 FF][1B FF 01 00][01 FF][86 FF _L2238_][1D FF][C6 FF][08 FF 9B 00][1B FF 3C 00][08 FF FD 01][86 FF _L1689_][C3 FF FF 02 E4 04][D8 FF FF 00 00 00][86 FF _L3362_][EB FF FF 00][FC FF 06 00][00 FF]
+^L3362^@Hey, you![1B FF 14 00]  I have a happy little[01 FF]  question for you...[02 FF]@.....[02 FF]@[2E FF]...[02 FF]@[2E FF],[02 FF]@are you sure this is the correct[01 FF]  player's name?[02 FF]@If it's not right,[1B FF 0F 00] you can change[01 FF]  it...[02 FF][C6 FF]^L4222^[6B FF 02 00][1B FF 1E 00][C4 FF 00 03][FC FF 04 00][6B FF 02 00][1B FF 1E 00][C5 FF]@[2E FF],[02 FF]@Are you sure it's what you[01 FF]  want?[02 FF]@Are you happy with the name?[03 FF 00 00][04 FF _L4220_][05 FF _L4221_]^L4221^@Here's your chance to change[01 FF]  it...[02 FF][C6 FF][80 FF _L4222_]^L4220^@Are you absolutely certain?[03 FF 00 00][04 FF _L4223_][05 FF _L4221_][80 FF _L4221_]^L4223^@Yeah, I thought that you had[01 FF]  made up your mind...[1D FF][C6 FF][00 FF]
+^L3363^@Hi!  (smile)[1D FF][00 FF]
 ^L3365^[86 FF _L3366_][00 FF]
-^L3366^
-^L3367^
-^L3368^
-^L3369^
-^L3370^
-^L3371^
+^L3366^[1C FF AE 01 _L5303_]@I like the [90 FF DC][1A FF 02 00].[02 FF]@Give me[01 FF]  the [90 FF DC][1A FF 02 00],[02 FF]@I give you something.[02 FF]@Look at list.[02 FF][1C FF A8 01 _L5304_][76 FF 00 00][80 FF _L5305_]
+^L3367^@Underground, very large area.[02 FF]@Exist.[02 FF]@Dinosaurs.[02 FF]@Big.[02 FF]@Scary.[02 FF]@<Lost Underworld.>[02 FF]@Stone.[02 FF]@There is.[02 FF]@Talks lots.[1D FF][00 FF]
+^L3368^@I'm a woman.[02 FF]@Did you think I was a man?[1D FF][00 FF]
+^L3369^@Would you like some tea?[03 FF 00 00][04 FF _L3370_][05 FF _L3371_]^L3371^@OK.[1D FF][00 FF]^L3370^@Drink.[1D FF][C6 FF][1C FF DC 00 _L2197_][86 FF _L2911_][C4 FF 00 5C][FC FF 02 00][C5 FF][00 FF]
 ^L3372^
 ^L3373^
 ^L3374^[86 FF _L3375_][00 FF]
-^L3375^
+^L3375^@Hi!  How are you today?[01 FF]  Oh, you're not feeling well?[01 FF]  Be healthy![1D FF][00 FF]
 ^L3376^@I don't need words anymore.[02 FF]@I'll turn back into a simple rock.[1D FF][08 FF A7 01][00 FF]
 ^L3378^[C6 FF][A7 FF D6 01][00 FF]
 ^L3379^[C6 FF][A7 FF D7 01][00 FF]
@@ -3172,8 +3170,8 @@
 ^L3455^
 ^L3457^
 ^L3458^
-^L3459^
-^L3460^
+^L3459^@(There are books other than[01 FF]  <Overcoming shyness.>)[1D FF][00 FF]
+^L3460^@(You found the book[01 FF]  <Overcoming Shyness>!)[02 FF][91 FF FF][82 FF _L3461_][93 FF 00 D1][8A FF][86 FF _L2238_][1D FF][08 FF 59 00][09 FF FE 02][09 FF 33 00][00 FF]
 ^L3461^
 ^L3462^[D4 FF 18 00]@[9F FF] attacks![D4 FF 1A 00][02 FF][00 FF]
 ^L3463^[FC FF 08 00][82 FF _L3504_][D4 FF 37 00]@[9F FF][01 FF][C1 FF][87 FF]  tried [2D FF]![02 FF][80 FF _L3505_]
@@ -3249,7 +3247,7 @@
 ^L3537^
 ^L3538^
 ^L3539^
-^L3540^
+^L3540^@Well, I want to thank you for all[01 FF]  the times[02 FF]@that you used the hint shop.[01 FF]  It's been a while since I first[01 FF]  saw you...[02 FF]@This is my final day in business.[02 FF]@[1B FF 0A 00]..[1B FF 0A 00]..[1B FF 0A 00]..[1B FF 0A 00]..[1B FF 1E 00]..[02 FF]@Well, so long kid,[01 FF]  No, no... Master [0D FF].[1D FF][00 FF]
 ^L3541^[83 FF B4 00][81 FF _L5528_][83 FF B5 00][81 FF _L5528_][83 FF 85 02][81 FF _L5528_][83 FF BE 01][81 FF _L5528_][83 FF 86 02][81 FF _L5528_][83 FF 87 02][81 FF _L5528_][83 FF 88 02][81 FF _L5528_][83 FF A3 02][81 FF _L5528_][83 FF B6 02][81 FF _L5528_][83 FF B7 02][81 FF _L5528_]^L5528^[00 FF]
 ^L3542^
 ^L3543^[CF FF 05 00][08 FF 86 02][08 FF F2 02][00 FF]
@@ -3842,10 +3840,6 @@
 ^L4216^
 ^L4217^
 ^L4219^@A submarine?[02 FF]@I believe...[1B FF 0F 00] that I have one in my[01 FF]  old vehicle collection.[02 FF]@Please enter...[1D FF][C6 FF][1B FF 01 00]^L4218^[14 FF 55 00][86 FF _L3310_][00 FF]
-^L4220^
-^L4221^
-^L4222^
-^L4223^
 ^L4224^
 ^L4225^
 ^L4226^
@@ -4809,16 +4803,16 @@
 ^L5300^[08 FF 0E 01][08 FF 90 02][86 FF _L4326_][09 FF 0E 01][09 FF 90 02][00 FF]
 ^L5301^[08 FF F6 00][08 FF 90 02][86 FF _L4326_][09 FF F6 00][09 FF 90 02][00 FF]
 ^L5302^[08 FF DD 02][08 FF 90 02][08 FF 93 02][86 FF _L4326_][09 FF DD 02][09 FF 90 02][09 FF 93 02][00 FF]
-^L5303^
+^L5303^@More [90 FF DC][1A FF 02 00]?[02 FF]@I satisfied.[02 FF]@See ya![1D FF][00 FF]
 ^L5304^[1C FF A9 01 _L5306_][76 FF 01 00][80 FF _L5305_]
-^L5305^
+^L5305^@Will you give[01 FF]  [90 FF DC][1A FF 02 00]?[02 FF][86 FF _L2489_][82 FF _L5311_][88 FF][AB FF 00 00][87 FF][9A FF DC 00][82 FF _L5312_][89 FF][B9 FF 00 00 00 00][86 FF _L5313_][A8 FF 01]@Okay.[01 FF]  I give you[01 FF]  the [90 FF 00][1A FF 02 00].[02 FF]@You happy.[01 FF]  I happy.[22 FF][01 FF][91 FF FF][88 FF][93 FF 00 00][86 FF _L2233_][1D FF][00 FF]
 ^L5306^[1C FF AA 01 _L5307_][76 FF 02 00][80 FF _L5305_]
 ^L5307^[1C FF AB 01 _L5308_][76 FF 03 00][80 FF _L5305_]
 ^L5308^[1C FF AC 01 _L5309_][76 FF 04 00][80 FF _L5305_]
 ^L5309^[1C FF AD 01 _L5310_][76 FF 05 00][80 FF _L5305_]
 ^L5310^[76 FF 06 00][80 FF _L5305_]
-^L5311^
-^L5312^
+^L5311^@You not want? It Okay.[01 FF]  Come again.[1D FF][00 FF]
+^L5312^@That not the one.[1D FF][00 FF]
 ^L5313^[1C FF AD 01 _L5314_][1C FF AC 01 _L5315_][1C FF AB 01 _L5316_][1C FF AA 01 _L5317_][1C FF A9 01 _L5318_][1C FF A8 01 _L5319_][BC FF 58 00][08 FF A8 01][00 FF]
 ^L5314^[BC FF 09 00][08 FF AE 01][00 FF]
 ^L5315^[BC FF 4F 00][08 FF AD 01][00 FF]
@@ -4862,7 +4856,7 @@
 ^L5365^@You have a cold.[80 FF _L5370_]
 ^L5370^[89 FF][EE FF 00 00 01 00 01 00][89 FF][9B FF 00 00 00 00][9C FF][D4 FF 25 00][1B FF 32 00][02 FF]@You're all well now.[01 FF]  What a great doctor I am![80 FF _L5367_]
 ^L5371^[92 FF 01 01 02][81 FF _L5381_][92 FF 02 01 02][81 FF _L5381_][92 FF 03 01 02][81 FF _L5381_][92 FF 04 01 02]^L5381^[00 FF]
-^L5372^@I'm not busy right now.[02 FF]@Shall I explain about the hospital[01 FF]  system?[86 FF _L2485_][86 FF _L4957_][95 FF 02 _L5379_ _L5380_]
+^L5372^@I'm not busy right now.[02 FF]@Shall I explain about the hospital[01 FF]  system?[86 FF _L2485_][86 FF _L4957_][95 FF 02 _L5379_ _L5380_][00 FF]
 ^L5373^[1C FF 0A 00 _L5378_]@If you are the patient, come[01 FF]  into the back room.[1D FF][00 FF]
 ^L5374^[89 FF][87 FF]@We don't have a person like[01 FF]  that in our hospital.[1D FF][00 FF]
 ^L5375^
@@ -5044,7 +5038,7 @@
 ^L5577^@(Temporarily closed.[01 FF]  ...Gwaargh!)[1D FF][D4 FF 72 00][C6 FF][00 FF]
 ^L5578^[1B FF 14 00][CD FF 14 00 01 00 1E 00][09 FF 2B 02][00 FF]
 ^L5579^[86 FF _L5580_][08 FF 78 01][08 FF 4F 02][7E FF 05 00][00 FF]
-^L5580^
+^L5580^[C4 FF 00 73][1B FF 3C 00][1D FF][74 FF][D4 FF 0B 00]@Hello, this is Apple Kid.[02 FF]@I've come up with another[01 FF]  wacky invention that I think[01 FF]  has real potential.[02 FF]@Maybe you won't,[01 FF]  but anyway...[01 FF]@it's called the[01 FF]  <Gourmet Yogurt Machine.>[02 FF]@It makes many different flavors[01 FF]  of yogurt.[02 FF]@The only problem is, right now,[01 FF]@it can only make trout-flavored[01 FF]  yogurt...[02 FF]@So, I'm having the machine[01 FF]  delivered to you via[01 FF]  Escargo Express.[02 FF]@It's coming <Neglected Class.>[01 FF]@Hopefully, you'll get it soon.[01 FF]  Yeah,[1D FF] everything is...[01 FF]@(Kaboooom!)[01 FF]@Uh, I'vegotsomeproblems[01 FF]  heregottago, bye![D4 FF 0B 00][C6 FF][C5 FF][00 FF]
 ^L5581^[FC FF 06 00][86 FF _L701_][00 FF]
 ^L5582^[D4 FF 6F 00][1B FF 28 00][7B FF]@Oh, Hi ho.[1D FF][7C FF][00 FF]
 ^L5583^[1C FF 44 00 _L2197_][08 FF 94 02][80 FF _L5586_]
@@ -5054,7 +5048,7 @@
 ^L5591^
 ^L5592^
 ^L5593^
-^L5594^
+^L5594^@Well, now the key is broken,[01 FF]  and I can't go out.[02 FF]@Don't bother yourself,[01 FF]  I'll try to fix it on my own.[1B FF 14 00][1D FF][00 FF]
 ^L5595^@I've lost the key to my house,[01 FF]  so I can't get in.[02 FF]@No, no.  You don't need to look[01 FF]  for it.  I'll look for it myself.[1D FF][09 FF 6F 02][00 FF]
 ^L5596^
 ^L5597^
@@ -5216,17 +5210,17 @@
 ^L5754^
 ^L5755^
 ^L5756^[86 FF _L5757_][86 FF _L5758_]@<Yesterday the same as the[01 FF] day before yesterday[01 FF]@Today to be the same as[01 FF]  yesterday>[1D FF][00 FF]
-^L5757^
-^L5758^
+^L5757^@Ah, sir...[01 FF]  Are you already on your way[01 FF]  to the beach?[02 FF][00 FF]
+^L5758^@Here is this morning's headlines[01 FF]  from the Daily Summers...[02 FF][00 FF]
 ^L5759^[86 FF _L5766_]@<Kraken, the evil sea monster,[01 FF]  now gone forever!>[86 FF _L5767_][00 FF]
 ^L5760^[86 FF _L5766_]@<Activity at pyramid the first[01 FF]  in 300 years>[86 FF _L5767_][00 FF]
-^L5761^
-^L5762^
-^L5763^
+^L5761^[86 FF _L5766_]@<[90 FF A9][1A FF 02 00] stolen from the[01 FF]  pyramid in the desert!>[86 FF _L5767_][00 FF]
+^L5762^[86 FF _L5766_]@<Mysterious moving tower[01 FF]  sighted in desert!>[01 FF][86 FF _L5767_][00 FF]
+^L5763^[86 FF _L5766_]@<Miraculous foreign children[01 FF]  overwhelm Kraken!>[86 FF _L5767_][00 FF]
 ^L5764^[86 FF _L5766_]@<Children who dash then[01 FF]  disappear sighted, but only for[01 FF]  an instant>[86 FF _L5767_][00 FF]
-^L5765^
+^L5765^[86 FF _L5766_]@<Terrible sound recently heard[01 FF]@Possibly the sound of evil being [01 FF]  destroyed beyond our time and[01 FF]  space>[86 FF _L5767_][00 FF]
 ^L5766^@Good morning, good sir![02 FF]@Please allow me to read to you[01 FF]  from the local newspaper,[02 FF]@the Scaraba Papyrus...[00 FF]
-^L5767^
+^L5767^@...[1B FF 0A 00]Well ...there is some news[01 FF]  here about...[1D FF][00 FF]
 ^L5851^[99 FF 00 00 00 00][81 FF _L5853_][08 FF 08 00][9B FF 00 00 00 00][9C FF][D4 FF 76 00][1B FF 0A 00]^L5863^[86 FF _L5854_][1C FF 84 00 _L5840_][1C FF 4A 00 _L5839_][1C FF BD 00 _L5838_][1C FF BC 00 _L5837_][1C FF 99 00 _L5836_][1C FF 9B 00 _L5835_][1C FF 59 00 _L5834_][1C FF 7E 00 _L5833_][1C FF 6B 02 _L5832_][1C FF 6A 02 _L5831_][1C FF 7B 01 _L5830_][1C FF 20 01 _L5829_][1C FF DA 00 _L5828_][1C FF 12 01 _L5827_][1C FF 5C 01 _L5826_][1C FF 56 01 _L5825_][1C FF D9 00 _L5824_][1C FF 94 00 _L5823_][1C FF 10 00 _L5821_][1C FF 69 02 _L5820_][1C FF 51 01 _L5819_][1C FF CB 00 _L5818_][1C FF D7 00 _L5817_][1C FF B8 00 _L5816_][1C FF 76 02 _L5815_][1C FF 8F 00 _L5814_][1C FF 8E 00 _L5813_][1C FF 2A 02 _L5812_][1C FF E9 02 _L5811_][1C FF 4B 00 _L5855_][1C FF 91 00 _L5810_][1C FF 3C 00 _L5809_][1C FF 8B 00 _L5808_][1C FF 39 00 _L5807_][1C FF 93 00 _L5806_][1C FF 5A 00 _L5805_][1C FF 10 01 _L5804_][1C FF 1A 01 _L5803_][1C FF AE 00 _L5801_][1C FF 5F 02 _L5800_][1C FF D6 00 _L5799_][1C FF 89 00 _L5798_][1C FF 47 00 _L5797_][1C FF 71 01 _L5795_][1C FF 83 00 _L5794_][1C FF D5 00 _L5793_][1C FF 5B 02 _L5792_][1C FF 2C 01 _L5791_][1C FF 28 02 _L5790_][1C FF 31 00 _L5788_][1C FF B1 01 _L5787_][1C FF D3 00 _L5786_][1C FF 77 00 _L5785_][1C FF 55 00 _L5784_][1C FF 0C 00 _L5783_][1C FF 0D 00 _L5782_][1C FF 44 00 _L5781_][1C FF 56 00 _L5780_][1C FF E8 02 _L5779_][1C FF E7 02 _L5778_][1C FF 53 00 _L5777_][1C FF 2A 00 _L5776_][1C FF 52 00 _L5775_][1C FF D2 00 _L5774_][1C FF 69 00 _L5773_][1C FF B6 00 _L5772_][1C FF 6C 00 _L5771_][1C FF 50 00 _L5770_][1C FF 40 00 _L5769_]^L5768^@It seems that the citizens of[01 FF]  Onett have been harassed[02 FF]@by those dang street punks[01 FF]  called the Sharks.[02 FF]@I wonder if going and talking to[01 FF]  Frank,[02 FF]@the leader of the Sharks, would[01 FF]  do any good?[86 FF _L5856_][00 FF]
 ^L5769^@So, have you met B. H. Pirkle,[01 FF]  the mayor of Onett?[02 FF]@Mayor Pirkle's office is on the[01 FF]  second floor of Onett City Hall.[86 FF _L5856_][00 FF]
 ^L5770^@Go northwest.[02 FF]@A traveling entertainer is[01 FF]  having some trouble getting[01 FF]  into a locked shack...[86 FF _L5856_][00 FF]
@@ -5310,11 +5304,10 @@
 ^L5850^@Now wait a minute, youngster![02 FF][00 FF]
 ^L5853^@Oh, you don't have any money.[01 FF]  Don't you understand?[02 FF]@This is how I make my living... I[01 FF]  can't just give you a hint for[01 FF]  free,[8D FF 01 00][9A FF 02 00][81 FF _L5862_] kid.[1D FF][00 FF]
 ^L5854^[83 FF 8C 02][82 FF _L5861_][00 FF]
-^L5855^
+^L5855^@The monkey...  got charred.[02 FF]@Is he all right?[02 FF][86 FF _L5856_][00 FF]
 ^L5856^[02 FF]@That's it for today.[1D FF][00 FF]
 ^L5857^@What?  You DID talk to him?[01 FF]  So, why are you here?[02 FF]@Go back to the Peaceful Rest[01 FF]  Valley.[86 FF _L5856_][00 FF]
 ^L5859^[86 FF _L5850_]@I'd love to give you a hint,[01 FF]  but I can't think of even one.[02 FF]@I'm sorry.[BA FF 00 00 00 00][D4 FF 74 00][9C FF][1D FF][09 FF 08 00][00 FF]
 ^L5860^[1C FF BA 00 _L5847_][1C FF 3A 00 _L5846_][1C FF 5B 00 _L5845_][1C FF 8C 00 _L5844_]^L5843^@At the Dinosaur Museum in[01 FF]  Fourside...[02 FF]@A man called called Mr. Spoon[01 FF]  has a heavy mustache...[86 FF _L5856_][00 FF]
 ^L5861^[F6 FF 01 00][00 FF]
 ^L5862^ my dear.[1D FF][00 FF]
-^L9999^If you can read this text you are a NeRd!!!1 This is a fan translation of Mother 1+2. Do not sell it it is for free.
