@@ -26,4 +26,4 @@ Some screenshots:
 ![](./screenshots/itshappening2.png) ![](./screenshots/itshappening4.png) ![](./screenshots/itshappening5.png) ![](./screenshots/m2-status2.png)
 
 ### Dependencies
-If you want to just use the graphical tool to help with the translation, you just need .NET 4.5.1. If you want to actually compile the hack code and test it out, you will need [armips](https://github.com/Kingcom/armips). The game is Somewhat stable, however there are several areas that crash the game, such as in Fire Spring.
+If you want to just use the graphical tool to help with the translation, you just need .NET 4.5.1. If you want to actually compile the hack code and test it out, you will need [armips](https://github.com/Kingcom/armips). The game is Somewhat stable, however there are several areas that crash the game, such as in Fire Spring. You will need to supply your own Mother 1+2 ROM and EarthBound ROM. name Mother 1+2 m12fresh.gba and Earthbound eb.smc.
