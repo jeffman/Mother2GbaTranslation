@@ -15,6 +15,11 @@ Text conversion:
   PhoenixBound
   Pidgin
   Sterophonick
+  Karmageddon
 
 Special thanks:
   TragicManner
+  
+Graphical Conversion:
+  Sterophonick
+  Snakeshroom
