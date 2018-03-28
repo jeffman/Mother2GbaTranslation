@@ -2,7 +2,7 @@
 ScriptTool\ScriptToolGui\bin\debug\ScriptTool -compile -main -misc working eb.smc m12.gba
 copy /Y m12fresh.gba m12.gba
 armips.exe m2-hack.asm -sym armips-symbols.sym
-armips.exe m2-gfx.asm
+armips.exe m12-gfx.asm
 
 
 pushd working
