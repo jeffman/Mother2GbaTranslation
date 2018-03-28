@@ -1999,7 +1999,7 @@
 ^L1997^[C1 FF][87 FF]@[9F FF] equipped[01 FF]  the [90 FF 00][1A FF 02 00] instead.[D4 FF 73 00][02 FF][00 FF]
 ^L1998^
 ^L1999^
-^L2000^
+^L2000^@Black smoke poured from[01 FF]  [9F FF]'s body![01 FF]@[C2 FF][1A FF 05 00][22 FF] was[01 FF]  overcome by the smoke![22 FF][01 FF]@You can't see a thing![22 FF][22 FF][00 FF]
 ^L2001^@All of a sudden,[01 FF]  some guys rushed into the room![22 FF][C4 FF 00 95][1B FF 3C 00]@It was the Runaway Five![22 FF][C7 FF][1B FF 1E 00][69 FF][FC FF 2A 00]@Lucky quickly ducked behind[01 FF]  the robot![22 FF][D4 FF 0B 00][1B FF 3C 00][68 FF]@<I flipped the switch, and it[01 FF]  stopped.>[02 FF]@<Ha ha ha hah...[01 FF]  Geez, what a loser robot.[01 FF]  It was so easy to stop!>[1B FF 14 00][22 FF][68 FF]@<That was quick thinking!>[22 FF][1B FF 3C 00][C7 FF][69 FF][FC FF 2B 00][08 FF 3E 01][00 FF]
 ^L2002^@[90 FF 04][1A FF 01 00] used his new power,[22 FF][01 FF]  PSI Starstorm![22 FF][01 FF][00 FF]
 ^L2003^[D4 FF 2E 00]@[AC FF] HP of damage[01 FF]  to [AD FF]![02 FF][00 FF]
@@ -2422,7 +2422,7 @@
 ^L2516^@Thank you for your kindness![1D FF][00 FF]
 ^L2517^[FC FF 05 00][A1 FF E7 00 5C 00][A0 FF D0 07 5E 00 01 00][86 FF _L4040_][14 FF 09 00][A0 FF 99 00 5D 00 FF 00][A0 FF D0 07 5F 00 FF 00][86 FF _L4040_][A5 FF D0 07 06 00][A5 FF 99 00 06 00][84 FF F7 00 02 00 01 00][FC FF 06 00][00 FF]
 ^L2520^@You have the graceful[01 FF]  movement of a baseball player.[02 FF]@I'm on a baseball team,[1B FF 0F 00] so I can[01 FF]  recognize these things.[1D FF][00 FF]
-^L2521^
+^L2521^@This machine will eradicate all[01 FF]  pencil-shaped figures in just one[01 FF]  second.[02 FF]@It's incredibly powerful.[1B FF 14 00][01 FF]  Just don't use it near a shop[01 FF]  that sells pencils.[02 FF]@I'll call you if I invent another[01 FF]  brilliant item.[1D FF][00 FF]
 ^L2522^
 ^L2523^@Mr. Poochyfud,[1B FF 0F 00] the Manager, is[01 FF]  looking for you.[1B FF 14 00]  I wonder what[01 FF]  he wants?[1D FF][00 FF]
 ^L2524^@Ya got a once in a lifetime[01 FF]  opportunity.[1B FF 14 00]  How 'bout[01 FF]  watchin'[1B FF 0F 00] one more show?[1D FF][00 FF]
@@ -2746,7 +2746,7 @@
 ^L2908^
 ^L2911^[6B FF 02 00][1B FF 1E 00][74 FF][00 FF]
 ^L2912^
-^L2913^
+^L2913^@The chance of Giygas gaining[01 FF]  victory with his monstrous plan[01 FF]  is 99%.[02 FF]@However, your courage has[01 FF]  produced a 1% chance that[01 FF]  Giygas fails.[02 FF]@I must try to come to a deeper[01 FF]  understanding of this trait[01 FF]  called <courage.>[1D FF][00 FF]
 ^L2914^[1C FF A9 00 _L2915_][80 FF _L2916_]
 ^L2916^
 ^L2917^
@@ -3797,7 +3797,7 @@
 ^L4160^
 ^L4162^
 ^L4163^@All right![1B FF 14 00]  We made it![02 FF]@I'm sorry we couldn't do more[01 FF]  for you.[02 FF]@Remember,[1B FF 0F 00] though... we're[01 FF]  on your side.[02 FF]@When you're having a tough[01 FF]  time,[02 FF]@just think of our songs and[01 FF]  imagine the Runaway Five[01 FF]  singing somewhere far,[02 FF]@far away...[02 FF]@By the way,[1B FF 0F 00] why did you need[01 FF]  to come back here?[02 FF]@You must have forgotten some[01 FF]  very important item or gadget[01 FF]  here...[02 FF]@How's that for a guess?[1B FF 14 00]  Am I[01 FF]  close?[02 FF]@Well,[1B FF 0F 00] you don't have to tell[01 FF]  me...[02 FF]@See you later and good luck![02 FF][C6 FF][00 FF]
-^L4164^
+^L4164^@(Only [0F FF] is able to[01 FF]  fix the Sky Runner.)[01 FF][1D FF][00 FF]
 ^L4165^[86 FF _L2200_][08 FF 0B 00][FC FF 05 00][CB FF 03 00 06 00][A0 FF 02 00 D8 01 01 00][9E FF][AA FF 02 00][B1 FF 02 00 CC 00][1B FF 3C 00][B4 FF 02 00]@Ah![1B FF 14 00]  Here's the problem,[01 FF]  and it's not too tough to fix.[02 FF]@Hang on for a second or two...[02 FF][C6 FF][1B FF 1E 00][A9 FF 02 00][9E FF][C4 FF 00 B3][A1 FF E2 01 D9 01][9E FF][A4 FF E2 01][6B FF 02 00][1B FF 3C 00][C5 FF]@There![02 FF]@That should do it![02 FF]@Now, if we board,[1B FF 0F 00] the[01 FF]  Sky Runner will take us[02 FF]@back to Winters.[02 FF]@With Dr. Andonuts' help,[1B FF 0F 00][01 FF]  I can modify the machine to[01 FF]  fly to Summers.[02 FF]@...If Dad, I mean Dr. Andonuts,[02 FF]@is not available, I'll have to[01 FF]  figure it out by myself.[02 FF]@Anyway, let's go back to the[01 FF]  lab in Winters.[02 FF]@...That's it...[1B FF 14 00][01 FF]  Go, machine,[1B FF 0F 00] go![02 FF][C6 FF][A0 FF D0 07 DA 01 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][9E FF][CB FF FF 00 06 00][08 FF 8F 02][86 FF _L4156_][CA FF][EA FF FF 00][A3 FF E2 01][9E FF][1B FF 0F 00][85 FF E0 01 06 00][1B FF 5A 00][14 FF 42 00][A0 FF 5C 01 DB 01 FF 00][A0 FF 30 01 DC 01 FF 00][C9 FF 30 01][EB FF FF 00][1B FF 01 00][9E FF][CA FF][14 FF 43 00][A0 FF 5C 01 E0 01 FF 00][C9 FF 5C 01][9E FF][CA FF][14 FF 44 00][A0 FF 5C 01 E3 01 FF 00][A0 FF 30 01 E4 01 FF 00][9E FF][CA FF][14 FF 43 00][A0 FF 5C 01 E1 01 FF 00][C9 FF 5C 01][9E FF][CA FF][14 FF 45 00][A0 FF 5C 01 E5 01 FF 00][A0 FF 30 01 E6 01 FF 00][9E FF][CA FF][14 FF 43 00][A0 FF 5C 01 E2 01 FF 00][C9 FF 5C 01][9E FF][CA FF][14 FF 46 00][A0 FF 5C 01 E7 01 FF 00][C9 FF 5C 01][9E FF][CA FF][08 FF 6D 02][14 FF 47 00][84 FF 6F 02 E8 01 01 00][1B FF 64 00][84 FF 6D 02 E9 01 01 00][9E FF][09 FF 8F 02][86 FF _L4156_][A0 FF D0 07 EA 01 01 00][1B FF 01 00][C9 FF D0 07][CC FF FF 00 01 00][9E FF][CA FF][EA FF FF 00][A1 FF 69 02 EB 01][9E FF][A4 FF 67 02][A4 FF 69 02][A4 FF 6A 02][86 FF _L434_][A1 FF 6A 02 EC 01][9E FF][A4 FF 6A 02][86 FF _L435_][A1 FF 6A 02 ED 01][9E FF][A1 FF 69 02 EE 01][9E FF][7E FF 06 00][09 FF 6D 02][09 FF EC 02][09 FF 30 00][09 FF 05 03][08 FF 76 02][09 FF 0B 00][FC FF 06 00][EB FF FF 00][D9 FF 05 00][00 FF]
 ^L4166^[CC FF FF 00 01 00][D8 FF 04 00 02 00][A5 FF 03 00 06 00][F7 FF 04 00 64 00][61 FF 01 00][FC FF 25 00][C5 FF][00 FF]
 ^L4167^@Ah![1B FF 0F 00]  Prince [10 FF]...[02 FF]@I am a messenger from your[01 FF]  master...[02 FF]@He sent me to tell you that you[01 FF]  must stop your meditation[01 FF]  immediately.[02 FF]@Prince [10 FF]![02 FF]@You must come back with me[01 FF]  instead of staying in a place[01 FF]  such as this.[02 FF]@Your Master wishes it...[1B FF 0F 00][01 FF]  please rise, Prince...[02 FF]@Your highness, you must give[01 FF]  up this trial for now... believe[01 FF]  what I say,[02 FF]@it is the truth...[1D FF][C6 FF][00 FF]
@@ -3842,13 +3842,13 @@
 ^L4219^@A submarine?[02 FF]@I believe...[1B FF 0F 00] that I have one in my[01 FF]  old vehicle collection.[02 FF]@Please enter...[1D FF][C6 FF][1B FF 01 00]^L4218^[14 FF 55 00][86 FF _L3310_][00 FF]
 ^L4224^
 ^L4225^
-^L4226^
+^L4226^[86 FF _L3541_][81 FF _L2773_][C4 FF 00 73][1B FF 3C 00][1D FF][74 FF][D4 FF 0B 00]@Hello, this is Apple Kid.[1B FF 14 00][01 FF]@I just wanted to let you know[01 FF]  that I finished a pretty unique[01 FF]  invention.[02 FF]@I'm not sure if it will help you[01 FF]  or not...[02 FF]@It's called <Zombie Paper,>[01 FF]  and it can be used to trap[01 FF]  zombies.[02 FF]@It works kind of like fly paper...[02 FF]@All you need to do is place the[01 FF]  paper on the floor of a tent or[01 FF]  something...[02 FF]@You've seen at least one tent[01 FF]  around, right?....[02 FF]@and then the zombies get stuck[01 FF]  to the paper[01 FF]@when they move around inside[01 FF]  the tent.[02 FF]@You can catch a lot of zombies[01 FF]  this way...  In fact,[01 FF]@I bet you could get rid of all[01 FF]  the zombies[02 FF]@that are terrorizing the area[01 FF]  with this paper![02 FF]@Anyway, I just asked the[01 FF]  Mach Pizza delivery man[02 FF]@to deliver the[01 FF]  Zombie Paper to you,[01 FF]  [0D FF].[01 FF]@You should get it pretty soon.[02 FF]@I've never actually seen a[01 FF]  zombie, but if there really are[01 FF]  any,[02 FF]@Zombie Paper would be very[01 FF]  useful...[02 FF]@I'll be calling you if I come up[01 FF]  with anything else...[02 FF]@*Click!* Beeeeep![1D FF][D4 FF 0B 00][C6 FF][C5 FF][CF FF 08 00][08 FF A3 02][08 FF F2 02][00 FF]
 ^L4227^@You have too much stuff, so I[01 FF]  can't give this to you...[02 FF]@Why don't you get rid of[01 FF]  something?[03 FF 00 00][04 FF _L4228_][05 FF _L4229_]^L4229^@Look, this is really important![02 FF]@You've got to dump something!![03 FF 00 00][04 FF _L4228_][05 FF _L4230_][80 FF _L4230_]^L4228^[86 FF _L2489_][82 FF _L4229_][88 FF][AB FF 00 00][B7 FF 00][82 FF _L4231_][89 FF][B9 FF 00 00 00 00][80 FF _L4232_]
 ^L4230^@All righty, I'm just going to[01 FF]  hang out around here, then.[02 FF]@Ya gotta have some space for[01 FF]  this thing by the time I come[01 FF]  back, okay?[02 FF][C6 FF][86 FF _L4023_][09 FF F2 02][00 FF]
 ^L4231^@Hang on![1B FF 14 00]  That's way too cool[01 FF]  to just throw away![1B FF 14 00]  Keep it![02 FF][80 FF _L4228_]
 ^L4233^[A0 FF 00 00 A8 02 01 00]
 ^L4234^[1B FF 40 00][A0 FF D0 07 3B 01 01 00][9E FF][A5 FF 00 00 06 00][CC FF 01 00 01 00]@Wow, what a great photograph![02 FF]@It will always bring back the [01 FF]  fondest of memories...[02 FF][C6 FF][A9 FF 47 00][9E FF][A5 FF B4 02 06 00][9E FF][6B FF 03 00][1B FF 3C 00][FC FF 34 00][C5 FF][00 FF]
-^L4235^
+^L4235^[C4 FF 00 73][1B FF 3C 00][1D FF][74 FF][D4 FF 0B 00]@Hello!  This is Orange Kid.[02 FF]@Sorry I haven't called lately.[02 FF]@I'm still working on the way[01 FF]  to change boiled eggs into raw[01 FF]  eggs.[02 FF]@It's taking longer than I[01 FF]  thought...[02 FF]@I'm going to really work at it,[01 FF]  though... talk to me later.[02 FF]@*click*[1D FF][C6 FF][D4 FF 0B 00][C5 FF][00 FF]
 ^L4238^[B0 FF 8A 03 CC 00][1B FF 1E 00][B3 FF 8A 03]@Hey, you![1B FF 0F 00]  Over there![1B FF 0F 00][01 FF]  Get over here![02 FF][C6 FF][A1 FF 8A 03 24 02][9E FF][A4 FF 8A 03][8D FF 01 00][87 FF][DB FF 8A 03 01 00 00 00][CE FF 8A 03 00 00]@The admission fee is $5.00 per[01 FF]  person.[02 FF]@Is that okay with you?[9C FF][03 FF 00 00][04 FF _L4236_][05 FF _L4237_]^L4237^[BB FF 05][87 FF]@You can't afford to spend[01 FF]  $[B8 FF 00][1A FF 04 00]?,[02 FF]@or are you just not into[01 FF]  dinosaurs?[1B FF 14 00]  You must be nuts...[1D FF][C6 FF][A1 FF 8A 03 25 02][A0 FF D0 07 26 02 01 00][1B FF 01 00][C9 FF D0 07][A3 FF 8A 03][EB FF FF 00][9E FF][EA FF FF 00][CA FF][A4 FF 8A 03][8D FF 01 00][87 FF][DB FF 8A 03 01 00 00 00][CE FF 8A 03 00 00][BB FF 05][87 FF]@You don't even have[01 FF]  $[B8 FF 00][1A FF 04 00]?,[02 FF]@an unusual specimen like you[01 FF]  should be on display in the[01 FF]  museum.[02 FF][C6 FF][A5 FF D0 07 06 00][A1 FF 8A 03 27 02][9E FF][A1 FF 8A 03 0F 00][9D FF 01 28 _L4238_][00 FF]^L4236^[BB FF 05][87 FF][99 FF 00 00 00 00][81 FF _L4237_][D4 FF 76 00][9B FF 00 00 00 00][9C FF]@Please go in.[02 FF]@You'll find an expert in the area[01 FF]  of Arts and Sciences.[02 FF][C6 FF][A1 FF 8A 03 27 02][9E FF][A1 FF 8A 03 0F 00][08 FF 00 03][00 FF]
 ^L4241^[B0 FF 09 04 CC 00][1B FF 1E 00][B3 FF 09 04]@Tsk, tsk, tsk...[1B FF 14 00][01 FF]  You should know better...[02 FF][C6 FF][A1 FF 09 04 06 03][9E FF][A4 FF 09 04][8D FF 01 00][87 FF][DB FF 09 04 01 00 00 00][CE FF 09 04 00 00]@You cannot get in without[01 FF]  paying admission.[1B FF 14 00]  It's $3 per[01 FF]  person.[02 FF]@You'll pay, won't you?[9C FF][03 FF 00 00][04 FF _L4239_][05 FF _L4240_]^L4240^[BB FF 03][87 FF]@Is $[B8 FF 00][1A FF 04 00] too[01 FF]  expensive for you?[02 FF]@Or are you just not interested[01 FF]  in ancient culture?[1D FF][C6 FF][A1 FF 09 04 07 03][A0 FF D0 07 08 03 01 00][1B FF 01 00][C9 FF D0 07][A3 FF 09 04][EB FF FF 00][9E FF][EA FF FF 00][CA FF][A4 FF 09 04][8D FF 01 00][87 FF][DB FF 09 04 01 00 00 00][CE FF 09 04 00 00][BB FF 03][87 FF]@You don't even have[01 FF]  $[B8 FF 00][1A FF 04 00]?[02 FF]@If it were up to me, an oddity[01 FF]  like you would be exhibited in[01 FF]  the museum...[02 FF][C6 FF][A5 FF D0 07 06 00][A1 FF 09 04 09 03][9E FF][A1 FF 09 04 0F 00][9D FF 01 32 _L4241_][00 FF]^L4239^[BB FF 03][87 FF][99 FF 00 00 00 00][81 FF _L4240_][D4 FF 76 00][9B FF 00 00 00 00][9C FF]@Please go right in.[02 FF]@Ask someone inside for more[01 FF]  detailed information.[02 FF][C6 FF][A1 FF 09 04 09 03][9E FF][A1 FF 09 04 0F 00][08 FF 00 03][00 FF]
 ^L4242^
@@ -4576,22 +4576,21 @@
 ^L5012^[1C FF E2 00 _L4775_][1C FF E3 00 _L4776_][1C FF E9 00 _L4776_][1C FF EA 00 _L4777_][1C FF EB 00 _L4778_][1C FF EF 00 _L4776_][1C FF F0 00 _L4776_][1C FF F1 00 _L4776_][1C FF F2 00 _L4776_][1C FF F3 00 _L4779_][1C FF F5 00 _L4776_][1C FF F8 00 _L4780_][1C FF F9 00 _L4780_][1C FF FA 00 _L4780_][1C FF FB 00 _L4776_][1C FF FC 00 _L4776_][1C FF FE 00 _L4779_][1C FF 00 01 _L4777_][1C FF 01 01 _L4776_][1C FF 03 01 _L4776_][1C FF 04 01 _L4781_][1C FF 07 01 _L4779_][1C FF 09 01 _L4782_][1C FF 0B 01 _L4783_][1C FF 0F 01 _L4784_][1C FF 45 01 _L4785_][1C FF 46 01 _L4779_][1C FF 57 02 _L4786_][1C FF 58 02 _L4776_][1C FF 8D 02 _L4779_][1C FF DB 02 _L4787_][1C FF DC 02 _L4788_][00 FF]
 ^L5014^
 ^L5015^
-^L5016^
-^L5017^
-^L5018^
+^L5016^ [25 FF][00 FF]
+^L5017^ [26 FF][00 FF]
+^L5018^ [27 FF][00 FF]
 ^L5019^
-^L5020^
-^L5021^
-^L5022^
-^L5023^
+^L5020^ [29 FF][00 FF]
+^L5021^ [2A FF][00 FF]
+^L5022^ [2B FF][00 FF]
+^L5023^[95 FF 04 _L5028_ _L5029_ _L5030_ _L5031_]^L5028^  [28 FF])[02 FF][00 FF]
 ^L5024^
-^L5025^
-^L5026^
-^L5027^
-^L5028^
-^L5029^
-^L5030^
-^L5031^
+^L5025^  [25 FF])[02 FF][00 FF]
+^L5026^  [26 FF])[02 FF][00 FF]
+^L5027^  [27 FF])[02 FF][00 FF]
+^L5029^  [29 FF])[02 FF][00 FF]
+^L5030^  [2A FF])[02 FF][00 FF]
+^L5031^  [2B FF])[02 FF][00 FF]
 ^L5032^[F6 FF 0F 00][DD FF 07 00 00 00 00 00 00 00][82 FF _L5033_][F6 FF 08 00][DD FF 04 00 00 00 00 00 00 00][82 FF _L5034_][F6 FF 04 00][DD FF 03 00 00 00 00 00 00 00][82 FF _L5035_][F6 FF 01 00][82 FF _L5036_][F6 FF 02 00][81 FF _L5037_][BC FF F6 00][A8 FF 01][87 FF][00 FF]
 ^L5033^[89 FF][00 FF]
 ^L5034^[BC FF F2 00][A8 FF 01][87 FF][00 FF]
@@ -5172,18 +5171,18 @@
 ^L5716^[86 FF _L5731_][86 FF _L5732_]@<Tessie exists,[01 FF]  eyewitnesses report![02 FF]@But Tessie Watching Society[01 FF]  member forgets to put film in[01 FF]  his camera!>[1D FF][00 FF]
 ^L5717^[86 FF _L5731_][86 FF _L5732_]@<Department store panic![01 FF]@Blackout hits popular [01 FF]  department store in broad[01 FF]  daylight>[1D FF][00 FF]
 ^L5718^
-^L5719^
-^L5720^
-^L5721^
-^L5722^
-^L5723^
-^L5724^
-^L5725^
-^L5726^
-^L5727^
-^L5728^
+^L5719^[86 FF _L5731_][86 FF _L5732_]@<[0D FF] and company[01 FF]  save Threed[02 FF]@confirms chief of[01 FF]  Zombie Relief Corps>[1D FF][00 FF]
+^L5720^[86 FF _L5731_]@This morning's Threed Journal[01 FF]  headlines read like this...[02 FF]@Uhh, I made a mistake and[01 FF]   brought the ThreedStar by[01 FF]  accident...[02 FF]@Well, let me read it to you[01 FF]  anyway...[02 FF]@<Zombie gives birth to hawk[01 FF]  child>[02 FF]@Heh, heh, heh... yeah, right...[1D FF][00 FF]
+^L5721^[86 FF _L5731_][86 FF _L5732_]@<Supernatural powers do not[01 FF]  exist[01 FF]@Human beings cannot use[01 FF]  teleportation states university[01 FF]  professor>[1D FF][00 FF]
+^L5722^[86 FF _L5731_][86 FF _L5732_]@<Prince [10 FF] of[01 FF]  Dalaam secretly visiting [01 FF]  Threed?>[1D FF][00 FF]
+^L5723^[86 FF _L5731_][86 FF _L5732_]@<Zombie prison warden states[01 FF]  inmates believe Our Nest is[01 FF]  Best>[1D FF][00 FF]
+^L5724^[86 FF _L5731_][86 FF _L5732_]@<Pyramid mysteriously opens in[01 FF]  distant Scaraba.[01 FF]@Is this a good portent?>[1D FF][00 FF]
+^L5725^[86 FF _L5731_]@Here's an interesting[01 FF]  advertisement in today's[01 FF]  Threed Journal...[02 FF]@<Morning newspapers brought[01 FF]  to your room by a handsome,[01 FF]  friendly bellboy.[02 FF]@Threed Sunset Hotel>[02 FF]@...Uhhh ...hey! ...this is our ad![1D FF][00 FF]
+^L5726^[86 FF _L5731_]@Here's today's Threed Journal!...[02 FF]@Uh...[1B FF 0A 00] whoops...[1B FF 0A 00] there is no edition today...[1D FF][00 FF]
+^L5727^[86 FF _L5731_][86 FF _L5732_]@<The Twoson Tribune, the[01 FF]  neighboring town's  newspaper,[01 FF]  also woth reading>[1D FF][00 FF]
+^L5728^[86 FF _L5731_][86 FF _L5732_]@<[0D FF] and friends[01 FF]  made honorary citizens!>[1D FF][00 FF]
 ^L5729^
-^L5730^
+^L5730^@The guest's newspapers that[01 FF]  were delivered to the hotel[01 FF]  today...[02 FF]@are different than normal.[02 FF]@The paper is called the[01 FF]  Zombie Herald...[02 FF]@I'm scared, but let me tell[01 FF]  you what is in it...[02 FF][00 FF]
 ^L5731^
 ^L5732^@On the front page of[01 FF]  the Fourside Post...[00 FF]
 ^L5733^[86 FF _L5746_][86 FF _L5747_]@<Over 70% of Fourside citizens[01 FF]  support Monotoli>[1D FF][00 FF]
@@ -5197,18 +5196,18 @@
 ^L5741^[86 FF _L5746_]  On page 3 of the[01 FF]  Fourside Post...[02 FF]@<Criminal activity in Scaraba?[01 FF]@Sacred treasure of pyramid,[01 FF]  the [90 FF A9][1A FF 02 00] stolen>[1D FF][00 FF]
 ^L5742^[86 FF _L5746_]  Here's an advertisement in[01 FF]  today's Fourside Post[02 FF]@<Higher than everywhere else![01 FF]  (That's height, not price)[01 FF]  Monotoli Grand Hotel>[02 FF]@Hey!  That's our hotel![1D FF][00 FF]
 ^L5743^[86 FF _L5746_]  On page 13 of the[01 FF]  Fourside Post...[02 FF]@<Newspaper reading by bellboys[01 FF]  is not exclusive to Fourside only[01 FF]@Do not be taken in by bellboys[01 FF]  just looking for a tip>[02 FF]@...I'm so ashamed...[1D FF][00 FF]
-^L5744^
-^L5745^
+^L5744^[86 FF _L5746_][86 FF _L5747_]@<The best newspaper of all the[01 FF]  others[02 FF]@Everyone reads the[01 FF]  Fourside Post each morning>[02 FF]@...Is this the page one headline?[1D FF][00 FF]
+^L5745^[86 FF _L5746_][86 FF _L5747_]@<Megalopolis Fourside to have[01 FF]  another busy day>[1D FF][00 FF]
 ^L5746^@Good morning![02 FF]@This is a unique service,[01 FF]  exclusive to our hotel only![1B FF 0A 00][01 FF]  I'm here to read you today's[01 FF]  headline.[00 FF]
 ^L5747^@On the front page of the[01 FF]  Fourside Post...[0D FF][00 FF]
-^L5748^
+^L5748^[86 FF _L5757_][86 FF _L5758_]@<People reported missing one[01 FF]  after another in our sister city[01 FF]  Winters>[1D FF][00 FF]
 ^L5749^[86 FF _L5757_][86 FF _L5758_]@<Yesterday the same as the[01 FF] day before yesterday[01 FF]@Today to be the same as[01 FF]  yesterday>[1D FF][00 FF]
-^L5750^
-^L5751^
+^L5750^[86 FF _L5757_][86 FF _L5758_]@<Prince [10 FF] of[01 FF]  Dalaam visiting Summers[01 FF]  secretly?>[1D FF][00 FF]
+^L5751^[86 FF _L5757_]@Today's Daily Summers says...[02 FF]@Ooo la la,[1B FF 0A 00] I brought the wrong[01 FF]  paper by mistake. It is the[01 FF]  Summer Inquirerer[02 FF]@Listen to this headline...[02 FF]@<Huge rat found living in sewer[01 FF]  system>[02 FF]@...I really do not think so...[1D FF][00 FF]
 ^L5752^[86 FF _L5757_][86 FF _L5758_]@<Intruders in Scaraba Pyramid![01 FF][1B FF 0A 00]  Summers remains a peaceful[01 FF]  paradise>[1D FF][00 FF]
 ^L5753^[86 FF _L5757_][86 FF _L5758_]@<Breeze blew through the[01 FF]  palm trees last night>[02 FF]@...[1B FF 0A 00] This is big news here.[1D FF][00 FF]
-^L5754^
-^L5755^
+^L5754^[86 FF _L5757_][86 FF _L5758_]@<Kraken Fin makes a beautiful[01 FF]  soup![02 FF]@New gourmet dish makes big[01 FF]  waves at the beach>[1D FF][00 FF]
+^L5755^[86 FF _L5757_]@There's a great advertisement[01 FF]  in this morning's Daily Summers[02 FF]@<Stop doing anything complicated.[02 FF]@Forget about solving mysteries[01 FF]  and completing stages![02 FF]@Welcome to the easy life in[01 FF]  Summers!>[1D FF][00 FF]
 ^L5756^[86 FF _L5757_][86 FF _L5758_]@<Yesterday the same as the[01 FF] day before yesterday[01 FF]@Today to be the same as[01 FF]  yesterday>[1D FF][00 FF]
 ^L5757^@Ah, sir...[01 FF]  Are you already on your way[01 FF]  to the beach?[02 FF][00 FF]
 ^L5758^@Here is this morning's headlines[01 FF]  from the Daily Summers...[02 FF][00 FF]
