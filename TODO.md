@@ -1,9 +1,9 @@
 ### M2 - non-script things
-- [ ] Translate dad text
+- [X] Translate dad text
 - [X] Translate enemy names
 - [X] Translate item names
-- [ ] Translate menu choices
-- [ ] Translate misc text
+- [X] Translate menu choices
+- [X] Translate misc text
 - [X] Translate PSI names
 - [X] Translate PSI text
 - [X] Translate PSI targets
@@ -13,13 +13,13 @@
 - [ ] Translate battle actions
   - [ ] Add pronoun control codes
 - [X] Translate PSI help text
-- [ ] Translate item help text
-- [ ] Translate TPT text
+- [X] Translate item help text
+- [X] Translate TPT text
 - [ ] Translate object text (doors, etc.)
 - [ ] Translate phone text
-- [ ] Translate dad text
+- [X] Translate dad text
 - [ ] Translate prayer text
-- [ ] Translate enemy encounter/death text
+- [X] Translate enemy encounter/death text
 - [ ] Translate Lumine Hall text
 
 ### M2 - main script tool
@@ -30,14 +30,14 @@
 - [X] VWF for Talk
 - [X] VWF for Check
 - [X] VWF for Goods menu
-- [ ] VWF for PSI menu
+- [X] VWF for PSI menu
 - [X] VWF for Status window
 - [X] VWF for cash window
 - [X] Make PSI sub-menus (from Status window) redraw only when needed (currently they redraw continuously when they're not needed, and likewise they don't redraw when they are needed)
 - [ ] Make Status window redraw properly when exiting from a PSI sub-menu
 - [ ] VWF for HP/PP boxes
 - [ ] VWF for naming screens
-- [ ] VWF for battles
+- [X] VWF for battles
 - [ ] VWF for credits sequence
 - [ ] Add Saturn font
 - [ ] Add small font (names on HP/PP, Goods, PSI, etc. windows)
@@ -53,7 +53,7 @@
 - [ ] TODO: replace load/store chains with ldmia/stmia
 
 ### M2 - hacking (misc, lower priority)
-- [ ] Incorporate Mato's M1 translation
+- [X] Incorporate Mato's M1 translation
 - [ ] Insert EB's title screen
 - [ ] EB graphical localization (hospital crosses, cultist sprites, etc.)
 - [ ] M1+2 bugfixes:
