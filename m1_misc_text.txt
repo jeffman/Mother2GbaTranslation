@@ -1,0 +1,506 @@
+//==========================================================================================================
+// IMPORTANT STUFF
+//==========================================================================================================
+
+// Various character names
+//0F64294 Ninten
+0F642D4 Ana
+0F64314 Lloyd
+0F64354 Teddy
+0F64394 Pippi
+0F643D4 EVE
+0F64414 FlyngMn
+
+
+//==========================================================================================================
+// OVERWORLD MENU STUFF
+//==========================================================================================================
+
+// Main menu - if you want to resize this, you'll have to manually hex edit the command menu .bin file
+0FE4006 Command
+0FE4013 Talk
+0FE401F Check
+0FE402B PSI
+0FE4037 Goods
+
+// Action menu
+0FE4B12 Use
+0FE4B1D Eat
+0FE4B28 Give
+0FE4B33 Drop
+0FE4B3E Info
+
+// Displayed when choosing a location to teleport to, [DB] is a window piece to make the text line up better
+0F7E200 [DB]Where to?[END]
+
+// Displayed when taking an item out of storage from your sister
+0FE7CE0 Stored Goods[END]
+
+// Displayed when using a PSI on someone or when choosing someone from the bottom-left name list
+0FE756E Who?
+
+// Stats/equipment menu
+0FE482A Status
+0FE483C PSI
+0FE48E5 Equipment
+0FE497B Melodies
+0FE485F Level
+0FE48B9 Offense
+0FE48D4 Defense
+0FE48F5 Fight
+0FE490E Speed
+0FE4927 Wisdom
+0FE4940 Strength
+0FE4959 Force
+0FE498D Exp.
+
+// Used when displaying yes/no questions in main script
+0FE7102 Yes
+0FE710C No
+0FE7142 Yes
+0FE714C No
+
+// horizontal positions for cursor locations when given options in main text (note: numbers need to be -1 their actual X position)
+// note: these numbers need to be -1 their actual X coordinates
+// note: these numbers are shared for ALL options, not just yes/no. Other examples include "Continue/Save", "Medicine/Sleep", and a few others
+0F0B33A [02]
+0F0B33E [0C]
+
+// Used when 1 or more party members are in your team
+0F7E600 's party[END]
+0F0C3A0 [00][E6][F7][08]
+
+
+//==========================================================================================================
+// BATTLE STUFF
+//==========================================================================================================
+
+// This is displayed at the top of the battle menus and in the mini status windows outside
+0FE7403 Name
+0FE740C HP
+0FE7410 PP
+0FE7414 Lv
+0FE741B Exp
+
+// This is the main battle menu
+0F2764A Fight
+0F27653 Auto
+0F27661 PSI
+0F2766A Guard
+0F27678 Goods
+0F27681 Run
+0F2768F Check
+0F27698 Setup
+
+// This is the menu for the final battle
+0F276BC Fight
+0F276C5 Auto
+0F276D3 PSI
+0F276DC Guard
+0F276EA Goods
+0F276F3 [FF]Sing
+0F27701 Check
+0F2770A Setup
+
+// If you try to use a weird item in battle (change the address to move the text left or right)
+0F2780F Can't use this
+
+// If you try to equip an item during battle
+0F2783B Can't equip now
+
+// If a character tries to use an item they can't use in battle (like Ninten using a Bomb)
+0FE78C2 [03][20] can't use
+
+// If you use the Setup option in battle
+F278A0 Text Speed
+F278B4 (Slow)[01][01][01][01][01](Fast)
+
+
+//==========================================================================================================
+// FILE MENU STUFF
+//==========================================================================================================
+// Note: In general, if you need to move text forward or back on the screen, add or subtract one
+//       from the text's address. So to move the "Speed" text left one column, subtract one from its address
+//       of 0FE5017, making it 0FE5016
+//==========================================================================================================
+
+// Text used for blank save slots - the first three numbers are the X coordinate for the cursor
+0F2A076 [06]
+0F2A08A [06]
+0F2A09E [06]
+0FE602A [01][01][01][01][01]Start a New Game
+
+// Text used at the top of the save slot windows
+0FE500B Lv.
+0FE6003 GAME( )
+0FE5017 Speed
+
+// The first three numbers are the X coordinate for the cursor for each save slot window
+0F2A07A [02]
+0F2A08E [02]
+0F2A0A2 [02]
+0FE502B Continue
+
+// The first three numbers are the X coordinate for the cursor for each save slot window
+0F2A07E [0B]
+0F2A092 [0B]
+0F2A0A6 [0B]
+0FE5034 Copy
+
+// The first three numbers are the X coordinate for the cursor for each save slot window
+0F2A082 [10]
+0F2A096 [10]
+0F2A0AA [10]
+0FE5039 Erase
+
+// The first three numbers are the X coordinate for the cursor for each save slot window
+// These are text speed options, from Very Slow to Very Fast
+0F2A086 [16]
+0F2A09A [16]
+0F2A0AE [16]
+0F2711C VSlow[END]
+0F27122 Slow [END]
+0F27128 Norm.[END]
+0F2712E VFast[END]
+0F27134 Fast [END]
+
+// Displayed when copying a save file from one slot to another
+0FE7010 Copy to which slot?
+
+// Displayed when erasing a file
+// These first two numbers are the X coordinates of the name and level number
+0F0D396 [05]
+0FE8017 Lv.
+0FE802B Erase this file?
+0FE8049 Yes   No
+0F2A0C6 [07]
+0F2A0CA [0D]
+
+
+//==========================================================================================================
+// NAMING SCREEN STUFF
+//==========================================================================================================
+
+0FE7C00 Name this boy.[END]
+0FE7C30 Name this girl.[END]
+0FE7C60 Name this friend.[END]
+0FE7C90 Name this other friend.[END]
+0FE7CC0 What's your fav. food?[END]
+
+// unallowed names (separate them with [02], end with [END])
+0FE80C0 ABC[02]George[02]Mimmie[02]Minnie[02]Pippi[02]Duncan[02]Suzy[02]Abbot[02]Laura[02]Gyiyg[02]Giegue[02]Giygas[02]Mary[02]Maria[02]EVE[02]Eve[02] [02]  [02]   [02]    [02]     [02]      [02][END]
+
+0FE7211 Name not allowed
+
+// This changes the initial graphical layout of the naming screen, note you'll need to change the "actual table" below too
+0FE7A4C ABCDE abcde ÀÁÂÃÄ àáâãä 
+0FE7A6B FGHIJ fghij ÅÆÇÈÉ åæçèé 
+0FE7A8A KLMNO klmno ÊËÌÍÎ êëìíî 
+0FE7AA9 PQRST pqrst ÏÑŒÒÓ ïñœòó 
+0FE7AC8 UVWXY uvwxy ÔÕÖØÙ ôõöøù 
+0FE7AE7 Z     z     ÚÛÜÝŸ úûüýÿ 
+0FE7B06 12345 67890 .!?¡¿ $[FF]-/  
+0FE7B25 [01]                       
+0FE7B44 [01]                  [C0]Back
+0FE7B63 [01]                  [C0]OK  
+
+// This is the "actual table" of letters in the naming screen. When the user clicks the button
+// the program pulls the letter from this table.
+// FIRST ROW
+0F2A27C A
+0F2A280 B
+0F2A284 C
+0F2A288 D
+0F2A28C E
+0F2A290 a
+0F2A294 b
+0F2A298 c
+0F2A29C d
+0F2A2A0 e
+0F2A2A4 À
+0F2A2A8 Á
+0F2A2AC Â
+0F2A2B0 Ã
+0F2A2B4 Ä
+0F2A2B8 à
+0F2A2BC á
+0F2A2C0 â
+0F2A2C4 ã
+0F2A2C8 ä
+0F2A2CC [01]
+// SECOND ROW
+0F2A2D0 F
+0F2A2D4 G
+0F2A2D8 H
+0F2A2DC I
+0F2A2E0 J
+0F2A2E4 f
+0F2A2E8 g
+0F2A2EC h
+0F2A2F0 i
+0F2A2F4 j
+0F2A2F8 Å
+0F2A2FC Æ
+0F2A300 Ç
+0F2A304 È
+0F2A308 É
+0F2A30C å
+0F2A310 æ
+0F2A314 ç
+0F2A318 è
+0F2A31C é
+0F2A320 [01]
+// THIRD ROW
+0F2A324 K
+0F2A328 L
+0F2A32C M
+0F2A330 N
+0F2A334 O
+0F2A338 k
+0F2A33C l
+0F2A340 m
+0F2A344 n
+0F2A348 o
+0F2A34C Ê
+0F2A350 Ë
+0F2A354 Ì
+0F2A358 Í
+0F2A35C Î
+0F2A360 ê
+0F2A364 ë
+0F2A368 ì
+0F2A36C í
+0F2A370 î
+0F2A374 [01]
+// FOURTH ROW
+0F2A378 P
+0F2A37C Q
+0F2A380 R
+0F2A384 S
+0F2A388 T
+0F2A38C p
+0F2A390 q
+0F2A394 r
+0F2A398 s
+0F2A39C t
+0F2A3A0 Ï
+0F2A3A4 Ñ
+0F2A3A8 Œ
+0F2A3AC Ò
+0F2A3B0 Ó
+0F2A3B4 ï
+0F2A3B8 ñ
+0F2A3BC œ
+0F2A3C0 ò
+0F2A3C4 ó
+0F2A3C8 [01]
+// FIFTH ROW
+0F2A3CC U
+0F2A3D0 V
+0F2A3D4 W
+0F2A3D8 X
+0F2A3DC Y
+0F2A3E0 u
+0F2A3E4 v
+0F2A3E8 w
+0F2A3EC x
+0F2A3F0 y
+0F2A3F4 Ô
+0F2A3F8 Õ
+0F2A3FC Ö
+0F2A400 Ø
+0F2A404 Ù
+0F2A408 ô
+0F2A40C õ
+0F2A410 ö
+0F2A414 ø
+0F2A418 ù
+0F2A41C [01]
+// SIXTH ROW
+0F2A420 Z
+0F2A424 [01]
+0F2A428 [01]
+0F2A42C [01]
+0F2A430 [01]
+0F2A434 z
+0F2A438 [01]
+0F2A43C [01]
+0F2A440 [01]
+0F2A444 [01]
+0F2A448 Ú
+0F2A44C Û
+0F2A450 Ü
+0F2A454 Ý
+0F2A458 Ÿ
+0F2A45C ú
+0F2A460 û
+0F2A464 ü
+0F2A468 ý
+0F2A46C ÿ
+0F2A470 [01]
+// SEVENTH ROW
+0F2A474 1
+0F2A478 2
+0F2A47C 3
+0F2A480 4
+0F2A484 5
+0F2A488 6
+0F2A48C 7
+0F2A490 8
+0F2A494 9
+0F2A498 0
+0F2A49C .
+0F2A4A0 !
+0F2A4A4 ?
+0F2A4A8 ¡
+0F2A4AC ¿
+0F2A4B0 $
+0F2A4B4 [FF]
+0F2A4B8 -
+0F2A4BC /
+0F2A4C0 [01]
+0F2A4C4 [01]
+// EIGHTH ROW
+0F2A4C8 [01]
+0F2A4CC [01]
+0F2A4D0 [01]
+0F2A4D4 [01]
+0F2A4D8 [01]
+0F2A4DC [01]
+0F2A4E0 [01]
+0F2A4E4 [01]
+0F2A4E8 [01]
+0F2A4EC [01]
+0F2A4F0 [01]
+0F2A4F4 [01]
+0F2A4F8 [01]
+0F2A4FC [01]
+0F2A500 [01]
+0F2A504 [01]
+0F2A508 [01]
+0F2A50C [01]
+0F2A510 [01]
+0F2A514 [01]
+0F2A518 [01]
+// NINTH ROW
+0F2A51C [01]
+0F2A520 [01]
+0F2A524 [01]
+0F2A528 [01]
+0F2A52C [01]
+0F2A530 [01]
+0F2A534 [01]
+0F2A538 [01]
+0F2A53C [01]
+0F2A540 [01]
+0F2A544 [01]
+0F2A548 [01]
+0F2A54C [01]
+0F2A550 [01]
+0F2A554 [01]
+// TENTH ROW
+0F2A55C [01]
+0F2A560 [01]
+0F2A564 [01]
+0F2A568 [01]
+0F2A56C [01]
+0F2A570 [01]
+0F2A574 [01]
+0F2A578 [01]
+0F2A57C [01]
+0F2A580 [01]
+0F2A584 [01]
+0F2A588 [01]
+0F2A58C [01]
+0F2A590 [01]
+0F2A594 [01]
+
+0FE7900 Fav.Food [END]
+// this is the X coordinate of this line
+0F0DB3C [07]
+
+0F2742D Is this OK?
+0F27442 Yes
+0F27447 No
+// these are the X coordinates for the cursor for the Yes/No confirmation
+0F2A272 [0A]
+0F2A276 [0F]
+
+
+//==========================================================================================================
+// PLAYER NAMING SCREEN
+//==========================================================================================================
+
+// This changes the initial layout graphics, you need to change the actual data layout below too
+0F26E8D ABCDEFG[01]HIJKLMN[01]@Back
+0F26EB1 OPQRSTU[01]VWXYZ.-[01]@OK  
+
+// This is the actual data that gets pulled when a user selects a letter or hovers over a letter
+0F29FF0 A
+0F29FF4 B
+0F29FF8 C
+0F29FFC D
+0F2A000 E
+0F2A004 F
+0F2A008 G
+0F2A00C [01]
+0F2A010 H
+0F2A014 I
+0F2A018 J
+0F2A01C K
+0F2A020 L
+0F2A024 M
+0F2A028 N
+0F2A02C @
+0F2A030 O
+0F2A034 P
+0F2A038 Q
+0F2A03C R
+0F2A040 S
+0F2A044 T
+0F2A048 U
+0F2A04C [01]
+0F2A050 V
+0F2A054 W
+0F2A058 X
+0F2A05C Y
+0F2A060 Z
+0F2A064 .
+0F2A068 -
+0F2A06C @
+
+
+//==========================================================================================================
+// INTRODUCTION STUFF
+//==========================================================================================================
+
+0F7DC00 In the early 1900s, a dark[BREAK]shadow fell over a rural[BREAK]town in America. Shortly[BREAK]after, a married couple[BREAK]mysteriously vanished.[BREAK][BREAK]The man's name was George.[BREAK]The woman's name was Maria.[BREAK][BREAK]Two years later, George[BREAK]returned home but never[BREAK]told anyone where he had[BREAK]been or what he had done.[BREAK]Instead, he deeply immersed[BREAK]himself in strange research.[BREAK][BREAK]As for his wife, Maria...[BREAK]she never returned.[END]
+// starting X,Y positions for this text
+0F0DC40 [00]
+0F0DC42 [01]
+
+0F7E000 1988, outside the town[BREAK]of Mother's Day...[END]
+// starting X,Y positions for this text
+0F0DC74 [03]
+0F0DC76 [08]
+
+
+//==========================================================================================================
+// POINTERS - DON'T EDIT THIS UNLESS YOU KNOW A LOT ABOUT ROM HACKING
+//==========================================================================================================
+
+// pointers to the new intro text
+0F0DCCC [00][E0][F7][08]
+0F0DCC4 [00][DC][F7][08]
+
+// pointer to teleport menu "To?" text
+0F0BBF0 [00][E2][F7][08]
+
+// pointer to the "Stored Goods" text
+0F0B838 [E0][7C][FE][08]
+
+//==========================================================================================================
+// INTERNAL TABLE CONVERSION STUFF - DON'T MESS WITH THIS UNLESS YOU *REALLY* KNOW WHAT YOU'RE DOING!
+//==========================================================================================================
+
+0F29C8A [01][00][02][00][03][00][04][00][05][00][06][00][07][00][08][00][09][00][0A][00][0B][00][0C][00][0D][00][0E][00][0F][00][10][00][11][00][12][00][13][00][14][00][15][00][16][00][17][00][18][00][19][00][1A][00][1B][00][1C][00][1D][00][1E][00][1F][00][20][00][21][00][22][00][23][00][24][00][25][00][26][00][27][00][28][00][29][00][2A][00][2B][00][2C][00][2D][00][2E][00][2F][00][30][00][31][00][32][00][33][00][34][00][35][00][36][00][37][00][38][00][39][00][3A][00][3B][00][3C][00][3D][00][3E][00][3F][00]
