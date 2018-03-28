@@ -101,7 +101,7 @@
 ^L103^[1C FF 49 00 _L2331_][BC FF 01 00][86 FF _L2177_][81 FF _L2332_][8D FF 01 00][A8 FF 00]@[90 FF 00][1A FF 01 00],[1B FF 0F 00] I'm doing[01 FF]  watch-out duty for the hideout.[02 FF]@Can you take over?[22 FF][03 FF 00 00][04 FF _L2333_][05 FF _L2334_]^L2334^@You're busy.[1B FF 0F 00]  I understand.[1D FF][00 FF]^L2333^@Just kidding.[1B FF 0F 00]  Being watch-out[01 FF]  is my job.[1D FF][00 FF]
 ^L104^[1C FF 6C 00 _L2338_]@This shack was locked by[01 FF]  someone from City Hall,[1B FF 0F 00] so[01 FF]  we can't use it.[02 FF]@The reason it was closed was[01 FF]  'cause a punk named Frank may[01 FF]  have trashed the place.[02 FF]@We can't even change our[01 FF]  clothes,[1B FF 0F 00] and hotels are too[01 FF]  expensive...[1D FF][00 FF]
 ^L105^[1C FF 49 00 _L2341_][1C FF 09 00 _L2342_][1C FF FF 01 _L2343_]^L2344^@A library is a nice place to[01 FF]  learn stuff.[02 FF]@I got a lot of info about[01 FF]  EarthBound.[02 FF]@You can borrow maps for[01 FF]  nothing![1D FF][00 FF]
-^L106^@(I am not your enemy.[02 FF]@I am simply your average[01 FF]  run-of-the-mill mole.[02 FF]@Would you like some hints on[01 FF]  fighting enemies?)[03 FF 00 00][04 FF _L4028_][05 FF _L4029_]^L4029^@(Ah, I see...[02 FF]@You've already got a good[01 FF]  grasp of how to fight[01 FF]  effectively.[1D FF][00 FF]^L4028^@(Listen carefully.[02 FF]@My hint involves which way[01 FF]  you are facing when a battle[01 FF]  with an enemy occurs.[02 FF]@If you allow enemies to[01 FF]  approach you from your back[01 FF]  or side,[02 FF]@they may get a surprise[01 FF]  opening attack.[02 FF]@When they approach you this[01 FF]  way, your Game Boy screen, no... no...[02 FF]@I mean the world in front of[01 FF]  you will show a red swirl for[01 FF]  a second.[02 FF]@On the other hand, if you[01 FF]  approach an enemy from the[01 FF]  back or side,[02 FF]@You may get a surprise opening[01 FF]  attack.[02 FF]@In that case, your Game Boy...[01 FF]  Oops again![02 FF]@...The world in front of you[01 FF]  shows a green swirl.[02 FF]@The point is, try to fight so[01 FF]  that you always have the[01 FF]  advantage.[1D FF][00 FF]
+^L106^@(I am not your enemy.[02 FF]@I am simply your average[01 FF]  run-of-the-mill mole.[02 FF]@Would you like some hints on[01 FF]  fighting enemies?)[03 FF 00 00][04 FF _L4028_][05 FF _L4029_]^L4029^@(Ah, I see...[02 FF]@You've already got a good[01 FF]  grasp of how to fight[01 FF]  effectively.[1D FF][00 FF]^L4028^@(Listen carefully.[02 FF]@My hint involves which way[01 FF]  you are facing when a battle[01 FF]  with an enemy occurs.[02 FF]@If you allow enemies to[01 FF]  approach you from your back[01 FF]  or side,[02 FF]@they may get a surprise[01 FF]  opening attack.[02 FF]@When they approach you this[01 FF]  way, your Game Boy screen,[01 FF] no... no...[02 FF]@I mean the world in front of[01 FF]  you will show a red swirl for[01 FF]  a second.[02 FF]@On the other hand, if you[01 FF]  approach an enemy from the[01 FF]  back or side,[02 FF]@You may get a surprise opening[01 FF]  attack.[02 FF]@In that case, your Game Boy...[01 FF]  Oops again![02 FF]@...The world in front of you[01 FF]  shows a green swirl.[02 FF]@The point is, try to fight so[01 FF]  that you always have the[01 FF]  advantage.[1D FF][00 FF]
 ^L107^[1C FF 40 00 _L2347_]@The arcade is full of Sharks.[1B FF 14 00][01 FF]  I can't play there.[1D FF][00 FF]
 ^L108^[1C FF 0C 00 _L2348_][1C FF 0D 00 _L2348_]^L2349^@A girl named [0E FF][01 FF]  lives in Twoson.[02 FF]@Her mother runs a preschool[01 FF]  out of their home.[02 FF]@I can't remember the name[01 FF]  of the school,[1B FF 0F 00]  but I heard[01 FF]  [0E FF]'s really special.[02 FF]@Why is she special?[02 FF]@I forgot to ask.[1B FF 0F 00]  Oh, well...[1D FF][00 FF]
 ^L109^@The point overlooking the sea[01 FF]  has beautiful scenery.[1B FF 0F 00]  It's over[01 FF]  thataway.[02 FF]@Such a beautiful place gets[01 FF]  me all choked up.[1D FF][00 FF]
@@ -2162,7 +2162,7 @@
 ^L2149^@Alert![02 FF]@[9F FF]'s condition is[01 FF]  critical.[02 FF]@[9F FF] will collapse if[01 FF][1B FF 14 00]  condition isn't treated. [01 FF]@Be careful![1D FF][00 FF]
 ^L2150^
 ^L2151^[1C FF F2 02 _L5460_]@You cannot teleport here.[1D FF][00 FF]
-^L2152^
+^L2152^[8D FF 01 00][87 FF]@[90 FF 00][1A FF 01 00] got off the bike.[1D FF][C7 FF][1B FF 1E 00][00 FF]
 ^L2153^
 ^L2154^[CB FF FF 00 06 00][86 FF _L5531_][86 FF _L2200_][1B FF 5A 00][86 FF _L5532_]@[90 FF 00][1A FF 01 00]! [90 FF 00][1A FF 01 00]![02 FF]@It looks like you got your head[01 FF]  handed to you.[01 FF]@So, how about giving it another[01 FF]  shot?[03 FF 00 00][04 FF _L5533_][05 FF _L5534_]^L5534^@Are you sure?[02 FF]@The next time you start your[01 FF]  adventure,[01 FF]@you'll begin where you last[01 FF]  saved.[02 FF]@Is that okay?[03 FF 17 00][04 FF _L5533_][05 FF _L5535_]^L5533^@[90 FF 00][1A FF 01 00] decided to return[01 FF]  after summoning all the[01 FF] courage and energy he had.[01 FF]@Good luck![01 FF][1D FF][C6 FF][08 FF DB 01][FC FF 1D 00][00 FF]^L5535^@It must have all[01 FF]  just been a bad dream.[02 FF]@See you, [90 FF 00][1A FF 01 00]![1D FF][C6 FF][09 FF DB 01][FC FF 1D 00][00 FF]
 ^L2155^[C1 FF][87 FF]@The [90 FF 00][1A FF 02 00] can't be[01 FF]  used here.[1D FF][00 FF]
@@ -2193,7 +2193,7 @@
 ^L2183^[86 FF _L2883_][86 FF _L2184_][86 FF _L2185_][00 FF]
 ^L2184^[C4 FF 00 0C][1B FF C8 00][C5 FF][1B FF 01 00][00 FF]
 ^L2185^[BC FF 01 00]^L5384^[A8 FF 01][96 FF 00][81 FF _L5382_][8D FF 00 00][88 FF][92 FF 00 01 02][81 FF _L5383_][89 FF][92 FF 00 01 03][81 FF _L5383_][89 FF][87 FF][F7 FF 00 00 64 00][F8 FF 00 00 64 00]^L5383^[C0 FF][80 FF _L5384_]
-^L2186^[1C FF 02 00 _L2188_]@Good morning everyone![1B FF 14 00]  Are[01 FF]  you ready for your adventure?[02 FF]@I think all of you are the bee's[01 FF]  knees.[1B FF 14 00]  Yes,[1B FF 0A 00] I do![02 FF]
+^L2186^[1C FF 02 00 _L2188_]@Good morning everyone![1B FF 14 00]  Are[01 FF]  you ready for your adventure?[02 FF]@I think all of you are the bee's[01 FF]  knees.[1B FF 14 00]  Yes,[1B FF 0A 00] I do![02 FF][00 FF]
 ^L2188^@You are all so... cool![1B FF 14 00]  Yes,[1B FF 0A 00][01 FF]  you're hip![1D FF][00 FF]
 ^L2192^[92 FF 03 01 02][81 FF _L3986_][92 FF 03 01 03][81 FF _L3986_][1C FF B8 02 _L3987_][FB FF 64 00]^L3988^[82 FF _L3986_]@Working through the night,[01 FF]  [0F FF] fixed the[01 FF]  [90 FF 00][1A FF 02 00].[02 FF]@After being fixed, the[01 FF]  [90 FF 00][1A FF 02 00]  became[01 FF]  the [87 FF][90 FF 00][1A FF 02 00].[02 FF][08 FF B8 02][C6 FF]^L3986^[00 FF]
 ^L2193^@[0D FF],[1B FF 0F 00] could you get the[01 FF]  phone?[1D FF][00 FF]
@@ -2261,7 +2261,7 @@
 ^L2287^@I suggest you bring a map[01 FF]  along, even if you have to give[01 FF]  up something else.[02 FF]@You seem to be carrying many[01 FF]  worthless items.[1D FF][00 FF]
 ^L2288^[C1 FF][87 FF]@You can't use[01 FF]  the [90 FF 00][1A FF 02 00].[1D FF][00 FF]
 ^L2289^@...Finally,[1B FF 0F 00] you've come to return[01 FF]  the book.[1B FF 14 00]  Seems like you[01 FF]  finished it.[02 FF]@You're such a good boy.[1B FF 14 00]  As[01 FF]  a reward, I'll give you a kiss.[1B FF 1E 00][01 FF]  Smack![D4 FF 74 00][1D FF][6D FF FF 00 D1 00][08 FF 97 02][00 FF]
-^L2290^[1C FF 59 00 _L2291_][BC FF 01 00][86 FF _L2177_][81 FF _L2292_]@Oh,[1B FF 0A 00] hi [0D FF].[02 FF]
+^L2290^[1C FF 59 00 _L2291_][BC FF 01 00][86 FF _L2177_][81 FF _L2292_]@Oh,[1B FF 0A 00] hi [0D FF].[02 FF][00 FF]
 ^L2291^@Hi![1B FF 14 00]  Nice to meetchya![02 FF]@I'd really love to sit down and[01 FF]  chat with you someday.[02 FF]@I'll talk about my adventure,[02 FF]@and you can tell me about all of[01 FF]  your mistakes.[1D FF][00 FF]
 ^L2292^@Are you a friend of[01 FF]  [0D FF]?[01 FF][01 FF][80 FF _L2293_]
 ^L2293^@It's another nice day.  What?[1B FF 0F 00][01 FF]  You'd like the book[01 FF]  <Overcoming Shyness>?[02 FF]@I've read it.[1B FF 0A 00]  It's a great book.[1B FF 0A 00][01 FF]  So you want to overcome[01 FF]  shyness also?[02 FF]@You should be able to find it on[01 FF]  the bookcase.[1D FF][08 FF 66 00][00 FF]
@@ -2287,7 +2287,7 @@
 ^L2317^[1C FF 4D 00 _L2320_]@I'll give you my Mr. Baseball[01 FF]  Cap,[02 FF]@I know [0D FF] wanted[01 FF]  it for a long time.[02 FF]@Putting this cap on will make[01 FF]  you stronger.[1B FF 0F 00]  Yep,[1B FF 05 00] yep,[1B FF 05 00] yep![02 FF][80 FF _L2321_]
 ^L2318^@I'd like to go on an adventure[01 FF]  with you once I become a[01 FF]  little stronger.[1D FF][00 FF]
 ^L2319^[D4 FF 05 00][01 FF]@Ah![1B FF 14 00]  You can't carry anything[01 FF]  else.[02 FF]@You should either sell or throw[01 FF]  away some junk and come[01 FF]  back.[1D FF][00 FF]
-^L2320^@Are you [0D FF]'s friend?[02 FF]@Did he ever talk about me?[22 FF][03 FF 00 00][04 FF _L2322_][05 FF _L2323_]
+^L2320^@Are you [0D FF]'s friend?[02 FF]@Did he ever talk about me?[22 FF][03 FF 00 00][04 FF _L2322_][05 FF _L2323_][00 FF]
 ^L2322^@Oh![1B FF 14 00]  That's the [0D FF] I[01 FF]  know...![1D FF][00 FF]
 ^L2323^@Maybe he didn't talk much[01 FF]  about his friends.[1D FF][00 FF]
 ^L2326^[1C FF 0A 00 _L2328_]@Hey [0D FF],[1B FF 1E 00] hiya buddy![02 FF]@A meteorite fell down and went[01 FF]  boom![1B FF 14 00]  It was a real mess for a[01 FF]  while.[02 FF]@I was fine because I always[01 FF]  eat garlic and work out to help[01 FF]  my body stronger.[02 FF]@However,[1B FF 0F 00] the weaker citizens[01 FF]  probably fainted.[02 FF]@I also want to tell you...[1B FF 0F 00][01 FF]  whoops![02 FF]@I almost told you about my...[02 FF]@Uh,[1B FF 0F 00] by the way [0D FF],[1B FF 0F 00][01 FF]  did you check my billboard?[02 FF]@I wrote the message myself.[02 FF]@That's my real job,[1B FF 0F 00] you know...[01 FF]  I'm a billboard guy.[02 FF]@Why don't you check out my[01 FF]  work?[1D FF][08 FF 0A 00][00 FF]
@@ -2423,7 +2423,7 @@
 ^L2517^[FC FF 05 00][A1 FF E7 00 5C 00][A0 FF D0 07 5E 00 01 00][86 FF _L4040_][14 FF 09 00][A0 FF 99 00 5D 00 FF 00][A0 FF D0 07 5F 00 FF 00][86 FF _L4040_][A5 FF D0 07 06 00][A5 FF 99 00 06 00][84 FF F7 00 02 00 01 00][FC FF 06 00][00 FF]
 ^L2520^@You have the graceful[01 FF]  movement of a baseball player.[02 FF]@I'm on a baseball team,[1B FF 0F 00] so I can[01 FF]  recognize these things.[1D FF][00 FF]
 ^L2521^@This machine will eradicate all[01 FF]  pencil-shaped figures in just one[01 FF]  second.[02 FF]@It's incredibly powerful.[1B FF 14 00][01 FF]  Just don't use it near a shop[01 FF]  that sells pencils.[02 FF]@I'll call you if I invent another[01 FF]  brilliant item.[1D FF][00 FF]
-^L2522^
+^L2522^@Oh, it won't fit in your[01 FF]  backpack.[02 FF]@Come back after you[01 FF]  have gotten rid of some stuff.[1D FF][00 FF]
 ^L2523^@Mr. Poochyfud,[1B FF 0F 00] the Manager, is[01 FF]  looking for you.[1B FF 14 00]  I wonder what[01 FF]  he wants?[1D FF][00 FF]
 ^L2524^@Ya got a once in a lifetime[01 FF]  opportunity.[1B FF 14 00]  How 'bout[01 FF]  watchin'[1B FF 0F 00] one more show?[1D FF][00 FF]
 ^L2525^@So, whaddya think?[02 FF]@Do ya wanna see one more[01 FF]  show?[03 FF 00 00][04 FF _L2526_][05 FF _L2527_]^L2527^@So, our sound is too much for[01 FF]  ya, right?[1B FF 14 00]  I figured as much.[1D FF][00 FF]^L2526^@This is your chance fer a once[01 FF]  in a lifetime event.[1D FF][09 FF 3F 01][08 FF 03 00][00 FF]
@@ -2479,7 +2479,7 @@
 ^L2589^
 ^L2590^
 ^L2591^
-^L2592^
+^L2592^[8D FF 01 00][A8 FF 00]@My grandson is playing[01 FF]  a game called <EarthBound.>[02 FF]@He's now talking to a plain,[1D FF][01 FF]  old lady in Twoson.[02 FF]@I heard that the game has some[01 FF]  messages that are just there[01 FF]  for fun.[1D FF][00 FF]
 ^L2593^
 ^L2594^
 ^L2595^
@@ -2491,7 +2491,7 @@
 ^L2606^
 ^L2610^[8D FF 01 00][BD FF 04 _L2614_ _L2615_ _L2614_ _L2614_][00 FF]
 ^L2612^
-^L2613^
+^L2613^[D4 FF 05 00]@Eggs are easily broken.[1B FF 0F 00][02 FF]@There's no way to stuff it in[01 FF]  with your other things if you[01 FF]  have no more room...[1D FF][00 FF]
 ^L2614^
 ^L2615^
 ^L2616^
