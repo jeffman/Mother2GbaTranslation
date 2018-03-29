@@ -10,7 +10,7 @@
 ^L9^[8D FF 01 00][9A FF 01 00][82 FF _L2168_]@Hey,[1B FF 0F 00] I know your hard-earned[01 FF]  cash is important to you,[02 FF]@but you should call your mom.[02 FF]@She's probably got an ulcer[01 FF]  from worrying about you.[1D FF][00 FF]
 ^L10^[1C FF 49 00 _L4027_]@Woof! Woof![02 FF]@(I'm Ruffini the dog.[02 FF]@I'm being possessed by the[01 FF]  spirit of the game designer...[01 FF]  (RUFF!)[02 FF]@Do you see the window[01 FF]  showing HP and PP at the[01 FF]  bottom of the screen?[02 FF]@When you go to a store that[01 FF]  has equippable items,[02 FF]@this window will either flash,[01 FF]  look normal or become black.[02 FF]@If you are allowed to equip an[01 FF]  item, and it is stronger than[01 FF]  your current item,[02 FF]@the window will flash.[02 FF]@If the item's power is equal to,[01 FF]  or less than your current[01 FF]  equipped item,[02 FF]@the window looks normal.[02 FF]@If you can't equip an item, the[01 FF]  window is black.[02 FF]@*Ruff*  I thought you'd like to[01 FF]  know.[02 FF]@Now it's time to become a[01 FF]  regular dog again...)[1D FF][00 FF]
 ^L11^[BE FF FF 00 90 00][81 FF _L984_]@Please insert your ATM card.[1D FF][00 FF]
-^L12^[9C FF][99 FF 01 00 00 00][81 FF _L3975_][8D FF 01 00][87 FF]@[90 FF 00][1A FF 01 00] picked up the[01 FF]  reciever.[02 FF][9B FF 01 00 00 00][9C FF][D4 FF 0B 00][86 FF _L3976_][00 FF]
+^L12^[9C FF][99 FF 01 00 00 00][81 FF _L3975_][8D FF 01 00][87 FF]@[90 FF 00][1A FF 01 00] picked up the[01 FF]  receiver.[02 FF][9B FF 01 00 00 00][9C FF][D4 FF 0B 00][86 FF _L3976_][00 FF]
 ^L13^[1C FF 5F 00 _L2169_][1C FF 5E 00 _L2170_][1C FF 60 00 _L2171_][1C FF 62 00 _L2172_][1C FF 61 00 _L2172_]^L2174^@My land![1B FF 14 00]  Who could be knocking[01 FF]  at the door at this time of[01 FF]  night?[02 FF]@Would you answer it?[1D FF][00 FF]
 ^L14^[1C FF EE 02 _L2395_][1C FF D7 01 _L2396_]@What was that noise?[02 FF]@[0D FF],[1B FF 0F 00] you don't seem[01 FF]  scared.[1B FF 14 00]  Are you nuts?[02 FF]@And now you want to go check[01 FF]  it out?[1B FF 0F 00]  ...oh[1B FF 0F 00] ...okay.[02 FF]@You'll sneak out of your room[01 FF]  anyway,[1B FF 0F 00] even if I asked you not[01 FF]  to.[02 FF]@At least change out of your[01 FF]  jammies before you go.[02 FF][C6 FF][1B FF 01 00][08 FF D7 01][14 FF 01 00][09 FF ED 02][00 FF]
 ^L15^[1C FF FB 02 _L2204_][1C FF 49 00 _L2205_][1C FF 4A 00 _L2206_][83 FF D5 01][82 FF _L2207_][1C FF 64 00 _L2208_][1C FF 5E 00 _L2209_]^L2204^@(I've got fleas sucking me dry,[1B FF 0F 00][01 FF]  so I'm just going to lie still for[01 FF]  now.)[1D FF][00 FF]
@@ -3773,10 +3773,6 @@
 ^L4127^@Ow![1B FF 14 00]  This means we can get[01 FF]  out of this dump![02 FF][00 FF]
 ^L4128^@I'm a good driver.[1B FF 0F 00]  C'mon, I'll[01 FF]  show you.[02 FF][00 FF]
 ^L4129^@All right,[1B FF 0F 00] let's move on to the[01 FF]  next town.[02 FF]@I'm sure our ol' hunk o' junk will[01 FF]  get us there...[02 FF][00 FF]
-^L4126^
-^L4127^
-^L4128^
-^L4129^
 ^L4130^
 ^L4131^
 ^L4132^
@@ -4646,7 +4642,7 @@
 ^L5047^[8B FF][00 FF]
 ^L5048^[87 FF][62 FF][87 FF][8A FF][82 FF _L5047_][87 FF][91 FF 00][81 FF _L5047_][8B FF][87 FF][89 FF][80 FF _L5048_]
 ^L5049^[A8 FF 01][88 FF]@I can examine one of you for[01 FF]  $[B8 FF 00][1A FF 04 00].[9C FF][69 FF][03 FF 15 00][86 FF _L4957_][95 FF 02 _L5354_ _L5355_]^L5355^@You really don't need any[01 FF]  treatment?[01 FF]  All right.^L5367^[86 FF _L5356_][1D FF][00 FF]^L5354^[99 FF 00 00 00 00][81 FF _L5357_][96 FF 02][81 FF _L5358_]@Who is sick?[69 FF][EC FF][01 FF][82 FF _L5355_]^L5366^[88 FF][ED FF 00 00 01 00][95 FF 08 _L5359_ _L5360_ _L5361_ _L5361_ _L5362_ _L5363_ _L5364_ _L5365_]^L5358^[8D FF 01 00][80 FF _L5366_]
-^L5051^[A8 FF 01][86 FF _L5371_][82 FF _L5372_]@Who do you want to see?[69 FF][EC FF][01 FF][82 FF _L5373_][88 FF][92 FF 00 01 02][82 FF _L5374_][89 FF][87 FF]@[90 FF 00][1A FF 01 00] was just brought[01 FF]  in, and is still unconscious.[02 FF][87 FF]@Please pay $[B8 FF 00][1A FF 04 00] for[01 FF]  the doctor's fee.[03 FF 00 00][86 FF _L4957_][95 FF 02 _5375_ _5376_]^L5376^@Your friend, right?...  It's very[01 FF]  serious.[1D FF][00 FF]^L5375^[99 FF 00 00 00 00][81 FF _L5377_][9B FF 00 00 00 00][9C FF][89 FF][EE FF 00 00 01 00 01 00][89 FF][EE FF 00 00 02 00 01 00][89 FF][EE FF 00 00 06 00 01 00][89 FF][87 FF][F7 FF 00 00 64 00][F8 FF 00 00 64 00][D4 FF 25 00][1B FF 32 00]@I'm so glad that you recovered,[01 FF]  [90 FF 00][1A FF 01 00].[02 FF]@Come back any time you need.[1D FF][00 FF]
+^L5051^[A8 FF 01][86 FF _L5371_][82 FF _L5372_]@Who do you want to see?[69 FF][EC FF][01 FF][82 FF _L5373_][88 FF][92 FF 00 01 02][82 FF _L5374_][89 FF][87 FF]@[90 FF 00][1A FF 01 00] was just brought[01 FF]  in, and is still unconscious.[02 FF][87 FF]@Please pay $[B8 FF 00][1A FF 04 00] for[01 FF]  the doctor's fee.[03 FF 00 00][86 FF _L4957_][95 FF 02 _L5375_ _L5376_]^L5376^@Your friend, right?...  It's very[01 FF]  serious.[1D FF][00 FF]^L5375^[99 FF 00 00 00 00][81 FF _L5377_][9B FF 00 00 00 00][9C FF][89 FF][EE FF 00 00 01 00 01 00][89 FF][EE FF 00 00 02 00 01 00][89 FF][EE FF 00 00 06 00 01 00][89 FF][87 FF][F7 FF 00 00 64 00][F8 FF 00 00 64 00][D4 FF 25 00][1B FF 32 00]@I'm so glad that you recovered,[01 FF]  [90 FF 00][1A FF 01 00].[02 FF]@Come back any time you need.[1D FF][00 FF]
 ^L5053^[BF FF][BC FF 01 00]^L5447^[A8 FF 01][96 FF 00][81 FF _L5445_][8D FF 00 00][82 FF _L5446_][92 FF 00 02 02][81 FF _L5446_][C0 FF][80 FF _L5447_]
 ^L5054^
 ^L5055^
