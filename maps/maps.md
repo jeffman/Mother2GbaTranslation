@@ -102,7 +102,7 @@ For small, isolated memory writes, the game uses these `str` instructions. But t
 
 What's actually going on here is a __DMA transfer__. DMA stands for direct memory access; it's a common hardware feature that allows the system to quickly do bulk memory transfers without burning CPU cycles. It's not important to go into detail here about how the GBA DMA works. All we need is the __source__ and __destination__ addresses.
 
-> How do you tell that it's doing a DMA transfer? Anytime you see a write to 40000D4-40000DC, that's how you know: those are special I/O register addresses for DMA transfers. _~ M. Tenda_
+> How do you tell that it's doing a DMA transfer? Anytime you see a write to 40000D4-40000DC, that's how you know: those are special I/O register addresses for DMA transfers. _-- M. Tenda_
 
 Go to Window -> I/O map -> DMA registers:
 
@@ -162,11 +162,37 @@ Load up a decomp tool (such as [NL's compressor](https://www.romhacking.net/util
 
 ![Nintenlord's thing][nl]
 
+> While you're here, select "Length (compressed)" and run it again. You should get __0x35DC__. Note this down for later.
+
 Open the output file in any tile editor (such as [Tile Molester](https://www.romhacking.net/utilities/109/)) and switch it to GBA mode (4bpp linear reversed):
 
 ![That Looks Right To Me][tile-molester]
 
 So now we know where the tile data is compressed in the ROM. And Knowing Is Half The Battle
+
+### Editing the tileset
+
+We _could_, maybe, just change the `Y` to an `I`, but in general you need to be careful about changing existing tiles. We only want the `Y` in Monotoly to change. If there are other `Y`s on the map, we don't want to affect those. So it'd be safer to use one of the blank tiles near the end. I'm going to use one 
+
+> I think Monotoly is the only thing that uses that `Y` tile. The Bakery has its own separate chunk of tiles that use a separate `Y`. But it's Good to be safe. _-- M. Tenda_
+
+I'm going to pick the second-last tile (corresponding to index 0x3FE, since there are 0x400 tiles total and they are indexed from 0 to 0x3FF). I'm avoiding using the last tile because I'm superstitious about the game assigning special meaning to a value of 0x3FF.
+
+So let's just draw an `I` using the same colors as the Monotoly `Y`:
+
+![][tile-molester2]
+
+Save and go back to the compressor program. Move the tileset file to the input and create a new file for the output. Set the offsets to 0 and select Compress:
+
+![][compress]
+
+Click Run to compress the file.
+
+It's important now to see whether or not the new file is __bigger than the original__. This will almost always be the case. We said before that the original compressed size was 0x35DC. The size of the compressed file is 13784, or 0x35D8 bytes. Somehow the size went down, so in this case we're all good.
+
+But sometimes the file is larger and we need to be careful, so I'm going to assume for the purpose of the tutorial that the new file is indeed larger than the original and discuss what to do about it.
+
+### Relocating tilesets
 
 (work in progress; to be continued)
 
@@ -182,3 +208,5 @@ So now we know where the tile data is compressed in the ROM. And Knowing Is Half
 [decomp-breakpoint2]: decomp-breakpoint2.png
 [nl]: nl.png
 [tile-molester]: tile-molester.png
+[tile-molester2]: tile-molester2.png
+[compress]: compress.png
