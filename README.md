@@ -1,5 +1,5 @@
 ### MOTHER 2 Translation for the GBA
-This is a work-in-progress translation patch for MOTHER 2 on the GBA.
+This is a work-in-progress translation patch for MOTHER 1+2 on the GBA.
 
 ### Hasn't it been done?
 There are at least two other projects that translate the MOTHER 2 side of the game:
@@ -19,7 +19,7 @@ A few years after that, I tried it again from scratch with the intent of having 
 This project aims to both complete the VWF codebase and to provide a tool for translating the game's dialogue. My new intent is to bring the hack to a state where I can just sit down and translate text efficiently in my spare time with a graphical tool. Not only that, but having such a tool means that other people can contribute!
 
 ### Status
-The core of the VWF is complete. But it needs to be implemented in dozens of different places in the game's code. I've finished many of them, but there are probably still many more. Pretty much all of the game's text still needs to be translated too.
+The core of the VWF is complete. But it needs to be implemented in dozens of different places in the game's code. I've finished many of them, but there are probably still many more. 16% of the game's text still needs to be translated though.
 
 Some screenshots:
 
