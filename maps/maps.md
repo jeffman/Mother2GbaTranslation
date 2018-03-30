@@ -48,7 +48,7 @@ Go to Window -> BG Maps -> BG0 and put your mouse over a map tile you want to ch
 
 ![BG0][bg0]
 
-BG0 is one of four tilemaps for the GBA display. This one in particular has the background map layer. (BG1 has the foreground layer.) Each square in the grid is a **reference** to a specific **tile**, plus some attributes (palette and flip flags).
+BG0 is one of four tilemaps for the GBA display. This one in particular has the background map layer. (BG1 has the foreground layer.) Each square in the grid is a **reference** to a specific **tile**, plus some attributes (palette and flip flags). (I might refer to "grid" and "tilemap" interchangeably.)
 
 Note the **map address** and **tile number**: 6000762 and 11A, respectively.
 
@@ -56,7 +56,7 @@ Now go to the Tiles 2 tab:
 
 ![Tiles 2][tiles2]
 
-This is where the tile data itself is stored. I've highlighted the same `Y` tile. It says here that the tile number is 51A instead of 11A; don't worry about that. There's a 0x400 tile offset because BG0 is configured to point to the Tiles 2 section of tile data, which means it skips over the 0x400 tiles in Tiles 1.
+This is where the tile data itself is stored. I've highlighted the same `Y` tile. It says here that the tile number is 51A instead of 11A; don't worry about that. There's a 0x400 tile offset because BG0 is configured to point to the Tiles 2 section of tile data, which means it skips over the 0x400 tiles in Tiles 1. (I might refer to tile data as a "tileset".)
 
 In general, there might be two ways to edit the map: edit the "grid" in BG0 so that a square will reference a different tile than it did before, perhaps with a different palette or flip flags; or go into the tile data itself and change the bitmap data for those tiles. Or sometimes a combination of both.
 
@@ -78,7 +78,7 @@ Darn -- that means we have to make a new `I` tile with the right colors.
 
 Remember that the change we just made was only in RAM. We still need to trace it back to the ROM. Since we need to edit the tile data as well as the grid data, let's do the tile data first.
 
-### Tracing tile data
+### Locating tileset data
 
 How do we figure out where it corresponds to in the ROM so that we can edit it? We use __breakpoints__. A __breakpoint__ is a signal to the debugger to __break__ at a particular __point__ during the execution of the game.
 
@@ -152,7 +152,7 @@ This roughly means:
 source = contents of r2
 destination = contents of r5
 call decomp(source, destination)
-````
+```
 
 In `r2`, we see `8575B2C`. That looks like a ROM address to me! Remember to subtract `8000000` to translate it into an offset into a ROM file.
 
@@ -194,7 +194,240 @@ But sometimes the file is larger and we need to be careful, so I'm going to assu
 
 ### Relocating tilesets
 
-(work in progress; to be continued)
+Compressed data is tightly packed in the ROM; if you try to reinsert a recompressed block that's even one byte larger than the original, it'll overwrite the data that follows.
+
+On the other hand, there's plenty of free space in the ROM. From about 0xB2C000 to 0xF00000 is about 4MB of unused ROM space. For the tutorial, let's just stick it at 0xB2C000. Go ahead and copy in the contents of the new compressed file to that spot in the ROM with your favorite hex editor.
+
+That'll put the data into the ROM, but we need to update the pointer to it. The game still thinks the tileset is located at 0x575B2C; we need to make it think it's at 0xB2C000 instead.
+
+Go back into the debugger. You should still be at the point where we figured out the tileset address. If not, get back to that point. Here's what it looks like again:
+
+![][decomp-breakpoint2]
+
+The goal now is to figure out how `r0` became that value. This will involve a bit of backtracking through the code. We concluded earlier that it was coming from `r2` (the `mov r0,r2` instruction means "copy `r2`'s value into `r0`"). Going up a bit further, we see:
+
+```
+mov r8,r0
+ldr r2,[r0]
+```
+
+Working backwards, we can see that `r2` is being loaded from the memory address in `r0`; and the value in `r0` is being copied from `r8` immediately beforehand. Fortunately `r8` hasn't changed since then, so we can look there to find a memory address: __82DB7D4__. Sure enough, if we navigate to 0x2DB7D4 in a hex editor (or you could even go to 82DB7D4 directly in the debugger), we see the following four bytes:
+
+```
+2C 5B 57 08
+```
+
+Words are stored in little-endian order, meaning the four bytes are ordered from least significant to most significant. Which means that those four bytes, when read as a 32-bit word, form a value 0x8575B2C -- the address of the Fourside tileset!
+
+> Jeffman is showing you the slow, smart way to find tileset pointers. But I, M. Tenda, prefer the fast way. Instead of backtracking through the code, simply search for `2C 5B 57 08` using a hex editor and you'll find the address right away! _-- M. Tenda_
+
+All we need to do, then, is update that address to point to the new tileset. Replace those four bytes with `00 C0 B2 08`. Close and reload the debugger (it's not smart enough to pick up the change we made to copy in the new tileset). Play up to the Monotoli building again, and it should say... Monotoly?!
+
+Ah... We haven't updated the tilemap yet! It's still pointing to the `Y` tile; we need to make it point to the new `I` tile instead.
+
+### Locating tilemaps
+
+We're going to use the exact same strategy as before to find the tilemap data. In the debugger, go back to the BG0 window and find the square we want to change. (It might be slightly different from my screenshots because the game moves the tilemap around depending on where you walk.) Note the map address. For me, it's 6000762. If you navigate there in the debugger's hex editor, you'll see `1A 51`. Every square in the tilemap uses two bytes. The tile number, palette index, and flip flags are all encoded in those two bytes. The low 10 bits hold the tile number. So to figure out where the game pulls the tile number from, it suffices to put a write value breakpoint on the `1A` location:
+
+> `[6000762]=01Ah`
+
+Resume the game and walk around. You might have to walk a bit off-screen and come back to the Monotoly. The breakpoint should eventually trigger:
+
+![][break3]
+
+It's storing something to `r6`, and we see that `r6` has a value of `40000D4`, which tells us it's another DMA transfer. When I open the DMA registers window, I see that it's copying from 0x2028030 to 0x6000740; since the value we're interested in was at 0x6000762, then logically it's being copied from `2028030 + (6000762 - 6000740) = 2028052`. Going there in the hex editor, we find the `1A 51` we're looking for.
+
+Since it's coming from another RAM address, we need to do another breakpoint to figure out where it's coming from in the ROM:
+
+> `[2028052]=01Ah`
+
+Walk around some more until the breakpoint triggers. Mine triggers here:
+
+![][break4]
+
+The 0x511A came from `r0` in the `strh` instruction. Before that, `r0` was loaded from `r0`. (Yes, it's allowed to use the same register as both the source address and the destination.)
+
+Scrolling up a bit... Wow, this one's really complicated! It's gonna be a nightmare to trace this backwards. A better choice might be to set a conditional breakpoint on the `ldrh` instruction that'll trigger when `[r0]` is `1A`. Highlight the `ldrh r0,[r0]` instruction and press Ctrl+B, and use this breakpoint:
+
+> `0800CF80,[r0]=01Ah`
+
+The `,` means that it's an execution breakpoint rather than a read or write breakpoint; the `0800CF80` is the location of the `ldrh` instruction we want to trigger on; and the stuff after the `,` is the condition that must be met for the breakpoint to trigger.
+
+Resume the game and walk around some more until it triggers. When it breaks this time, it'll be before `r0` gets overwritten and we'll be able to see the address it's loading from. For me it's __0x2010252__. Going there in the hex editor, we see the `1A 51` we're looking for.
+
+Repeat that all again with the new memory location: set a breakpoint for `[2010252]=01Ah` and walk around until it triggers. Finally it hits a decompression instruction. If I execute the `bx` instruction like before, I get here:
+
+![][decomp-breakpoint3]
+
+I want the source address, which _was_ in `r0` but is no longer there since the `swi` instruction overwrote it. Looking backwards:
+
+```
+ldr r1,[sp,#0x28]
+add r3,r1,r6
+ldr r0,=#0x3003858
+ldrh r2,[r0]
+cmp r3,r2
+bge #0x800CD86
+ldr r4,[sp,#0x2C]
+ldr r0,[sp,#0x18]
+add r1,r4,r0
+ldr r0,=#0x30037C8
+ldrh r0,[r0]
+cmp r1,r0
+blt #0x800CDCC
+... 0x800CDCC:
+mul r1,r2
+add r1,r1,r3
+lsl r1,r1,#0x2
+ldr r2,#0x2000004
+add r0,r1,r2
+ldr r0,[r0]
+ldr r4,=#0x2008004
+add r1,r1,r4
+ldr r4,[r1]
+ldr r1,[r5]
+bl #0x80F47C8
+```
+
+It's a lot, but it's all there! Going backwards, I see `r0` being overwritten by itself. Before that, `r0` is obtained from `r1` and `r2`, where `r2` is easily seen to be `0x2000004`.
+
+What's `r1`? Looking back some more, it's obtained from itself, `r2`, and `r3`. Going back some more, `r1` is obtained from `r4` and `r0`, which both come from `ldr rX,[sp,Y]` -- those are easy to figure out. `r2` is loaded from 0x3003858. And `r3` is obtained from `r1` and `r6`, where `r1` came from another `ldr rX,[sp,Y]` load and `r6` hasn't changed at all.
+
+`sp` is the stack pointer (currently 0x3007D44), and it's also an alias for `r13`. The pane at the bottom right is the stack. If you can follow all of that stuff, you'll eventually figure out what `r0` was:
+
+```
+ldr r1,[sp,#0x28]        // r1 = 0x15
+add r3,r1,r6             // r3 = 0x15 + r6 = 0x16
+ldr r0,=#0x3003858
+ldrh r2,[r0]             // r2 = 0x23
+cmp r3,r2
+bge #0x800CD86           // false; r3 is less than r2
+ldr r4,[sp,#0x2C]        // r4 = 0xB
+ldr r0,[sp,#0x18]        // r0 = 0
+add r1,r4,r0             // r1 = 0xB + 0 = 0xB
+ldr r0,=#0x30037C8
+ldrh r0,[r0]             // r0 = 0x23
+cmp r1,r0                // true; r1 is less than r0
+blt #0x800CDCC
+... 0x800CDCC:
+mul r1,r2                // r1 = 0xB * 0x23 = 0x181
+add r1,r1,r3             // r1 = 0x181 + 0x16 = 0x197
+lsl r1,r1,#0x2           // r1 = r1 * 4 = 0x65C
+ldr r2,#0x2000004
+add r0,r1,r2             // r0 = 0x65C + 0x2000004 = 0x2000660
+ldr r0,[r0]              // r0 = 0x855FACC
+ldr r4,=#0x2008004
+add r1,r1,r4             // r1 = 0x65C + 0x2008004 = 0x2008660
+ldr r4,[r1]              // r4 = 0x856B7F8
+ldr r1,[r5]              // r1 = 0x2010200
+bl #0x80F47C8
+```
+
+So we traced it back to 0x855FACC. Let's try decompressing that area with the Nintenlord thing:
+
+![][nl2]
+
+> Don't forget to note the compressed size: 0x58 bytes
+
+Open the resulting file in a hex editor. What's that at location 0x52?
+
+![][tilemap]
+
+It's the tile we wanted! So we got it right: we just need to change this value, recompress the file, insert it into the ROM, and we should be done.
+
+> I noticed that the file size is 0x80 or 128 bytes, and each entry uses 2 bytes. That makes 64 entries. Assuming this represents a square block, that means the block is 8 by 8 tiles. In EarthBound the blocks are only 4 by 4 tiles... I wonder why they changed it? _-- M. Tenda_
+
+We picked tile 0x3FE, so replace that `1A 51` with `FE 53`. Save and recompress the file, perhaps as `m12-fourside-tilemap-c.bin`. Mine ended up being 0x58 bytes still. But we'll go through the exercise again of repointing it.
+
+We inserted the tileset at 0xB2C000 and it was roughly 0x3600 bytes long. Let's put the tilemap at 0xB30000. Do that with your hex editor.
+
+What's left is to update the address. Notice how the address came from RAM instead of ROM. Maybe it'd be easier to just search for the address (0x855FACC, or `CC FA 55 08`) in the ROM. That brings us to...
+
+![][cant-find]
+
+> Oh No, _-- M. Tenda_
+
+Great, looks like we have some more backtracking to do!
+
+The address was loaded from 0x2000660. So an appropriate breakpoint would be:
+
+> `[2000660]=0CCh`
+
+Set that breakpoint and resume the game, and walk around some more until it triggers. I had to enter and exit the building to trigger it:
+
+![][break5]
+
+`stmia r2!,{r0}`, according to [this](http://problemkaputt.de/gbatek.htm#thumbopcodesmemorymultipleloadstorepushpopandldmstm), means "store `r0` to `r2` and increment `r2`". Looking a few instructions up, we can deduce that
+
+```
+r0 = r0 + r1
+   = [r2] + r1
+   = [r2] + [r0+8]
+   = [r2] + [r10+8]
+   = [r2] + [0x82DB7DC]
+   = [r2] + 0x8557F2C
+```
+
+We don't directly know what `r2` was before since it got overwritten with the address we want, but we can figure out what it was anyway: the current value is 0x855FACC, which was the sum of `[r2]` and 0x8557F2C, therefore it had a value of 0x7BA0. _That's_ the value we need to change. (We don't want to change the 0x8557F2C in the ROM because it looks like the game is using that as a base pointer for other things, but we only want to change this one thing.)
+
+Set another breakpoint:
+
+> `[2000660]=0A0h`
+
+Enter and exit the building again to trigger the breakpoint:
+
+![][break6]
+
+`CpuSet` is just a memory copy routine. It's like a slow version of DMA. Like the decomp routine, it increments the source and destination registers (`r0` and `r1` respectively) so let's execute the `bx` instruction to see if we can figure out what `r0` was before the routine:
+
+![][break7]
+
+It looks like:
+
+```
+r0 = [r5+8] + 4
+   = [r10+8] + 4
+   = [0x82DB7DC] + 4
+   = 0x8557F2C + 4
+   = 0x8557F30
+```
+
+If you go to 0x557F30 in a hex editor, you'll see a whole list of words; these are __offsets__ to the compressed tilemap data, whose base is 0x557F2C. (If you look at 0x557F2C, you'll see `0x4CA`, which denotes the number of entries in this list.)
+
+So all we need to do is find the 0x7BA0 in the list and change it to (0xB30000 - 0x557F2C = 0x5D80D4), or `D4 80 5D 00`:
+
+![][tilemap-offset]
+
+That should be it! We're finally done! Save the ROM, restart the debugger and see if it's changed:
+
+![][monotoli]
+
+All that work just for one little tile! But hopefully I've done all the heavy lifting already; there should be enough information here to deduce how map sectors, tiles, tilesets, and even palettes are stored in the ROM so that you can apply a more systematic approach to map editing.
+
+### Incorporating into the project
+
+So far this has all been one big toy example to try in isolation from the rest of the translation project. To actually put map changes into the hack is a bit different. Instead of manually copying stuff into the ROM with a hex editor, we'll add stuff to the main hack code file.
+
+Most of the data files for the hack are stored in the 0xB2C000 - 0xF00000 ROM area. In the file `m2-hack.asm`, near the end, you'll see a bunch of data files being copied to 0xB2C000. We're going to add the edited, compressed file as a new data file here.
+
+Let's call the edited, compressed file `m2-tileset-fourside-c.bin`. Add these lines to that section:
+
+```
+m2_tileset_fourside:
+.incbin "m2-tileset-fourside-c.bin:"
+```
+
+> Here, `m2_tileset_fourside` is called a _label_. When we run the assembler, each label will be resolved to a physical address. We don't necessarily need to know what the address will be, as the assembler will let us use the label in place of a numerical value. _-- M. Tenda_
+
+That'll put the data into the ROM, but we also need to update the pointer to it. We already tracked the location of the address to 0x2DB7D4. Go to the part of m2-hack.asm _right before_ the `.org 0x8B2C000`, and add this:
+
+```
+.org 0x82DB7D4 :: dw m2_tileset_fourside
+```
+
+That tells the assembler to `d`efine a `w`ord at 0x2DB7D4, with whatever value corresponds to the `m2_tileset_fourside` label.
+
+Do something similar for the tilemap, and then you're done! (You can use labels in arithmetic expressions, i.e. you can do `dw m2_tilemap_fourside - 0x8557F2C` to store the tilemap offset.)
 
 [break]: break.png
 [monotoly]: monotoly.png
@@ -210,3 +443,14 @@ But sometimes the file is larger and we need to be careful, so I'm going to assu
 [tile-molester]: tile-molester.png
 [tile-molester2]: tile-molester2.png
 [compress]: compress.png
+[break3]: break3.png
+[break4]: break4.png
+[decomp-breakpoint3]: decomp-breakpoint3.png
+[nl2]: nl2.png
+[tilemap]: tilemap.png
+[cant-find]: cant-find.png
+[break5]: break5.png
+[break6]: break6.png
+[break7]: break7.png
+[tilemap-offset]: tilemap-offset.png
+[monotoli]: monotoli.png
