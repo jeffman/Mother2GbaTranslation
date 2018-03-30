@@ -28,4 +28,4 @@ Some screenshots:
 ![](./screenshots/sc4.png) ![](./screenshots/sc5.png) ![](./screenshots/sc6.png)
 
 ### Dependencies
-If you want to just use the graphical tool to help with the translation, you just need .NET 4.5.1. If you want to actually compile the hack code and test it out, you will need [armips](https://github.com/Kingcom/armips). The Hack is somewhat stable, but there are a few major issues we need to fix, such as calling your dad crashes the game.
+If you want to just use the graphical tool to help with the translation, you just need .NET 4.5.1. If you want to actually compile the hack code and test it out, you will need [armips](https://github.com/Kingcom/armips) and xkas. The Hack is somewhat stable, but there are a few major issues we need to fix, such as calling your dad crashes the game.
