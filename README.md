@@ -23,7 +23,8 @@ The core of the VWF is complete. But it needs to be implemented in dozens of dif
 
 Some screenshots:
 
-![](./screenshots/sc1.png) ![](./screenshots/sc2.png) ![](./screenshots/isc3.png) ![](./screenshots/sc4.png) ![](./screenshots/sc5.png) ![](./screenshots/sc6.png)
+![](./screenshots/sc1.png) ![](./screenshots/sc2.png) ![](./screenshots/isc3.png)
+![](./screenshots/sc4.png) ![](./screenshots/sc5.png) ![](./screenshots/sc6.png)
 
 ### Dependencies
-If you want to just use the graphical tool to help with the translation, you just need .NET 4.5.1. If you want to actually compile the hack code and test it out, you will need [armips](https://github.com/Kingcom/armips). The game also crashes horribly 99% of the time in its current state, so there's no point in trying it.
+If you want to just use the graphical tool to help with the translation, you just need .NET 4.5.1. If you want to actually compile the hack code and test it out, you will need [armips](https://github.com/Kingcom/armips). The Hack is somewhat stable, but there are a few major issues we need to fix, such as calling your dad crashes the game.
