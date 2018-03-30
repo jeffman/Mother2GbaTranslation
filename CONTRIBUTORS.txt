@@ -19,7 +19,11 @@ Text conversion:
 
 Special thanks:
   TragicManner
-  
-Graphical Conversion:
+  Nintendo
+  Shigesato Itoi
+  Ape (Creatures Inc.)
+  HAL Laboratory
+
+Graphics:
+  Undertale for SNES Team
   Sterophonick
-  Snakeshroom
