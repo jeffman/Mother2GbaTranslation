@@ -281,7 +281,7 @@ org $8FEBF28; db $40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$00,$00  // EXECUTIVE P
 //========================================================================================
 
 // insert new main font
-org $8F2A5B0; incbin gfx/m1_gfx_font.bin
+org $8F2A5A8; incbin gfx/m1-gfx-font.bin
 
 // alter the presented by/produced by screens
 org $8F633EC; incbin gfx/m1_gfx_produced_by_a.bin
