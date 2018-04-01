@@ -521,13 +521,6 @@ namespace ScriptToolGui
                                 // Special case -- for M12 English, if the line is modified,
                                 // check for an end code and insert if it's missing
                                 var lastCode = m12Compiler.GetLastControlCode(newString);
-
-                                if (!IsJustALabel(newString) && (lastCode == null || (lastCode != null
-                                    && !lastCode.IsEnd)))
-                                {
-                                    newString += "[00 FF]";
-                                    endcodeInsertion = "Inserted missing [00 FF]";
-                                }
                             }
                         }
 
