@@ -27,5 +27,4 @@
 .org 0x8B01D84 :: .incbin "gfx/m2-b01d84.bin"
 .org 0x874d4bc :: .incbin "gfx/m2-74d4bc.bin"
 .org 0x869ff28 :: .incbin "gfx/m2-69ff28.bin"
-
 .close

@@ -762,13 +762,6 @@ mov  r1,#0x80
 orr  r0,r1
 strh r0,[r2,#8]
 
-// Tile data
-ldr  r0,=#disclaimer_graphics
-ldr  r1,=#0x6008000
-//swi  #0x12 // LZ77UnCompVram
- ldr  r2,=#0x1FE0
- swi  #0xC
-
 // Fill the first row of tilemap data with the first tile in our file
 ldr  r0,=#0x6000000
 ldr  r1,=#0x200
@@ -801,6 +794,10 @@ add  r0,#2
 add  r2,#1
 cmp  r2,r1
 blt  -
+ldr r0,=#disclaimer_graphics
+ldr r1,=#0x6008000
+swi #0x12
+
 
 
 // load our palette
@@ -921,9 +918,9 @@ pop  {pc}
 
 org $8FEE000;
 disclaimer_palette:
-incbin gfx/intro_screen_pal.bin
+incbin gfx/intro-screen-pal.bin
 
 disclaimer_graphics:
-incbin gfx/intro_screen_gfx.bin
+incbin gfx/intro-screen-gfx.bin
 
 org $800027A; bl intro_screen
