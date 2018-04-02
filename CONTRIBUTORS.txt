@@ -19,10 +19,6 @@ Text conversion:
 
 Special thanks:
   TragicManner
-  Nintendo
-  Shigesato Itoi
-  Ape (Creatures Inc.)
-  HAL Laboratory
 
 Graphics:
   Undertale for SNES Team
