@@ -581,6 +581,10 @@ m2_enemy_attributes:
 .include "m2-formatting.asm"
 .include "m2-customcodes.asm"
 
+//Changes Mother 1+2 Screen
+.org 0x8705F95 :: .incbin "gfx/m12-705f94.bin"
+.org 0x86fd794 :: .incbin "gfx/m12-6fd794.bin"
+
 
 //Part of Mato's Menu patch
 //Change the default names.
