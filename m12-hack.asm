@@ -611,8 +611,12 @@ m2_enemy_attributes:
 
 //Changes Mother 2 Cart Sprite
 .org 0x87057D4 :: .incbin "gfx/m12-7057d4.bin"
-.org 0x86E3B94 :: .incbin "gfx/m12-6E3B94.bin"
 .org 0x87069DE :: .incbin "gfx/m12-7069de.bin"
 .org 0x8707994 :: .incbin "gfx/m12-707994.bin"
+
+//Changes Mother 1 Cart Sprite
+.org 0x87057b4 :: .incbin "gfx/m12-7057b4.bin"
+.org 0x86e2794 :: .incbin "gfx/m12-6e2794.bin"
+.org 0x8707194 :: .incbin "gfx/m12-707194.bin"
 
 .close
