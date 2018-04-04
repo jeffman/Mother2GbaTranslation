@@ -8,8 +8,6 @@ arch gba.thumb
 //========================================================================================
 
 // alter select screen graphical text (where you choose between MOTHER 1 and MOTHER 2)
-org $86DDC74; incbin gfx/m12_gfx_whichgame_a.bin
-org $86E4F94; incbin gfx/m12_gfx_whichgame_b.bin
 
 //========================================================================================
 //                           MOTHER 1 SAVE FILE SELECT MENU HACKS
