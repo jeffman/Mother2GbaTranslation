@@ -399,7 +399,7 @@ namespace ScriptTool
                                 break;
 
                             case 0x1A:
-                                // Name (60/75) or item (80/??) or number (36/72).
+                                // Name (60/96) or item (80/??) or number (36/72).
                                 sb.Append("[NAME]");
                                 currentWidth += 80;
                                 break;

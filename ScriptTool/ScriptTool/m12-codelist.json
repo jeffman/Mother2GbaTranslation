@@ -57,17 +57,17 @@
   },
   {
     "Identifier": 0xE,
-    "Description": "Paula's name (1C 02 02)",
+    "Description": "Paula's name (1C 02 02 or 1C 01 1E)",
     "Length": 2
   },
   {
     "Identifier": 0xF,
-    "Description": "Jeff's name (1C 02 03)",
+    "Description": "Jeff's name (1C 02 03 or 1C 01 34)",
     "Length": 2
   },
   {
     "Identifier": 0x10,
-    "Description": "Poo's name (1C 02 04)",
+    "Description": "Poo's name (1C 02 04 or 1C 01 4A)",
     "Length": 2
   },
   {
@@ -87,7 +87,7 @@
   },
   {
     "Identifier": 0x15,
-    "Description": "King's name (1C 02 07)",
+    "Description": "King's name (1C 02 07 or 1C 01 03)",
     "Length": 2
   },
   {
@@ -112,7 +112,7 @@
   },
   {
     "Identifier": 0x1C,
-    "Description": "If flag {0:X} is set, jump to offset {1:X} and return (06)",
+    "Description": "If flag {0:X} is set, jump to offset {1:X} and don't return (06)",
     "Length": 8,
     "HasReferences": true,
     "ReferenceOffset": 4
