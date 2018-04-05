@@ -57,17 +57,17 @@
   },
   {
     "Identifier": 0xE,
-    "Description": "Paula's name (1C 02 02)",
+    "Description": "Paula's name (1C 02 02 or 1C 01 1E)",
     "Length": 2
   },
   {
     "Identifier": 0xF,
-    "Description": "Jeff's name (1C 02 03)",
+    "Description": "Jeff's name (1C 02 03 or 1C 01 34)",
     "Length": 2
   },
   {
     "Identifier": 0x10,
-    "Description": "Poo's name (1C 02 04)",
+    "Description": "Poo's name (1C 02 04 or 1C 01 4A)",
     "Length": 2
   },
   {
@@ -87,7 +87,7 @@
   },
   {
     "Identifier": 0x15,
-    "Description": "King's name (1C 02 07)",
+    "Description": "King's name (1C 02 07 or 1C 01 03)",
     "Length": 2
   },
   {
@@ -102,7 +102,7 @@
   },
   {
     "Identifier": 0x1A,
-    "Description": "Display string {0:X}? (Appears after 90 FF)",
+    "Description": "Display string in string slot as kind {0:X} (Appears after 90 FF)",
     "Length": 4
   },
   {
@@ -112,7 +112,7 @@
   },
   {
     "Identifier": 0x1C,
-    "Description": "If flag {0:X} is set, jump to offset {1:X} and return (06)",
+    "Description": "If flag {0:X} is set, jump to offset {1:X} and don't return (06)",
     "Length": 8,
     "HasReferences": true,
     "ReferenceOffset": 4
@@ -144,7 +144,7 @@
   },
   {
     "Identifier": 0x22,
-    "Description": "Unknown",
+    "Description": "Wait with prompt, even in battle (14, sometimes used in place of 03)",
     "Length": 2
   },
   {
@@ -463,7 +463,7 @@
   },
   {
     "Identifier": 0x90,
-    "Description": "Load character/item name {0:X} into memory (?)",
+    "Description": "Store {0:X} to string slot (for 1A FF printing). If 00, store argumentary memory to string slot.",
     "Length": 3
   },
   {
@@ -596,12 +596,12 @@
   },
   {
     "Identifier": 0xA9,
-    "Description": "Unknown (1F EA, values don't match)",
+    "Description": "Apply 'cutscene' visual/sound FX associated with sprite {0:X}? (1F EA, values don't match)",
     "Length": 4
   },
   {
     "Identifier": 0xAA,
-    "Description": "Unknown (1F E7, values don't match)",
+    "Description": "Apply 'cutscene' visual/sound FX associated with A0 FF-generate sprite {0:X}? (1F E7, values don't match)",
     "Length": 4
   },
   {
@@ -753,7 +753,7 @@
   },
   {
     "Identifier": 0xC8,
-    "Description": "Number selector with {0:X} digits (1F 52)",
+    "Description": "Number selector with {0:X} digits and {1:X} style (1F 52)",
     "Length": 4
   },
   {

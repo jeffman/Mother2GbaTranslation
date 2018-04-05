@@ -303,6 +303,7 @@
             this.ebString.Location = new System.Drawing.Point(3, 4);
             this.ebString.Multiline = true;
             this.ebString.Name = "ebString";
+            this.ebString.ReadOnly = true;
             this.ebString.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.ebString.Size = new System.Drawing.Size(786, 128);
             this.ebString.TabIndex = 9;
@@ -315,6 +316,7 @@
             this.m12String.Location = new System.Drawing.Point(3, 138);
             this.m12String.Multiline = true;
             this.m12String.Name = "m12String";
+            this.m12String.ReadOnly = true;
             this.m12String.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.m12String.Size = new System.Drawing.Size(786, 128);
             this.m12String.TabIndex = 10;
