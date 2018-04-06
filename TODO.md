@@ -44,18 +44,22 @@
 - [ ] Add big font (flyovers)
 - [ ] VWF for Saturn font
 - [ ] VWF for small font
+- [ ] VWF for menu choices
 - [ ] VWF for big font
-  - [ ] Flyovers (already implemented this in a past project, just need to migrate it)
+  - [ ] Flyovers (already implemented this in a past project, just need to migrate it, VERY CAREFULLY.)
   - [ ] Coffee/tea scenes
 - [ ] VWF for Lumine Hall text
 - [ ] Pronoun control codes
 - [X] BUG: jump control codes seem to be resetting pixel X values when they shouldn't
 - [ ] TODO: replace load/store chains with ldmia/stmia
-
-### M2 - hacking (misc, lower priority)
+- [ ] EB graphical localization (hospital crosses, cultist sprites, etc.)
 - [X] Incorporate Mato's M1 translation
 - [ ] Insert EB's title screen
-- [ ] EB graphical localization (hospital crosses, cultist sprites, etc.)
+- [ ] Translate all text
+- [ ] BUG: Game crashes on 3rd prayer of the Giygas fight.
+- [ ] BUG: Game crashes near any "Your sanctuary" guardians.
+
+### M2 - hacking (misc, lower priority)
 - [ ] M1+2 bugfixes:
   - [ ] Exit mouse in Giygas lair
   - [ ] Poison Giygas to death

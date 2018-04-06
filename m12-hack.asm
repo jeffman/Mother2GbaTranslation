@@ -12,10 +12,10 @@
 // Font hacks
 //==============================================================================
 
-.org 0x8AFED84 :: .incbin "m2-mainfont1-empty.bin"
-.org 0x8B0F424 :: .incbin "m2-mainfont2-empty.bin"
-.org 0x8B13424 :: .incbin "m2-mainfont3-empty.bin"
-.org 0x8B088A4 :: .incbin "m2-shifted-cursor.bin"
+.org 0x8AFED84 :: .incbin "data/m2-mainfont1-empty.bin"
+.org 0x8B0F424 :: .incbin "data/m2-mainfont2-empty.bin"
+.org 0x8B13424 :: .incbin "data/m2-mainfont3-empty.bin"
+.org 0x8B088A4 :: .incbin "data/m2-shifted-cursor.bin"
 
 // Greek letters
 .org 0x8B1B907 :: db 0x8B // alpha
@@ -530,11 +530,11 @@ b       0x80D3A14
 
 // Box font relocation
 m2_font_relocate:
-.incbin "m2-font-relocate.bin"
+.incbin "data/m2-font-relocate.bin"
 
 // Co-ordinate table
 m2_coord_table:
-.incbin "m2-coord-table.bin"
+.incbin "data/m2-coord-table.bin"
 
 // EB fonts
 m2_font_table:
@@ -542,10 +542,10 @@ dw     m2_font_main
 dw     m2_font_saturn
 
 m2_font_main:
-.incbin "m2-font-main.bin"
+.incbin "data/m2-font-main.bin"
 
 m2_font_saturn:
-.incbin "m2-font-saturn.bin"
+.incbin "data/m2-font-saturn.bin"
 
 // EB font heights
 m2_height_table:
@@ -560,16 +560,16 @@ m2_widths_main:
 .incbin "m2-widths-main.bin"
 
 m2_widths_saturn:
-// tbd
+.incbin "m2-widths-saturn.bin"
 
 m2_bits_to_nybbles:
-.incbin "m2-bits-to-nybbles.bin"
+.incbin "data/m2-bits-to-nybbles.bin"
 
 m2_nybbles_to_bits:
-.incbin "m2-nybbles-to-bits.bin"
+.incbin "data/m2-nybbles-to-bits.bin"
 
 m2_enemy_attributes:
-.incbin "m2-enemy-attributes.bin"
+.incbin "data/m2-enemy-attributes.bin"
 
 
 //==============================================================================
@@ -604,19 +604,19 @@ m2_enemy_attributes:
 .org 0x80fc46c :: .byte 0x4D,0x00,0x00,0x00,0x82,0x72,0x00,0x00,0x82,0x6F,0x00,0x00,0x82,0x63,0x00,0x00
 .org 0x80FC43C :: .byte 0x82,0x65,0x82,0x72,0x82,0x73,0x00,0x00,0x82,0x6C,0x82,0x64,0x82,0x63,0x00,0x00,0x82,0x72,0x82,0x6B,0x82,0x6E
 //Changes Mother 1+2 Screen
-.org 0x8705F95 :: .incbin "gfx/m12-705f94.bin"
-.org 0x86fd794 :: .incbin "gfx/m12-6fd794.bin"
+.org 0x8705F95 :: .incbin "data/m12-705f94.bin"
+.org 0x86fd794 :: .incbin "data/m12-6fd794.bin"
 
-.org 0x86DDC74 :: .incbin "gfx/m12_gfx_whichgame_a.bin"
+.org 0x86DDC74 :: .incbin "data/m12_gfx_whichgame_a.bin"
 
 //Changes Mother 2 Cart Sprite
-.org 0x87057D4 :: .incbin "gfx/m12-7057d4.bin"
-.org 0x87069DE :: .incbin "gfx/m12-7069de.bin"
-.org 0x8707994 :: .incbin "gfx/m12-707994.bin"
+.org 0x87057D4 :: .incbin "data/m12-7057d4.bin"
+.org 0x87069DE :: .incbin "data/m12-7069de.bin"
+.org 0x8707994 :: .incbin "data/m12-707994.bin"
 
 //Changes Mother 1 Cart Sprite
-.org 0x87057b4 :: .incbin "gfx/m12-7057b4.bin"
-.org 0x86e2794 :: .incbin "gfx/m12-6e2794.bin"
-.org 0x8707194 :: .incbin "gfx/m12-707194.bin"
+.org 0x87057b4 :: .incbin "data/m12-7057b4.bin"
+.org 0x86e2794 :: .incbin "data/m12-6e2794.bin"
+.org 0x8707194 :: .incbin "data/m12-707194.bin"
 
 .close

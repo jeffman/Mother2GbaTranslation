@@ -14,19 +14,19 @@ arch gba.thumb
 //========================================================================================
 
 // Alter the file select menus
-org $8FE5000; incbin gfx/m1_window_file_menu_1.bin
+org $8FE5000; incbin data/m1_window_file_menu_1.bin
 org $8F0D208; dd $8FE5000
 
 // move character info positions
 org $8F0D138; db $03
 org $8F0D148; db $0E
 org $8F0D162; db $17
-org $8FE6000; incbin gfx/m1_window_file_menu_2.bin
+org $8FE6000; incbin data/m1_window_file_menu_2.bin
 org $8F0D2A4; dd $8FE6000
 org $8F0D236; db $08
 
 // "Copy to where?" window
-org $8FE7000; incbin gfx/m1_window_file_menu_3.bin
+org $8FE7000; incbin data/m1_window_file_menu_3.bin
 org $8F0D37C; dd $8FE7000
 // move "copy to" cursor when selecting a slot
 org $8F2A0B6; db $00
@@ -34,7 +34,7 @@ org $8F2A0BA; db $00
 org $8F2A0BE; db $00
 
 // "Delete this file?" window
-org $8FE8000; incbin gfx/m1_window_file_menu_4.bin
+org $8FE8000; incbin data/m1_window_file_menu_4.bin
 org $8F0D3DC; dd $8FE8000
 
 // lower box erasing stuff
@@ -52,7 +52,7 @@ org $8F27155; db $1C
 
 // alter naming windows
 org $8F0DE4C; dd $8FE7A00
-org $8FE7A00; incbin gfx/m1_window_naming.bin
+org $8FE7A00; incbin data/m1_window_naming.bin
 org $8F0DDA8; db $02  // move desc. text up one row
 org $8F0DDB4; db $05  // move name to be below the text
 org $8F0DF7E; db $05
@@ -78,7 +78,7 @@ org $8F0E2A0; dd $8FE80C0
 
 // repoint "name not allowed" window
 org $8F0E2A4; dd $8FE7200
-org $8FE7200; incbin gfx/m1_window_name_not_allowed.bin
+org $8FE7200; incbin data/m1_window_name_not_allowed.bin
 
 // move the naming screen sprites up a few pixels
 org $8F0DDE0; db $10
@@ -107,7 +107,7 @@ org $8F0BF88; db $FC
 
 // alter character stats window in battle
 org $8F0AEFC; dd $8FE7400
-org $8FE7400; incbin gfx/m1_window_char_stats.bin
+org $8FE7400; incbin data/m1_window_char_stats.bin
 
 // alter main battle text box design
 org $8F275E6; db $01
@@ -127,7 +127,7 @@ org $8F2783A; db $01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01
 
 // repoint and set up "??? can't use this" battle text
 org $8F29F50; dd $8FE78A0
-org $8FE78A0; incbin gfx/m1_window_cant_use_item.bin
+org $8FE78A0; incbin data/m1_window_cant_use_item.bin
 
 // clear out text speed box
 org $8F2789C; db $01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01
@@ -165,11 +165,11 @@ org $8F0C088; bl possibly_ignore_auto_indents
 
 // Alter the Command menu
 org $8F0B290; dd $8FE4000
-org $8FE4000; incbin gfx/m1_window_command_menu.bin
+org $8FE4000; incbin data/m1_window_command_menu.bin
 
 // Alter the Status menu
 org $8F0B188; dd $8FE4800
-org $8FE4800; incbin gfx/m1_window_status_menu.bin
+org $8FE4800; incbin data/m1_window_status_menu.bin
 org $8F0C6B4; db $04   // fix status menu number alignment
 
 // alter main dialogue box
@@ -177,7 +177,7 @@ org $8F0CAE4; bl choose_text_window_type
 org $8F0AE48; dd wide_text_box
 org $8F7E100
 wide_text_box:
-   incbin gfx/m1_window_wide_text_box.bin
+   incbin data/m1_window_wide_text_box.bin
 org $8F0CB1E; bl save_line_number_a
 // keep game from updating character status on top of dialog boxes
 org $8F0B01C; nop; nop;
@@ -190,13 +190,13 @@ org $8F085A6; bl swallow_item
 org $8F085B6; bl swallow_item
 
 // repoint yes/no main dialog options, make the game know when to choose which one
-org $8FE7100; incbin gfx/m1_window_yes_no.bin
-org $8FE7140; incbin gfx/m1_window_yes_no_small.bin
+org $8FE7100; incbin data/m1_window_yes_no.bin
+org $8FE7140; incbin data/m1_window_yes_no_small.bin
 org $8F04FCE; bl choose_yes_no_size
 
 // alter the item action menus
 org $8F0B7C4; dd $8FE4B00
-org $8FE4B00; incbin gfx/m1_window_item_action_menu.bin
+org $8FE4B00; incbin data/m1_window_item_action_menu.bin
 org $8F29FB6; db $17
 org $8F29FBA; db $17
 org $8F29FBE; db $17
@@ -208,12 +208,12 @@ org $8F29FD6; db $17
 
 // expand store menu width
 org $8F0BAC0; dd $8FE7800
-org $8FE7800; incbin gfx/m1_window_shop_menu.bin
+org $8FE7800; incbin data/m1_window_shop_menu.bin
 org $8F0BAD8; db $0E
 
 // repoint and expand the "Who?" window
 org $8F0B9F4; dd $8FE7560
-org $8FE7560; incbin gfx/m1_window_who.bin
+org $8FE7560; incbin data/m1_window_who.bin
 // delete expanded "Who?" window properly
 org $8F0B9B8; db $08
 org $8F0B9CC; db $08
@@ -240,7 +240,7 @@ org $8F1B3C8; db $1B,$80,$3F,$9C,$02,$00,$02,$00
 org $8F027B4; dd newobjecttable
 org $8FE8200
 newobjecttable:
-  incbin gfx/m1_data_object_table_1.bin  // repointing a map object table to insert Easy Ring box
+  incbin data/m1_data_object_table_1.bin  // repointing a map object table to insert Easy Ring box
 
 org $8F1258E; bl increaseexp
 org $8F10350; bl increasemoney
@@ -253,7 +253,7 @@ org $8F09698; bl lowerencounterrate
 //========================================================================================
 
 // the ending runs via one long continuous script, need to repoint it so we can fix stuff
-org $8FEA400; incbin gfx/m1_data_ending_script.bin
+org $8FEA400; incbin data/m1_data_ending_script.bin
 org $8F0A500; dd $8FEA400
 org $8FEBDB8; db $01,$02,$03,$04,$05,$00,$00,$00,$00,$00,$00,$00  // DIRECTOR
 org $8FEBDE4; db $06,$07,$08,$09,$0A,$0B,$0C,$0D,$00,$00,$00,$00  // GAME DESIGNERS
@@ -279,21 +279,21 @@ org $8FEBF28; db $40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$00,$00  // EXECUTIVE P
 //========================================================================================
 
 // insert new main font
-org $8F2A5A8; incbin gfx/m1-gfx-font.bin
+org $8F2A5A8; incbin data/m1-gfx-font.bin
 
 // alter the presented by/produced by screens
-org $8F633EC; incbin gfx/m1_gfx_produced_by_a.bin
-org $8F6350C; incbin gfx/m1_gfx_produced_by_b.bin
+org $8F633EC; incbin data/m1_gfx_produced_by_a.bin
+org $8F6350C; incbin data/m1_gfx_produced_by_b.bin
 org $8F0D5D0; bl producescreen1; b $8F0D5E8
 org $8F0D63C; bl producescreen2; b $8F0D664
 org $8F0D66E; nop
 org $8F0D676; nop
 
 // make the "CD" machine say "ATM" instead
-org $8F328F0; incbin gfx/m1_gfx_atm.bin
+org $8F328F0; incbin data/m1_gfx_atm.bin
 
 // change some of the graphical text used in the end credits
-org $8F5FF2c; incbin gfx/m1_gfx_credits.bin
+org $8F5FF2c; incbin data/m1_gfx_credits.bin
 
 
 //========================================================================================

@@ -918,9 +918,9 @@ pop  {pc}
 
 org $8FEE000;
 disclaimer_palette:
-incbin gfx/intro-screen-pal.bin
+incbin data/intro-screen-pal.bin
 
 disclaimer_graphics:
-incbin gfx/intro-screen-gfx.bin
+incbin data/intro-screen-gfx.bin
 
 org $800027A; bl intro_screen
