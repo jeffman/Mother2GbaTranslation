@@ -606,6 +606,7 @@ m2_enemy_attributes:
 //Changes Mother 1+2 Screen
 .org 0x8705F95 :: .incbin "data/m12-705f94.bin"
 .org 0x86fd794 :: .incbin "data/m12-6fd794.bin"
+.org 0x8709190 :: .incbin "data/m12-709190.bin"
 
 .org 0x86DDC74 :: .incbin "data/m12_gfx_whichgame_a.bin"
 
