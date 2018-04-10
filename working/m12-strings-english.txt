@@ -2869,8 +2869,8 @@
 ^L2610^[8D FF 01 00][BD FF 04 _L2614_ _L2615_ _L2614_ _L2614_][00 FF]
 ^L2612^@Hey,[1B FF 0F 00] I'm not just giving it[01 FF]  away...[1D FF][00 FF]
 ^L2613^[D4 FF 05 00]@Eggs are easily broken.[1B FF 0F 00][02 FF]@There's no way to stuff it in[01 FF]  with your other things if you[01 FF]  have no more room...[1D FF][00 FF]
-^L2614^
-^L2615^
+^L2614^Bro[00 FF]
+^L2615^Sis[00 FF]
 ^L2616^[83 FF 55 00][82 FF _L2617_][BC FF 01 00][86 FF _L2177_][81 FF _L2618_]@I heard that the kidnapped girl[01 FF]  was saved.[02 FF]@What?[1B FF 14 00]  You saved her?[02 FF]@That's hard to believe.[1B FF 14 00]  You[01 FF]  don't seem like the hero-type to[01 FF]  me.[1D FF][00 FF]
 ^L2617^@Everdred is asking for you.[1B FF 14 00][01 FF]  He has a present to give you.[1B FF 14 00][01 FF]  Please...[1D FF][00 FF]
 ^L2618^@Will you give me 1,000 dollars?[02 FF]@I'll give you all my support.[03 FF 00 00][04 FF _L2619_][05 FF _L2620_]
@@ -3195,14 +3195,14 @@
 ^L2971^[A1 FF FF 02 22 02][9E FF][1C FF 0B 02 _L2974_][1C FF 0A 02 _L2977_][80 FF _L2974_]
 ^L2972^[1C FF 0B 02 _L2973_][80 FF _L2968_]
 ^L2973^[A1 FF FF 02 22 02][9E FF][1C FF 0A 02 _L2978_][80 FF _L2974_]
-^L2975^
-^L2976^
-^L2977^
+^L2975^[1B FF 78 00][A1 FF FF 02 23 02][9E FF][A4 FF FF 02]@Amigo, you won a very big[01 FF]  jackpot![02 FF]@Here's a big prize for you,[01 FF]  amigo![02 FF][91 FF FF][82 FF _L2980_][01 FF][93 FF 00 C2]@[86 FF _L11000_] won a [90 FF C2][1A FF 02 00][01 FF]  as a prize.[1D FF][01 FF][D4 FF 74 00][C6 FF][A3 FF FF 02][9E FF][80 FF _L2974_]
+^L2976^[1B FF 78 00][A1 FF FF 02 23 02][9E FF][A4 FF FF 02]@Amigo, you won![1B FF 14 00]  A very big[01 FF]  winning, I think![02 FF]@Here's a very nice prize for the[01 FF]  important amigo![02 FF][91 FF FF][82 FF _L2980_][01 FF][93 FF 00 7C]@[86 FF _L11000_] won a [90 FF 7C][1A FF 02 00][01 FF]  as a prize.[1D FF][D4 FF 74 00][C6 FF][A3 FF FF 02][9E FF][80 FF _L2974_]
+^L2977^[1B FF 78 00][A1 FF FF 02 23 02][9E FF][A4 FF FF 02]@Amigo, you won![1B FF 14 00]  A very big[01 FF]  winning, and you hit it![02 FF]@Here's the prize for the[01 FF]  important amigo![02 FF][91 FF FF][82 FF _L2980_][01 FF][93 FF 00 78]@[86 FF _L11000_] won a [90 FF 78][1A FF 02 00][01 FF]  as a prize.[1D FF][D4 FF 74 00][C6 FF][A3 FF FF 02][9E FF][80 FF _L2974_]
 ^L2978^[1C FF 0B 02 _L2979_][80 FF _L2974_]
-^L2979^
-^L2980^
+^L2979^[1B FF 78 00][A1 FF FF 02 23 02][9E FF][A4 FF FF 02]@Amigo, you won![1B FF 14 00]  A very big[01 FF]  winning, my friend![02 FF]@Here's the big prize for you![02 FF][91 FF FF][82 FF _L2980_][01 FF][93 FF 00 53]@[86 FF _L11000_] won a [90 FF 53][1A FF 02 00][01 FF]  as a prize.[1D FF][D4 FF 74 00][C6 FF][A3 FF FF 02][9E FF][80 FF _L2974_]
+^L2980^@That's what I thought, but[01 FF]  amigo, you have no more room.[02 FF]@I'm sorry, but the deal's off.[02 FF]@Your pay off took the day off,[01 FF]  amigo.[1D FF][C6 FF][A3 FF FF 02][9E FF][80 FF _L2974_]
 ^L2981^[02 FF]@(What?[1B FF 14 00]  The white sesame[01 FF]  still... loves me?![01 FF]  Weep, weep...[1D FF][C6 FF][08 FF 87 00][1C FF C6 02 _L2197_][1B FF 3C 00][86 FF _L1671_][00 FF]
-^L2982^
+^L2982^@(Really?[1B FF 14 00]  You've seen him[01 FF]  already?  Was he okay?[1B FF 14 00][01 FF]  ...Hmmm, I see.)[1D FF][08 FF 8A 00][00 FF]
 ^L2983^@You have no more room.[1D FF][00 FF]
 ^L2984^[08 FF FE 00][08 FF 90 02][86 FF _L4325_][09 FF FE 00][09 FF 90 02][00 FF]
 ^L2985^@You've been exceedinly patient.[02 FF]@You've overcome many[01 FF]  hardships.[02 FF]@I praise all of you for your[01 FF]  courage.[1D FF][00 FF]
@@ -3331,10 +3331,10 @@
 ^L3136^@Kids shouldn't drink espresso.[01 FF]  It'll stunt your growth, stubby![02 FF]@And quit hanging out around[01 FF]  here.[02 FF]@What?[02 FF]@Mr. Monotoli's here?[02 FF]@You must be thinking of[01 FF]  someone else![1D FF][00 FF]
 ^L3137^@Hey, long time no see![02 FF]@I've thought of a new joke[01 FF]  since before...[02 FF]@Knock knock!... (who's there?)[02 FF]@Sawyer... (Sawyer who?)[02 FF]@Sawyer doin' well, I'm fine too![02 FF]@Baaa ha ha ha!...[02 FF]@...You don't think it's funny?[02 FF]@I really thought this would[01 FF]  be funny to you.[02 FF]@Now my self confidence is[01 FF]  TOTALLY shot!  Back to[01 FF]  therapy...[1D FF][00 FF]
 ^L3138^@I've been trying to think of[01 FF]  some funny jokes...[02 FF]@I scream, you scream, we[01 FF]  all scream for ice scream![02 FF]@Waaa ha ha ha ha ha.  That's[01 FF]  so funny![02 FF]@That should really make you[01 FF]  laugh.[02 FF]@C'mon, laugh![02 FF]@If you hear any funny jokes,[01 FF]  be sure you let loose and[01 FF]  laugh...[02 FF]@Please... I'm counting on you[01 FF]  to laugh![02 FF]@*boo hoo hoo*...[1D FF][00 FF]
-^L3139^
-^L3140^
-^L3141^
-^L3144^
+^L3139^@The hint that I gave you was[01 FF]  critical to helping you win...[02 FF]@Happy happy![02 FF]@We rock!  Ha ha ha.[1D FF][00 FF]
+^L3140^[8D FF 01 00][A8 FF 00]@I wanna say thanks.[02 FF]@Monotoli destroyed my life...[01 FF]  but I've decided not to blame[01 FF]  anyone.[02 FF]@I'm having a wonderful time[01 FF]  each and every day now.[02 FF]@Thank you, thank you![1D FF][00 FF]
+^L3141^@The Dinosaur Museum doesn't[01 FF]  have real dinosaurs...[1B FF 14 00]  They are[01 FF]  all replicas.[02 FF]@But I guess everyone knows[01 FF]  that.[1D FF][00 FF]
+^L3144^[BB FF 05][87 FF]@You don't even have[01 FF]  [B8 FF 00][1A FF 04 00] dollars![02 FF]@You don't deserve to go in the[01 FF]  museum.[1D FF][00 FF]
 ^L3146^@Please come back again to[01 FF]  study,[02 FF]@'cause I don't like being alone...[1D FF][00 FF]
 ^L3147^@You want to know about[01 FF]  something <extraordinary>?[02 FF]@.....[02 FF]@Hmmmm...[02 FF][01 FF][1B FF 3C 00]@...You know, there's a new[01 FF]  singer named Venus at the[01 FF]  Topolla Theater.[02 FF]@Could you bring me her[01 FF]  autograph on an eraser?[02 FF]@Then, I'll show you something[01 FF]  <extraordinary.>[02 FF]@...Oh,[1B FF 0F 00] if you can get her[01 FF]  autograph on anything,[1B FF 0F 00] don't[01 FF]  worry about the eraser...[02 FF]@I don't care if the autograph is[01 FF]  written on toilet paper...[1D FF][08 FF 8C 00][09 FF AF 02][00 FF]
 ^L3148^[D4 FF 76 00]@You got it![02 FF]@That banana peel has an[01 FF]  authentic <Venus> autograph?[02 FF]@Yep,[1B FF 0F 00] there's no doubt about it![02 FF]@Now for my promise.[02 FF]@I'll tell you about something[01 FF]  <extraordinary.>[02 FF]@In the next room, there is a[01 FF]  light shining from far, far below[01 FF]  the manhole.[02 FF]@There,[1B FF 0F 00] I found a huge,[1B FF 0F 00] monster[01 FF]  rat![02 FF]@I'm not trying to pull your leg...[02 FF]@I'll let you go there and check it[01 FF]  out for yourself.[1D FF][D4 FF 10 00][C6 FF][6D FF FF 00 98 00][85 FF 8C 03 06 00][84 FF 8D 03 5A 01 01 00][08 FF 3A 00][08 FF 02 00][00 FF]
@@ -3345,15 +3345,15 @@
 ^L3156^
 ^L3157^[08 FF 00 01][86 FF _L4325_][09 FF 00 01][00 FF]
 ^L3158^[08 FF 01 01][86 FF _L4325_][09 FF 01 01][00 FF]
-^L3159^
+^L3159^@What did you do during the[01 FF]  power outage?[02 FF]@I was sitting here 'cause I was[01 FF]  scared.[1D FF][00 FF]
 ^L3160^[08 FF 02 01][86 FF _L4326_][09 FF 02 01][00 FF]
 ^L3161^[08 FF 06 01][86 FF _L4326_][09 FF 06 01][00 FF]
-^L3162^
-^L3163^
-^L3166^
+^L3162^@I want to get out of here,[02 FF]@because they suddenly shut[01 FF]  down the store and the power[01 FF]  goes out.[02 FF]@There are lots of strange things[01 FF]  happening in this department[01 FF]  store.[1D FF][00 FF]
+^L3163^@I heard a sound like[01 FF]  <gwaaargh!> and it was loud.[02 FF]@I wonder if someone was[01 FF]  fighting.[1D FF][00 FF]
+^L3166^@Certainly, it's very dangerous[01 FF]  living in the city.[1D FF][00 FF]
 ^L3167^[C6 FF][A7 FF CC 01][00 FF]
-^L3168^
-^L3169^
+^L3168^@In the future, you will build[01 FF]  cities and even create a[01 FF]  country...[02 FF]@...I'm counting on you.[1D FF][00 FF]
+^L3169^@That Mr. Monotoli has lost quite[01 FF]  a bit of his resources...[1D FF][00 FF]
 ^L3170^
 ^L3171^
 ^L3172^
