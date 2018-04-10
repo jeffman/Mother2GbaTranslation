@@ -365,7 +365,7 @@ namespace ScriptToolGui
                 }
                 else
                 {
-                    m12String.BackColor = Color.White;
+                    m12String.BackColor = SystemColors.Control;
                 }
             }
 
@@ -459,12 +459,12 @@ namespace ScriptToolGui
                 }
                 else
                 {
-                    m12String.BackColor = Color.White;
+                    m12String.BackColor = SystemColors.Control;
                 }
             }
             else
             {
-                m12String.BackColor = Color.White;
+                m12String.BackColor = SystemColors.Control;
             }
 
             previousNavigationState = new ReferenceNavigationEntry(game, label);
@@ -514,13 +514,6 @@ namespace ScriptToolGui
                             if (oldString != newString)
                             {
                                 changesMade = true;
-                            }
-
-                            if (insertEndcode)
-                            {
-                                // Special case -- for M12 English, if the line is modified,
-                                // check for an end code and insert if it's missing
-                                var lastCode = m12Compiler.GetLastControlCode(newString);
                             }
                         }
 
