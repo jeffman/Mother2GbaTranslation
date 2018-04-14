@@ -1733,5 +1733,40 @@
     "Description": "Use compressed string $XX from bank 2",
     "Length": 2,
     "IsCompressedString": true
+  },
+  {
+    "Identifier": [
+      139
+    ],
+    "Description": "Print alpha (α) symbol",
+    "Length": 1
+  },
+  {
+    "Identifier": [
+      140
+    ],
+    "Description": "Print beta (β) symbol",
+    "Length": 1
+  },
+  {
+    "Identifier": [
+      141
+    ],
+    "Description": "Print gamma (γ) symbol",
+    "Length": 1
+  },
+  {
+    "Identifier": [
+      142
+    ],
+    "Description": "Print sigma (Σ) symbol",
+    "Length": 1
+  },
+  {
+    "Identifier": [
+      143
+    ],
+    "Description": "Print omega (Ω) symbol",
+    "Length": 1
   }
 ]

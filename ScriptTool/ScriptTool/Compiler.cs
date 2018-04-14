@@ -427,7 +427,6 @@ namespace ScriptTool
 
                             case 0x23:
                             case 0x63:
-                            case 0x98:
                             case 0xB7:
                                 sb.Append("[MONEY]");
                                 currentWidth += 36;
