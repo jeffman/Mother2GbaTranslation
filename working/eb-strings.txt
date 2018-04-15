@@ -5618,3 +5618,4 @@ Message of the broken SkyWalker.^L354^@(It's impossible to fix... for the time b
 [02]
 Talk to[00][00][00]Goods[00][00][00][00][00]PSI[00][00][00][00][00][00][00]Equip[00][00][00][00][00]Check[00][00][00][00][00]Status[00][00][00][00][18 05 08 00]Level:[18 05 2C 03]Hit Points:[18 05 17 04]Psychic Points:[18 05 0A 05]Experience Points:[18 05 39 06]Exp. for next level.[18 05 9C 00]Offense:[18 05 9B 01]Defense:[18 05 A4 02]Speed:[18 05 AA 03]Guts:[18 05 9F 04]Vitality:[18 05 B6 05]IQ:[18 05 AA 06]Luck:[02]
 [18 01 09][18 01 0B][02]
+^L2276^This label does not exist. This is a placeholder to keep ScriptToolGui from crashing.[02]
