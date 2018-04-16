@@ -1,6 +1,6 @@
-.gba
-.open "m12.gba",0x8000000
 .include "m1-ntsc.asm"
+
+//Graphical Stuff
 .org 0x86D9808 :: .incbin "data/m2-6d9808.bin"
 .org 0x87A0D7C :: .incbin "data/m2-7a0d7c.bin"
 .org 0x87ad4dc :: .incbin "data/m2-7ad4dc.bin"
@@ -27,4 +27,7 @@
 .org 0x8B01D84 :: .incbin "data/m2-b01d84.bin"
 .org 0x874d4bc :: .incbin "data/m2-74d4bc.bin"
 .org 0x869ff28 :: .incbin "data/m2-69ff28.bin"
-.close
+
+//Sound
+.org 0x810BF50 :: .byte 0x1C
+.org 0x82b4E04 :: .incbin "data/m2-snd-attack.bin"
