@@ -3652,7 +3652,7 @@
 ^L3992^
 ^L3993^
 ^L3994^
-^L3995^[1C FF FE 01 _L2197_][FC FF 33 00][86 FF _L2911_][C4 FF 00 58][1B FF B4 00][1B FF 3C 00][A0 FF 47 00 48 01 01 00][9E FF][A0 FF B4 02 39 01 01 00][9E FF][AA FF 47 00][8D FF 01 00][C3 FF 00 03 47 00][D9 FF 00 00][FC FF 12 00]@Pictures taken instantaneously![02 FF]@I'm a photographic genius,[1B FF 0F 00][01 FF]  if I do say so myself![02 FF]@Okay,[1B FF 0F 00] get ready for an instant[01 FF]  memory![02 FF]@Look at the camera...[1B FF 14 00][01 FF]  Ready...[02 FF]@Say,[1B FF 0F 00] <fuzzy pickles.>[02 FF][C6 FF][CB FF 01 00 06 00][1C FF FD 01 _L4233_][A0 FF 00 00 3A 01 01 00][80 FF _L4234_]
+^L3995^[1C FF FE 01 _L2197_][FC FF 33 00][86 FF _L2911_][C4 FF 00 58][1B FF B4 00][1B FF 3C 00][A0 FF 47 00 38 01 01 00][9E FF][A0 FF B4 02 39 01 01 00][9E FF][AA FF 47 00][8D FF 01 00][C3 FF 00 03 47 00][D9 FF 00 00][FC FF 12 00]@Pictures taken instantaneously![02 FF]@I'm a photographic genius,[1B FF 0F 00][01 FF]  if I do say so myself![02 FF]@Okay,[1B FF 0F 00] get ready for an instant[01 FF]  memory![02 FF]@Look at the camera...[1B FF 14 00][01 FF]  Ready...[02 FF]@Say,[1B FF 0F 00] <fuzzy pickles.>[02 FF][C6 FF][CB FF 01 00 06 00][1C FF FD 01 _L4233_][A0 FF 00 00 3A 01 01 00][80 FF _L4234_]
 ^L3996^
 ^L3997^
 ^L3998^
