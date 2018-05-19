@@ -19,7 +19,6 @@
     "Identifier": 0x3,
     "Description": "Display menu string set {0:X}",
     "Length": 4,
-    "SuppressNextEnd": true
   },
   {
     "Identifier": 0x4,
@@ -47,7 +46,7 @@
   },
   {
     "Identifier": 0xC,
-    "Description": "Party leader's name",
+    "Description": "Party leader's name (1C 11 69)",
     "Length": 2
   },
   {
@@ -199,7 +198,7 @@
   },
   {
     "Identifier": 0x2E,
-    "Description": "Show main text window (18 01 01)",
+    "Description": "Display the player's name for the second prompt (08 _L4699_)",
     "Length": 2
   },
   {
@@ -723,7 +722,7 @@
   },
   {
     "Identifier": 0xC2,
-    "Description": "Copy party leader to memory; appears before 1A FF 05 00 (1C 11 69)",
+    "Description": "Copy party leader to string slot; appears before 1A FF 05 00",
     "Length": 2
   },
   {
