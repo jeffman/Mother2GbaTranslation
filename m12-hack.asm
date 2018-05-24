@@ -620,4 +620,6 @@ m2_enemy_attributes:
 .org 0x86e2794 :: .incbin "data/m12-6e2794.bin"
 .org 0x8707194 :: .incbin "data/m12-707194.bin"
 
+.include "m12-gfx.asm"
+
 .close
