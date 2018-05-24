@@ -910,7 +910,7 @@
 ^L720^[86 FF _L3209_][00 FF]
 ^L721^[86 FF _L3210_][00 FF]
 ^L722^@There's a big monster living in[01 FF]  the sea between here and[01 FF]  Scaraba.[02 FF]@I've seen a picture of it.[1D FF][00 FF]
-^L723^@How annoying![1B FF 14 00]   Why are you[01 FF]  wandering around?[02 FF]@Summers is a posh resort,[01 FF]  made for adults.[00 FF]
+^L723^[1C FF 10 00 _L3211_]
 ^L724^@Don't get too excited about this[01 FF]  town.[1B FF 14 00]  It's a tourist trap.[02 FF]@Everyone seems to be nice,[1B FF 0F 00] but[01 FF]  they're just doing it for the[01 FF]  money.[02 FF]@I know from experience.[1D FF][00 FF]
 ^L725^@Excuse me.[1D FF][00 FF]
 ^L726^[1C FF 57 01 _L3213_]@I heard the security guard in the[01 FF]  Scaraba Cultural Museum isn't[01 FF]  very nice.[02 FF]@But he can be helpful.[1D FF][00 FF]
@@ -1889,7 +1889,7 @@
 ^L4306^@Hmmm...[1B FF 14 00] so are we just going[01 FF]  to wait for a meteorite[02 FF]@to suddenly fall from the sky?[02 FF]@Mmm...[1B FF 1E 00] you haven't seen a[01 FF]  meteorite...[1B FF 14 00] Hm... think for a[01 FF]  minute...[02 FF][80 FF _L4307_]
 ^L4305^@Eureka![1B FF 0F 00]  That's it![02 FF]@With even just a piece of the[01 FF]  meteorite,[1B FF 0F 00] I can synthesize the[01 FF]  material Zexonyte.[02 FF]@...I doubt that your mortal[01 FF]  enemy Giygas,[02 FF]@or whatever, will allow you to[01 FF]  go to Onett and get a piece of[01 FF]  the meteorite.[02 FF]@By now, Onett is in his evil[01 FF]  hands.[02 FF]@You must go,[1B FF 05 00] though,[1B FF 0F 00] so[01 FF]  take every possible precaution.[02 FF]@The Mr. Saturns have[01 FF]  introduced some of their new[01 FF]  developments at their shop.[02 FF]@Please check them out before[01 FF]  you leave.[02 FF]@...I wonder what Onett is like[01 FF]  at this point in time?...[1D FF][C6 FF][08 FF 84 00][08 FF 78 02][08 FF D4 01][09 FF 6C 00][09 FF 79 02][09 FF A6 01][09 FF 05 02][EE FF 01 00 08 00 00 00][83 FF 63 00][82 FF _L2197_][09 FF EA 02][00 FF]
 ^L1625^[08 FF 07 03][86 FF _L2200_][A0 FF D0 07 54 02 01 00][86 FF _L4040_][CB FF FF 00 06 00][08 FF F8 02][C5 FF][85 FF E5 02 09 00][1B FF B4 00][14 FF 68 00][1B FF 64 00][84 FF FA 04 56 02 04 00][1B FF 50 00][86 FF _L2201_][09 FF F8 02][C5 FF][CC FF FF 00 01 00][A0 FF D0 07 55 02 01 00][86 FF _L4040_][7E FF 01 00][9D FF 01 07 _L3901_][9D FF 02 29 _L3902_][08 FF 4C 01][00 FF]
-^L1626^[A4 FF E6 02][8D FF 01 00][A8 FF 00][1C FF 75 02 _L2939_]@(You enjoyed the hot springs[01 FF]  immensely.[1B FF 14 00]  It made you feel[01 FF]  reborn.)[1D FF]
+^L1626^[A4 FF E6 02][8D FF 01 00][A8 FF 00][1C FF 75 02 _L2939_]@(You enjoyed the hot springs[01 FF]  immensely.[86 FF _L2940_][1B FF 14 00]  It made you feel[01 FF]  reborn.)[1D FF]
 ^L2942^[86 FF _L2941_][C6 FF][A3 FF E6 02][00 FF]
 ^L1627^[09 FF 16 02][C5 FF][A0 FF BB 00 F1 00 01 00]@Man![1B FF 0F 00]  It's bumper to bumper![02 FF]@My job is to drive,[1B FF 0F 00] so I can't[01 FF]  get off the bus...[02 FF]@It's up to you if you want to[01 FF]  get off the bus and walk[01 FF]  around in the desert...[02 FF]@Hey,[1B FF 0F 00] it's a free country.[02 FF][C6 FF][A5 FF BB 00 06 00][A0 FF D0 07 F7 00 01 00][1B FF 01 00][C9 FF D0 07][CC FF FF 00 01 00][EB FF FF 00][9E FF][CA FF][EA FF FF 00][A9 FF 5F 01][9E FF][9D FF 01 06 _L4145_][09 FF 0B 00][A0 FF D3 07 05 03 01 00][08 FF 72 01][FC FF 06 00][00 FF]
 ^L1628^[CA FF][14 FF 29 00][A0 FF 5F 01 47 01 FF 00][C9 FF 5F 01][00 FF]
@@ -1919,7 +1919,7 @@
 ^L1650^[CA FF][A0 FF D0 07 05 03 01 00][00 FF]
 ^L1651^[CE FF BA 03 07 00][A1 FF BA 03 0C 00][A9 FF D0 07][9E FF][FC FF 17 00][9E FF][80 FF _L4039_]
 ^L1652^[CE FF 29 04 03 00][A1 FF 29 04 0C 00][A0 FF D0 07 B6 02 01 00][9E FF][FC FF 17 00][9E FF][80 FF _L4033_]
-^L1653^[A4 FF F3 04][8D FF 01 00][A8 FF 00]@(You enjoyed the hot springs[01 FF]  immensely.[01 FF]  [90 FF 00][1A FF 01 00][86 FF _L2940_][01 FF][1B FF 14 00]  It made you feel reborn.)[1D FF][86 FF _L2941_][C6 FF][A3 FF F3 04][00 FF]
+^L1653^[A4 FF F3 04][8D FF 01 00][A8 FF 00]@(You enjoyed the hot springs[01 FF]  immensely.[86 FF _L2940_][1B FF 14 00]  It made you feel[01 FF]  reborn.)[1D FF][86 FF _L2941_][C6 FF][A3 FF F3 04][00 FF]
 ^L1654^[A6 FF 47 01 B8 02][A9 FF D0 07][9E FF][FC FF 17 00][9E FF][80 FF _L4034_]
 ^L1655^[B0 FF 03 05 CC 00][1B FF 3C 00][B3 FF 03 05][A3 FF 03 05][9E FF][A4 FF 03 05]@You guys smell really good![1B FF 0F 00][01 FF]  *sniff, sniff, sniff*[02 FF]@Who am I?[1B FF 14 00]  I'm a  Tenda![1D FF][C7 FF][1B FF 0A 00][A1 FF 04 05 40 02][9E FF][A4 FF 04 05]@Hey![1B FF 14 00]  What are you doing inside[01 FF]  our dinosaur cage?[02 FF]@I'm going to open the door, and[01 FF]  you get out of there right now![02 FF]@I'm the boss,[1B FF 0F 00] so I will let you[01 FF]  out.[1D FF][C7 FF][A3 FF 04 05][9E FF][A4 FF 04 05][85 FF 13 05 06 00][08 FF 8B 02]@Thank you for the Tendakraut.[02 FF][D4 FF 76 00][6D FF FF 00 92 00][08 FF 68 02][8D FF 01 00][A8 FF 00]@([90 FF 00][1A FF 01 00]'s Tendakraut[01 FF]  was stolen.)[02 FF]@(The awful smell surrounding[01 FF]  the group is now gone.)[02 FF][C6 FF][00 FF]
 ^L1656^[86 FF _L4243_][83 FF 0E 02][82 FF _L4244_][A0 FF D0 07 FD 02 01 00][86 FF _L4040_][CB FF FF 00 06 00][A3 FF 17 05][86 FF _L4245_][A4 FF 17 05][1B FF 01 00]@(The hot spring energizes you[01 FF]  completely.)[1D FF][C6 FF][86 FF _L2185_][A3 FF 17 05][EB FF FF 00][00 FF]
@@ -2118,11 +2118,11 @@
 ^L1842^@I know the name of the girl[01 FF]  you used to like.[1D FF][00 FF]
 ^L1843^@Thank you for remembering me.[1D FF][00 FF]
 ^L1844^@[0D FF]![02 FF]@Did you learn how to tell what[01 FF]  time I'm indicating?[1D FF][00 FF]
-^L1845^
-^L1846^
-^L1847^
-^L1848^
-^L1849^
+^L1845^[1D FF][00 FF]
+^L1846^[1D FF][00 FF]
+^L1847^[1D FF][00 FF]
+^L1848^[1D FF][00 FF]
+^L1849^[1D FF][00 FF]
 ^L1850^[A2 FF _L3310_][00 FF]
 ^L1851^[83 FF 3D 01][82 FF _L2197_][6E FF 01 00][09 FF 0B 00][00 FF]
 ^L1852^[1C FF 5E 01 _L5626_][00 FF]
@@ -2290,7 +2290,7 @@
 ^L1997^[C1 FF][87 FF]@[9F FF] equipped[01 FF]  the [90 FF 00][1A FF 02 00] instead.[D4 FF 73 00][02 FF][00 FF]
 ^L1998^[C1 FF][87 FF]@[9F FF] could not[01 FF]  equip the [90 FF 00][1A FF 02 00].[02 FF]@Since there was no alternative,[01 FF]  [86 FF _L5902_] fought with [86 FF _L5912_] revious weapon.[02 FF][00 FF]
 [C1 FF][87 FF]@[9F FF] tried[01 FF]  to equip the [90 FF 00][1A FF 02 00].[02 FF]@but [90 FF 00][1A FF 02 00] wasn't meant[01 FF]  for [9F FF].[02 FF][00 FF]
-^L1999^
+^L1999^@[9F FF] could not use[01 FF]  the [90 FF 00][1A FF 02 00] very well.[02 FF][00 FF]
 ^L2000^@Black smoke poured from[01 FF]  [9F FF]'s body![22 FF][01 FF]@[C2 FF][1A FF 05 00][22 FF] was[01 FF]  overcome by the smoke![22 FF][01 FF]@You can't see a thing![22 FF][00 FF]
 ^L2001^@All of a sudden,[01 FF]  some guys rushed into the room![22 FF][C4 FF 00 95][1B FF 3C 00]@It was the Runaway Five![22 FF][C7 FF][1B FF 1E 00][69 FF][FC FF 2A 00]@Lucky quickly ducked behind[01 FF]  the robot![22 FF][D4 FF 0B 00][1B FF 3C 00][68 FF]@<I flipped the switch, and it[01 FF]  stopped.>[02 FF]@<Ha ha ha hah...[01 FF]  Geez, what a loser robot.[01 FF]  It was so easy to stop!>[1B FF 14 00][22 FF][68 FF]@<That was quick thinking!>[22 FF][1B FF 3C 00][C7 FF][69 FF][FC FF 2B 00][08 FF 3E 01][00 FF]
 ^L2002^@[90 FF 04][1A FF 01 00] used his new power,[22 FF][01 FF]  PSI Starstorm![22 FF][01 FF][00 FF]
@@ -2442,7 +2442,7 @@
 ^L2127^@Escargo Express.[02 FF]@<We treat your package like it[01 FF]  was our only child>...[02 FF]@I'm here to deliver[01 FF]  the Hawk eye.[91 FF FF][82 FF _L4025_][93 FF 00 A9][D4 FF 76 00]@Here you are.[02 FF]@Thank you very much![1D FF][C6 FF][09 FF B7 02][09 FF B5 02][86 FF _L4023_][86 FF _L4024_][00 FF]
 ^L2128^[09 FF B6 02][09 FF F2 02][00 FF]
 ^L2129^[09 FF B7 02][09 FF F2 02][00 FF]
-^L2130^[A0 FF F1 03 2C 02 01 00][9E FF]@The Magic Butterfly made[01 FF]  [C2 FF][1A FF 05 00] relax.[1D FF][C6 FF][A6 FF F1 03 2D 02][00 FF]
+^L2130^[A0 FF F1 03 2C 02 01 00][9E FF]@The Magic Butterfly made[01 FF]  [86 FF _L11000_] relax.[1D FF][C6 FF][A6 FF F1 03 2D 02][00 FF]
 ^L2131^[08 FF D5 01][08 FF 0B 00][CB FF FF 00 06 00][A0 FF D0 07 85 00 01 00][86 FF _L4040_][14 FF 0D 00][A0 FF D0 07 86 00 01 00][86 FF _L4040_][14 FF 0E 00][A0 FF D0 07 87 00 01 00][86 FF _L4040_][08 FF DD 01][08 FF 14 02][08 FF ED 02][14 FF 0F 00][A3 FF 1A 00][1B FF 78 00][1B FF 78 00][1B FF 78 00][1B FF 78 00][1B FF 78 00][1B FF 3C 00][A1 FF 1A 00 B3 00][A0 FF D0 07 89 00 01 00][09 FF 14 02][08 FF 15 02][C5 FF][9E FF][85 FF 1A 00 06 00][CC FF FF 00 01 00][A6 FF D0 07 8A 00][C9 FF D0 07][EB FF FF 00][9E FF][CA FF][08 FF DC 01][09 FF DD 01][09 FF D5 01][7F FF][00 FF]
 ^L2132^@While delivering pizza, this[01 FF]   weird guy asked me to[01 FF]  help him out...[02 FF]@He wanted me to deliver this to[01 FF]  someone named [0D FF].[02 FF]@...who is wandering around[01 FF]  Threed.[02 FF]@No one else knows about this,[01 FF]  right?[02 FF]@Let's just pretend that you're[01 FF]  [0D FF],[1B FF 0F 00] and I'll give this[01 FF]  to you.[02 FF]@Oh![1B FF 0F 00]  Hello, [0D FF]![02 FF]@I made the decision that you're[01 FF]  [0D FF],[1B FF 0F 00] no matter[01 FF]  what...[02 FF][91 FF FF][82 FF _L4227_][01 FF]
 ^L4232^[93 FF 00 A6][86 FF _L2238_][02 FF]@That's right, [0D FF]...[01 FF]  *wink, wink*[02 FF]@I've done my duty and given[01 FF]  you Apple Kid's thingamajig...[02 FF]@Well, goodbye!...[02 FF][C6 FF][09 FF A3 02][08 FF 28 02][86 FF _L4023_][09 FF F2 02][00 FF]
@@ -2456,11 +2456,11 @@
 ^L2140^[86 FF _L4002_][09 FF B5 00][09 FF 85 02][86 FF _L4937_]@Hello![01 FF]  This is Escargo Express.[01 FF]  (hee, ha, he, ha)[02 FF]@I just (hee, ha, he, ha)[01 FF]  couldn't find your location...[02 FF]@...You must be somewhere[01 FF]  really strange.[01 FF]  (hee, ha, he, ha)[02 FF]@I've decided, honestly, that...[01 FF]  I should give up.[02 FF]@I'm outta here.[01 FF]  (hee, ha, he, ha)[02 FF]@Sometimes this happens,[01 FF]  you know?[02 FF][86 FF _L4938_][86 FF _L4024_][00 FF]
 ^L2141^[09 FF B4 00][09 FF B3 00][86 FF _L4937_]@Hello![01 FF]  This is Mach Pizza.[01 FF]  (hee, ha, he, ha)[02 FF]@...You must be somewhere[01 FF]  really strange,[01 FF]  (hee, ha, he, ha)...[02 FF]@I couldn't deliver the pizza.[01 FF]  The pizza got really cold and[01 FF] hard, and my legs are tired...[02 FF]@I am going to give up and[01 FF]  go back.[02 FF]@...I hope I can find the way[01 FF]  home...[01 FF]  (hee, ha, he, ha)[02 FF][86 FF _L4938_][86 FF _L4024_][00 FF]
 ^L2142^[AB FF 00 00][88 FF][86 FF _L3633_][81 FF _L5454_][89 FF][87 FF]@[90 FF 00][1A FF 01 00]The[01 FF][87 FF][90 FF 00][1A FF 02 00][01 FF][00 FF]
-^L2143^
-^L2144^
-^L2145^
+^L2143^himself.[1D FF][00 FF]
+^L2144^[88 FF][86 FF _L3633_][81 FF _L5455_][89 FF][87 FF][90 FF 00][1A FF 01 00].[02 FF][00 FF]
+^L2145^[87 FF][90 FF 00][1A FF 01 00] ###failed.[02 FF][1D FF][00 FF]
 ^L2146^[88 FF][AB FF 00 00][87 FF][9A FF C4 00][81 FF _L5456_][89 FF][AB FF 00 00][B7 FF 00][82 FF _L5457_][89 FF][B9 FF 00 00 00 00][88 FF][86 FF _L3633_][81 FF _L5458_][89 FF][87 FF]@[90 FF 00][1A FF 01 00] got rid of[01 FF]  the [87 FF][90 FF 00][1A FF 02 00].[1D FF][00 FF]
-^L2147^
+^L2147^[AB FF 00 00][87 FF]@[90 FF 00][1A FF 01 00] is the only one who[01 FF]  should carry[01 FF]  the [87 FF][90 FF 00][1A FF 02 00].[1D FF][00 FF]
 ^L2148^[AB FF 00 00]@[90 FF 00][1A FF 02 00] was horribly[01 FF]  poisoned and collapsed.[02 FF][00 FF]
 ^L2149^@Alert![02 FF]@[9F FF]'s condition is[01 FF]  critical.[02 FF]@[86 FF _L5906_] will collapse if [86 FF _L5912_][01 FF]  condition isn't treated.[02 FF]@Be careful![1D FF][00 FF]
 ^L2150^@You cannot ride your bike here.[01 FF]@You should ride your bike in a[01 FF]  less confining area.[1D FF][00 FF]
@@ -2521,7 +2521,7 @@
 ^L2198^@Okay![1B FF 14 00]  Now you can finally[01 FF]  share your incredible[01 FF]  experiences with me...[02 FF]@You did so well![02 FF][C6 FF][86 FF _L2200_][86 FF _L2201_][C4 FF 00 5E][D9 FF 05 00][1C FF 7E 02 _L2202_][CB FF 02 00 06 00][A0 FF 01 00 12 03 01 00][1B FF 01 00][A6 FF 01 00 01 00]
 ^L2202^[CB FF 01 00 06 00][A0 FF 00 00 21 03 01 00][1B FF 01 00][A6 FF 00 00 01 00][CE FF 0E 00 05 00][A1 FF 0E 00 01 00][CE FF 12 00 05 00][A1 FF 12 00 01 00][1B FF 78 00][1B FF 78 00][1B FF 78 00][1B FF 78 00][1B FF 78 00][1B FF 3C 00][A0 FF 29 00 C0 02 01 00][1B FF 3C 00][1B FF 64 00][A0 FF D0 07 C1 02 01 00][9E FF][86 FF _L2201_][FC FF 13 00][14 FF 6E 00][FC FF 2E 00][FC FF 14 00][C4 FF 00 5F][A0 FF 47 00 F5 02 01 00][9E FF][A0 FF B4 02 F6 02 01 00][9E FF][A0 FF 19 01 F7 02 01 00][9E FF][FC FF 13 00][14 FF 89 00][CB FF FF 00 06 00][FC FF 0C 00][9E FF][1B FF 3C 00][FC FF 15 00][86 FF _L2203_][00 FF]
 ^L2195^@After all your chats with people[01 FF]  you met on your adventure are[01 FF]  finally over,[02 FF]@please come back here.[02 FF]@The photo-man brought an[01 FF]  album by.[02 FF]@I'd like to look at it with you...[1D FF][C6 FF][08 FF 83 02][83 FF 8E 02][82 FF _L2197_][1B FF 3C 00][A1 FF 15 00 7B 00][08 FF F1 02][00 FF]
-^L2196^
+^L2196^@After all your chats with people[01 FF]  you met on your adventure are[01 FF]  finally over,[02 FF]@please come back here.[02 FF]@The photo-man brought an[01 FF]  album by.[02 FF]@I'd like to look at it with you...[1D FF][C6 FF][08 FF 83 02][83 FF 8E 02][82 FF _L2197_][1B FF 3C 00][A1 FF 15 00 7B 00][08 FF F1 02][00 FF]
 ^L2197^[00 FF]
 ^L2200^[09 FF B4 00][09 FF B5 00][09 FF 85 02][09 FF BE 01][09 FF 86 02][09 FF 87 02][09 FF 88 02][09 FF B6 02][09 FF B7 02][86 FF _L4002_][09 FF F2 02][FC FF 3A 00][00 FF]
 ^L2201^[6B FF 03 00][1B FF B4 00][74 FF][00 FF]
@@ -2624,7 +2624,7 @@
 ^L2314^@I may be wrong,[1B FF 0F 00] but I feel like[01 FF]  you're being accompanied by a[01 FF]  cute girl.[1D FF][00 FF]
 ^L2315^[BC FF 01 00]
 ^L5521^[C0 FF][A8 FF 01][8D FF 00 00][82 FF _L5519_][88 FF][DD FF 05 00 00 00 00 00 00 00][81 FF _L5520_][89 FF][92 FF 00 01 02][81 FF _L5521_][89 FF][92 FF 00 01 03][81 FF _L5521_]
-^L5520^
+^L5520^us
 ^L5519^[00 FF]
 ^L2316^@[0D FF], [1B FF 0F 00] I've been[01 FF]  thinking about our gang's name.[02 FF]@It's <We'll laugh about it[01 FF]  tomorrow.>[02 FF]@Do you like it?[01 FF][03 FF 02 00][04 FF _L2324_][05 FF _L2325_]
 ^L2325^@...Okay.[1B FF 1E 00]  Laugh doesn't really[01 FF]  mean <laugh.>[02 FF]@It means <chuckle.>[01 FF][1D FF][00 FF]
@@ -2743,7 +2743,7 @@
 ^L2459^@Now where did she go?[02 FF]@I'm sorry,[1B FF 0F 00] could you come back[01 FF]  after a while?[1D FF][00 FF]
 ^L2462^[C6 FF][A1 FF D9 00 43 00][9E FF][A4 FF D9 00][8D FF 01 00][C3 FF 00 02 D9 00][D8 FF 00 00 00 00][00 FF]
 ^L2463^[BC FF 01 00][86 FF _L2177_][81 FF _L2467_]@Hey!  Come on in![02 FF]@No, I don't need to hear about[01 FF]  what happened...[1B FF 14 00]  [0E FF][01 FF]  will be okay.[02 FF]@Why don't you just rest for[01 FF]  now.[02 FF]@You know where the couch in[01 FF]  the den is...[02 FF][86 FF _L2183_][14 FF 0C 00][09 FF 7F 01][00 FF]
-^L2464^
+^L2464^[BC FF 02 00][86 FF _L2177_][81 FF _L2467_]@Oh [0E FF]![02 FF]@So even a tomboy like you[01 FF]  thinks of her father[01 FF]  occasionally![02 FF]@You should rest,[1B FF 0F 00] seeing how[01 FF]  this is your own home.[02 FF]@How about we share a piece of[01 FF]  pie like we used to?  Ha ha ha![02 FF][86 FF _L2183_][14 FF 0C 00][09 FF 7F 01][00 FF]
 ^L2467^@Hmm... I understand.[02 FF]@So you're a friend of[01 FF]  [0E FF]'s?[02 FF]@Look me in the eye...[1B FF 14 00]  Yes,[01 FF]  you're telling the truth.[02 FF]@Would you like to get some shut[01 FF]  eye?[02 FF][86 FF _L2183_][14 FF 0C 00][09 FF 7F 01][00 FF]
 ^L2468^[1C FF 75 00 _L2481_]@Well, you never invested in my[01 FF]  genius,[1B FF 0F 00] did you?[02 FF]@You had no idea of what I could[01 FF]  do...[02 FF]@*chortle*[02 FF]@You sorry loser.[1D FF][00 FF]
 ^L2470^@You didn't invest any money in[01 FF]  my venture,[02 FF]@but someone else donated a[01 FF]  few million bucks,[1B FF 0F 00] so[01 FF]  everything is great.[02 FF]@So would you like to invest,[1B FF 0A 00][01 FF]  say,[1B FF 0F 00] 50 bucks?[03 FF 00 00][04 FF _L2478_][05 FF _L2479_][00 FF]
@@ -2869,8 +2869,8 @@
 ^L2610^[8D FF 01 00][BD FF 04 _L2614_ _L2615_ _L2614_ _L2614_][00 FF]
 ^L2612^@Hey,[1B FF 0F 00] I'm not just giving it[01 FF]  away...[1D FF][00 FF]
 ^L2613^[D4 FF 05 00]@Eggs are easily broken.[1B FF 0F 00][02 FF]@There's no way to stuff it in[01 FF]  with your other things if you[01 FF]  have no more room...[1D FF][00 FF]
-^L2614^
-^L2615^
+^L2614^Bro[00 FF]
+^L2615^Sis[00 FF]
 ^L2616^[83 FF 55 00][82 FF _L2617_][BC FF 01 00][86 FF _L2177_][81 FF _L2618_]@I heard that the kidnapped girl[01 FF]  was saved.[02 FF]@What?[1B FF 14 00]  You saved her?[02 FF]@That's hard to believe.[1B FF 14 00]  You[01 FF]  don't seem like the hero-type to[01 FF]  me.[1D FF][00 FF]
 ^L2617^@Everdred is asking for you.[1B FF 14 00][01 FF]  He has a present to give you.[1B FF 14 00][01 FF]  Please...[1D FF][00 FF]
 ^L2618^@Will you give me 1,000 dollars?[02 FF]@I'll give you all my support.[03 FF 00 00][04 FF _L2619_][05 FF _L2620_]
@@ -3157,7 +3157,7 @@
 ^L2934^@All right.[01 FF]  Let's go back to[01 FF]  Polestar Preschool in Twoson...[02 FF]@You remember where it is,[01 FF]  right?[02 FF]@Let's go...[1D FF][C6 FF][00 FF]
 ^L2935^@Well...  Okay.[01 FF]  I guess I would like to be with[01 FF]  you a little longer.[1D FF][C6 FF][00 FF]
 ^L2937^[02 FF]@Buuurp![01 FF]  Barf![02 FF]@Stinky![01 FF]  Peeee-[01 FF]  yeuuu![1D FF][7C FF][00 FF]
-^L2938^
+^L2938^@Bell rings[01 FF]  ding, ding.  Boing![1D FF][7C FF][00 FF]
 ^L2939^@(You got in and washed all[01 FF]  of the extremely dirty gunk off[01 FF]  of your body.)[1D FF][09 FF 75 02][80 FF _L2942_]
 ^L2940^[1C FF 7E 02 _L5522_]
 ^L5522^[00 FF]
@@ -3195,14 +3195,14 @@
 ^L2971^[A1 FF FF 02 22 02][9E FF][1C FF 0B 02 _L2974_][1C FF 0A 02 _L2977_][80 FF _L2974_]
 ^L2972^[1C FF 0B 02 _L2973_][80 FF _L2968_]
 ^L2973^[A1 FF FF 02 22 02][9E FF][1C FF 0A 02 _L2978_][80 FF _L2974_]
-^L2975^
-^L2976^
-^L2977^
+^L2975^[1B FF 78 00][A1 FF FF 02 23 02][9E FF][A4 FF FF 02]@Amigo, you won a very big[01 FF]  jackpot![02 FF]@Here's a big prize for you,[01 FF]  amigo![02 FF][91 FF FF][82 FF _L2980_][01 FF][93 FF 00 C2]@[86 FF _L11000_] won a [90 FF C2][1A FF 02 00][01 FF]  as a prize.[1D FF][01 FF][D4 FF 74 00][C6 FF][A3 FF FF 02][9E FF][80 FF _L2974_]
+^L2976^[1B FF 78 00][A1 FF FF 02 23 02][9E FF][A4 FF FF 02]@Amigo, you won![1B FF 14 00]  A very big[01 FF]  winning, I think![02 FF]@Here's a very nice prize for the[01 FF]  important amigo![02 FF][91 FF FF][82 FF _L2980_][01 FF][93 FF 00 7C]@[86 FF _L11000_] won a [90 FF 7C][1A FF 02 00][01 FF]  as a prize.[1D FF][D4 FF 74 00][C6 FF][A3 FF FF 02][9E FF][80 FF _L2974_]
+^L2977^[1B FF 78 00][A1 FF FF 02 23 02][9E FF][A4 FF FF 02]@Amigo, you won![1B FF 14 00]  A very big[01 FF]  winning, and you hit it![02 FF]@Here's the prize for the[01 FF]  important amigo![02 FF][91 FF FF][82 FF _L2980_][01 FF][93 FF 00 78]@[86 FF _L11000_] won a [90 FF 78][1A FF 02 00][01 FF]  as a prize.[1D FF][D4 FF 74 00][C6 FF][A3 FF FF 02][9E FF][80 FF _L2974_]
 ^L2978^[1C FF 0B 02 _L2979_][80 FF _L2974_]
-^L2979^
-^L2980^
+^L2979^[1B FF 78 00][A1 FF FF 02 23 02][9E FF][A4 FF FF 02]@Amigo, you won![1B FF 14 00]  A very big[01 FF]  winning, my friend![02 FF]@Here's the big prize for you![02 FF][91 FF FF][82 FF _L2980_][01 FF][93 FF 00 53]@[86 FF _L11000_] won a [90 FF 53][1A FF 02 00][01 FF]  as a prize.[1D FF][D4 FF 74 00][C6 FF][A3 FF FF 02][9E FF][80 FF _L2974_]
+^L2980^@That's what I thought, but[01 FF]  amigo, you have no more room.[02 FF]@I'm sorry, but the deal's off.[02 FF]@Your pay off took the day off,[01 FF]  amigo.[1D FF][C6 FF][A3 FF FF 02][9E FF][80 FF _L2974_]
 ^L2981^[02 FF]@(What?[1B FF 14 00]  The white sesame[01 FF]  still... loves me?![01 FF]  Weep, weep...[1D FF][C6 FF][08 FF 87 00][1C FF C6 02 _L2197_][1B FF 3C 00][86 FF _L1671_][00 FF]
-^L2982^
+^L2982^@(Really?[1B FF 14 00]  You've seen him[01 FF]  already?  Was he okay?[1B FF 14 00][01 FF]  ...Hmmm, I see.)[1D FF][08 FF 8A 00][00 FF]
 ^L2983^@You have no more room.[1D FF][00 FF]
 ^L2984^[08 FF FE 00][08 FF 90 02][86 FF _L4325_][09 FF FE 00][09 FF 90 02][00 FF]
 ^L2985^@You've been exceedinly patient.[02 FF]@You've overcome many[01 FF]  hardships.[02 FF]@I praise all of you for your[01 FF]  courage.[1D FF][00 FF]
@@ -3294,7 +3294,7 @@
 ^L3092^[C3 FF FF 02 51 03][86 FF _L2507_][82 FF _L3089_][1C FF 02 00 _L3086_][D4 FF 76 00][1B FF 01 00][6D FF FF 00 AD 00]@Thanks a lot.[02 FF]@Please hurry.[1B FF 14 00]  The show will[01 FF]  be starting at any moment.[02 FF][C6 FF][86 FF _L3093_][08 FF 02 00][00 FF]
 ^L3093^[A1 FF 51 03 59 00][9E FF][00 FF]
 ^L3094^[08 FF FF 00][86 FF _L4326_][09 FF FF 00][00 FF]
-^L3095^
+^L3095^@What?[02 FF]@You came to deliver my[01 FF]  grandma's momento, the[01 FF]  [90 FF 97][1A FF 02 00]?![02 FF]@Thank you.[02 FF]@Thank you so[1B FF 05 00]o[1B FF 05 00]o[1B FF 01 00]o[1B FF 01 00]o much![02 FF]@It's our family tradition to keep[01 FF]  things forever.[02 FF]@...Okay, I'll give you something[01 FF]  as a reward.[02 FF]@Here's my socks that I use only[01 FF]  for special occasions.[02 FF]@I've worn these socks for just[01 FF]  five years.[02 FF]@There are no holes, and they've[01 FF]  only been worn once since the[01 FF]  last washing.[02 FF]@They stink a little... but they're[01 FF]  still good.[02 FF]@Hey, don't refuse me here... I'm[01 FF]  being generous![02 FF][D4 FF 74 00][6D FF FF 00 97 00][91 FF FF][93 FF 00 C8][86 FF _L2233_][02 FF]@Please take good care of my[01 FF]  socks... *sniff!*[1D FF][08 FF E0 02][00 FF]
 ^L3096^[FC FF 45 00][85 FF 60 03 06 00][85 FF 33 06 06 00][00 FF]
 ^L3097^[85 FF 58 03 06 00][85 FF 32 06 06 00][00 FF]
 ^L3098^@47th floor...[1D FF][00 FF]
@@ -3331,68 +3331,68 @@
 ^L3136^@Kids shouldn't drink espresso.[01 FF]  It'll stunt your growth, stubby![02 FF]@And quit hanging out around[01 FF]  here.[02 FF]@What?[02 FF]@Mr. Monotoli's here?[02 FF]@You must be thinking of[01 FF]  someone else![1D FF][00 FF]
 ^L3137^@Hey, long time no see![02 FF]@I've thought of a new joke[01 FF]  since before...[02 FF]@Knock knock!... (who's there?)[02 FF]@Sawyer... (Sawyer who?)[02 FF]@Sawyer doin' well, I'm fine too![02 FF]@Baaa ha ha ha!...[02 FF]@...You don't think it's funny?[02 FF]@I really thought this would[01 FF]  be funny to you.[02 FF]@Now my self confidence is[01 FF]  TOTALLY shot!  Back to[01 FF]  therapy...[1D FF][00 FF]
 ^L3138^@I've been trying to think of[01 FF]  some funny jokes...[02 FF]@I scream, you scream, we[01 FF]  all scream for ice scream![02 FF]@Waaa ha ha ha ha ha.  That's[01 FF]  so funny![02 FF]@That should really make you[01 FF]  laugh.[02 FF]@C'mon, laugh![02 FF]@If you hear any funny jokes,[01 FF]  be sure you let loose and[01 FF]  laugh...[02 FF]@Please... I'm counting on you[01 FF]  to laugh![02 FF]@*boo hoo hoo*...[1D FF][00 FF]
-^L3139^
-^L3140^
-^L3141^
-^L3144^
+^L3139^@The hint that I gave you was[01 FF]  critical to helping you win...[02 FF]@Happy happy![02 FF]@We rock!  Ha ha ha.[1D FF][00 FF]
+^L3140^[8D FF 01 00][A8 FF 00]@I wanna say thanks.[02 FF]@Monotoli destroyed my life...[01 FF]  but I've decided not to blame[01 FF]  anyone.[02 FF]@I'm having a wonderful time[01 FF]  each and every day now.[02 FF]@Thank you, thank you![1D FF][00 FF]
+^L3141^@The Dinosaur Museum doesn't[01 FF]  have real dinosaurs...[1B FF 14 00]  They are[01 FF]  all replicas.[02 FF]@But I guess everyone knows[01 FF]  that.[1D FF][00 FF]
+^L3144^[BB FF 05][87 FF]@You don't even have[01 FF]  [B8 FF 00][1A FF 04 00] dollars![02 FF]@You don't deserve to go in the[01 FF]  museum.[1D FF][00 FF]
 ^L3146^@Please come back again to[01 FF]  study,[02 FF]@'cause I don't like being alone...[1D FF][00 FF]
 ^L3147^@You want to know about[01 FF]  something <extraordinary>?[02 FF]@.....[02 FF]@Hmmmm...[02 FF][01 FF][1B FF 3C 00]@...You know, there's a new[01 FF]  singer named Venus at the[01 FF]  Topolla Theater.[02 FF]@Could you bring me her[01 FF]  autograph on an eraser?[02 FF]@Then, I'll show you something[01 FF]  <extraordinary.>[02 FF]@...Oh,[1B FF 0F 00] if you can get her[01 FF]  autograph on anything,[1B FF 0F 00] don't[01 FF]  worry about the eraser...[02 FF]@I don't care if the autograph is[01 FF]  written on toilet paper...[1D FF][08 FF 8C 00][09 FF AF 02][00 FF]
 ^L3148^[D4 FF 76 00]@You got it![02 FF]@That banana peel has an[01 FF]  authentic <Venus> autograph?[02 FF]@Yep,[1B FF 0F 00] there's no doubt about it![02 FF]@Now for my promise.[02 FF]@I'll tell you about something[01 FF]  <extraordinary.>[02 FF]@In the next room, there is a[01 FF]  light shining from far, far below[01 FF]  the manhole.[02 FF]@There,[1B FF 0F 00] I found a huge,[1B FF 0F 00] monster[01 FF]  rat![02 FF]@I'm not trying to pull your leg...[02 FF]@I'll let you go there and check it[01 FF]  out for yourself.[1D FF][D4 FF 10 00][C6 FF][6D FF FF 00 98 00][85 FF 8C 03 06 00][84 FF 8D 03 5A 01 01 00][08 FF 3A 00][08 FF 02 00][00 FF]
-^L3149^
+^L3149^@As I thought,[1B FF 14 00][01 FF]  dinosaurs did actually exist[01 FF]  in history.[02 FF]@Yes, I have sure-fire proof.[02 FF]@I've seen them in so many movies,[1B FF 14 00][01 FF] they must have been real![1D FF][00 FF]
 ^L3150^[BC FF 96 00][86 FF _L5051_][00 FF]
 ^L3151^[BC FF 3C 00][86 FF _L5049_][00 FF]
-^L3155^
-^L3156^
+^L3155^[D4 FF 05 00]@Sorry, but you can't carry[01 FF]  all of these...[1D FF][00 FF]
+^L3156^@I've never heard of anyone who[01 FF]  doesn't even have $30![02 FF]@Ho[1B FF 0F 00] ho[1B FF 05 00] ho ho ho ho ho ho ho.[02 FF]@Oh, excuse me for my laughing[01 FF]  in your face.[1D FF][00 FF]
 ^L3157^[08 FF 00 01][86 FF _L4325_][09 FF 00 01][00 FF]
 ^L3158^[08 FF 01 01][86 FF _L4325_][09 FF 01 01][00 FF]
-^L3159^
+^L3159^@What did you do during the[01 FF]  power outage?[02 FF]@I was sitting here 'cause I was[01 FF]  scared.[1D FF][00 FF]
 ^L3160^[08 FF 02 01][86 FF _L4326_][09 FF 02 01][00 FF]
 ^L3161^[08 FF 06 01][86 FF _L4326_][09 FF 06 01][00 FF]
-^L3162^
-^L3163^
-^L3166^
+^L3162^@I want to get out of here,[02 FF]@because they suddenly shut[01 FF]  down the store and the power[01 FF]  goes out.[02 FF]@There are lots of strange things[01 FF]  happening in this department[01 FF]  store.[1D FF][00 FF]
+^L3163^@I heard a sound like[01 FF]  <gwaaargh!> and it was loud.[02 FF]@I wonder if someone was[01 FF]  fighting.[1D FF][00 FF]
+^L3166^@Certainly, it's very dangerous[01 FF]  living in the city.[1D FF][00 FF]
 ^L3167^[C6 FF][A7 FF CC 01][00 FF]
-^L3168^
-^L3169^
-^L3170^
-^L3171^
-^L3172^
+^L3168^@In the future, you will build[01 FF]  cities and even create a[01 FF]  country...[02 FF]@...I'm counting on you.[1D FF][00 FF]
+^L3169^@That Mr. Monotoli has lost quite[01 FF]  a bit of his resources...[1D FF][00 FF]
+^L3170^@My grandpa told me that[01 FF]  everyone has at least one[01 FF]  outstanding skill.[02 FF]@When I look at you,[01 FF]  I know he's right.[1D FF][00 FF]
+^L3171^@Just as I thought,[1B FF 0F 00][01 FF] Monotoli has a portion of[01 FF]  Evil's power.[1D FF][00 FF]
+^L3172^@You're very young,[02 FF]@but you brought something very[01 FF]  precious back to the people in[01 FF]  this town.[02 FF]@Thank you.[1D FF][00 FF]
 ^L3173^@I heard you're friends of the[01 FF]  Runaway Five.[1B FF 14 00]  I'm jealous.[1D FF][00 FF]
-^L3174^
-^L3175^
-^L3176^
+^L3174^@Venus...[02 FF]@She's become even more[01 FF]  beautiful.[1D FF][00 FF]
+^L3175^@You boys are young,[1B FF 0F 00][01 FF] but you did a great job here[01 FF]  and out there.[1D FF][00 FF]
+^L3176^@Jackie's Cafe was where the deal[01 FF]  with the evil entity took place.[02 FF]@I can't believe it... can you?[1D FF][00 FF]
 ^L3177^@Hic![02 FF]@I'm fine.[02 FF]@Hic![02 FF]@I'm not drinking the...[1B FF 0F 00] hic![02 FF]@I hate these hiccups...[02 FF]@Yes, they're...[1B FF 0A 00] hic![02 FF]@Another cappucino here![02 FF]@Hic![1D FF][00 FF]
-^L3178^
-^L3179^
+^L3178^@You're getting in better shape[01 FF]  every time I see you.[02 FF]@Don't you wanna be a[01 FF]  police officer?[1D FF][00 FF]
+^L3179^@It was stupid of me to let[01 FF]  Monotoli do whatever he[01 FF]  wanted.[02 FF]@We'll do our best to create[01 FF]  an environment in which[01 FF]  people can live safely.[1D FF][00 FF]
 ^L3180^@I misjudged you guys.[02 FF]@I thought you were little[01 FF]  snot-nosed punks.[02 FF]@...I know better now.[1D FF][00 FF]
 ^L3181^@Oh, that rude comment was a[01 FF]  slip of the tongue.[02 FF]@Now I feel like Monotoli should[01 FF]  eat my shorts.[02 FF][8D FF 01 00][A8 FF 00]@[90 FF 00][1A FF 01 00], [87 FF][86 FF _L5898_].[1D FF][00 FF]
-^L3182^
+^L3182^[02 FF]@What?[1B FF 0F 00]  You have a <Yogurt[01 FF]  dispenser>?[02 FF]@May I have it?[02 FF][D4 FF 76 00][1B FF 0A 00]@(Before you could answer, she[01 FF]  took the <Yogurt dispenser.>)[02 FF]@Now I can make Trout-flavored[01 FF]  yogurt for my guests.[02 FF]@...You are so kind, I'll make[01 FF]  some for you.[02 FF]@My room's on the 48th floor.[1B FF 14 00][01 FF]  Don't forget to drop by![02 FF][C6 FF][6D FF FF 00 93 00][08 FF 8E 00][A1 FF B7 03 33 02][9E FF][A4 FF B7 03][DB FF B7 03 01 00 FF 00][CE FF B7 03 00 00][1B FF 14 00]@My room's on the 48th floor.[1B FF 14 00][01 FF]  Don't forget to drop by![02 FF][C6 FF][A3 FF B7 03][09 FF 3B 00][00 FF]
 ^L3186^[C6 FF][08 FF 0B 00][85 FF B8 03 06 00][A0 FF 33 00 AC 01 01 00][09 FF 02 00][1B FF 28 00][A1 FF B9 03 AD 01][A1 FF BA 03 AE 01][1B FF 5E 00][08 FF 02 00][9E FF][A1 FF BD 03 AF 01][A1 FF BE 03 B0 01][9E FF][A1 FF BD 03 02 00][A1 FF BE 03 02 00][A1 FF B9 03 02 00][A1 FF BA 03 02 00][A1 FF BB 03 02 00][A1 FF BC 03 02 00][09 FF 0B 00][86 FF _L4156_][00 FF]
-^L3187^
-^L3188^
-^L3189^
+^L3187^@He's not dead...[02 FF]@I thought he may have[01 FF]  passed on.[1D FF][00 FF]
+^L3188^@He should really go to the[01 FF]  hospital like other sick[01 FF]  people do.[1D FF][00 FF]
+^L3189^@Do you know him?[02 FF]@You must be a dangerous kid![02 FF]@I'll bet you're on your way to[01 FF]  Jackie's Cafe right now![1D FF][00 FF]
 ^L3190^@Don't you feel better since you[01 FF]  had the chance to talk with[01 FF]  your friend?[02 FF]@I helped you find him.[1D FF][00 FF]
-^L3191^
+^L3191^@All right, take my place.[1D FF][00 FF]
 ^L3194^@Give me somethin' that[01 FF]  makes me really happy![1B FF 14 00][01 FF]@And do it in a nice way![1D FF][00 FF]
 ^L3197^[C6 FF][A1 FF BC 03 AB 01][9E FF][A1 FF BC 03 9B 01][00 FF]
-^L3198^
-^L3199^
+^L3198^@Is that man going to... to...?[1D FF][00 FF]
+^L3199^@He stared right at me...[02 FF]@Ooo... it was scary![1D FF][00 FF]
 ^L3200^[08 FF 07 01][08 FF 90 02][86 FF _L4325_][09 FF 07 01][09 FF 90 02][00 FF]
 ^L3201^[08 FF 08 01][08 FF 90 02][86 FF _L4326_][09 FF 08 01][09 FF 90 02][00 FF]
 ^L3202^[C6 FF][A7 FF CF 01][00 FF]
-^L3203^
-^L3204^
+^L3203^@I heard they couldn't find the[01 FF]  buried gold.[02 FF]@Those guys worked really hard,[1B FF 0F 00][01 FF]  but all they got was a diamond![1D FF][00 FF]
+^L3204^@I'm lucky I'm a rat.[1B FF 1F 00][01 FF]  We have such easy lives...[1D FF][00 FF]
 ^L3206^@The woman who sells magic[01 FF]  cake[02 FF]@seems to have been removed[01 FF]  from the members list.[1D FF][00 FF]
 ^L3207^[02 FF]@If you just want water,[01 FF]  go to the drug store.[1B FF 14 00]It's a lot cheaper there.[1D FF][00 FF]
 ^L3208^@I think this is a nice town.[1B FF 14 00] [01 FF]  Come back when you grow up![1D FF][00 FF]
 ^L3209^[08 FF 0B 01][86 FF _L4325_][09 FF 0B 01][00 FF]
 ^L3210^[08 FF 09 01][86 FF _L4325_][09 FF 09 01][00 FF]
-^L3211^
-^L3212^
-^L3213^
+^L3211^[1C FF 49 00 _L3212_][BC FF 04 00][86 FF _L2177_][81 FF _L3212_]@That Kung Fu-like hairstyle![1B FF 14 00][01 FF]  You look so cool![02 FF]@I may fall in love with you.[1B FF 14 00]  Do[01 FF]  you think I'm too forward?[1D FF][00 FF]
+^L3212^@How annoying![1B FF 14 00]   Why are you[01 FF]  wandering around?[02 FF]@Summers is a posh resort,[01 FF]  made for adults.[00 FF]
+^L3213^@Forget about the adventure,[01 FF]  come back again![1D FF][00 FF]
 ^L3214^[08 FF 0A 01][08 FF 90 02][86 FF _L4326_][09 FF 0A 01][09 FF 90 02][00 FF]
 ^L3215^@Since the Hieroglyph display[01 FF]  is closed,[1B FF 0F 00] people haven't[01 FF]  wanted to visit.[1D FF][00 FF]
-^L3219^
+^L3219^@You don't have any money, right?[02 FF]@Okay, since you kids look like[01 FF]  you would study hard, you may[01 FF]  enter,[02 FF]@free of charge![02 FF]@Oh wait... I can't do that![02 FF]@Good bye.[1D FF][00 FF]
 ^L3221^[BC FF 04 00][86 FF _L2177_][81 FF _L3222_]@Oh, the samurai kid is here.[02 FF]@Will he be giving me that gem?[03 FF 00 00][04 FF _L3223_][05 FF _L3224_]
 ^L3224^[01 FF]@So, what he just handed me[01 FF]  is not a gem.[02 FF]@Hah ha ha.[02 FF]@I'm going to really enjoy the[01 FF]  <cookie> that I just got.[02 FF]@Let's pretend this conversation[01 FF]  never took place...[02 FF]@While I'm pretending,[01 FF]  you go on in...[02 FF][80 FF _L3225_][00 FF]
 ^L3223^[D4 FF 76 00]@You're such a good student.[02 FF]@I'm impressed by your passion[01 FF]  for learning.[1B FF 14 00] Come in.[02 FF][80 FF _L3225_]
@@ -3437,15 +3437,15 @@
 ^L3265^@But, it was empty.[1D FF][00 FF]
 ^L3266^@But, you can't carry anything[01 FF]  else.[00 FF]
 ^L3267^@Prince [10 FF] has[01 FF]  returned, so everyone is[01 FF]  extremely happy.[02 FF]@Please stay and relax.[1D FF][00 FF]
-^L3268^
-^L3269^
+^L3268^@Since you left for a[01 FF]  foreign country,[02 FF]@the girls of Dalaam have had to[01 FF]  endure their loneliness without[01 FF]  you.[1D FF][00 FF]
+^L3269^[BC FF 04 00][86 FF _L2177_][81 FF _L3268_]@Prince [10 FF].[01 FF]@You're my favorite.  (blush)[01 FF]  tee hee hee.[1D FF][00 FF]
 ^L3271^@I didn't eat any garlic today,[01 FF]  so the room doesn't stink.[1D FF][00 FF]
 ^L3272^@Hello.[02 FF]@Congratulations.[02 FF]@Thank you...[02 FF]@...Oh,[1B FF 0F 00] my foreign language[01 FF]  skills worked![1D FF][00 FF]
 ^L3273^@We have difficulty[01 FF]  communicating with foreigners.[1D FF][00 FF]
 ^L3276^@I'm a little embarrassed to[01 FF]  say it, but I'll tell you anyway...[02 FF]@I thought <Philosophy> was[01 FF]  the study of stones.[02 FF]@I now realize it's about studying[01 FF]  all night...[02 FF]@...What?[1B FF 14 00] It's not?[1D FF][00 FF]
 ^L3277^@What's the difference between[01 FF]  <existing> and <exiting>?[02 FF]@.....Nothing?[02 FF]@Mmmmm Mmmmm[1D FF][00 FF]
 ^L3278^@I wonder if[01 FF]  Prince [10 FF] succeeded[01 FF]  in <Moo Training>?[02 FF]@I wanted him to come by[01 FF]  and show me his best[01 FF]  barnyard impression.[1D FF][00 FF]
-^L3279^
+^L3279^@If it's safe, I want to be inside.[1D FF][00 FF]
 ^L3280^[C6 FF][A7 FF D0 01][00 FF]
 ^L3281^@Prince [10 FF] has good[01 FF]  relationships with foreigners.[02 FF]@...What an international person![1D FF][00 FF]
 ^L3282^@Prince [10 FF] is so cool,[01 FF]  but you're also young and[01 FF]  tough.[1D FF][00 FF]
@@ -3458,7 +3458,7 @@
 ^L3291^[08 FF 46 01][08 FF 90 02][86 FF _L4325_][09 FF 46 01][09 FF 90 02][00 FF]
 ^L3292^[08 FF 0A 00][BC FF C8 00][86 FF _L5051_][00 FF]
 ^L3293^[BC FF 50 00][86 FF _L5049_][00 FF]
-^L3296^
+^L3296^@Since you have too many items,[01 FF][1B FF 0F 00]  I humbly keep this important[01 FF]  Snake bag.[1D FF][00 FF]
 ^L3298^@Without any money,[01 FF] I cannot sell to you...[1D FF][00 FF]
 ^L3299^[08 FF 44 01][08 FF 90 02][86 FF _L4326_][09 FF 44 01][09 FF 90 02][00 FF]
 ^L3300^[08 FF 45 01][08 FF 90 02][86 FF _L4325_][09 FF 45 01][09 FF 90 02][00 FF]
@@ -3485,38 +3485,39 @@
 ^L3324^[08 FF 0B 00][FC FF 05 00][EA FF FF 00][6B FF 03 00][A0 FF D0 07 13 00 01 00][9E FF][1B FF 3C 00]@([0D FF] and his friends[01 FF]  carried out the submarine that[01 FF]  [0F FF] fixed.)[01 FF][02 FF][C6 FF][CB FF FF 00 06 00][14 FF 5C 00][A0 FF C7 00 35 02 FF 00][9E FF][AA FF C7 00][86 FF _L2201_][08 FF 1E 02][C5 FF][C9 FF C7 00][EB FF FF 00][A9 FF C7 00][9E FF][CA FF][EA FF FF 00][14 FF 5D 00][A0 FF C7 00 36 02 FF 00][C9 FF C7 00][EB FF FF 00][9E FF][CA FF][EA FF FF 00][86 FF _L2201_][09 FF 1E 02][C5 FF][CC FF FF 00 01 00][A0 FF D0 07 37 02 01 00][86 FF _L4040_][CA FF][09 FF 0B 00][08 FF DA 00][09 FF FA 02][7E FF 0A 00][FC FF 06 00][00 FF]
 ^L3325^@Then, you should be able to[01 FF]  solve the mystery somehow.[1D FF][00 FF]
 ^L3326^@Well, that means that you must[01 FF]  go back, read it and then come[01 FF]  back here.[1D FF][00 FF]
-^L3327^
-^L3331^
+^L3327^@Do you have the[01 FF]  <Monkey's love>?[1D FF][00 FF]
+^L3331^@Are you sure you can't accept[01 FF]  this?[02 FF]@...I know you have no room, so[01 FF]  you can't carry it,[1B FF 0F 00] but...[02 FF]@...I wanted to give you[01 FF]  the <Monkey's love
+.>[1D FF][08 FF 0A 00][00 FF]
 ^L3332^@I was born in this dark,[01 FF]  creepy area.[02 FF]@I live, grow up... and die here.[02 FF]@That's my entire life as a[01 FF]  monkey!...[1D FF][00 FF]
 ^L3333^[1C FF 7F 01 _L5112_]@The monkeys run the inn[01 FF]  in the forest.[02 FF]@You can stay here for free![02 FF]@Do you want to spend the night?[01 FF][86 FF _L2492_][04 FF _L5113_][05 FF _L5114_]
 ^L3334^[C6 FF][A7 FF D5 01][00 FF]
-^L3335^
-^L3336^
+^L3335^@Hey![02 FF]@There's a Magic truffle at your[01 FF]  feet.[02 FF][91 FF FF][00 FF]
+^L3336^@But you have no room.[02 FF]@[86 FF _L11000_] gives up the Magic truffle.[1D FF][00 FF]
 ^L3337^[93 FF 00 7A][86 FF _L2233_][1D FF][00 FF]
-^L3338^
-^L3339^
-^L3340^
+^L3338^@...Needless to say, this is a[01 FF]  rural village.[02 FF]@...Heh heh,[1B FF 0F 00] we have poor items.[02 FF][86 FF _L3341_][00 FF]
+^L3339^@If you must talk to the doctor,[1B FF 0F 00][01 FF]  please,[1B FF 0F 00]  PLEASE talk to me[01 FF]  first.[02 FF]@Do you have business with the[01 FF]  doctor?[22 FF][03 FF 00 00][04 FF _L3342_][05 FF _L3340_]
+^L3340^@Okay.[02 FF]@If you attempt to talk with the[01 FF]  doctor without first going[01 FF]  through me,[02 FF]@it violates the law.[1B FF 14 00]  Please be[01 FF]  careful.[1D FF][00 FF]
+^L3342^@It's a special treatment.[02 FF]@You'll be in perfect health with[01 FF]  just one treament.[02 FF]@The fee for one treatment is[01 FF]  $500.[02 FF]@Do you agree to the fee?[86 FF _L3343_][04 FF _L3344_][05 FF _L3340_][80 FF _L3340_]
 ^L3341^[08 FF 58 02][08 FF 90 02][86 FF _L4325_][09 FF 58 02][09 FF 90 02][00 FF]
-^L3342^
-^L3344^
-^L3345^
-^L3346^
-^L3347^
-^L3348^
+^L3344^@I can pick up the fee for you[01 FF]  now, if you want.[02 FF]@What would you like to do?[03 FF 08 00][04 FF _L3345_][05 FF _L3346_][80 FF _L3340_]
+^L3346^[99 FF F4 01 00 00][81 FF _L3347_][9B FF F4 01 00 00][D4 FF 76 00][86 FF _L3348_][00 FF]
+^L3347^@Oh,[1B FF 0A 00] Oh...[1B FF 14 00]  You don't seem to[01 FF]  have enough money.[02 FF]
+^L3345^[08 FF 8E 02]@I can pay for you now.[02 FF][D4 FF 76 00][86 FF _L3348_][00 FF]
+^L3348^[DB FF D1 04 02 00 D2 04][CE FF D1 04 00 00][1B FF 0A 00]@Doc,[1B FF 0F 00] please treat the next[01 FF]  patient![02 FF]@...Treat [86 FF _L5916_] right, ok!?[1D FF][C6 FF][A1 FF D2 04 B2 02][9E FF][A4 FF D2 04][8D FF 01 00][A8 FF 00]@(The great doctor whispered in[01 FF]  each ear,[1B FF 0F 00] first right then left,[1B FF 0F 00][01 FF]  <be healthy.>)[02 FF][86 FF _L2941_][C6 FF][A3 FF D2 04][9E FF][A1 FF D2 04 0F 00][1B FF 01 00][CE FF D2 04 03 00][1B FF 1E 00][DB FF D1 04 01 00 FF 00][CE FF D1 04 00 00][1B FF 0A 00]@I'm happy to do business with[01 FF]  men outside of the monkey[01 FF]  realm.[02 FF]@Please come back again.[1D FF][C6 FF][00 FF]
 ^L3349^@Shhhhh! Be quiet![01 FF]  I look very important, but I'm not[01 FF]  really.....[02 FF]@I'm a cash dispenser man.[02 FF]@If you want to withdraw cash.....[02 FF]@I'll charge you a handling fee,[02 FF]@which is the same amount as your[01 FF]  withdrawal.[02 FF]@So, do you want a withdrawal?[86 FF _L2485_][04 FF _L5320_][05 FF _L5321_]
 ^L5321^@...I'll be here, so...[01 FF]  Come back any time.[1D FF][00 FF]
-^L3350^
+^L3350^@(It's useless broken.[02 FF]@Nobody's in the pilot's seat.)[1D FF][00 FF]
 ^L3351^[DF FF][81 FF _L5139_]
 ^L5139^[00 FF]
-^L3352^
-^L3353^
-^L3354^
+^L3352^@The Tenda turned it down, but[01 FF]  really seemed tempted...[1D FF][00 FF]
+^L3353^@Welcome.[02 FF]@To this far.[02 FF]@Take a rest.[02 FF]@Long journey, must have been.[1D FF][00 FF]
+^L3354^[1C FF 7F 01 _L5115_]@In the hole, inn we have.[01 FF]@Free. Stay?[02 FF][86 FF _L2492_][04 FF _L5116_][05 FF _L5117_]
 ^L3355^[1C FF 09 03 _L3359_]@The book[01 FF]  <Overcoming Shyness> was[01 FF]  very helpful to us![02 FF]@We've kept it for a long time,[01 FF]  but I'll return it now.[02 FF]@Thank you very much.[02 FF][91 FF FF][82 FF _L3360_][01 FF][93 FF 00 D1][86 FF _L2238_][08 FF 09 03][02 FF]
 ^L3359^@We're living in peace now, in a[01 FF]  wide variety of lifestyles.[02 FF]@Thank you very much.[1D FF][A1 FF E4 04 02 00][00 FF]
-^L3356^
-^L3357^
-^L3358^
-^L3360^
+^L3356^@So long.[1B FF 14 00][01 FF]  I say good-bye.[1D FF][C6 FF][1B FF 01 00][A1 FF E4 04 02 00][00 FF]
+^L3357^@Since we overcame our[01 FF]  shyness,[01 FF] I'll give you a [90 FF B7][1A FF 02 00][01 FF]@Take it.[02 FF][91 FF FF][82 FF _L3358_][01 FF][93 FF 00 B7][86 FF _L2233_][08 FF 5C 00][1D FF][00 FF]
+^L3358^@But, you can't take it.[01 FF]@You have no space for it.[01 FF]@Go and do whatever you have[01 FF]  to and come back.[1D FF][00 FF]
+^L3360^@You have too much stuff to[01 FF]  receive the book.[02 FF]@Get rid of something.[1D FF][00 FF]
 ^L3361^[FC FF 05 00]@.....![02 FF]@Book![02 FF]@Can fix shyness.[02 FF]@Thanks.[02 FF]@Relax.[02 FF]@I'll read to everyone.[02 FF]@Oh![02 FF]@Just holding this book in my[01 FF]  hands makes me feel like[02 FF]@I'm overcoming my shyness[01 FF]  already![02 FF]@I'll really take time to read it to[01 FF]  everyone![D4 FF 79 00][02 FF][FC FF 43 00][C6 FF][A0 FF D0 07 13 00 01 00][9E FF]@(The leader of the Tenda tribe[01 FF]  read <Overcoming Shyness> to[01 FF]  everyone.)[02 FF][C6 FF][86 FF _L2185_][14 FF 5F 00][CE FF E4 04 07 00][EA FF FF 00][1B FF 01 00][C5 FF]@Chat, Chat whisper, whisper[02 FF]@I'd like to give you some[01 FF]  <Tendakraut> in return.[02 FF]@<Tendakraut> is a type of dish[01 FF]  that all Tenda like.[02 FF]@It stinks, but it tastes[01 FF]  wonderful.[02 FF][1B FF 01 00][01 FF][6D FF FF 00 D1 00][93 FF 00 92][8A FF][D4 FF 74 00][1B FF 3C 00][C7 FF]@[0D FF] lends the leader[01 FF]  of the Tenda tribe the book[01 FF]  <Overcoming Shyness.>[02 FF][1B FF 01 00][01 FF][86 FF _L2238_][1D FF][C6 FF][08 FF 9B 00][1B FF 3C 00][08 FF FD 01][86 FF _L1689_][C3 FF FF 02 E4 04][D8 FF FF 00 00 00][86 FF _L3362_][EB FF FF 00][FC FF 06 00][00 FF]
 ^L3362^@Hey, you![1B FF 14 00]  I have a happy little[01 FF]  question for you...[02 FF]@.....[02 FF]@[2E FF]...[02 FF]@[2E FF],[02 FF]@are you sure this is the correct[01 FF]  player's name?[02 FF]@If it's not right,[1B FF 0F 00] you can change[01 FF]  it...[02 FF][C6 FF]
 ^L4222^[6B FF 02 00][1B FF 1E 00][C4 FF 00 03][FC FF 04 00][6B FF 02 00][1B FF 1E 00][C5 FF]@[2E FF],[02 FF]@Are you sure it's what you[01 FF]  want?[02 FF]@Are you happy with the name?[03 FF 00 00][04 FF _L4220_][05 FF _L4221_]
@@ -3589,8 +3590,8 @@
 ^L3443^@There is something shiny[01 FF]  that you can reach.[02 FF]@Do you want to try and get it?[03 FF 00 00][04 FF _L3444_][05 FF _L3445_]
 ^L3445^[00 FF]
 ^L3444^[91 FF FF][82 FF _L3446_][93 FF 00 8C][8A FF][86 FF _L2238_][08 FF 4F 00][1D FF][00 FF]
-^L3446^
-^L3447^
+^L3446^@You don't have any more[01 FF]  space.[1D FF][00 FF]
+^L3447^[1D FF][00 FF]
 ^L3448^@But there was nothing.[1D FF][00 FF]
 ^L3449^@But you don't have any more[01 FF]  space.[1D FF][00 FF]
 ^L3450^@No problem here.[1D FF][7E FF 05 00][00 FF]
@@ -3650,9 +3651,9 @@
 ^L3505^[87 FF][BD FF 32 _L3466_ _L3467_ _L3468_ _L3469_ _L3470_ _L3471_ _L3472_ _L3473_ _L3474_ _L3475_ _L3476_ _L3477_ _L3478_ _L3478_ _L3478_ _L3478_ _L3479_ _L3480_ _L3481_ _L3482_ _L3483_ _L3484_ _L3485_ _L3485_ _L3485_ _L3485_ _L3485_ _L3485_ _L3485_ _L3485_ _L3486_ _L3487_ _L3488_ _L3489_ _L3490_ _L3491_ _L3492_ _L3493_ _L3485_ _L3485_ _L3494_ _L3495_ _L3496_ _L3497_ _L3498_ _L3499_ _L3500_ _L3501_ _L3502_ _L3503_][00 FF]
 ^L3506^ tried to[01 FF]  steal something, but failed![02 FF][00 FF]
 ^L3507^@[9F FF][C1 FF][87 FF] used[01 FF]  the [90 FF 00][1A FF 02 00].[02 FF][00 FF]
-^L3508^
-^L3509^
-^L3510^
+^L3508^@[9F FF][C1 FF][87 FF] used the[01 FF]  [90 FF 00][1A FF 02 00]![1B FF 1E 00][D4 FF 36 00][1B FF 1E 00][F0 FF 00 00 01 00][1B FF 3C 00][02 FF][00 FF]
+^L3509^@[9F FF] used the[01 FF][C1 FF][87 FF]  [90 FF 00][1A FF 02 00]![1B FF 1E 00][D4 FF 3B 00][F0 FF 00 00 04 00][1B FF 3C 00][02 FF][00 FF]
+^L3510^@[9F FF] used the[01 FF][C1 FF][87 FF]  [90 FF 00][1A FF 02 00]![1B FF 1E 00][D4 FF 3B 00][F0 FF 00 00 1E 00][1B FF 3C 00][02 FF][00 FF]
 ^L3511^@[9F FF][C1 FF][87 FF] used the[01 FF]  [90 FF 00][1A FF 02 00][1B FF 1E 00][D4 FF 63 00][F0 FF 00 00 1B 00][1B FF 3C 00][02 FF][00 FF]
 ^L3512^[C1 FF][87 FF][E3 FF][9A FF 02 00][81 FF _L3521_][E4 FF][81 FF _L3522_][E5 FF][81 FF _L3523_]@[9F FF] took[01 FF]  the [90 FF 00][1A FF 02 00] out[02 FF]@and [AD FF] ate it.[D4 FF 44 00][02 FF][00 FF]
 ^L3513^[E5 FF][81 FF _L3517_]@[9F FF][C1 FF][87 FF] took[01 FF]  the [90 FF 00][1A FF 02 00][02 FF]@and [AD FF] drank it.[D4 FF 44 00][1B FF 01 00][02 FF][00 FF]
@@ -3667,8 +3668,8 @@
 ^L3524^@[9F FF] took[01 FF][C1 FF][87 FF]  the [90 FF 00][1A FF 02 00][02 FF][89 FF]@and used it on the [90 FF 00][1A FF 02 00].[D4 FF 44 00][1B FF 01 00][02 FF][00 FF]
 ^L3525^@[9F FF] drank[01 FF][C1 FF][87 FF]  the [90 FF 00][1A FF 02 00].[D4 FF 44 00][1B FF 01 00][02 FF][00 FF]
 ^L3526^[80 FF _L3528_]
-^L3527^
-^L3528^
+^L3527^[83 FF 16 00][82 FF _L3528_]@(The bubble monkey took a[01 FF]  piece of bubble gum,[01 FF]@chewed it and started blowing.)[02 FF][C6 FF][1C FF 52 01 _L4137_][CB FF 09 00 06 00][A0 FF C8 00 98 00 01 00][9E FF][D4 FF 0E 00][A5 FF C8 00 06 00][A0 FF C8 00 99 00 01 00][A0 FF B4 02 9A 00 01 00][9E FF][A5 FF C8 00 06 00][A5 FF B4 02 06 00][CC FF 09 00 01 00][00 FF]
+^L3528^@[0C FF] chewed a piece of[01 FF]  bubble gum,[1B FF 0F 00] but it wasn't as[01 FF]  satisfying as food.[1D FF][00 FF]
 ^L3529^@(The Truffle doesn't seem to[01 FF]  be around here.)[1D FF][00 FF]
 ^L3530^@(It is around here somewhere,[01 FF]  but you can't pinpoint the exact[01 FF]  location.)[1D FF][00 FF]
 ^L3531^@(It must be right here!)[01 FF][1D FF][00 FF]
@@ -3714,14 +3715,14 @@
 ^L3571^[86 FF _L2200_][1B FF 3C 00][D8 FF 02 00 05 00][1B FF 3C 00][6B FF 03 00][FC FF 29 00][1B FF 01 00][A0 FF D0 07 8E 00 01 00][9E FF][AA FF D0 07][1B FF 78 00]@I'm calling out to you who I've[01 FF]  never met...[02 FF]@I'm calling our friend who we've[01 FF]  never met...[02 FF]@[0F FF]![1B FF 1E 00]  [0F FF]![1B FF 14 00][01 FF]  We need your help![02 FF]@I am [0E FF] and I am[01 FF]  with another friend,[1B FF 0F 00][01 FF]  [0D FF]...[02 FF]@We are trying to contact you...[1D FF][1B FF 1E 00][C6 FF][1B FF 01 00][A5 FF D0 07 06 00][CB FF FF 00 06 00][14 FF 11 00][A0 FF D0 07 8F 00 01 00][86 FF _L4040_][14 FF 12 00][A0 FF D0 07 90 00 01 00][86 FF _L4040_][09 FF 0B 00][FC FF 06 00][80 FF _L4134_]
 ^L3572^[D4 FF 1D 00]
 ^L3573^@[9F FF][C1 FF][87 FF] tried[01 FF]  [2D FF]![D4 FF 57 00][02 FF]@But it didn't work very well![02 FF][00 FF]
-^L3574^
-^L3575^
-^L3576^
-^L3577^
-^L3578^
-^L3579^
-^L3580^
-^L3581^
+^L3574^@[9F FF] suddenly thought[01 FF]  about his Mom.[02 FF][00 FF]
+^L3575^@[9F FF] thought about[01 FF]  eating some [11 FF][02 FF]@and started craving it.[02 FF][00 FF]
+^L3576^@[9F FF] lost all[01 FF]  motivation in battle.[02 FF][00 FF]
+^L3577^@Pokey thought[01 FF]  to himself![02 FF][00 FF]
+^L3578^@Pokey acted[01 FF]  all innocent![02 FF][00 FF]
+^L3579^@Pokey smiled[01 FF]  insincerely![02 FF][00 FF]
+^L3580^@Pokey complained[01 FF]  to [0D FF]![02 FF][00 FF]
+^L3581^@Pokey tried to[01 FF]  edge closer to the enemy![02 FF][00 FF]
 ^L3582^[08 FF D0 00][86 FF _L3586_][00 FF]
 ^L3583^[08 FF CF 00][86 FF _L3586_][00 FF]
 ^L3584^[08 FF CE 00][86 FF _L3586_][00 FF]
@@ -3731,8 +3732,8 @@
 ^L3588^[89 FF][9A FF 0D 00][82 FF _L3589_][AF FF 0D][00 FF]
 ^L3589^[89 FF][9A FF 0E 00][82 FF _L3590_][AF FF 0E][00 FF]
 ^L3590^[AF FF 0F][00 FF]
-^L3591^
-^L3592^
+^L3591^[D4 FF 1D 00]
+^L3592^@[9F FF][C1 FF][87 FF] tried[01 FF]  [2D FF]![02 FF]@But, he didn't have enough PP.[02 FF][00 FF]
 ^L3593^[61 FF 02 00]<It hurts...[1B FF 1E 00][01 FF][0D FF]...>[61 FF 01 00][02 FF][00 FF]
 ^L3594^[61 FF 02 00]<...I'm h...[1B FF 0A 00] a...[1B FF 0A 00] p...[1B FF 0A 00] p...[1B FF 0A 00] y...>[61 FF 01 00][02 FF][00 FF]
 ^L3595^[61 FF 02 00]<...[1B FF 14 00]friends...>[61 FF 01 00][02 FF][00 FF]
@@ -3771,62 +3772,62 @@
 ^L3635^@What do you want to throw away?[22 FF][86 FF _L3640_][01 FF][82 FF _L3636_][88 FF][AB FF 00 00][B7 FF 00][82 FF _L3641_][89 FF][AB FF 00 00][90 FF 00]@So you want to throw away the [1A FF 02 00]?[03 FF 09 00][04 FF _L3642_][05 FF _L3636_][80 FF _L3636_]
 ^L3642^[89 FF][B9 FF 00 00 00 00][87 FF]@[90 FF 00][1A FF 01 00] threw the [87 FF][90 FF 00][1A FF 02 00]away[02 FF]@and took the [87 FF][C1 FF][87 FF][90 FF 00][1A FF 02 00].[93 FF 00 00][D4 FF 74 00][1B FF 01 00][02 FF][00 FF]
 ^L3640^[96 FF 02][81 FF _L5044_][80 FF _L5044_]
-^L3641^
+^L3641^@Do not throw the[01 FF]  [90 FF 00][1A FF 02 00] away.[22 FF][80 FF _L3635_]
 ^L3644^@You're much stronger *whirrr*[01 FF]  than our intelligence indicated...[02 FF]@We were not *beep* prepared[01 FF]  for that eventuality...[02 FF]@The Prophecy from the *click*[01 FF]  Apple of Enlightenment may be[01 FF]  true...[02 FF]@but you must not *whirrr*[01 FF]  underestimate us.[02 FF][C6 FF][00 FF]
 ^L3645^[C6 FF][1B FF 3C 00][C4 FF 00 91][1B FF 8C 00][A0 FF D1 07 62 00 01 00][1B FF 01 00][C9 FF D1 07][EB FF FF 00][A0 FF D0 07 28 02 01 00][FC FF 38 00][9E FF][CA FF][EA FF FF 00][A5 FF D1 07 06 00][FC FF 37 00][1B FF 04 00][FC FF 38 00][FC FF 2F 00][FC FF 39 00][CD FF 1B 00 04 00 B4 00][8D FF 01 00][A8 FF 00][C4 FF 00 C5]@When you defeated the[01 FF]  Starman DX, the Stonehenge[01 FF]  base ceased functioning.[02 FF][C6 FF][08 FF 46 00][08 FF 7E 00][08 FF 33 00][08 FF 37 00][08 FF FE 02][C5 FF][83 FF DB 00][82 FF _L2197_][08 FF 1A 02][00 FF]
 ^L3646^[BE FF FF 00 BB 00][81 FF _L2878_]@Gyork Gyork![02 FF]@Hey you, commoner![1B FF 14 00]  You there[01 FF]  wandering around without any[01 FF]  <Fly Honey>...[02 FF]@I am the mortal enemy of your[01 FF]  kind.[02 FF][00 FF]
 ^L3647^[2E FF][BE FF FF 00 BB 00][81 FF _L2879_]@You have defeated me...[02 FF]@Allow me to eat some Fly[01 FF]  Honey for the last time...[02 FF]@Master Belch hates people like[01 FF]  you.[02 FF]@...You see, those who don't[01 FF]  have <Fly Honey> are our mortal[01 FF]  enemies...[02 FF][C6 FF][00 FF]
-^L3648^@NNW SMSK?[01 FF][04 FF _L3662_][05 FF _L3663_][80 FF _L3661_]
-^L3649^
-^L3650^
-^L3651^
-^L3652^
-^L3653^
-^L3654^
-^L3655^
-^L3656^@HNTYNMtS-ZDS.[01 FF] SUTW NyURyKST[01 FF][00 FF]
-^L3784^     [C8 FF 02 00][81 FF _L3783_]@YMMST[02 FF][80 FF _L3661_]
-^L3657^[69 FF][9C FF][8A FF][C7 FF][8B FF][95 FF 03 _L3775_ _L3776_ _L3777_][80 FF _L3661_]
-^L3658^
-^L3659^
-^L3660^
-^L3661^
-^L3662^
-^L3663^
-^L3664^[C7 FF][80 FF _L3661_]
-^L3665^
-^L3666^
+^L3648^@Option chosen: <Party Setup>[02 FF]@What to do?[01 FF]  <Add> or <Remove>?  (Yes/No)[03 FF 00 00][04 FF _L3662_][05 FF _L3663_][80 FF _L3661_]
+^L3649^@Option chosen: <Goods Setup>[02 FF]@Goods shall be configured.[01 FF]  (Valid options: 1 through 7)[01 FF]  [C8 FF 01 00][95 FF 07 _L3669_ _L3670_ _L3671_ _L3672_ _L3673_ _L3674_ _L3675_][80 FF _L3661_][00 FF]
+^L3650^@Option chosen: <Status[01 FF]  Conditions>[02 FF]@Who should receive it?[02 FF][EC FF][82 FF _L3721_][88 FF]@Which one?  (Valid options: 1[01 FF]  through 14)[01 FF][C8 FF 02 00][95 FF 0D _L3722_ _L3723_ _L3724_ _L3725_ _L3726_ _L3727_ _L3728_ _L3729_ _L3730_ _L3731_ _L3732_ _L3733_ _L3734_][80 FF _L3650_]
+^L3651^@Option chosen: <Move>[02 FF]@Where to move?  (Valid[01 FF]  options: 1 through 20)[01 FF][C8 FF 02 00][95 FF 14 _L3735_ _L3736_ _L3737_ _L3738_ _L3739_ _L3740_ _L3741_ _L3742_ _L3743_ _L3744_ _L3745_ _L3746_ _L3747_ _L3748_ _L3749_ _L3750_ _L3751_ _L3752_ _L3753_ _L3754_][80 FF _L3661_]
+^L3652^@Option chosen: <Money Setup>[02 FF]@Starting money operations.[01 FF]  (Valid options: 1 through 4)[01 FF][69 FF][9C FF][C8 FF 01 00][95 FF 04 _L3760_ _L3761_ _L3762_ _L3763_][80 FF _L3661_]
+^L3653^@Option chosen: <Level Up>[02 FF]@This section does not work[01 FF]  now.  Please return later when[01 FF]  it is implemented.[02 FF][80 FF _L3661_]@Level up whom?  All or one[01 FF]  person?  (Yes/No)[03 FF 00 00][04 FF _L3755_][05 FF _L3756_][80 FF _L3661_]
+^L3654^@Option chosen: <Unused[01 FF]  Scripts>[02 FF]@An <unused> script shall be[01 FF]  called.  This ends the debug[01 FF]  menu experience.[02 FF]@(Valid options: 1 through 5)[01 FF][69 FF][9C FF][C8 FF 01 00][BD FF 05 _L3772_ _L3773_ _L3774_ _L3349_ _L3388_][00 FF]
+^L3655^@Option chosen: <Events>[02 FF]@Enter a number.  (Valid options:[01 FF]  1 through 70)[01 FF][C8 FF 02 00][95 FF 46 _L3828_ _L3829_ _L3830_ _L3831_ _L3832_ _L3833_ _L3834_ _L3835_ _L3836_ _L3837_ _L3838_ _L3839_ _L3840_ _L3841_ _L3842_ _L3843_ _L3844_ _L3845_ _L3846_ _L3847_ _L3848_ _L3849_ _L3850_ _L3851_ _L3852_ _L3853_ _L3854_ _L3855_ _L3856_ _L3857_ _L3858_ _L3859_ _L3860_ _L3861_ _L3862_ _L3863_ _L3864_ _L3865_ _L3866_ _L3867_ _L3868_ _L3869_ _L3870_ _L3871_ _L3872_ _L3873_ _L3874_ _L3875_ _L3876_ _L3877_ _L3878_ _L3879_ _L3880_ _L3881_ _L3882_ _L3883_ _L3884_ _L3885_ _L3886_ _L3887_ _L3888_ _L3889_ _L3890_ _L3891_ _L3892_ _L3893_ _L3894_ _L3895_ _L3896_ _L3897_]@Terminated execution.[1D FF][01 FF][80 FF _L3661_]
+^L3656^@Option chosen: <Hint Shop>[02 FF]@These are the Hint Shop[01 FF]  messages.  Enter a number.[01 FF]
+^L3784^     [C8 FF 02 00][81 FF _L3783_]@Terminating execution.[02 FF][80 FF _L3661_]
+^L3657^@Option chosen: <Sound>[02 FF][69 FF][9C FF]@<Background Music,>[01 FF]  <Sound Effects,>[01 FF]  or <Other Effects>?[02 FF]       [C8 FF 01 00][95 FF 03 _L3775_ _L3776_ _L3777_][80 FF _L3661_]
+^L3658^@Option chosen: <Descriptions>[02 FF]@Enter a Goods ID.[01 FF]   [C8 FF 03 00][82 FF _L3661_][87 FF]@This is the [90 FF 00][1A FF 02 00]'s[01 FF]  description.[02 FF][68 FF][DD FF 00 00 00 00 01 00 00 00][BD FF 01 _L1320_][DD FF 01 00 00 00 01 00 00 00][BD FF 01 _L1516_][DD FF 02 00 00 00 01 00 00 00][BD FF 01 _L1503_][DD FF 03 00 00 00 01 00 00 00][BD FF 01 _L1495_][DD FF 04 00 00 00 01 00 00 00][BD FF 01 _L1546_][DD FF 05 00 00 00 01 00 00 00][BD FF 01 _L1547_][DD FF 06 00 00 00 01 00 00 00][BD FF 01 _L1548_][DD FF 07 00 00 00 01 00 00 00][BD FF 01 _L1549_][DD FF 08 00 00 00 01 00 00 00][BD FF 01 _L1550_][DD FF 09 00 00 00 01 00 00 00][BD FF 01 _L1551_][DD FF 0A 00 00 00 01 00 00 00][BD FF 01 _L1552_][DD FF 0B 00 00 00 01 00 00 00][BD FF 01 _L1553_][DD FF 0C 00 00 00 01 00 00 00][BD FF 01 _L1554_][DD FF 0D 00 00 00 01 00 00 00][BD FF 01 _L1555_][DD FF 0E 00 00 00 01 00 00 00][BD FF 01 _L1556_][DD FF 0F 00 00 00 01 00 00 00][BD FF 01 _L1557_][DD FF 10 00 00 00 01 00 00 00][BD FF 01 _L1558_][DD FF 11 00 00 00 01 00 00 00][BD FF 01 _L1320_][DD FF 12 00 00 00 01 00 00 00][BD FF 01 _L1321_][DD FF 13 00 00 00 01 00 00 00][BD FF 01 _L1322_][DD FF 14 00 00 00 01 00 00 00][BD FF 01 _L1323_][DD FF 15 00 00 00 01 00 00 00][BD FF 01 _L1324_][DD FF 16 00 00 00 01 00 00 00][BD FF 01 _L1326_][DD FF 17 00 00 00 01 00 00 00][BD FF 01 _L1327_][DD FF 18 00 00 00 01 00 00 00][BD FF 01 _L1329_][DD FF 19 00 00 00 01 00 00 00][BD FF 01 _L1330_][DD FF 1A 00 00 00 01 00 00 00][BD FF 01 _L1331_][DD FF 1B 00 00 00 01 00 00 00][BD FF 01 _L1332_][DD FF 1C 00 00 00 01 00 00 00][BD FF 01 _L1333_][DD FF 1D 00 00 00 01 00 00 00][BD FF 01 _L1334_][DD FF 1E 00 00 00 01 00 00 00][BD FF 01 _L1335_][DD FF 1F 00 00 00 01 00 00 00][BD FF 01 _L1336_][DD FF 20 00 00 00 01 00 00 00][BD FF 01 _L1338_][DD FF 21 00 00 00 01 00 00 00][BD FF 01 _L1339_][DD FF 22 00 00 00 01 00 00 00][BD FF 01 _L1340_][DD FF 23 00 00 00 01 00 00 00][BD FF 01 _L1341_][DD FF 24 00 00 00 01 00 00 00][BD FF 01 _L1342_][DD FF 25 00 00 00 01 00 00 00][BD FF 01 _L1343_][DD FF 26 00 00 00 01 00 00 00][BD FF 01 _L1344_][DD FF 27 00 00 00 01 00 00 00][BD FF 01 _L1345_][DD FF 28 00 00 00 01 00 00 00][BD FF 01 _L1346_][DD FF 29 00 00 00 01 00 00 00][BD FF 01 _L1347_][DD FF 2A 00 00 00 01 00 00 00][BD FF 01 _L1348_][DD FF 2B 00 00 00 01 00 00 00][BD FF 01 _L1350_][DD FF 2C 00 00 00 01 00 00 00][BD FF 01 _L1351_][DD FF 2D 00 00 00 01 00 00 00][BD FF 01 _L1352_][DD FF 2E 00 00 00 01 00 00 00][BD FF 01 _L1353_][DD FF 2F 00 00 00 01 00 00 00][BD FF 01 _L1354_][DD FF 30 00 00 00 01 00 00 00][BD FF 01 _L1355_][DD FF 31 00 00 00 01 00 00 00][BD FF 01 _L1356_][DD FF 32 00 00 00 01 00 00 00][BD FF 01 _L1357_][DD FF 33 00 00 00 01 00 00 00][BD FF 01 _L1358_][DD FF 34 00 00 00 01 00 00 00][BD FF 01 _L1359_][DD FF 35 00 00 00 01 00 00 00][BD FF 01 _L1360_][DD FF 36 00 00 00 01 00 00 00][BD FF 01 _L1361_][DD FF 37 00 00 00 01 00 00 00][BD FF 01 _L1362_][DD FF 38 00 00 00 01 00 00 00][BD FF 01 _L1363_][DD FF 39 00 00 00 01 00 00 00][BD FF 01 _L1364_][DD FF 3A 00 00 00 01 00 00 00][BD FF 01 _L1365_][DD FF 3B 00 00 00 01 00 00 00][BD FF 01 _L1366_][DD FF 3C 00 00 00 01 00 00 00][BD FF 01 _L1367_][DD FF 3D 00 00 00 01 00 00 00][BD FF 01 _L1368_][DD FF 3E 00 00 00 01 00 00 00][BD FF 01 _L1370_][DD FF 3F 00 00 00 01 00 00 00][BD FF 01 _L1371_][DD FF 40 00 00 00 01 00 00 00][BD FF 01 _L1372_][DD FF 41 00 00 00 01 00 00 00][BD FF 01 _L1373_][DD FF 42 00 00 00 01 00 00 00][BD FF 01 _L1374_][DD FF 43 00 00 00 01 00 00 00][BD FF 01 _L1375_][DD FF 44 00 00 00 01 00 00 00][BD FF 01 _L1376_][DD FF 45 00 00 00 01 00 00 00][BD FF 01 _L1377_][DD FF 46 00 00 00 01 00 00 00][BD FF 01 _L1378_][DD FF 47 00 00 00 01 00 00 00][BD FF 01 _L1379_][DD FF 48 00 00 00 01 00 00 00][BD FF 01 _L1380_][DD FF 49 00 00 00 01 00 00 00][BD FF 01 _L1381_][DD FF 4A 00 00 00 01 00 00 00][BD FF 01 _L1382_][DD FF 4B 00 00 00 01 00 00 00][BD FF 01 _L1383_][DD FF 4C 00 00 00 01 00 00 00][BD FF 01 _L1384_][DD FF 4D 00 00 00 01 00 00 00][BD FF 01 _L1385_][DD FF 4E 00 00 00 01 00 00 00][BD FF 01 _L1386_][DD FF 4F 00 00 00 01 00 00 00][BD FF 01 _L1387_][DD FF 50 00 00 00 01 00 00 00][BD FF 01 _L1391_][DD FF 51 00 00 00 01 00 00 00][BD FF 01 _L1392_][DD FF 52 00 00 00 01 00 00 00][BD FF 01 _L1393_][DD FF 53 00 00 00 01 00 00 00][BD FF 01 _L1396_][DD FF 54 00 00 00 01 00 00 00][BD FF 01 _L1397_][DD FF 55 00 00 00 01 00 00 00][BD FF 01 _L1398_][DD FF 56 00 00 00 01 00 00 00][BD FF 01 _L1399_][DD FF 57 00 00 00 01 00 00 00][BD FF 01 _L1400_][DD FF 58 00 00 00 01 00 00 00][BD FF 01 _L1402_][DD FF 59 00 00 00 01 00 00 00][BD FF 01 _L1405_][DD FF 5A 00 00 00 01 00 00 00][BD FF 01 _L1412_][DD FF 5B 00 00 00 01 00 00 00][BD FF 01 _L1409_][DD FF 5C 00 00 00 01 00 00 00][BD FF 01 _L1416_][DD FF 5D 00 00 00 01 00 00 00][BD FF 01 _L1418_][DD FF 5E 00 00 00 01 00 00 00][BD FF 01 _L1422_][DD FF 5F 00 00 00 01 00 00 00][BD FF 01 _L1423_][DD FF 60 00 00 00 01 00 00 00][BD FF 01 _L1429_][DD FF 61 00 00 00 01 00 00 00][BD FF 01 _L1434_][DD FF 62 00 00 00 01 00 00 00][BD FF 01 _L1438_][DD FF 63 00 00 00 01 00 00 00][BD FF 01 _L1440_][DD FF 64 00 00 00 01 00 00 00][BD FF 01 _L1435_][DD FF 65 00 00 00 01 00 00 00][BD FF 01 _L1544_][DD FF 66 00 00 00 01 00 00 00][BD FF 01 _L1413_][DD FF 67 00 00 00 01 00 00 00][BD FF 01 _L1407_][DD FF 68 00 00 00 01 00 00 00][BD FF 01 _L1514_][DD FF 69 00 00 00 01 00 00 00][BD FF 01 _L1505_][DD FF 6A 00 00 00 01 00 00 00][BD FF 01 _L1401_][DD FF 6B 00 00 00 01 00 00 00][BD FF 01 _L1415_][DD FF 6C 00 00 00 01 00 00 00][BD FF 01 _L1419_][DD FF 6D 00 00 00 01 00 00 00][BD FF 01 _L1433_][DD FF 6E 00 00 00 01 00 00 00][BD FF 01 _L1436_][DD FF 6F 00 00 00 01 00 00 00][BD FF 01 _L1533_][DD FF 70 00 00 00 01 00 00 00][BD FF 01 _L1535_][DD FF 71 00 00 00 01 00 00 00][BD FF 01 _L1539_][DD FF 72 00 00 00 01 00 00 00][BD FF 01 _L1540_][DD FF 73 00 00 00 01 00 00 00][BD FF 01 _L1541_][DD FF 74 00 00 00 01 00 00 00][BD FF 01 _L1542_][DD FF 75 00 00 00 01 00 00 00][BD FF 01 _L1543_][DD FF 76 00 00 00 01 00 00 00][BD FF 01 _L1446_][DD FF 77 00 00 00 01 00 00 00][BD FF 01 _L1447_][DD FF 78 00 00 00 01 00 00 00][BD FF 01 _L1451_][DD FF 79 00 00 00 01 00 00 00][BD FF 01 _L1448_][DD FF 7A 00 00 00 01 00 00 00][BD FF 01 _L1445_][DD FF 7B 00 00 00 01 00 00 00][BD FF 01 _L1450_][DD FF 7C 00 00 00 01 00 00 00][BD FF 01 _L1449_][DD FF 7D 00 00 00 01 00 00 00][BD FF 01 _L1507_][DD FF 7E 00 00 00 01 00 00 00][BD FF 01 _L1452_][DD FF 7F 00 00 00 01 00 00 00][BD FF 01 _L1534_][DD FF 80 00 00 00 01 00 00 00][BD FF 01 _L1536_][DD FF 81 00 00 00 01 00 00 00][BD FF 01 _L1537_][DD FF 82 00 00 00 01 00 00 00][BD FF 01 _L1538_][DD FF 83 00 00 00 01 00 00 00][BD FF 01 _L1454_][DD FF 84 00 00 00 01 00 00 00][BD FF 01 _L1477_][DD FF 85 00 00 00 01 00 00 00][BD FF 01 _L1506_][DD FF 86 00 00 00 01 00 00 00][BD FF 01 _L1482_][DD FF 87 00 00 00 01 00 00 00][BD FF 01 _L1492_][DD FF 88 00 00 00 01 00 00 00][BD FF 01 _L1481_][DD FF 89 00 00 00 01 00 00 00][BD FF 01 _L1480_][DD FF 8A 00 00 00 01 00 00 00][BD FF 01 _L1504_][DD FF 8B 00 00 00 01 00 00 00][BD FF 01 _L1465_][DD FF 8C 00 00 00 01 00 00 00][BD FF 01 _L1530_][DD FF 8D 00 00 00 01 00 00 00][BD FF 01 _L1520_][DD FF 8E 00 00 00 01 00 00 00][BD FF 01 _L1526_][DD FF 8F 00 00 00 01 00 00 00][BD FF 01 _L1517_][DD FF 90 00 00 00 01 00 00 00][BD FF 01 _L1521_][DD FF 91 00 00 00 01 00 00 00][BD FF 01 _L1522_][DD FF 92 00 00 00 01 00 00 00][BD FF 01 _L1523_][DD FF 93 00 00 00 01 00 00 00][BD FF 01 _L1524_][DD FF 94 00 00 00 01 00 00 00][BD FF 01 _L1483_][DD FF 95 00 00 00 01 00 00 00][BD FF 01 _L1472_][DD FF 96 00 00 00 01 00 00 00][BD FF 01 _L1474_][DD FF 97 00 00 00 01 00 00 00][BD FF 01 _L1475_][DD FF 98 00 00 00 01 00 00 00][BD FF 01 _L1518_][DD FF 99 00 00 00 01 00 00 00][BD FF 01 _L1467_][DD FF 9A 00 00 00 01 00 00 00][BD FF 01 _L1508_][DD FF 9B 00 00 00 01 00 00 00][BD FF 01 _L1510_][DD FF 9C 00 00 00 01 00 00 00][BD FF 01 _L1513_][DD FF 9D 00 00 00 01 00 00 00][BD FF 01 _L1496_][DD FF 9E 00 00 00 01 00 00 00][BD FF 01 _L1564_][DD FF 9F 00 00 00 01 00 00 00][BD FF 01 _L1457_][DD FF A0 00 00 00 01 00 00 00][BD FF 01 _L1501_][DD FF A1 00 00 00 01 00 00 00][BD FF 01 _L1497_][DD FF A2 00 00 00 01 00 00 00][BD FF 01 _L1515_][DD FF A3 00 00 00 01 00 00 00][BD FF 01 _L1498_][DD FF A4 00 00 00 01 00 00 00][BD FF 01 _L1527_][DD FF A5 00 00 00 01 00 00 00][BD FF 01 _L1460_][DD FF A6 00 00 00 01 00 00 00][BD FF 01 _L1463_][DD FF A7 00 00 00 01 00 00 00][BD FF 01 _L1565_][DD FF A8 00 00 00 01 00 00 00][BD FF 01 _L1512_][DD FF A9 00 00 00 01 00 00 00][BD FF 01 _L1502_][DD FF AA 00 00 00 01 00 00 00][BD FF 01 _L1489_][DD FF AB 00 00 00 01 00 00 00][BD FF 01 _L1531_][DD FF AC 00 00 00 01 00 00 00][BD FF 01 _L1494_][DD FF AD 00 00 00 01 00 00 00][BD FF 01 _L3920_][DD FF AE 00 00 00 01 00 00 00][BD FF 01 _L1484_][DD FF AF 00 00 00 01 00 00 00][BD FF 01 _L1487_][DD FF B0 00 00 00 01 00 00 00][BD FF 01 _L1478_][DD FF B1 00 00 00 01 00 00 00][BD FF 01 _L1462_][DD FF B2 00 00 00 01 00 00 00][BD FF 01 _L1491_][DD FF B3 00 00 00 01 00 00 00][BD FF 01 _L1566_][DD FF B4 00 00 00 01 00 00 00][BD FF 01 _L1471_][DD FF B5 00 00 00 01 00 00 00][BD FF 01 _L1479_][DD FF B6 00 00 00 01 00 00 00][BD FF 01 _L1486_][DD FF B7 00 00 00 01 00 00 00][BD FF 01 _L1470_][DD FF B8 00 00 00 01 00 00 00][BD FF 01 _L1488_][DD FF B9 00 00 00 01 00 00 00][BD FF 01 _L1511_][DD FF BA 00 00 00 01 00 00 00][BD FF 01 _L1528_][DD FF BB 00 00 00 01 00 00 00][BD FF 01 _L1469_][DD FF BC 00 00 00 01 00 00 00][BD FF 01 _L1509_][DD FF BD 00 00 00 01 00 00 00][BD FF 01 _L1455_][DD FF BE 00 00 00 01 00 00 00][BD FF 01 _L1545_][DD FF BF 00 00 00 01 00 00 00][BD FF 01 _L1414_][DD FF C0 00 00 00 01 00 00 00][BD FF 01 _L1499_][DD FF C1 00 00 00 01 00 00 00][BD FF 01 _L1458_][DD FF C2 00 00 00 01 00 00 00][BD FF 01 _L1369_][DD FF C3 00 00 00 01 00 00 00][BD FF 01 _L1493_][DD FF C4 00 00 00 01 00 00 00][BD FF 01 _L1461_][DD FF C5 00 00 00 01 00 00 00][BD FF 01 _L1453_][DD FF C6 00 00 00 01 00 00 00][BD FF 01 _L1408_][DD FF C7 00 00 00 01 00 00 00][BD FF 01 _L1519_][DD FF C8 00 00 00 01 00 00 00][BD FF 01 _L1500_][DD FF C9 00 00 00 01 00 00 00][BD FF 01 _L1473_][DD FF CA 00 00 00 01 00 00 00][BD FF 01 _L1525_][DD FF CB 00 00 00 01 00 00 00][BD FF 01 _L3921_][DD FF CC 00 00 00 01 00 00 00][BD FF 01 _L1466_][DD FF CD 00 00 00 01 00 00 00][BD FF 01 _L1532_][DD FF CE 00 00 00 01 00 00 00][BD FF 01 _L1485_][DD FF CF 00 00 00 01 00 00 00][BD FF 01 _L1439_][DD FF D0 00 00 00 01 00 00 00][BD FF 01 _L1490_][DD FF D1 00 00 00 01 00 00 00][BD FF 01 _L1476_][DD FF D2 00 00 00 01 00 00 00][BD FF 01 _L1468_][DD FF D3 00 00 00 01 00 00 00][BD FF 01 _L1464_][DD FF D4 00 00 00 01 00 00 00][BD FF 01 _L1325_][DD FF D5 00 00 00 01 00 00 00][BD FF 01 _L1567_][DD FF D6 00 00 00 01 00 00 00][BD FF 01 _L1328_][DD FF D7 00 00 00 01 00 00 00][BD FF 01 _L1349_][DD FF D8 00 00 00 01 00 00 00][BD FF 01 _L1568_][DD FF D9 00 00 00 01 00 00 00][BD FF 01 _L1377_][DD FF DA 00 00 00 01 00 00 00][BD FF 01 _L1388_][DD FF DB 00 00 00 01 00 00 00][BD FF 01 _L1389_][DD FF DC 00 00 00 01 00 00 00][BD FF 01 _L1390_][DD FF DD 00 00 00 01 00 00 00][BD FF 01 _L1394_][DD FF DE 00 00 00 01 00 00 00][BD FF 01 _L1570_][DD FF DF 00 00 00 01 00 00 00][BD FF 01 _L1411_][DD FF E0 00 00 00 01 00 00 00][BD FF 01 _L1442_][DD FF E1 00 00 00 01 00 00 00][BD FF 01 _L1443_][DD FF E2 00 00 00 01 00 00 00][BD FF 01 _L1444_][DD FF E3 00 00 00 01 00 00 00][BD FF 01 _L1559_][DD FF E4 00 00 00 01 00 00 00][BD FF 01 _L1560_][DD FF E5 00 00 00 01 00 00 00][BD FF 01 _L1561_][DD FF E6 00 00 00 01 00 00 00][BD FF 01 _L1562_][DD FF E7 00 00 00 01 00 00 00][BD FF 01 _L1563_][DD FF E8 00 00 00 01 00 00 00][BD FF 01 _L1403_][DD FF E9 00 00 00 01 00 00 00][BD FF 01 _L1420_][DD FF EA 00 00 00 01 00 00 00][BD FF 01 _L1421_][DD FF EB 00 00 00 01 00 00 00][BD FF 01 _L1432_][DD FF EC 00 00 00 01 00 00 00][BD FF 01 _L1428_][DD FF ED 00 00 00 01 00 00 00][BD FF 01 _L1410_][DD FF EE 00 00 00 01 00 00 00][BD FF 01 _L1417_][DD FF EF 00 00 00 01 00 00 00][BD FF 01 _L1406_][DD FF F0 00 00 00 01 00 00 00][BD FF 01 _L1424_][DD FF F1 00 00 00 01 00 00 00][BD FF 01 _L1426_][DD FF F2 00 00 00 01 00 00 00][BD FF 01 _L1425_][DD FF F3 00 00 00 01 00 00 00][BD FF 01 _L1427_][DD FF F4 00 00 00 01 00 00 00][BD FF 01 _L1430_][DD FF F5 00 00 00 01 00 00 00][BD FF 01 _L1431_][DD FF F6 00 00 00 01 00 00 00][BD FF 01 _L1437_][DD FF F7 00 00 00 01 00 00 00][BD FF 01 _L1441_][DD FF F8 00 00 00 01 00 00 00][BD FF 01 _L1337_][DD FF F9 00 00 00 01 00 00 00][BD FF 01 _L1395_][DD FF FA 00 00 00 01 00 00 00][BD FF 01 _L1529_][DD FF FB 00 00 00 01 00 00 00][BD FF 01 _L1404_][DD FF FC 00 00 00 01 00 00 00][BD FF 01 _L1456_][DD FF FD 00 00 00 01 00 00 00][BD FF 01 _L1459_][01 FF][DD FF FE 00 00 00 01 00 00 00][82 FF _L3658_][01 FF][B8 FF FD][1A FF 04 00][02 FF][80 FF _L3658_]
+^L3659^@Option chosen: <Teleport>[02 FF]@Testing teleportation.[01 FF]  [C8 FF 01 00][95 FF 04 _L3785_ _L3786_ _L3787_ _L3788_][80 FF _L3661_]
+^L3660^@Option chosen: <Hint Map>[02 FF]@Placing Hint Shops on the map.[02 FF][08 FF A9 02][08 FF AA 02][08 FF AB 02][08 FF AC 02][08 FF AD 02][08 FF AE 02][80 FF _L3661_]
+^L3661^@What to do?  (Valid options: 1[01 FF]  through 14)[01 FF][69 FF][9C FF][C8 FF 02 00][95 FF 0D _L3648_ _L3649_ _L3650_ _L3651_ _L3652_ _L3653_ _L3654_ _L3655_ _L3656_ _L3657_ _L3658_ _L3659_ _L3660_]@Terminated execution.[1D FF][00 FF]
+^L3662^[69 FF]@Please select a character to[01 FF]  add.  (Valid options: 1 through[01 FF]  15)[01 FF]
+^L3663^[8D FF 02 00][82 FF _L3666_]@Please enter the position of the[01 FF]  character to be removed.[01 FF]
+^L3664^[80 FF _L3661_]
+^L3665^[C8 FF 02 00][82 FF _L3664_][87 FF][AE FF 00][69 FF][80 FF _L3665_]
+^L3666^@There cannot be zero people.[1D FF][80 FF _L3661_]
 ^L3667^[80 FF _L3661_]
-^L3668^
-^L3669^
-^L3670^
-^L3671^
-^L3672^
-^L3673^
-^L3674^
-^L3675^
-^L3676^
-^L3677^
+^L3668^[8D FF 02 00][82 FF _L3667_]  [C8 FF 01 00][82 FF _L3667_][87 FF][8D FF 00 00][82 FF _L3668_][87 FF][AF FF 00]@Removing [90 FF 00][1A FF 01 00].[02 FF][80 FF _L3668_]
+^L3669^@Option chosen: <Add Goods>[02 FF]@Enter the item's ID.[01 FF]   [C8 FF 03 00][82 FF _L3676_][87 FF][91 FF FF][82 FF _L3677_][88 FF]@It is the <[90 FF 00][1A FF 02 00].>[01 FF]  Who should receive it?[86 FF _L3678_][01 FF][82 FF _L3669_][93 FF 00 00]@Added to the Goods screen.[02 FF][80 FF _L3669_]
+^L3670^@Option chosen: <Common[01 FF]  Goods> (Valid options: 1[01 FF]  through 19)[02 FF]  [C8 FF 03 00][82 FF _L3676_][87 FF]@Who should receive it?[86 FF _L3678_][82 FF _L3670_][87 FF][BD FF 13 _L3679_ _L3680_ _L3681_ _L3682_ _L3683_ _L3684_ _L3685_ _L3686_ _L3687_ _L3688_ _L3689_ _L3690_ _L3691_ _L3692_ _L3693_ _L3694_ _L3695_ _L3696_ _L3697_][80 FF _L3670_]
+^L3671^@Option chosen: <Fill Goods>[02 FF]@Filling the goods screen.[02 FF][86 FF _L3698_][80 FF _L3661_]
+^L3672^@Option chosen: <Delete Goods>[02 FF]@Starting goods deletion.  <All>[01 FF]  or <Choose>?  (Yes/No)[03 FF 00 00][04 FF _L3700_][05 FF _L3701_][80 FF _L3676_]
+^L3673^@Option chosen: <Fill Deposits>[02 FF]@Filling goods storage deposit.[BC FF 14 00]
+^L3674^@Option chosen: <Empty out[01 FF]  deposits>[02 FF]@Getting things out of goods[01 FF]  storage.
+^L3675^@Option chosen: <Strongest[01 FF]  Weapons>[02 FF]@Adding strongest weapons.[02 FF][86 FF _L3712_][80 FF _L3661_]
+^L3677^@There is no room in your[01 FF]  belongings.[02 FF]
+^L3676^[80 FF _L3661_]
 ^L3678^[87 FF][DE FF][87 FF][00 FF]
-^L3679^[87 FF][93 FF 00 AB][00 FF]
-^L3680^[87 FF][93 FF 00 A1][00 FF]
-^L3681^[87 FF][93 FF 00 AA][00 FF]
-^L3682^[87 FF][93 FF 00 C6][00 FF]
-^L3683^[87 FF][93 FF 00 D5][00 FF]
-^L3684^[87 FF][93 FF 00 99][00 FF]
-^L3685^[87 FF][93 FF 00 B0][00 FF]
-^L3686^[87 FF][93 FF 00 A6][00 FF]
-^L3687^[87 FF][93 FF 00 A8][00 FF]
-^L3688^[87 FF][93 FF 00 93][00 FF]
-^L3689^[87 FF][93 FF 00 C1][00 FF]
-^L3690^[87 FF][93 FF 00 A9][00 FF]
-^L3691^[87 FF][93 FF 00 C4][00 FF]
-^L3692^[87 FF][93 FF 00 D1][00 FF]
-^L3693^[87 FF][93 FF 00 8C][00 FF]
-^L3694^[87 FF][93 FF 00 98][00 FF]
-^L3695^[87 FF][93 FF 00 96][00 FF]
-^L3696^[87 FF][93 FF 00 92][00 FF]
-^L3697^[87 FF][93 FF 00 8D][00 FF]
+^L3679^@Option chosen: <Key to the[01 FF]  shack>[02 FF][87 FF][93 FF 00 AB][00 FF]
+^L3680^@Option chosen: <Receiver[01 FF]  phone>[02 FF][87 FF][93 FF 00 A1][00 FF]
+^L3681^@Option chosen: <Pencil eraser>[02 FF][87 FF][93 FF 00 AA][00 FF]
+^L3682^@Option chosen: <Franklin badge>[02 FF][87 FF][93 FF 00 C6][00 FF]
+^L3683^@Option chosen: <Key to the[01 FF]  cabin>[02 FF][87 FF][93 FF 00 D5][00 FF]
+^L3684^@Option chosen: <Wad of bills>[87 FF][93 FF 00 99][00 FF]
+^L3685^@Option chosen: <Bad key[01 FF]  machine>[02 FF][87 FF][93 FF 00 B0][00 FF]
+^L3686^@Option chosen: <Zombie paper>[02 FF][87 FF][93 FF 00 A6][00 FF]
+^L3687^@Option chosen: <Diamond>[02 FF][87 FF][93 FF 00 A8][00 FF]
+^L3688^@Option chosen: <Yogurt[01 FF]  dispenser>[02 FF][87 FF][93 FF 00 93][00 FF]
+^L3689^@Option chosen: <Hieroglyph[01 FF]  copy>[87 FF][93 FF 00 C1][00 FF]
+^L3690^@Option chosen: <Hawk eye>[02 FF][87 FF][93 FF 00 A9][00 FF]
+^L3691^@Option chosen: <Pak of bubble[01 FF]  gum>[02 FF][87 FF][93 FF 00 C4][00 FF]
+^L3692^@Option chosen: <Shyness book>[02 FF][87 FF][93 FF 00 D1][00 FF]
+^L3693^@Option chosen: <Zexonyte>[01 FF]  (Meteorite piece)[02 FF][87 FF][93 FF 00 8C][00 FF]
+^L3694^@Option chosen: <Signed banana>[02 FF][87 FF][93 FF 00 98][00 FF]
+^L3695^@Option chosen: <Eraser eraser>[02 FF][87 FF][93 FF 00 96][00 FF]
+^L3696^@Option chosen: <Tendakraut>[02 FF][87 FF][93 FF 00 92][00 FF]
+^L3697^@Option chosen: <Carrot key>[02 FF][87 FF][93 FF 00 8D][00 FF]
 ^L3698^[91 FF FF][82 FF _L3699_][93 FF 00 7D][80 FF _L3698_]
 ^L3699^[00 FF]
 ^L3700^[BC FF 01 00]
@@ -3838,9 +3839,9 @@
 ^L3703^[C0 FF][80 FF _L3705_]
 ^L3706^[00 FF]
 ^L3708^[1D FF][80 FF _L3661_]
-^L3709^
+^L3709^[A8 FF 01][F4 FF 01 00 01 00][DD FF 02 00 00 00 00 00 00 00][81 FF _L3708_][77 FF 00 00][C0 FF][80 FF _L3709_]
 ^L3710^[1D FF][80 FF _L3661_]
-^L3711^
+^L3711^[7A FF 01 00][82 FF _L3710_][79 FF FF 00 01 00][80 FF _L3711_]
 ^L3712^[BC FF 01 00][00 FF]
 ^L3720^[A8 FF 01][96 FF 00][81 FF _L3713_][8D FF 00 00][00 FF]
 ^L3715^[AB FF 00 07][87 FF][82 FF _L3714_][87 FF][B9 FF 00 00 07 00][80 FF _L3715_]
@@ -3851,68 +3852,67 @@
 ^L3718^[93 FF 03 24][D7 FF 00 00 00 00][93 FF 03 31][D7 FF 00 00 00 00][93 FF 03 3C][D7 FF 00 00 00 00][93 FF 03 50][D7 FF 00 00 00 00][00 FF]
 ^L3719^[93 FF 04 35][D7 FF 00 00 00 00][93 FF 04 3F][D7 FF 00 00 00 00][93 FF 04 52][D7 FF 00 00 00 00][00 FF]
 ^L3721^[80 FF _L3661_]
-^L3722^[89 FF][EE FF 00 00 01 00 01 00][EE FF 00 00 02 00 01 00][EE FF 00 00 06 00 01 00][87 FF][F7 FF 00 00 64 00][F8 FF 00 00 64 00][80 FF _L3650_]
-^L3723^[89 FF][EE FF 00 00 01 00 01 00][EE FF 00 00 01 00 02 00][87 FF][F9 FF 00 00 64 00][FA FF 00 00 64 00][80 FF _L3650_]
-^L3724^[89 FF][EE FF 00 00 01 00 01 00][EE FF 00 00 01 00 03 00][80 FF _L3650_]
-^L3725^[89 FF][EE FF 00 00 01 00 04 00][80 FF _L3650_]
-^L3726^[89 FF][EE FF 00 00 01 00 05 00][80 FF _L3650_]
-^L3727^[89 FF][EE FF 00 00 01 00 06 00][80 FF _L3650_]
-^L3728^[89 FF][EE FF 00 00 01 00 07 00][80 FF _L3650_]
-^L3729^[89 FF][EE FF 00 00 01 00 08 00][80 FF _L3650_]
-^L3730^[89 FF][EE FF 00 00 02 00 02 00][80 FF _L3650_]
-^L3731^[89 FF][EE FF 00 00 02 00 03 00][80 FF _L3650_]
-^L3732^[89 FF][EE FF 00 00 06 00 02 00][80 FF _L3650_]
-^L3733^[89 FF][87 FF][F7 FF 00 00 64 00][F9 FF 00 00 5E 00][80 FF _L3650_]
-^L3734^[89 FF][87 FF][F8 FF 00 00 64 00][FA FF 00 00 63 00][80 FF _L3650_]
-^L3735^[14 FF 19 00][00 FF]
-^L3736^[14 FF 1D 00][00 FF]
-^L3737^[14 FF B9 00][00 FF]
-^L3738^[14 FF 15 00][00 FF]
-^L3739^[14 FF 1C 00][00 FF]
-^L3740^[14 FF 1E 00][00 FF]
-^L3741^[14 FF 8F 00][00 FF]
-^L3742^[14 FF 22 00][00 FF]
-^L3743^[14 FF 90 00][00 FF]
-^L3744^[14 FF 14 00][00 FF]
-^L3745^[14 FF 18 00][00 FF]
-^L3746^[14 FF 1F 00][00 FF]
-^L3747^[14 FF 1B 00][00 FF]
-^L3748^[14 FF 20 00][00 FF]
-^L3749^[14 FF AC 00][00 FF]
-^L3750^[14 FF 16 00][00 FF]
-^L3751^[14 FF 21 00][00 FF]
-^L3752^[14 FF 17 00][00 FF]
-^L3753^[14 FF 91 00][00 FF]
-^L3754^[14 FF 1A 00][00 FF]
-^L3755^[86 FF _L3757_][82 FF _L3758_][87 FF]@RBRWStTISMST.[1D FF]
-^L3756^@PR-Y-WSNTKSTKDSI.[82 FF _L3759_][87 FF][86 FF _L3757_][82 FF _L3759_][87 FF][80 FF _L3756_]
-^L3757^@RBRW NyURyK[01 FF] STKDSI.[01 FF]  [C8 FF 02 00][00 FF]
+^L3722^@Option chosen: <Healthy>[02 FF][89 FF][EE FF 00 00 01 00 01 00][EE FF 00 00 02 00 01 00][EE FF 00 00 06 00 01 00][87 FF][F7 FF 00 00 64 00][F8 FF 00 00 64 00][80 FF _L3650_]
+^L3723^@Option chosen: <Unconscious>[02 FF][89 FF][EE FF 00 00 01 00 01 00][EE FF 00 00 01 00 02 00][87 FF][F9 FF 00 00 64 00][FA FF 00 00 64 00][80 FF _L3650_]
+^L3724^@Option chosen: <Diamondized>[02 FF][89 FF][EE FF 00 00 01 00 01 00][EE FF 00 00 01 00 03 00][80 FF _L3650_]
+^L3725^@Option chosen: <Numb>[02 FF][89 FF][EE FF 00 00 01 00 04 00][80 FF _L3650_]
+^L3726^@Option chosen: <Nauseous>[89 FF][EE FF 00 00 01 00 05 00][80 FF _L3650_]
+^L3727^@Option chosen: <Poisoned>[02 FF][89 FF][EE FF 00 00 01 00 06 00][80 FF _L3650_]
+^L3728^@Option chosen: <Sunstroke>[02 FF][89 FF][EE FF 00 00 01 00 07 00][80 FF _L3650_]
+^L3729^@Option chosen: <Cold>[02 FF][89 FF][EE FF 00 00 01 00 08 00][80 FF _L3650_]
+^L3730^@Option chosen: <Mushroomized>[02 FF][89 FF][EE FF 00 00 02 00 02 00][80 FF _L3650_]
+^L3731^@Option chosen: <Possessed>[02 FF][89 FF][EE FF 00 00 02 00 03 00][80 FF _L3650_]
+^L3732^@Option chosen: <Homesick>[02 FF][89 FF][EE FF 00 00 06 00 02 00][80 FF _L3650_]
+^L3733^@Option chosen: <Reduced HP>[02 FF][89 FF][87 FF][F7 FF 00 00 64 00][F9 FF 00 00 5E 00][80 FF _L3650_]
+^L3734^@Option chosen: <Reduced PP>[02 FF][89 FF][87 FF][F8 FF 00 00 64 00][FA FF 00 00 63 00][80 FF _L3650_]
+^L3735^@Option chosen: <Onett>[02 FF][14 FF 19 00][00 FF]
+^L3736^@Option chosen: <Twoson>[02 FF][14 FF 1D 00][00 FF]
+^L3737^@Option chosen: <Happy Happy>[02 FF][14 FF B9 00][00 FF]
+^L3738^@Option chosen: <Peaceful Rest>[02 FF][14 FF 15 00][00 FF]
+^L3739^@Option chosen: <Threed>[02 FF][14 FF 1C 00][00 FF]
+^L3740^@Option chosen: <Winters>[02 FF][14 FF 1E 00][00 FF]
+^L3741^@Option chosen: <Saturn Valley>[02 FF][14 FF 8F 00][00 FF]
+^L3742^@Option chosen: <Secret Base>[02 FF][14 FF 22 00][00 FF]
+^L3743^@Option chosen: <Dusty Dunes[01 FF]  Desert>[02 FF][14 FF 90 00][00 FF]
+^L3744^@Option chosen: <Fourside>[02 FF][14 FF 14 00][00 FF]
+^L3745^@Option chosen: <Moonside>[02 FF][14 FF 18 00][00 FF]
+^L3746^@Option chosen: <Summers>[02 FF][14 FF 1F 00][00 FF]
+^L3747^@Option chosen: <Dalaam>[02 FF][14 FF 1B 00][00 FF]
+^L3748^@Option chosen: <Scaraba>[02 FF][14 FF 20 00][00 FF]
+^L3749^@Option chosen: <Deep Darkness>[02 FF][14 FF AC 00][00 FF]
+^L3750^@Option chosen: <Tendas>[02 FF][14 FF 16 00][00 FF]
+^L3751^@Option chosen: <Lost[01 FF]  Underworld>[02 FF][14 FF 21 00][00 FF]
+^L3752^@Option chosen: <Magicant>[02 FF][14 FF 17 00][00 FF]
+^L3753^@Option chosen: <Cave of the[01 FF]  Present>[02 FF][14 FF 91 00][00 FF]
+^L3754^@Option chosen: <Cave of the[01 FF]  Past>[02 FF][14 FF 1A 00][00 FF]
+^L3755^[86 FF _L3757_][82 FF _L3758_][87 FF]@Level would have been set.[1D FF]
+^L3756^@Please select a character.[02 FF][EC FF][82 FF _L3759_][87 FF][86 FF _L3757_][82 FF _L3759_][87 FF]  <Level up code goes here>[01 FF][80 FF _L3756_]
+^L3757^@Please enter a level.[01 FF]   [C8 FF 02 00][00 FF]
 ^L3758^[80 FF _L3661_]
 ^L3759^[80 FF _L3661_]
-^L3761^@SyZKNW[01 FF] 99999DRNSMS.[1D FF][BA FF 60 EA 00 00][BA FF 40 9C 00 00][9C FF][80 FF _L3661_]
-^L3762^@KNGKW StTIST[01 FF] KDSI[01 FF]$[C8 FF 05 00][82 FF _L3766_][88 FF][86 FF _L3767_][89 FF][87 FF][BA FF 00 00 00 00][9C FF]@PR-Y-NSyZKNW[01 FF] [B8 FF 00][1A FF 04 00]DRN SMST.d[1D FF][00 FF]
-^L3766^[80 FF _L3661_]
-^L3763^[86 FF _L3767_]@PR-Y-NSyZKNW[01 FF] 0DRN SMST.[1D FF][80 FF _L3661_]
+^L3760^@Option chosen: <Fill Bank>[02 FF]@Setting bank deposit to[01 FF]  $9,999,999.[1D FF][BC FF 01 00]
+^L3761^@Option chosen: <Fill pockets>[02 FF]@Setting cash on-hand to[01 FF]  $99,999.[1D FF][BA FF 60 EA 00 00][BA FF 40 9C 00 00][9C FF][80 FF _L3661_]
+^L3762^@Option chosen: <Wallet Setup>[02 FF]@Please set an amount.[01 FF][C8 FF 05 01][82 FF _L3766_][88 FF][86 FF _L3767_][89 FF][87 FF][BA FF 00 00 00 00][9C FF]@Character's cash on hand set[01 FF]  to $[B8 FF 00][1A FF 04 00].[1D FF]
+^L3763^@Option chosen: <$0 Wallet>[02 FF][86 FF _L3767_]@Character's cash on hand set[01 FF]  to $0.[1D FF][80 FF _L3661_]
 ^L3764^[D1 FF 4F C3 00 00][80 FF _L3661_]
-^L3760^@GNKUYKNW[01 FF] 9999999DRNSMS.[1D FF][BC FF 01 00][00 FF]
 ^L3765^[A8 FF 01][87 FF][9A FF C8 00][81 FF _L3764_][D1 FF 50 C3 00 00][C0 FF][80 FF _L3765_]
-^L3767^[9B FF 10 27 00 00][82 FF _L3767_][00 FF]
-^L3768^[9B FF E8 03 00 00][82 FF _L3768_][00 FF]
-^L3769^[9B FF 64 00 00 00][82 FF _L3769_][00 FF]
-^L3770^[9B FF 0A 00 00 00][82 FF _L3770_][00 FF]
-^L3771^[9B FF 01 00 00 00][82 FF _L3771_][00 FF]
+^L3766^[80 FF _L3661_]
+^L3767^[9B FF 10 27 00 00][82 FF _L3767_]
+^L3768^[9B FF E8 03 00 00][82 FF _L3768_]
+^L3769^[9B FF 64 00 00 00][82 FF _L3769_]
+^L3770^[9B FF 0A 00 00 00][82 FF _L3770_]
 ^L3772^[86 FF _L4900_][09 FF B5 00]@I'm from Escargo Express!![02 FF]@I'm here to deliver your[01 FF]  [78 FF 01 00 00 00]@[90 FF 00][1A FF 02 00][78 FF 02 00 00 00][82 FF _L5229_],[01 FF]  [90 FF 00][1A FF 02 00][78 FF 03 00 00 00][82 FF _L5229_],[01 FF]  and [90 FF 00][1A FF 02 00]
 ^L3773^[86 FF _L4900_][09 FF 85 02][F4 FF 01 00 01 00][DD FF 02 00 00 00 00 00 00 00][81 FF _L5207_][1C FF 49 00 _L5208_]@Hello, this is Escargo Express![02 FF]@Your delivery charge is $18.[02 FF]@You can cover the bill, right?[86 FF _L2492_][04 FF _L5209_][05 FF _L5210_]
 ^L3774^[86 FF _L4900_][09 FF B4 00]@Hello! Mach Pizza delivery![01 FF]  Here is your pizza pie, sir.[02 FF][91 FF FF][82 FF _L5270_][A8 FF 00][88 FF][1C FF B3 00 _L5271_][BC FF 69 00]
-^L3775^@BGMWSNTKSTKDSI.[01 FF][00 FF]
+^L3775^@Please select the background[01 FF]  music.[01 FF]    [C8 FF 03 00][82 FF _L3661_][87 FF][C4 FF 00 00][80 FF _L3778_]
 ^L3778^    [C8 FF 03 00][82 FF _L3661_][87 FF][C4 FF 00 00][80 FF _L3778_]
-^L3776^@SEWSNTKSTKDSI[01 FF][00 FF]
+^L3776^@Please select the sound effect.[01 FF]
 ^L3779^    [C8 FF 03 00][82 FF _L3661_][87 FF][D4 FF 00 00][80 FF _L3779_]
-^L3777^@EFeKTWSNTKSTKDSI[01 FF][00 FF]
+^L3777^@Please select the <effect.>[01 FF]
 ^L3780^    [C8 FF 02 00][82 FF _L3661_][87 FF][6B FF 00 00][80 FF _L3780_]
 ^L3781^@MNST-WKSMS.[1D FF][09 FF 0B 00][00 FF]
 ^L3782^@MNST-WDSMS.[1D FF][08 FF 0B 00][00 FF]
-^L3783^[A8 FF 00]@[B8 FF 00][1A FF 04 00]BNNMtS-ZW[01 FF] HyUZSMS[01 FF][02 FF][01 FF][80 FF _L3784_]
+^L3783^[A8 FF 00]@Displaying message number[01 FF]  [B8 FF 00][1A FF 04 00].[02 FF][01 FF][86 FF _L5920_][01 FF][80 FF _L3784_]
 ^L3785^[C6 FF][EF FF 04 00 01 00][00 FF]
 ^L3786^[C6 FF][EF FF 04 00 02 00][00 FF]
 ^L3787^[C6 FF][EF FF 04 00 03 00][00 FF]
@@ -3924,7 +3924,7 @@
 ^L3793^[86 FF _L3795_][82 FF _L3796_][BD FF 04 _L3818_ _L3819_ _L3820_ _L3821_][86 FF _L3802_][00 FF]
 ^L3794^[86 FF _L3795_][82 FF _L3796_][BD FF 05 _L3822_ _L3823_ _L3824_ _L3825_ _L3826_][86 FF _L3802_][00 FF]
 ^L3795^[BC FF 01 00][8A FF][C7 FF][C7 FF][8B FF][00 FF]
-^L3796^
+^L3796^[1D FF][00 FF]
 ^L3797^[BC FF 0A 00][00 FF]
 ^L3798^[BC FF 0B 00][00 FF]
 ^L3799^[BC FF 0C 00][00 FF]
@@ -3956,76 +3956,76 @@
 ^L3824^[BC FF 3E 00][00 FF]
 ^L3825^[BC FF 3F 00][00 FF]
 ^L3826^[BC FF 40 00][00 FF]
-^L3828^ IBNT[01 FF] BNB-NWNKMNSR[1D FF][C6 FF][BC FF 0A 00][86 FF _L3898_][AE FF 05][AE FF 07][14 FF 73 00][00 FF]
-^L3829^ IBNT[01 FF] BNB-NNSIG[1D FF][C6 FF][BC FF 0B 00][86 FF _L3898_][AE FF 05][AE FF 06][14 FF 74 00][00 FF]
-^L3830^ IBNT[01 FF] KIKN5NNNK[01 FF][1D FF][C6 FF][BC FF 0D 00][86 FF _L3898_][08 FF BE 00][08 FF B6 00][08 FF C2 01][08 FF C1 01][08 FF 27 00][14 FF 75 00][00 FF]
-^L3831^ IBNT[01 FF] YURIBS[01 FF][1D FF][C6 FF][BC FF 0E 00][86 FF _L3898_][08 FF D2 00][93 FF 01 A0][93 FF 01 D1][93 FF 01 C5][93 FF 01 87][93 FF 01 CF][08 FF 00 02][14 FF 1D 00][00 FF]
-^L3832^ IBNT[01 FF] TNZRST-Z[01 FF] (KOSGKZyU)[1D FF][C6 FF][BC FF 16 00][86 FF _L3898_][08 FF 55 00][08 FF 29 02][08 FF 25 02][08 FF 2B 00][14 FF 76 00][00 FF]
-^L3833^ IBNT[01 FF] K-PINT-N[01 FF] KMNRW OTSRR[1D FF][C6 FF][BC FF 14 00][86 FF _L3898_][08 FF AF 00][14 FF 77 00][00 FF]
-^L3834^ IBNT[01 FF] P-RNKyUSyT[01 FF][1D FF][C6 FF][BC FF 15 00][86 FF _L3898_][08 FF 44 00][09 FF AF 00][93 FF 01 D5][14 FF 78 00][00 FF]
-^L3835^ IBNT[01 FF] TNZRKIHU[01 FF] (KOSGKZyU)[1D FF][C6 FF][BC FF 16 00][86 FF _L3898_][AE FF 02][93 FF 01 99][08 FF 3F 01][14 FF 79 00][00 FF]
-^L3836^ IBNT[01 FF] ZNBNTKMR[1D FF][C6 FF][BC FF 17 00][86 FF _L3898_][08 FF 29 01][AE FF 02][14 FF 7A 00][00 FF]
-^L3837^ IBNT[01 FF] BR-NMNK-N[01 FF] KUTyUYUEI[1D FF][C6 FF][BC FF 1E 00][86 FF _L3898_][AE FF 03][AF FF 01][08 FF 43 01][93 FF 03 C4][14 FF 7B 00][00 FF]
-^L3838^ IBNT[01 FF] TSKNTtS-[1D FF][C6 FF][BC FF 1F 00][86 FF _L3898_][AE FF 03][AF FF 01][AE FF 09][93 FF 03 C4][08 FF 58 01][08 FF B8 02][14 FF 14 00][9D FF 01 27 _L2807_][9D FF 02 30 _L2808_][00 FF]
-^L3839^ IBNT[01 FF] AND-NtTHKS[1D FF][C6 FF][BC FF 20 00][86 FF _L3898_][AE FF 03][AF FF 01][14 FF 7D 00][00 FF]
-^L3840^ IBNT[01 FF] B-NS#TNZRST-Z[1D FF][C6 FF][BC FF 28 00][86 FF _L3898_][AE FF 02][AE FF 03][14 FF 7E 00][00 FF]
-^L3841^ IBNT[01 FF] SGTyNTUZyU[1D FF][C6 FF][BC FF 28 00][86 FF _L3898_][08 FF 15 01][08 FF 16 01][08 FF 17 01][08 FF 18 01][08 FF 19 01][08 FF 48 00][09 FF 36 00][08 FF 1A 01][08 FF 10 01][AE FF 02][AE FF 03][14 FF 7F 00][00 FF]
-^L3842^ IBNT[01 FF] TNZRSIGNST-Z[1D FF][C6 FF][BC FF 29 00][86 FF _L3898_][09 FF 92 00][09 FF 93 00][AE FF 02][AE FF 03][93 FF 01 A8][14 FF 80 00][00 FF]
-^L3843^ IBNT[01 FF] MNTR-[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][08 FF 8E 00][AE FF 03][14 FF 81 00][00 FF]
-^L3844^ IBNT[01 FF] TNZRBS[01 FF] (Fo-SID)[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][08 FF 3D 01][08 FF 8E 00][08 FF 8F 00][AE FF 03][AE FF 02][14 FF 82 00][00 FF]
-^L3845^ IBNT[01 FF] SKIUo-K-2[1D FF][C6 FF][BC FF 2C 00][86 FF _L3898_][08 FF 30 00][AE FF 03][AE FF 02][14 FF 83 00][00 FF]
-^L3846^ IBNT[01 FF] SM-ZNMZtKK-K[1D FF][C6 FF][BC FF 2C 00][86 FF _L3898_][08 FF CB 00][08 FF 69 02][08 FF 3D 00][AE FF 03][AE FF 02][14 FF 84 00][00 FF]
-^L3847^ IBNT[01 FF] P- MNSyGyU[1D FF][C6 FF][BC FF 32 00][86 FF _L3898_][AE FF 04][AF FF 01][9D FF 01 01 _L3899_][14 FF 85 00][00 FF]
-^L3848^ IBNT[01 FF] B-NSST-ZSN2[1D FF][C6 FF][BC FF 32 00][86 FF _L3898_][08 FF 96 00][08 FF 11 01][08 FF 10 00][08 FF 8C 00][08 FF 34 00][86 FF _L3900_][14 FF 86 00][00 FF]
-^L3849^ IBNT[01 FF] TtS-SN2[1D FF][C6 FF][BC FF 33 00][86 FF _L3898_][86 FF _L3900_][14 FF 87 00][00 FF]
-^L3850^ IBNT[01 FF] ST-NHNZ[1D FF][C6 FF][BC FF 33 00][86 FF _L3898_][08 FF 2B 01][86 FF _L3900_][14 FF 88 00][00 FF]
-^L3851^ IBNT[01 FF] UMNKUR[1D FF][C6 FF][BC FF 34 00][86 FF _L3898_][86 FF _L3900_][14 FF 89 00][00 FF]
-^L3852^ IBNT[01 FF] GMTGMDRAN[1D FF][C6 FF][BC FF 3D 00][86 FF _L3898_][86 FF _L3900_][14 FF 21 00][93 FF 01 92][00 FF]
-^L3853^ IBNT[01 FF] PRMtDNODR[1D FF][C6 FF][BC FF 34 00][86 FF _L3898_][86 FF _L3900_][14 FF 8B 00][00 FF]
-^L3854^ IBNT[01 FF] SBMRN[1D FF][C6 FF][BC FF 36 00][86 FF _L3898_][AE FF 02][AE FF 03][08 FF 12 01][14 FF 8C 00][00 FF]
-^L3855^ IBNT[01 FF] HKRGK[1D FF][C6 FF][BC FF 3C 00][86 FF _L3898_][86 FF _L3900_][08 FF C4 00][14 FF 8D 00][00 FF]
-^L3856^ IBNT[01 FF] SIGNSUND[1D FF][C6 FF][BC FF 3D 00][86 FF _L3898_][86 FF _L3900_][08 FF C5 00][14 FF 8E 00][00 FF]
-^L3857^ IBNT[01 FF] SP-STNNR1#5[1D FF][C6 FF][BC FF 3F 00][86 FF _L3898_][86 FF _L3900_][14 FF 8F 00][00 FF]
-^L3858^ IBNT[01 FF] SP-STNNR2T3[1D FF][C6 FF][BC FF 3F 00][86 FF _L3898_][86 FF _L3900_][08 FF 4F 00][08 FF 86 00][08 FF 85 00][08 FF 7E 01][14 FF 8F 00][00 FF]
-^L3859^ IBNT[01 FF] SRDNZyN[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][AE FF 03][93 FF 01 7C][93 FF 01 64][93 FF 01 5E][93 FF 01 5E][93 FF 01 66][93 FF 01 69][93 FF 01 69][93 FF 01 74][93 FF 01 D8][93 FF 01 65][93 FF 01 62][93 FF 01 D4][93 FF 01 AA][08 FF 3B 00][08 FF E9 02][14 FF 90 00][00 FF]
-^L3860^ IBNT[01 FF] MBRSRUZN SITIKK[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][86 FF _L3900_][08 FF 84 00][08 FF 7E 01][9D FF 01 07 _L3901_][9D FF 02 29 _L3902_][14 FF 91 00][00 FF]
-^L3861^ IBNT[01 FF] P-RNOYZ[1D FF][C6 FF][BC FF 0E 00][86 FF _L3898_][08 FF D2 00][14 FF 92 00][00 FF]
-^L3862^ IBNT[01 FF] AtPRKtD[1D FF][C6 FF][BC FF 0E 00][86 FF _L3898_][08 FF D2 00][93 FF 01 5A][14 FF 93 00][00 FF]
-^L3863^ IBNT[01 FF] INTtK-FDUSN[1D FF][C6 FF][BC FF 0C 00][86 FF _L3898_][08 FF 63 00][14 FF 94 00][00 FF]
-^L3864^ IBNT[01 FF] ONtTNTIROTK[1D FF][C6 FF][BC FF 0C 00][86 FF _L3898_][14 FF 95 00][00 FF]
-^L3865^ IBNT[01 FF] MBRSRUZN PRMtD[1D FF][C6 FF][BC FF 34 00][86 FF _L3898_][86 FF _L3900_][08 FF D9 00][9D FF 01 10 _L3903_][93 FF 04 A9][14 FF A6 00][00 FF]
-^L3866^ IBNT[01 FF] EDNNUM[1D FF][C6 FF][BC FF 3E 00][86 FF _L3898_][08 FF 24 02][14 FF A7 00][00 FF]
-^L3867^ IBNT[01 FF] K-PINT-SN[01 FF] HNTUNTTKI[1D FF][C6 FF][BC FF 15 00][86 FF _L3898_][93 FF 01 01][14 FF 77 00][00 FF]
-^L3868^ IBNT[01 FF] TNTKSS[1D FF][C6 FF][BC FF 29 00][86 FF _L3898_][08 FF 8B 00][08 FF 3C 00][AE FF 03][93 FF 01 5A][14 FF A8 00][00 FF]
-^L3869^ IBNT[01 FF] MIDTGRMDUF[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][AE FF 03][93 FF 01 93][14 FF A9 00][00 FF]
-^L3870^ IBNT[01 FF] SINIRBNNNKW[1D FF][C6 FF][BC FF 32 00][86 FF _L3898_][86 FF _L3900_][93 FF 01 98][08 FF 96 00][08 FF 11 01][08 FF 10 00][08 FF 8C 00][08 FF 5B 00][14 FF AA 00][00 FF]
-^L3871^ IBNT[01 FF] MKyUNTKNM[1D FF][C6 FF][BC FF 35 00][86 FF _L3898_][AE FF 02][AE FF 03][93 FF 01 A9][08 FF DA 00][14 FF AB 00][00 FF]
-^L3872^ IBNT[01 FF] GRMDUFNHITT[1D FF][C6 FF][BC FF 2A 00][86 FF _L3898_][08 FF 3B 00][AE FF 03][14 FF 41 00][00 FF]
-^L3873^[1D FF][C6 FF][BC FF 0C 00][86 FF _L3898_][08 FF 40 00][08 FF 02 00][9D FF 02 11 _L1660_][14 FF AD 00][00 FF]
-^L3874^ IBNT[01 FF] ZeFDtSU[1D FF][C6 FF][BC FF 1E 00][86 FF _L3898_][AE FF 03][AF FF 01][AE FF 08][08 FF D4 00][08 FF 17 00][08 FF 58 00][08 FF 80 00][93 FF 03 B0][93 FF 03 18][93 FF 03 41][14 FF B8 00][00 FF]
-^L3875^ IBNT[01 FF] HITTKNKI[1D FF][C6 FF][BC FF 33 00][86 FF _L3898_][08 FF C9 00][08 FF CA 00][86 FF _L3900_][93 FF 01 B4][14 FF 7A 00][00 FF]
-^L3876^ IBNT[01 FF] TyGM[1D FF][C6 FF][BC FF 3C 00][86 FF _L3898_][86 FF _L3900_][08 FF DB 00][08 FF 9A 00][08 FF 66 00][08 FF 59 00][08 FF 9B 00][08 FF AE 01][93 FF 01 D1][14 FF 16 00][00 FF]
-^L3877^ IBNT[01 FF] K-H-DSI[1D FF][C6 FF][BC FF 23 00][86 FF _L3898_][AE FF 02][AE FF 03][14 FF 8F 00][00 FF]
-^L3878^ IBNT[01 FF] ZeFNYNB[1D FF][C6 FF][BC FF 3C 00][86 FF _L3898_][86 FF _L3900_][93 FF 03 E4][93 FF 03 E5][93 FF 03 E6][93 FF 03 E7][93 FF 03 B3][14 FF 8A 00][00 FF]
-^L3879^ IBNT[01 FF] SISyUSNTU[1D FF][BC FF 41 00][86 FF _L3898_][86 FF _L3900_][86 FF _L3712_][14 FF 71 00][00 FF]
-^L3880^ IBNT[01 FF] ZNBHIHI[1D FF][C6 FF][BC FF 21 00][86 FF _L3898_][AE FF 02][AE FF 03][08 FF 45 00][09 FF 31 00][08 FF 57 00][93 FF 01 A6][14 FF 1C 00][00 FF]
-^L3881^ IBNT[01 FF] MTNT[1D FF][C6 FF][BC FF 21 00][86 FF _L3898_][AE FF 02][AE FF 03][14 FF 1C 00][00 FF]
-^L3882^ IBNT[01 FF] TTITIRKNOTR[1D FF][C6 FF][BC FF 3D 00][86 FF _L3898_][86 FF _L3900_][14 FF 29 00][00 FF]
-^L3883^ IBNT[01 FF] TRP-TZR[01 FF][1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][AE FF 03][08 FF 2A 02][08 FF 65 02][08 FF 66 02][14 FF 90 00][00 FF]
-^L3884^ IBNT[01 FF] DNZyNMN[1D FF][C6 FF][BC FF 35 00][86 FF _L3898_][AE FF 02][AE FF 03][08 FF 18 00][14 FF 55 00][9D FF 01 09 _L3319_][00 FF]
-^L3885^ IBNT[01 FF] SIGNINRSN1[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][AE FF 03][93 FF 01 7C][93 FF 01 64][93 FF 01 5E][93 FF 01 5E][93 FF 01 66][93 FF 01 69][93 FF 01 69][93 FF 01 74][93 FF 01 D8][93 FF 01 65][93 FF 01 62][93 FF 01 D4][93 FF 01 AA][08 FF 3B 00][08 FF E9 02][14 FF 90 00][00 FF]
-^L3886^ IBNT[01 FF] SIGNINRSN2[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][86 FF _L3900_][08 FF 84 00][08 FF 7E 01][9D FF 01 07 _L3901_][9D FF 02 29 _L3902_][14 FF 91 00][00 FF]
-^L3887^ IBNT[01 FF] SIGNINRSN2[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][86 FF _L3900_][08 FF 84 00][08 FF 7E 01][9D FF 01 07 _L3901_][9D FF 02 29 _L3902_][14 FF 91 00][00 FF]
-^L3888^ IBNT[01 FF] SIGNINRSN3[1D FF][C6 FF][BC FF 0E 00][86 FF _L3898_][08 FF D2 00][14 FF 92 00][00 FF]
-^L3889^ IBNT[01 FF] SIGNINRSN4[1D FF][C6 FF][BC FF 0E 00][86 FF _L3898_][08 FF D2 00][93 FF 01 5A][14 FF 93 00][00 FF]
-^L3890^ IBNT[01 FF] SIGNINRSN5[1D FF][C6 FF][BC FF 0C 00][86 FF _L3898_][08 FF 63 00][14 FF 94 00][00 FF]
-^L3891^ IBNT[01 FF] SIGNINRSN6[1D FF][C6 FF][BC FF 0C 00][86 FF _L3898_][14 FF 95 00][00 FF]
-^L3892^ IBNT[01 FF] SIGNINRSN7[1D FF][C6 FF][BC FF 34 00][86 FF _L3898_][86 FF _L3900_][08 FF D9 00][9D FF 01 10 _L3903_][93 FF 04 A9][14 FF A6 00][00 FF]
-^L3893^ IBNT[01 FF] SKIUo-K-3[1D FF][C6 FF][BC FF 2C 00][86 FF _L3898_][AE FF 03][AE FF 02][08 FF B8 00][09 FF EC 02][14 FF 7D 00][00 FF]
-^L3894^ IBNT[01 FF] HKBTKN[1D FF][C6 FF][BC FF 32 00][86 FF _L3898_][86 FF _L3900_][08 FF 96 00][08 FF 11 01][08 FF 10 00][14 FF 1F 00][00 FF]
-^L3895^ IBNT[01 FF] ST-MNNMSK[1D FF][C6 FF][BC FF 0B 00][86 FF _L3898_][AE FF 05][AE FF 06][14 FF 73 00][9D FF 01 2B _L3912_][00 FF]
-^L3896^ IBNT[01 FF] 3HTDK[1D FF][C6 FF][BC FF 0B 00][86 FF _L3898_][86 FF _L2203_][00 FF]
-^L3897^ IBNT[01 FF] G-GWTOSTAT[1D FF][C6 FF][BC FF 42 00][86 FF _L3898_][AE FF 02][14 FF 72 00][00 FF]
+^L3828^  Event(s) here:[01 FF]  Befriending Buzz Buzz[1D FF][C6 FF][BC FF 0A 00][86 FF _L3898_][AE FF 05][AE FF 07][14 FF 73 00][00 FF]
+^L3829^  Event(s) here:[01 FF]  Buzz Buzz's Final Moments[1D FF][C6 FF][BC FF 0B 00][86 FF _L3898_][AE FF 05][AE FF 06][14 FF 74 00][00 FF]
+^L3830^  Event(s) here:[01 FF]  Defeating the Five Policemen[1D FF][C6 FF][BC FF 0D 00][86 FF _L3898_][08 FF BE 00][08 FF B6 00][08 FF C2 01][08 FF C1 01][08 FF 27 00][14 FF 75 00][00 FF]
+^L3831^  Event(s) here:[01 FF]  The Threed-Bound Bus and[01 FF]  Various Useful Things[1D FF][C6 FF][BC FF 0E 00][86 FF _L3898_][08 FF D2 00][93 FF 01 A0][93 FF 01 D1][93 FF 01 C5][93 FF 01 87][93 FF 01 CF][08 FF 00 02][14 FF 1D 00][00 FF]
+^L3832^  Event(s) here:[01 FF]  Runaway Five Performance[01 FF]  (Chaos Theater)[1D FF][C6 FF][BC FF 16 00][86 FF _L3898_][08 FF 55 00][08 FF 29 02][08 FF 25 02][08 FF 2B 00][14 FF 76 00][00 FF]
+^L3833^  Event(s) here:[01 FF]  Carpainter Brings Down[01 FF]  Lightning[1D FF][C6 FF][BC FF 14 00][86 FF _L3898_][08 FF AF 00][14 FF 77 00][00 FF]
+^L3834^  Event(s) here:[01 FF]  Paula's Rescue[1D FF][C6 FF][BC FF 15 00][86 FF _L3898_][08 FF 44 00][09 FF AF 00][93 FF 01 D5][14 FF 78 00][00 FF]
+^L3835^  Event(s) here:[01 FF]  The Runaway Five's Freedom[01 FF]  (Chaos Theater)[1D FF][C6 FF][BC FF 16 00][86 FF _L3898_][AE FF 02][93 FF 01 99][08 FF 3F 01][14 FF 79 00][00 FF]
+^L3836^  Event(s) here:[01 FF]  Caught by the Zombies[1D FF][C6 FF][BC FF 17 00][86 FF _L3898_][08 FF 29 01][AE FF 02][14 FF 7A 00][00 FF]
+^L3837^  Event(s) here:[01 FF]  The Bubble Monkey <Swims> in[01 FF]  Mid-Air[1D FF][C6 FF][BC FF 1E 00][86 FF _L3898_][AE FF 03][AF FF 01][08 FF 43 01][93 FF 03 C4][14 FF 7B 00][00 FF]
+^L3838^  Event(s) here:[01 FF]  Help from Tessie[1D FF][C6 FF][BC FF 1F 00][86 FF _L3898_][AE FF 03][AF FF 01][AE FF 09][93 FF 03 C4][08 FF 58 01][08 FF B8 02][14 FF 14 00][9D FF 01 27 _L2807_][9D FF 02 30 _L2808_][00 FF]
+^L3839^  Event(s) here:[01 FF]  Dr. Andonuts[1D FF][C6 FF][BC FF 20 00][86 FF _L3898_][AE FF 03][AF FF 01][14 FF 7D 00][00 FF]
+^L3840^  Event(s) here:[01 FF]  Venus/Runaway Five[01 FF]  Performance[1D FF][C6 FF][BC FF 28 00][86 FF _L3898_][AE FF 02][AE FF 03][14 FF 7E 00][00 FF]
+^L3841^  Event(s) here:[01 FF]  Appearance of Everyone's[01 FF]  Favorite Backhoe[1D FF][C6 FF][BC FF 28 00][86 FF _L3898_][08 FF 15 01][08 FF 16 01][08 FF 17 01][08 FF 18 01][08 FF 19 01][08 FF 48 00][09 FF 36 00][08 FF 1A 01][08 FF 10 01][AE FF 02][AE FF 03][14 FF 7F 00][00 FF]
+^L3842^  Event(s) here:[01 FF]  The Runaway Five's Concluding[01 FF]  Performance[1D FF][C6 FF][BC FF 29 00][86 FF _L3898_][09 FF 92 00][09 FF 93 00][AE FF 02][AE FF 03][93 FF 01 A8][14 FF 80 00][00 FF]
+^L3843^  Event(s) here:[01 FF]  Monotoli[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][08 FF 8E 00][AE FF 03][14 FF 81 00][00 FF]
+^L3844^  Event(s) here:[01 FF]  The RUNAWAY Bus (Fourside)[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][08 FF 3D 01][08 FF 8E 00][08 FF 8F 00][AE FF 03][AE FF 02][14 FF 82 00][00 FF]
+^L3845^  Event(s) here:[01 FF]  The Second Sky Runner[1D FF][C6 FF][BC FF 2C 00][86 FF _L3898_][08 FF 30 00][AE FF 03][AE FF 02][14 FF 83 00][00 FF]
+^L3846^  Event(s) here:[01 FF]  The Magic Cake in Summers[1D FF][C6 FF][BC FF 2C 00][86 FF _L3898_][08 FF CB 00][08 FF 69 02][08 FF 3D 00][AE FF 03][AE FF 02][14 FF 84 00][00 FF]
+^L3847^  Event(s) here:[01 FF]  Poo's Mu Training[1D FF][C6 FF][BC FF 32 00][86 FF _L3898_][AE FF 04][AF FF 01][9D FF 01 01 _L3899_][14 FF 85 00][00 FF]
+^L3848^  Event(s) here:[01 FF]  Second Venus Performance[1D FF][C6 FF][BC FF 32 00][86 FF _L3898_][08 FF 96 00][08 FF 11 01][08 FF 10 00][08 FF 8C 00][08 FF 34 00][86 FF _L3900_][14 FF 86 00][00 FF]
+^L3849^  Event(s) here:[01 FF]  Second Tessie[1D FF][C6 FF][BC FF 33 00][86 FF _L3898_][86 FF _L3900_][14 FF 87 00][00 FF]
+^L3850^  Event(s) here:[01 FF]  Stonehenge (Note: Being[01 FF]  Adjusted)[1D FF][C6 FF][BC FF 33 00][86 FF _L3898_][08 FF 2B 01][86 FF _L3900_][14 FF 88 00][00 FF]
+^L3851^  Event(s) here:[01 FF]  The Route Through the Sea[1D FF][C6 FF][BC FF 34 00][86 FF _L3898_][86 FF _L3900_][14 FF 89 00][00 FF]
+^L3852^  Event(s) here:[01 FF]  The Tendas and Tendakraut[1D FF][C6 FF][BC FF 3D 00][86 FF _L3898_][86 FF _L3900_][14 FF 21 00][93 FF 01 92][00 FF]
+^L3853^  Event(s) here:[01 FF]  The Pyramid Dance[1D FF][C6 FF][BC FF 34 00][86 FF _L3898_][86 FF _L3900_][14 FF 8B 00][00 FF]
+^L3854^  Event(s) here:[01 FF]  The Submarine[1D FF][C6 FF][BC FF 36 00][86 FF _L3898_][AE FF 02][AE FF 03][08 FF 12 01][14 FF 8C 00][00 FF]
+^L3855^  Event(s) here:[01 FF]  The Luminous Moss[1D FF][C6 FF][BC FF 3C 00][86 FF _L3898_][86 FF _L3900_][08 FF C4 00][14 FF 8D 00][00 FF]
+^L3856^  Event(s) here:[01 FF]  The Last of the Sounds[1D FF][C6 FF][BC FF 3D 00][86 FF _L3898_][86 FF _L3900_][08 FF C5 00][14 FF 8E 00][00 FF]
+^L3857^  Event(s) here:[01 FF]  1.5th Phase Distorter[1D FF][C6 FF][BC FF 3F 00][86 FF _L3898_][86 FF _L3900_][14 FF 8F 00][00 FF]
+^L3858^  Event(s) here:[01 FF]  Second and Third Phase[01 FF]  Distorters[1D FF][C6 FF][BC FF 3F 00][86 FF _L3898_][86 FF _L3900_][08 FF 4F 00][08 FF 86 00][08 FF 85 00][08 FF 7E 01][14 FF 8F 00][00 FF]
+^L3859^  Event(s) here:[01 FF]  Monkey Dungeon[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][AE FF 03][93 FF 01 7C][93 FF 01 64][93 FF 01 5E][93 FF 01 5E][93 FF 01 66][93 FF 01 69][93 FF 01 69][93 FF 01 74][93 FF 01 D8][93 FF 01 65][93 FF 01 62][93 FF 01 D4][93 FF 01 AA][08 FF 3B 00][08 FF E9 02][14 FF 90 00][00 FF]
+^L3860^  Event(s) here:[01 FF]  The Old Man Apparition[01 FF]  Conquers A Second Time[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][86 FF _L3900_][08 FF 84 00][08 FF 7E 01][9D FF 01 07 _L3901_][9D FF 02 29 _L3902_][14 FF 91 00][00 FF]
+^L3861^  Event(s) here:[01 FF]  Paula's Father[1D FF][C6 FF][BC FF 0E 00][86 FF _L3898_][08 FF D2 00][14 FF 92 00][00 FF]
+^L3862^  Event(s) here:[01 FF]  Apple Kid[1D FF][C6 FF][BC FF 0E 00][86 FF _L3898_][08 FF D2 00][93 FF 01 5A][14 FF 93 00][00 FF]
+^L3863^  Event(s) here:[01 FF]  The Real Estate's a SHAM![1D FF][C6 FF][BC FF 0C 00][86 FF _L3898_][08 FF 63 00][14 FF 94 00][00 FF]
+^L3864^  Event(s) here:[01 FF]  The Male Restroom in Onett[1D FF][C6 FF][BC FF 0C 00][86 FF _L3898_][14 FF 95 00][00 FF]
+^L3865^  Event(s) here:[01 FF]  The Old Man Apparation -[01 FF]  Pyramid[1D FF][C6 FF][BC FF 34 00][86 FF _L3898_][86 FF _L3900_][08 FF D9 00][9D FF 01 10 _L3903_][93 FF 04 A9][14 FF A6 00][00 FF]
+^L3866^  Event(s) here:[01 FF]  The Sea of Eden[1D FF][C6 FF][BC FF 3E 00][86 FF _L3898_][08 FF 24 02][14 FF A7 00][00 FF]
+^L3867^  Event(s) here:[01 FF]  Mr. Carpainter's Real Battle[1D FF][C6 FF][BC FF 15 00][86 FF _L3898_][93 FF 01 01][14 FF 77 00][00 FF]
+^L3868^  Event(s) here:[01 FF]  Everdred Breathes His Last[1D FF][C6 FF][BC FF 29 00][86 FF _L3898_][08 FF 8B 00][08 FF 3C 00][AE FF 03][93 FF 01 5A][14 FF A8 00][00 FF]
+^L3869^  Event(s) here:[01 FF]  The Maid and Gourmet Yogurt[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][AE FF 03][93 FF 01 93][14 FF A9 00][00 FF]
+^L3870^  Event(s) here:[01 FF]  The Signed Banana Peel[1D FF][C6 FF][BC FF 32 00][86 FF _L3898_][86 FF _L3900_][93 FF 01 98][08 FF 96 00][08 FF 11 01][08 FF 10 00][08 FF 8C 00][08 FF 5B 00][14 FF AA 00][00 FF]
+^L3871^  Event(s) here:[01 FF]  The Hawk Eye in Deep Darkness[1D FF][C6 FF][BC FF 35 00][86 FF _L3898_][AE FF 02][AE FF 03][93 FF 01 A9][08 FF DA 00][14 FF AB 00][00 FF]
+^L3872^  Event(s) here:[01 FF]  Delivery of the Gourmet Yogurt[1D FF][C6 FF][BC FF 2A 00][86 FF _L3898_][08 FF 3B 00][AE FF 03][14 FF 41 00][00 FF]
+^L3873^  Event(s) here:[01 FF]  The Photographer (Frank Area)[1D FF][C6 FF][BC FF 0C 00][86 FF _L3898_][08 FF 40 00][08 FF 02 00][9D FF 02 11 _L1660_][14 FF AD 00][00 FF]
+^L3874^  Event(s) here:[01 FF]  Jeff Breakout[1D FF][C6 FF][BC FF 1E 00][86 FF _L3898_][AE FF 03][AF FF 01][AE FF 08][08 FF D4 00][08 FF 17 00][08 FF 58 00][08 FF 80 00][93 FF 03 B0][93 FF 03 18][93 FF 03 41][14 FF B8 00][00 FF]
+^L3875^  Event(s) here:[01 FF]  Dastardly Plot Delivery[1D FF][C6 FF][BC FF 33 00][86 FF _L3898_][08 FF C9 00][08 FF CA 00][86 FF _L3900_][93 FF 01 B4][14 FF 7A 00][00 FF]
+^L3876^  Event(s) here:[01 FF]  Tenda Tea[1D FF][C6 FF][BC FF 3C 00][86 FF _L3898_][86 FF _L3900_][08 FF DB 00][08 FF 9A 00][08 FF 66 00][08 FF 59 00][08 FF 9B 00][08 FF AE 01][93 FF 01 D1][14 FF 16 00][00 FF]
+^L3877^  Event(s) here:[01 FF]  Saturn Coffee[1D FF][C6 FF][BC FF 23 00][86 FF _L3898_][AE FF 02][AE FF 03][14 FF 8F 00][00 FF]
+^L3878^  Event(s) here:[01 FF]  Night Work for Jeff[1D FF][C6 FF][BC FF 3C 00][86 FF _L3898_][86 FF _L3900_][93 FF 03 E4][93 FF 03 E5][93 FF 03 E6][93 FF 03 E7][93 FF 03 B3][14 FF 8A 00][00 FF]
+^L3879^  Event(s) here:[01 FF]  Final Battle[1D FF][BC FF 41 00][86 FF _L3898_][86 FF _L3900_][86 FF _L3712_][14 FF 71 00][00 FF]
+^L3880^  Event(s) here:[01 FF]  Zombie Paper[1D FF][C6 FF][BC FF 21 00][86 FF _L3898_][AE FF 02][AE FF 03][08 FF 45 00][09 FF 31 00][08 FF 57 00][93 FF 01 A6][14 FF 1C 00][00 FF]
+^L3881^  Event(s) here:[01 FF]  Boogey Tent[1D FF][C6 FF][BC FF 21 00][86 FF _L3898_][AE FF 02][AE FF 03][14 FF 1C 00][00 FF]
+^L3882^  Event(s) here:[01 FF]  Falling Down to the Lost[01 FF]  Underworld[1D FF][C6 FF][BC FF 3D 00][86 FF _L3898_][86 FF _L3900_][14 FF 29 00][00 FF]
+^L3883^  Event(s) here:[01 FF]  Teleport Monkey[1D FF][C6 FF][BC FF 2B 00][86 FF _L3898_][AE FF 03][08 FF 2A 02][08 FF 65 02][08 FF 66 02][14 FF 90 00][00 FF]
+^L3884^  Event(s) here:[01 FF]  Dungeon Man[1D FF][C6 FF][BC FF 35 00][86 FF _L3898_][AE FF 02][AE FF 03][08 FF 18 00][14 FF 55 00][9D FF 01 09 _L3319_][00 FF]
+^L3885^  Event(s) here:[01 FF]  Paula is Kidnapped[1D FF][C6 FF][BC FF 29 00][86 FF _L3898_][93 FF 02 AA][AE FF 02][AE FF 03][14 FF 50 00][9D FF 01 0B _L3904_][00 FF]
+^L3886^  Event(s) here:[01 FF]  First Ending Prayer[01 FF]  (Note: Test)[1D FF][C6 FF][BC FF 41 00][86 FF _L3898_][86 FF _L3900_][08 FF 74 01][86 FF _L3905_][EB FF FF 00][00 FF]
+^L3887^  Event(s) here:[01 FF]  Second Ending Prayer[01 FF]  (Note: Test)[1D FF][C6 FF][BC FF 41 00][86 FF _L3898_][86 FF _L3900_][08 FF 74 01][86 FF _L3906_][EB FF FF 00][00 FF]
+^L3888^  Event(s) here:[01 FF]  Third Ending Prayer[01 FF]  (Note: Test)[1D FF][C6 FF][BC FF 41 00][86 FF _L3898_][86 FF _L3900_][08 FF 74 01][86 FF _L3907_][EB FF FF 00][00 FF]
+^L3889^  Event(s) here:[01 FF]  Fourth Ending Prayer[01 FF]  (Note: Test)[1D FF][C6 FF][BC FF 41 00][86 FF _L3898_][86 FF _L3900_][08 FF 74 01][86 FF _L3908_][EB FF FF 00][00 FF]
+^L3890^  Event(s) here:[01 FF]  Fifth Ending Prayer[01 FF]  (Note: Test)[1D FF][C6 FF][BC FF 41 00][86 FF _L3898_][86 FF _L3900_][08 FF 74 01][86 FF _L3909_][EB FF FF 00][00 FF]
+^L3891^  Event(s) here:[01 FF]  Sixth Ending Prayer[01 FF]  (Note: Test)[1D FF][C6 FF][BC FF 41 00][86 FF _L3898_][86 FF _L3900_][08 FF 74 01][86 FF _L3910_][EB FF FF 00][00 FF]
+^L3892^  Event(s) here:[01 FF]  Seventh Ending Prayer[01 FF]  (Note: Test)[1D FF][C6 FF][BC FF 41 00][86 FF _L3898_][86 FF _L3900_][08 FF 74 01][86 FF _L3911_][EB FF FF 00][00 FF]
+^L3893^  Event(s) here:[01 FF]  Third Sky Runner[1D FF][C6 FF][BC FF 2C 00][86 FF _L3898_][AE FF 03][AE FF 02][08 FF B8 00][09 FF EC 02][14 FF 7D 00][00 FF]
+^L3894^  Event(s) here:[01 FF]  ...I'm sorry, I don't know[01 FF]  Japanese.[02 FF]@If you do, it says <mogirigakari>[01 FF]  in Japanese and <HKBTKN> in[01 FF]  EarthBound.[1D FF][C6 FF][BC FF 32 00][86 FF _L3898_][86 FF _L3900_][08 FF 96 00][08 FF 11 01][08 FF 10 00][14 FF 1F 00][00 FF]
+^L3895^  Event(s) here:[01 FF]  Starman Junior[1D FF][C6 FF][BC FF 0B 00][86 FF _L3898_][AE FF 05][AE FF 06][14 FF 73 00][9D FF 01 2B _L3912_][00 FF]
+^L3896^  Event(s) here:[01 FF]  Continued in No. 3[1D FF][C6 FF][BC FF 0B 00][86 FF _L3898_][86 FF _L2203_][00 FF]
+^L3897^  Event(s) here:[01 FF]  After Giygas was Defeated[1D FF][C6 FF][BC FF 42 00][86 FF _L3898_][AE FF 02][14 FF 72 00][00 FF]
 ^L3898^[FC FF 0F 00][86 FF _L3802_][86 FF _L3913_][08 FF 0B 00][86 FF _L3700_][93 FF 01 90][BA FF E8 03 00 00][00 FF]
 ^L3899^[08 FF 0B 00][A0 FF D0 07 FE 01 01 00][86 FF _L4040_][6B FF 02 00][1B FF 3C 00][D8 FF 04 00 03 00][1B FF 04 00][D8 FF 04 00 04 00][1B FF 04 00][D8 FF 04 00 05 00][1B FF 04 00][CB FF FF 00 06 00][A0 FF 03 00 FF 01 01 00][C4 FF 00 3C][09 FF 02 00][9E FF][1C FF 02 00 _L4166_][AA FF 03 00][A0 FF AC 00 01 02 01 00][9E FF][AA FF AC 00][86 FF _L4167_][A9 FF AC 00][9E FF][A9 FF 03 00][9E FF][1C FF 02 00 _L4166_][A0 FF 52 01 02 02 01 00][09 FF 03 00][08 FF 04 00][9E FF][1C FF 02 00 _L4168_][08 FF 03 00][9E FF][69 FF][A6 FF 52 01 03 02][09 FF 03 00][09 FF 05 00][86 FF _L4169_][1C FF 02 00 _L4168_][69 FF][86 FF _L4170_][1C FF 02 00 _L4168_][69 FF][86 FF _L4171_][1C FF 02 00 _L4168_][69 FF][86 FF _L4172_][1C FF 02 00 _L4168_][08 FF 05 00][9E FF][86 FF _L4173_][1C FF 02 00 _L4168_][08 FF 03 00][9E FF][A5 FF 52 01 06 00][FC FF 25 00][14 FF 7F 00][CC FF FF 00 01 00][D8 FF 04 00 05 00][1B FF 01 00][C5 FF][A0 FF 8C 00 01 02 01 00][9E FF][AA FF 8C 00][D8 FF 04 00 07 00][86 FF _L4174_][A9 FF 8C 00][9E FF][D8 FF 04 00 02 00][00 FF]
 ^L3900^[AE FF 02][AE FF 03][AE FF 04][00 FF]
@@ -4045,14 +4045,13 @@
 ^L3915^[8D FF 02 00][82 FF _L3914_][87 FF][AF FF 00][80 FF _L3915_]
 ^L3914^[00 FF]
 ^L3916^[00 FF]
-^L3917^
-^L3918^
-^L3919^
-^L3920^
-^L3921^
-^L3922^
-^L3923^
-^L3924^
+^L3917^^L3918^[86 FF _L2489_][82 FF _L3918_][88 FF][AB FF 00 00][B7 FF 00][82 FF _L3919_][89 FF][B9 FF 00 00 00 00][93 FF 00 A6][00 FF]
+^L3919^[80 FF _L3918_]
+^L3920^ <Temporary goods>[02 FF]@A key given to you by a maid[01 FF]  who works at the Monotoli[01 FF]  building.[1D FF][00 FF]
+^L3921^ <Video relaxant>[02 FF]@What the hey is this?[1D FF][00 FF]
+^L3922^@.....[1D FF][00 FF]
+^L3923^[1D FF][00 FF]
+^L3924^[02 FF][00 FF]
 ^L3925^@A deadly PSI attack which only [90 FF 01][1A FF 01 00] can use.[01 FF]@It's a psychokinetic wave generated by[01 FF]  concentration that deals[00 FF]
 ^L3926^@Fire bursts from the fingers and a row of[01 FF]  enemies take[00 FF]
 ^L3927^@Causes a very cold wind to swirl around one[01 FF] enemy,[00 FF]
@@ -4112,8 +4111,8 @@
 ^L3980^[85 FF 12 00 06 00][A0 FF 2A 00 15 00 01 00][AE FF 07][CB FF 07 00 06 00][9E FF][A5 FF 2A 00 06 00][CC FF 07 00 01 00][C4 FF 00 7B][1B FF 78 00][1B FF 3C 00][C5 FF]@[15 FF] joins you.[02 FF][C6 FF][00 FF]
 ^L3981^[A1 FF 11 00 15 00][9E FF][85 FF 11 00 06 00][CC FF 05 00 01 00][C4 FF 00 7B][1B FF 78 00][1B FF 3C 00][C5 FF]@(Pokey joins you.)[02 FF][C6 FF][00 FF]
 ^L3983^[C6 FF][1B FF 01 00][C4 FF 00 7C][A0 FF D0 07 05 01 01 00][9E FF][6B FF 02 00][9E FF][BE FF 02 00 C6 00][81 FF _L3984_][80 FF _L3985_]
-^L3984^
-^L3985^@Carpainter's lightning was[01 FF]  reflected by the Franklin Badge.[02 FF][C6 FF][A7 FF C6 01][00 FF]
+^L3984^@Carpainter's lightning was[01 FF]  reflected by the Franklin Badge.
+^L3985^[02 FF][C6 FF][A7 FF C6 01][00 FF]
 ^L3987^[FB FF 19 00][80 FF _L3988_]
 ^L3989^[7F FF][C4 FF 00 73][1B FF 3C 00][1D FF][74 FF][D4 FF 0B 00][C5 FF]@Hello, it's me... your dad.[02 FF]@I don't mean to butt in, but[01 FF]  don't you think you should take[01 FF]  a break?[22 FF][03 FF 00 00][04 FF _L3990_][05 FF _L3991_]
 ^L3990^@Okay.[02 FF]@Y'know, I'm feeling kind of tired[01 FF]  myself.[02 FF]@I made a record of your[01 FF]  adventure.[02 FF]@Now I'm gonna hit the sack.[02 FF]@Be sure you get some rest.[03 FF 0A 00][04 FF _L3992_][05 FF _L3993_]
@@ -4155,7 +4154,7 @@
 ^L5469^@Hello, [0D FF]?[01 FF]  What's wrong?  You sound so[01 FF]  sad...[02 FF]@Are you homesick?...  Well, I[01 FF]  knew there would be days like[01 FF]  this.[02 FF]@It must make you feel better,[01 FF]  listening to your mom's sweet[01 FF]  voice.[02 FF]@...So, do you feel any better?[02 FF]@Well, I'd better get going.  I'm in[01 FF]  the middle of my ironing.  Bye![02 FF][D4 FF 0B 00]@Click!  Beep-beep-beep...[02 FF][C6 FF]
 ^L4026^[1B FF 1E 00]@[0D FF] got over being[01 FF]  homesick.[EE FF 01 00 06 00 01 00][D4 FF 25 00][1D FF][C6 FF][00 FF]
 ^L4027^@Woof Woof![02 FF]@I'm Ruffini the dog.[02 FF]@Here comes the spirit of the[01 FF]  fan translation team...[02 FF]@Ruff![02 FF]@(You're finally almost to the[01 FF]  end of the game.[02 FF]@If you want to tell me[01 FF]  your comments on this game,[02 FF]@you may write to me using[01 FF]  forum.Starmen.net[02 FF]@Send your comments attention[01 FF]  Mother 1+2 Fan Translation, Ruffini the dog.[02 FF]@Now, get ready for the ending![02 FF]@It's all that's left... Enjoy it![02 FF]@Bow woow wow![02 FF]@Well, I told you some[01 FF]  strange info again...[02 FF]@I'll go back to being a[01 FF]  normal dog now...)[02 FF]@Woof![1D FF][00 FF]
-^L4030^
+^L4030^@<Enrich Grand Hotel>[02 FF]@75 dollars per night[01 FF]  for a single room.[1D FF][00 FF]
 ^L4033^[14 FF 81 00][FC FF 16 00][AE FF 04][EA FF FF 00][A0 FF D0 07 B7 02 01 00][A0 FF 47 01 9B 01 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][00 FF]
 ^L4034^[14 FF 82 00][FC FF 16 00][EA FF FF 00][CB FF FF 00 06 00][A0 FF 5F 01 B9 02 01 00][A0 FF 5D 01 BA 02 01 00][1B FF 01 00][C9 FF 5F 01][EB FF FF 00][9E FF][FC FF 17 00][9E FF][80 FF _L4035_]
 ^L4035^[14 FF 83 00][FC FF 16 00][CC FF FF 00 01 00][EA FF FF 00][A0 FF D0 07 BB 02 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][9E FF][FC FF 17 00][9E FF][80 FF _L4036_]
@@ -4192,34 +4191,32 @@
 ^L4072^[8D FF 01 00][C3 FF 00 02 44 02][86 FF _L4074_][00 FF]
 ^L4073^[87 FF][88 FF][9A FF 01 00][81 FF _L2197_][89 FF][9A FF 02 00][81 FF _L2197_][89 FF][9A FF 08 00][81 FF _L2197_][89 FF][9A FF 03 00][81 FF _L2197_][89 FF][9A FF 07 00][81 FF _L2197_][00 FF]
 ^L4074^[87 FF][88 FF][9A FF 04 00][81 FF _L2197_][89 FF][9A FF 05 00][81 FF _L2197_][89 FF][9A FF 06 00][81 FF _L2197_][89 FF][9A FF 03 00][81 FF _L2197_][89 FF][9A FF 07 00][81 FF _L2197_][00 FF]
-^L4075^
+^L4075^[BB FF 02][87 FF]@...This bus goes to Fourside[01 FF]  via Threed.[02 FF]@If you don't pay $[B8 FF 00][1A FF 04 00][01 FF]  for the fare, I can't take[01 FF]  you there.[02 FF]@...Do you want to go?[01 FF][9C FF][03 FF 00 00][04 FF _L4080_][05 FF _L4081_]
 ^L4078^@...I can't let you[01 FF]  on if you don't pay.[1D FF][C6 FF][A5 FF BB 00 06 00][00 FF]
 ^L4079^[08 FF 0B 00][FC FF 05 00][A0 FF D3 07 04 03 01 00][A0 FF D0 07 F2 00 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][9E FF][A6 FF 5F 01 F3 00][CB FF FF 00 06 00][08 FF 16 02][C5 FF][C9 FF 5F 01][00 FF]
-^L4080^
-^L4081^
-^L4082^
-^L4088^
-^L4089^
-^L4090^
-^L4091^
+^L4080^[99 FF 00 00 00 00][81 FF _L4082_][D4 FF 76 00][9B FF 00 00 00 00][9C FF]@...Well,[1B FF 0F 00] hop aboard then![C6 FF][A5 FF BB 00 06 00][80 FF _L4079_]
+^L4081^@...If you don't have any money,[01 FF] you should stroll around.[02 FF]@Besides, walking is good for you...[02 FF][1D FF][C6 FF][A5 FF BB 00 06 00][00 FF]
+^L4082^@...If you don't have any[01 FF]  money,[1B FF 0F 00] you should stroll[01 FF]  around.[02 FF]@Besides,[1B FF 0F 00] walking is good for[01 FF]  you...[1D FF][C6 FF][A5 FF BB 00 06 00][00 FF]
+^L4088^[99 FF 00 00 00 00][81 FF _L4090_][9B FF 00 00 00 00][9C FF][D4 FF 76 00][08 FF 0B 00][FC FF 05 00][A0 FF D3 07 04 03 01 00]@Ok, we're off![02 FF][C6 FF][A5 FF BB 00 06 00][A0 FF D0 07 F2 00 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][9E FF][00 FF]
+^L4089^@Oh...[1B FF 05 00] okay...[1B FF 0F 00] see you![1D FF][C6 FF][A5 FF BB 00 06 00][00 FF]
+^L4090^@I can't do much for you if you[01 FF]  don't have any money...[1D FF][C6 FF][A5 FF BB 00 06 00][00 FF]
+^L4091^@(Due to traffic jams,[1B FF 0F 00] bus[01 FF]  service has been temporarily[01 FF]  suspended.)[1D FF][00 FF]
 ^L4092^[8D FF 01 00][C3 FF 00 02 16 03][86 FF _L4073_][00 FF]
-^L4093^
+^L4093^[99 FF 00 00 00 00][81 FF _L4090_][9B FF 00 00 00 00][D4 FF 76 00][9C FF][08 FF 0B 00][FC FF 05 00][A0 FF D3 07 04 03 01 00]@Okay,[1B FF 0F 00] we're off![02 FF][C6 FF][A5 FF BB 00 06 00][A0 FF D0 07 F2 00 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][9E FF][00 FF]
 ^L4094^[8D FF 01 00][C3 FF 00 02 17 03][86 FF _L4074_][00 FF]
-^L4095^
-^L4096^
-^L4099^
+^L4095^[99 FF 00 00 00 00][81 FF _L4082_][9B FF 00 00 00 00][9C FF][D4 FF 76 00][08 FF 0B 00][FC FF 05 00][A0 FF D3 07 04 03 01 00]@Ok,[1B FF 0F 00] we're off![02 FF][C6 FF][A5 FF BB 00 06 00][A0 FF D0 07 F2 00 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][9E FF][00 FF]
+^L4096^[99 FF 00 00 00 00][81 FF _L4082_][9B FF 00 00 00 00][9C FF][D4 FF 76 00]@Ok,[1B FF 0F 00] we're off![02 FF][C6 FF][A5 FF BB 00 06 00][08 FF 0B 00][FC FF 05 00][A0 FF D3 07 04 03 01 00][A0 FF D0 07 F2 00 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][9E FF][09 FF 47 00][FC FF 32 00][A6 FF 5F 01 F9 00][CB FF FF 00 06 00][08 FF 16 02][C5 FF][C9 FF 5F 01][00 FF]
+^L4099^[A6 FF 5F 01 46 01][CB FF FF 00 06 00][08 FF 16 02][C5 FF][C9 FF 5F 01][00 FF]
 ^L4100^[8D FF 01 00][C3 FF 00 02 CC 03][86 FF _L4073_][00 FF]
-^L4101^
-^L4102^
-^L4103^
-^L4104^
-^L4107^
-^L4108^
-^L4109^
-^L4110^
-^L4111^
-^L4112^
-^L4113^
+^L4101^[99 FF 00 00 00 00][81 FF _L4090_][9B FF 00 00 00 00][9C FF][D4 FF 76 00]@Ok,[1B FF 0F 00] we're off![02 FF][C6 FF][A5 FF BB 00 06 00][08 FF 0B 00][FC FF 05 00][A0 FF D3 07 04 03 01 00][A0 FF D0 07 F2 00 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][9E FF][08 FF 16 02][C5 FF][A6 FF 5F 01 4E 01][CB FF FF 00 06 00][C9 FF 5F 01][9E FF][CA FF][EA FF FF 00][14 FF 2D 00][A0 FF 5F 01 4F 01 FF 00][C9 FF 5F 01][EB FF FF 00][9E FF][CA FF][EA FF FF 00][14 FF 2E 00][A0 FF 5F 01 50 01 FF 00][C9 FF 5F 01][EB FF FF 00][9E FF][CA FF][EA FF FF 00][14 FF 2F 00][A0 FF 5F 01 51 01 FF 00][C9 FF 5F 01][EB FF FF 00][9E FF][CA FF][EA FF FF 00][14 FF 30 00][A0 FF 5F 01 52 01 FF 00][C9 FF 5F 01][EB FF FF 00][9E FF][AA FF 5F 01][A0 FF BB 00 F0 00 01 00]@This bus continues on to[01 FF]  Twoson.[02 FF]@Do you want to get off here?[03 FF 00 00][04 FF _L4102_][05 FF _L4103_]^L4103^[C6 FF][A5 FF BB 00 06 00][80 FF _L4104_]^L4102^[C6 FF][A5 FF BB 00 06 00][09 FF 16 02][C5 FF][A0 FF D0 07 4B 01 01 00][1B FF 01 00][C9 FF D0 07][EB FF FF 00][CC FF FF 00 01 00][9E FF][CA FF][EA FF FF 00][A9 FF 5F 01][9E FF][09 FF 0B 00][FC FF 06 00][A0 FF D3 07 05 03 01 00][00 FF]
+^L4104^[A6 FF 5F 01 53 01][CB FF FF 00 06 00][08 FF 16 02][C5 FF][C9 FF 5F 01][00 FF]
+^L4107^[C9 FF 5F 01][A6 FF 5F 01 3D 01][CB FF FF 00 06 00][08 FF 16 02][C5 FF][00 FF]
+^L4108^[99 FF 00 00 00 00][81 FF _L4110_][9B FF 00 00 00 00][9C FF]@Ok,[1B FF 0F 00] we're off![1D FF][C6 FF][A5 FF BB 00 06 00][00 FF]
+^L4109^@Oh...[1B FF 0F 00] okay...[1B FF 0F 00] see you!
+^L4110^@I can't let you on if you don't[01 FF]  pay.[80 FF _L4111_]
+^L4111^[1D FF][BC FF 01 00][A8 FF 01][87 FF][C6 FF][A5 FF BB 00 06 00][00 FF]
+^L4112^[99 FF 00 00 00 00][81 FF _L4113_][9B FF 00 00 00 00][9C FF][D4 FF 76 00]@Okay,[1B FF 0F 00] let's give it a shot![1D FF][C6 FF][A5 FF BB 00 06 00][BC FF 00 00][A8 FF 01][87 FF][00 FF]
+@I can't let you on if you don't[01 FF]  pay $[B8 FF 00][1A FF 04 00] for the fare.[02 FF]@Do you want to go?[01 FF][86 FF _L2492_][04 FF _L4112_][05 FF _L4113_]^L4113^@If you don't have any money,[01 FF]  you should just stroll around.[02 FF]@Besides,[1B FF 0F 00] walking is good for[01 FF]  you.[BC FF 01 00][A8 FF 01][87 FF][1D FF][C6 FF][A5 FF BB 00 06 00][00 FF]
 ^L4114^[D4 FF 60 00][FC FF 36 00][14 FF 1F 00][A0 FF D0 07 E7 00 01 00][C9 FF D0 07][EB FF FF 00][9E FF][CA FF][09 FF 38 01][00 FF]
 ^L4115^[8D FF 01 00][A8 FF 00]@[90 FF 00][1A FF 01 00] used the[01 FF]  Pencil Eraser.[02 FF]@For some weird reason, the[01 FF]  iron pencil statue was erased![1D FF][D4 FF 21 00][00 FF]
 ^L4116^@Yeah![1B FF 14 00]  That's right![02 FF]@Tonight,[1B FF 0F 00] you got the[01 FF]  Chaos Theater's Soul Men[01 FF]  comin' at ya![02 FF]@Rockin' and rollin' live on this[01 FF]  here stage for a limited time[01 FF]  only![02 FF]@The world's greatest Bluesmen,[02 FF]@the Runaway Five![1B FF 14 00]  And here[01 FF]  they come![1B FF 0F 00]  Oh yeah![1B FF 0A 00]  Baby![02 FF][C6 FF][00 FF]
@@ -4228,14 +4225,14 @@
 ^L4119^[C6 FF][A7 FF B4 01][00 FF]
 ^L4120^[FC FF 06 00][00 FF]
 ^L4121^@(You must use the[01 FF]  Key to the cabin to open this.)[1D FF][C6 FF][00 FF]
-^L4122^
-^L4123^
+^L4122^@Oh, [0E FF]![02 FF]@.....[02 FF]@Am I dreaming?[1B FF 14 00]  I feel like she[01 FF]  just came home...[CE FF D9 00 03 00][02 FF][D4 FF 08 00][C6 FF][1B FF 14 00][D4 FF 09 00][85 FF D9 00 06 00][00 FF]
+^L4123^@Where's [0D FF]?[02 FF]@He isn't here?[1B FF 14 00]  I just wanted to[01 FF]  thank him.[02 FF]@You know,[1B FF 0F 00] I bet he's the boy[01 FF]  you dreamt would save the[01 FF]  world...[02 FF][80 FF _L4125_]
 ^L4124^[A1 FF D9 00 0D 00][00 FF]
 ^L4126^@Well, what do you know?[02 FF]@This little nipper took us from[01 FF]  a nightmare to a dream...[02 FF][00 FF]
 ^L4127^@Ow![1B FF 14 00]  This means we can get[01 FF]  out of this dump![02 FF][00 FF]
 ^L4128^@I'm a good driver.[1B FF 0F 00]  C'mon,[01 FF]  I'll show you.[02 FF][00 FF]
 ^L4129^@All right,[1B FF 0F 00] let's move on[01 FF]  to the next town.[02 FF]@I'm sure our ol' hunk o' junk[01 FF]  will get us there...[02 FF][00 FF]
-^L4130^
+^L4130^[B0 FF 40 01 CC 00][1B FF 05 00][B3 FF 40 01][1B FF 05 00][B0 FF 40 01 CC 00][1B FF 32 00][B3 FF 40 01][A1 FF 40 01 00 00][9E FF][A4 FF 40 01][8D FF 01 00][C3 FF 00 02 40 01][D8 FF 00 00 00 00]@Hurry and get on![02 FF]@Our tour bus is too loud for the[01 FF]  ghosts![02 FF][C6 FF][A0 FF D0 07 00 00 01 00][C9 FF D0 07][EB FF FF 00][A3 FF 40 01][9E FF][A5 FF D0 07 06 00][CA FF][9D FF 01 03 _L4130_][00 FF]
 ^L4131^@Okay, guys, here we go![02 FF][00 FF]
 ^L4132^@Looks like we have to say[01 FF]  goodbye for now.[02 FF]@This town seems pretty[01 FF]  gloomy,[02 FF]@but I'm sure you can light up[01 FF]  the place with your own little[01 FF]  brand of sunshine...[02 FF][C6 FF][00 FF]
 ^L4133^@Hope to see you again[01 FF]  sometime.[02 FF]@Look for us to be singing[01 FF]  at some theater in Fourside...[02 FF][C6 FF][00 FF]
@@ -4284,7 +4281,7 @@
 ^L4180^[C7 FF][D4 FF 3F 00][69 FF][1B FF 0A 00][F9 FF 04 00 50 00][D4 FF 3D 00][1B FF 5A 00][D4 FF 2F 00][1B FF 1E 00][00 FF]
 ^L4182^[C7 FF][69 FF][D4 FF 3F 00][1B FF 0A 00][D4 FF 3D 00][1B FF 5A 00][6B FF 02 00][74 FF][FC FF 24 00][00 FF]
 ^L4184^[C6 FF][00 FF]
-^L4185^
+^L4185^@You have nice eyes.[02 FF]@...You must be Prince[01 FF]  [10 FF].[02 FF]@Long ago, I completed Mu[01 FF]  Training.[02 FF]@I want to show you a higher[01 FF]  level of intelligence...[02 FF]@However, I'm still realizing and[01 FF]  learning this high level...[02 FF]@I'll see you again.  So long![1D FF][D4 FF 28 00][08 FF 53 02][00 FF]
 ^L4186^@.....[02 FF]@I just communicated with[01 FF]  [0D FF]'s soul.[1B FF 14 00][01 FF]  Do not mind me...[02 FF][C6 FF][08 FF 10 00][08 FF F2 01][08 FF F3 01][00 FF]
 ^L4188^@WA[1B FF 05 00]A[1B FF 05 00]A[1B FF 05 00]AIT! Wait![1B FF 0F 00] Wait...[02 FF]@I need to stop the boat.[02 FF]@It's been a long time since I was[01 FF]  out on the open sea,[1B FF 14 00] so I feel[01 FF]  seasick...[02 FF]@Oh, man, what am I going[01 FF]  to do?[1B FF 0F 00] A sailor who gets[01 FF]  seasick?[02 FF][02 FF][1B FF 3C 00][01 FF]@So how come you guys are all[01 FF]  right?[02 FF][1C FF 49 00 _L4192_][1C FF 11 00 _L4193_]
 ^L4194^@So... that bald guy over there...[02 FF]@your buddy, right?...[1B FF 14 00] He came[01 FF]  from Dalaam?[02 FF]@You guys must be quite the[01 FF]  adventurers![02 FF][1C FF BB 00 _L4192_]@Aren't there times when you'd[01 FF]  just like to go back home?[02 FF]@So, you're not some[01 FF]  mama's boy...[02 FF]@Well, it wouldn't hurt you[01 FF]  to go back and visit[01 FF]  once in a while.[BE FF FF 00 8D 00][82 FF _L4192_][01 FF]@Hey, that's an awfully strange[01 FF]  carrot.[1B FF 14 00] What kind of bunny[01 FF]  would eat that?[02 FF]
@@ -4307,7 +4304,7 @@
 ^L4209^[00 FF]
 ^L4210^[80 FF _L1859_]
 ^L4211^[91 FF FF][82 FF _L4213_][93 FF 00 A9][86 FF _L2238_][1D FF][08 FF 5C 01][1B FF 0A 00][85 FF AB 04 06 00][00 FF]
-^L4213^
+^L4213^@(It's unbelievable that you[01 FF]  would get this far,[02 FF]@and not claim your prize just[01 FF]  because you have too much[01 FF]  stuff.)[1D FF][00 FF]
 ^L4214^@Well done.[02 FF]@You have made it![02 FF][C6 FF][86 FF _L2866_][D4 FF 25 00][1B FF 5A 00]@We finally meet,[01 FF]  Prince [10 FF].[02 FF][C6 FF][00 FF]
 ^L4215^@The stars foretold that[01 FF]  I would meet you here...[02 FF]@So, now it's the time[01 FF]  to show you the way of the[01 FF]  Starstorm...[02 FF]@For a while, you must live far[01 FF]  away from your friends and[01 FF]  live with me.[02 FF]@Do you understand?[02 FF]@...There's only one answer.[02 FF]@I must stop you here even[01 FF]  if you don't want to.[02 FF]@Stay with me for a while,[01 FF]  do you understand?![02 FF][C6 FF][1B FF 1E 00][80 FF _L3302_]
 ^L4216^[DA FF 03 00 01 00]@It is important that I study and[01 FF]  learn the <Starstorm>...[02 FF]@It will be most helpful to us.[02 FF]@...Once I learn it,[1B FF 0F 00] I'll meet up[01 FF]  with you, [0D FF].[02 FF]@Trust me...[1B FF 14 00]  I will see you again.[02 FF][C6 FF][08 FF 11 00][00 FF]
@@ -4978,30 +4975,30 @@
 ^L4910^[00 FF]
 ^L4911^[8A FF][1C FF E2 00 _L4933_][1C FF E3 00 _L4934_][1C FF E4 00 _L4935_][1C FF E5 00 _L4936_][00 FF]
 ^L4912^[8A FF][1C FF E2 00 _L4921_][1C FF E3 00 _L4922_][1C FF E4 00 _L4923_][1C FF E5 00 _L4924_][00 FF]
-^L4913^
-^L4914^
-^L4915^
-^L4916^
-^L4917^
-^L4918^
-^L4919^
-^L4920^
-^L4921^
-^L4922^
-^L4923^
-^L4924^
-^L4925^
-^L4926^
-^L4927^
-^L4928^
-^L4929^
-^L4930^
-^L4931^
-^L4932^
-^L4933^
-^L4934^
-^L4935^
-^L4936^
+^L4913^@Huff, puff, huff... wheeeeze![01 FF]  I ran here as fast as I could.[01 FF]@I'm plum tuckered out.[02 FF]@What have you got for sale?[02 FF][00 FF]
+^L4914^@I saw your sign.[01 FF]  So, I thought I'd stop by.[02 FF]@What're you peddlin'?[02 FF][00 FF]
+^L4915^@Hi![01 FF]  Is this a tool shop?  Cool![02 FF]@What are you selling?[02 FF][00 FF]
+^L4916^@Hi, how are ya?[01 FF]  Is this a tool shop or[01 FF]  something?[02 FF]@What are you selling, anyway?[02 FF][00 FF]
+^L4917^Thanks, sonny.[01 FF]@You certainly made it worth[01 FF]  my while to come all this way![01 FF][1D FF][00 FF]
+^L4918^@Oh, thank you so much![01 FF]  It was well worth the trip![01 FF][1D FF][00 FF]
+^L4919^@Thanks a lot![01 FF]  It sure was worth it to come all[01 FF]  the way out here![1D FF][00 FF]
+^L4920^@Thanks!  I have to say,[01 FF]  it was well worth my trouble to[01 FF]  come out here.[1D FF][00 FF]
+^L4921^@Oh, say it ain't so![01 FF]  And after I ran here as fast[01 FF]  as I could![1D FF][00 FF]
+^L4922^@I can't believe it![01 FF]@After I took all the trouble[01 FF]  to get out here![1D FF][00 FF]
+^L4923^@Oh, c'mon![01 FF]@You have no idea how much[01 FF]  trouble it was for me to[01 FF]  get here![1D FF][00 FF]
+^L4924^@That's just great![01 FF]  You can't do this to me![1D FF][00 FF]
+^L4925^[8B FF]@[90 FF 00][1A FF 02 00]?[01 FF]  I'll give you [87 FF]$[B8 FF 00][1A FF 04 00].[02 FF]@How's that for a fair offer?[00 FF]
+^L4926^[8B FF]@[90 FF 00][1A FF 02 00]?[01 FF]  Hmmm...  How about[01 FF]  [87 FF]$[B8 FF 00][1A FF 04 00]?[02 FF]@How does that offer strike[01 FF]  you?[00 FF]
+^L4927^[8B FF]@The [90 FF 00][1A FF 02 00]?[01 FF]  How about [87 FF]$[B8 FF 00][1A FF 04 00]...[02 FF]@Is that a fair trade?[00 FF]
+^L4928^[8B FF]@The [90 FF 00][1A FF 02 00]?[01 FF]  I'd offer about[01 FF]  [87 FF]$[B8 FF 00][1A FF 04 00] for that.[02 FF]@Is it a deal?[00 FF]
+^L4929^@That's too bad...[01 FF]@Do you have anything else[01 FF]  you want to sell?[02 FF][00 FF]
+^L4930^@My, my![01 FF]  You can't do that to me![01 FF]@Well, have you got anything else[01 FF]  for sale?[02 FF][00 FF]
+^L4931^@You don't think so?  OK,[01 FF]  have you got anything else[01 FF]  then?[02 FF][00 FF]
+^L4932^@Have it your way.[01 FF]@Did you say you have some[01 FF]  other things for sale?[02 FF][00 FF]
+^L4933^@Oh, jumpin' jehosaphat![01 FF]  I don't think I can buy that.[02 FF]@What else can you sell me?[02 FF][00 FF]
+^L4934^@Already got me one of those.[02 FF]@Anything else worthwhile[01 FF]  for sale?[02 FF][00 FF]
+^L4935^@Uhhh, I can't buy that...[02 FF]@Got anything else?[02 FF][00 FF]
+^L4936^@I'm not interested in one of[01 FF]  those.[02 FF]@Can you show me anything[01 FF]  else?[02 FF][00 FF]
 ^L4937^[C4 FF 00 73][1B FF 3C 00][1D FF][74 FF][D4 FF 0B 00][00 FF]
 ^L4938^[86 FF _L5530_][C6 FF][1B FF 0A 00][C5 FF][00 FF]
 ^L4939^[1C FF E2 00 _L4388_][1C FF E3 00 _L4389_][1C FF E4 00 _L4390_][1C FF E5 00 _L4390_][1C FF E6 00 _L4391_][1C FF E7 00 _L4390_][1C FF E8 00 _L4391_][1C FF E9 00 _L4389_][1C FF EA 00 _L4392_][1C FF EB 00 _L4393_][1C FF EC 00 _L4394_][1C FF ED 00 _L4395_][1C FF EE 00 _L4396_][1C FF EF 00 _L4389_][1C FF F0 00 _L4389_][1C FF F1 00 _L4389_][1C FF F2 00 _L4389_][1C FF F3 00 _L4397_][1C FF F4 00 _L4391_][1C FF F5 00 _L4389_][1C FF F6 00 _L4398_][1C FF F7 00 _L4399_][1C FF F8 00 _L4400_][1C FF F9 00 _L4400_][1C FF FA 00 _L4400_][1C FF FB 00 _L4389_][1C FF FC 00 _L4389_][1C FF FD 00 _L4401_][1C FF FE 00 _L4397_][1C FF FF 00 _L4391_][1C FF 00 01 _L4392_][1C FF 01 01 _L4389_][1C FF 02 01 _L4391_][1C FF 03 01 _L4389_][1C FF 04 01 _L4402_][1C FF 05 01 _L4390_][1C FF 06 01 _L4403_][1C FF 07 01 _L4397_][1C FF 08 01 _L4404_][1C FF 09 01 _L4405_][1C FF 0A 01 _L4406_][1C FF 0B 01 _L4407_][1C FF 0C 01 _L4408_][1C FF 0D 01 _L4409_][1C FF 0E 01 _L4410_][1C FF 0F 01 _L4411_][1C FF 44 01 _L4412_][1C FF 45 01 _L4413_][1C FF 46 01 _L4397_][1C FF DE 01 _L4395_][1C FF 55 02 _L4414_][1C FF 56 02 _L4415_][1C FF 57 02 _L4416_][1C FF 58 02 _L4389_][1C FF 8D 02 _L4397_][1C FF DB 02 _L4417_][1C FF DC 02 _L4418_][1C FF DD 02 _L4419_][00 FF]
@@ -5055,8 +5052,8 @@
 ^L4996^[86 FF _L4988_][86 FF _L4997_]
 ^L5003^[08 FF E0 00]
 ^L4991^[09 FF 92 02][00 FF]
-^L4992^
-^L4993^
+^L4992^[89 FF][A8 FF 00]@([90 FF 00][1A FF 01 00]'s[1C FF 92 02 _L5014_] defense[01 FF]  changed [95 FF 04 _L5015_ _L5016_ _L5017_ _L5018_]
+^L4993^ to[A8 FF 00][1C FF 92 02 _L5023_][95 FF 04 _L5024_ _L5025_ _L5026_ _L5027_]^L5024^  [24 FF])[02 FF][00 FF]
 ^L4994^[87 FF][88 FF][AB FF 00 00][B7 FF 00][00 FF]
 ^L4995^[1C FF E2 00 _L4595_][1C FF E3 00 _L4596_][1C FF E9 00 _L4596_][1C FF EA 00 _L4597_][1C FF EB 00 _L4598_][1C FF EF 00 _L4596_][1C FF F0 00 _L4596_][1C FF F1 00 _L4596_][1C FF F2 00 _L4596_][1C FF F3 00 _L4599_][1C FF F5 00 _L4596_][1C FF F8 00 _L4600_][1C FF F9 00 _L4600_][1C FF FA 00 _L4600_][1C FF FB 00 _L4596_][1C FF FC 00 _L4596_][1C FF FE 00 _L4599_][1C FF 00 01 _L4597_][1C FF 01 01 _L4596_][1C FF 03 01 _L4596_][1C FF 04 01 _L4601_][1C FF 07 01 _L4599_][1C FF 09 01 _L4602_][1C FF 0B 01 _L4603_][1C FF 0F 01 _L4604_][1C FF 45 01 _L4605_][1C FF 46 01 _L4599_][1C FF 57 02 _L4606_][1C FF 58 02 _L4596_][1C FF 8D 02 _L4599_][1C FF DB 02 _L4607_][1C FF DC 02 _L4608_][00 FF]
 ^L4997^[BA FF 00 00 00 00][9C FF][89 FF][B9 FF 00 00 00 00][00 FF]
@@ -5074,18 +5071,17 @@
 ^L5010^[BA FF 00 00 00 00][89 FF][B9 FF 00 00 00 00][9C FF][08 FF 91 02][08 FF E1 00][00 FF]
 ^L5011^[1C FF E2 00 _L4747_][1C FF E3 00 _L4748_][1C FF E9 00 _L4748_][1C FF EA 00 _L4749_][1C FF EB 00 _L4750_][1C FF EF 00 _L4748_][1C FF F0 00 _L4748_][1C FF F1 00 _L4748_][1C FF F2 00 _L4748_][1C FF F3 00 _L4751_][1C FF F5 00 _L4748_][1C FF F8 00 _L4752_][1C FF F9 00 _L4752_][1C FF FA 00 _L4752_][1C FF FB 00 _L4748_][1C FF FC 00 _L4748_][1C FF FE 00 _L4751_][1C FF 00 01 _L4749_][1C FF 01 01 _L4748_][1C FF 03 01 _L4748_][1C FF 04 01 _L4753_][1C FF 07 01 _L4751_][1C FF 09 01 _L4754_][1C FF 0B 01 _L4755_][1C FF 0F 01 _L4756_][1C FF 45 01 _L4757_][1C FF 46 01 _L4751_][1C FF 57 02 _L4758_][1C FF 58 02 _L4748_][1C FF 8D 02 _L4751_][1C FF DB 02 _L4759_][1C FF DC 02 _L4760_][00 FF]
 ^L5012^[1C FF E2 00 _L4775_][1C FF E3 00 _L4776_][1C FF E9 00 _L4776_][1C FF EA 00 _L4777_][1C FF EB 00 _L4778_][1C FF EF 00 _L4776_][1C FF F0 00 _L4776_][1C FF F1 00 _L4776_][1C FF F2 00 _L4776_][1C FF F3 00 _L4779_][1C FF F5 00 _L4776_][1C FF F8 00 _L4780_][1C FF F9 00 _L4780_][1C FF FA 00 _L4780_][1C FF FB 00 _L4776_][1C FF FC 00 _L4776_][1C FF FE 00 _L4779_][1C FF 00 01 _L4777_][1C FF 01 01 _L4776_][1C FF 03 01 _L4776_][1C FF 04 01 _L4781_][1C FF 07 01 _L4779_][1C FF 09 01 _L4782_][1C FF 0B 01 _L4783_][1C FF 0F 01 _L4784_][1C FF 45 01 _L4785_][1C FF 46 01 _L4779_][1C FF 57 02 _L4786_][1C FF 58 02 _L4776_][1C FF 8D 02 _L4779_][1C FF DB 02 _L4787_][1C FF DC 02 _L4788_][00 FF]
-^L5014^
-^L5015^
+^L5015^ [24 FF][00 FF]
 ^L5016^ [25 FF][00 FF]
 ^L5017^ [26 FF][00 FF]
 ^L5018^ [27 FF][00 FF]
-^L5019^
+^L5014^ offense[01 FF]  changed [95 FF 04 _L5019_ _L5020_ _L5021_ _L5022_]
+^L5019^ [28 FF][00 FF]
 ^L5020^ [29 FF][00 FF]
 ^L5021^ [2A FF][00 FF]
 ^L5022^ [2B FF][00 FF]
 ^L5023^[95 FF 04 _L5028_ _L5029_ _L5030_ _L5031_]
 ^L5028^  [28 FF])[02 FF][00 FF]
-^L5024^
 ^L5025^  [25 FF])[02 FF][00 FF]
 ^L5026^  [26 FF])[02 FF][00 FF]
 ^L5027^  [27 FF])[02 FF][00 FF]
@@ -5145,17 +5141,17 @@
 ^L5082^@Very well.  Please come again,[01 FF]  any time.[1D FF][00 FF]
 ^L5076^@Are you prepared to show[01 FF]  the proper respect to[01 FF]  Mr. Carpainter now?[1D FF][09 FF 7F 01][00 FF]
 ^L5077^[99 FF 00 00 00 00][81 FF _L5079_][9B FF 00 00 00 00][9C FF][D4 FF 76 00]@Very well... be sure to do your[01 FF]  <blue... blue...>[1D FF][86 FF _L2183_][14 FF 08 00][00 FF]
-^L5079^
-^L5080^
-^L5081^
+^L5079^@No faith...[01 FF]  No money...[01 FF]  You are a hopeless case.[1D FF][00 FF]
+^L5080^@Good morning.[01 FF]  Take care and good luck.[1D FF][00 FF]
+^L5081^@Excellent.[01 FF]  Please make yourself[01 FF]  comfortable,[02 FF]@on your blue[01 FF]  sheets...[02 FF]@No, no, I'm just kidding![01 FF]  Ha ha hah![1D FF][86 FF _L2183_][14 FF 08 00][00 FF]
 ^L5083^[86 FF _L5070_][00 FF]
 ^L5084^[99 FF 00 00 00 00][81 FF _L5086_][86 FF _L5068_][1C FF 7C 00 _L5087_][C5 FF][14 FF 1C 00][86 FF _L2185_][00 FF]
 ^L5086^[86 FF _L5069_][1D FF][00 FF]
 ^L5087^[86 FF _L2185_][80 FF _L5088_]
 ^L5088^[C6 FF][C4 FF 00 2C][08 FF 0B 00][FC FF 05 00][14 FF 18 00][A0 FF D3 07 04 03 01 00][CB FF FF 00 06 00][A0 FF F3 00 C8 00 FF 00][A0 FF F3 00 C9 00 FF 00][EA FF FF 00][1B FF 78 00][1B FF 78 00][1B FF 1E 00][14 FF 19 00][A0 FF F3 00 CA 00 FF 00][A0 FF F3 00 CB 00 FF 00][A0 FF F3 00 CC 00 FF 00][EA FF FF 00][85 FF 18 02 06 00][1B FF 1E 00][1B FF 1E 00][1B FF 78 00][14 FF 1A 00][A4 FF 16 02][A4 FF 17 02][CE FF 16 02 01 00][CE FF 17 02 01 00][EA FF FF 00][1B FF 01 00][A1 FF 16 02 CD 00][A1 FF 17 02 CE 00][1B FF 78 00][1B FF 2D 00][08 FF E4 02][08 FF 6E 01][08 FF D6 00][14 FF 1B 00][A0 FF F3 00 CF 00 FF 00][A0 FF F3 00 D0 00 FF 00][A0 FF F3 00 D1 00 FF 00][A0 FF F3 00 D2 00 FF 00][A0 FF F0 00 D3 00 FF 00][A0 FF F3 00 D4 00 FF 00][EA FF FF 00][1B FF 78 00][1B FF 78 00][1B FF 1E 00][09 FF E4 02][09 FF 6E 01][09 FF D6 00][14 FF 1C 00][CC FF FF 00 01 00][08 FF 2C 01][09 FF 7C 00][08 FF 7D 00][08 FF 05 03][08 FF 0C 03][09 FF 0B 00][FC FF 06 00][A0 FF D3 07 05 03 01 00][EB FF FF 00][00 FF]
-^L5089^
-^L5090^
-^L5092^
+^L5089^@When you travel though the[01 FF]  desert, you may be hit by[01 FF]  sunstroke.[02 FF]@If you see flashing lights[01 FF]  before your eyes, you may[01 FF]  have sunstroke![02 FF]@But don't worry too much.[02 FF]@If you have a Wet towel,[01 FF]  you'll be all right.[1D FF][00 FF]
+^L5090^[99 FF 00 00 00 00][81 FF _L5092_][9B FF 00 00 00 00][9C FF][D4 FF 76 00]@Well, have a good rest.[01 FF]  You'll wake up refreshed![1D FF][86 FF _L2183_][14 FF 8B 00][00 FF]
+^L5092^@You... don't have enough money.[1D FF][00 FF]
 ^L5093^[86 FF _L5070_][00 FF]
 ^L5094^@Welcome to the Enrich[01 FF]  Grand Hotel.[02 FF][80 FF _L5097_]
 ^L5095^[99 FF 00 00 00 00][81 FF _L5098_][86 FF _L5068_][C5 FF][14 FF 8A 00][86 FF _L2185_][00 FF]
@@ -5217,64 +5213,64 @@
 ^L5158^@[90 FF 00][1A FF 01 00]...[01 FF]  has already reached the[01 FF]  maximum level.[02 FF]@That's just fine, but...[02 FF][80 FF _L5160_]
 ^L5164^@I hope you get over your cold[01 FF]  soon.[92 FF 01 06 02][81 FF _L5168_][00 FF]
 ^L5168^[EE FF 01 00 06 00 01 00][D4 FF 25 00][00 FF]
-^L5169^
+^L5169^@Hello! This is Escargo Express.[02 FF]@Tracy doesn't work here[01 FF]  anymore.  Yeah, she used to[01 FF]  work here, part-time.[02 FF]@Hunh?  This is [0D FF]?[01 FF]  Tracy's big brother?[02 FF]@I've heard about the great work[01 FF]  you're doing.[02 FF]@It's an honor to talk to you, sir![02 FF]@Oh, you're calling for a[01 FF]  delivery?[01 FF]  I'm very sorry.[02 FF]@My wife is out on maternity[01 FF]  leave, so I'm taking care of my[01 FF]  other kid.[02 FF]@I decided to take some time off[01 FF]  from the delivery business.[02 FF]@It's right next to the fridge![01 FF]  Put it into the microwave...[01 FF]  ...that's it.[02 FF]@...Sorry about that.[02 FF]@I'm a little busy right now, as[01 FF]  you heard.[02 FF]@I really would like to hear some[01 FF]  of your stories.[02 FF]@Zoicks!  That was the dog's[01 FF]  food![02 FF]@*Crash!* Hey, hey!  Now look[01 FF]  what you've done![02 FF]@...I'm sorry.[01 FF]  I have to go.  Good bye.[01 FF][D4 FF 0B 00]  (Click!)[1D FF][08 FF 02 03][00 FF]
 ^L5170^[86 FF _L5195_][86 FF _L5178_][00 FF]
-^L5171^
-^L5172^
+^L5171^@Are you calling about the[01 FF]  delivery of the <Pencil Eraser>?[03 FF 00 00][04 FF _L5256_][05 FF _L5257_]
+^L5172^@This is about the delivery of the[01 FF]  <[90 FF A9][1A FF 02 00]>?[03 FF 00 00][04 FF _L5259_][05 FF _L5260_]
 ^L5173^@Hello! This is Escargo Express.[01 FF]@Oh, is that you, [0D FF]?[02 FF]@I'm working part-time for[01 FF]  Escargo Express.[BC FF 01 00][86 FF _L2177_][81 FF _L5196_][1B FF 0A 00][02 FF]
 ^L5196^[00 FF]
-^L5174^
-^L5176^
-^L5177^
-^L5178^
+^L5174^[1C FF 49 00 _L5197_]@What can I do for you?[00 FF]
+^L5176^[BC FF 01 00][F5 FF][82 FF _L5183_][86 FF _L5184_]
+^L5177^[1C FF 49 00 _L5198_][BC FF 01 00][86 FF _L2177_][81 FF _L5199_]@Come again.[02 FF][00 FF]
+^L5178^[D4 FF 0B 00]@(Click!)[1D FF][00 FF]
 ^L5179^[86 FF _L5181_][80 FF _L5182_]
-^L5180^
-^L5181^
+^L5180^[1C FF 49 00 _L5200_]@You want us to store[01 FF] something for you?[02 FF]@We'll send someone over[01 FF] immediately to pick it up.[02 FF][00 FF]
+^L5181^[1C FF 49 00 _L5201_]@I'm very sorry.[01 FF]  Our storage lockers are all full[01 FF]  right now.[02 FF][00 FF]
 ^L5183^[86 FF _L5193_][80 FF _L5182_]
-^L5184^
-^L5185^
-^L5186^
-^L5187^
-^L5188^
-^L5189^
+^L5184^[1C FF 49 00 _L5202_]@You would like us to[01 FF]  deliver something?[01 FF]  We can deliver up to[01 FF]  three things.[02 FF]@Please select the goods[01 FF]  you want.[02 FF][00 FF]
+^L5185^[BC FF 01 00][F5 FF][82 FF _L5187_]@Select an item.[02 FF][F1 FF][82 FF _L5186_][87 FF][88 FF][7A FF 00 00][87 FF]@[90 FF 00][1A FF 02 00]?[01 FF]  Do you need anything else?[86 FF _L2485_][04 FF _L5188_][05 FF _L5186_][80 FF _L5186_]
+^L5186^@Just to confirm, you're[01 FF]  expecting delivery of the[02 FF][78 FF 01 00 00 00]@[90 FF 00][1A FF 02 00][78 FF 02 00 00 00][82 FF _L5189_][01 FF]  [90 FF 00][1A FF 02 00][78 FF 03 00 00 00][82 FF _L5189_][01 FF]  and [90 FF 00][1A FF 02 00].
+^L5187^[8D FF 01 00][87 FF]@We're not storing any of[01 FF]  [90 FF 00][1A FF 01 00]'s stuff[01 FF]  right now.[02 FF][80 FF _L5186_]
+^L5188^[BC FF 01 00][F5 FF][82 FF _L5187_]@Select an item.[02 FF][F1 FF][82 FF _L5186_][87 FF][88 FF][7A FF 00 00][87 FF]@[90 FF 00][1A FF 02 00]?[02 FF][89 FF][79 FF FF 00 00 00]
+^L5189^[02 FF]@Is that correct?[86 FF _L2485_][04 FF _L5190_][05 FF _L5191_][80 FF _L5191_]
 ^L5190^[86 FF _L5192_][08 FF B5 00][CF FF 02 00][86 FF _L5178_][08 FF F2 02][00 FF]
-^L5191^
-^L5192^
-^L5193^
-^L5194^
-^L5195^
-^L5197^
-^L5198^
-^L5199^
-^L5200^
-^L5201^
-^L5202^
-^L5203^
-^L5204^
-^L5205^
-^L5206^
-^L5207^
-^L5208^
-^L5209^
-^L5210^
-^L5211^
-^L5212^
+^L5191^[86 FF _L4002_]@Well, please start over again.[02 FF][80 FF _L5194_]
+^L5192^[1C FF 49 00 _L5203_]@We'll send someone over right[01 FF]  away![02 FF][00 FF]
+^L5193^[1C FF 49 00 _L5204_][BC FF 01 00][86 FF _L2177_][81 FF _L5205_]@Hey big brother [0D FF],[01 FF]  we don't have any of your[01 FF]  stuff in storage right now.[02 FF][00 FF]
+^L5194^[F1 FF][82 FF _L5182_][87 FF][88 FF][7A FF 00 00][87 FF]@[90 FF 00][1A FF 02 00]?[01 FF][89 FF][79 FF FF 00 00 00]  Do you need anything else?[86 FF _L2485_][04 FF _L5185_][05 FF _L5186_][80 FF _L5186_]
+^L5195^[1C FF 49 00 _L5206_]@Hello![01 FF]  This is Escargo Express.[02 FF]@I'm very sorry, but all our[01 FF]  delivery people are out, serving[01 FF]  other customers.[02 FF]@We can't take any delivery[01 FF]  orders right now.[02 FF]@Please call back a little later.[02 FF][00 FF]
+^L5197^@What do you need?[00 FF]
+^L5198^@Well,[1B FF 0F 00] come again.[02 FF][00 FF]
+^L5199^@Please come again.[02 FF][00 FF]
+^L5200^@Well,[1B FF 14 00]I'll pick it up personally.[01 FF]  Who am I?[01 FF]  I'm the president![02 FF][00 FF]
+^L5201^@I'm sorry.[01 FF]  Our storage lockers are all[01 FF]  full right now.[02 FF][00 FF]
+^L5202^@You would like us to[01 FF]  deliver something?[01 FF]  We can deliver up to[01 FF]  three things.[02 FF]@Please select the goods[01 FF]  you want.[02 FF][00 FF]
+^L5203^@I'll come and help[01 FF]  you personally![02 FF][00 FF]
+^L5204^@I don't think we have anything[01 FF]  of yours in storage.[02 FF][00 FF]
+^L5205^[8D FF 01 00]@[86 FF _L5918_], we do not have[01 FF]  anything stored for someone[02 FF][87 FF]@by the name[01 FF]  of [90 FF 00][1A FF 01 00].[02 FF][00 FF]
+^L5206^@Hello, you have[01 FF]  reached Escargo Express.[02 FF]@All of our staff members are[01 FF]  currently out of the office.[02 FF]@Please call again.[01 FF]  This is a recording.[02 FF][00 FF]
+^L5207^@Excuse me.[01 FF]@We checked your records[01 FF]  and found[01 FF]@that we are already storing[01 FF]  too many of your items.[02 FF]@Please contact us later[01 FF]  when we may[01 FF]  have space for your items.[1D FF][C6 FF][86 FF _L4023_][86 FF _L4910_][00 FF]
+^L5208^@Hi, I'm from Escargo Express.[02 FF]@I'm here to pick up your stuff.[02 FF][80 FF _L5211_]
+^L5209^[99 FF 12 00 00 00][81 FF _L5212_]
+^L5210^@Oh, I see.[01 FF]  Please try us again.[1D FF][C6 FF][86 FF _L4023_][86 FF _L4910_][00 FF]
+^L5211^@What do you want me to take?[02 FF]@I can take up to three things.[02 FF][69 FF]
+^L5212^@You don't have enough money.[02 FF]@Call us at another time.[1D FF][C6 FF][86 FF _L4023_][86 FF _L4910_][00 FF]
 ^L5213^[86 FF _L5226_][80 FF _L5225_]
-^L5214^
-^L5215^
-^L5216^
+^L5214^[02 FF]@We're sorry, we cannot carry[01 FF]  more than three items.[02 FF]@Please understand that it's our[01 FF]  policy.[02 FF][80 FF _L5216_]
+^L5215^@What do you want me to take?[02 FF]
+^L5216^@Let me just confirm your[01 FF] request.  You want me to take[02 FF][78 FF 01 00 00 00]@the [90 FF 00][1A FF 02 00][78 FF 02 00 00 00][82 FF _L5220_][01 FF]  the [90 FF 00][1A FF 02 00][78 FF 03 00 00 00][82 FF _L5220_][01 FF]  and the [90 FF 00][1A FF 02 00]
 ^L5217^[86 FF _L5226_][80 FF _L5227_]
-^L5218^
+^L5218^@What do you want me to take?[02 FF][00 FF]
 ^L5219^[86 FF _L5226_][80 FF _L5228_]
-^L5220^
-^L5221^
+^L5220^[02 FF]@Is this correct?[86 FF _L2485_][04 FF _L5221_][05 FF _L5222_][80 FF _L5222_]
+^L5221^[9B FF 12 00 00 00][83 FF 49 00][BD FF 01 _L5223_][9C FF][D4 FF 76 00][86 FF _L4002_]@All right, certainly,[01 FF]  thanks a lot![1D FF][C6 FF][86 FF _L4023_][86 FF _L4910_][00 FF]
 ^L5222^[78 FF 01 00 01 00][93 FF 00 00][78 FF 02 00 01 00][82 FF _L5224_][93 FF 00 00][78 FF 03 00 01 00][82 FF _L5224_][93 FF 00 00]
 ^L5223^[BA FF 12 00 00 00][00 FF]
-^L5224^
-^L5225^
+^L5224^@Well, let's start again, shall we?[02 FF][80 FF _L5225_]
+^L5225^[86 FF _L2489_][82 FF _L5210_][88 FF][F4 FF 00 00 00 00][81 FF _L5213_][89 FF][79 FF 00 00 00 00][78 FF 01 00 00 00]@[90 FF 00][1A FF 02 00]?[01 FF][F4 FF 01 00 01 00][DD FF 02 00 00 00 00 00 00 00][81 FF _L5214_]  Will there be anything else?[86 FF _L2485_][04 FF _L5215_][05 FF _L5216_][80 FF _L5216_]
 ^L5226^@I think you should keep it.[01 FF]@Do you have anything else[01 FF]  you want me to take?[02 FF][00 FF]
-^L5227^
-^L5228^[86 FF _L2489_][82 FF _L5216_][88 FF][F4 FF 00 00 00 00][81 FF _L5219_][89 FF][79 FF 00 00 00 00][78 FF 03 00 00 00]@[90 FF 00][1A FF 02 00]?[02 FF]
+^L5227^[86 FF _L2489_][82 FF _L5216_][88 FF][F4 FF 00 00 00 00][81 FF _L5217_][89 FF][79 FF 00 00 00 00][78 FF 02 00 00 00]@[90 FF 00][1A FF 02 00]?[01 FF][F4 FF 01 00 01 00][DD FF 02 00 00 00 00 00 00 00][81 FF _L5214_]  Will there be anything else?[86 FF _L2485_][04 FF _L5218_][05 FF _L5216_][80 FF _L5216_]
+^L5228^[86 FF _L2489_][82 FF _L5216_][88 FF][F4 FF 00 00 00 00][81 FF _L5219_][89 FF][79 FF 00 00 00 00][78 FF 03 00 00 00]@[90 FF 00][1A FF 02 00]?[02 FF][00 FF]
 ^L5229^.[02 FF][1C FF 49 00 _L5230_]@Your charge is $18.[02 FF]  You can pay for this, right?[86 FF _L2492_][04 FF _L5231_][05 FF _L5232_]
 ^L5231^[99 FF 12 00 00 00][81 FF _L5235_][78 FF 01 00 00 00]
 ^L5230^[91 FF FF][82 FF _L5236_][93 FF 00 00][9B FF 12 00 00 00][78 FF 02 00 00 00][82 FF _L5237_][91 FF FF][82 FF _L5238_][93 FF 00 00][78 FF 03 00 00 00][82 FF _L5237_][91 FF FF][82 FF _L5239_][93 FF 00 00]
@@ -5297,7 +5293,7 @@
 ^L5251^@I'm not storing any of your[01 FF]  stuff.[02 FF][80 FF _L5248_]
 ^L5252^@I think you are already carrying[01 FF]  too many things.[02 FF][80 FF _L5248_]
 ^L5256^@We'll send someone right away.[02 FF][86 FF _L5178_][08 FF B6 02][CF FF 09 00][08 FF F2 02][00 FF]
-^L5257^
+^L5257^@Oh, that's not what you want?[02 FF][80 FF _L5258_]
 ^L5259^@We'll send someone right away.[02 FF][86 FF _L5178_][08 FF B7 02][CF FF 0A 00][08 FF F2 02][00 FF]
 ^L5260^@Oh, that's not what you want?[02 FF][80 FF _L5258_]
 ^L5261^[22 FF]@Our delivery men got tired and[01 FF]  quit.[02 FF]@So, we decided to close the[01 FF]  shop.[02 FF]@Thank you for consistently[01 FF]  using us for all of your pizza[01 FF]  needs.[1B FF 14 00][01 FF][D4 FF 0B 00]  (Click!)[1D FF][00 FF]
@@ -5385,7 +5381,7 @@
 ^L5348^@How much do you want to withdraw?[02 FF]  (account:$[23 FF])[01 FF][86 FF _L5138_][00 FF]
 ^L5349^@You don't have that much money in[01 FF]  your account.[02 FF][80 FF _L5340_]
 ^L5350^[D1 FF 00 00 00 00]@I don't think you can cover my handling[01 FF]  charge.[02 FF][80 FF _L5340_]
-^L5351^
+^L5351^[D3 FF 00 00][BA FF 00 00 00 00][9C FF][D4 FF 74 00][1B FF 0A 00]@Your withdrawal[01 FF]  is $[B8 FF 00][1A FF 04 00].[02 FF][80 FF _L5345_]
 ^L5361^@I can only treat an illness.[01 FF]  Sorry.[86 FF _L5367_]
 ^L5356^[92 FF 01 06 02][82 FF _L5369_][02 FF]@[1B FF 0F 00]...[1B FF 0F 00]by the way,[02 FF]@What a sad look in your eyes... [01 FF]  you, the boy in a red cap.[02 FF]@You must be homesick.[02 FF]@That's nothing you need to be[01 FF]  ashamed of.[02 FF]@Anybody who is on a long trip[01 FF]  will miss home.[02 FF]@In this case,[02 FF]@the best thing to do is to call[01 FF]  home and hear your mom's[01 FF]  voice.[1D FF]
 ^L5369^[00 FF]
@@ -5472,24 +5468,24 @@
 ^L5445^[9A FF 00 00][00 FF]
 ^L5446^[00 FF]
 ^L5450^[00 FF]
-^L5453^
-^L5454^
-^L5455^
-^L5456^
-^L5457^
-^L5458^
-^L5459^
+^L5453^@Adding Skip Sandwiches.[1D FF][86 FF _L3698_][00 FF]
+^L5454^[89 FF][87 FF][00 FF]
+^L5455^[89 FF][87 FF][90 FF 00][1A FF 01 00]'s belongings.[02 FF][00 FF]
+^L5456^@Don't spit your gum out.[02 FF]@Even if it has lost its flavor...[1D FF][00 FF]
+^L5457^@You shouldn't throw[01 FF]  the [90 FF 00][1A FF 02 00] away.[1D FF][00 FF]
+^L5458^[89 FF][87 FF]@[C2 FF][1A FF 05 00]  got rid of[01 FF]  [90 FF 00][1A FF 01 00]'s [87 FF][90 FF 00][1A FF 02 00][01 FF][1D FF][00 FF]
+^L5459^[89 FF][AB FF 00 00][87 FF]@[90 FF 00][1A FF 01 00] chewed[01 FF][87 FF][90 FF 00]  the [1A FF 02 00].[01 FF][1D FF][00 FF]
 ^L5460^[1C FF F4 02 _L5461_][1C FF B4 00 _L5462_][1C FF B5 00 _L5463_][1C FF 85 02 _L5463_][1C FF BE 01 _L5464_][1C FF 86 02 _L5464_][1C FF 87 02 _L5464_][1C FF 88 02 _L5464_][1C FF A3 02 _L5463_][1C FF B6 02 _L5463_][1C FF B7 02 _L5463_]@You cannot teleport now.[1D FF][00 FF]
 ^L5461^@You should wait to teleport[01 FF]  until after the pizza arrives.[1D FF][00 FF]
 ^L5462^@You should wait to teleport[01 FF]  until after a customer has[01 FF]  shown up.[1D FF][00 FF]
 ^L5463^@You should wait to teleport[01 FF]  until after Escargo Express[01 FF]  arrives.[1D FF][00 FF]
 ^L5464^@You cannot teleport while[01 FF]  Dungeon Man is with you.[1D FF][00 FF]
 ^L5465^@Yo, this is the <The Lazy[01 FF]  Cowpoke Stop 'n Go>[02 FF]@Yeah, we're a new truck stop...[01 FF]  we just opened...[02 FF]@What's that?  The Stoic Club?![01 FF]  That lame old place shut down[01 FF]  ages ago![02 FF]@We totally remodeled the place![02 FF]@Now we've got loud music,[01 FF]  great food, and really rowdy[01 FF]  crowds...[02 FF]@Listen, buddy, I'm too busy to[01 FF]  talk to you right now![02 FF]@Just drop by anytime![01 FF]  You come, you enjoy... I[01 FF]  promise![02 FF]@Click!  Beep-beep-beep...[1D FF][D4 FF 0B 00][00 FF]
-^L5466^
-^L5467^
-^L5468^
-^L5470^
-^L5471^
+^L5466^[8D FF 01 00][87 FF]@Oh, is this that [01 FF]  darling little [90 FF 00][1A FF 01 00][02 FF]@Is my sweet child [0D FF][01 FF]  doing okay?[02 FF]@Please come visit us sometime.[02 FF][D4 FF 0B 00]@Click!  Beep-beep-beep...[1D FF][00 FF]
+^L5467^[1C FF 83 02 _L5476_]@Hello, [0D FF]?[1B FF 14 00][01 FF]  You can finally come home?[01 FF]  ...So that means...[02 FF]@Oh, thank heavens![1B FF 0F 00][01 FF]@You did it and you're safe![1B FF 14 00][01 FF]  I'm not exactly sure[01 FF]  what you did, but...[02 FF]@Anyway,[01 FF]  if you come home quick,[01 FF]  I'll make some [11 FF][01 FF]@Get here as soon as you can.[1B FF 0F 00][01 FF]@I can't wait to see[01 FF]  your bright and shining face![02 FF][D4 FF 0B 00]@Click!  Beep-beep-beep...[1D FF][00 FF]
+^L5468^@Is that you, [0D FF][1B FF 14 00][01 FF]@You called me back sooner[01 FF]  than I thought...[02 FF]@Everyone here is doing just[01 FF]  fine.[02 FF]@Oh yes, Tracy started[01 FF]  working part-time for[01 FF]  Escargo Express.[02 FF]@Here, I'll let you talk to her.[02 FF]@And call me when you have[01 FF]  some time.  ... Oh... you don't [1B FF 14 00][01 FF]  have any free time?[02 FF]@Well, here's Tracy.[1B FF 0F 00][02 FF][1B FF 14 00][08 FF C9 00][08 FF B0 02][80 FF _L1862_]
+^L5470^@Hey,[0D FF]![01 FF]  You sound terrible![02 FF]@Do you have a[01 FF]  cold or something?[02 FF]@Whatever dangeorous stuff[01 FF]  you're doing,[01 FF]  remember that good health[01 FF]  is very important![02 FF]@Try to keep as healthy[01 FF]  as possible,[01 FF]  even if it kills you![02 FF][1B FF 0F 00]@Well, I'd better go, I think[01 FF]  my omlette might be on fire![01 FF]  Bye![1B FF 14 00][01 FF]@Click!  Beep-beep-beep...[1D FF][D4 FF 0B 00][00 FF]
+^L5471^@Hello, [0D FF]?[01 FF]@So, I heard that you got a[01 FF]  new girlfriend on your journey...[02 FF]@Well, why don't you tell me[01 FF]  about her later...[02 FF][1B FF 05 00][1B FF 05 00][1B FF 05 00]@You see, I have this feeling[01 FF]  that she is right next to you,[01 FF]  or something.[02 FF]@Well, if she is right there, say[01 FF]  hello to her for me.[02 FF]@I have to go now... I'm right in[01 FF]  the middle of cleaning the[01 FF]  toilet... Bye![02 FF][1B FF 14 00][D4 FF 0B 00]  Click!  Beep-beep-beep...[1D FF][09 FF B1 02][00 FF]
 ^L5473^@Hello, [0D FF]?[02 FF]@So, how is your adventure[01 FF]  going?[02 FF]@...Hmmmm, I see...[01 FF]  It sounds like you're having[01 FF]  some tough times, then.[02 FF]@Your teacher dropped by,[01 FF]  looking for you... don't worry--[01 FF]  I covered for you.[02 FF]@Everything is fine here...[01 FF]  you just keep on truckin'![02 FF]@Well, my soap opera is getting[01 FF]  to a really steamy part, so I'd[01 FF]  better let you go.[02 FF]@Bye![02 FF][D4 FF 0B 00]@Click!  Beep-beep-beep...[1D FF][00 FF]
 ^L5474^@Hello?  Hello?![01 FF]  Is that you, [0D FF]?[02 FF]@I can hardly hear you...[02 FF]@It sounds like you're calling[01 FF]  from the moon or something.[02 FF]@...If you're doing okay, that's[01 FF]  great.[02 FF]@Listen, I have to get going.[01 FF]  I'm trying to give [15 FF][01 FF]  a flea bath.[02 FF]@Bye![01 FF][D4 FF 0B 00]  Click!  Beep-beep-beep...[1D FF][00 FF]
 ^L5475^@Click! Beep-beep-beep...[02 FF]@...No, no... I was just teasing...[02 FF]@I wanted to see if my new[01 FF]  impression would fool you.[02 FF]@Everyone here is doing just[01 FF]  fine.  *puff*[02 FF]@Hope you're doing all right, too.[02 FF]@Well, I better go... I'm in the[01 FF]  middle of my dance aerobics![02 FF]@Bye![01 FF][D4 FF 0B 00]  Click!  Beep-beep-beep...[1D FF][00 FF]
@@ -5512,7 +5508,7 @@
 ^L5495^@[90 FF 00][1A FF 01 00] takes it.[87 FF][1D FF][00 FF]
 ^L5496^[8D FF 01 00][87 FF]@[90 FF 00][1A FF 01 00] added the[89 FF][01 FF]  [90 FF 00][1A FF 01 00] [01 FF]  to [87 FF][90 FF 00][1A FF 02 00]'s stuff.[87 FF][1D FF][00 FF]
 ^L5497^[8D FF 01 00]@But, [86 FF _L5900_] has got too much[01 FF]  stuff already.[1D FF][00 FF]
-^L5498^
+^L5498^@[C2 FF][1A FF 05 00] got[01 FF] $[B8 FF 00][1A FF 04 00] dollars.[1D FF][00 FF]
 ^L5499^[1C FF E2 00 _L5508_][1C FF E3 00 _L5509_][1C FF E4 00 _L5510_][1C FF E5 00 _L5511_][00 FF]
 ^L5500^@[90 FF 00][1A FF 01 00] opened the present.[00 FF]
 ^L5501^@[90 FF 00][1A FF 01 00] dug around in the[01 FF]  trash can.[00 FF]
@@ -5598,7 +5594,7 @@
 ^L1740^[D4 FF 6F 00][1B FF 28 00][1C FF 47 00 _L5591_]@You a zombie?[02 FF]@My mom telled me no open the[01 FF]  door, 'cause zombies are[01 FF]  comin'.[1D FF][00 FF]
 ^L5591^@I am studying right now, so I[01 FF]  can't play with you.[1D FF][00 FF]
 ^L5592^@I'm not sure who you are, but[01 FF]  congratulations![1D FF][00 FF]
-^L5593^
+^L5593^@It's sunny out today.[1D FF][00 FF]
 ^L5594^@Well, now the key is broken,[01 FF]  and I can't go out.[02 FF]@Don't bother yourself,[01 FF]  I'll try to fix it on my own.[1B FF 14 00][1D FF][00 FF]
 ^L5595^@I've lost the key to my house,[01 FF]  so I can't get in.[02 FF]@No, no.  You don't need to look[01 FF]  for it.  I'll look for it myself.[1D FF][09 FF 6F 02][00 FF]
 ^L5596^@The bakery is next door![1D FF][C6 FF][00 FF]
@@ -5608,15 +5604,15 @@
 ^L5600^@I heard that Kraken fin makes[01 FF]  a good soup.[02 FF]@I can hardly believe that people[01 FF]  actually eat it![02 FF]@And yet, I've heard that[01 FF]  it's a gourmet dish.[01 FF]  I just don't get it![1D FF][C6 FF][00 FF]
 ^L5601^[09 FF 5E 01][A2 FF _L5602_][00 FF]
 ^L5602^[FC FF 45 00][85 FF 66 03 06 00][85 FF 35 06 06 00][00 FF]
-^L5603^
-^L5604^
+^L5603^[B2 FF 02 00 CC 00][C3 FF 01 01 02 00][D8 FF 01 00 00 00][C3 FF 03 01 02 00][D8 FF 03 00 00 00][1B FF 2D 00][6B FF 03 00][B5 FF 02 00][FC FF 27 00][1B FF 01 00][A0 FF D0 07 8E 00 01 00][9E FF][AA FF D0 07][CB FF 01 00 06 00][CB FF 03 00 06 00][1B FF B4 00]@.....[1D FF][C6 FF][1B FF 3C 00][CC FF 01 00 01 00][CC FF 03 00 01 00][1B FF B4 00][A9 FF D0 07][9E FF][FC FF 28 00][1B FF 01 00]@Oooh... I was a little dizzy,[1B FF 0F 00][01 FF]  but now I'm okay.[02 FF]@...to get to Summers...[01 FF]  we need to go back to Threed.[02 FF]@Yep, somehow I know that's[01 FF]  where we must go...[1D FF][C6 FF][09 FF 2F 00][08 FF 30 00][08 FF 05 03][08 FF 8F 00][86 FF _L3558_][08 FF 18 02][00 FF]
+^L5604^[09 FF 02 00][A6 FF 36 00 C4 01][A6 FF 37 00 C5 01][A6 FF 39 00 C6 01][A6 FF 38 00 C7 01][A6 FF 3A 00 C8 01]@Wow![1B FF 14 00][01 FF]  You guys did a lot while I was[01 FF]  in the bathroom!  Ha ha ha ha...[02 FF]@You want to get to Threed as[01 FF]  soon as possible?[02 FF]@We can take you to Threed in[01 FF]  our tour bus.[02 FF]@I'll get the bus and wait for you[01 FF]  just outside the building...[02 FF][1B FF 14 00][C6 FF][08 FF 3D 01][09 FF 3E 01][08 FF 02 00][9E FF][9D FF 01 33 _L4162_][00 FF]
 ^L5605^[09 FF 18 02][9D FF 01 04 _L5606_][08 FF 0B 00][00 FF]
 ^L5606^[86 FF _L3558_]
 ^L9001^[FC FF 05 00][B0 FF C0 03 CB 00][1B FF 3C 00][B3 FF C0 03][A1 FF C0 03 C9 01][9E FF][A4 FF C0 03][C3 FF 01 02 C0 03][D8 FF 01 00 00 00][C3 FF 02 02 C0 03][D8 FF 02 00 00 00][C3 FF 03 02 C0 03][D8 FF 03 00 00 00]@Heh heh heh...[01 FF]  There's no need to wait...[02 FF][C6 FF][A0 FF D0 07 CB 01 01 00][C9 FF D0 07][EB FF FF 00][A3 FF C0 03][9E FF][1B FF 3C 00][A5 FF D0 07 06 00][CA FF][A0 FF D3 07 04 03 01 00][A0 FF D0 07 CD 01 01 00][C9 FF D0 07][EB FF FF 00][9E FF][CB FF FF 00 06 00][09 FF 18 02][08 FF 17 02][C5 FF][EA FF FF 00][09 FF 3D 01][A1 FF C0 03 CE 01][9E FF]@All right... on to Threed![02 FF][C6 FF][A1 FF E2 03 CF 01][1B FF 3C 00][E6 FF E2 03][EB FF FF 00][6E FF 01 00][00 FF]
 ^L5607^[9D FF 01 28 _L4238_][00 FF]
 ^L5608^[A2 FF _L5609_][00 FF]
 ^L5609^[EA FF FF 00][FC FF 05 00][8D FF 01 00][A4 FF EC 01][A4 FF ED 01][A4 FF EE 01][A4 FF EF 01][A4 FF F0 01][1B FF 1E 00][A3 FF EC 01][A3 FF ED 01][A3 FF EE 01][A3 FF EF 01][A3 FF F0 01][1B FF 0A 00][A4 FF EC 01][A4 FF ED 01][A4 FF EE 01][A4 FF EF 01][A4 FF F0 01][B2 FF 00 00 CC 00][1B FF 3C 00][B5 FF 00 00][A3 FF ED 01][A3 FF EE 01][A3 FF EF 01][A3 FF F0 01][6B FF 02 00][1B FF 0A 00][C4 FF 00 C1][A0 FF D0 07 8B 00 01 00][9E FF][1B FF 78 00]@(Oh,[1B FF 05 00] oh...[1B FF 14 00] you're losing[01 FF]  consciousness...[02 FF]@What could be the fate of[01 FF]  [0D FF] and his friend?)[1D FF][C6 FF][1B FF 01 00][86 FF _L2866_][86 FF _L2200_][08 FF 0B 00][CB FF FF 00 06 00][14 FF 10 00][A0 FF 25 01 8C 00 FF 00][A0 FF 26 01 8D 00 FF 00][EA FF FF 00][1B FF F0 00][A5 FF 25 01 06 00][CC FF 01 00 01 00][D8 FF 01 00 05 00][1B FF 1E 00][C3 FF 01 03 26 01][D8 FF 01 00 00 00][1B FF 14 00][A5 FF 26 01 06 00][A0 FF 01 00 0C 00 01 00][DA FF 01 00 07 00][1B FF 3C 00][A6 FF 01 00 15 00][9E FF][A5 FF 01 00 06 00][CC FF FF 00 01 00][EB FF FF 00][D8 FF 01 00 05 00][00 FF]
-^L5610^
+^L5610^[B0 FF 58 00 CC 00][1B FF 3C 00][B3 FF 58 00][A1 FF 58 00 23 00][9E FF][A4 FF 58 00]@The Mayor is busting his butt[01 FF]  with all the troubles in town,[02 FF]@like the Sharks and the[01 FF]  meteorite...[02 FF]@Hey, are you the guy who's[01 FF]  trying to reform the Sharks?[02 FF]@Wa ho!  Wa ho!  Wa ho![02 FF]@You've got to be kidding![02 FF]@Scram![02 FF][C6 FF][A3 FF 58 00][A0 FF ED 00 2A 00 01 00][1B FF 01 00][C9 FF ED 00][EB FF FF 00][9E FF][CA FF][14 FF 02 00][08 FF 02 00][00 FF]
 ^L5611^[1C FF 1F 01 _L5612_][1B FF 1E 00][CD FF 0D 00 00 00 78 00][08 FF 1F 01][A0 FF CF 00 15 01 01 00][A0 FF CF 00 16 01 01 00][A0 FF CF 00 16 01 01 00][A0 FF CF 00 16 01 01 00][00 FF]
 ^L5612^[A0 FF CF 00 15 01 01 00][A0 FF CF 00 16 01 01 00][A0 FF CF 00 16 01 01 00][A0 FF CF 00 16 01 01 00][80 FF _L2197_]
 ^L5614^[6B FF 03 00][1B FF B4 00][C4 FF 00 48][A0 FF D1 07 62 00 01 00][1B FF 01 00][C9 FF D1 07][EB FF FF 00][A0 FF D0 07 61 02 01 00][9E FF][A0 FF D0 07 61 02 01 00][A0 FF E7 02 62 02 01 00][9E FF][A0 FF D0 07 61 02 01 00][9E FF][CA FF][EA FF FF 00][A5 FF D1 07 06 00][1B FF 78 00][D4 FF 46 00][8D FF 01 00][C3 FF 00 03 E7 02][D9 FF 00 00][A0 FF E8 02 63 02 05 00][9E FF][1B FF 64 00][86 FF _L4317_][C6 FF][1B FF 78 00][86 FF _L4318_][81 FF _L2161_]
@@ -5909,3 +5905,4 @@
 ^L5917^her[00 FF]
 ^L5918^[9A FF 02 00][81 FF _L5919_]Sir[00 FF]
 ^L5919^Ma'am[00 FF]
+^L5920^[95 FF 50 _L5768_ _L5769_ _L5770_ _L5771_ _L5772_ _L5773_ _L5774_ _L5775_ _L5776_ _L5777_ _L5778_ _L5779_ _L5780_ _L5781_ _L5782_ _L5783_ _L5784_ _L5785_ _L5786_ _L5787_ _L5788_ _L5789_ _L5790_ _L5791_ _L5792_ _L5793_ _L5794_ _L5795_ _L5796_ _L5797_ _L5798_ _L5799_ _L5800_ _L5801_ _L5802_ _L5803_ _L5804_ _L5805_ _L5806_ _L5807_ _L5808_ _L5809_ _L5810_ _L5811_ _L5812_ _L5813_ _L5814_ _L5815_ _L5816_ _L5817_ _L5818_ _L5819_ _L5820_ _L5821_ _L5822_ _L5823_ _L5824_ _L5825_ _L5826_ _L5827_ _L5828_ _L5829_ _L5830_ _L5831_ _L5832_ _L5833_ _L5834_ _L5835_ _L5836_ _L5837_ _L5838_ _L5839_ _L5840_ _L5841_ _L5842_ _L5843_ _L5844_ _L5845_ _L5846_ _L5847_][1D FF][00 FF]
