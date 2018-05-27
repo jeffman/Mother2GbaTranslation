@@ -233,7 +233,7 @@
   },
   {
     "Identifier": 0x64,
-    "Description": "Call special event (value pushed with FC FF?) (1F 41)",
+    "Description": "Purge first NPC from party? (1F 65)",
     "Length": 2
   },
   {
@@ -1007,7 +1007,7 @@
   },
   {
     "Identifier": 0xFC,
-    "Description": "Unknown; load some kind of value into memory? Observed: [FC FF 06 00] [64 FF] == [1F 41 06]",
+    "Description": "Call special event/code (1F 41)",
     "Length": 4
   },
   {
