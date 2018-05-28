@@ -10,6 +10,7 @@ snapshots/
 notes/
 fresh/
 armtest/
+saves/
 working/*.asm
 working/*.bin
 armips.exe
