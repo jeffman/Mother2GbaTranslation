@@ -11,6 +11,8 @@ namespace ScriptTool
     {
         private static int[] virtualWidths;
         private static int[] renderWidths;
+        private static int[] virtualWidthsSaturn;
+        private static int[] renderWidthsSaturn;
 
         public IEnumerable<IControlCode> ControlCodes { get; set; }
         public Dictionary<string, int> AddressMap { get; set; }
@@ -19,13 +21,18 @@ namespace ScriptTool
         static Compiler()
         {
             byte[] widths = File.ReadAllBytes("m2-widths-main.bin");
+            byte[] saturnWidths = File.ReadAllBytes("m2-widths-saturn.bin");
             virtualWidths = new int[widths.Length / 2];
             renderWidths = new int[widths.Length / 2];
+            virtualWidthsSaturn = new int[saturnWidths.Length / 2];
+            renderWidthsSaturn = new int[saturnWidths.Length / 2];
 
             for (int i = 0; i < widths.Length; i += 2)
             {
                 virtualWidths[i / 2] = widths[i];
                 renderWidths[i / 2] = widths[i + 1];
+                virtualWidthsSaturn[i / 2] = saturnWidths[i];
+                renderWidthsSaturn[i / 2] = saturnWidths[i + 1];
             }
         }
 
@@ -312,6 +319,7 @@ namespace ScriptTool
             var sb = new StringBuilder();
             widths = new List<int>();
             int currentWidth = 0;
+            bool useSaturnWidths = false;
 
             var strings = new List<string>();
 
@@ -382,13 +390,18 @@ namespace ScriptTool
                             case 0x11:
                             case 0x12:
                             case 0x15:
-                            case 0x1A:
                             case 0x2D:
                             case 0x9F:
                             case 0xAD:
-                                // Name/item code
+                                // Name code
                                 sb.Append("[NAME]");
                                 currentWidth += 60;
+                                break;
+
+                            case 0x1A:
+                                // Name (60/96) or item (80/??) or number (36/72).
+                                sb.Append("[NAME]");
+                                currentWidth += 80;
                                 break;
 
                             case 0x0:
@@ -403,18 +416,17 @@ namespace ScriptTool
                                 break;
 
                             case 0x20:
-                                sb.Append("[SMAAASH]");
+                                sb.Append("[SMAAAASH!!]");
                                 currentWidth += 72;
                                 break;
 
                             case 0x21:
-                                sb.Append("[YOU WIN]");
+                                sb.Append("[YOU WON!]");
                                 currentWidth += 72;
                                 break;
 
                             case 0x23:
                             case 0x63:
-                            case 0x98:
                             case 0xB7:
                                 sb.Append("[MONEY]");
                                 currentWidth += 36;
@@ -432,10 +444,17 @@ namespace ScriptTool
                                 currentWidth += 18;
                                 break;
 
-                            case 0x1E:
                             case 0x1F:
                                 sb.Append("_");
                                 currentWidth += 10;
+                                break;
+
+                            case 0x7B:
+                                useSaturnWidths = true;
+                                break;
+
+                            case 0x7C:
+                                useSaturnWidths = false;
                                 break;
                         }
                     }
@@ -458,7 +477,8 @@ namespace ScriptTool
                     if (!(str[i] == '\r') && !(str[i] == '\n'))
                     {
                         sb.Append(str[i]);
-                        currentWidth += virtualWidths[GetByte(str[i], charLookup) - 0x50];
+                        int v = GetByte(str[i], charLookup) - 0x50;
+                        currentWidth += useSaturnWidths ? virtualWidthsSaturn[v] : virtualWidths[v];
                     }
                     i++;
                 }

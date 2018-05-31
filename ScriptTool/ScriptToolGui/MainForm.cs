@@ -365,7 +365,7 @@ namespace ScriptToolGui
                 }
                 else
                 {
-                    m12String.BackColor = Color.White;
+                    m12String.BackColor = SystemColors.Control;
                 }
             }
 
@@ -459,12 +459,12 @@ namespace ScriptToolGui
                 }
                 else
                 {
-                    m12String.BackColor = Color.White;
+                    m12String.BackColor = SystemColors.Control;
                 }
             }
             else
             {
-                m12String.BackColor = Color.White;
+                m12String.BackColor = SystemColors.Control;
             }
 
             previousNavigationState = new ReferenceNavigationEntry(game, label);

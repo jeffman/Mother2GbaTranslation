@@ -329,14 +329,14 @@
       "OffsetLocation": 11632544,
       "OldPointer": 11630355,
       "Old": "パパ[00 FF]",
-      "New": "Mom[00 FF]"
+      "New": "Dad[00 FF]"
     },
     {
       "Index": 47,
       "OffsetLocation": 11632548,
       "OldPointer": 11630359,
       "Old": "ママ[00 FF]",
-      "New": "Dad[00 FF]"
+      "New": "Mom[00 FF]"
     },
     {
       "Index": 48,
@@ -992,7 +992,7 @@
       "OffsetLocation": 11632916,
       "OldPointer": 11632192,
       "Old": "     [01 FF] わたす [01 FF] すてる [01 FF] せつめい[00 FF]",
-      "New": "misc8B[00 FF]"
+      "New": "[01 FF][5F FF 08]Give[01 FF][5F FF 08]Drop[01 FF][5F FF 08]Help![00 FF]"
     },
     {
       "Index": 140,

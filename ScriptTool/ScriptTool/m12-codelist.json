@@ -19,7 +19,6 @@
     "Identifier": 0x3,
     "Description": "Display menu string set {0:X}",
     "Length": 4,
-    "SuppressNextEnd": true
   },
   {
     "Identifier": 0x4,
@@ -47,7 +46,7 @@
   },
   {
     "Identifier": 0xC,
-    "Description": "Party leader's name",
+    "Description": "Party leader's name (1C 11 69)",
     "Length": 2
   },
   {
@@ -57,17 +56,17 @@
   },
   {
     "Identifier": 0xE,
-    "Description": "Paula's name (1C 02 02)",
+    "Description": "Paula's name (1C 02 02 or 1C 01 1E)",
     "Length": 2
   },
   {
     "Identifier": 0xF,
-    "Description": "Jeff's name (1C 02 03)",
+    "Description": "Jeff's name (1C 02 03 or 1C 01 34)",
     "Length": 2
   },
   {
     "Identifier": 0x10,
-    "Description": "Poo's name (1C 02 04)",
+    "Description": "Poo's name (1C 02 04 or 1C 01 4A)",
     "Length": 2
   },
   {
@@ -87,7 +86,7 @@
   },
   {
     "Identifier": 0x15,
-    "Description": "King's name (1C 02 07)",
+    "Description": "King's name (1C 02 07 or 1C 01 03)",
     "Length": 2
   },
   {
@@ -102,7 +101,7 @@
   },
   {
     "Identifier": 0x1A,
-    "Description": "Display string {0:X}? (Appears after 90 FF)",
+    "Description": "Display string in string slot as kind {0:X} (Appears after 90 FF)",
     "Length": 4
   },
   {
@@ -112,7 +111,7 @@
   },
   {
     "Identifier": 0x1C,
-    "Description": "If flag {0:X} is set, jump to offset {1:X} and return (06)",
+    "Description": "If flag {0:X} is set, jump to offset {1:X} and don't return (06)",
     "Length": 8,
     "HasReferences": true,
     "ReferenceOffset": 4
@@ -144,7 +143,7 @@
   },
   {
     "Identifier": 0x22,
-    "Description": "Unknown",
+    "Description": "Wait with prompt, even in battle (14, sometimes used in place of 03)",
     "Length": 2
   },
   {
@@ -199,7 +198,7 @@
   },
   {
     "Identifier": 0x2E,
-    "Description": "Show main text window (18 01 01)",
+    "Description": "Display the player's name for the second prompt (08 _L4699_)",
     "Length": 2
   },
   {
@@ -234,7 +233,7 @@
   },
   {
     "Identifier": 0x64,
-    "Description": "Call special event (value pushed with FC FF?) (1F 41)",
+    "Description": "Purge first NPC from party? (1F 65)",
     "Length": 2
   },
   {
@@ -463,7 +462,7 @@
   },
   {
     "Identifier": 0x90,
-    "Description": "Load character/item name {0:X} into memory (?)",
+    "Description": "Store {0:X} to string slot (for 1A FF printing). If 00, store argumentary memory to string slot.",
     "Length": 3
   },
   {
@@ -596,12 +595,12 @@
   },
   {
     "Identifier": 0xA9,
-    "Description": "Unknown (1F EA, values don't match)",
+    "Description": "Apply 'cutscene' visual/sound FX associated with sprite {0:X}? (1F EA, values don't match)",
     "Length": 4
   },
   {
     "Identifier": 0xAA,
-    "Description": "Unknown (1F E7, values don't match)",
+    "Description": "Apply 'cutscene' visual/sound FX associated with A0 FF-generate sprite {0:X}? (1F E7, values don't match)",
     "Length": 4
   },
   {
@@ -723,7 +722,7 @@
   },
   {
     "Identifier": 0xC2,
-    "Description": "Copy party leader to memory; appears before 1A FF 05 00 (1C 11 69)",
+    "Description": "Copy party leader to string slot; appears before 1A FF 05 00",
     "Length": 2
   },
   {
@@ -753,7 +752,7 @@
   },
   {
     "Identifier": 0xC8,
-    "Description": "Number selector with {0:X} digits (1F 52)",
+    "Description": "Number selector with {0:X} digits and {1:X} style (1F 52)",
     "Length": 4
   },
   {
@@ -1008,7 +1007,7 @@
   },
   {
     "Identifier": 0xFC,
-    "Description": "Unknown; load some kind of value into memory? Observed: [FC FF 06 00] [64 FF] == [1F 41 06]",
+    "Description": "Call special event/code (1F 41)",
     "Length": 4
   },
   {
