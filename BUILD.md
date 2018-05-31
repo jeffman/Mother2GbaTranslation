@@ -12,9 +12,10 @@ a translated MOTHER 1+2 ROM:
     1. Name the MOTHER 1+2 ROM `m12fresh.gba` and place it in the repository
        folder.
     2. Name the EarthBound ROM `eb.smc` and put it in the same folder.
-2. Build the build (see below).
-3. Build the script (see below).
-4. Build the hack and insert it into the ROM (see below).
+2. Download [armips](https://buildbot.orphis.net/armips/) and copy `armips.exe` to the repository folder
+3. Build the build (see below).
+4. Build the script (see below).
+5. Build the hack and insert it into the ROM (see below).
 
 ## Building the build
 
