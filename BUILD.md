@@ -12,7 +12,7 @@ a translated MOTHER 1+2 ROM:
     1. Name the MOTHER 1+2 ROM `m12fresh.gba` and place it in the repository
        folder.
     2. Name the EarthBound ROM `eb.smc` and put it in the same folder.
-2. Download [armips](https://buildbot.orphis.net/armips/) and copy `armips.exe` to the repository folder
+2. Download [armips](https://buildbot.orphis.net/armips/) and copy `armips.exe` to the repository folder.
 3. Build the build (see below).
 4. Build the script (see below).
 5. Build the hack and insert it into the ROM (see below).
@@ -48,7 +48,7 @@ script. It will be located in ScriptTool\ScriptTool\bin\Debug\ScriptTool.exe.
 
 This is a command-line tool. Syntax:
 
-`ScriptTool.exe -compiled -main -misc <working folder path>`
+`ScriptTool.exe -compile -main -misc <working folder path>`
 
 There's no batch file for this, although I ought to make one. You will have to
 run this every time you make a change to the script.
