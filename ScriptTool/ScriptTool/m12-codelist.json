@@ -487,7 +487,7 @@
   },
   {
     "Identifier": 0x95,
-    "Description": "Jump table with return (09)",
+    "Description": "Jump table with no return (09)",
     "IsVariableLength": true,
     "HasReferences": true,
     "ReferenceOffset": 3
