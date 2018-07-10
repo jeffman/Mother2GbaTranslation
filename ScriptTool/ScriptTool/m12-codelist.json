@@ -253,7 +253,7 @@
   },
   {
     "Identifier": 0x68,
-    "Description": "Clear main text window (sometimes used in place of 18 01 01)",
+    "Description": "Clear main text window (18 06, sometimes used in place of 18 01 01)",
     "Length": 2
   },
   {
@@ -381,14 +381,14 @@
   },
   {
     "Identifier": 0x81,
-    "Description": "If binary flag is set, jump to offset {0:X} and return (1B 03)",
+    "Description": "If binary flag is set, jump to offset {0:X} and don't return (1B 03)",
     "Length": 6,
     "HasReferences": true,
     "ReferenceOffset": 2
   },
   {
     "Identifier": 0x82,
-    "Description": "If binary flag is unset, jump to offset {0:X} and return (1B 02)",
+    "Description": "If binary flag is unset, jump to offset {0:X} and don't return (1B 02)",
     "Length": 6,
     "HasReferences": true,
     "ReferenceOffset": 2
@@ -717,7 +717,7 @@
   },
   {
     "Identifier": 0xC1,
-    "Description": "Unknown (19 1F)",
+    "Description": "Return the ID of the item or power being used (19 1F)",
     "Length": 2
   },
   {
@@ -872,7 +872,7 @@
   },
   {
     "Identifier": 0xE1,
-    "Description": "Unknown (19 18, value matches)",
+    "Description": "Set binary flag if character {0:X} can gain exp (19 18, value matches)",
     "Length": 4
   },
   {
@@ -882,12 +882,12 @@
   },
   {
     "Identifier": 0xE3,
-    "Description": "Unknown (19 21 00)",
+    "Description": "Store eat/drink categorization in working memory? (19 21 00)",
     "Length": 2
   },
   {
     "Identifier": 0xE4,
-    "Description": "Unknown (19 25 00)",
+    "Description": "Set binary flag if a condiment is being used (19 25 00)",
     "Length": 2
   },
   {
