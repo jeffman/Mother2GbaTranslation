@@ -7,14 +7,14 @@
       "OffsetLocation": 11632360,
       "OldPointer": 11629604,
       "Old": " はなす  グッズ[01 FF] PSI  そうび[01 FF] チェック つよさ[00 FF]",
-      "New": "[5F FF 08]Talk[5F FF 30]Goods[01 FF][5F FF 08]PSI[5F FF 30]Equip[01 FF][5F FF 08]Check[5F FF 30]Status[00 FF]"
+      "New": "[5F FF 08]Talk to[5F FF 30]Goods[01 FF][5F FF 08]PSI[5F FF 30]Equip[01 FF][5F FF 08]Check[5F FF 30]Status[00 FF]"
     },
     {
       "Index": 1,
       "OffsetLocation": 11632364,
       "OldPointer": 11629637,
       "Old": " はなす  グッズ[01 FF]      そうび[01 FF] チェック つよさ[00 FF]",
-      "New": "[5F FF 08]Talk[5F FF 30]Goods[01 FF][5F FF 30]Equip[01 FF][5F FF 08]Check[5F FF 30]Status[00 FF]"
+      "New": "[5F FF 08]Talk to[5F FF 30]Goods[01 FF][5F FF 30]Equip[01 FF][5F FF 08]Check[5F FF 30]Status[00 FF]"
     },
     {
       "Index": 2,
@@ -28,7 +28,7 @@
       "OffsetLocation": 11632372,
       "OldPointer": 11629679,
       "Old": "はなす[00 FF]",
-      "New": "Talk[00 FF]"
+      "New": "Talk to[00 FF]"
     },
     {
       "Index": 4,
