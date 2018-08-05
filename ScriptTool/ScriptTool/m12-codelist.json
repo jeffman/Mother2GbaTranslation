@@ -198,7 +198,7 @@
   },
   {
     "Identifier": 0x2E,
-    "Description": "Display the player's name for the second prompt (08 _L4699_)",
+    "Description": "Display the player's name for the second prompt (1C 01 01)",
     "Length": 2
   },
   {
@@ -248,7 +248,7 @@
   },
   {
     "Identifier": 0x67,
-    "Description": "Unknown (19 28)",
+    "Description": "With secondary memory = N, return the Nth character of the second player name and set binary flag if it exists (19 28 01)",
     "Length": 2
   },
   {
