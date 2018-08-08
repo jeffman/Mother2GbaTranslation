@@ -749,6 +749,22 @@ mov  r3,#1
 orr  r0,r3
 strh r0,[r2,r1] // Master interrupt control
 
+ldr  r2,=#0x4000050
+mov  r0,#0x81
+strh r0,[r2,#0] // Set blending mode to whiteness for BG0
+mov  r4,#0x10
+strh r4,[r2,#4]
+
+swi #5
+
+ldr r0,=#disclaimer_graphics
+ldr r1,=#0x6008000
+swi #0x12
+
+swi #5
+
+ldr r2,=#0x4000000
+
 // Enable BG0
 ldrh r0,[r2,#0]
 mov  r1,#1
@@ -794,9 +810,6 @@ add  r0,#2
 add  r2,#1
 cmp  r2,r1
 blt  -
-ldr r0,=#disclaimer_graphics
-ldr r1,=#0x6008000
-swi #0x12
 
 
 
