@@ -691,7 +691,7 @@
       "OffsetLocation": 11632744,
       "OldPointer": 11631260,
       "Old": "プレーヤーの なまえ:[00 FF]",
-      "New": "misc60[00 FF]"
+      "New": "Register your name, please[00 FF]"
     },
     {
       "Index": 97,
@@ -705,14 +705,14 @@
       "OffsetLocation": 11632752,
       "OldPointer": 11631423,
       "Old": " ア カ サ タ ナ ハ マ ヤ ラ ワ ァ ッ ー ·[01 FF] イ キ シ チ ニ ヒ ミ   リ   ィ     ··[01 FF] ウ ク ス ツ ヌ フ ム ユ ル ヲ ゥ ャ   /[01 FF] エ ケ セ テ ネ ヘ メ   レ   ェ ュ \" ♪[01 FF] オ コ ソ ト ノ ホ モ ヨ ロ ン ォ ョ ° ◯[00 FF]",
-      "New": "misc62[00 FF]"
+      "New": "[5F FF 08]a[5F FF 18]b[5F FF 28]c[5F FF 38]d[5F FF 48]e[5F FF 58]f[5F FF 68]g[5F FF 78]h[5F FF 88]i[5F FF B8]-[5F FF C8]#[01 FF][5F FF 08]j[5F FF 18]k[5F FF 28]l[5F FF 38]m[5F FF 48]n[5F FF 58]o[5F FF 68]p[5F FF 78]q[5F FF 88]r[5F FF B8]'[5F FF C8]~[01 FF][5F FF 08]s[5F FF 18]t[5F FF 28]u[5F FF 38]v[5F FF 48]w[5F FF 58]x[5F FF 68]y[5F FF 78]z[5F FF B8].[5F FF C8]/[01 FF][5F FF 08]0[5F FF 18]1[5F FF 28]2[5F FF 38]3[5F FF 48]4[5F FF 58]5[5F FF 68]6[5F FF 78]7[5F FF 88]8[5F FF 98]9[5F FF B8]![5F FF C8]|[01 FF][5F FF 08]CAPITAL[5F FF 40]small[5F FF B8]?[5F FF C8]\\[01 FF][5F FF 90]Backspace[5F FF D0]OK[00 FF]"
     },
     {
       "Index": 99,
       "OffsetLocation": 11632756,
       "OldPointer": 11631573,
       "Old": " A B C D E F G H I       ー ·[01 FF] J K L M N O P Q R         ··[01 FF] S T U V W X Y Z           /[01 FF]                         \" ♪[01 FF] 0 1 2 3 4 5 6 7 8 9     ° ◯[00 FF]",
-      "New": "misc63[00 FF]"
+      "New": "[5F FF 08]A[5F FF 18]B[5F FF 28]C[5F FF 38]D[5F FF 48]E[5F FF 58]F[5F FF 68]G[5F FF 78]H[5F FF 88]I[5F FF B8]-[5F FF C8]#[01 FF][5F FF 08]J[5F FF 18]K[5F FF 28]L[5F FF 38]M[5F FF 48]N[5F FF 58]O[5F FF 68]P[5F FF 78]Q[5F FF 88]R[5F FF B8]'[5F FF C8]~[01 FF][5F FF 08]S[5F FF 18]T[5F FF 28]U[5F FF 38]V[5F FF 48]W[5F FF 58]X[5F FF 68]Y[5F FF 78]Z[5F FF B8].[5F FF C8]/[01 FF][5F FF 08]0[5F FF 18]1[5F FF 28]2[5F FF 38]3[5F FF 48]4[5F FF 58]5[5F FF 68]6[5F FF 78]7[5F FF 88]8[5F FF 98]9[5F FF B8]![5F FF C8]|[01 FF][5F FF 08]CAPITAL[5F FF 40]small[5F FF B8]?[5F FF C8]\\[01 FF][5F FF 90]Backspace[5F FF D0]OK[00 FF]"
     },
     {
       "Index": 100,
@@ -726,7 +726,7 @@
       "OffsetLocation": 11632764,
       "OldPointer": 11631735,
       "Old": "もどる   おわり[00 FF]",
-      "New": "misc65[00 FF]"
+      "New": "[00 FF]"
     },
     {
       "Index": 102,
@@ -908,7 +908,7 @@
       "OffsetLocation": 11632868,
       "OldPointer": 11632058,
       "Old": "◆·······················[00 FF]",
-      "New": "@.....[00 FF]"
+      "New": "@#######################[00 FF]"
     },
     {
       "Index": 128,
