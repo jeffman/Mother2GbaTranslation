@@ -3,6 +3,12 @@
 echo Copying fresh ROM...
 copy /Y m12fresh.gba m12.gba
 
+:: Compile text files
+echo Compiling text files...
+pushd ScriptTool\ScriptTool\bin\Debug
+ScriptTool.exe -compile -main -misc "..\..\..\..\working" "..\..\..\..\eb.smc" "..\..\..\..\m12fresh.gba"
+popd
+
 :: Assemble includes
 echo Assembling includes...
 pushd working
