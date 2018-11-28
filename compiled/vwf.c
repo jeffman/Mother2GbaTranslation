@@ -310,6 +310,11 @@ void print_blankstr(int x, int y, int width)
     clear_rect(x, y, width, 2, WINDOW_AREA_BG);
 }
 
+void print_blankstr_window(int x, int y, int width, WINDOW* window)
+{
+    print_blankstr(x + window->window_x, y + window->window_y, width);
+}
+
 void copy_tile(int xSource, int ySource, int xDest, int yDest)
 {
     int sourceTileIndex = get_tile_number(xSource, ySource) + *tile_offset;

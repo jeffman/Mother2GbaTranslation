@@ -45,6 +45,7 @@ void clear_rect(int x, int y, int width, int height, int pixels);
 void clear_rect_ram(int *dest, int tileCount, int pixels);
 void clear_window(WINDOW *window);
 void print_blankstr(int x, int y, int width);
+void print_blankstr_window(int x, int y, int width, WINDOW* window);
 void copy_tile(int xSource, int ySource, int xDest, int yDest);
 void copy_tile_up(int x, int y);
 void print_space(WINDOW *window);
