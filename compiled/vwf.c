@@ -274,8 +274,12 @@ int print_string(byte *str, int x, int y)
 
 void clear_tile(int x, int y, int pixels)
 {
+    // Clear pixels
     int tileIndex = get_tile_number(x, y) + *tile_offset;
     cpufastset(&pixels, &vram[tileIndex * 8], CPUFASTSET_FILL | 8);
+
+    // Reset the tilemap (e.g. get rid of equip or SMAAAASH!! tiles)
+    (*tilemap_pointer)[x + (y * 32)] = tileIndex | *palette_mask;
 }
 
 void clear_rect(int x, int y, int width, int height, int pixels)
