@@ -559,6 +559,18 @@ b       0x80D3A14
 // Ignore the hard-coded Japanese "and cohorts"
 .org 0x80DB0E6 :: b 0x80DB0FE
 
+//---------------------------------------------------------
+// BEB6C hacks (Goods sub-menu)
+//---------------------------------------------------------
+
+// When entering first sub-menu:
+.org 0x80BEC5E :: nop // Don't clear upper letter tile
+.org 0x80BEC6A :: nop // Don't clear lower letter tile
+.org 0x80BF050 :: nop :: nop // Don't clear the window
+.org 0x80BF0FE :: nop // Don't print upper letter tile
+.org 0x80BF10E :: nop // Don't print lower letter tile
+.org 0x80BF14C :: nop // Don't print upper equip tile
+.org 0x80BF15C :: nop // Don't print lower equip tile
 
 //==============================================================================
 // Data files
