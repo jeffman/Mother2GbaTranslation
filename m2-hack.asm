@@ -650,6 +650,7 @@ m2_enemy_attributes:
 .definelabel m2_player1             ,0x3001F50
 .definelabel m2_soundeffect         ,0x8001720
 .definelabel m2_psitargetwindow     ,0x80B8AE0
+.definelabel m2_isequipped          ,0x80BC670
 .definelabel m2_swapwindowbuf       ,0x80BD7AC
 .definelabel m2_strlookup           ,0x80BE260
 .definelabel m2_initwindow          ,0x80BE458
@@ -660,6 +661,7 @@ m2_enemy_attributes:
 .definelabel m2_printstr_hlight     ,0x80C96F0
 .definelabel m2_printnextch         ,0x80C980C
 .definelabel m2_scrolltext          ,0x80CA4BC
+.definelabel m2_clearwindowtiles    ,0x80CA834
 
 
 //==============================================================================
