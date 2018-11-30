@@ -692,7 +692,7 @@ m2_enemy_attributes:
 .definelabel m2_printnextch         ,0x80C980C
 .definelabel m2_scrolltext          ,0x80CA4BC
 .definelabel m2_clearwindowtiles    ,0x80CA834
-
+.definelabel m2_printmenu           ,0x80C1C98
 
 //==============================================================================
 // Code files
