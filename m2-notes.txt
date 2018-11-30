@@ -179,7 +179,7 @@ Window structure:
       0xFFF8:   unused
   0x04 - 0x07:  start address of text being displayed
   0x08 - 0x0B:  same as above?
-  0x0C - 0x13:  unused?
+  0x0C - 0x13:  menu text pointer
   0x14 - 0x17:  text address offset
   0x18 - 0x1B:  ?
   0x1C - 0x1F:  ? (some kind of offset; used when printing nameable things?)

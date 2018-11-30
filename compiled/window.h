@@ -4,7 +4,7 @@ typedef struct WINDOW {
     unsigned short pixel_x;
     int* text_start;
     int* text_start2;
-    int unknown1;
+    int* menu_text;
     int unknown2;
     int text_offset;
     int unknown3;
