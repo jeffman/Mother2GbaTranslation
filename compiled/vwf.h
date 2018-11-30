@@ -49,6 +49,7 @@ void print_blankstr_window(int x, int y, int width, WINDOW* window);
 void copy_tile(int xSource, int ySource, int xDest, int yDest);
 void copy_tile_up(int x, int y);
 void print_space(WINDOW *window);
+int print_string(byte *str, int x, int y);
 
 extern unsigned short m2_coord_table[];
 extern int m2_bits_to_nybbles[];
