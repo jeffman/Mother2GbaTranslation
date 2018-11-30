@@ -148,6 +148,7 @@ b       0x80C5726
 //---------------------------------------------------------
 
 .org 0x80C203E :: mov r1,0x14 // new PSI name entry length
+.org 0x80C2096 :: mov r1,0x14
 .org 0x80C21B4 :: mov r1,0x14
 .org 0x80C224A :: mov r1,0x14
 .org 0x80C229E :: mov r1,0x14
