@@ -501,6 +501,23 @@ b       0x80D3A14
 .org 0x80E0A16 :: bl e06ec_redraw_bash_psi
 
 //---------------------------------------------------------
+// [68 FF] - clear window
+//---------------------------------------------------------
+
+.org m2_clearwindowtiles
+push    {r4,lr}
+mov     r4,r0
+
+// Clear out the pixel data
+bl      clear_window
+
+// Reset the X/Y printing coordinates
+mov     r0,0
+strh    r0,[r4,0x2A]
+strh    r0,[r4,0x2C]
+pop     {r4,pc}
+
+//---------------------------------------------------------
 // BD918 hacks (battle setup)
 //---------------------------------------------------------
 
