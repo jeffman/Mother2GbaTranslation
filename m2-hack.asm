@@ -590,6 +590,30 @@ pop     {r4,pc}
 .org 0x80BF14C :: nop // Don't print upper equip tile
 .org 0x80BF15C :: nop // Don't print lower equip tile
 
+//---------------------------------------------------------
+// C1C98 hacks (menu selection)
+//---------------------------------------------------------
+
+// Print the selection menu string
+.org 0x80C1CA6
+ldr     r7,=0x3005270
+ldr     r6,=0x30051EC
+ldr     r5,=0x3005228
+bl      print_menu_string
+ldr     r0,=0x3002500
+mov     r10,r0
+b       0x80C1D20
+.pool
+
+.org 0x80C8EFC
+ldrh    r1,[r5,0x2C]
+mov     r0,0
+ldrh    r2,[r5,0x26]
+mov     r3,r5
+bl      print_blankstr_window
+b       0x80C8FE8
+
+
 //==============================================================================
 // Data files
 //==============================================================================
@@ -692,7 +716,7 @@ m2_enemy_attributes:
 .definelabel m2_printnextch         ,0x80C980C
 .definelabel m2_scrolltext          ,0x80CA4BC
 .definelabel m2_clearwindowtiles    ,0x80CA834
-.definelabel m2_printmenu           ,0x80C1C98
+.definelabel m2_menuwindow          ,0x80C1C98
 
 //==============================================================================
 // Code files
