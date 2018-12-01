@@ -473,6 +473,9 @@ namespace ScriptTool
             // Enemy names
             CompileM12MiscStringCollection("m12-enemynames", ref referenceAddress);
 
+            // Menu choices
+            CompileM12MiscStringCollection("m12-menuchoices", ref referenceAddress);
+
             // PSI names
             var newPsiPointers = CompileM12FixedStringCollection("m12-psinames", ref referenceAddress);
 
