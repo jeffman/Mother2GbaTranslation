@@ -255,6 +255,7 @@ void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground)
 
 // Returns: ____XXXX = number of characters printed
 //          XXXX____ = number of pixels printed
+// x, y: pixels
 int print_string(byte *str, int x, int y)
 {
     byte chr;
@@ -272,6 +273,7 @@ int print_string(byte *str, int x, int y)
     return (charCount & 0xFFFF) | (totalWidth << 16);
 }
 
+// x,y: tile coordinates
 void clear_tile(int x, int y, int pixels)
 {
     // Clear pixels
@@ -282,6 +284,7 @@ void clear_tile(int x, int y, int pixels)
     (*tilemap_pointer)[x + (y * 32)] = tileIndex | *palette_mask;
 }
 
+// x,y: tile coordinates
 void clear_rect(int x, int y, int width, int height, int pixels)
 {
     for (int tileY = 0; tileY < height; tileY++)
@@ -305,16 +308,19 @@ void clear_window(WINDOW *window)
         WINDOW_AREA_BG);
 }
 
+// x, y, width: tile coordinates
 void print_blankstr(int x, int y, int width)
 {
     clear_rect(x, y, width, 2, WINDOW_AREA_BG);
 }
 
+// x, y, width: tile coordinates
 void print_blankstr_window(int x, int y, int width, WINDOW* window)
 {
     print_blankstr(x + window->window_x, y + window->window_y, width);
 }
 
+// x,y: tile coordinates
 void copy_tile(int xSource, int ySource, int xDest, int yDest)
 {
     int sourceTileIndex = get_tile_number(xSource, ySource) + *tile_offset;
@@ -322,6 +328,7 @@ void copy_tile(int xSource, int ySource, int xDest, int yDest)
     cpufastset(&vram[sourceTileIndex * 8], &vram[destTileIndex * 8], 8);
 }
 
+// x,y: tile coordinates
 void copy_tile_up(int x, int y)
 {
     copy_tile(x, y, x, y - 2);
