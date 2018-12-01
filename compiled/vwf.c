@@ -258,8 +258,11 @@ void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground)
 // x, y: pixels
 int print_string(byte *str, int x, int y)
 {
+    if (str == NULL)
+        return 0;
+
     byte chr;
-    int initialX = x;
+    int initial_x = x;
     int charCount = 0;
 
     while (str[1] != 0xFF)
@@ -268,7 +271,7 @@ int print_string(byte *str, int x, int y)
         charCount++;
     }
 
-    int totalWidth = x - initialX;
+    int totalWidth = x - initial_x;
 
     return (charCount & 0xFFFF) | (totalWidth << 16);
 }
