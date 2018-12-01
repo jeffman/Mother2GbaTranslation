@@ -7,7 +7,7 @@
       "OffsetLocation": 11639400,
       "OldPointer": 11638964,
       "Old": "    はい     いいえ[00 FF]",
-      "New": "    Yes     No[00 FF]"
+      "New": "[5F FF 20]Yes[5F FF 58]No[00 FF]"
     },
     {
       "Index": 1,

@@ -19,6 +19,9 @@
 #define WINDOW_HEADER_Y 0x11
 #define WINDOW_HEADER_TILE (WINDOW_HEADER_X + (WINDOW_HEADER_Y * 32))
 
+#define CUSTOMCC_SET_X 0x5F
+#define CUSTOMCC_ADD_X 0x60
+
 unsigned short *tile_offset = (unsigned short*)0x30051EC;
 unsigned short *palette_mask = (unsigned short*)0x3005228;
 unsigned short **tilemap_pointer = (unsigned short**)0x3005270;
@@ -52,6 +55,7 @@ void copy_tile(int xSource, int ySource, int xDest, int yDest);
 void copy_tile_up(int x, int y);
 void print_space(WINDOW *window);
 int print_string(byte *str, int x, int y);
+int print_menu_string(WINDOW* window);
 
 extern unsigned short m2_coord_table[];
 extern int m2_bits_to_nybbles[];

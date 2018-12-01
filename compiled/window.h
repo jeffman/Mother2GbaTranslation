@@ -26,7 +26,7 @@ typedef struct WINDOW {
     int unknown6;
     int unknown7;
     unsigned short page;
-    unsigned short unknown8;
+    unsigned short cursor_delta;
     int unknown9;
     int unknown10;
     int unknown11;

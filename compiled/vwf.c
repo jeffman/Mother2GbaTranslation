@@ -276,6 +276,73 @@ int print_string(byte *str, int x, int y)
     return (charCount & 0xFFFF) | (totalWidth << 16);
 }
 
+int print_menu_string(WINDOW* window)
+{
+    byte *menu_text = window->menu_text;
+    if (menu_text == NULL)
+        return 0;
+
+    int x = window->window_x << 3;
+    int y = (window->window_y + window->text_y) << 3;
+
+    byte chr;
+    int initial_x = x;
+    int charCount = 0;
+    bool looping = true;
+    int set_count = 0;
+    byte first_set_value = 0;
+
+    while (looping)
+    {
+        if (menu_text[1] == 0xFF)
+        {
+            switch (menu_text[0])
+            {
+                case CUSTOMCC_SET_X:
+                {
+                    byte set_value = menu_text[2];
+                    x = set_value + initial_x;
+                    menu_text += 3;
+
+                    set_count++;
+                    if (set_count == 1)
+                    {
+                        first_set_value = set_value;
+                    }
+                    else if (set_count == 2)
+                    {
+                        // If we're calling SET the second time, update the
+                        // window cursor delta to be the difference between
+                        // the two set values
+                        window->cursor_delta = (set_value - first_set_value) >> 3;
+                    }
+
+                    break;
+                }
+                case CUSTOMCC_ADD_X:
+                    x += menu_text[2];
+                    menu_text += 3;
+                    break;
+                default:
+                    looping = false;
+                    break;
+            }
+        }
+        else
+        {
+            x += print_character(decode_character(*menu_text++), x, y, 0, 0xF);
+            charCount++;
+        }
+    }
+
+    window->text_x = (x / 8) - window->window_x;
+    window->pixel_x = x & 7;
+
+    int totalWidth = x - initial_x;
+
+    return (charCount & 0xFFFF) | (totalWidth << 16);
+}
+
 // x,y: tile coordinates
 void clear_tile(int x, int y, int pixels)
 {
