@@ -1,5 +1,7 @@
-typedef unsigned char byte;
-#define QUESTION_MARK 0x1F;
+#include "types.h"
+
+#define NULL (0)
+#define QUESTION_MARK 0x1F
 #define CPUFASTSET_FILL (0x1000000)
 #define TRUE 1
 #define FALSE 0

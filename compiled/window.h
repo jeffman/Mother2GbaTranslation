@@ -1,10 +1,12 @@
+#include "types.h"
+
 //typedef struct WINDOW WINDOW;
 typedef struct WINDOW {
     unsigned short flags;
     unsigned short pixel_x;
-    int* text_start;
-    int* text_start2;
-    int* menu_text;
+    byte* text_start;
+    byte* text_start2;
+    byte* menu_text;
     int unknown2;
     int text_offset;
     int unknown3;
