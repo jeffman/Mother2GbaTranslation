@@ -17,6 +17,7 @@ Text conversion:
   Karmageddon
   Masaru
   Sterophonick
+  Normmatt
 
 Special thanks:
   TragicManner
