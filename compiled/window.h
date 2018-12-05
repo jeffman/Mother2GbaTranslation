@@ -1,6 +1,5 @@
 #include "types.h"
 
-//typedef struct WINDOW WINDOW;
 typedef struct WINDOW {
     unsigned short flags;
     unsigned short pixel_x;
