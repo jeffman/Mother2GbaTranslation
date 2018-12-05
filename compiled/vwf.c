@@ -45,7 +45,12 @@ byte reduce_bit_depth(int row, int foreground)
     return lower | (upper << 4);
 }
 
-byte print_character(byte chr, int x, int y, int font, int foreground)
+byte print_character(byte chr, int x, int y)
+{
+    return print_character_formatted(chr, x, y, 0, 0xF);
+}
+
+byte print_character_formatted(byte chr, int x, int y, int font, int foreground)
 {
     // 0x64 to 0x6C (inclusive) is YOU WON
     if ((chr >= YOUWON_START) && (chr <= YOUWON_END))
@@ -248,7 +253,7 @@ void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground)
     int x = window->pixel_x + (window->window_x + window->text_x) * 8;
     int y = (window->window_y + window->text_y) * 8;
 
-    x += print_character(chr, x, y, font, foreground);
+    x += print_character_formatted(chr, x, y, font, foreground);
 
     window->pixel_x = x & 7;
     window->text_x = (x >> 3) - window->window_x;
@@ -268,7 +273,7 @@ int print_string(byte *str, int x, int y)
 
     while (str[1] != 0xFF)
     {
-        x += print_character(decode_character(*str++), x, y, 0, 0xF);
+        x += print_character(decode_character(*str++), x, y);
         charCount++;
     }
 
@@ -331,7 +336,7 @@ int print_menu_string(WINDOW* window)
         }
         else
         {
-            x += print_character(decode_character(*menu_text++), x, y, 0, 0xF);
+            x += print_character(decode_character(*menu_text++), x, y);
             charCount++;
         }
     }
@@ -409,4 +414,28 @@ void print_space(WINDOW *window)
 {
     byte space = SPACE;
     weld_entry(window, &space);
+}
+
+// Prints the dollar sign, the zeroes, and (optionally if style == 1) the 00 symbol
+void print_number_menu(WINDOW* window, int style)
+{
+    // Print a $ sign (0x54) at (32, 32) pixels
+    int x = (window->window_x << 3) + 32;
+    int y = (window->window_y << 3) + 32;
+
+    print_character(decode_character(0x54), x, y);
+    x += 8;
+
+    // Print the zeroes (0x60)
+    for (int i = 0; i < window->cursor_delta; i++)
+    {
+        print_character(decode_character(0x60), x, y);
+        x += 8;
+    }
+
+    // Print the 00 symbol (0x56)
+    if (style == 1)
+    {
+        print_character(decode_character(0x56), x, y);
+    }
 }

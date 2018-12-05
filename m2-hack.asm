@@ -613,6 +613,28 @@ mov     r3,r5
 bl      print_blankstr_window
 b       0x80C8FE8
 
+//---------------------------------------------------------
+// BCF00 hacks (number selection menu)
+//---------------------------------------------------------
+
+// Skip printing the first four columns of blank tiles
+.org 0x80BCF88 :: nop
+.org 0x80BCF98 :: nop
+.org 0x80BCFA4 :: nop
+.org 0x80BCFAE :: nop
+.org 0x80BCFBA :: nop
+.org 0x80BCFC6 :: nop
+.org 0x80BCFD0 :: nop
+.org 0x80BCFD8 :: nop
+
+// Print dollar sign, zeroes, and 00 symbol
+.org 0x80BCFDE
+ldr     r1,=0x3005238
+ldr     r0,[r1]          // Get window pointer
+mov     r1,r9
+bl      print_number_menu
+b       0x80BD084
+.pool
 
 //==============================================================================
 // Data files
