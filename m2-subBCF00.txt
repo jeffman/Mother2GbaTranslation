@@ -1,0 +1,309 @@
+r0: number of digits
+r1: style
+    1: show 00 symbol
+    other: don't show 00 symbol
+
+    080BCF00 (T)  push    r4-r7,r14
+    080BCF02 (T)  mov     r7,r9
+    080BCF04 (T)  mov     r6,r8
+    080BCF06 (T)  push    r6,r7
+    080BCF08 (T)  mov     r5,r0
+    080BCF0A (T)  lsl     r5,r5,10h
+    080BCF0C (T)  lsr     r5,r5,10h
+    080BCF0E (T)  lsl     r1,r1,10h
+    080BCF10 (T)  lsr     r1,r1,10h
+    080BCF12 (T)  mov     r9,r1
+
+    // Load window pointer
+    080BCF14 (T)  ldr     r4,=3005230h
+    080BCF16 (T)  ldr     r0,[r4,8h]
+
+    080BCF18 (T)  mov     r1,0h
+    080BCF1A (T)  mov     r2,0h
+    080BCF1C (T)  strh    r2,[r0,32h]         // ?
+    080BCF1E (T)  ldr     r0,[r4,8h]
+    080BCF20 (T)  strh    r2,[r0,34h]         // cursor X
+    080BCF22 (T)  ldr     r0,[r4,8h]
+    080BCF24 (T)  strh    r2,[r0,36h]         // cursor Y
+    080BCF26 (T)  ldr     r0,[r4,8h]
+    080BCF28 (T)  add     r0,42h
+    080BCF2A (T)  strb    r5,[r0]             // cursor delta (actually the number of digits)
+    080BCF2C (T)  ldr     r0,[r4,8h]
+    080BCF2E (T)  strh    r2,[r0,3Eh]         // ?
+    080BCF30 (T)  ldr     r0,[r4,8h]
+    080BCF32 (T)  ldr     r0,[r0,10h]         // r0 is a struct that holds the current number selection buffer
+    080BCF34 (T)  strb    r1,[r0,15h]
+    080BCF36 (T)  strb    r1,[r0,14h]
+    080BCF38 (T)  strb    r1,[r0,13h]
+    080BCF3A (T)  strb    r1,[r0,12h]
+    080BCF3C (T)  strb    r1,[r0,19h]
+    080BCF3E (T)  strb    r1,[r0,18h]
+    080BCF40 (T)  strb    r1,[r0,17h]
+    080BCF42 (T)  strb    r1,[r0,16h]
+    080BCF44 (T)  mov     r0,0h
+    080BCF46 (T)  mov     r1,0F0h
+    080BCF48 (T)  mov     r2,14h
+    080BCF4A (T)  mov     r3,5h
+    080BCF4C (T)  bl      8000364h            // not sure what this does
+
+    080BCF50 (T)  ldr     r1,=3005270h
+    080BCF52 (T)  ldr     r2,[r4,8h]
+    080BCF54 (T)  mov     r3,24h
+    080BCF56 (T)  ldsh    r0,[r2,r3]
+    080BCF58 (T)  add     r0,4h
+    080BCF5A (T)  lsl     r0,r0,6h
+    080BCF5C (T)  ldr     r1,[r1]
+    080BCF5E (T)  add     r1,r1,r0
+    080BCF60 (T)  mov     r3,22h
+    080BCF62 (T)  ldsh    r0,[r2,r3]
+    080BCF64 (T)  lsl     r0,r0,1h
+    080BCF66 (T)  add     r1,r1,r0
+    080BCF68 (T)  mov     r12,r1              // tilemap pointer to start of 3rd row
+
+    // Populate the first four slots with empty tiles
+    080BCF6A (T)  ldr     r0,=8B1B4B0h
+    080BCF6C (T)  mov     r8,r0
+    080BCF6E (T)  mov     r1,r8
+    080BCF70 (T)  add     r1,9Ah
+    080BCF72 (T)  ldr     r4,=30051ECh
+    080BCF74 (T)  ldrh    r0,[r4]
+    080BCF76 (T)  ldrh    r1,[r1]
+    080BCF78 (T)  add     r0,r0,r1
+    080BCF7A (T)  lsl     r0,r0,10h
+    080BCF7C (T)  lsr     r6,r0,10h
+    080BCF7E (T)  ldr     r7,=3005228h
+    080BCF80 (T)  ldrh    r1,[r7]
+    080BCF82 (T)  mov     r0,r6
+    080BCF84 (T)  orr     r0,r1
+    080BCF86 (T)  mov     r1,r12
+    080BCF88 (T)  strh    r0,[r1]
+    080BCF8A (T)  mov     r2,r12
+    080BCF8C (T)  add     r2,40h
+    080BCF8E (T)  mov     r3,r6
+    080BCF90 (T)  add     r3,20h
+    080BCF92 (T)  ldrh    r1,[r7]
+    080BCF94 (T)  mov     r0,r3
+    080BCF96 (T)  orr     r0,r1
+    080BCF98 (T)  strh    r0,[r2]
+    080BCF9A (T)  mov     r2,2h
+    080BCF9C (T)  add     r12,r2
+    080BCF9E (T)  mov     r0,r6
+    080BCFA0 (T)  orr     r0,r1
+    080BCFA2 (T)  mov     r1,r12
+    080BCFA4 (T)  strh    r0,[r1]
+    080BCFA6 (T)  add     r1,40h
+    080BCFA8 (T)  ldrh    r2,[r7]
+    080BCFAA (T)  mov     r0,r3
+    080BCFAC (T)  orr     r0,r2
+    080BCFAE (T)  strh    r0,[r1]
+    080BCFB0 (T)  mov     r0,2h
+    080BCFB2 (T)  add     r12,r0
+    080BCFB4 (T)  mov     r0,r6
+    080BCFB6 (T)  orr     r0,r2
+    080BCFB8 (T)  mov     r1,r12
+    080BCFBA (T)  strh    r0,[r1]
+    080BCFBC (T)  mov     r2,r12
+    080BCFBE (T)  add     r2,40h
+    080BCFC0 (T)  ldrh    r1,[r7]
+    080BCFC2 (T)  mov     r0,r3
+    080BCFC4 (T)  orr     r0,r1
+    080BCFC6 (T)  strh    r0,[r2]
+    080BCFC8 (T)  mov     r2,2h
+    080BCFCA (T)  add     r12,r2
+    080BCFCC (T)  orr     r6,r1
+    080BCFCE (T)  mov     r0,r12
+    080BCFD0 (T)  strh    r6,[r0]
+    080BCFD2 (T)  add     r0,40h
+    080BCFD4 (T)  ldrh    r2,[r7]
+    080BCFD6 (T)  orr     r3,r2
+    080BCFD8 (T)  strh    r3,[r0]
+    // end populating the first 4 tiles with blanks
+
+    // Print dollar sign
+    080BCFDA (T)  mov     r1,2h
+    080BCFDC (T)  add     r12,r1
+    080BCFDE (T)  mov     r1,0FAh
+    080BCFE0 (T)  lsl     r1,r1,1h
+    080BCFE2 (T)  add     r1,r8
+    080BCFE4 (T)  ldrh    r0,[r4]
+    080BCFE6 (T)  ldrh    r1,[r1]
+    080BCFE8 (T)  add     r0,r0,r1
+    080BCFEA (T)  lsl     r0,r0,10h
+    080BCFEC (T)  lsr     r6,r0,10h
+    080BCFEE (T)  mov     r0,r6
+    080BCFF0 (T)  orr     r0,r2
+    080BCFF2 (T)  mov     r2,r12
+    080BCFF4 (T)  strh    r0,[r2]
+    080BCFF6 (T)  add     r2,40h
+    080BCFF8 (T)  mov     r0,r6
+    080BCFFA (T)  add     r0,20h
+    080BCFFC (T)  ldrh    r1,[r7]
+    080BCFFE (T)  orr     r0,r1
+    080BD000 (T)  strh    r0,[r2]
+
+    // Print a zero for each digit
+    080BD002 (T)  mov     r3,2h
+    080BD004 (T)  add     r12,r3
+    080BD006 (T)  mov     r1,0E0h
+    080BD008 (T)  lsl     r1,r1,1h
+    080BD00A (T)  add     r1,r8
+    080BD00C (T)  ldrh    r0,[r4]
+    080BD00E (T)  ldrh    r1,[r1]
+    080BD010 (T)  add     r0,r0,r1
+    080BD012 (T)  lsl     r0,r0,10h
+    080BD014 (T)  lsr     r6,r0,10h
+    080BD016 (T)  mov     r4,0h
+    080BD018 (T)  lsl     r5,r5,10h
+    080BD01A (T)  asr     r5,r5,10h
+    080BD01C (T)  cmp     r4,r5
+    080BD01E (T)  bge     80BD050h
+    080BD020 (T)  mov     r3,r7
+    080BD022 (T)  mov     r7,r6
+    080BD024 (T)  add     r7,20h
+    080BD026 (T)  ldrh    r1,[r3]
+    080BD028 (T)  mov     r0,r6
+    080BD02A (T)  orr     r0,r1
+    080BD02C (T)  mov     r1,r12
+    080BD02E (T)  strh    r0,[r1]
+    080BD030 (T)  mov     r2,r12
+    080BD032 (T)  add     r2,40h
+    080BD034 (T)  ldrh    r1,[r3]
+    080BD036 (T)  mov     r0,r7
+    080BD038 (T)  orr     r0,r1
+    080BD03A (T)  strh    r0,[r2]
+    080BD03C (T)  lsl     r0,r4,10h
+    080BD03E (T)  mov     r2,80h
+    080BD040 (T)  lsl     r2,r2,9h
+    080BD042 (T)  add     r0,r0,r2
+    080BD044 (T)  mov     r1,2h
+    080BD046 (T)  add     r12,r1
+    080BD048 (T)  lsr     r4,r0,10h
+    080BD04A (T)  asr     r0,r0,10h
+    080BD04C (T)  cmp     r0,r5
+    080BD04E (T)  blt     80BD026h
+
+    // If style == 1, draw the 00 symbol
+    080BD050 (T)  mov     r2,r9
+    080BD052 (T)  cmp     r2,1h
+    080BD054 (T)  bne     80BD084h
+    080BD056 (T)  ldr     r1,=8B1B4B0h
+    080BD058 (T)  mov     r3,0EAh
+    080BD05A (T)  lsl     r3,r3,1h
+    080BD05C (T)  add     r1,r1,r3
+    080BD05E (T)  ldr     r0,=30051ECh
+    080BD060 (T)  ldrh    r0,[r0]
+    080BD062 (T)  ldrh    r1,[r1]
+    080BD064 (T)  add     r0,r0,r1
+    080BD066 (T)  lsl     r0,r0,10h
+    080BD068 (T)  lsr     r6,r0,10h
+    080BD06A (T)  ldr     r3,=3005228h
+    080BD06C (T)  ldrh    r1,[r3]
+    080BD06E (T)  mov     r0,r6
+    080BD070 (T)  orr     r0,r1
+    080BD072 (T)  mov     r1,r12
+    080BD074 (T)  strh    r0,[r1]
+    080BD076 (T)  mov     r2,r12
+    080BD078 (T)  add     r2,40h
+    080BD07A (T)  mov     r0,r6
+    080BD07C (T)  add     r0,20h
+    080BD07E (T)  ldrh    r1,[r3]
+    080BD080 (T)  orr     r0,r1
+    080BD082 (T)  strh    r0,[r2]
+
+    // Does a whole bunch of stuff, some relating to party members,
+    // some relating to updating the text scroll registers, but I don't
+    // think it has anything to do with rendering text
+    080BD084 (T)  ldr     r4,=3005230h
+    080BD086 (T)  bl      80BD844h
+
+    // Takes care of inputs and drawing the cursor
+    // Returns 1 if user pressed A/L, -1 if user pressed B, 0 otherwise
+    080BD08A (T)  ldr     r0,[r4,8h]
+    080BD08C (T)  bl      80C9444h
+
+    // If A/B/L is pressed:
+        080BD090 (T)  lsl     r0,r0,10h
+        080BD092 (T)  cmp     r0,0h
+        080BD094 (T)  beq     80BD118h
+        080BD096 (T)  ldr     r1,=3005270h
+        080BD098 (T)  ldr     r3,[r4,8h]
+        080BD09A (T)  mov     r2,24h
+        080BD09C (T)  ldsh    r0,[r3,r2]
+        080BD09E (T)  add     r0,4h               // Start clearing the 5th row of tiles (3rd row of text)
+        080BD0A0 (T)  lsl     r0,r0,6h
+        080BD0A2 (T)  ldr     r1,[r1]
+        080BD0A4 (T)  add     r1,r1,r0
+        080BD0A6 (T)  mov     r2,22h
+        080BD0A8 (T)  ldsh    r0,[r3,r2]
+        080BD0AA (T)  lsl     r0,r0,1h
+        080BD0AC (T)  add     r1,r1,r0
+        080BD0AE (T)  mov     r12,r1
+        080BD0B0 (T)  ldr     r0,=30051ECh
+        080BD0B2 (T)  ldrh    r1,[r0]
+        080BD0B4 (T)  ldr     r0,=1FFh
+        080BD0B6 (T)  add     r2,r1,r0
+        080BD0B8 (T)  ldr     r0,=3005228h
+        080BD0BA (T)  ldrh    r0,[r0]
+        080BD0BC (T)  orr     r2,r0
+        080BD0BE (T)  lsl     r2,r2,10h
+        080BD0C0 (T)  lsr     r6,r2,10h
+        080BD0C2 (T)  add     r1,96h
+        080BD0C4 (T)  orr     r1,r0
+        080BD0C6 (T)  lsl     r1,r1,10h
+        080BD0C8 (T)  lsr     r5,r1,10h
+        080BD0CA (T)  mov     r4,0h
+        080BD0CC (T)  mov     r1,26h
+        080BD0CE (T)  ldsh    r0,[r3,r1]
+        080BD0D0 (T)  cmp     r4,r0
+        080BD0D2 (T)  bge     80BD122h
+        080BD0D4 (T)  ldr     r0,=3005230h
+        080BD0D6 (T)  ldr     r2,[r0,8h]
+        080BD0D8 (T)  mov     r3,r12
+        080BD0DA (T)  strh    r6,[r3]             // Clear a row tile
+        080BD0DC (T)  mov     r0,r12
+        080BD0DE (T)  add     r0,40h
+        080BD0E0 (T)  strh    r6,[r0]             // Clear the tile below it
+        080BD0E2 (T)  add     r0,40h
+        080BD0E4 (T)  strh    r5,[r0]             // Clear the window border tile (gets rid of the number cursor)
+        080BD0E6 (T)  lsl     r0,r4,10h
+        080BD0E8 (T)  mov     r1,80h
+        080BD0EA (T)  lsl     r1,r1,9h
+        080BD0EC (T)  add     r0,r0,r1
+        080BD0EE (T)  mov     r3,2h
+        080BD0F0 (T)  add     r12,r3
+        080BD0F2 (T)  lsr     r4,r0,10h
+        080BD0F4 (T)  asr     r0,r0,10h
+        080BD0F6 (T)  mov     r3,26h
+        080BD0F8 (T)  ldsh    r1,[r2,r3]
+        080BD0FA (T)  cmp     r0,r1
+        080BD0FC (T)  blt     80BD0D8h            // Clear columns until we hit the window width
+        080BD0FE (T)  b       80BD122h
+        080BD100 (T)  strh    r0,[r6,r0]
+        080BD102 (T)  lsl     r0,r0,0Ch
+        080BD104 (T)  strh    r0,[r6,r1]
+        080BD106 (T)  lsl     r0,r0,0Ch
+        080BD108 (T)  push    r4,r5,r7
+        080BD10A (T)  lsr     r1,r6,2h
+        080BD10C (T)  str     r4,[r5,r7]
+        080BD10E (T)  lsl     r0,r0,0Ch
+        080BD110 (T)  strh    r0,[r5,r0]
+        080BD112 (T)  lsl     r0,r0,0Ch
+        080BD114 (T)  lsl     r7,r7,7h
+        080BD116 (T)  lsl     r0,r0,0h
+
+
+    080BD118 (T)  ldr     r0,=30009F8h
+    080BD11A (T)  mov     r1,0h
+    080BD11C (T)  ldsh    r0,[r0,r1]
+    080BD11E (T)  cmp     r0,1h
+    080BD120 (T)  bne     80BD086h
+    080BD122 (T)  ldr     r0,=3005230h
+    080BD124 (T)  ldr     r1,[r0,8h]
+    080BD126 (T)  mov     r0,0h
+    080BD128 (T)  strh    r0,[r1,2Ah]
+    080BD12A (T)  pop     r3,r4
+    080BD12C (T)  mov     r8,r3
+    080BD12E (T)  mov     r9,r4
+    080BD130 (T)  pop     r4-r7
+    080BD132 (T)  pop     r1
+    080BD134 (T)  bx      r1

@@ -179,7 +179,8 @@ Window structure:
       0xFFF8:   unused
   0x04 - 0x07:  start address of text being displayed
   0x08 - 0x0B:  same as above?
-  0x0C - 0x13:  menu text pointer
+  0x0C - 0x0F:  menu text pointer
+  0x10 - 0x13:  ?
   0x14 - 0x17:  text address offset
   0x18 - 0x1B:  ?
   0x1C - 0x1F:  ? (some kind of offset; used when printing nameable things?)
@@ -197,7 +198,8 @@ Window structure:
   0x36 - 0x37:  cursor Y
   0x38 - 0x3F:  ?
   0x40 - 0x41:  page number?
-  0x42 - 0x43:  cursor delta
+  0x42       :  cursor delta
+  0x43       :  unused?
   0x44 - 0x4F:  ?
 
 Custom codes
