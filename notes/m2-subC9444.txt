@@ -1,0 +1,274 @@
+// Called from BCF00 (number selection menu)
+// r0: window
+// Returns -1 if cancelled, (value + 1) if confirmed, 0 otherwise (e.g. nothing pressed)
+
+080C9444    push    {r4-r7,r14}
+080C9446    mov     r6,r0
+
+// Clear the cursor tile at the current cursor position
+080C9448    ldr     r1,=#0x3005270
+080C944A    mov     r2,#0x24
+080C944C    ldsh    r0,[r6,r2] // window Y
+080C944E    add     r0,#0x6    // bottom border of the window (we're just assuming it's 6 tiles tall I guess)
+080C9450    lsl     r0,r0,#0x6
+080C9452    ldr     r1,[r1]    // tilemap base
+080C9454    add     r1,r1,r0
+080C9456    mov     r2,#0x22
+080C9458    ldsh    r0,[r6,r2] // window X
+080C945A    lsl     r0,r0,#0x1
+080C945C    add     r1,r1,r0
+080C945E    mov     r4,r6
+080C9460    add     r4,#0x42
+080C9462    ldrb    r0,[r4]      // cursor delta
+080C9464    lsl     r0,r0,#0x1
+080C9466    add     r1,r1,r0
+080C9468    mov     r2,#0x34
+080C946A    ldsh    r0,[r6,r2]   // cursor X
+080C946C    lsl     r0,r0,#0x1
+080C946E    sub     r1,r1,r0
+080C9470    ldr     r0,=#0x30051EC
+080C9472    ldrh    r0,[r0]      // tile offset
+080C9474    add     r0,#0x96
+080C9476    lsl     r0,r0,#0x10
+080C9478    lsr     r5,r0,#0x10
+080C947A    ldr     r0,=#0x3005228
+080C947C    ldrh    r0,[r0]      // palette mask
+080C947E    orr     r5,r0
+080C9480    strh    r5,[r1,#0x8] // store the default window border tile at X+4 (skip the 4 blank spaces at the start of the selection menu)
+
+// Check for left button
+080C9482    ldr     r0,=#0x3002500
+080C9484    ldrh    r1,[r0]
+080C9486    mov     r0,#0x20
+080C9488    and     r0,r1
+080C948A    cmp     r0,#0x0
+080C948C    beq     #0x80C94AA
+080C948E    mov     r0,#0x97
+080C9490    lsl     r0,r0,#0x1
+080C9492    bl      m2_soundeffect
+080C9496    ldrh    r0,[r6,#0x34]
+080C9498    add     r0,#0x1 // increment cursor X
+080C949A    strh    r0,[r6,#0x34]
+080C949C    mov     r1,#0x34
+080C949E    ldsh    r0,[r6,r1]
+080C94A0    ldrb    r4,[r4]
+080C94A2    cmp     r0,r4
+080C94A4    blt     #0x80C94AA
+080C94A6    mov     r0,#0x0
+080C94A8    strh    r0,[r6,#0x34] // wrap around to 0 if we go too far
+
+// Check for right button
+080C94AA    ldr     r0,=#0x3002500
+080C94AC    ldrh    r1,[r0]
+080C94AE    mov     r0,#0x10
+080C94B0    and     r0,r1
+080C94B2    mov     r7,r6
+080C94B4    add     r7,#0x42
+080C94B6    cmp     r0,#0x0
+080C94B8    beq     #0x80C94D4
+080C94BA    mov     r0,#0x97
+080C94BC    lsl     r0,r0,#0x1
+080C94BE    bl      m2_soundeffect
+080C94C2    ldrh    r0,[r6,#0x34]
+080C94C4    sub     r0,#0x1 // decrement cursor X
+080C94C6    strh    r0,[r6,#0x34]
+080C94C8    lsl     r0,r0,#0x10
+080C94CA    cmp     r0,#0x0
+080C94CC    bge     #0x80C94D4
+080C94CE    ldrb    r0,[r7]
+080C94D0    sub     r0,#0x1
+080C94D2    strh    r0,[r6,#0x34] // wrap around to (delta - 1) if we go too far
+
+// Check for up button
+080C94D4    ldr     r0,=#0x3002500
+080C94D6    ldrh    r1,[r0]
+080C94D8    mov     r0,#0x40
+080C94DA    and     r0,r1
+080C94DC    cmp     r0,#0x0
+080C94DE    beq     #0x80C950A
+080C94E0    ldr     r0,=#0x12F
+080C94E2    bl      m2_soundeffect
+080C94E6    ldr     r1,[r6,#0x10]
+080C94E8    mov     r2,#0x34
+080C94EA    ldsh    r0,[r6,r2]
+080C94EC    add     r1,#0x12
+080C94EE    add     r1,r1,r0
+080C94F0    ldrb    r0,[r1]
+080C94F2    add     r0,#0x1 // increment current digit
+080C94F4    strb    r0,[r1]
+080C94F6    ldr     r0,[r6,#0x10]
+080C94F8    mov     r2,#0x34
+080C94FA    ldsh    r1,[r6,r2]
+080C94FC    add     r0,#0x12
+080C94FE    add     r1,r0,r1
+080C9500    ldrb    r0,[r1]
+080C9502    cmp     r0,#0x9
+080C9504    bls     #0x80C950A
+080C9506    mov     r0,#0x0
+080C9508    strb    r0,[r1] // wrap around to 0 if we go too far
+
+// Check for down button
+080C950A    ldr     r0,=#0x3002500
+080C950C    ldrh    r1,[r0]
+080C950E    mov     r0,#0x80
+080C9510    and     r0,r1
+080C9512    cmp     r0,#0x0
+080C9514    beq     #0x80C9540
+080C9516    ldr     r0,=#0x12F
+080C9518    bl      m2_soundeffect
+080C951C    ldr     r1,[r6,#0x10]
+080C951E    mov     r2,#0x34
+080C9520    ldsh    r0,[r6,r2]
+080C9522    add     r1,#0x12
+080C9524    add     r1,r1,r0
+080C9526    ldrb    r0,[r1]
+080C9528    sub     r0,#0x1 // decrement current digit
+080C952A    strb    r0,[r1]
+080C952C    ldr     r0,[r6,#0x10]
+080C952E    mov     r2,#0x34
+080C9530    ldsh    r1,[r6,r2]
+080C9532    add     r0,#0x12
+080C9534    add     r1,r0,r1
+080C9536    ldrb    r0,[r1]
+080C9538    cmp     r0,#0xA
+080C953A    bls     #0x80C9540
+080C953C    mov     r0,#0x9
+080C953E    strb    r0,[r1] // wrap around to 9 if we go too far
+
+// Print the number under the cursor
+    080C9540    ldr     r1,=#0x3005270
+    080C9542    mov     r2,#0x24
+    080C9544    ldsh    r0,[r6,r2]
+    080C9546    add     r0,#0x4
+    080C9548    lsl     r0,r0,#0x6
+    080C954A    ldr     r2,[r1]
+    080C954C    add     r2,r2,r0
+    080C954E    mov     r1,#0x22
+    080C9550    ldsh    r0,[r6,r1]
+    080C9552    lsl     r0,r0,#0x1
+    080C9554    add     r2,r2,r0
+    080C9556    ldrb    r0,[r7] // cursor delta
+    080C9558    lsl     r0,r0,#0x1
+    080C955A    add     r2,r2,r0
+    080C955C    mov     r0,#0x34
+    080C955E    ldsh    r1,[r6,r0]
+    080C9560    lsl     r0,r1,#0x1
+    080C9562    sub     r2,r2,r0
+    080C9564    ldr     r0,[r6,#0x10]
+    080C9566    add     r0,#0x12
+    080C9568    add     r0,r0,r1
+    080C956A    ldrb    r0,[r0] // digit
+
+    // Printing is done in here
+    080C956C    mov     r5,r0
+    080C956E    add     r5,#0xE0
+    080C9570    ldr     r0,=#0x8B1B4B0
+    080C9572    lsl     r1,r5,#0x1
+    080C9574    add     r1,r1,r0
+    080C9576    ldr     r4,=#0x30051EC
+    080C9578    ldrh    r0,[r4]
+    080C957A    ldrh    r1,[r1]
+    080C957C    add     r0,r0,r1
+    080C957E    lsl     r0,r0,#0x10
+    080C9580    lsr     r5,r0,#0x10
+    080C9582    ldr     r3,=#0x3005228
+    080C9584    ldrh    r1,[r3]
+    080C9586    mov     r0,r5
+    080C9588    orr     r0,r1
+    080C958A    strh    r0,[r2,#0x8]
+    080C958C    mov     r1,r2
+    080C958E    add     r1,#0x48
+    080C9590    mov     r0,r5
+    080C9592    add     r0,#0x20
+    080C9594    ldrh    r3,[r3]
+    080C9596    orr     r0,r3
+    080C9598    strh    r0,[r1]
+
+    // Draw the cursor
+    080C959A    add     r2,#0x88
+    080C959C    ldrh    r0,[r4]
+    080C959E    add     r0,#0xB8
+    080C95A0    lsl     r0,r0,#0x10
+    080C95A2    lsr     r5,r0,#0x10
+    080C95A4    orr     r5,r3
+    080C95A6    strh    r5,[r2]
+
+// Check for A/L button
+    080C95A8    ldr     r0,=#0x3002500
+    080C95AA    ldrh    r1,[r0]
+    080C95AC    ldr     r0,=#0x201
+    080C95AE    and     r0,r1
+    080C95B0    cmp     r0,#0x0
+    080C95B2    beq     #0x80C9610
+    080C95B4    ldr     r0,=#0x12D
+    080C95B6    bl      m2_soundeffect
+
+    // Get the entire numeric value of the user's input into r4
+    080C95BA    mov     r4,#0x0
+    080C95BC    mov     r1,#0x1
+    080C95BE    mov     r5,#0x0
+    080C95C0    ldrb    r2,[r7]
+    080C95C2    cmp     r4,r2
+    080C95C4    bcs     #0x80C95E4
+    080C95C6    ldr     r0,[r6,#0x10]
+    080C95C8    mov     r3,r0
+    080C95CA    add     r3,#0x12
+    080C95CC    add     r0,r3,r5
+    080C95CE    ldrb    r0,[r0]
+    080C95D0    mul     r0,r1
+    080C95D2    add     r4,r4,r0
+    080C95D4    add     r0,r5,1
+    080C95D6    lsl     r0,r0,#0x10
+    080C95D8    lsr     r5,r0,#0x10
+    080C95DA    lsl     r0,r1,#0x2
+    080C95DC    add     r0,r0,r1
+    080C95DE    lsl     r1,r0,#0x1
+    080C95E0    cmp     r5,r2
+    080C95E2    bcc     #0x80C95CC
+
+    // Store result to window variable
+    080C95E4    mov     r0,r4
+    080C95E6    bl      #0x80A334C
+
+    // Return (value + 1)
+    080C95EA    add     r4,#0x1
+    080C95EC    mov     r0,r4
+    080C95EE    b       #0x80C962E
+    080C95F0    strh    r0,[r6,r1]
+    080C95F2    lsl     r0,r0,#0xC
+    080C95F4    str     r4,[r5,r7]
+    080C95F6    lsl     r0,r0,#0xC
+    080C95F8    strh    r0,[r5,r0]
+    080C95FA    lsl     r0,r0,#0xC
+    080C95FC    mov     r5,#0x0
+    080C95FE    lsl     r0,r0,#0xC
+    080C9600    lsl     r7,r5,#0x4
+    080C9602    lsl     r0,r0,#0x0
+    080C9604    push    {r4,r5,r7}
+    080C9606    lsr     r1,r6,#0x2
+    080C9608    lsl     r1,r0,#0x8
+    080C960A    lsl     r0,r0,#0x0
+    080C960C    lsl     r5,r5,#0x4
+    080C960E    lsl     r0,r0,#0x0
+
+// Check for B/select button
+080C9610    mov     r0,#0x6
+080C9612    and     r0,r1
+080C9614    cmp     r0,#0x0
+080C9616    bne     #0x80C961C
+
+// If not B/select, return 0 and don't write result to window variable
+080C9618    mov     r0,#0x0
+080C961A    b       #0x80C962E
+
+// If B/select, play sound effect, write 0 to window variable, and return -1
+080C961C    mov     r0,#0x97
+080C961E    lsl     r0,r0,#0x1
+080C9620    bl      m2_soundeffect
+080C9624    mov     r0,#0x0
+080C9626    bl      #0x80A334C
+080C962A    mov     r0,#0x1
+080C962C    neg     r0,r0
+080C962E    pop     {r4-r7}
+080C9630    pop     {r1}
+080C9632    bx      r1

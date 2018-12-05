@@ -216,14 +216,14 @@ other: don't show 00 symbol
 080BD086 (T)  bl      80BD844h
 
 // Takes care of inputs and drawing the cursor and numbers
-// Returns 1 if user pressed A/L, -1 if user pressed B, 0 otherwise
+// Returns (value+1) if user pressed A/L, -1 if user pressed B/select, 0 otherwise
 080BD08A (T)  ldr     r0,[r4,8h]
 080BD08C (T)  bl      80C9444h
+080BD090 (T)  lsl     r0,r0,10h
+080BD092 (T)  cmp     r0,0h
+080BD094 (T)  beq     80BD118h
 
-// If A/B/L is pressed:
-    080BD090 (T)  lsl     r0,r0,10h
-    080BD092 (T)  cmp     r0,0h
-    080BD094 (T)  beq     80BD118h
+// If button is pressed:
     080BD096 (T)  ldr     r1,=3005270h
     080BD098 (T)  ldr     r3,[r4,8h]
     080BD09A (T)  mov     r2,24h

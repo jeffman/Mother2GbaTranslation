@@ -58,6 +58,8 @@ void print_space(WINDOW *window);
 int print_string(byte *str, int x, int y);
 int print_menu_string(WINDOW* window);
 void print_number_menu(WINDOW* window, int style);
+void print_number_menu_current(byte digit, WINDOW* window);
+void clear_number_menu(WINDOW* window);
 
 extern unsigned short m2_coord_table[];
 extern int m2_bits_to_nybbles[];

@@ -636,6 +636,32 @@ bl      print_number_menu
 b       0x80BD084
 .pool
 
+// Clear number selector row
+.org 0x80BD096
+// [r4 + 8] = window
+ldr     r0,[r4,8]
+bl      clear_number_menu
+b       0x80BD122
+
+// Clear border tiles
+
+//---------------------------------------------------------
+// C9444 hacks (print number selection menu)
+//---------------------------------------------------------
+
+// Print the proper character
+.org 0x80C956C
+push    {r2}
+// r0 = digit, r6 = window
+mov     r1,r6
+bl      print_number_menu_current
+pop     {r2}
+ldr     r3,=0x3005228
+ldr     r4,=0x30051EC
+ldrh    r3,[r3]
+b       0x080C959A
+.pool
+
 //==============================================================================
 // Data files
 //==============================================================================

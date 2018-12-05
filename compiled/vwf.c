@@ -439,3 +439,34 @@ void print_number_menu(WINDOW* window, int style)
         print_character(decode_character(0x56), x, y);
     }
 }
+
+// Print the given digit for the number selection menu at the current cursor location
+void print_number_menu_current(byte digit, WINDOW* window)
+{
+    // Skip the 4 blank tiles
+    int x = (window->window_x + (window->cursor_delta - window->cursor_x) + 4) << 3;
+
+    // Skip the first two text rows
+    int y = (window->window_y + 4) << 3;
+
+    // Erase what was there before
+    print_blankstr(x >> 3, y >> 3, 1);
+
+    // Now print the digit
+    print_character(decode_character(digit + 0x60), x, y);
+}
+
+// Clears the number menu of a window
+// More specifically, clear the 3rd row of text and reset the bottom window border
+void clear_number_menu(WINDOW* window)
+{
+    // Clear the text
+    print_blankstr_window(0, 4, window->window_width, window);
+
+    // Reset the border (6th tile row)
+    unsigned short border_tile = (*tile_offset + 0x96) | *palette_mask;
+    for (int i = 0; i < window->window_width; i++)
+    {
+        (*tilemap_pointer)[window->window_x + i + ((window->window_y + 6) * 32)] = border_tile;
+    }
+}
