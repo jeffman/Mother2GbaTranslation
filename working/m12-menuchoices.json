@@ -14,7 +14,7 @@
       "OffsetLocation": 11639404,
       "OldPointer": 11638980,
       "Old": "   ヒキダス    アズケル[00 FF]",
-      "New": "   Withdraw  Deposit[00 FF]"
+      "New": "[5F FF 18]Withdraw[5F FF 60]Deposit[00 FF]"
     },
     {
       "Index": 2,

@@ -36,6 +36,7 @@ int expand_bit_depth(byte row, int foreground);
 byte reduce_bit_depth(int row, int foreground);
 byte print_character(byte chr, int x, int y);
 byte print_character_formatted(byte chr, int x, int y, int font, int foreground);
+byte print_character_to_window(byte chr, WINDOW* window);
 void print_special_character(int tile, int x, int y);
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
     int *dest, int (*getTileCallback)(int, int), int useTilemap);

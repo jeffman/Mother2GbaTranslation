@@ -470,3 +470,18 @@ void clear_number_menu(WINDOW* window)
         (*tilemap_pointer)[window->window_x + i + ((window->window_y + 6) * 32)] = border_tile;
     }
 }
+
+// Prints a character to a window, and updates the window's text position
+byte print_character_to_window(byte chr, WINDOW* window)
+{
+    int x = ((window->window_x + window->text_x) << 3) + window->pixel_x;
+    int y = (window->window_y + window->text_y) << 3;
+
+    byte width = print_character(chr, x, y);
+    x += width;
+
+    window->pixel_x = x & 7;
+    window->text_x = (x >> 3) - window->window_x;
+
+    return width;
+}
