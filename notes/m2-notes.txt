@@ -57,7 +57,8 @@ Hard-coded characters:
            0x01: Teleport alpha
            0x08: Teleport beta
 0x3001FA4: Escargo Express items (36 of them)
-0x30023D4: current money balance
+0x30023D0: current cash balance
+0x30023D4: current ATM balance
 0x3002500: buttons being pressed
 0x30051EC: tile offset (usually 0x100)
 0x3005224: menu depth
@@ -149,6 +150,7 @@ Subroutines
 80D31F8: related to printing numbers outside of battle (r0 = window)
 80D332C: related to printing names in battle (r0 = window)
 80D3560: related to printing numbers outside of battle (r0 = window)
+80D3858: related to printing numbers
 80D7154: count party members and store to 3000AA2
          then do some other stuff to the windows -- possibly drawing the HP/PP boxes?
 80EBFD4: copy string from r0, of max length r1, to battle user slot, and terminate with [00 FF]
