@@ -3,14 +3,14 @@
 // int bin_to_bcd(int binary)
 // In:
 //    r0: binary number
+//    r1: out pointer; amount of digits used will be returned here
 // Out:
 //    r0: BCD-coded number
-//    r1: amount of digits used
 //==============================================================================
 
 bin_to_bcd:
 
-push    {r2-r7,lr}
+push    {r1-r7,lr}
 mov     r2,r8
 mov     r3,r9
 push    {r2-r3}
@@ -120,6 +120,8 @@ mov     r1,r3
 pop     {r2-r3}
 mov     r8,r2
 mov     r9,r3
+pop     {r2}
+str     r1,[r2]
 pop     {r2-r7,pc}
 
 
@@ -196,77 +198,3 @@ add     r1,r1,r4
 //--------------------------------
 mov     r0,r1
 pop     {r1-r4,pc}
-
-
-//==============================================================================
-// ushort format_cash(int amount, char* output, int digits)
-// In:
-//    r0: amount
-//    r1: output string
-//    r2: digits
-// Out:
-//    r0: = digits - (digits rendered) - 1
-//==============================================================================
-
-format_cash:
-
-push    {r1-r7,lr}
-mov     r4,r1
-mov     r6,r2
-
-//--------------------------------
-// Figure out how many digits we need
-bl      bin_to_bcd
-mov     r5,r1
-mov     r7,r1
-
-// The window is 56 pixels wide:
-// each digit uses 6 pixels, the 0x sign uses 6, and the
-// double-zero uses 8
-mov     r2,42 // = 56 - 6 - 8
-lsl     r3,r1,2
-add     r3,r3,r1
-add     r1,r1,r3 // r1 *= 6
-sub     r1,r2,r1 // r1 = 42 - r1
-
-// Store the control code to the output
-mov     r2,0x5F
-strb    r2,[r4,0]
-mov     r2,0xFF
-strb    r2,[r4,1]
-strb    r1,[r4,2]
-
-// Store the dollar sign
-mov     r2,0x54
-strb    r2,[r4,3]
-add     r4,r4,4
-
-// Store the digits to the output
-mov     r2,8
-sub     r2,r2,r5
-lsl     r2,r2,2
-lsl     r0,r2                // Now the number is pushed to the left of the register
-
-@@prev:
-lsr     r1,r0,28            // Get the left-most digit
-add     r1,0x60             // Integer-to-char
-strb    r1,[r4,0]
-add     r4,r4,1
-lsl     r0,r0,4
-sub     r5,r5,1
-bne     @@prev
-
-// Store the double-zero sign
-mov     r1,0x56
-strb    r1,[r4,0]
-
-// Store the end code
-mov     r1,0
-strb    r1,[r4,1]
-mov     r1,0xFF
-strb    r1,[r4,2]
-
-//--------------------------------
-sub     r5,r6,r7
-sub     r0,r5,1
-pop     {r1-r7,pc}

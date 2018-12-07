@@ -76,3 +76,4 @@ extern byte m12_other_str8[];
 
 extern void cpufastset(void *source, void *dest, int mode);
 extern byte* m2_strlookup(int *offset_table, byte *strings, int index);
+extern int bin_to_bcd(int value, int* digit_count);
