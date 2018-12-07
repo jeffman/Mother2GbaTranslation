@@ -17,7 +17,7 @@ Hard-coded characters:
 0x20251D8: item drop
 0x3000A00: Current PSI list when displaying a PSI window?
 0x3000AA2: number of party members
-
+0x3001300: number to be printed (e.g. withdrawn money amount)
 0x3001D54: Ness items (16 bits each)
 0x3001D70: Ness EXP
 0x3001D80: Ness level
@@ -146,6 +146,7 @@ Subroutines
 80CABF8: print checkboard string (r1) to RAM (r0) at tile ((r2 * 32) + r3)
 80D2E94: print party character name
 80D30C4: related to printing numbers points in battle (r0 = window)
+80D31F8: related to printing numbers outside of battle (r0 = window)
 80D332C: related to printing names in battle (r0 = window)
 80D3560: related to printing numbers outside of battle (r0 = window)
 80D7154: count party members and store to 3000AA2
