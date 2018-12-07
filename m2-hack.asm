@@ -525,6 +525,18 @@ b       0x80D3A14
 .org 0x80E0A16 :: bl e06ec_redraw_bash_psi
 
 //---------------------------------------------------------
+// B89EC hacks (print current cash balance)
+//---------------------------------------------------------
+
+.org 0x80B8A06
+mov     r2,r1
+mov     r1,0x38 // right-align to 56 pixels
+bl      format_cash_window
+b       0x80B8A2E
+
+.org 0x80B785C :: mov r0,0xC // allocate 2 extra bytes for cash window string
+
+//---------------------------------------------------------
 // [68 FF] - clear window
 //---------------------------------------------------------
 

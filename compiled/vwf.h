@@ -12,6 +12,7 @@
 #define YOUWON_END 0x6C
 #define ARROW 0x6D
 #define SPACE 0x50
+#define ZERO 0x60
 
 #define WINDOW_AREA_BG 0x44444444
 #define WINDOW_HEADER_BG 0x33333333
@@ -61,6 +62,7 @@ int print_menu_string(WINDOW* window);
 void print_number_menu(WINDOW* window, int style);
 void print_number_menu_current(byte digit, WINDOW* window);
 void clear_number_menu(WINDOW* window);
+void format_cash_window(int value, int padding, byte* str);
 
 extern unsigned short m2_coord_table[];
 extern int m2_bits_to_nybbles[];

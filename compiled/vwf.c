@@ -485,3 +485,40 @@ byte print_character_to_window(byte chr, WINDOW* window)
 
     return width;
 }
+
+// Write the following, in sequence, to str:
+// [5F FF xx] code to right-align the text to padding pixels
+// Dollar sign (0x54)
+// Digits
+// 00 symbol (0x56)
+// [00 FF] end code
+void format_cash_window(int value, int padding, byte* str)
+{
+    // Convert digits to BCD for easy parsing
+    int digit_count;
+    int bcd = bin_to_bcd(value, &digit_count);
+
+    // Dollar sign is 6 pixels wide, 00 symbol is 8
+    padding -= 14;
+
+    // Subtract 6 pixels for each digit
+    padding -= (6 * digit_count);
+
+    // Control code
+    *str++ = 0x5F;
+    *str++ = 0xFF;
+    *str++ = padding & 0xFF;
+
+    *str++ = 0x54;
+
+    // Write the digits
+    for (int i = 0; i < digit_count; i++)
+    {
+        byte digit = ((bcd >> ((digit_count - 1 - i) * 4)) & 0xF) + ZERO;
+        *str++ = digit;
+    }
+
+    *str++ = 0x56;
+    *str++ = 0;
+    *str++ = 0xFF;
+}
