@@ -243,7 +243,7 @@
   },
   {
     "Identifier": 0x66,
-    "Description": "Unknown (19 1E)",
+    "Description": "Return numerical delta (19 1E)",
     "Length": 2
   },
   {
@@ -323,7 +323,7 @@
   },
   {
     "Identifier": 0x76,
-    "Description": "Show window flavor menu? Argument seems to tell it which string to start with (so a value of 1 will skip the first flavor and show the remaining 6)",
+    "Description": "Display Tenda horn of life trade-in window beginning with prize {0:X}",
     "Length": 4
   },
   {
@@ -422,22 +422,22 @@
   },
   {
     "Identifier": 0x88,
-    "Description": "Copy all memory to storage (1B 00)",
+    "Description": "Copy active memory to storage memory (1B 00)",
     "Length": 2
   },
   {
     "Identifier": 0x89,
-    "Description": "Copy all storage to memory (1B 01)",
+    "Description": "Copy storage memory to active memory (1B 01)",
     "Length": 2
   },
   {
     "Identifier": 0x8A,
-    "Description": "Copy active memory to working memory (1B 05)",
+    "Description": "Back up active memory to RAM copy (1B 05)",
     "Length": 2
   },
   {
     "Identifier": 0x8B,
-    "Description": "Copy working memory to active memory (1B 06)",
+    "Description": "Restore RAM copy of active memory (1B 06)",
     "Length": 2
   },
   {
@@ -610,7 +610,7 @@
   },
   {
     "Identifier": 0xAC,
-    "Description": "Unknown (1C 0F)",
+    "Description": "Print numerical delta (1C 0F)",
     "Length": 2
   },
   {
@@ -867,12 +867,12 @@
   },
   {
     "Identifier": 0xE0,
-    "Description": "May relate to returning cash earned since last phone call to dad (1D 24, value matches)",
+    "Description": "Return cash added by dad to ATM, and reset if {0:X} = 2 (1D 24)",
     "Length": 4
   },
   {
     "Identifier": 0xE1,
-    "Description": "Set binary flag if character {0:X} can gain exp (19 18, value matches)",
+    "Description": "Return amount of exp character {0:X} needs to level up, zero if at max level (19 18)",
     "Length": 4
   },
   {
@@ -882,12 +882,12 @@
   },
   {
     "Identifier": 0xE3,
-    "Description": "Store eat/drink categorization in working memory? (19 21 00)",
+    "Description": "Return food classification (food, drink, or condiment) (19 21 00)",
     "Length": 2
   },
   {
     "Identifier": 0xE4,
-    "Description": "Set binary flag if a condiment is being used (19 25 00)",
+    "Description": "Return the ID of the condiment being used, zero if none (19 25 00)",
     "Length": 2
   },
   {
