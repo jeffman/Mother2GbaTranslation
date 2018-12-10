@@ -24,6 +24,7 @@
 #define CUSTOMCC_ADD_X 0x60
 
 unsigned short *tile_offset = (unsigned short*)0x30051EC;
+int *first_window_flag = (int*)0x30051F0;
 unsigned short *palette_mask = (unsigned short*)0x3005228;
 unsigned short **tilemap_pointer = (unsigned short**)0x3005270;
 int *vram = (int*)0x6000000;
@@ -63,6 +64,7 @@ void print_number_menu(WINDOW* window, int style);
 void print_number_menu_current(byte digit, WINDOW* window);
 void clear_number_menu(WINDOW* window);
 void format_cash_window(int value, int padding, byte* str);
+void handle_first_window(WINDOW* window);
 
 extern unsigned short m2_coord_table[];
 extern int m2_bits_to_nybbles[];
@@ -79,3 +81,5 @@ extern byte m12_other_str8[];
 extern void cpufastset(void *source, void *dest, int mode);
 extern byte* m2_strlookup(int *offset_table, byte *strings, int index);
 extern int bin_to_bcd(int value, int* digit_count);
+extern int m2_drawwindow(WINDOW* window);
+extern int m2_resetwindow(WINDOW* window, bool skip_redraw);

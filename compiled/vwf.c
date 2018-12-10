@@ -522,3 +522,26 @@ void format_cash_window(int value, int padding, byte* str)
     *str++ = 0;
     *str++ = 0xFF;
 }
+
+// The game draws windows lazily: no window will be drawn to the screen until
+// a renderable token is encountered. So it's possible to have text that
+// does stuff in the background without ever showing a window. Lots of doors
+// and hotspots do this for example.
+// When the game first encounters a renderable token, it checks two things:
+// - If the flag at 0x30051F0 is 1, then call m2_resetwindow and set the flag to 0
+// - If the window has flag 0x20 set, then call m2_drawwindow (which unsets the
+//   window flag)
+// See 80CA2C2 for an example. We want to replicate this behaviour sometimes,
+// e.g. for custom control codes that are considered renderable.
+void handle_first_window(WINDOW* window)
+{
+    if (*first_window_flag == 1)
+    {
+        m2_resetwindow(window, false);
+        *first_window_flag = 0;
+    }
+    else if (window->flags & 0x20)
+    {
+        m2_drawwindow(window);
+    }
+}

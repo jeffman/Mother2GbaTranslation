@@ -61,6 +61,7 @@ Hard-coded characters:
 0x30023D4: current ATM balance
 0x3002500: buttons being pressed
 0x30051EC: tile offset (usually 0x100)
+0x30051F0: flag? gets set to 1 when you change rooms, goes back to 0 the first time you open a text window
 0x3005224: menu depth
 0x3005228: current text palette, << 0xC
 0x3005230: addresses of all 11 windows

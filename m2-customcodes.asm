@@ -18,6 +18,13 @@ mov     r4,r0
 // 60 FF XX: Add XX pixels to the renderer
 cmp     r4,0x60
 bne     @@next
+
+// 60 FF should be treated as a renderable code
+push    {r0-r3}
+mov     r0,r5
+bl      handle_first_window
+pop     {r0-r3}
+
 mov     r3,3
 
 // Get the current X offset
@@ -50,6 +57,13 @@ b       @@end
 // 5F FF XX: Set the X value of the renderer
 cmp     r4,0x5F
 bne     @@next2
+
+// 5F FF should be treated as a renderable code
+push    {r0-r3}
+mov     r0,r5
+bl      handle_first_window
+pop     {r0-r3}
+
 mov     r3,3
 
 // Get the new X value

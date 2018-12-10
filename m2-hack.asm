@@ -530,11 +530,12 @@ b       0x80D3A14
 
 .org 0x80B8A06
 mov     r2,r1
-mov     r1,0x38 // right-align to 56 pixels
+mov     r1,0x30 // right-align to 48 pixels
 bl      format_cash_window
 b       0x80B8A2E
 
 .org 0x80B785C :: mov r0,0xC // allocate 2 extra bytes for cash window string
+.org 0x80B786C :: mov r3,6   // make window 1 fewer tiles wide
 
 //---------------------------------------------------------
 // [68 FF] - clear window
@@ -800,6 +801,7 @@ m2_enemy_attributes:
 .definelabel m2_scrolltext          ,0x80CA4BC
 .definelabel m2_clearwindowtiles    ,0x80CA834
 .definelabel m2_menuwindow          ,0x80C1C98
+.definelabel m2_resetwindow         ,0x80BE490
 
 //==============================================================================
 // Code files
