@@ -21,7 +21,7 @@ bne     @@next
 
 // 60 FF should be treated as a renderable code
 push    {r0-r3}
-mov     r0,r5
+mov     r0,r2
 bl      handle_first_window
 pop     {r0-r3}
 
@@ -60,7 +60,7 @@ bne     @@next2
 
 // 5F FF should be treated as a renderable code
 push    {r0-r3}
-mov     r0,r5
+mov     r0,r2
 bl      handle_first_window
 pop     {r0-r3}
 
