@@ -44,5 +44,11 @@ namespace ScriptTool
             int value = rom[address] | (rom[address + 1] << 8);
             return value;
         }
+
+        public static int AlignTo(this int address, int alignBytes)
+        {
+            int mask = alignBytes - 1;
+            return ((address - 1) & ~mask) + alignBytes;
+        }
     }
 }

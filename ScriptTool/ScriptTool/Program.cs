@@ -543,6 +543,9 @@ namespace ScriptTool
 
         static IList<int> CompileM12FixedStringCollection(string name, ref int referenceAddress)
         {
+            // Align to 4 bytes
+            referenceAddress = referenceAddress.AlignTo(4);
+
             int baseAddress = referenceAddress;
             var buffer = new List<byte>();
             var newPointers = new List<int>();
