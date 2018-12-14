@@ -360,8 +360,7 @@ namespace ScriptTool
             {
                 fixedStringRef.Old =
                     fixedStringRef.New =
-                    decompiler.DecompileRange(rom, fixedStringRef.OldPointer,
-                    fixedStringRef.OldPointer + fixedStringCollection.EntryLength, false);
+                    decompiler.DecompileString(rom, fixedStringRef.OldPointer, false);
             }
 
             // Write JSON
