@@ -136,7 +136,7 @@ namespace ScriptTool
                 }
                 else
                 {
-                    string str = GetChar(rom[address++]);
+                    string str = GetChar(rom, address++);
                     builder.Append(str);
                 }
 
@@ -167,7 +167,7 @@ namespace ScriptTool
                 }
                 else if (rom[address] != 0xFF)
                 {
-                    builder.Append(GetChar(rom[address++]));
+                    builder.Append(GetChar(rom, address++));
                 }
                 else
                 {
@@ -178,12 +178,13 @@ namespace ScriptTool
             return builder.ToString();
         }
 
-        public string GetChar(byte value)
+        public string GetChar(byte[] rom, int address)
         {
+            byte value = rom[address];
             if (!CharLookup.ContainsKey(value))
             {
                 // Invalid
-                throw new Exception("Invalid character");
+                throw new Exception("Invalid character 0x" + value.ToString("X2") + " at address 0x" + address.ToString("X7"));
             }
 
             return CharLookup[value];
