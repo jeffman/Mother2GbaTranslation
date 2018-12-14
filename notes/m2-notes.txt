@@ -57,6 +57,7 @@ Hard-coded characters:
            0x01: Teleport alpha
            0x08: Teleport beta
 0x3001FA4: Escargo Express items (36 of them)
+0x3001FC8: event flags
 0x30023D0: current cash balance
 0x30023D4: current ATM balance
 0x3002500: buttons being pressed

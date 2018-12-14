@@ -326,6 +326,10 @@ namespace ScriptTool
                 0xB1BA61,
                 0xB1BA6E,
                 0xB1BA7B);
+
+            // Teleport destinations
+            var teleportNames = M12TextTables.ReadTeleportNames(m12Rom);
+            DecompileFixedStringCollection(m12Decompiler, m12Rom, "m12-teleport-names", teleportNames);
         }
 
         static void DecompileM12MiscStringCollection(string name, MiscStringCollection miscStringCollection)
@@ -504,6 +508,9 @@ namespace ScriptTool
 
             // Other
             CompileM12HardcodedStringCollection("m12-other", ref referenceAddress);
+
+            // Teleport destinations
+            CompileM12FixedStringCollection("m12-teleport-names", ref referenceAddress);
         }
 
         static void CompileM12MiscStringCollection(string name, ref int referenceAddress)

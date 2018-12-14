@@ -698,6 +698,43 @@ ldrh    r3,[r3]
 b       0x080C959A
 .pool
 
+//---------------------------------------------------------
+// Teleport window hacks
+//---------------------------------------------------------
+
+// Note that the teleport table pointer has 6 instances in the ROM,
+// but we are only changing two of them in m12-teleport-names.json.
+// This is because the other four pointers are used for accessing
+// the teleport flag/coord data in the table instead of the text.
+// We need a couple hacks to make this work...
+
+.org 0x80C5E8A :: ldr r7,[pc,0xC8]  // This is used for text; load from one of the
+                                    // pointers that we DID change (previously it
+                                    // loaded from a pointer that we didn't change)
+
+.org 0x80C5D8A
+lsl     r1,r0,4                     // Text entries are now 16 bytes each, so multiply by 16
+ldr     r7,[pc,0x1C4]               // ... to make room for loading r7 with the text pointer
+add     r1,r1,r7
+ldrb    r0,[r1]
+ldr     r7,[pc,0x13C]               // The game uses r7 as the data pointer when looping back,
+                                    // so let's sneak the data pointer in here before it loops
+
+.org 0x80C5E96
+lsl     r0,r1,4
+nop
+nop
+
+.org 0x80C5F2C
+lsl     r0,r1,4
+nop
+nop
+
+.org 0x80C620C
+lsl     r0,r1,4
+nop
+nop
+
 //==============================================================================
 // Data files
 //==============================================================================

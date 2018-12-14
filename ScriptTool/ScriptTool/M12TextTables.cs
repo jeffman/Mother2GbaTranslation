@@ -676,5 +676,16 @@ namespace ScriptTool
             };
             return table;
         }
+
+        public static FixedStringCollection ReadTeleportNames(byte[] rom)
+        {
+            var table = ReadFixedStringTable(rom, 0xB2AD10, 0x10, 0x14);
+            table.TablePointers = new int[]
+            {
+                0xC5F54,
+                0xC6234
+            };
+            return table;
+        }
     }
 }

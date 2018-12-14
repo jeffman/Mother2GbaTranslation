@@ -1,0 +1,107 @@
+{
+  "StringsLocation": 11709712,
+  "TablePointers": [
+    810836,
+    811572
+  ],
+  "NumEntries": 16,
+  "EntryLength": 16,
+  "StringRefs": [
+    {
+      "Index": 0,
+      "OldPointer": 11709712,
+      "Old": "ぁぁぁぁぁぁぁぁぁぁ[00 FF]",
+      "New": "[00 FF]"
+    },
+    {
+      "Index": 1,
+      "OldPointer": 11709732,
+      "Old": "オネット[00 FF]",
+      "New": "Onett[00 FF]"
+    },
+    {
+      "Index": 2,
+      "OldPointer": 11709752,
+      "Old": "ツ-ソン[00 FF]",
+      "New": "Twoson[00 FF]"
+    },
+    {
+      "Index": 3,
+      "OldPointer": 11709772,
+      "Old": "スリ-ク[00 FF]",
+      "New": "Threed[00 FF]"
+    },
+    {
+      "Index": 4,
+      "OldPointer": 11709792,
+      "Old": "サタ-ンバレ-[00 FF]",
+      "New": "Saturn Valley[00 FF]"
+    },
+    {
+      "Index": 5,
+      "OldPointer": 11709812,
+      "Old": "フォ-サイド[00 FF]",
+      "New": "Fourside[00 FF]"
+    },
+    {
+      "Index": 6,
+      "OldPointer": 11709832,
+      "Old": "ウィンタ-ズ[00 FF]",
+      "New": "Winters[00 FF]"
+    },
+    {
+      "Index": 7,
+      "OldPointer": 11709852,
+      "Old": "サマ-ズ[00 FF]",
+      "New": "Summers[00 FF]"
+    },
+    {
+      "Index": 8,
+      "OldPointer": 11709872,
+      "Old": "スカラビ[00 FF]",
+      "New": "Scaraba[00 FF]"
+    },
+    {
+      "Index": 9,
+      "OldPointer": 11709892,
+      "Old": "ランマ[00 FF]",
+      "New": "Dalaam[00 FF]"
+    },
+    {
+      "Index": 10,
+      "OldPointer": 11709912,
+      "Old": "まきょう[00 FF]",
+      "New": "Deep Darkness[00 FF]"
+    },
+    {
+      "Index": 11,
+      "OldPointer": 11709932,
+      "Old": "グミぞくのむら[00 FF]",
+      "New": "Tenda Village[00 FF]"
+    },
+    {
+      "Index": 12,
+      "OldPointer": 11709952,
+      "Old": "ちていたいりく[00 FF]",
+      "New": "Underworld[00 FF]"
+    },
+    {
+      "Index": 13,
+      "OldPointer": 11709972,
+      "Old": "ぁぁぁぁぁぁぁぁぁぁ[00 FF]",
+      "New": "[00 FF]"
+    },
+    {
+      "Index": 14,
+      "OldPointer": 11709992,
+      "Old": "ドコドコさばく[00 FF]",
+      "New": "Dusty Dunes[00 FF]"
+    },
+    {
+      "Index": 15,
+      "OldPointer": 11710012,
+      "Old": "ぁぁぁぁぁぁぁぁぁぁ[00 FF]",
+      "New": "[00 FF]"
+    }
+  ]
+}
