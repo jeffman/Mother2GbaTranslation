@@ -37,12 +37,9 @@ That said, if you do want to try compiling this thing:
 1. One-time setup
     1. Find a MOTHER 1+2 GBA ROM, name it `m12fresh.gba`, and copy it to the root of the repository. Mine has a SHA-1 hash `F27336B9C96CA2D06C34E07A61A78538DEAC32B3`.
     2. Only if you need to decompile stuff from EarthBound: repeat the above step for the EarthBound SNES ROM, named `eb.smc`, SHA-1 hash `D67A8EF36EF616BC39306AA1B486E1BD3047815A`. You can probably get away with any EB ROM that's unheadered.
-    3. Build `ScriptTool`: open `ScriptTool/ScriptTool.sln` in Visual Studio and build the solution in Debug mode. This is a tool that compiles all of the JSON files from `working/` into ASM and BIN files. There's also a GUI tool to help with editing the main script file. You might have to right-click the solution in Visual Studio and 'Restore NuGet Packages'.
-        * **Important**: re-build ScriptTool if you change between master and compiled-vwf!
-    4. Repeat the above step for `SymbolTableBuilder`.
-    5. If you're on the compiled-vwf branch:
-        1. Build `compiled/Amalgamator/Amalgamator.sln`.
-        2. Grab the latest release of [armips](https://github.com/Kingcom/armips/releases) and copy `armips.exe` to the repository root.
-        3. Download and install [GNU Arm Embedded Toolchain](https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads) (anything newer than 6-2017-q1-update should work). Make sure it ends up in your PATH environment variable (the installer should take care of this).
+    3. Build `ScriptTool`: open `ScriptTool/ScriptTool.sln` in Visual Studio and build the solution in Debug mode. This is a tool that compiles all of the JSON files from `working/` into ASM and BIN files. There's also a GUI tool to help with editing the main script file. You might have to right-click the solution in Visual Studio and 'Restore NuGet Packages' before building.
+    4. Repeat the above step for `SymbolTableBuilder` and `compiled/Amalgamator`.
+    5. Grab the latest release of [armips](https://github.com/Kingcom/armips/releases) and copy `armips.exe` to the repository root.
+    6. Download and install [GNU Arm Embedded Toolchain](https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads) (anything newer than 6-2017-q1-update should work). Make sure it ends up in your PATH environment variable (the installer should take care of this).
 2. Building the ROM
     1. Run `insert.bat`. This will generate `m12.gba` in the repository root, which has everything compiled and inserted.
