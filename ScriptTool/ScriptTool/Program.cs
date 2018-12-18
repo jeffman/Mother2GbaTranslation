@@ -443,7 +443,7 @@ namespace ScriptTool
             {
                 labelAsmFile.WriteLine(String.Format(".org 0x{0:X} :: .incbin \"m12-main-strings.bin\"", baseAddress | 0x8000000));
                 labelAsmFile.WriteLine();
-                
+
                 foreach (var file in labelFiles)
                 {
                     var mainStringRefs = JsonConvert.DeserializeObject<MainStringRef[]>(File.ReadAllText(
@@ -458,6 +458,15 @@ namespace ScriptTool
             }
 
             IncludeFile.WriteLine(".include \"m12-main-strings.asm\"");
+
+            // Dump labels
+            using (var labelFile = File.CreateText(Path.Combine(options.WorkingDirectory, "m12-labels.txt")))
+            {
+                foreach (var kv in m12Compiler.AddressMap.OrderBy(kv => kv.Key, new LabelComparer()))
+                {
+                    labelFile.WriteLine(String.Format("{0,-30}: 0x{1:X8}", kv.Key, kv.Value | 0x8000000));
+                }
+            }
         }
 
         static void CompileM12Misc()
@@ -678,6 +687,31 @@ namespace ScriptTool
 
             // Add to the include file
             IncludeFile.WriteLine(".include \"" + name + ".asm\"");
+        }
+    }
+
+    class LabelComparer : IComparer<string>
+    {
+        public int Compare(string x, string y)
+        {
+            if (x == null)
+                return (y == null) ? 0 : -1;
+
+            if (y == null)
+                return 1;
+
+            if (x.Length == 0 || y.Length == 0)
+                return x.CompareTo(y);
+
+            if (x[0] == 'L' && y[0] == 'L')
+            {
+                if (int.TryParse(x.Substring(1), out int xInt) && int.TryParse(y.Substring(1), out int yInt))
+                {
+                    return xInt.CompareTo(yInt);
+                }
+            }
+
+            return x.CompareTo(y);
         }
     }
 }
