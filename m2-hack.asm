@@ -823,6 +823,7 @@ m2_enemy_attributes:
 .definelabel m2_food                ,0x3001F30
 .definelabel m2_rockin              ,0x3001F3A
 .definelabel m2_player1             ,0x3001F50
+.definelabel m2_active_window_pc    ,0x3005264
 .definelabel m2_soundeffect         ,0x8001720
 .definelabel m2_psitargetwindow     ,0x80B8AE0
 .definelabel m2_isequipped          ,0x80BC670
