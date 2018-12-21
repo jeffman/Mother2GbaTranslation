@@ -9,8 +9,6 @@
 *.ld
 Thumbs.db
 snapshots/
-fresh/
-armtest/
 saves/
 working/*.asm
 working/*.bin
