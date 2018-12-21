@@ -9,6 +9,9 @@
 080BF864 (T)  mov     r7,r0                                   ;2  200
 080BF866 (T)  mov     r0,38h                                  ;2  202
 080BF868 (T)  ldsh    r1,[r7,r0]                              ;4  206 // unknown window data
+
+// if r1 is negative: r1 = (r1 is even) ? 0 : 0x0000FFFF
+// if r1 is positive: r1 = (r1 is even) ? 0 : 0x00000001
 080BF86A (T)  lsr     r0,r1,1Fh                               ;2  208
 080BF86C (T)  add     r0,r1,r0                                ;2  210
 080BF86E (T)  asr     r0,r0,1h                                ;2  212
@@ -17,6 +20,7 @@
 080BF874 (T)  lsl     r1,r1,10h                               ;2  218
 080BF876 (T)  lsr     r1,r1,10h                               ;2  220
 080BF878 (T)  str     r1,[sp,4h]                              ;5  225
+
 080BF87A (T)  ldr     r2,=3005264h                            ;9  234
 080BF87C (T)  mov     r3,0h                                   ;2  236
 
@@ -629,87 +633,100 @@
 080BFCC2 (T)  and     r0,r5                                   ;2  2251
 080BFCC4 (T)  cmp     r0,0h                                   ;2  2253
 080BFCC6 (T)  beq     80BFD6Ch                                ;8  2261
-080BFCC8 (T)  ldr     r0,=12Dh                                ;9  2270
-080BFCCA (T)  bl      m2_soundeffect                          ;10 2280
-080BFCCE (T)  strh    r4,[r7,32h]                             ;8  2288 // set frame counter to 0
-080BFCD0 (T)  ldr     r2,=3001D40h                            ;9  2297
-080BFCD2 (T)  ldr     r0,=3005264h                            ;9  2306
-080BFCD4 (T)  mov     r6,0h                                   ;2  2308
-080BFCD6 (T)  ldsh    r1,[r0,r6]                              ;8  2316
-080BFCD8 (T)  mov     r0,6Ch                                  ;2  2318
-080BFCDA (T)  mul     r0,r1                                   ;6  2324
-080BFCDC (T)  add     r0,r0,r2                                ;2  2326
-080BFCDE (T)  ldrh    r0,[r0,14h]                             ;8  2334
-080BFCE0 (T)  cmp     r0,0h                                   ;2  2336
-080BFCE2 (T)  beq     80BFD40h                                ;8  2344
-080BFCE4 (T)  ldr     r1,=3005270h                            ;9  2353
-080BFCE6 (T)  mov     r2,24h                                  ;2  2355
-080BFCE8 (T)  ldsh    r0,[r7,r2]                              ;7  2362
-080BFCEA (T)  sub     r0,1h                                   ;2  2364
-080BFCEC (T)  lsl     r0,r0,6h                                ;2  2366
-080BFCEE (T)  ldr     r2,[r1]                                 ;4  2370
-080BFCF0 (T)  add     r2,r2,r0                                ;2  2372
-080BFCF2 (T)  mov     r3,22h                                  ;2  2374
-080BFCF4 (T)  ldsh    r0,[r7,r3]                              ;7  2381
-080BFCF6 (T)  mov     r4,26h                                  ;2  2383
-080BFCF8 (T)  ldsh    r1,[r7,r4]                              ;7  2390
-080BFCFA (T)  add     r0,r0,r1                                ;2  2392
-080BFCFC (T)  lsl     r0,r0,1h                                ;2  2394
-080BFCFE (T)  sub     r0,8h                                   ;2  2396
-080BFD00 (T)  add     r6,r2,r0                                ;2  2398
-080BFD02 (T)  ldr     r4,=30051ECh                            ;9  2407
-080BFD04 (T)  ldrh    r0,[r4]                                 ;4  2411
-080BFD06 (T)  add     r0,96h                                  ;2  2413
-080BFD08 (T)  ldr     r3,=3005228h                            ;9  2422
-080BFD0A (T)  ldrh    r1,[r3]                                 ;4  2426
-080BFD0C (T)  orr     r0,r1                                   ;2  2428
-080BFD0E (T)  mov     r5,80h                                  ;2  2430
-080BFD10 (T)  lsl     r5,r5,4h                                ;2  2432
-080BFD12 (T)  mov     r2,r5                                   ;2  2434
-080BFD14 (T)  orr     r0,r2                                   ;2  2436
-080BFD16 (T)  strh    r0,[r6]                                 ;7  2443
-080BFD18 (T)  add     r6,2h                                   ;2  2445
-080BFD1A (T)  ldrh    r0,[r4]                                 ;4  2449
-080BFD1C (T)  add     r0,96h                                  ;2  2451
-080BFD1E (T)  ldrh    r1,[r3]                                 ;4  2455
-080BFD20 (T)  orr     r0,r1                                   ;2  2457
-080BFD22 (T)  orr     r0,r2                                   ;2  2459
-080BFD24 (T)  strh    r0,[r6]                                 ;7  2466
-080BFD26 (T)  add     r6,2h                                   ;2  2468
-080BFD28 (T)  ldrh    r0,[r4]                                 ;4  2472
-080BFD2A (T)  add     r0,96h                                  ;2  2474
-080BFD2C (T)  ldrh    r1,[r3]                                 ;4  2478
-080BFD2E (T)  orr     r0,r1                                   ;2  2480
-080BFD30 (T)  orr     r0,r2                                   ;2  2482
-080BFD32 (T)  strh    r0,[r6]                                 ;7  2489
-080BFD34 (T)  ldrh    r0,[r4]                                 ;4  2493
-080BFD36 (T)  add     r0,96h                                  ;2  2495
-080BFD38 (T)  ldrh    r1,[r3]                                 ;4  2499
-080BFD3A (T)  orr     r0,r1                                   ;2  2501
-080BFD3C (T)  orr     r0,r2                                   ;2  2503
-080BFD3E (T)  strh    r0,[r6,2h]                              ;7  2510
-080BFD40 (T)  ldr     r6,[sp,4h]                              ;4  2514
-080BFD42 (T)  lsl     r0,r6,10h                               ;2  2516
-080BFD44 (T)  mov     r1,80h                                  ;2  2518
-080BFD46 (T)  lsl     r1,r1,9h                                ;2  2520
-080BFD48 (T)  add     r0,r0,r1                                ;2  2522
-080BFD4A (T)  asr     r0,r0,10h                               ;2  2524
-080BFD4C (T)  b       80BFE62h                                ;8  2532
-080BFD4E (T)  lsl     r0,r0,0h                                ;2  2534
-080BFD50 (T)  lsl     r1,r0,8h                                ;2  2536
-080BFD52 (T)  lsl     r0,r0,0h                                ;2  2538
-080BFD54 (T)  lsl     r5,r5,4h                                ;2  2540
-080BFD56 (T)  lsl     r0,r0,0h                                ;2  2542
-080BFD58 (T)  add     r0,r0,5                                 ;2  2544
-080BFD5A (T)  lsl     r0,r0,0Ch                               ;2  2546
-080BFD5C (T)  strh    r4,[r4,r1]                              ;5  2551
-080BFD5E (T)  lsl     r0,r0,0Ch                               ;2  2553
-080BFD60 (T)  strh    r0,[r6,r1]                              ;7  2560
-080BFD62 (T)  lsl     r0,r0,0Ch                               ;2  2562
-080BFD64 (T)  str     r4,[r5,r7]                              ;10 2572
-080BFD66 (T)  lsl     r0,r0,0Ch                               ;2  2574
-080BFD68 (T)  strh    r0,[r5,r0]                              ;9  2583
-080BFD6A (T)  lsl     r0,r0,0Ch                               ;2  2585
+
+    // We pressed A/L
+    080BFCC8 (T)  ldr     r0,=12Dh                                ;9  2270
+    080BFCCA (T)  bl      m2_soundeffect                          ;10 2280
+
+    // Set frame counter to 0
+    080BFCCE (T)  strh    r4,[r7,32h]                             ;8  2288
+
+    // Load first item for selected character
+    080BFCD0 (T)  ldr     r2,=3001D40h                            ;9  2297
+    080BFCD2 (T)  ldr     r0,=3005264h                            ;9  2306
+    080BFCD4 (T)  mov     r6,0h                                   ;2  2308
+    080BFCD6 (T)  ldsh    r1,[r0,r6]                              ;8  2316
+    080BFCD8 (T)  mov     r0,6Ch                                  ;2  2318
+    080BFCDA (T)  mul     r0,r1                                   ;6  2324
+    080BFCDC (T)  add     r0,r0,r2                                ;2  2326
+    080BFCDE (T)  ldrh    r0,[r0,14h]                             ;8  2334
+    080BFCE0 (T)  cmp     r0,0h                                   ;2  2336
+    080BFCE2 (T)  beq     80BFD40h                                ;8  2344
+
+    // If the first item is not null:
+    080BFCE4 (T)  ldr     r1,=3005270h                            ;9  2353
+    080BFCE6 (T)  mov     r2,24h                                  ;2  2355
+    080BFCE8 (T)  ldsh    r0,[r7,r2]                              ;7  2362
+    080BFCEA (T)  sub     r0,1h                                   ;2  2364
+    080BFCEC (T)  lsl     r0,r0,6h                                ;2  2366
+    080BFCEE (T)  ldr     r2,[r1]                                 ;4  2370
+    080BFCF0 (T)  add     r2,r2,r0                                ;2  2372
+    080BFCF2 (T)  mov     r3,22h                                  ;2  2374
+    080BFCF4 (T)  ldsh    r0,[r7,r3]                              ;7  2381
+    080BFCF6 (T)  mov     r4,26h                                  ;2  2383
+    080BFCF8 (T)  ldsh    r1,[r7,r4]                              ;7  2390
+    080BFCFA (T)  add     r0,r0,r1                                ;2  2392
+    080BFCFC (T)  lsl     r0,r0,1h                                ;2  2394
+    080BFCFE (T)  sub     r0,8h                                   ;2  2396
+    080BFD00 (T)  add     r6,r2,r0                                ;2  2398
+
+    // r6 is the address of one tile to the left of the <> window arrows
+    // Draw border tiles over the arrows
+    080BFD02 (T)  ldr     r4,=30051ECh                            ;9  2407
+    080BFD04 (T)  ldrh    r0,[r4]                                 ;4  2411
+    080BFD06 (T)  add     r0,96h                                  ;2  2413
+    080BFD08 (T)  ldr     r3,=3005228h                            ;9  2422
+    080BFD0A (T)  ldrh    r1,[r3]                                 ;4  2426
+    080BFD0C (T)  orr     r0,r1                                   ;2  2428
+    080BFD0E (T)  mov     r5,80h                                  ;2  2430
+    080BFD10 (T)  lsl     r5,r5,4h                                ;2  2432
+    080BFD12 (T)  mov     r2,r5                                   ;2  2434
+    080BFD14 (T)  orr     r0,r2                                   ;2  2436
+    080BFD16 (T)  strh    r0,[r6]                                 ;7  2443
+    080BFD18 (T)  add     r6,2h                                   ;2  2445
+    080BFD1A (T)  ldrh    r0,[r4]                                 ;4  2449
+    080BFD1C (T)  add     r0,96h                                  ;2  2451
+    080BFD1E (T)  ldrh    r1,[r3]                                 ;4  2455
+    080BFD20 (T)  orr     r0,r1                                   ;2  2457
+    080BFD22 (T)  orr     r0,r2                                   ;2  2459
+    080BFD24 (T)  strh    r0,[r6]                                 ;7  2466
+    080BFD26 (T)  add     r6,2h                                   ;2  2468
+    080BFD28 (T)  ldrh    r0,[r4]                                 ;4  2472
+    080BFD2A (T)  add     r0,96h                                  ;2  2474
+    080BFD2C (T)  ldrh    r1,[r3]                                 ;4  2478
+    080BFD2E (T)  orr     r0,r1                                   ;2  2480
+    080BFD30 (T)  orr     r0,r2                                   ;2  2482
+    080BFD32 (T)  strh    r0,[r6]                                 ;7  2489
+    080BFD34 (T)  ldrh    r0,[r4]                                 ;4  2493
+    080BFD36 (T)  add     r0,96h                                  ;2  2495
+    080BFD38 (T)  ldrh    r1,[r3]                                 ;4  2499
+    080BFD3A (T)  orr     r0,r1                                   ;2  2501
+    080BFD3C (T)  orr     r0,r2                                   ;2  2503
+    080BFD3E (T)  strh    r0,[r6,2h]                              ;7  2510
+
+    // Skip to here if the first item is null
+    080BFD40 (T)  ldr     r6,[sp,4h]                              ;4  2514
+    080BFD42 (T)  lsl     r0,r6,10h                               ;2  2516
+    080BFD44 (T)  mov     r1,80h                                  ;2  2518
+    080BFD46 (T)  lsl     r1,r1,9h                                ;2  2520
+    080BFD48 (T)  add     r0,r0,r1                                ;2  2522
+    080BFD4A (T)  asr     r0,r0,10h                               ;2  2524
+    080BFD4C (T)  b       80BFE62h                                ;8  2532 // return weird even/odd/negative thing from the beginning of the function + 1
+    080BFD4E (T)  lsl     r0,r0,0h                                ;2  2534
+    080BFD50 (T)  lsl     r1,r0,8h                                ;2  2536
+    080BFD52 (T)  lsl     r0,r0,0h                                ;2  2538
+    080BFD54 (T)  lsl     r5,r5,4h                                ;2  2540
+    080BFD56 (T)  lsl     r0,r0,0h                                ;2  2542
+    080BFD58 (T)  add     r0,r0,5                                 ;2  2544
+    080BFD5A (T)  lsl     r0,r0,0Ch                               ;2  2546
+    080BFD5C (T)  strh    r4,[r4,r1]                              ;5  2551
+    080BFD5E (T)  lsl     r0,r0,0Ch                               ;2  2553
+    080BFD60 (T)  strh    r0,[r6,r1]                              ;7  2560
+    080BFD62 (T)  lsl     r0,r0,0Ch                               ;2  2562
+    080BFD64 (T)  str     r4,[r5,r7]                              ;10 2572
+    080BFD66 (T)  lsl     r0,r0,0Ch                               ;2  2574
+    080BFD68 (T)  strh    r0,[r5,r0]                              ;9  2583
+    080BFD6A (T)  lsl     r0,r0,0Ch                               ;2  2585
 
 // Skip here if we didn't press A/L
 080BFD6C (T)  ldrh    r0,[r7,32h]                             ;7  2592
@@ -721,119 +738,134 @@
 080BFD78 (T)  ldrb    r0,[r0]                                 ;8  2630
 080BFD7A (T)  cmp     r0,1h                                   ;2  2632
 080BFD7C (T)  bls     80BFE54h                                ;8  2640
-080BFD7E (T)  ldr     r3,=3005270h                            ;9  2649
-080BFD80 (T)  mov     r6,24h                                  ;2  2651
-080BFD82 (T)  ldsh    r0,[r7,r6]                              ;8  2659
-080BFD84 (T)  sub     r0,1h                                   ;2  2661
-080BFD86 (T)  lsl     r0,r0,6h                                ;2  2663
-080BFD88 (T)  ldr     r2,[r3]                                 ;4  2667
-080BFD8A (T)  add     r2,r2,r0                                ;2  2669
-080BFD8C (T)  mov     r1,22h                                  ;2  2671
-080BFD8E (T)  ldsh    r0,[r7,r1]                              ;7  2678
-080BFD90 (T)  mov     r6,26h                                  ;2  2680
-080BFD92 (T)  ldsh    r1,[r7,r6]                              ;8  2688
-080BFD94 (T)  add     r0,r0,r1                                ;2  2690
-080BFD96 (T)  lsl     r0,r0,1h                                ;2  2692
-080BFD98 (T)  sub     r0,4h                                   ;2  2694
-080BFD9A (T)  add     r6,r2,r0                                ;2  2696
-080BFD9C (T)  mov     r0,20h                                  ;2  2698
-080BFD9E (T)  and     r0,r5                                   ;2  2700
-080BFDA0 (T)  mov     r8,r3                                   ;2  2702
-080BFDA2 (T)  cmp     r0,0h                                   ;2  2704
-080BFDA4 (T)  beq     80BFDC8h                                ;8  2712
-080BFDA6 (T)  ldr     r3,=30051ECh                            ;9  2721
-080BFDA8 (T)  ldr     r1,=1FFh                                ;9  2730
-080BFDAA (T)  mov     r0,r1                                   ;2  2732
-080BFDAC (T)  ldrh    r2,[r3]                                 ;4  2736
-080BFDAE (T)  add     r0,r0,r2                                ;2  2738
-080BFDB0 (T)  b       80BFDEAh                                ;8  2746
-080BFDB2 (T)  lsl     r0,r0,0h                                ;2  2748
-080BFDB4 (T)  add     r0,r0,5                                 ;2  2750
-080BFDB6 (T)  lsl     r0,r0,0Ch                               ;2  2752
-080BFDB8 (T)  lsl     r3,r1,7h                                ;2  2754
-080BFDBA (T)  lsl     r0,r0,0h                                ;2  2756
-080BFDBC (T)  strh    r0,[r6,r1]                              ;7  2763
-080BFDBE (T)  lsl     r0,r0,0Ch                               ;2  2765
-080BFDC0 (T)  str     r4,[r5,r7]                              ;10 2775
-080BFDC2 (T)  lsl     r0,r0,0Ch                               ;2  2777
-080BFDC4 (T)  lsl     r7,r7,7h                                ;2  2779
-080BFDC6 (T)  lsl     r0,r0,0h                                ;2  2781
-080BFDC8 (T)  lsl     r0,r4,10h                               ;2  2783
-080BFDCA (T)  asr     r0,r0,10h                               ;2  2785
-080BFDCC (T)  cmp     r0,7h                                   ;2  2787
-080BFDCE (T)  ble     80BFDD8h                                ;8  2795
-080BFDD0 (T)  mov     r0,10h                                  ;2  2797
-080BFDD2 (T)  and     r0,r5                                   ;2  2799
-080BFDD4 (T)  cmp     r0,0h                                   ;2  2801
-080BFDD6 (T)  beq     80BFDE4h                                ;8  2809
-080BFDD8 (T)  ldr     r3,=30051ECh                            ;9  2818
-080BFDDA (T)  ldrh    r0,[r3]                                 ;4  2822
-080BFDDC (T)  add     r0,9Ch                                  ;2  2824
-080BFDDE (T)  b       80BFDEAh                                ;8  2832
-080BFDE0 (T)  str     r4,[r5,r7]                              ;10 2842
-080BFDE2 (T)  lsl     r0,r0,0Ch                               ;2  2844
-080BFDE4 (T)  ldr     r3,=30051ECh                            ;9  2853
-080BFDE6 (T)  ldrh    r0,[r3]                                 ;4  2857
-080BFDE8 (T)  add     r0,0BCh                                 ;2  2859
-080BFDEA (T)  ldr     r2,=3005228h                            ;9  2868
-080BFDEC (T)  ldrh    r1,[r2]                                 ;4  2872
-080BFDEE (T)  orr     r0,r1                                   ;2  2874
-080BFDF0 (T)  strh    r0,[r6]                                 ;7  2881
-080BFDF2 (T)  mov     r4,r2                                   ;2  2883
-080BFDF4 (T)  mov     r5,24h                                  ;2  2885
-080BFDF6 (T)  ldsh    r0,[r7,r5]                              ;7  2892
-080BFDF8 (T)  sub     r0,1h                                   ;2  2894
-080BFDFA (T)  lsl     r0,r0,6h                                ;2  2896
-080BFDFC (T)  mov     r6,r8                                   ;2  2898
-080BFDFE (T)  ldr     r2,[r6]                                 ;9  2907
-080BFE00 (T)  add     r2,r2,r0                                ;2  2909
-080BFE02 (T)  mov     r1,22h                                  ;2  2911
-080BFE04 (T)  ldsh    r0,[r7,r1]                              ;7  2918
-080BFE06 (T)  mov     r5,26h                                  ;2  2920
-080BFE08 (T)  ldsh    r1,[r7,r5]                              ;7  2927
-080BFE0A (T)  add     r0,r0,r1                                ;2  2929
-080BFE0C (T)  lsl     r0,r0,1h                                ;2  2931
-080BFE0E (T)  sub     r0,6h                                   ;2  2933
-080BFE10 (T)  add     r6,r2,r0                                ;2  2935
-080BFE12 (T)  mov     r0,r10                                  ;2  2937
-080BFE14 (T)  ldrh    r1,[r0]                                 ;8  2945
-080BFE16 (T)  mov     r0,10h                                  ;2  2947
-080BFE18 (T)  and     r0,r1                                   ;2  2949
-080BFE1A (T)  cmp     r0,0h                                   ;2  2951
-080BFE1C (T)  beq     80BFE34h                                ;8  2959
-080BFE1E (T)  ldr     r1,=1FFh                                ;9  2968
-080BFE20 (T)  mov     r0,r1                                   ;2  2970
-080BFE22 (T)  ldrh    r3,[r3]                                 ;4  2974
-080BFE24 (T)  add     r0,r0,r3                                ;2  2976
-080BFE26 (T)  b       80BFE4Eh                                ;8  2984
-080BFE28 (T)  str     r4,[r5,r7]                              ;10 2994
-080BFE2A (T)  lsl     r0,r0,0Ch                               ;2  2996
-080BFE2C (T)  strh    r0,[r5,r0]                              ;9  3005
-080BFE2E (T)  lsl     r0,r0,0Ch                               ;2  3007
-080BFE30 (T)  lsl     r7,r7,7h                                ;2  3009
-080BFE32 (T)  lsl     r0,r0,0h                                ;2  3011
-080BFE34 (T)  mov     r2,32h                                  ;2  3013
-080BFE36 (T)  ldsh    r0,[r7,r2]                              ;7  3020
-080BFE38 (T)  cmp     r0,7h                                   ;2  3022
-080BFE3A (T)  ble     80BFE44h                                ;8  3030
-080BFE3C (T)  mov     r0,20h                                  ;2  3032
-080BFE3E (T)  and     r0,r1                                   ;2  3034
-080BFE40 (T)  cmp     r0,0h                                   ;2  3036
-080BFE42 (T)  beq     80BFE4Ah                                ;8  3044
-080BFE44 (T)  ldrh    r0,[r3]                                 ;4  3048
-080BFE46 (T)  add     r0,9Bh                                  ;2  3050
-080BFE48 (T)  b       80BFE4Eh                                ;8  3058
-080BFE4A (T)  ldrh    r0,[r3]                                 ;4  3062
-080BFE4C (T)  add     r0,0BBh                                 ;2  3064
-080BFE4E (T)  ldrh    r1,[r4]                                 ;4  3068
-080BFE50 (T)  orr     r0,r1                                   ;2  3070
-080BFE52 (T)  strh    r0,[r6]                                 ;7  3077
+
+    // If there's more than 1 party character:
+    080BFD7E (T)  ldr     r3,=3005270h                            ;9  2649
+    080BFD80 (T)  mov     r6,24h                                  ;2  2651
+    080BFD82 (T)  ldsh    r0,[r7,r6]                              ;8  2659
+    080BFD84 (T)  sub     r0,1h                                   ;2  2661
+    080BFD86 (T)  lsl     r0,r0,6h                                ;2  2663
+    080BFD88 (T)  ldr     r2,[r3]                                 ;4  2667
+    080BFD8A (T)  add     r2,r2,r0                                ;2  2669
+    080BFD8C (T)  mov     r1,22h                                  ;2  2671
+    080BFD8E (T)  ldsh    r0,[r7,r1]                              ;7  2678
+    080BFD90 (T)  mov     r6,26h                                  ;2  2680
+    080BFD92 (T)  ldsh    r1,[r7,r6]                              ;8  2688
+    080BFD94 (T)  add     r0,r0,r1                                ;2  2690
+    080BFD96 (T)  lsl     r0,r0,1h                                ;2  2692
+    080BFD98 (T)  sub     r0,4h                                   ;2  2694
+    080BFD9A (T)  add     r6,r2,r0                                ;2  2696 // r6 = address of right arrow in window header
+    080BFD9C (T)  mov     r0,20h                                  ;2  2698
+    080BFD9E (T)  and     r0,r5                                   ;2  2700
+    080BFDA0 (T)  mov     r8,r3                                   ;2  2702 // r8 = 0x3005270
+    080BFDA2 (T)  cmp     r0,0h                                   ;2  2704
+    080BFDA4 (T)  beq     80BFDC8h                                ;8  2712
+
+    // If we pressed left: load a blank tile
+    080BFDA6 (T)  ldr     r3,=30051ECh                            ;9  2721
+    080BFDA8 (T)  ldr     r1,=1FFh                                ;9  2730
+    080BFDAA (T)  mov     r0,r1                                   ;2  2732
+    080BFDAC (T)  ldrh    r2,[r3]                                 ;4  2736
+    080BFDAE (T)  add     r0,r0,r2                                ;2  2738
+    080BFDB0 (T)  b       80BFDEAh                                ;8  2746
+    080BFDB2 (T)  lsl     r0,r0,0h                                ;2  2748
+    080BFDB4 (T)  add     r0,r0,5                                 ;2  2750
+    080BFDB6 (T)  lsl     r0,r0,0Ch                               ;2  2752
+    080BFDB8 (T)  lsl     r3,r1,7h                                ;2  2754
+    080BFDBA (T)  lsl     r0,r0,0h                                ;2  2756
+    080BFDBC (T)  strh    r0,[r6,r1]                              ;7  2763
+    080BFDBE (T)  lsl     r0,r0,0Ch                               ;2  2765
+    080BFDC0 (T)  str     r4,[r5,r7]                              ;10 2775
+    080BFDC2 (T)  lsl     r0,r0,0Ch                               ;2  2777
+    080BFDC4 (T)  lsl     r7,r7,7h                                ;2  2779
+    080BFDC6 (T)  lsl     r0,r0,0h                                ;2  2781
+
+    // Else if the frame counter is <= 7 OR we pressed right: load big right arrow tile
+    080BFDC8 (T)  lsl     r0,r4,10h                               ;2  2783
+    080BFDCA (T)  asr     r0,r0,10h                               ;2  2785
+    080BFDCC (T)  cmp     r0,7h                                   ;2  2787
+    080BFDCE (T)  ble     80BFDD8h                                ;8  2795
+    080BFDD0 (T)  mov     r0,10h                                  ;2  2797
+    080BFDD2 (T)  and     r0,r5                                   ;2  2799
+    080BFDD4 (T)  cmp     r0,0h                                   ;2  2801
+    080BFDD6 (T)  beq     80BFDE4h                                ;8  2809
+    080BFDD8 (T)  ldr     r3,=30051ECh                            ;9  2818
+    080BFDDA (T)  ldrh    r0,[r3]                                 ;4  2822
+    080BFDDC (T)  add     r0,9Ch                                  ;2  2824
+    080BFDDE (T)  b       80BFDEAh                                ;8  2832
+    080BFDE0 (T)  str     r4,[r5,r7]                              ;10 2842
+    080BFDE2 (T)  lsl     r0,r0,0Ch                               ;2  2844
+
+    // Else if we didn't press right and frame counter > 7: load small right arrow tile
+    080BFDE4 (T)  ldr     r3,=30051ECh                            ;9  2853
+    080BFDE6 (T)  ldrh    r0,[r3]                                 ;4  2857
+    080BFDE8 (T)  add     r0,0BCh                                 ;2  2859
+
+    // r0 is tile
+    080BFDEA (T)  ldr     r2,=3005228h                            ;9  2868
+    080BFDEC (T)  ldrh    r1,[r2]                                 ;4  2872
+    080BFDEE (T)  orr     r0,r1                                   ;2  2874
+    080BFDF0 (T)  strh    r0,[r6]                                 ;7  2881
+    080BFDF2 (T)  mov     r4,r2                                   ;2  2883
+    080BFDF4 (T)  mov     r5,24h                                  ;2  2885
+    080BFDF6 (T)  ldsh    r0,[r7,r5]                              ;7  2892
+    080BFDF8 (T)  sub     r0,1h                                   ;2  2894
+    080BFDFA (T)  lsl     r0,r0,6h                                ;2  2896
+    080BFDFC (T)  mov     r6,r8                                   ;2  2898
+    080BFDFE (T)  ldr     r2,[r6]                                 ;9  2907
+    080BFE00 (T)  add     r2,r2,r0                                ;2  2909
+    080BFE02 (T)  mov     r1,22h                                  ;2  2911
+    080BFE04 (T)  ldsh    r0,[r7,r1]                              ;7  2918
+    080BFE06 (T)  mov     r5,26h                                  ;2  2920
+    080BFE08 (T)  ldsh    r1,[r7,r5]                              ;7  2927
+    080BFE0A (T)  add     r0,r0,r1                                ;2  2929
+    080BFE0C (T)  lsl     r0,r0,1h                                ;2  2931
+    080BFE0E (T)  sub     r0,6h                                   ;2  2933
+    080BFE10 (T)  add     r6,r2,r0                                ;2  2935
+    080BFE12 (T)  mov     r0,r10                                  ;2  2937
+    080BFE14 (T)  ldrh    r1,[r0]                                 ;8  2945
+    080BFE16 (T)  mov     r0,10h                                  ;2  2947
+    080BFE18 (T)  and     r0,r1                                   ;2  2949
+    080BFE1A (T)  cmp     r0,0h                                   ;2  2951
+    080BFE1C (T)  beq     80BFE34h                                ;8  2959
+    080BFE1E (T)  ldr     r1,=1FFh                                ;9  2968
+    080BFE20 (T)  mov     r0,r1                                   ;2  2970
+    080BFE22 (T)  ldrh    r3,[r3]                                 ;4  2974
+    080BFE24 (T)  add     r0,r0,r3                                ;2  2976
+    080BFE26 (T)  b       80BFE4Eh                                ;8  2984
+    080BFE28 (T)  str     r4,[r5,r7]                              ;10 2994
+    080BFE2A (T)  lsl     r0,r0,0Ch                               ;2  2996
+    080BFE2C (T)  strh    r0,[r5,r0]                              ;9  3005
+    080BFE2E (T)  lsl     r0,r0,0Ch                               ;2  3007
+    080BFE30 (T)  lsl     r7,r7,7h                                ;2  3009
+    080BFE32 (T)  lsl     r0,r0,0h                                ;2  3011
+    080BFE34 (T)  mov     r2,32h                                  ;2  3013
+    080BFE36 (T)  ldsh    r0,[r7,r2]                              ;7  3020
+    080BFE38 (T)  cmp     r0,7h                                   ;2  3022
+    080BFE3A (T)  ble     80BFE44h                                ;8  3030
+    080BFE3C (T)  mov     r0,20h                                  ;2  3032
+    080BFE3E (T)  and     r0,r1                                   ;2  3034
+    080BFE40 (T)  cmp     r0,0h                                   ;2  3036
+    080BFE42 (T)  beq     80BFE4Ah                                ;8  3044
+    080BFE44 (T)  ldrh    r0,[r3]                                 ;4  3048
+    080BFE46 (T)  add     r0,9Bh                                  ;2  3050
+    080BFE48 (T)  b       80BFE4Eh                                ;8  3058
+    080BFE4A (T)  ldrh    r0,[r3]                                 ;4  3062
+    080BFE4C (T)  add     r0,0BBh                                 ;2  3064
+    080BFE4E (T)  ldrh    r1,[r4]                                 ;4  3068
+    080BFE50 (T)  orr     r0,r1                                   ;2  3070
+    080BFE52 (T)  strh    r0,[r6]                                 ;7  3077
+
+// Skip here if there's only 1 party character
+// Wrap frame counter to 0 if it's > 16
 080BFE54 (T)  mov     r3,32h                                  ;2  3079
 080BFE56 (T)  ldsh    r0,[r7,r3]                              ;7  3086
 080BFE58 (T)  cmp     r0,10h                                  ;2  3088
 080BFE5A (T)  ble     80BFE60h                                ;8  3096
 080BFE5C (T)  mov     r0,0h                                   ;2  3098
 080BFE5E (T)  strh    r0,[r7,32h]                             ;8  3106
+
+// Return 0
 080BFE60 (T)  mov     r0,0h                                   ;2  3108
 
 // Skip to here if we pressed B/select

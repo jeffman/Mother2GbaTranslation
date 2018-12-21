@@ -810,11 +810,15 @@ m2_enemy_attributes:
 // Existing subroutines/data
 //==============================================================================
 
+.definelabel m2_ness_goods          ,0x3001D54
 .definelabel m2_ness_exp            ,0x3001D70
 .definelabel m2_ness_maxhp          ,0x3001D84
 .definelabel m2_ness_curhp          ,0x3001D86
 .definelabel m2_ness_maxpp          ,0x3001D8C
 .definelabel m2_ness_curpp          ,0x3001D8E
+.definelabel m2_paula_goods         ,0x3001DC0
+.definelabel m2_jeff_goods          ,0x3001E2C
+.definelabel m2_poo_goods           ,0x3001E98
 .definelabel m2_ness_name           ,0x3001F10
 .definelabel m2_paula_name          ,0x3001F16
 .definelabel m2_jeff_name           ,0x3001F1C
