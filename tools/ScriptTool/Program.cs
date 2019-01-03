@@ -28,66 +28,77 @@ namespace ScriptTool
         static Compiler m12Compiler;
         static StreamWriter IncludeFile;
 
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
-            options = ParseCommandLine(args);
-            if (options == null)
+            try
             {
-                Usage();
-                return;
-            }
-
-            m12CharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("m12-char-lookup.json"));
-            ebCharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("eb-char-lookup.json"));
-
-            if (options.Command == CommandType.Decompile)
-            {
-                // Set up decompilers
-                m12Decompiler = new Decompiler(M12ControlCode.Codes, m12CharLookup, (rom, address) => rom[address + 1] == 0xFF);
-                ebDecompiler = new Decompiler(EbControlCode.Codes, ebCharLookup, (rom, address) => rom[address] < 0x20);
-
-                // Load ROMs
-                ebRom = File.ReadAllBytes(options.EbRom);
-                m12Rom = File.ReadAllBytes(options.M12Rom);
-
-                // Decompile misc string tables
-                if (options.DoMiscText)
+                options = ParseCommandLine(args);
+                if (options == null)
                 {
-                    //DecompileEbMisc();
-                    DecompileM12Misc();
+                    Usage();
+                    return -1;
                 }
 
-                // Decompile main string tables
-                if (options.DoMainText)
+                m12CharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("m12-char-lookup.json"));
+                ebCharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("eb-char-lookup.json"));
+
+                if (options.Command == CommandType.Decompile)
                 {
-                    DecompileEb();
-                    DecompileM12();
-                }
-            }
-            else if (options.Command == CommandType.Compile)
-            {
-                // Set up compilers
-                m12Compiler = new Compiler(M12ControlCode.Codes, (rom, address) => rom[address + 1] == 0xFF);
+                    // Set up decompilers
+                    m12Decompiler = new Decompiler(M12ControlCode.Codes, m12CharLookup, (rom, address) => rom[address + 1] == 0xFF);
+                    ebDecompiler = new Decompiler(EbControlCode.Codes, ebCharLookup, (rom, address) => rom[address] < 0x20);
 
-                using (IncludeFile = File.CreateText(Path.Combine(options.WorkingDirectory, "m12-includes.asm")))
-                {
-                    IncludeFile.WriteLine(".gba");
-                    IncludeFile.WriteLine(".open \"../m12.gba\",0x8000000");
+                    // Load ROMs
+                    ebRom = File.ReadAllBytes(options.EbRom);
+                    m12Rom = File.ReadAllBytes(options.M12Rom);
 
-                    // Compile main string tables
-                    if (options.DoMainText)
-                    {
-                        CompileM12();
-                    }
-
-                    // Compile misc string tables
+                    // Decompile misc string tables
                     if (options.DoMiscText)
                     {
-                        CompileM12Misc();
+                        //DecompileEbMisc();
+                        DecompileM12Misc();
                     }
 
-                    IncludeFile.WriteLine(".close");
+                    // Decompile main string tables
+                    if (options.DoMainText)
+                    {
+                        DecompileEb();
+                        DecompileM12();
+                    }
                 }
+                else if (options.Command == CommandType.Compile)
+                {
+                    // Set up compilers
+                    m12Compiler = new Compiler(M12ControlCode.Codes, (rom, address) => rom[address + 1] == 0xFF);
+
+                    using (IncludeFile = File.CreateText(Path.Combine(options.WorkingDirectory, "m12-includes.asm")))
+                    {
+                        IncludeFile.WriteLine(".gba");
+                        IncludeFile.WriteLine(".open \"../m12.gba\",0x8000000");
+
+                        // Compile main string tables
+                        if (options.DoMainText)
+                        {
+                            CompileM12();
+                        }
+
+                        // Compile misc string tables
+                        if (options.DoMiscText)
+                        {
+                            CompileM12Misc();
+                        }
+
+                        IncludeFile.WriteLine(".close");
+                    }
+                }
+
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Encountered exception:");
+                Console.WriteLine(ex);
+                return -1;
             }
         }
 
@@ -138,7 +149,10 @@ namespace ScriptTool
 
             string working = argList[0];
             if (!Directory.Exists(working))
+            {
+                Console.WriteLine("Directory does not exist: " + Path.GetFullPath(working));
                 return null;
+            }
 
             // Check for ROM paths
             string ebRom = null;
@@ -147,8 +161,18 @@ namespace ScriptTool
             {
                 ebRom = argList[1];
                 m12Rom = argList[2];
-                if (!File.Exists(ebRom) || !File.Exists(m12Rom))
+
+                if (!File.Exists(ebRom))
+                {
+                    Console.WriteLine("File does not exist: " + Path.GetFullPath(ebRom));
                     return null;
+                }
+
+                if (!File.Exists(m12Rom))
+                {
+                    Console.WriteLine("File does not exist: " + Path.GetFullPath(m12Rom));
+                    return null;
+                }
             }
 
             return new CommandOptions
