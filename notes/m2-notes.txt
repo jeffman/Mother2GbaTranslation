@@ -173,7 +173,7 @@ Subroutines
   01: PC name
   02: item name
   03: ?
-  04: ?
+  04: number
   05: PC name
   06: ?
   07: ?
