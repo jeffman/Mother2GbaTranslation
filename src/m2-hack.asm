@@ -13,11 +13,11 @@
 // Font hacks
 //==============================================================================
 
-.org 0x8AFED84 :: .incbin "m2-mainfont1-empty.bin"
-.org 0x8B0F424 :: .incbin "m2-mainfont2-empty.bin"
-.org 0x8B13424 :: .incbin "m2-mainfont3-empty.bin"
-.org 0x8B088A4 :: .incbin "m2-shifted-cursor.bin"
-.org 0x8B03384 :: .incbin "m2-header-bg.bin"
+.org 0x8AFED84 :: .incbin "data/m2-mainfont1-empty.bin"
+.org 0x8B0F424 :: .incbin "data/m2-mainfont2-empty.bin"
+.org 0x8B13424 :: .incbin "data/m2-mainfont3-empty.bin"
+.org 0x8B088A4 :: .incbin "data/m2-shifted-cursor.bin"
+.org 0x8B03384 :: .incbin "data/m2-header-bg.bin"
 
 // Greek letters
 .org 0x8B1B907 :: db 0x8B // alpha
@@ -743,11 +743,11 @@ nop
 
 // Box font relocation
 m2_font_relocate:
-.incbin "m2-font-relocate.bin"
+.incbin "data/m2-font-relocate.bin"
 
 // Co-ordinate table
 m2_coord_table:
-.incbin "m2-coord-table.bin"
+.incbin "data/m2-coord-table.bin"
 
 // EB fonts
 m2_font_table:
@@ -758,15 +758,15 @@ dw      m2_font_battle
 dw      m2_font_tiny
 
 m2_font_main:
-.incbin "m2-font-main.bin"
+.incbin "data/m2-font-main.bin"
 m2_font_saturn:
-.incbin "m2-font-saturn.bin"
+.incbin "data/m2-font-saturn.bin"
 m2_font_big:
-.incbin "m2-font-big.bin"
+.incbin "data/m2-font-big.bin"
 m2_font_battle:
-.incbin "m2-font-battle.bin"
+.incbin "data/m2-font-battle.bin"
 m2_font_tiny:
-.incbin "m2-font-tiny.bin"
+.incbin "data/m2-font-tiny.bin"
 
 // EB font dimensions
 m2_font_widths:
@@ -786,24 +786,24 @@ dw      m2_widths_battle
 dw      m2_widths_tiny
 
 m2_widths_main:
-.incbin "m2-widths-main.bin"
+.incbin "data/m2-widths-main.bin"
 m2_widths_saturn:
-.incbin "m2-widths-saturn.bin"
+.incbin "data/m2-widths-saturn.bin"
 m2_widths_big:
-.incbin "m2-widths-big.bin"
+.incbin "data/m2-widths-big.bin"
 m2_widths_battle:
-.incbin "m2-widths-battle.bin"
+.incbin "data/m2-widths-battle.bin"
 m2_widths_tiny:
-.incbin "m2-widths-tiny.bin"
+.incbin "data/m2-widths-tiny.bin"
 
 m2_bits_to_nybbles:
-.incbin "m2-bits-to-nybbles.bin"
+.incbin "data/m2-bits-to-nybbles.bin"
 
 m2_nybbles_to_bits:
-.incbin "m2-nybbles-to-bits.bin"
+.incbin "data/m2-nybbles-to-bits.bin"
 
 m2_enemy_attributes:
-.incbin "m2-enemy-attributes.bin"
+.incbin "data/m2-enemy-attributes.bin"
 
 
 //==============================================================================
