@@ -7,7 +7,9 @@ $src_dir = "src"
 
 $input_c_files =
     "src/c/ext.c",
-    "src/c/vwf.c"
+    "src/c/vwf.c",
+    "src/c/locs.c",
+    "src/c/goods.c"
 
 $base_c_address = 0x8100000;
 
