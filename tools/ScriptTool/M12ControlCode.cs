@@ -26,7 +26,7 @@ namespace ScriptTool
         static M12ControlCode()
         {
             Codes = JsonConvert.DeserializeObject<List<M12ControlCode>>(
-                File.ReadAllText("m12-codelist.json"));
+                Asset.ReadAllText("m12-codelist.json"));
         }
 
         public bool IsMatch(byte[] rom, int address)

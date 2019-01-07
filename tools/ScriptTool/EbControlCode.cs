@@ -36,7 +36,7 @@ namespace ScriptTool
 
             // Load codes
             Codes = JsonConvert.DeserializeObject<List<EbControlCode>>(
-                File.ReadAllText("eb-codelist.json"));
+                Asset.ReadAllText("eb-codelist.json"));
         }
 
         public bool IsMatch(byte[] rom, int address)

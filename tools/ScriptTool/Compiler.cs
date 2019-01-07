@@ -20,8 +20,8 @@ namespace ScriptTool
 
         static Compiler()
         {
-            byte[] widths = File.ReadAllBytes("m2-widths-main.bin");
-            byte[] saturnWidths = File.ReadAllBytes("m2-widths-saturn.bin");
+            byte[] widths = Asset.ReadAllBytes("m2-widths-main.bin");
+            byte[] saturnWidths = Asset.ReadAllBytes("m2-widths-saturn.bin");
             virtualWidths = new int[widths.Length / 2];
             renderWidths = new int[widths.Length / 2];
             virtualWidthsSaturn = new int[saturnWidths.Length / 2];

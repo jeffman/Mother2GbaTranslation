@@ -39,8 +39,8 @@ namespace ScriptTool
                     return -1;
                 }
 
-                m12CharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("m12-char-lookup.json"));
-                ebCharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("eb-char-lookup.json"));
+                m12CharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(Asset.ReadAllText("m12-char-lookup.json"));
+                ebCharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(Asset.ReadAllText("eb-char-lookup.json"));
 
                 if (options.Command == CommandType.Decompile)
                 {
@@ -74,7 +74,7 @@ namespace ScriptTool
                     using (IncludeFile = File.CreateText(Path.Combine(options.WorkingDirectory, "m12-includes.asm")))
                     {
                         IncludeFile.WriteLine(".gba");
-                        IncludeFile.WriteLine(".open \"../m12.gba\",0x8000000");
+                        IncludeFile.WriteLine(".open \"../bin/m12.gba\",0x8000000");
 
                         // Compile main string tables
                         if (options.DoMainText)
