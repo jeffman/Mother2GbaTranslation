@@ -1,4 +1,5 @@
 #include "types.h"
+#include "pc.h"
 
 #define NULL (0)
 #define QUESTION_MARK 0x1F
@@ -22,15 +23,6 @@
 
 #define CUSTOMCC_SET_X 0x5F
 #define CUSTOMCC_ADD_X 0x60
-
-unsigned short *tile_offset = (unsigned short*)0x30051EC;
-int *first_window_flag = (int*)0x30051F0;
-unsigned short *palette_mask = (unsigned short*)0x3005228;
-unsigned short **tilemap_pointer = (unsigned short**)0x3005270;
-int *vram = (int*)0x6000000;
-
-int *m2_misc_offsets = (int*)0x8B17EE4;
-byte *m2_misc_strings = (byte*)0x8B17424;
 
 byte decode_character(byte chr);
 int get_tile_number(int x, int y);
@@ -65,6 +57,16 @@ void print_number_menu_current(byte digit, WINDOW* window);
 void clear_number_menu(WINDOW* window);
 void format_cash_window(int value, int padding, byte* str);
 void handle_first_window(WINDOW* window);
+
+extern unsigned short *tile_offset;
+extern int *first_window_flag;
+extern unsigned short *palette_mask;
+extern short *active_window_party_member;
+extern unsigned short **tilemap_pointer;
+extern int *vram;
+extern PC (*pc_stats)[4];
+extern int *m2_misc_offsets;
+extern byte *m2_misc_strings;
 
 extern unsigned short m2_coord_table[];
 extern int m2_bits_to_nybbles[];
