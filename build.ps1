@@ -1,9 +1,12 @@
 #Region Variables
-$input_rom_file = "bin/m12fresh.gba"
-$output_rom_file = "bin/m12.gba"
-$eb_rom_file = "bin/eb.smc"
-$working_dir = "working"
-$src_dir = "src"
+$input_rom_file    = "bin/m12fresh.gba"
+$output_rom_file   = "bin/m12.gba"
+$eb_rom_file       = "bin/eb.smc"
+$working_dir       = "working"
+$src_dir           = "src"
+$compiled_asm_file = "src/m2-compiled.asm"
+$includes_asm_file = "m12-includes.asm"    # implicitly rooted in working_dir
+$hack_asm_file     = "m2-hack.asm"         # implicitly rooted in src_dir
 
 $input_c_files =
     "src/c/ext.c",
@@ -11,11 +14,30 @@ $input_c_files =
     "src/c/locs.c",
     "src/c/goods.c"
 
-$base_c_address = 0x8100000;
+$base_c_address    = 0x8100000;
+$scripttool_cmd    = "bin/ScriptTool/ScriptTool.dll"
+$symbuilder_cmd    = "bin/SymbolTableBuilder/SymbolTableBuilder.dll"
+$gcc_cmd           = "arm-none-eabi-gcc"
+$ld_cmd            = "arm-none-eabi-ld"
+$objdump_cmd       = "arm-none-eabi-objdump"
+$readelf_cmd       = "arm-none-eabi-readelf"
+$combined_obj_file = "src/c/combined.o"
+$linked_obj_file   = "src/c/linked.o"
+$combine_script    = "src/c/combine.ld"
+$link_script       = "src/c/link.ld"
+$undefine_obj_file = "src/c/ext.o"
 
+If     ($IsWindows) { $asm_cmd = "bin/armips.exe" }
+ElseIf ($IsLinux)   { $asm_cmd = "bin/armips" }
+Else {
+    Write-Host "TODO: what's the Mac version of armips?"
+    Exit -1
+}
+
+$includes_sym_file   = [IO.Path]::ChangeExtension($includes_asm_file, "sym")
 $output_rom_sym_file = [IO.Path]::ChangeExtension($output_rom_file, "sym")
+$hack_sym_file       = [IO.Path]::ChangeExtension($hack_asm_file, "sym")
 
-$scripttool_cmd = "bin/ScriptTool/ScriptTool.dll"
 $scripttool_args =
     "-compile",
     "-main",
@@ -24,21 +46,6 @@ $scripttool_args =
     $eb_rom_file,
     $input_rom_file
 
-If ($IsWindows) { $asm_cmd = "bin/armips.exe" }
-ElseIf ($IsLinux) { $asm_cmd = "bin/armips" }
-Else
-{
-    Write-Host "TODO: what's the Mac version of this?"
-    Exit -1
-}
-
-$symbuilder_cmd = "bin/SymbolTableBuilder/SymbolTableBuilder.dll"
-
-# armips will be rooted in working_dir for these, so the includes files have an implicit "working/" in front
-$includes_asm_file = "m12-includes.asm"
-$includes_sym_file = [IO.Path]::ChangeExtension($includes_asm_file, "sym")
-
-$gcc_cmd = "arm-none-eabi-gcc"
 $gcc_args =
     "-c",
     "-O3",
@@ -50,28 +57,11 @@ $gcc_args =
     "-ffixed-r12",
     "-mno-long-calls"
 
-$ld_cmd            = "arm-none-eabi-ld"
-$combined_obj_file = "src/c/combined.o"
-$linked_obj_file   = "src/c/linked.o"
-$combine_script    = "src/c/combine.ld"
-$link_script       = "src/c/link.ld"
-$undefine_obj_file = "src/c/ext.o"
-
 $combine_script_contents = 
 "SECTIONS { .text 0x$($base_c_address.ToString('X')) : { *(.text .rodata) } }"
 
 $link_script_contents = 
 "SECTIONS { .text 0x$($base_c_address.ToString('X')) : { *(.text .data .rodata) } }"
-
-$objdump_cmd = "arm-none-eabi-objdump"
-$compiled_asm_file = "src/m2-compiled.asm"
-
-# armips will be rooted in src_dir for these, so the includes files have an implicit "working/" in front
-$hack_asm_file = "m2-hack.asm"
-$hack_sym_file = [IO.Path]::ChangeExtension($hack_asm_file, "sym")
-
-$readelf_cmd = "arm-none-eabi-readelf"
-
 #EndRegion Variables
 
 #Region Functions
@@ -348,8 +338,9 @@ is to separate the compiling and linking stages of the C code.
       the assembler inserts.
 #>
 
-# ------------------------- COMPILE GAME TEXT -----------------------
+$timer = [System.Diagnostics.StopWatch]::StartNew()
 
+# ------------------------- COMPILE GAME TEXT -----------------------
 "Copying $input_rom_file to $output_rom_file..."
 Copy-Item -Path $input_rom_file -Destination $output_rom_file
 
@@ -358,13 +349,11 @@ Copy-Item -Path $input_rom_file -Destination $output_rom_file
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
 # ------------------------ ASSEMBLE GAME TEXT -----------------------
-
 "Assembling game text..."
 & $asm_cmd -root $working_dir -sym $includes_sym_file $includes_asm_file
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
 # ----------------------------- COMPILE C ---------------------------
-
 $obj_files = @()
 
 # Invoke gcc on each file individually so that we can specify the output file
@@ -379,7 +368,6 @@ foreach ($input_c_file in $input_c_files)
 }
 
 # ----------------------------- 1ST LINK ----------------------------
-
 "Writing $combine_script..."
 $combine_script_contents | Out-File -FilePath $combine_script
 
@@ -387,7 +375,6 @@ $combine_script_contents | Out-File -FilePath $combine_script
 & $ld_cmd -i -T $combine_script -o $combined_obj_file $obj_files
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
-# Export all C symbols to m2-compiled.asm, except for those in ext.c
 "Reading symbols from $combined_obj_file..."
 $combined_symbols = Get-Symbols $combined_obj_file
 if ($LASTEXITCODE -ne 0) { exit -1 }
@@ -402,13 +389,11 @@ $exported_symbols = $combined_symbols | Where-Object { $_.IsFunction -and $_.IsG
 $exported_symbols | Sort-Object -Property Name | ForEach-Object { ".definelabel $($_.Name),0x$($_.Value.ToString("X"))" } | Set-Content -Path $compiled_asm_file
 
 # ------------------------ ASSEMBLE HACK CODE -----------------------
-
 "Assembling $hack_asm_file..."
 & $asm_cmd -root $src_dir -sym $hack_sym_file $hack_asm_file
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
 # ------------------- GENERATE FINAL LINKER SCRIPT ------------------
-
 "Writing $link_script..."
 $hack_symbols = Get-SymfileSymbols "$([IO.Path]::Combine($src_dir, $hack_sym_file))"
 $includes_symbols = Get-SymfileSymbols "$([IO.Path]::Combine($working_dir, $includes_sym_file))"
@@ -417,13 +402,11 @@ Set-Content -Path $link_script -Value $link_script_contents
 $asm_symbols | ForEach-Object { Add-Content -Path $link_script -Value "$($_.Name) = 0x$($_.Value.ToString("X"));" }
 
 # ---------------------------- FINAL LINK ---------------------------
-
 "Linking to $linked_obj_file..."
 & $ld_cmd -T $link_script -o $linked_obj_file $combined_obj_file
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
 # -------------------- COPY COMPILED C CODE TO ROM ------------------
-
 "Copying compiled code to $output_rom_file..."
 $sections = Get-SectionInfo $linked_obj_file
 if ($LASTEXITCODE -ne 0) { exit -1 }
@@ -434,10 +417,10 @@ $rom_bytes = [IO.File]::ReadAllBytes($output_rom_file)
 [IO.File]::WriteAllBytes($output_rom_file, $rom_bytes)
 
 # -------------------------- GENERATE SYMBOLS -----------------------
-
 "Generating $output_rom_sym_file..."
 & dotnet $symbuilder_cmd $output_rom_sym_file "$([IO.Path]::Combine($src_dir, $hack_sym_file))" "$([IO.Path]::Combine($working_dir, $includes_sym_file))"
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
-"Finished"
+"Finished compiling $output_rom_file in $($timer.Elapsed.TotalSeconds.ToString("F3")) s"
+
 exit 0
