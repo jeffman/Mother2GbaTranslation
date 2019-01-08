@@ -16,7 +16,6 @@ $input_c_files =
 
 $base_c_address    = 0x8100000;
 $scripttool_cmd    = "bin/ScriptTool/ScriptTool.dll"
-$symbuilder_cmd    = "bin/SymbolTableBuilder/SymbolTableBuilder.dll"
 $gcc_cmd           = "arm-none-eabi-gcc"
 $ld_cmd            = "arm-none-eabi-ld"
 $objdump_cmd       = "arm-none-eabi-objdump"
@@ -136,7 +135,7 @@ Function New-Symbol([string]$symbol_string)
 
 Function Get-SymfileSymbols([string]$symbol_file)
 {
-    return Get-Content $symbol_file | ForEach-Object { New-SymfileSymbol $_ } | Where-Object { $_ -ne $null }
+    return Get-Content $symbol_file | ForEach-Object { New-SymfileSymbol $_ } | Where-Object { $null -ne $_ }
 }
 
 $symfile_symbol_regex = "(?'value'[0-9a-fA-F]{8})\s+(?'name'(?>\.|@@|[a-zA-Z0-9_])[a-zA-Z0-9_]+):{0,1}(?'size'[0-9a-fA-F]+){0,1}"
@@ -332,10 +331,7 @@ is to separate the compiling and linking stages of the C code.
     - m12.sym
 
     Remarks:
-    - This is a merged symbol file for debugging convenience.
-    - The assembler generates a dummy .byt symbol at the base address; remove it.
-    - Use SymbolTableBuilder to do the merge, plus remove the undesirable namespaces that
-      the assembler inserts.
+    - This is just the input files concatenated (and sorted for convenience).
 #>
 
 $timer = [System.Diagnostics.StopWatch]::StartNew()
@@ -418,8 +414,7 @@ $rom_bytes = [IO.File]::ReadAllBytes($output_rom_file)
 
 # -------------------------- GENERATE SYMBOLS -----------------------
 "Generating $output_rom_sym_file..."
-& dotnet $symbuilder_cmd $output_rom_sym_file "$([IO.Path]::Combine($src_dir, $hack_sym_file))" "$([IO.Path]::Combine($working_dir, $includes_sym_file))"
-if ($LASTEXITCODE -ne 0) { exit -1 }
+($hack_symbols + $includes_symbols) | Sort-Object Name | ForEach-Object { "$($_.Value.ToString("X8")) $($_.Name)" } | Set-Content $output_rom_sym_file
 
 "Finished compiling $output_rom_file in $($timer.Elapsed.TotalSeconds.ToString("F3")) s"
 
