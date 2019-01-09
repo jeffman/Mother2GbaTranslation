@@ -63,8 +63,8 @@ namespace ScriptToolGui
         static MainForm()
         {
             validGames = new Game[] { Game.Eb, Game.M12, Game.M12English };
-            ebCharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("eb-char-lookup.json"));
-            m12CharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(File.ReadAllText("m12-char-lookup.json"));
+            ebCharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(Asset.ReadAllText("eb-char-lookup.json"));
+            m12CharLookup = JsonConvert.DeserializeObject<Dictionary<byte, string>>(Asset.ReadAllText("m12-char-lookup.json"));
         }
 
         string ReadEbString(byte[] rom, int address, int length)
@@ -166,7 +166,7 @@ namespace ScriptToolGui
             battleActionGroups.SortGroups();
 
             // Item help
-            itemMapping = JsonConvert.DeserializeObject<IndexMapping>(File.ReadAllText("item-map.json"));
+            itemMapping = JsonConvert.DeserializeObject<IndexMapping>(Asset.ReadAllText("item-map.json"));
             var m12ItemHelpRefs = ImportStringRefs("m12-item-help.json");
             var ebItemHelpRefs = ImportStringRefs("eb-item-help.json");
 
