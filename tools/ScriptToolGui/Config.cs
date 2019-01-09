@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
+using ScriptTool;
 
 namespace ScriptToolGui
 {
@@ -14,10 +15,10 @@ namespace ScriptToolGui
 
         public static Config Read(string configPath)
         {
-            if (!File.Exists(configPath))
+            if (!File.Exists(Asset.GetFullPath(configPath)))
                 return null;
 
-            return JsonConvert.DeserializeObject<Config>(File.ReadAllText(configPath));
+            return JsonConvert.DeserializeObject<Config>(Asset.ReadAllText(configPath));
         }
     }
 }
