@@ -16,6 +16,7 @@ namespace ScriptToolGui
     public partial class MainForm : Form
     {
         // Config
+        static readonly string configFile = "config.json";
         Config config;
 
         // Static/const members
@@ -80,10 +81,18 @@ namespace ScriptToolGui
         public MainForm()
         {
             InitializeComponent();
+        }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
             try
             {
-                config = Config.Read("config.json");
+                config = GetConfig();
+                if (config == null)
+                {
+                    MessageBox.Show("Could not load a valid configuration. The application will now exit.");
+                    Close();
+                }
 
                 previewer.M12Compiler = m12Compiler;
                 previewer.CharLookup = ebCharLookup;
@@ -97,15 +106,43 @@ namespace ScriptToolGui
 
                 collectionSelector.SelectedIndex = 0;
                 collectionSelector_SelectionChangeCommitted(null, null);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("There was an error starting the tool." + Environment.NewLine +
-                    "Reason: " + e.Message);
 
-                badStart = true;
-                this.Load += (s, ee) => this.Close();
+                Activate();
             }
+            catch (Exception ex)
+            {
+                badStart = true;
+                MessageBox.Show($"There was an error starting the tool.{Environment.NewLine}{ex}");
+                Close();
+            }
+        }
+
+        private Config GetConfig()
+        {
+            config = Config.Read(configFile);
+
+            if (config == null)
+            {
+                if (MessageBox.Show($"There was a problem reading {configFile}. Create a new one now?",
+                    "Config error",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    using (var dialog = new FolderBrowserDialog())
+                    {
+                        dialog.Description = "Select the working folder for the repository";
+                        dialog.RootFolder = Environment.SpecialFolder.MyComputer;
+                        dialog.ShowNewFolderButton = false;
+
+                        if (dialog.ShowDialog() == DialogResult.OK)
+                        {
+                            config = new Config { WorkingFolder = dialog.SelectedPath };
+                            config.Write(configFile);
+                        }
+                    }
+                }
+            }
+
+            return config;
         }
 
         private void PopulateCollectionSelector()

@@ -17,9 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="config.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="eb-char-lookup.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
