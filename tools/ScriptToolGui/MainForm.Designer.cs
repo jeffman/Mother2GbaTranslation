@@ -497,7 +497,7 @@
             // 
             // writeTimer
             // 
-            this.writeTimer.Enabled = true;
+            this.writeTimer.Enabled = false;
             this.writeTimer.Interval = 10000;
             this.writeTimer.Tick += new System.EventHandler(this.writeTimer_Tick);
             // 

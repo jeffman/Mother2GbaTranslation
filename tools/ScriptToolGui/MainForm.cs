@@ -107,6 +107,7 @@ namespace ScriptToolGui
                 collectionSelector.SelectedIndex = 0;
                 collectionSelector_SelectionChangeCommitted(null, null);
 
+                writeTimer.Enabled = true;
                 Activate();
             }
             catch (Exception ex)
