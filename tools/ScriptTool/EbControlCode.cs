@@ -29,7 +29,7 @@ namespace ScriptTool
         {
             // Load compressed strings
             compressedStrings = new string[3][];
-            string[] stringsFromFile = File.ReadAllLines(@"eb-compressed-strings.txt");
+            string[] stringsFromFile = Asset.ReadAllLines("eb-compressed-strings.txt");
             compressedStrings[0] = stringsFromFile.Take(0x100).ToArray();
             compressedStrings[1] = stringsFromFile.Skip(0x100).Take(0x100).ToArray();
             compressedStrings[2] = stringsFromFile.Skip(0x200).Take(0x100).ToArray();
