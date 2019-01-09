@@ -20,5 +20,10 @@ namespace ScriptToolGui
 
             return JsonConvert.DeserializeObject<Config>(Asset.ReadAllText(configPath));
         }
+
+        public void Write(string configPath)
+        {
+            Asset.WriteAllText(configPath, JsonConvert.SerializeObject(this));
+        }
     }
 }
