@@ -31,7 +31,6 @@ namespace ScriptToolGui
 
         // Saving changes
         object changeLock = new object();
-        bool changesMade = false;
 
         // Strings
         List<string> m12Strings;
@@ -511,11 +510,6 @@ namespace ScriptToolGui
 
                         if (game == Game.M12English)
                         {
-                            if (oldString != newString)
-                            {
-                                changesMade = true;
-                            }
-
                             if (insertEndcode)
                             {
                                 // Special case -- for M12 English, if the line is modified,
@@ -560,19 +554,15 @@ namespace ScriptToolGui
 
             lock (changeLock)
             {
-                //if (changesMade)
+                using (StreamWriter sw = File.CreateText(Path.Combine(config.WorkingFolder, "m12-strings-english.txt")))
                 {
-                    using (StreamWriter sw = File.CreateText(Path.Combine(config.WorkingFolder, "m12-strings-english.txt")))
+                    foreach (string line in m12StringsEnglish)
                     {
-                        foreach (string line in m12StringsEnglish)
-                        {
-                            sw.WriteLine(line);
-                        }
+                        sw.WriteLine(line);
                     }
-
-                    UpdateStatus(String.Format("Last saved: {0:G}", DateTime.Now));
-                    changesMade = false;
                 }
+
+                UpdateStatus(String.Format("Last saved: {0:G}", DateTime.Now));
             }
         }
 
