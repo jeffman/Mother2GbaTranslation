@@ -299,6 +299,10 @@ b       0x80CA46C
 .org    0x80CA48E
 nop
 
+// Saturn text welding entry
+.org    0x80CA39A
+bl      weld_entry_saturn
+
 //---------------------------------------------------------
 // C8FFC hacks (main string printing)
 //---------------------------------------------------------
@@ -425,6 +429,10 @@ b       0x80D2F52
 // Disable X increment
 .org 0x80D2F5A :: nop
 
+// Saturn weld entry
+.org    0x80D2F1A
+bl      weld_entry_saturn
+
 //---------------------------------------------------------
 // D2FA0 hacks (print item)
 //---------------------------------------------------------
@@ -437,6 +445,10 @@ b       0x80D3072
 
 // Disable X increment
 .org 0x80D307A :: nop
+
+// Saturn weld entry
+.org    0x80D301A
+bl      weld_entry_saturn
 
 //---------------------------------------------------------
 // D30C4 hacks (print number)
