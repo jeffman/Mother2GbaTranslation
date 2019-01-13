@@ -100,24 +100,6 @@ b       0x80BADD8
 .org 0x80BBC70 :: bl baef8_reequip_erase
 
 //---------------------------------------------------------
-// BF858 hacks (goods window)
-//---------------------------------------------------------
-
-// Skip the tile-by-tile nonsense and use existing string printing subs
-.org 0x80BFB08 :: mov r4,r0 :: nop
-.org 0x80BFB10 :: b 0x80BFB34
-
-.org    0x80BFB34
-bl      bf858_goods
-b       0x80BFB84 // Skip the remaining nonsense
-
-// Skip the blank tile drawing after item names
-.org 0x80BFBDA :: b 0x80BFBFA
-
-// Only use as many tiles as needed in the tilemap for name headers
-.org 0x80BFA52 :: bl bf858_name_header :: b 0x80BFA86
-
-//---------------------------------------------------------
 // C5500 hacks (equip window switching)
 //---------------------------------------------------------
 
