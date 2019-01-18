@@ -12,6 +12,12 @@ Hard-coded characters:
 - Background (tile 0x1FF)
 - 0xB4 - 0xBC: YOU WON! (tile 0x154)
 
+English names:
+- Ness: 7E 95 A3 A3
+- Pala: 80 91 9C 91
+- Jeff: 7A 95 96 96
+- Poo:  80 9F 9F
+
 0x2020C70: enemy data slots in-battle? separated by 0x94 bytes
 0x2025038: enemy count (initial, not current)
 0x20251D8: item drop

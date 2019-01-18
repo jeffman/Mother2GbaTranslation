@@ -40,6 +40,7 @@ void clear_window_header(int *dest);
 unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned int *dest,
     WINDOW *window);
 void weld_entry(WINDOW *window, byte *str);
+int weld_entry_saturn(WINDOW *window, byte *str);
 void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground);
 void clear_tile(int x, int y, int pixels);
 void clear_rect(int x, int y, int width, int height, int pixels);

@@ -246,6 +246,16 @@ void weld_entry(WINDOW *window, byte *str)
     weld_entry_custom(window, str, 0, 0xF);
 }
 
+int weld_entry_saturn(WINDOW *window, byte *str)
+{
+    weld_entry_custom(window, str, 1, 0xF);
+
+    // TODO: figure out when the original routine at 80ED770 might return non-zero
+    // Looking at 80CA3A4, maybe 1 is returned if a non-saturn glyph is encountered?
+    // And looking at 80D2F24, that seems to be the case...
+    return 0;
+}
+
 void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground)
 {
     int chr = decode_character(*str);
