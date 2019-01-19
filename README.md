@@ -48,4 +48,7 @@ This project aims to both complete the VWF codebase and to provide a tool for tr
 2. Building the ROM
     1. Run `build.ps1` (like in Step 4).
     2. The default compiled ROM is copied to `bin/m12.gba`.
-3. (Optional) Build the GUI script tool with `dotnet build tools/ScriptToolGui -o bin/ScriptToolGui`, then run it with `dotnet bin/ScriptToolGui/ScriptToolGui.dll` (or just run the EXE file directly).
+3. (Optional) Build the GUI script tool:
+    1. `dotnet build tools/ScriptTool` (don't set the output directory)
+    2. `dotnet build tools/ScriptToolGui -o bin/ScriptToolGui`
+    3. Run with `dotnet bin/ScriptToolGui/ScriptToolGui.dll` (or just run the EXE file directly).
