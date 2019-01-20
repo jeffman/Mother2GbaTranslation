@@ -59,16 +59,6 @@ void clear_number_menu(WINDOW* window);
 void format_cash_window(int value, int padding, byte* str);
 void handle_first_window(WINDOW* window);
 
-extern unsigned short *tile_offset;
-extern int *first_window_flag;
-extern unsigned short *palette_mask;
-extern short *active_window_party_member;
-extern unsigned short **tilemap_pointer;
-extern int *vram;
-extern PC (*pc_stats)[4];
-extern int *m2_misc_offsets;
-extern byte *m2_misc_strings;
-
 extern unsigned short m2_coord_table[];
 extern int m2_bits_to_nybbles[];
 extern byte m2_nybbles_to_bits[];
@@ -86,3 +76,4 @@ extern byte* m2_strlookup(int *offset_table, byte *strings, int index);
 extern int bin_to_bcd(int value, int* digit_count);
 extern int m2_drawwindow(WINDOW* window);
 extern int m2_resetwindow(WINDOW* window, bool skip_redraw);
+extern void m2_hpwindow_up(int character);

@@ -1,6 +1,7 @@
 #include "window.h"
 #include "vwf.h"
 #include "number-selector.h"
+#include "locs.h"
 
 byte decode_character(byte chr)
 {
