@@ -47,7 +47,7 @@ $scripttool_args =
 
 $gcc_args =
     "-c",
-    "-O3",
+    "-O1",
     "-fno-ipa-cp",
     "-fno-inline",
     "-march=armv4t",
@@ -56,10 +56,10 @@ $gcc_args =
     "-ffixed-r12",
     "-mno-long-calls"
 
-$combine_script_contents = 
+$combine_script_contents =
 "SECTIONS { .text 0x$($base_c_address.ToString('X')) : { *(.text .rodata) } }"
 
-$link_script_contents = 
+$link_script_contents =
 "SECTIONS { .text 0x$($base_c_address.ToString('X')) : { *(.text .data .rodata) } }"
 #EndRegion Variables
 
@@ -153,7 +153,7 @@ Function New-SymfileSymbol([string]$symbol_string)
         }
         else
         {
-            $symbol.Size = 0    
+            $symbol.Size = 0
         }
 
         $symbol.IsLocal = $symbol.Name.StartsWith("@@")
@@ -195,7 +195,7 @@ function New-Section([string]$section_string)
     }
     else
     {
-        return $null    
+        return $null
     }
 }
 #EndRegion Functions
@@ -394,6 +394,17 @@ if ($LASTEXITCODE -ne 0) { exit -1 }
 $hack_symbols = Get-SymfileSymbols "$([IO.Path]::Combine($src_dir, $hack_sym_file))"
 $includes_symbols = Get-SymfileSymbols "$([IO.Path]::Combine($working_dir, $includes_sym_file))"
 $asm_symbols = ($hack_symbols + $includes_symbols) | Where-Object { $_.IsGlobal }
+$asm_symbols_names = $asm_symbols | ForEach-Object { $_.Name }
+
+foreach ($ext_symbols_name in $ext_symbols_names)
+{
+    if ($asm_symbols_names -notcontains $ext_symbols_name)
+    {
+        Write-Host "Error: Undefined external symbol $ext_symbols_name"
+        exit -1
+    }
+}
+
 Set-Content -Path $link_script -Value $link_script_contents
 $asm_symbols | ForEach-Object { Add-Content -Path $link_script -Value "$($_.Name) = 0x$($_.Value.ToString("X"));" }
 
