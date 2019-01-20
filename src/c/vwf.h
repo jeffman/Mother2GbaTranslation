@@ -32,6 +32,7 @@ byte print_character(byte chr, int x, int y);
 byte print_character_formatted(byte chr, int x, int y, int font, int foreground);
 byte print_character_to_window(byte chr, WINDOW* window);
 void print_special_character(int tile, int x, int y);
+void map_special_character(unsigned short tile, int x, int y);
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
     int *dest, int (*getTileCallback)(int, int), int useTilemap);
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground);
@@ -39,6 +40,11 @@ int print_window_header_string(int *dest, byte *str, int x, int y);
 void clear_window_header(int *dest);
 unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned int *dest,
     WINDOW *window);
+unsigned short format_tile(unsigned short tile, bool flip_x, bool flip_y);
+void copy_name_header(WINDOW *window, int character_index);
+void clear_name_header(WINDOW* window);
+void draw_window_arrows(WINDOW *window, bool big);
+void clear_window_arrows(WINDOW *window);
 void weld_entry(WINDOW *window, byte *str);
 int weld_entry_saturn(WINDOW *window, byte *str);
 void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground);

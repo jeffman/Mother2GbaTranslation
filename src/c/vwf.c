@@ -92,6 +92,15 @@ void print_special_character(int tile, int x, int y)
     cpufastset(&vram[(sourceTileIndex + 32) * 8], &vram[(destTileIndex + 32) * 8], 8);
 }
 
+// Maps a special character to the given tile coordinates. Only the tilemap is changed.
+// x, y in tiles
+void map_special_character(unsigned short tile, int x, int y)
+{
+    tile = format_tile(tile, false, false);
+    (*tilemap_pointer)[x + (y * 32)] = tile;
+    (*tilemap_pointer)[x + ((y + 1) * 32)] = tile + 32;
+}
+
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
     int *dest, int (*getTileCallback)(int, int), int useTilemap)
 {
@@ -242,6 +251,102 @@ unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned i
     }
 
     return tilemap;
+}
+
+// Returns a formatted tile value including the palette index, flip flags and
+// tile offset.
+unsigned short format_tile(unsigned short tile, bool flip_x, bool flip_y)
+{
+    tile += *tile_offset;
+    tile |= *palette_mask;
+
+    if (flip_x)
+    {
+        tile |= (1 << 10);
+    }
+
+    if (flip_y)
+    {
+        tile |= (1 << 11);
+    }
+
+    return tile;
+}
+
+// Copy party character name to window header
+// Assumes that the party character names have already been rendered
+// to VRAM; this just copies the map data
+void copy_name_header(WINDOW *window, int character_index)
+{
+    // Coordinates of the name tiles
+    int x = window->window_x + 1;
+    int y = window->window_y - 1;
+
+    // Print the partial border tile before the name
+    (*tilemap_pointer)[x - 1 + (y * 32)] = format_tile(0xB3, false, false);
+
+    // Get name width in pixels
+    byte *name_str = pc_names + (character_index * 6);
+    unsigned short *widths_table = m2_widths_table[4]; // small font
+    int width = 0;
+
+    while (*(name_str + 1) != 0xFF)
+    {
+        width += widths_table[decode_character(*name_str)] & 0xFF;
+        name_str++;
+    }
+
+    // Print name
+    int num_tiles = (width + 7) >> 3;
+    int tile = name_header_tiles[character_index];
+
+    for (int i = 0; i < num_tiles; i++)
+    {
+        (*tilemap_pointer)[x + i + (y * 32)] = format_tile(tile, false, false);
+        tile++;
+    }
+
+    // Print flipped partial border tile after name
+    (*tilemap_pointer)[x + num_tiles + (y * 32)] = format_tile(0xB3, true, false);
+}
+
+// Clears a window's name header by printing border tiles in the slots for the
+// name, plus one tile on either side for the partial borders
+void clear_name_header(WINDOW* window)
+{
+    // We don't need to know how long the name is; just make a conservative
+    // estimate that it couldn't have been more than 4 tiles wide
+
+    int x = window->window_x; // start of partial border tile
+    int y = window->window_y - 1;
+    int tile = format_tile(0x96, false, true);
+
+    for (int i = 0; i < 6; i++)
+    {
+        (*tilemap_pointer)[x + (y * 32)] = tile;
+        x++;
+    }
+}
+
+// Draws the arrow tiles on a window
+// The big flag controls what size to use
+void draw_window_arrows(WINDOW *window, bool big)
+{
+    int x = window->window_x + window->window_width - 3;
+    int y = window->window_y - 1;
+    unsigned short tile = format_tile(big ? 0x9B : 0xBB, false, false);
+    (*tilemap_pointer)[x + (y * 32)] = tile;
+    (*tilemap_pointer)[x + 1 + (y * 32)] = tile + 1;
+}
+
+// Replaces window arrow tiles with regular border tiles
+void clear_window_arrows(WINDOW *window)
+{
+    int x = window->window_x + window->window_width - 3;
+    int y = window->window_y - 1;
+    unsigned short tile = format_tile(0x96, false, true);
+    (*tilemap_pointer)[x + (y * 32)] = tile;
+    (*tilemap_pointer)[x + 1 + (y * 32)] = tile;
 }
 
 void weld_entry(WINDOW *window, byte *str)
