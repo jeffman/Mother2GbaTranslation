@@ -553,7 +553,7 @@ void handle_first_window(WINDOW* window)
         m2_resetwindow(window, false);
         *first_window_flag = 0;
     }
-    else if (window->flags & 0x20)
+    else if (window->redraw)
     {
         m2_drawwindow(window);
     }
