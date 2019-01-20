@@ -861,6 +861,5 @@ m2_enemy_attributes:
 .include "m2-formatting.asm"
 .include "m2-customcodes.asm"
 .include "m2-compiled.asm"
-.include "m2-goods.asm"
 
 .close

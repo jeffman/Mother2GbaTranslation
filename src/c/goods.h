@@ -19,7 +19,6 @@ typedef enum GOODS_ACTION
 } GOODS_ACTION;
 
 int goods_outer_process(WINDOW* window);
-GOODS_ACTION goods_get_action(PAD_STATE *state);
 void goods_print_items(WINDOW *window, unsigned short *items);
 
 extern bool m2_isequipped(int item_index);
