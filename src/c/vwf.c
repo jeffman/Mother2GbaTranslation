@@ -74,6 +74,8 @@ byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int fore
     return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, FALSE);
 }
 
+// Prints a special tile. Pixels are copied to the VWF buffer.
+// x, y in pixels
 void print_special_character(int tile, int x, int y)
 {
     // Special graphics must be tile-aligned
