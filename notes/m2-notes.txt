@@ -181,6 +181,7 @@ Subroutines
 80EC004: get user string pointer
 80EC010: copy string from r0, of max length r1, to battle target slot, and terminate with [00 FF]
 80EC046: get target string pointer
+80F49DC: divide r0 by r1, return quotient in r0
 
 8B1B8B8 has a jump table with 13 entries for the [1A FF xx 00] code:
   00: ?

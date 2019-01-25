@@ -6,6 +6,9 @@
 
 // Process the outer Goods window (i.e. character selection)
 // Called every frame. Replaces $80BF858 fully.
+// Returns 1 if the user steps into the inner window,
+// -1 if the user steps back out to the previous window,
+// and 0 for no action.
 int goods_outer_process(WINDOW* window)
 {
     // Get the weird signed parity value
