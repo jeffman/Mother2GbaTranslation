@@ -1,3 +1,5 @@
+[Environment]::CurrentDirectory = (Get-Location -PSProvider FileSystem).ProviderPath
+
 #Region Variables
 $input_rom_file    = "bin/m12fresh.gba"
 $output_rom_file   = "bin/m12.gba"
