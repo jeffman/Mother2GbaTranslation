@@ -849,6 +849,7 @@ m2_enemy_attributes:
 .definelabel m2_resetwindow         ,0x80BE490
 .definelabel m2_hpwindow_up         ,0x80D3F0C
 .definelabel m2_curhpwindow_down    ,0x80D41D8
+.definelabel m2_div                 ,0x80F49D8
 
 //==============================================================================
 // Code files
@@ -861,6 +862,5 @@ m2_enemy_attributes:
 .include "m2-formatting.asm"
 .include "m2-customcodes.asm"
 .include "m2-compiled.asm"
-.include "m2-goods.asm"
 
 .close

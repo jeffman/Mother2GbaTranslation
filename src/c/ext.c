@@ -8,3 +8,4 @@ int __attribute__((naked)) m2_resetwindow(WINDOW* window, bool skip_redraw) {}
 void __attribute__((naked)) m2_hpwindow_up(int character) {}
 bool __attribute__((naked)) m2_isequipped(int item_index) {}
 void __attribute__((naked)) m2_soundeffect(int index) {}
+int __attribute__((naked)) m2_div(int dividend, int divisor) {}

@@ -6,6 +6,9 @@
 
 // Process the outer Goods window (i.e. character selection)
 // Called every frame. Replaces $80BF858 fully.
+// Returns 1 if the user steps into the inner window,
+// -1 if the user steps back out to the previous window,
+// and 0 for no action.
 int goods_outer_process(WINDOW* window)
 {
     // Get the weird signed parity value
@@ -177,19 +180,6 @@ int goods_outer_process(WINDOW* window)
         window->counter = 0;
 
     return ACTION_NONE;
-}
-
-// Converts a pad state to a window action.
-GOODS_ACTION goods_get_action(PAD_STATE *state)
-{
-    if (state->a || state->l)
-        return ACTION_STEPIN;
-
-    else if (state->b || state->select)
-        return ACTION_STEPOUT;
-
-    else
-        return ACTION_NONE;
 }
 
 // Prints all 14 items to a goods window.
