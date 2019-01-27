@@ -135,7 +135,7 @@
 // If right:
     080BF936 (T)  mov     r8,r0                                   ;2  539
     080BF938 (T)  ldr     r5,=3001D40h                            ;9  548
-    080BF93A (T)  ldr     r2,=3005264h                            ;9  557
+    080BF93A (T)  ldr     r2,=3005264h                            ;9  557 // active PC pointer
     080BF93C (T)  mov     r6,0E6h                                 ;2  559
     080BF93E (T)  lsl     r6,r6,1h                                ;2  561
     080BF940 (T)  add     r4,r5,r6                                ;2  563 // 0x3001F0C (active party member flags)
@@ -191,7 +191,7 @@
     080BF9A4 (T)  strh    r1,[r7,3Ah]                             ;8  754 // unknown
     080BF9A6 (T)  b       80BF9EAh                                ;8  762
 
-// Else if right:
+// Else if left:
     080BF9A8 (T)  mov     r2,0h                                   ;2  764
     080BF9AA (T)  mov     r8,r2                                   ;2  766
     080BF9AC (T)  ldr     r5,=3001D40h                            ;9  775
@@ -538,6 +538,10 @@
 080BFC20 (T)  and     r0,r1                                   ;2  1884
 080BFC22 (T)  cmp     r0,0h                                   ;2  1886
 080BFC24 (T)  beq     80BFC88h                                ;8  1894
+
+// if we pressed no arrows: go to C94 (clear window flag)
+// if we pressed (not left-right): go to C88 (set window flag)
+// else: continue to C26
 
 // Not sure what this is checking (branch seems to always evaluate to false?)
 080BFC26 (T)  ldr     r0,=300130Ch                            ;9  1903

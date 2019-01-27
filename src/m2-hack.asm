@@ -621,6 +621,15 @@ pop     {r4,pc}
 .org 0x80BF15C :: nop // Don't print lower equip tile
 
 //---------------------------------------------------------
+// BF858 hacks (Goods outer menu)
+//---------------------------------------------------------
+
+.org 0x80BF858
+push    {lr}
+bl      goods_outer_process
+pop     {pc}
+
+//---------------------------------------------------------
 // C1C98 hacks (menu selection)
 //---------------------------------------------------------
 
@@ -838,6 +847,8 @@ m2_enemy_attributes:
 .definelabel m2_clearwindowtiles    ,0x80CA834
 .definelabel m2_menuwindow          ,0x80C1C98
 .definelabel m2_resetwindow         ,0x80BE490
+.definelabel m2_hpwindow_up         ,0x80D3F0C
+.definelabel m2_curhpwindow_down    ,0x80D41D8
 
 //==============================================================================
 // Code files
