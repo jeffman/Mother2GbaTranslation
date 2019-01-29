@@ -608,19 +608,6 @@ pop     {r4,pc}
 .org 0x80DB0E6 :: b 0x80DB0FE
 
 //---------------------------------------------------------
-// BEB6C hacks (Goods sub-menu)
-//---------------------------------------------------------
-
-// When entering first sub-menu:
-.org 0x80BEC5E :: nop // Don't clear upper letter tile
-.org 0x80BEC6A :: nop // Don't clear lower letter tile
-.org 0x80BF050 :: nop :: nop // Don't clear the window
-.org 0x80BF0FE :: nop // Don't print upper letter tile
-.org 0x80BF10E :: nop // Don't print lower letter tile
-.org 0x80BF14C :: nop // Don't print upper equip tile
-.org 0x80BF15C :: nop // Don't print lower equip tile
-
-//---------------------------------------------------------
 // BF858 hacks (Goods outer menu)
 //---------------------------------------------------------
 
@@ -832,6 +819,8 @@ m2_enemy_attributes:
 .definelabel m2_player1             ,0x3001F50
 .definelabel m2_active_window_pc    ,0x3005264
 .definelabel m2_soundeffect         ,0x8001720
+.definelabel m2_sub_a334c           ,0x80A334C
+.definelabel m2_sub_a3384           ,0x80A3384
 .definelabel m2_psitargetwindow     ,0x80B8AE0
 .definelabel m2_isequipped          ,0x80BC670
 .definelabel m2_swapwindowbuf       ,0x80BD7AC
