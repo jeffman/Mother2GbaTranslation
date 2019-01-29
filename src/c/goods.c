@@ -41,7 +41,7 @@ int goods_outer_process(WINDOW* window)
     PAD_STATE state = *pad_state;
     MOVED moved = DIRECTION_NONE;
 
-    if (!window->flags_unknown2)
+    if (!window->hold)
     {
         if (state.right)
         {
@@ -101,7 +101,7 @@ int goods_outer_process(WINDOW* window)
     {
         current_items = (*pc_stats)[current_pc].goods;
         window->unknown7 = 0;
-        window->cursor_x = window->page;
+        window->cursor_x = window->cursor_x_base;
         window->cursor_y = 0;
         window->unknown6 = 0;
         window->unknown6a = 0;
@@ -134,11 +134,11 @@ int goods_outer_process(WINDOW* window)
             }
         }
 
-        window->flags_unknown2 = true;
+        window->hold = true;
     }
     else
     {
-        window->flags_unknown2 = false;
+        window->hold = false;
     }
 
     // Check if we're exiting
