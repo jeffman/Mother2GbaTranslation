@@ -36,13 +36,14 @@ This project aims to both complete the VWF codebase and to provide a tool for tr
 - (Optional) For building the GUI script tool: [.NET Core 3.0 or later](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
 1. One-time setup
-    1. Install .NET Core 2.1, PowerShell Core, and GNU Arm Embedded Toolchain.
-    2. Copy MOTHER 1+2 ROM to `bin/m12fresh.gba`.
-    3. Copy EarthBound ROM to `bin/eb.smc`.
-    4. Run `build-tools.ps1`.
+    1. Install .NET Core 2.1, PowerShell Core, and GNU Arm Embedded Toolchain. Make sure the Arm toolchain's `bin` folder is in your `PATH`.
+    2. Create a `bin` folder in the root of the repo.
+    3. Copy MOTHER 1+2 ROM to `bin/m12fresh.gba`.
+    4. Copy EarthBound ROM to `bin/eb.smc`.
+    5. Run `build-tools.ps1`.
         - Windows: `.\build-tools.ps1` in a PowerShell prompt
         - Linux: `pwsh build-tools.ps1`
-    5. Copy/build `armips`.
+    6. Copy/build `armips` to `bin`.
         - Windows: grab the latest release [here](https://github.com/Kingcom/armips/releases) and copy the executable to `bin/armips.exe`.
         - Linux: follow the [README](https://github.com/Kingcom/armips/blob/master/Readme.md) to build `armips` and copy the executable to `bin/armips`.
 2. Building the ROM

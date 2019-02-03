@@ -2,11 +2,16 @@
 
 typedef struct WINDOW {
     // 0x00
-    bool enable : 1;          // 0x0001
-    unsigned int flags_unknown1 : 3;  // 0x000E
-    bool flags_unknown2 : 1;  // 0x0010
-    bool redraw : 1;          // 0x0020
-    unsigned int flags_unknown3 : 10; // 0xFFC0
+    bool enable                  : 1; // 0x0001 Indicates that the window is enabled.
+    unsigned int flags_unknown1  : 3; // 0x000E
+    bool hold                    : 1; // 0x0010 Indicates that a button is still being held from a previous frame.
+    bool redraw                  : 1; // 0x0020 Indicates that the window border should be redrawn.
+    unsigned int flags_unknown3a : 5; // 0x07C0
+    bool first                   : 1; // 0x0800 Set immediately after the window is initialized and drawn.
+                                      //        Typically checked and cleared on the first frame of the window loop.
+                                      //        Might not be used for all windows.
+                                      //        Definitely used for the goods *inner* window loop, but not the outer loop.
+    unsigned int flags_unknown3b : 4; // 0xF000
     byte pixel_x;
     bool vwf_skip : 1;
     unsigned int vwf_unused : 7;
@@ -41,8 +46,8 @@ typedef struct WINDOW {
     unsigned short unknown7a;
 
     // 0x40
-    unsigned short page;
-    unsigned short cursor_delta;
+    unsigned short cursor_x_base;
+    unsigned short cursor_x_delta;
     int unknown9;
     int unknown10;
     int unknown11;

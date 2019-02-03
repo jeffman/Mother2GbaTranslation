@@ -438,7 +438,7 @@ int print_menu_string(WINDOW* window)
                         // If we're calling SET the second time, update the
                         // window cursor delta to be the difference between
                         // the two set values
-                        window->cursor_delta = (set_value - first_set_value) >> 3;
+                        window->cursor_x_delta = (set_value - first_set_value) >> 3;
                     }
 
                     break;
@@ -545,7 +545,7 @@ void print_number_menu(WINDOW* window, int style)
     x += 8;
 
     // Print the zeroes (0x60)
-    for (int i = 0; i < window->cursor_delta; i++)
+    for (int i = 0; i < window->cursor_x_delta; i++)
     {
         print_character(decode_character(0x60), x, y);
         x += 8;
@@ -562,7 +562,7 @@ void print_number_menu(WINDOW* window, int style)
 void print_number_menu_current(byte digit, WINDOW* window)
 {
     // Skip the 4 blank tiles
-    int x = (window->window_x + (window->cursor_delta - window->cursor_x) + 4) << 3;
+    int x = (window->window_x + (window->cursor_x_delta - window->cursor_x) + 4) << 3;
 
     // Skip the first two text rows
     int y = (window->window_y + 4) << 3;
