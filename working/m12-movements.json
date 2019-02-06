@@ -42,12 +42,6 @@
     "Label": "L1578"
   },
   {
-    "Index": 28,
-    "PointerLocation": 165771,
-    "OldPointer": 396800,
-    "Label": "L1579"
-  },
-  {
     "Index": 32,
     "PointerLocation": 166338,
     "OldPointer": 483997,
@@ -306,12 +300,6 @@
     "Label": "L1621"
   },
   {
-    "Index": 119,
-    "PointerLocation": 182978,
-    "OldPointer": 396800,
-    "Label": "L1579"
-  },
-  {
     "Index": 123,
     "PointerLocation": 183246,
     "OldPointer": 465045,
@@ -432,12 +420,6 @@
     "Label": "L1640"
   },
   {
-    "Index": 151,
-    "PointerLocation": 188767,
-    "OldPointer": 396800,
-    "Label": "L1579"
-  },
-  {
     "Index": 155,
     "PointerLocation": 189104,
     "OldPointer": 457223,
@@ -466,12 +448,6 @@
     "PointerLocation": 192707,
     "OldPointer": 469090,
     "Label": "L1645"
-  },
-  {
-    "Index": 178,
-    "PointerLocation": 195633,
-    "OldPointer": 396800,
-    "Label": "L1579"
   },
   {
     "Index": 179,
@@ -514,12 +490,6 @@
     "PointerLocation": 201808,
     "OldPointer": 447865,
     "Label": "L1652"
-  },
-  {
-    "Index": 202,
-    "PointerLocation": 203261,
-    "OldPointer": 396800,
-    "Label": "L1579"
   },
   {
     "Index": 204,
@@ -761,10 +731,4 @@
     "OldPointer": 439972,
     "Label": "L1690"
   },
-  {
-    "Index": 300,
-    "PointerLocation": 215080,
-    "OldPointer": 396800,
-    "Label": "L1579"
-  }
 ]
