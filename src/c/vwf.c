@@ -235,8 +235,8 @@ unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned i
         // Print (X)
         if (window->cursor_x > 6)
         {
-            int page = window->page;
-            str = m2_strlookup(m2_misc_offsets, m2_misc_strings, page + 0x8C);
+            int base = window->cursor_x_base;
+            str = m2_strlookup(m2_misc_offsets, m2_misc_strings, base + 0x8C);
             width += print_window_header_string(dest, str, startX + width, startY);
         }
 
