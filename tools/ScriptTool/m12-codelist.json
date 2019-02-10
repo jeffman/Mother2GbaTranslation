@@ -675,7 +675,7 @@
   },
   {
     "Identifier": 0xB9,
-    "Description": "Unknown (1D 0F)",
+    "Description": "Remove the item in character {0:X}'s {1:X}th item slot (1D 0F)",
     "Length": 6
   },
   {
@@ -717,7 +717,7 @@
   },
   {
     "Identifier": 0xC1,
-    "Description": "Return the ID of the item or power being used (19 1F)",
+    "Description": "Return the argument passed to the current battle action (19 1F)",
     "Length": 2
   },
   {

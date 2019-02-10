@@ -248,7 +248,7 @@
   },
   {
     "Identifier": 0x67,
-    "Description": "With secondary memory = N, return the Nth character of the second player name and set binary flag if it exists (19 28 01)",
+    "Description": "Return one letter from the second player name (19 28 01)",
     "Length": 2
   },
   {
@@ -363,7 +363,7 @@
   },
   {
     "Identifier": 0x7E,
-    "Description": "Unknown (19 26)",
+    "Description": "Set respawn location to current position? Purpose of argument unclear (19 26)",
     "Length": 4
   },
   {
@@ -499,7 +499,7 @@
   },
   {
     "Identifier": 0x97,
-    "Description": "Set binary flag if character {0:X} does not have free space in their inventory (1D 02)",
+    "Description": "Unknown; related to whether an item is food (1D 02)",
     "Length": 3
   },
   {
@@ -509,7 +509,7 @@
   },
   {
     "Identifier": 0x99,
-    "Description": "Sets binary flag if the player currently holds {0:X} in the wallet (1D 14)",
+    "Description": "Set binary flag if the player does not have {0:X} dollars in the wallet (1D 14)",
     "Length": 6
   },
   {
@@ -707,7 +707,7 @@
   },
   {
     "Identifier": 0xBF,
-    "Description": "Unknown (19 20)",
+    "Description": "Return number of party members (19 20)",
     "Length": 2
   },
   {
