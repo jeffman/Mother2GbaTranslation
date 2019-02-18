@@ -202,6 +202,8 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
 
     // Count number of items in first and second display columns
     int item_counts[2];
+    item_counts[0] = 0;
+    item_counts[1] = 0;
     for (int i = 0; i < 14; i += 2)
     {
         if (items[i] != 0)
