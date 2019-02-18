@@ -299,7 +299,6 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
                 else
                     window->cursor_y = item_counts[1] - 1;
             }
-
         }
     }
     else if (state.right)
