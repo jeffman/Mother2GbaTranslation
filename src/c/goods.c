@@ -382,7 +382,7 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
         window->first = false;
 
         // Draw window header
-        (*tilemap_pointer)[window->window_x + (window->window_y - 1) * 32] = format_tile(0xB3, false, false);
+        map_tile(0xB3, window->window_x, window->window_y - 1);
         clear_name_header(window);
         copy_name_header(window, *active_window_party_member);
 
