@@ -235,7 +235,8 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
     }
 
     // Clear cursor tiles
-    map_special_character(0x1FF, window->window_x + window->cursor_x, window->window_y + window->cursor_y);
+    map_tile(0x1FF, window->window_x + window->cursor_x, window->window_y + window->cursor_y * 2);
+    map_tile(0x1FF, window->window_x + window->cursor_x, window->window_y + window->cursor_y * 2 + 1);
 
     int cursor_x_prev = window->cursor_x;
     int cursor_y_prev = window->cursor_y;
