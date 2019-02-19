@@ -394,11 +394,50 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
     {
         window->counter = 0;
 
-        if (state.up || state.down)
-        {
+        if ((state.up || state.down) && (window->cursor_y != cursor_y_prev))
+            m2_soundeffect(0x12F);
+        else if ((state.left || state.right) && (window->cursor_x != cursor_x_prev))
+            m2_soundeffect(0x12E);
 
-        }
+        window->hold = true;
     }
+    else
+        window->hold = false;
+
+    if (state.b || state.select)
+    {
+        window->counter = 0;
+        m2_soundeffect(0x12E);
+        m2_sub_a334c(0);
+        m2_sub_a3384(0);
+        return -1;
+    }
+
+    if (state.a || state.l)
+    {
+        window->counter = 0xFFFF;
+        m2_soundeffect(0x12D);
+        m2_sub_a334c(*active_window_party_member + 1);
+
+        int selected_index = cursor_col + window->cursor_y * 2 + 1;
+        m2_sub_a3384(selected_index);
+        return selected_index & 0xFFFF;
+    }
+
+    if (window->counter != 0xFFFF)
+    {
+        window->counter++;
+
+        // Draw cursor for current item
+        map_special_character((window->counter <= 7) ? 0x99 : 0x9A,
+            window->window_x + window->cursor_x,
+            window->window_y + window->cursor_y * 2);
+
+        if (window->counter > 0x10)
+            window->counter = 0;
+    }
+
+    return 0;
 }
 
 // Prints all 14 items to a goods window.
