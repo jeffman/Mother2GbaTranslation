@@ -287,17 +287,15 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
                 {
                     window->cursor_x = 0;
                     if (window->cursor_x_delta > 0)
-                    {
                         cursor_col = m2_div(-(window->cursor_x + window->cursor_x_base), window->cursor_x_delta);
-                    }
                 }
-            }
-            else
-            {
-                if (window->hold)
-                    window->cursor_y = 0;
                 else
-                    window->cursor_y = item_counts[1] - 1;
+                {
+                    if (window->hold)
+                        window->cursor_y = item_counts[1] - 1;
+                    else
+                        window->cursor_y = 0;
+                }
             }
         }
     }
