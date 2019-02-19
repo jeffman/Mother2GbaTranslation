@@ -245,7 +245,7 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
     if (state.up)
     {
         window->cursor_y--;
-        if (window->cursor_y < 0)
+        if ((short)window->cursor_y < 0)
         {
             if (window->hold)
                 window->cursor_y = 0;
@@ -266,7 +266,7 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
     else if (state.down)
     {
         window->cursor_y++;
-        if (window->cursor_x <= 0)
+        if ((short)window->cursor_x <= 0)
         {
             if (window->cursor_y >= item_counts[0])
             {
@@ -306,7 +306,7 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
         int prev_cursor_x = window->cursor_x;
         window->cursor_x += window->cursor_x_delta;
 
-        if ((window->cursor_x - window->cursor_x_base) > (window->window_x + window->cursor_x_delta))
+        if (((short)window->cursor_x - (short)window->cursor_x_base) > ((short)window->window_x + (short)window->cursor_x_delta))
         {
             if (window->hold)
                 window->cursor_x = window->cursor_x_delta;
@@ -348,7 +348,7 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
     else if (state.left)
     {
         window->cursor_x -= window->cursor_x_delta;
-        if (window->cursor_x < window->cursor_x_base)
+        if ((short)window->cursor_x < (short)window->cursor_x_base)
         {
             if (window->hold)
             {
