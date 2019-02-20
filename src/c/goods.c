@@ -224,6 +224,7 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
         if (state.b || state.select)
         {
             window->counter = 0;
+            window->vwf_skip = false;
             m2_sub_a334c(0);
             m2_sub_a3384(0);
             return -1;
@@ -375,9 +376,10 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
         }
     }
 
-    if (window->first)
+    if (window->first && !window->vwf_skip)
     {
         window->first = false;
+        window->vwf_skip = true;
 
         // Draw window header
         map_tile(0xB3, window->window_x, window->window_y - 1);
@@ -407,6 +409,7 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
     if (state.b || state.select)
     {
         window->counter = 0;
+        window->vwf_skip = false;
         m2_soundeffect(0x12E);
         m2_sub_a334c(0);
         m2_sub_a3384(0);
@@ -416,6 +419,7 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
     if (state.a || state.l)
     {
         window->counter = 0xFFFF;
+        window->vwf_skip = false;
         m2_soundeffect(0x12D);
         m2_sub_a334c(*active_window_party_member + 1);
 
