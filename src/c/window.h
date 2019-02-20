@@ -47,7 +47,8 @@ typedef struct WINDOW {
 
     // 0x40
     unsigned short cursor_x_base;
-    unsigned short cursor_x_delta;
+    byte cursor_x_delta;
+    byte unknown9a;
     int unknown9;
     int unknown10;
     int unknown11;
