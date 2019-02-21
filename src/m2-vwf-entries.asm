@@ -935,3 +935,21 @@ pop     {r4,pc}
 .pool
 
 //==============================================================================
+// r0 = window
+// r9 = item index
+// Return: r2 = x location for item string (relative to window location)
+// Can use: r1, r3, r5
+b998e_get_itemstring_x:
+push    {lr}
+mov     r5,r0
+
+// r2 = cursor_x + 1 + (is_equipped(current_item_index) ? 1 : 0)
+mov     r0,r9
+add     r0,1
+bl      m2_isequipped
+ldrh    r1,[r5,0x34] // cursor_x
+add     r0,r0,r1
+add     r2,r0,1
+
+mov     r0,r5
+pop     {pc}
