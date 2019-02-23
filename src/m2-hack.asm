@@ -613,6 +613,9 @@ pop     {r4,pc}
 // Ignore the hard-coded Japanese "and cohorts"
 .org 0x80DB0E6 :: b 0x80DB0FE
 
+// Update musical note value (for Ness' Nightmare)
+.org 0x80DAF12 :: cmp r0,0xAC
+
 //---------------------------------------------------------
 // BEB6C hacks (Goods inner menu)
 //---------------------------------------------------------
