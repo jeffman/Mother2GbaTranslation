@@ -9,7 +9,9 @@
 // Returns 1 if the user steps into the inner window,
 // -1 if the user steps back out to the previous window,
 // and 0 for no action.
-int goods_outer_process(WINDOW* window)
+// y_offset is added to account for the Tracy goods window, which
+// the game offsets by one tile downwards
+int goods_outer_process(WINDOW* window, int y_offset)
 {
     // Get the weird signed parity value
     short unknown = window->unknown6;
@@ -115,7 +117,7 @@ int goods_outer_process(WINDOW* window)
     // Print item names
     if (!window->vwf_skip)
     {
-        goods_print_items(window, current_items);
+        goods_print_items(window, current_items, y_offset);
         window->vwf_skip = true;
     }
 
@@ -389,7 +391,7 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
         m2_clearwindowtiles(window);
 
         if (weird_value > 0)
-            goods_print_items(window, items);
+            goods_print_items(window, items, 0);
     }
 
     if (state_shadow.up || state_shadow.down || state_shadow.left || state_shadow.right)
@@ -446,10 +448,10 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
 
 // Prints all 14 items to a goods window.
 // Erases the slot before printing. Prints blanks for null items.
-void goods_print_items(WINDOW *window, unsigned short *items)
+void goods_print_items(WINDOW *window, unsigned short *items, int y_offset)
 {
     int item_x = (window->window_x << 3) + 8;
-    int item_y = window->window_y << 3;
+    int item_y = (window->window_y + y_offset) << 3;
 
     for (int i = 0; i < 14; i++)
     {

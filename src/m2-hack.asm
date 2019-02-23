@@ -631,6 +631,17 @@ pop     {pc}
 
 .org 0x80BF858
 push    {lr}
+mov     r1,0
+bl      goods_outer_process
+pop     {pc}
+
+//---------------------------------------------------------
+// C0420 hacks (Goods outer menu for Tracy)
+//---------------------------------------------------------
+
+.org 0x80C0420
+push    {lr}
+mov     r1,1
 bl      goods_outer_process
 pop     {pc}
 

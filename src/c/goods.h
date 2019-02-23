@@ -18,9 +18,9 @@ typedef enum GOODS_ACTION
     ACTION_STEPOUT = -1
 } GOODS_ACTION;
 
-int goods_outer_process(WINDOW* window);
+int goods_outer_process(WINDOW* window, int y_offset);
 int goods_inner_process(WINDOW *window, unsigned short *items);
-void goods_print_items(WINDOW *window, unsigned short *items);
+void goods_print_items(WINDOW *window, unsigned short *items, int y_offset);
 
 extern bool m2_isequipped(int item_index);
 extern void m2_soundeffect(int index);
