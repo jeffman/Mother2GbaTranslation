@@ -301,6 +301,7 @@ b       0x80C9144
 // Integer-to-char changes
 .org 0x80CA67C :: mov r3,0x50 // space
 .org 0x80CA69C :: mov r2,0x60 // zero
+.org 0x80CA6DC :: mov r2,0x69 // nine
 .org 0x80CA78A :: mov r0,0x60 // zero
 .org 0x80CA7AC :: mov r2,0x69 // nine
 .org 0x80CA7EC :: sub r1,0xA0
@@ -862,6 +863,7 @@ m2_enemy_attributes:
 .definelabel m2_printstr_hlight     ,0x80C96F0
 .definelabel m2_printnextch         ,0x80C980C
 .definelabel m2_scrolltext          ,0x80CA4BC
+.definelabel m2_formatnumber        ,0x80CA65C
 .definelabel m2_clearwindowtiles    ,0x80CA834
 .definelabel m2_menuwindow          ,0x80C1C98
 .definelabel m2_resetwindow         ,0x80BE490
