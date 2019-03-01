@@ -18,10 +18,10 @@ $input_c_files =
 
 $base_c_address    = 0x8100000;
 $scripttool_cmd    = "bin/ScriptTool/ScriptTool.dll"
-$gcc_cmd           = "arm-none-eabi-gcc"
-$ld_cmd            = "arm-none-eabi-ld"
-$objdump_cmd       = "arm-none-eabi-objdump"
-$readelf_cmd       = "arm-none-eabi-readelf"
+$gcc_cmd           = "c:\cache\arm-none-eabi-gcc.exe"
+$ld_cmd            = "c:\cache\arm-none-eabi-ld.exe"
+$objdump_cmd       = "c:\cache\arm-none-eabi-objdump.exe"
+$readelf_cmd       = "c:\cache\arm-none-eabi-readelf.exe"
 $combined_obj_file = "src/c/combined.o"
 $linked_obj_file   = "src/c/linked.o"
 $combine_script    = "src/c/combine.ld"
