@@ -56,8 +56,7 @@ $gcc_args =
     "-mtune=arm7tdmi",
     "-mthumb",
     "-ffixed-r12",
-    "-mno-long-calls",
-    "-v"
+    "-mno-long-calls"
 
 $combine_script_contents =
 "SECTIONS { .text 0x$($base_c_address.ToString('X')) : { *(.text .rodata) } }"
