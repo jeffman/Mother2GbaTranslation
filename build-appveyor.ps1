@@ -114,9 +114,17 @@ Function Create-Patch([string]$path1, [string]$path2, [string]$output_path)
 }
 
 .\build-tools.ps1
+if ($LASTEXITCODE -ne 0) { exit -1 }
+
 New-BlankFile $input_rom_file 16777216 0
+
 .\build.ps1
+if ($LASTEXITCODE -ne 0) { exit -1 }
+
 Copy-Item $output_rom_file -Destination $output_rom_file_zeros
 New-BlankFile $input_rom_file 16777216 255
+
 .\build.ps1
+if ($LASTEXITCODE -ne 0) { exit -1 }
+
 Create-Patch $output_rom_file $output_rom_file_zeros $output_ips_file
