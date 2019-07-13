@@ -954,3 +954,45 @@ add     r2,r0,1
 
 mov     r0,r5
 pop     {pc}
+.pool
+
+//==============================================================================
+//Loads the player's name properly
+eeb1a_player_name:
+push    {lr}
+mov     r2,#0x18 //Maximum amount of characters in the name
+ldr     r1,=m2_player1 //Player's name new location
+mov     r3,#0
+@@continue_cycle: //Count the amount of characters
+cmp     r3,r2
+bge     @@exit_cycle
+add     r0,r1,r3
+ldrb    r0,[r0,#0]
+cmp r0,#0xFF
+beq     @@exit_cycle
+add     r3,#1
+b       @@continue_cycle
+@@exit_cycle:
+mov     r4,r3 //Store the amount of characters in r4
+
+bl      0x80A322C //Clobbered code: load at which letter the routine is
+lsl     r1,r4,#0x10
+lsl     r0,r0,#0x10
+cmp     r1,r0
+blt     @@ended
+bl      0x80A322C
+
+mov     r3,#1
+ldr     r1,=m2_player1 //Player's name new location. The routine starts from 1 because the original routine had a flag before the name, so we subtract 1 to the address we look at in order to avoid skipping a character
+sub     r1,r1,r3
+lsl     r0,r0,#0x10
+asr     r0,r0,#0x10
+add     r1,r1,r0
+ldrb    r0,[r1,#0]
+b       @@next
+@@ended:
+mov     r0,#0
+
+@@next: //Do the rest of the routine
+pop     {pc}
+.pool
