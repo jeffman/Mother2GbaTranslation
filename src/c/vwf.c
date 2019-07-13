@@ -101,6 +101,14 @@ void map_special_character(unsigned short tile, int x, int y)
     (*tilemap_pointer)[x + ((y + 1) * 32)] = tile + 32;
 }
 
+// Maps a tile to the given tile coordinates. Only the tilemap is changed.
+// x, y in tiles
+void map_tile(unsigned short tile, int x, int y)
+{
+    tile = format_tile(tile, false, false);
+    (*tilemap_pointer)[x + (y * 32)] = tile;
+}
+
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
     int *dest, int (*getTileCallback)(int, int), int useTilemap)
 {

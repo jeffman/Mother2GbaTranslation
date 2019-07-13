@@ -301,6 +301,7 @@ b       0x80C9144
 // Integer-to-char changes
 .org 0x80CA67C :: mov r3,0x50 // space
 .org 0x80CA69C :: mov r2,0x60 // zero
+.org 0x80CA6DC :: mov r2,0x69 // nine
 .org 0x80CA78A :: mov r0,0x60 // zero
 .org 0x80CA7AC :: mov r2,0x69 // nine
 .org 0x80CA7EC :: sub r1,0xA0
@@ -549,6 +550,12 @@ strh    r0,[r4,0x2C]
 pop     {r4,pc}
 
 //---------------------------------------------------------
+// B96B8 hacks (Selected item action menu)
+//---------------------------------------------------------
+
+.org 0x80B998E :: bl b998e_get_itemstring_x
+
+//---------------------------------------------------------
 // BD918 hacks (battle setup)
 //---------------------------------------------------------
 
@@ -607,18 +614,17 @@ pop     {r4,pc}
 // Ignore the hard-coded Japanese "and cohorts"
 .org 0x80DB0E6 :: b 0x80DB0FE
 
+// Update musical note value (for Ness' Nightmare)
+.org 0x80DAF12 :: cmp r0,0xAC
+
 //---------------------------------------------------------
-// BEB6C hacks (Goods sub-menu)
+// BEB6C hacks (Goods inner menu)
 //---------------------------------------------------------
 
-// When entering first sub-menu:
-.org 0x80BEC5E :: nop // Don't clear upper letter tile
-.org 0x80BEC6A :: nop // Don't clear lower letter tile
-.org 0x80BF050 :: nop :: nop // Don't clear the window
-.org 0x80BF0FE :: nop // Don't print upper letter tile
-.org 0x80BF10E :: nop // Don't print lower letter tile
-.org 0x80BF14C :: nop // Don't print upper equip tile
-.org 0x80BF15C :: nop // Don't print lower equip tile
+.org 0x80BEB6C
+push    {lr}
+bl      goods_inner_process
+pop     {pc}
 
 //---------------------------------------------------------
 // BF858 hacks (Goods outer menu)
@@ -626,6 +632,17 @@ pop     {r4,pc}
 
 .org 0x80BF858
 push    {lr}
+mov     r1,0
+bl      goods_outer_process
+pop     {pc}
+
+//---------------------------------------------------------
+// C0420 hacks (Goods outer menu for Tracy)
+//---------------------------------------------------------
+
+.org 0x80C0420
+push    {lr}
+mov     r1,1
 bl      goods_outer_process
 pop     {pc}
 
@@ -832,6 +849,8 @@ m2_enemy_attributes:
 .definelabel m2_player1             ,0x3001F50
 .definelabel m2_active_window_pc    ,0x3005264
 .definelabel m2_soundeffect         ,0x8001720
+.definelabel m2_sub_a334c           ,0x80A334C
+.definelabel m2_sub_a3384           ,0x80A3384
 .definelabel m2_psitargetwindow     ,0x80B8AE0
 .definelabel m2_isequipped          ,0x80BC670
 .definelabel m2_swapwindowbuf       ,0x80BD7AC
@@ -844,6 +863,7 @@ m2_enemy_attributes:
 .definelabel m2_printstr_hlight     ,0x80C96F0
 .definelabel m2_printnextch         ,0x80C980C
 .definelabel m2_scrolltext          ,0x80CA4BC
+.definelabel m2_formatnumber        ,0x80CA65C
 .definelabel m2_clearwindowtiles    ,0x80CA834
 .definelabel m2_menuwindow          ,0x80C1C98
 .definelabel m2_resetwindow         ,0x80BE490

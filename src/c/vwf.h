@@ -33,6 +33,7 @@ byte print_character_formatted(byte chr, int x, int y, int font, int foreground)
 byte print_character_to_window(byte chr, WINDOW* window);
 void print_special_character(int tile, int x, int y);
 void map_special_character(unsigned short tile, int x, int y);
+void map_tile(unsigned short tile, int x, int y);
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
     int *dest, int (*getTileCallback)(int, int), int useTilemap);
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground);

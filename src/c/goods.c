@@ -9,7 +9,9 @@
 // Returns 1 if the user steps into the inner window,
 // -1 if the user steps back out to the previous window,
 // and 0 for no action.
-int goods_outer_process(WINDOW* window)
+// y_offset is added to account for the Tracy goods window, which
+// the game offsets by one tile downwards
+int goods_outer_process(WINDOW* window, int y_offset)
 {
     // Get the weird signed parity value
     short unknown = window->unknown6;
@@ -115,7 +117,7 @@ int goods_outer_process(WINDOW* window)
     // Print item names
     if (!window->vwf_skip)
     {
-        goods_print_items(window, current_items);
+        goods_print_items(window, current_items, y_offset);
         window->vwf_skip = true;
     }
 
@@ -182,12 +184,274 @@ int goods_outer_process(WINDOW* window)
     return ACTION_NONE;
 }
 
+// Process the inner Goods window (i.e. item selection)
+// Called every frame. Replaces $80BEB6C fully.
+// Returns
+int goods_inner_process(WINDOW *window, unsigned short *items)
+{
+    // Get weird sign height value
+    unsigned short height = window->window_height;
+    unsigned int height_sign_bit = height >> 15;
+    unsigned int weird_value = (((height + height_sign_bit) << 15) >> 16);
+
+    // The game gets the cursor column and then does another weird signed
+    // parity operation on it
+    int cursor_col = m2_div(window->cursor_x, window->cursor_x_delta);
+    if (cursor_col >= 0)
+        cursor_col = cursor_col & 1;
+    else
+        cursor_col = -((-cursor_col) & 1);
+
+    // Count number of items in first and second display columns
+    int item_counts[2];
+    item_counts[0] = 0;
+    item_counts[1] = 0;
+    for (int i = 0; i < 14; i += 2)
+    {
+        if (items[i] != 0)
+            item_counts[0]++;
+
+        if (items[i + 1] != 0)
+            item_counts[1]++;
+    }
+
+    int biggest_col = item_counts[0] > item_counts[1] ? item_counts[0] : item_counts[1];
+
+    // If there aren't any items, return early
+    PAD_STATE state = *pad_state;
+    PAD_STATE state_shadow = *pad_state_shadow;
+
+    if (biggest_col == 0)
+    {
+        if (state.b || state.select)
+        {
+            window->counter = 0;
+            window->vwf_skip = false;
+            m2_sub_a334c(0);
+            m2_sub_a3384(0);
+            return -1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    // Clear cursor tiles
+    map_tile(0x1FF, window->window_x + window->cursor_x, window->window_y + window->cursor_y * 2);
+    map_tile(0x1FF, window->window_x + window->cursor_x, window->window_y + window->cursor_y * 2 + 1);
+
+    int cursor_x_prev = window->cursor_x;
+    int cursor_y_prev = window->cursor_y;
+
+    // Handle cursor movement
+    if (state.up)
+    {
+        window->cursor_y--;
+        if ((short)window->cursor_y < 0)
+        {
+            if (window->hold)
+                window->cursor_y = 0;
+            else
+                window->cursor_y = item_counts[cursor_col] - 1;
+        }
+        else
+        {
+            int item_index = window->cursor_y * 2 + cursor_col;
+            if (items[item_index] == 0)
+            {
+                window->cursor_y = cursor_y_prev - 2;
+                if (window->cursor_y < 0)
+                    window->cursor_y = 0;
+            }
+        }
+    }
+    else if (state.down)
+    {
+        window->cursor_y++;
+        if ((short)window->cursor_x <= 0)
+        {
+            if (window->cursor_y >= item_counts[0])
+            {
+                if (window->hold)
+                    window->cursor_y = item_counts[0] - 1;
+                else
+                {
+                    window->cursor_y = 0;
+                    window->unknown7 = 0;
+                }
+            }
+        }
+        else
+        {
+            if (window->cursor_y >= item_counts[1])
+            {
+                if (item_counts[0] > item_counts[1])
+                {
+                    window->cursor_x = 0;
+                    if (window->cursor_x_delta > 0)
+                        cursor_col = m2_div(-(window->cursor_x + window->cursor_x_base), window->cursor_x_delta);
+                }
+                else
+                {
+                    if (window->hold)
+                        window->cursor_y = item_counts[1] - 1;
+                    else
+                        window->cursor_y = 0;
+                }
+            }
+        }
+    }
+    else if (state.right)
+    {
+        int prev_cursor_x = window->cursor_x;
+        window->cursor_x += window->cursor_x_delta;
+
+        if (((short)window->cursor_x - (short)window->cursor_x_base) > ((short)window->window_x + (short)window->cursor_x_delta))
+        {
+            if (window->hold)
+                window->cursor_x = window->cursor_x_delta;
+            else
+                window->cursor_x = window->cursor_x_base;
+
+            cursor_col = m2_div(window->cursor_x, window->cursor_x_delta);
+        }
+        else
+        {
+            if (window->cursor_x_delta != 0)
+                cursor_col = m2_div(window->cursor_x - window->cursor_x_base, window->cursor_x_delta);
+
+            int item_index = window->cursor_y * 2 + cursor_col;
+            if (items[item_index] == 0)
+            {
+                if (state_shadow.down)
+                {
+                    window->cursor_x = prev_cursor_x;
+                    if (window->cursor_x_delta != 0)
+                        cursor_col = m2_div(window->cursor_x + window->window_x - window->cursor_x_base, window->cursor_x_delta);
+                }
+                else
+                {
+                    if (window->cursor_y > 0)
+                        window->cursor_y--;
+                    else
+                    {
+                        window->cursor_x = window->cursor_x_base;
+                        if (window->cursor_x_delta != 0)
+                            cursor_col = m2_div(window->cursor_x, window->cursor_x_delta);
+                        else
+                            cursor_col = 0;
+                    }
+                }
+            }
+        }
+    }
+    else if (state.left)
+    {
+        window->cursor_x -= window->cursor_x_delta;
+        if ((short)window->cursor_x < (short)window->cursor_x_base)
+        {
+            if (window->hold)
+            {
+                window->cursor_x = window->cursor_x_base;
+                cursor_col = 0;
+            }
+            else
+            {
+                window->cursor_x = window->cursor_x_base + window->cursor_x_delta;
+                if (window->cursor_x_delta != 0)
+                    cursor_col = m2_div(window->cursor_x + window->window_x, window->cursor_x_delta);
+
+                int item_index = window->cursor_y * 2 + cursor_col;
+                if (items[item_index] == 0)
+                    window->cursor_x = window->cursor_x_base;
+            }
+        }
+        else
+        {
+            if (window->cursor_x_delta != 0)
+                cursor_col = m2_div(window->cursor_x - window->window_x - window->cursor_x_base, window->cursor_x_delta);
+
+            int item_index = window->cursor_y * 2 + cursor_col;
+            if (items[item_index] == 0)
+                window->cursor_y--;
+        }
+    }
+
+    if (window->first && !window->vwf_skip)
+    {
+        window->first = false;
+        window->vwf_skip = true;
+
+        // Draw window header
+        map_tile(0xB3, window->window_x, window->window_y - 1);
+        clear_name_header(window);
+        copy_name_header(window, *active_window_party_member);
+
+        m2_clearwindowtiles(window);
+
+        if (weird_value > 0)
+            goods_print_items(window, items, 0);
+    }
+
+    if (state_shadow.up || state_shadow.down || state_shadow.left || state_shadow.right)
+    {
+        window->counter = 0;
+
+        if ((state.up || state.down) && (window->cursor_y != cursor_y_prev))
+            m2_soundeffect(0x12F);
+        else if ((state.left || state.right) && (window->cursor_x != cursor_x_prev))
+            m2_soundeffect(0x12E);
+
+        window->hold = true;
+    }
+    else
+        window->hold = false;
+
+    if (state.b || state.select)
+    {
+        window->counter = 0;
+        window->vwf_skip = false;
+        m2_soundeffect(0x12E);
+        m2_sub_a334c(0);
+        m2_sub_a3384(0);
+        return -1;
+    }
+
+    if (state.a || state.l)
+    {
+        window->counter = 0xFFFF;
+        window->vwf_skip = false;
+        m2_soundeffect(0x12D);
+        m2_sub_a334c(*active_window_party_member + 1);
+
+        int selected_index = cursor_col + window->cursor_y * 2 + 1;
+        m2_sub_a3384(selected_index);
+        return selected_index & 0xFFFF;
+    }
+
+    if (window->counter != 0xFFFF)
+    {
+        window->counter++;
+
+        // Draw cursor for current item
+        map_special_character((window->counter <= 7) ? 0x99 : 0x9A,
+            window->window_x + window->cursor_x,
+            window->window_y + window->cursor_y * 2);
+
+        if (window->counter > 0x10)
+            window->counter = 0;
+    }
+
+    return 0;
+}
+
 // Prints all 14 items to a goods window.
 // Erases the slot before printing. Prints blanks for null items.
-void goods_print_items(WINDOW *window, unsigned short *items)
+void goods_print_items(WINDOW *window, unsigned short *items, int y_offset)
 {
     int item_x = (window->window_x << 3) + 8;
-    int item_y = window->window_y << 3;
+    int item_y = (window->window_y + y_offset) << 3;
 
     for (int i = 0; i < 14; i++)
     {

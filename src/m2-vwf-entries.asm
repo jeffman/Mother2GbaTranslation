@@ -935,35 +935,21 @@ pop     {r4,pc}
 .pool
 
 //==============================================================================
-bf858_name_header:
+// r0 = window
+// r9 = item index
+// Return: r2 = x location for item string (relative to window location)
+// Can use: r1, r3, r5
+b998e_get_itemstring_x:
 push    {lr}
-mov     r2,0
-ldr     r0,=m2_widths_tiny
-sub     r4,r1,1
+mov     r5,r0
 
-@@bf858_name_header_loop:
-ldrb    r1,[r4,1]
-cmp     r1,0xFF
-beq     @@bf858_name_header_next
-ldrb    r1,[r4]
-lsl     r1,r1,2
-ldrb    r1,[r0]
-add     r2,r1,r2
-add     r4,1
-b       @@bf858_name_header_loop
+// r2 = cursor_x + 1 + (is_equipped(current_item_index) ? 1 : 0)
+mov     r0,r9
+add     r0,1
+bl      m2_isequipped
+ldrh    r1,[r5,0x34] // cursor_x
+add     r0,r0,r1
+add     r2,r0,1
 
-@@bf858_name_header_next:
-add     r2,7
-lsr     r2,r2,3 // total number of tiles to use
-
-@@bf858_name_header_print_loop:
-cmp     r2,0
-beq     @@bf858_name_header_end
-strh    r5,[r6]
-add     r5,1
-add     r6,2
-sub     r2,1
-b       @@bf858_name_header_print_loop
-
-@@bf858_name_header_end:
+mov     r0,r5
 pop     {pc}

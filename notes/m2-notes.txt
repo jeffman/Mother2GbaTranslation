@@ -76,7 +76,14 @@ English names:
 0x3002504: shadow of 0x3002500? delayed by one frame maybe?
 0x30051EC: tile offset (usually 0x100)
 0x30051F0: flag? gets set to 1 when you change rooms, goes back to 0 the first time you open a text window
-0x3005224: menu depth
+0x3005224: menu sub-state
+           - Equip:
+             - 01: character select
+             - 02: slot select
+             - 03: Weapon select
+             - 04: Body select
+             - 05: Arms select
+             - 06: Other select
 0x3005228: current text palette, << 0xC
 0x3005230: addresses of all 11 windows
            [00]: A menu
@@ -151,6 +158,11 @@ Subroutines
 80BF858: goods character selector state machine
          r0: window pointer
          returns: 0 if no action, 1 if descending deeper into window, -1 if exited
+80C0420: goods character selector state machine (escargo express check-out from Tracy)
+         seems to be identical to 80BF858 except that the window is shifted down by one tile,
+         and the text is shifted down another tile so that it renders properly
+         r0: window pointer
+         returns: 0 if no action, 1 if A/L pressed, -1 if B/select pressed
 80C0A5C: render numbers on status window
 80C1FBC: draw PSI window for character r0
 80C239C: print PSI name with Greek letter
@@ -163,6 +175,11 @@ Subroutines
          (does not modify any window values)
 80C980C: print next character (r0: window pointer)
 80CA4BC: scroll text upwards (r0: window pointer)
+80CA65C: format a number as a string (does not write [00 FF])
+         r0: number
+         r1: output string buffer
+         r2: limit to r2 decimal digits (will clip to 10^r2 - 1)
+         returns: -1 if clipped, 0 otherwise
 80CA744: store the lowest r2 (e.g. 7) decimal digits of r0 as an array to r1; return position of highest non-zero digit
 80CAB90: print window header string (r1) to RAM (r0) at tile ((r2 * 32) + r3)
 80CABF8: print checkboard string (r1) to RAM (r0) at tile ((r2 * 32) + r3)
