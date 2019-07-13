@@ -442,7 +442,7 @@
   },
   {
     "Identifier": 0x8C,
-    "Description": "Unknown (1F A2)",
+    "Description": "Return the value of the current TPT entry's map flag (1F A2)",
     "Length": 2
   },
   {
@@ -972,7 +972,7 @@
   },
   {
     "Identifier": 0xF5,
-    "Description": "Unknown (19 14)",
+    "Description": "Return the ID of one item from Escargo Express storage (19 14)",
     "Length": 2
   },
   {
@@ -982,22 +982,22 @@
   },
   {
     "Identifier": 0xF7,
-    "Description": "Character {0:X} recovers HP by {1:X} of max (1E 00)",
+    "Description": "Character {0:X} recovers HP by {1:X} percent of max (1E 00)",
     "Length": 6
   },
   {
     "Identifier": 0xF8,
-    "Description": "Character {0:X} recovers PP by {1:X} of max (1E 04)",
+    "Description": "Character {0:X} recovers PP by {1:X} percent of max (1E 04)",
     "Length": 6
   },
   {
     "Identifier": 0xF9,
-    "Description": "Character {0:X} recovers HP by {1:X} of max (not sure of the difference with F7 FF) (1E 00)",
+    "Description": "Character {0:X} loses HP by {1:X} percent of max (1E 01)",
     "Length": 6
   },
   {
     "Identifier": 0xFA,
-    "Description": "Character {0:X} recovers PP by {1:X} of max (not sure of the difference with F8 FF) (1E 04)",
+    "Description": "Character {0:X} loses PP by {1:X} percent of max (1E 05)",
     "Length": 6
   },
   {
