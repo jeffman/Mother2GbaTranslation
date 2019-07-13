@@ -453,9 +453,10 @@ mov     r2,0x3
 bl      print_blankstr
 
 // Clobbered code
+pop		{r1-r3} //r3 would otherwise be a 0x3000xxx number
 sub     r0,r3,1
 strh    r0,[r7,0x36]
-pop     {r1-r3,pc}
+pop     {pc}
 
 c5500_clear_down:
 push    {r0-r3,lr}
