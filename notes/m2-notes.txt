@@ -132,6 +132,7 @@ Subroutines
 80A2E00: door-related? r0 = source, r1 = dest
 80A334C: store r0 to window memory
 80B8AE0: draw PSI target/PP cost window with PSI index r0
+80BB268: Weapons window
 80BC670: check if currently selected character has item equipped
          r0: item index + 1
          returns: 1 if equipped, 0 otherwise or if index==0
@@ -167,6 +168,7 @@ Subroutines
 80C1FBC: draw PSI window for character r0
 80C239C: print PSI name with Greek letter
 80C438C: check for cursor movements in PSI window
+80C5B10: If everything works properly, changes cursor position in Weapons/Body/Head/Other submenu
 80C87D0: draw blank window and border (r0: window pointer)
 80C8BE4: render main menu string to window r0
 80C8FFC: render string to window r0
