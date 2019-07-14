@@ -467,8 +467,8 @@ int print_menu_string(WINDOW* window)
         }
     }
 
-    window->text_x = (x / 8) - window->window_x;
-    window->pixel_x = x & 7;
+    window->text_x = 0;
+    window->pixel_x = 0;
 
     int totalWidth = x - initial_x;
 
