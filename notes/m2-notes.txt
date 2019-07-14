@@ -74,6 +74,7 @@ English names:
 0x30023D4: current ATM balance
 0x3002500: buttons being pressed
 0x3002504: shadow of 0x3002500? delayed by one frame maybe?
+0x3004F08: printing flag
 0x30051EC: tile offset (usually 0x100)
 0x30051F0: flag? gets set to 1 when you change rooms, goes back to 0 the first time you open a text window
 0x3005224: menu sub-state

@@ -727,6 +727,19 @@ bl      eeb1a_player_name //Call the new routine
 b       0x80EEB7A //Do the rest of the original routine
 
 //---------------------------------------------------------
+// End of battle hacks
+//---------------------------------------------------------
+
+.org 0x80cb936
+bl      cb936_battle_won //Removes the game's ability to read the script instantly out of a won battle
+
+.org 0x80a1f8c
+bl      a1f8c_set_script_reading //Change the game's ability to read the script instantly a bit
+
+.org 0x80b7702
+bl      b7702_check_script_reading //Change the newly set value slowly and make it 0 when it's safe
+
+//---------------------------------------------------------
 // Teleport window hacks
 //---------------------------------------------------------
 
@@ -855,8 +868,10 @@ m2_enemy_attributes:
 .definelabel m2_food                ,0x3001F30
 .definelabel m2_rockin              ,0x3001F3A
 .definelabel m2_player1             ,0x3001F50
+.definelabel m2_script_readability  ,0x3004F08
 .definelabel m2_active_window_pc    ,0x3005264
 .definelabel m2_soundeffect         ,0x8001720
+.definelabel m2_enable_script       ,0x80A1F6C
 .definelabel m2_sub_a334c           ,0x80A334C
 .definelabel m2_sub_a3384           ,0x80A3384
 .definelabel m2_psitargetwindow     ,0x80B8AE0
