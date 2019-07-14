@@ -996,3 +996,61 @@ mov     r0,#0
 @@next: //Do the rest of the routine
 pop     {pc}
 .pool
+
+//==============================================================================
+//These three hacks remove the game's ability to read the script instantly out of a won battle
+
+cb936_battle_won: //Called at the end of a battle if it is won
+push    {lr}
+ldr     r0,=m2_script_readability //Remove the ability to instantly read the script
+mov     r1,#8
+strb    r1,[r0,#0]
+
+ldr     r0,=#0x3000A6C //Clobbered code
+mov     r1,#0
+pop     {pc}
+
+.pool
+
+//==============================================================================
+
+b7702_check_script_reading: //Makes the game wait six extra frames before being able to read the script out of battle
+push    {lr}
+ldr     r0,=m2_script_readability
+ldrb    r1,[r0,#0]
+cmp     r1,#2 //If the value is > 2, then lower it
+ble     @@next
+sub     r1,r1,#1
+strb    r1,[r0,#0]
+b       @@end
+
+@@next:
+cmp     r1,#2 //If the value is 2, change it to 0 and allow reading the script
+bne     @@end
+mov     r1,#0
+strb    r1,[r0,#0]
+
+@@end:
+mov     r7,r10 //Clobbered code
+mov     r6,r9
+pop     {pc}
+.pool
+
+//==============================================================================
+
+a1f8c_set_script_reading: //Changes the way the game sets the ability to read the script
+push    {lr}
+ldrb    r1,[r0,#0]
+cmp     r1,#8 //If this particular flag is set, then don't do a thing. Allows to make it so the game waits before reading the script.
+beq     @@next
+mov     r1,#0
+strb    r1,[r0,#0]
+b       @@end
+
+@@next:
+mov     r1,#0
+
+@@end:
+pop     {pc}
+
+.pool
