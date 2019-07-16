@@ -610,6 +610,14 @@ pop     {r4,pc}
 
 // "The" flag checks
 .org 0x80DB084 :: bl db04c_theflag :: nop :: nop
+.org 0x80DAE30 :: bl db04c_theflag :: nop :: nop
+.org 0x80DCD5C :: bl dcd5c_theflag :: nop :: nop
+.org 0x80DB08E :: bl db08e_theflagflag
+.org 0x80DAE3A :: bl db08e_theflagflag
+.org 0x80DCD66 :: bl db08e_theflagflag
+.org 0x80C9C58 :: bl c9c58_9f_ad_minThe
+.org 0x80C9C84 :: bl c9c58_9f_ad_minThe
+.org 0x80CA442 :: bl ca442_store_letter
 
 // Ignore the hard-coded Japanese "and cohorts"
 .org 0x80DB0E6 :: b 0x80DB0FE
@@ -867,6 +875,7 @@ m2_enemy_attributes:
 .definelabel m2_king_name           ,0x3001F28
 .definelabel m2_food                ,0x3001F30
 .definelabel m2_rockin              ,0x3001F3A
+.definelabel m2_cstm_last_printed   ,0x3001F4F
 .definelabel m2_player1             ,0x3001F50
 .definelabel m2_script_readability  ,0x3004F08
 .definelabel m2_active_window_pc    ,0x3005264
