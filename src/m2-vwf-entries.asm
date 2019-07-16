@@ -877,12 +877,10 @@ add     r0,r0,r1
 bx      lr
 
 c980c_user_pointer:
-ldr     r1,[r0]
-mov     r0,0x4C
-lsl     r0,r0,4
-add     r1,r0,r1
+push    {lr}
+bl      custom_user_pointer
 ldr     r0,[r5,0x1C]
-bx      lr
+pop     {pc}
 
 c980c_target_pointer:
 ldr     r0,[r0]
@@ -893,23 +891,90 @@ bx      lr
 .pool
 
 //==============================================================================
-// Add a space between enemy name and letter in multi-enemy fights
+// Add a space between enemy name and letter in multi-enemy fights for the selection window
 dcd00_enemy_letter:
-sub     r0,0x90
-strb    r0,[r5,1]
-mov     r0,0x50
-strb    r0,[r5]
-bx      lr
+push    {r1-r2,lr}
+ldrb    r1,[r5,#0]
+cmp     r1,#1 //In case the name has a "The " at the beginning, remove it
+bne     @@end
+mov     r2,sp
+add     r2,#0xC //Get where the writing stack for the name starts
+sub     r5,r5,#4
+@@cycle: //The removed and shifted everything by 4 bytes
+ldr     r1,[r2,#4]
+str     r1,[r2,#0]
+add     r2,#4
+cmp     r2,r5
+ble     @@cycle
 
-dae00_enemy_letter:
+@@end:
+sub     r5,r5,#2 //The the flag must be accounted for. It moves the pointer by 2, so we put it back
 sub     r0,0x90
-strb    r0,[r4,1]
-mov     r0,0x50
-strb    r0,[r4]
-bx      lr
+strb    r0,[r5,#1] //Put the letter near the enemy writing space
+mov     r0,#0x50 //Store the space
+strb    r0,[r5]
+mov     r0,#0 //Store the the flag as 0
+strb    r0,[r5,#4]
+pop     {r1-r2,pc}
+.pool
 
 //==============================================================================
-// "The" flag checks
+// Add a space between enemy name and letter in multi-enemy fights for 9F FF and AD FF
+dae00_enemy_letter:
+push    {r1-r2,lr}
+ldrb    r1,[r4,#0]
+cmp     r1,#1 //In case the name has a "The " at the beginning, remove it
+bne     @@end
+mov     r2,sp
+add     r2,#0xC //Get where the writing stack for the name starts
+sub     r4,r4,#4
+@@cycle: //The removed and shifted everything by 4 bytes
+ldr     r1,[r2,#4]
+str     r1,[r2,#0]
+add     r2,#4
+cmp     r2,r4
+ble     @@cycle
+
+@@end:
+sub     r4,r4,#2 //The the flag must be accounted for. It moves the pointer by 2, so we put it back
+sub     r0,0x90
+strb    r0,[r4,#1] //Put the letter near the enemy writing space
+mov     r0,#0x50 //Store the space
+strb    r0,[r4]
+mov     r0,#0 //Store the the flag as 0
+strb    r0,[r4,#4]
+pop     {r1-r2,pc}
+.pool
+
+//==============================================================================
+// "The" flag checks for the Target window. It will always be lowercase.
+dcd5c_theflag:
+push    {r4,lr}
+
+// Clobbered code: get enemy string pointer
+lsl     r4,r2,1
+bl      0x80BE260
+mov     r1,r0
+mov     r0,sp
+add     r0,8
+
+// Check for "The" flag
+ldr     r3,=m2_enemy_attributes
+ldrb    r3,[r3,r4] // "The" flag
+cmp     r3,0
+beq     @@next
+
+// Write "the " before the enemy name
+ldr     r2,=0x509598A4
+str     r2,[r0]
+add     r0,4
+
+@@next:
+pop     {r4,pc}
+.pool
+
+//==============================================================================
+// "The" flag checks for AD FF and 9F FF
 db04c_theflag:
 push    {r4,lr}
 
@@ -934,6 +999,81 @@ add     r0,4
 @@next:
 pop     {r4,pc}
 .pool
+
+//==============================================================================
+db08e_theflagflag: //Puts a flag at the end of the name that is 1 if the has been added. 0 otherwise. (called right after db04c_theflag or dcd5c_theflag)
+push    {r3,lr}
+bl      0x80DAEEC
+pop     {r3}
+add     r0,#2
+strb    r3,[r0,#0]
+mov     r3,r0
+pop     {pc}
+.pool
+
+//==============================================================================
+c9c58_9f_ad_minThe: //Routine that changes The to the and viceversa if need be for 9F FF and for AD FF
+push    {r2,lr}
+ldr     r0,=#0x3005220
+cmp     r4,#0x9F //If this is 9F, then load the user string pointer
+bne     @@ad_setup
+bl      custom_user_pointer //Load the user string pointer
+b       @@common
+
+@@ad_setup: //If this is AD, then load the target string pointer
+push    {r7}
+bl      c980c_target_pointer //Load the target string pointer
+pop     {r7}
+mov     r1,r0
+
+@@common:
+mov     r2,#0
+
+@@cycle:
+ldrb    r0,[r1,r2]
+cmp     r0,#0xFF
+beq     @@next //Find its end
+add     r2,#1
+b       @@cycle
+
+@@next:
+add     r2,#1
+ldrb    r0,[r1,r2]
+cmp     r0,#0 //Does this string have the the flag? If it does not, then proceed to the end
+beq     @@end
+ldr     r0,=m2_cstm_last_printed
+ldrb    r0,[r0,#0]
+cmp     r0,#0x70 //Is the previous character an @?
+beq     @@Maius
+mov     r0,#0xA4 //Change The to the
+strb    r0,[r1,#0]
+b       @@end
+@@Maius:
+mov     r0,#0x84 //Ensure it is The
+strb    r0,[r1,#0]
+
+@@end:
+ldr     r0,[r6,#0] //Clobbered code
+add     r0,#2
+pop     {r2,pc}
+.pool
+
+//==============================================================================
+ca442_store_letter:
+push    {r1,lr}
+ldr     r1,=m2_cstm_last_printed
+ldrb    r0,[r7,#0]
+strb    r0,[r1,#0]
+lsl     r0,r0,#1
+pop     {r1,pc}
+
+//==============================================================================
+custom_user_pointer: //Routine that gives in r1 the user string pointer
+ldr     r1,[r0,#0]
+mov     r0,#0x4C
+lsl     r0,r0,#4
+add     r1,r0,r1
+bx      lr
 
 //==============================================================================
 // r0 = window
@@ -963,6 +1103,7 @@ push    {lr}
 mov     r2,#0x18 //Maximum amount of characters in the name
 ldr     r1,=m2_player1 //Player's name new location
 mov     r3,#0
+
 @@continue_cycle: //Count the amount of characters
 cmp     r3,r2
 bge     @@exit_cycle
@@ -972,6 +1113,7 @@ cmp r0,#0xFF
 beq     @@exit_cycle
 add     r3,#1
 b       @@continue_cycle
+
 @@exit_cycle:
 mov     r4,r3 //Store the amount of characters in r4
 
@@ -990,6 +1132,7 @@ asr     r0,r0,#0x10
 add     r1,r1,r0
 ldrb    r0,[r1,#0]
 b       @@next
+
 @@ended:
 mov     r0,#0
 
