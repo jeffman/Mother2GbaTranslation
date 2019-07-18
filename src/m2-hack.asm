@@ -932,6 +932,7 @@ nop
 .org 0x80C76FA :: nop
 .org 0x80C7864 :: nop
 .org 0x80C786C :: nop
+.org 0x80C79C0 :: nop
 .org 0x80D3AAE :: mov r0,#0xFF
 
 //Select File name length
