@@ -812,6 +812,7 @@ nop
 .org 0x80DAECE :: lsl r0,r1,#3 :: sub r0,r0,r1 :: nop
 .org 0x80D336C :: lsl r0,r1,#3 :: sub r0,r0,r1 :: nop
 .org 0x80D339C :: lsl r0,r1,#3 :: sub r0,r0,r1 :: nop
+.org 0x80D33C4 :: lsl r1,r0,#3 :: sub r1,r1,r0 :: nop
 .org 0x80D2EE2 :: lsl r1,r0,#3 :: sub r1,r1,r0 :: nop
 .org 0x80BAB8A :: lsl r1,r5,#3 :: sub r1,r1,r5 :: nop
 .org 0x80D6D96 :: lsl r1,r2,#3 :: sub r1,r1,r2 :: nop
@@ -910,6 +911,7 @@ nop
 .org 0x80B9334 :: mov r1,#7
 .org 0x80D28C6 :: mov r1,#7
 .org 0x80BA090 :: mov r1,#7
+.org 0x80EC93A :: mov r1,#7
 
 .org 0x80B9FEE :: sub r1,#7
 
@@ -918,6 +920,7 @@ nop
 .org 0x80C0B0A :: cmp r2,#4
 .org 0x80C97E2 :: cmp r1,#6
 .org 0x80DAF3A :: cmp r0,#6
+.org 0x80D33BC :: cmp r2,#6
 
 //Default options auto-setup routine.
 .org 0x80CB2F2 :: bl cb2f2_hardcoded_defaults :: b 0x80CB434
@@ -944,6 +947,13 @@ nop
 .org 0x8004F78 :: mov r0,#5 //Paula
 .org 0x8004F9C :: mov r0,#5 //Jeff
 .org 0x8004FC0 :: mov r1,#5 //Poo
+
+//Black bar hacks - Need to replace the position windows point at and move the >
+//.org 0x80BD9DE :: mov r2,#0x16 //Ness
+//.org 0x80BD9EA :: mov r2,#0x1B //Paula
+//.org 0x80BD9F6 :: mov r2,#0x16 //Jeff
+//.org 0x80BDA02 :: mov r2,#0x1B //Poo
+
 
 //==============================================================================
 // Data files
