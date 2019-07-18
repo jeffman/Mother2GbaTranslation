@@ -272,3 +272,12 @@ Custom codes
 Enemy data
 ----------
 $8739D1C - $873D6DB
+
+Default names
+---------
+0x82B9330 - 0x82BA1BB contains the default names.
+Each single default name is 0x4C bytes long.
+Each character's default names list is 0x214 bytes long, so each character has 7 possible default names.
+First 4 bytes are the name's length.
+After that there is the name.
+There are 7 character's entries.

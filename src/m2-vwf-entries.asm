@@ -1197,3 +1197,111 @@ mov     r1,#0
 pop     {pc}
 
 .pool
+
+//==============================================================================
+//Hacks that load specific numbers for the new names
+_2352_load_1d7:
+mov r0,#0xEB
+lsl r0,r0,#1
+add r0,r0,#1
+bx lr
+
+_2372_load_1e5:
+mov r0,#0xF2
+lsl r0,r0,#1
+add r0,r0,#1
+bx lr
+
+c98c4_load_1d7:
+mov r4,#0xEB
+lsl r4,r4,#1
+add r4,r4,#1
+bx lr
+
+c98d4_load_1e5:
+mov r4,#0xF2
+lsl r4,r4,#1
+add r4,r4,#1
+bx lr
+
+//==============================================================================
+//Fast routine that uses the defaults and stores them. Original one is a nightmare. Rewriting it from scratch. r1 has the target address. r5 has 0.
+cb2f2_hardcoded_defaults:
+push {lr}
+mov r0,#0x7E //Ness' name
+strb r0,[r1,#0]
+mov r2,#0x95
+strb r2,[r1,#1]
+strb r2,[r1,#0xF]
+mov r0,#0xA3
+strb r0,[r1,#2]
+strb r0,[r1,#3]
+mov r4,#0xFF
+lsl r5,r4,#8
+strh r5,[r1,#4]
+add r1,#7
+mov r0,#0x80 //Paula's name
+strb r0,[r1,#0]
+strb r0,[r1,#0xE]
+mov r3,#0x91
+strb r3,[r1,#1]
+strb r3,[r1,#4]
+mov r0,#0xA5
+strb r0,[r1,#2]
+mov r0,#0x9C
+strb r0,[r1,#3]
+strb r5,[r1,#5]
+strb r4,[r1,#6]
+add r1,#7
+mov r0,#0x7A //Jeff's name
+strb r0,[r1,#0]
+mov r0,#0x95
+strb r0,[r1,#1]
+mov r0,#0x96
+strb r0,[r1,#2]
+strb r0,[r1,#3]
+strh r5,[r1,#4]
+add r1,#7
+strb r4,[r1,#4]
+mov r4,#0x9F //Poo's name
+strb r4,[r1,#1]
+strb r4,[r1,#2]
+strb r5,[r1,#3]
+add r1,#7
+mov r0,#0x7B //King's name
+strb r0,[r1,#0]
+mov r0,#0x99
+strb r0,[r1,#1]
+mov r0,#0x9E
+strb r0,[r1,#2]
+mov r0,#0x97
+strb r0,[r1,#3]
+strh r5,[r1,#4]
+add r1,#8
+mov r0,#0x83 //Steak's name
+strb r0,[r1,#0]
+mov r0,#0xA4
+strb r0,[r1,#1]
+strb r2,[r1,#2]
+strb r3,[r1,#3]
+mov r3,#0x9B
+strb r3,[r1,#4]
+mov r2,#0xFF
+strb r5,[r1,#5]
+strb r2,[r1,#6]
+add r1,#8
+mov r0,#0x82 //Rockin's name
+strb r0,[r1,#0]
+strb r4,[r1,#1]
+mov r0,#0x93
+strb r0,[r1,#2]
+strb r3,[r1,#3]
+mov r0,#0x99
+strb r0,[r1,#4]
+mov r0,#0x9E
+strb r0,[r1,#5]
+strh r5,[r1,#6]
+mov r2,#1
+mov r5,#0
+
+pop {pc}
