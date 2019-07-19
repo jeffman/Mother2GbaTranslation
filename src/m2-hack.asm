@@ -784,9 +784,183 @@ lsl     r0,r1,4
 nop
 nop
 
+//---------------------------------------------------------
+// Names hacks
+//---------------------------------------------------------
+//Change location of the names to allow 5-letter long characters and 6 letters long food, rockin and king
+//Direct reference change
+.org 0x80C98F8 :: dw m2_paula_name
+.org 0x80C9908 :: dw m2_jeff_name
+.org 0x80C9918 :: dw m2_poo_name
+.org 0x80C9928 :: dw m2_food
+.org 0x80C9938 :: dw m2_rockin
+.org 0x80C9BC0 :: dw m2_king_name
+.org 0x80DB134 :: dw m2_king_name
+.org 0x80DAEB8 :: dw m2_king_name
+.org 0x80133E8 :: dw m2_king_name
+.org 0x80C2368 :: dw m2_rockin
+.org 0x80C2424 :: dw m2_rockin
+.org 0x80C24E0 :: dw m2_rockin
+.org 0x80D39AC :: dw m2_rockin
+
+//Change the way the characters' names are called. Instead of number * 6, it's now number * 7
+.org 0x80D6A72 :: lsl r1,r4,#3 :: sub r1,r1,r4 :: nop
+.org 0x80D6948 :: lsl r1,r4,#3 :: sub r1,r1,r4 :: nop
+.org 0x80D28B8 :: lsl r0,r6,#3 :: sub r0,r0,r6 :: nop
+.org 0x80C4BC4 :: lsl r1,r0,#3 :: sub r1,r1,r0 :: nop
+.org 0x80DB14A :: lsl r0,r1,#3 :: sub r0,r0,r1 :: nop
+.org 0x80DAECE :: lsl r0,r1,#3 :: sub r0,r0,r1 :: nop
+.org 0x80D336C :: lsl r0,r1,#3 :: sub r0,r0,r1 :: nop
+.org 0x80D339C :: lsl r0,r1,#3 :: sub r0,r0,r1 :: nop
+.org 0x80D33C4 :: lsl r1,r0,#3 :: sub r1,r1,r0 :: nop
+.org 0x80D2EE2 :: lsl r1,r0,#3 :: sub r1,r1,r0 :: nop
+.org 0x80BAB8A :: lsl r1,r5,#3 :: sub r1,r1,r5 :: nop
+.org 0x80D6D96 :: lsl r1,r2,#3 :: sub r1,r1,r2 :: nop
+.org 0x80D7096 :: lsl r1,r2,#3 :: sub r1,r1,r2 :: nop
+.org 0x80EC92C :: lsl r0,r2,#3 :: sub r0,r0,r2 :: nop
+.org 0x80B9C00 :: lsl r0,r2,#3 :: sub r0,r0,r2 :: nop
+.org 0x80D68AA :: lsl r1,r4,#3 :: sub r1,r1,r4 :: nop
+.org 0x80D6BE0 :: lsl r1,r4,#3 :: sub r1,r1,r4 :: nop
+.org 0x80B9FAC :: lsl r0,r1,#3 :: sub r0,r0,r1 :: nop
+.org 0x80B93F0 :: lsl r0,r1,#3 :: sub r0,r0,r1 :: nop
+.org 0x80B9FE6 :: lsl r0,r7,#3 :: sub r0,r0,r7 :: nop
+.org 0x80B932C :: lsl r1,r0,#3 :: sub r0,r1,r0 :: nop
+.org 0x80C0B14 :: lsl r1,r0,#3 :: sub r1,r1,r0 :: nop
+.org 0x80C008C :: lsl r1,r0,#3 :: sub r1,r1,r0 :: nop
+.org 0x80C42CE :: lsl r1,r0,#3 :: sub r1,r1,r0 :: nop
+.org 0x8013652 :: lsl r0,r1,#3 :: sub r0,r0,r1 :: nop
+.org 0x80B9CB2 :: lsl r0,r1,#3 :: sub r0,r0,r1 :: nop
+.org 0x80BA086 :: lsl r0,r1,#3 :: sub r0,r0,r1 :: nop
+.org 0x80C97C0 :: lsl r4,r1,#3 :: sub r4,r4,r1 :: nop
+.org 0x80B9316 :: lsl r0,r1,#3 :: sub r0,r0,r1 :: nop
+.org 0x80D6B44 :: lsl r1,r4,#3 :: sub r1,r1,r4 :: nop
+.org 0x80D6E3A :: lsl r1,r4,#3 :: sub r1,r1,r4 :: nop
+.org 0x80D6ED0 :: lsl r1,r4,#3 :: sub r1,r1,r4 :: nop
+
+//Change the way the characters' names are called. Instead of number * 6, it's now number * 7. These ones already received an lsl of 1 beforehand.
+.org 0x80C0AC8 :: lsl r1,r1,#2 :: sub r1,r1,r5
+.org 0x80C4B84 :: lsl r1,r1,#2 :: sub r1,r1,r5
+.org 0x80C3F88 :: lsl r1,r1,#2 :: sub r1,r1,r5
+.org 0x80C43FC :: lsl r1,r1,#2 :: sub r1,r1,r3
+.org 0x80C0040 :: lsl r1,r1,#2 :: sub r1,r1,r3
+.org 0x80C4296 :: lsl r1,r1,#2 :: sub r1,r1,r3
+.org 0x80DBEFA :: lsl r2,r2,#2 :: sub r2,r2,r4
+.org 0x80BEFCA :: lsl r1,r1,#2 :: sub r1,r1,r3
+.org 0x80BFA3A :: lsl r1,r1,#2 :: sub r1,r1,r4
+
+.org 0x80BD9AA :: add r0,r5,#7
+.org 0x80BD9BA :: mov r1,#0xE
+.org 0x80BD9CC :: add r6,#0x15
+
+//Load proper addresses
+.org 0x80C98C4 :: bl c98c4_load_1d7
+.org 0x80C98CC :: mov r4,#0xEF
+.org 0x80C98D4 :: bl c98d4_load_1e5
+
+//Rockin's
+.org 0x80C2196 :: mov r2,#0xFE
+
+//Name writing
+.org 0x80020B6 :: bl _2352_load_1d7
+.org 0x80020C6 :: mov r0,#0xEF
+.org 0x80020D6 :: bl _2372_load_1e5
+.org 0x80020E8 :: add r0,#0xC0
+.org 0x80020F8 :: add r0,#0x80
+.org 0x8002108 :: add r0,#0x40
+
+.org 0x80020AC :: mov r0,#5
+.org 0x80020BC :: mov r0,#5
+.org 0x80020CC :: mov r0,#5
+.org 0x80020DC :: mov r0,#5
+
+//Name loading
+.org 0x8002214 :: bl _2352_load_1d7
+.org 0x8002224 :: mov r0,#0xEF
+.org 0x8002234 :: bl _2372_load_1e5
+.org 0x8002246 :: mov r0,#0xF6
+.org 0x8002258 :: mov r0,#0xFA
+.org 0x800226A :: mov r0,#0xFE
+
+.org 0x800220A :: mov r0,#5
+.org 0x800221A :: mov r0,#5
+.org 0x800222A :: mov r0,#5
+.org 0x800223A :: mov r0,#5
+
+//Name Reset change
+.org 0x8002352 :: bl _2352_load_1d7
+.org 0x8002362 :: mov r0,#0xEF
+.org 0x8002372 :: bl _2372_load_1e5
+.org 0x8002384 :: add r0,#0xC0
+.org 0x8002394 :: add r0,#0x80
+.org 0x80023A4 :: add r0,#0x40
+
+.org 0x8002348 :: mov r0,#5
+.org 0x8002358 :: mov r0,#5
+.org 0x8002368 :: mov r0,#5
+.org 0x8002378 :: mov r0,#5
+
+//Change the maximum name size
+.org 0x80DB154 :: mov r1,#7
+.org 0x80DAED8 :: mov r1,#7
+.org 0x80B9FB6 :: mov r1,#7
+.org 0x80B9C0A :: mov r1,#7
+.org 0x80B9320 :: mov r1,#7
+.org 0x80B9CBC :: mov r1,#7
+.org 0x80B9FF2 :: mov r1,#7
+.org 0x80B93FA :: mov r1,#7
+.org 0x80B9334 :: mov r1,#7
+.org 0x80D28C6 :: mov r1,#7
+.org 0x80BA090 :: mov r1,#7
+.org 0x80EC93A :: mov r1,#7
+
+.org 0x80B9FEE :: sub r1,#7
+
+.org 0x80121DC :: cmp r2,#4
+.org 0x8013672 :: cmp r5,#4
+.org 0x80C0B0A :: cmp r2,#4
+.org 0x80C97E2 :: cmp r1,#6
+.org 0x80DAF3A :: cmp r0,#6
+.org 0x80D33BC :: cmp r2,#6
+
+//Default options auto-setup routine.
+.org 0x80CB2F2 :: bl cb2f2_hardcoded_defaults :: b 0x80CB434
+
+//Remove japanese name's storing and loading
+.org 0x80C7524 :: nop
+.org 0x80C752C :: nop
+.org 0x80C76A2 :: mov r5,#0xFF
+.org 0x80C76D0 :: mov r5,#0xFF
+.org 0x80C76EA :: nop
+.org 0x80C76F2 :: nop
+.org 0x80C76FA :: nop
+.org 0x80C7864 :: nop
+.org 0x80C786C :: nop
+.org 0x80C79C0 :: nop
+.org 0x80D3AAE :: mov r0,#0xFF
+
+//Select File name length
+.org 0x8001F22 :: cmp r4,#4
+.org 0x8001F3A :: cmp r4,#4
+
+//Naming screen name length
+.org 0x8004F54 :: mov r2,#5 //Ness
+.org 0x8004F78 :: mov r0,#5 //Paula
+.org 0x8004F9C :: mov r0,#5 //Jeff
+.org 0x8004FC0 :: mov r1,#5 //Poo
+
+//Black bar hacks - Need to replace the position windows point at and move the >
+//.org 0x80BD9DE :: mov r2,#0x16 //Ness
+//.org 0x80BD9EA :: mov r2,#0x1B //Paula
+//.org 0x80BD9F6 :: mov r2,#0x16 //Jeff
+//.org 0x80BDA02 :: mov r2,#0x1B //Poo
+
+
 //==============================================================================
 // Data files
 //==============================================================================
+
+.org m2_default_names
+.incbin "data/m2-default-names.bin"
 
 .org 0x8B2C000
 
@@ -854,7 +1028,6 @@ m2_nybbles_to_bits:
 m2_enemy_attributes:
 .incbin "data/m2-enemy-attributes.bin"
 
-
 //==============================================================================
 // Existing subroutines/data
 //==============================================================================
@@ -869,17 +1042,32 @@ m2_enemy_attributes:
 .definelabel m2_jeff_goods          ,0x3001E2C
 .definelabel m2_poo_goods           ,0x3001E98
 .definelabel m2_ness_name           ,0x3001F10
-.definelabel m2_paula_name          ,0x3001F16
-.definelabel m2_jeff_name           ,0x3001F1C
-.definelabel m2_poo_name            ,0x3001F22
-.definelabel m2_king_name           ,0x3001F28
-.definelabel m2_food                ,0x3001F30
-.definelabel m2_rockin              ,0x3001F3A
+.definelabel m2_old_paula_name      ,0x3001F16
+.definelabel m2_paula_name          ,0x3001F17
+.definelabel m2_old_jeff_name       ,0x3001F1C
+.definelabel m2_jeff_name           ,0x3001F1E
+.definelabel m2_old_poo_name        ,0x3001F22
+.definelabel m2_poo_name            ,0x3001F25
+.definelabel m2_old_king_name       ,0x3001F28
+.definelabel m2_king_name           ,0x3001F2C
+.definelabel m2_old_food            ,0x3001F30
+.definelabel m2_food                ,0x3001F34
+.definelabel m2_old_rockin          ,0x3001F3A
+.definelabel m2_rockin              ,0x3001F3C
+.definelabel m2_old_japanese_name   ,0x3001F42
 .definelabel m2_cstm_last_printed   ,0x3001F4F
 .definelabel m2_player1             ,0x3001F50
 .definelabel m2_script_readability  ,0x3004F08
 .definelabel m2_active_window_pc    ,0x3005264
+.definelabel m2_setup_naming_mem    ,0x8001D5C
 .definelabel m2_soundeffect         ,0x8001720
+.definelabel m2_copy_names_perm_mem ,0x8002088
+.definelabel m2_reset_names         ,0x8002318
+.definelabel m2_copy_name_perm_mem  ,0x80023C0
+.definelabel m2_main_menu_handler   ,0x80023F8
+.definelabel m2_change_naming_space ,0x8004E08
+.definelabel m2_copy_name_temp_mem  ,0x8004E34
+.definelabel m2_insert_default_name ,0x8005708
 .definelabel m2_enable_script       ,0x80A1F6C
 .definelabel m2_sub_a334c           ,0x80A334C
 .definelabel m2_sub_a3384           ,0x80A3384
@@ -902,6 +1090,7 @@ m2_enemy_attributes:
 .definelabel m2_hpwindow_up         ,0x80D3F0C
 .definelabel m2_curhpwindow_down    ,0x80D41D8
 .definelabel m2_div                 ,0x80F49D8
+.definelabel m2_default_names       ,0x82B9330
 
 //==============================================================================
 // Code files
