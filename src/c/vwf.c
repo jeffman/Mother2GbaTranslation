@@ -294,7 +294,7 @@ void copy_name_header(WINDOW *window, int character_index)
     (*tilemap_pointer)[x - 1 + (y * 32)] = format_tile(0xB3, false, false);
 
     // Get name width in pixels
-    byte *name_str = pc_names + (character_index * 6);
+    byte *name_str = pc_names + (character_index * 7);
     unsigned short *widths_table = m2_widths_table[4]; // small font
     int width = 0;
 
@@ -467,8 +467,8 @@ int print_menu_string(WINDOW* window)
         }
     }
 
-    window->text_x = (x / 8) - window->window_x;
-    window->pixel_x = x & 7;
+    window->text_x = 0;
+    window->pixel_x = 0;
 
     int totalWidth = x - initial_x;
 

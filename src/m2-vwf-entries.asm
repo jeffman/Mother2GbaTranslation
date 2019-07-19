@@ -453,9 +453,10 @@ mov     r2,0x3
 bl      print_blankstr
 
 // Clobbered code
+pop     {r1-r3} //r3 would otherwise be a 0x3000xxx number
 sub     r0,r3,1
 strh    r0,[r7,0x36]
-pop     {r1-r3,pc}
+pop     {pc}
 
 c5500_clear_down:
 push    {r0-r3,lr}
@@ -876,12 +877,10 @@ add     r0,r0,r1
 bx      lr
 
 c980c_user_pointer:
-ldr     r1,[r0]
-mov     r0,0x4C
-lsl     r0,r0,4
-add     r1,r0,r1
+push    {lr}
+bl      custom_user_pointer
 ldr     r0,[r5,0x1C]
-bx      lr
+pop     {pc}
 
 c980c_target_pointer:
 ldr     r0,[r0]
@@ -892,23 +891,90 @@ bx      lr
 .pool
 
 //==============================================================================
-// Add a space between enemy name and letter in multi-enemy fights
+// Add a space between enemy name and letter in multi-enemy fights for the selection window
 dcd00_enemy_letter:
-sub     r0,0x90
-strb    r0,[r5,1]
-mov     r0,0x50
-strb    r0,[r5]
-bx      lr
+push    {r1-r2,lr}
+ldrb    r1,[r5,#0]
+cmp     r1,#1 //In case the name has a "The " at the beginning, remove it
+bne     @@end
+mov     r2,sp
+add     r2,#0xC //Get where the writing stack for the name starts
+sub     r5,r5,#4
+@@cycle: //The removed and shifted everything by 4 bytes
+ldr     r1,[r2,#4]
+str     r1,[r2,#0]
+add     r2,#4
+cmp     r2,r5
+ble     @@cycle
 
-dae00_enemy_letter:
+@@end:
+sub     r5,r5,#2 //The the flag must be accounted for. It moves the pointer by 2, so we put it back
 sub     r0,0x90
-strb    r0,[r4,1]
-mov     r0,0x50
-strb    r0,[r4]
-bx      lr
+strb    r0,[r5,#1] //Put the letter near the enemy writing space
+mov     r0,#0x50 //Store the space
+strb    r0,[r5]
+mov     r0,#0 //Store the the flag as 0
+strb    r0,[r5,#4]
+pop     {r1-r2,pc}
+.pool
 
 //==============================================================================
-// "The" flag checks
+// Add a space between enemy name and letter in multi-enemy fights for 9F FF and AD FF
+dae00_enemy_letter:
+push    {r1-r2,lr}
+ldrb    r1,[r4,#0]
+cmp     r1,#1 //In case the name has a "The " at the beginning, remove it
+bne     @@end
+mov     r2,sp
+add     r2,#0xC //Get where the writing stack for the name starts
+sub     r4,r4,#4
+@@cycle: //The removed and shifted everything by 4 bytes
+ldr     r1,[r2,#4]
+str     r1,[r2,#0]
+add     r2,#4
+cmp     r2,r4
+ble     @@cycle
+
+@@end:
+sub     r4,r4,#2 //The the flag must be accounted for. It moves the pointer by 2, so we put it back
+sub     r0,0x90
+strb    r0,[r4,#1] //Put the letter near the enemy writing space
+mov     r0,#0x50 //Store the space
+strb    r0,[r4]
+mov     r0,#0 //Store the the flag as 0
+strb    r0,[r4,#4]
+pop     {r1-r2,pc}
+.pool
+
+//==============================================================================
+// "The" flag checks for the Target window. It will always be lowercase.
+dcd5c_theflag:
+push    {r4,lr}
+
+// Clobbered code: get enemy string pointer
+lsl     r4,r2,1
+bl      0x80BE260
+mov     r1,r0
+mov     r0,sp
+add     r0,8
+
+// Check for "The" flag
+ldr     r3,=m2_enemy_attributes
+ldrb    r3,[r3,r4] // "The" flag
+cmp     r3,0
+beq     @@next
+
+// Write "the " before the enemy name
+ldr     r2,=0x509598A4
+str     r2,[r0]
+add     r0,4
+
+@@next:
+pop     {r4,pc}
+.pool
+
+//==============================================================================
+// "The" flag checks for AD FF and 9F FF
 db04c_theflag:
 push    {r4,lr}
 
@@ -935,6 +1001,81 @@ pop     {r4,pc}
 .pool
 
 //==============================================================================
+db08e_theflagflag: //Puts a flag at the end of the name that is 1 if the has been added. 0 otherwise. (called right after db04c_theflag or dcd5c_theflag)
+push    {r3,lr}
+bl      0x80DAEEC
+pop     {r3}
+add     r0,#2
+strb    r3,[r0,#0]
+mov     r3,r0
+pop     {pc}
+.pool
+
+//==============================================================================
+c9c58_9f_ad_minThe: //Routine that changes The to the and viceversa if need be for 9F FF and for AD FF
+push    {r2,lr}
+ldr     r0,=#0x3005220
+cmp     r4,#0x9F //If this is 9F, then load the user string pointer
+bne     @@ad_setup
+bl      custom_user_pointer //Load the user string pointer
+b       @@common
+
+@@ad_setup: //If this is AD, then load the target string pointer
+push    {r7}
+bl      c980c_target_pointer //Load the target string pointer
+pop     {r7}
+mov     r1,r0
+
+@@common:
+mov     r2,#0
+
+@@cycle:
+ldrb    r0,[r1,r2]
+cmp     r0,#0xFF
+beq     @@next //Find its end
+add     r2,#1
+b       @@cycle
+
+@@next:
+add     r2,#1
+ldrb    r0,[r1,r2]
+cmp     r0,#0 //Does this string have the the flag? If it does not, then proceed to the end
+beq     @@end
+ldr     r0,=m2_cstm_last_printed
+ldrb    r0,[r0,#0]
+cmp     r0,#0x70 //Is the previous character an @?
+beq     @@Maius
+mov     r0,#0xA4 //Change The to the
+strb    r0,[r1,#0]
+b       @@end
+@@Maius:
+mov     r0,#0x84 //Ensure it is The
+strb    r0,[r1,#0]
+
+@@end:
+ldr     r0,[r6,#0] //Clobbered code
+add     r0,#2
+pop     {r2,pc}
+.pool
+
+//==============================================================================
+ca442_store_letter:
+push    {r1,lr}
+ldr     r1,=m2_cstm_last_printed
+ldrb    r0,[r7,#0]
+strb    r0,[r1,#0]
+lsl     r0,r0,#1
+pop     {r1,pc}
+
+//==============================================================================
+custom_user_pointer: //Routine that gives in r1 the user string pointer
+ldr     r1,[r0,#0]
+mov     r0,#0x4C
+lsl     r0,r0,#4
+add     r1,r0,r1
+bx      lr
+
+//==============================================================================
 // r0 = window
 // r9 = item index
 // Return: r2 = x location for item string (relative to window location)
@@ -953,3 +1094,214 @@ add     r2,r0,1
 
 mov     r0,r5
 pop     {pc}
+.pool
+
+//==============================================================================
+//Loads the player's name properly
+eeb1a_player_name:
+push    {lr}
+mov     r2,#0x18 //Maximum amount of characters in the name
+ldr     r1,=m2_player1 //Player's name new location
+mov     r3,#0
+
+@@continue_cycle: //Count the amount of characters
+cmp     r3,r2
+bge     @@exit_cycle
+add     r0,r1,r3
+ldrb    r0,[r0,#0]
+cmp r0,#0xFF
+beq     @@exit_cycle
+add     r3,#1
+b       @@continue_cycle
+
+@@exit_cycle:
+mov     r4,r3 //Store the amount of characters in r4
+
+bl      0x80A322C //Clobbered code: load at which letter the routine is
+lsl     r1,r4,#0x10
+lsl     r0,r0,#0x10
+cmp     r1,r0
+blt     @@ended
+bl      0x80A322C
+
+mov     r3,#1
+ldr     r1,=m2_player1 //Player's name new location. The routine starts from 1 because the original routine had a flag before the name, so we subtract 1 to the address we look at in order to avoid skipping a character
+sub     r1,r1,r3
+lsl     r0,r0,#0x10
+asr     r0,r0,#0x10
+add     r1,r1,r0
+ldrb    r0,[r1,#0]
+b       @@next
+
+@@ended:
+mov     r0,#0
+
+@@next: //Do the rest of the routine
+pop     {pc}
+.pool
+
+//==============================================================================
+//These three hacks remove the game's ability to read the script instantly out of a won battle
+
+cb936_battle_won: //Called at the end of a battle if it is won
+push    {lr}
+ldr     r0,=m2_script_readability //Remove the ability to instantly read the script
+mov     r1,#8
+strb    r1,[r0,#0]
+
+ldr     r0,=#0x3000A6C //Clobbered code
+mov     r1,#0
+pop     {pc}
+
+.pool
+
+//==============================================================================
+
+b7702_check_script_reading: //Makes the game wait six extra frames before being able to read the script out of battle
+push    {lr}
+ldr     r0,=m2_script_readability
+ldrb    r1,[r0,#0]
+cmp     r1,#2 //If the value is > 2, then lower it
+ble     @@next
+sub     r1,r1,#1
+strb    r1,[r0,#0]
+b       @@end
+
+@@next:
+cmp     r1,#2 //If the value is 2, change it to 0 and allow reading the script
+bne     @@end
+mov     r1,#0
+strb    r1,[r0,#0]
+
+@@end:
+mov     r7,r10 //Clobbered code
+mov     r6,r9
+pop     {pc}
+.pool
+
+//==============================================================================
+
+a1f8c_set_script_reading: //Changes the way the game sets the ability to read the script
+push    {lr}
+ldrb    r1,[r0,#0]
+cmp     r1,#8 //If this particular flag is set, then don't do a thing. Allows to make it so the game waits before reading the script.
+beq     @@next
+mov     r1,#0
+strb    r1,[r0,#0]
+b       @@end
+
+@@next:
+mov     r1,#0
+
+@@end:
+pop     {pc}
+
+.pool
+
+//==============================================================================
+//Hacks that load specific numbers for the new names
+_2352_load_1d7:
+mov r0,#0xEB
+lsl r0,r0,#1
+add r0,r0,#1
+bx lr
+
+_2372_load_1e5:
+mov r0,#0xF2
+lsl r0,r0,#1
+add r0,r0,#1
+bx lr
+
+c98c4_load_1d7:
+mov r4,#0xEB
+lsl r4,r4,#1
+add r4,r4,#1
+bx lr
+
+c98d4_load_1e5:
+mov r4,#0xF2
+lsl r4,r4,#1
+add r4,r4,#1
+bx lr
+
+//==============================================================================
+//Fast routine that uses the defaults and stores them. Original one is a nightmare. Rewriting it from scratch. r1 has the target address. r5 has 0.
+cb2f2_hardcoded_defaults:
+push {lr}
+mov r0,#0x7E //Ness' name
+strb r0,[r1,#0]
+mov r2,#0x95
+strb r2,[r1,#1]
+strb r2,[r1,#0xF]
+mov r0,#0xA3
+strb r0,[r1,#2]
+strb r0,[r1,#3]
+mov r4,#0xFF
+lsl r5,r4,#8
+strh r5,[r1,#4]
+add r1,#7
+mov r0,#0x80 //Paula's name
+strb r0,[r1,#0]
+strb r0,[r1,#0xE]
+mov r3,#0x91
+strb r3,[r1,#1]
+strb r3,[r1,#4]
+mov r0,#0xA5
+strb r0,[r1,#2]
+mov r0,#0x9C
+strb r0,[r1,#3]
+strb r5,[r1,#5]
+strb r4,[r1,#6]
+add r1,#7
+mov r0,#0x7A //Jeff's name
+strb r0,[r1,#0]
+mov r0,#0x95
+strb r0,[r1,#1]
+mov r0,#0x96
+strb r0,[r1,#2]
+strb r0,[r1,#3]
+strh r5,[r1,#4]
+add r1,#7
+strb r4,[r1,#4]
+mov r4,#0x9F //Poo's name
+strb r4,[r1,#1]
+strb r4,[r1,#2]
+strb r5,[r1,#3]
+add r1,#7
+mov r0,#0x7B //King's name
+strb r0,[r1,#0]
+mov r0,#0x99
+strb r0,[r1,#1]
+mov r0,#0x9E
+strb r0,[r1,#2]
+mov r0,#0x97
+strb r0,[r1,#3]
+strh r5,[r1,#4]
+add r1,#8
+mov r0,#0x83 //Steak's name
+strb r0,[r1,#0]
+mov r0,#0xA4
+strb r0,[r1,#1]
+strb r2,[r1,#2]
+strb r3,[r1,#3]
+mov r3,#0x9B
+strb r3,[r1,#4]
+mov r2,#0xFF
+strb r5,[r1,#5]
+strb r2,[r1,#6]
+add r1,#8
+mov r0,#0x82 //Rockin's name
+strb r0,[r1,#0]
+strb r4,[r1,#1]
+mov r0,#0x93
+strb r0,[r1,#2]
+strb r3,[r1,#3]
+mov r0,#0x99
+strb r0,[r1,#4]
+mov r0,#0x9E
+strb r0,[r1,#5]
+strh r5,[r1,#6]
+mov r2,#1
+mov r5,#0
+
+pop {pc}

@@ -74,6 +74,7 @@ English names:
 0x30023D4: current ATM balance
 0x3002500: buttons being pressed
 0x3002504: shadow of 0x3002500? delayed by one frame maybe?
+0x3004F08: printing flag
 0x30051EC: tile offset (usually 0x100)
 0x30051F0: flag? gets set to 1 when you change rooms, goes back to 0 the first time you open a text window
 0x3005224: menu sub-state
@@ -137,6 +138,7 @@ Subroutines
 80A2E00: door-related? r0 = source, r1 = dest
 80A334C: store r0 to window memory
 80B8AE0: draw PSI target/PP cost window with PSI index r0
+80BB268: Weapons window
 80BC670: check if currently selected character has item equipped
          r0: item index + 1
          returns: 1 if equipped, 0 otherwise or if index==0
@@ -172,6 +174,7 @@ Subroutines
 80C1FBC: draw PSI window for character r0
 80C239C: print PSI name with Greek letter
 80C438C: check for cursor movements in PSI window
+80C5B10: If everything works properly, changes cursor position in Weapons/Body/Head/Other submenu
 80C87D0: draw blank window and border (r0: window pointer)
 80C8BE4: render main menu string to window r0
 80C8FFC: render string to window r0
@@ -274,3 +277,12 @@ Custom codes
 Enemy data
 ----------
 $8739D1C - $873D6DB
+
+Default names
+---------
+0x82B9330 - 0x82BA1BB contains the default names.
+Each single default name is 0x4C bytes long.
+Each character's default names list is 0x214 bytes long, so each character has 7 possible default names.
+First 4 bytes are the name's length.
+After that there is the name.
+There are 7 character's entries.
