@@ -1039,8 +1039,8 @@ b       @@cycle
 @@next:
 add     r2,#1
 ldrb    r0,[r1,r2]
-cmp     r0,#0 //Does this string have the the flag? If it does not, then proceed to the end
-beq     @@end
+cmp     r0,#1 //Does this string have the the flag? If it does not, then proceed to the end
+bne     @@end
 ldr     r0,=m2_cstm_last_printed
 ldrb    r0,[r0,#0]
 cmp     r0,#0x70 //Is the previous character an @?
