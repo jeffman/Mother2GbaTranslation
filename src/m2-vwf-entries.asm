@@ -1012,6 +1012,67 @@ pop     {pc}
 .pool
 
 //==============================================================================
+dae9c_king_0_the: //King is different than the other chosen ones, it's needed to operate on the stack before it goes to the proper address.
+push {r1,lr}
+ldmia [r0]!,r2,r3
+stmia [r1]!,r2,r3
+pop {r0}
+bl _add_0_end_of_name
+pop {pc}
+
+_get_pointer_to_stack: //r0 has the value r1 will have
+push {r1,lr}
+mov r1,r0
+ldr r0,=#0x3005220
+ldr r0,[r0,#0]
+lsl r1,r1,#4
+add r0,r0,r1
+pop {r1,pc}
+
+_add_0_end_of_name: //assumes r0 has the address to the stack.
+push {r1,lr}
+@@cycle:
+ldrb r1,[r0,#0]
+cmp r1,#0
+beq @@end_of_cycle
+@@keep_going:
+add r0,#1
+b @@cycle
+@@end_of_cycle:
+ldrb r1,[r0,#1]
+cmp r1,#0xFF
+bne @@keep_going
+mov r1,#0
+strb r1,[r0,#2]
+pop {r1,pc}
+//==============================================================================
+daeda_party_0_the:
+push {lr}
+bl 0x80DB01C
+mov r0,#0x50
+bl _get_pointer_to_stack
+bl _add_0_end_of_name
+pop {pc}
+
+//==============================================================================
+ec93c_party_0_the:
+push {lr}
+bl 0x80EC010
+mov r0,#0x50
+bl _get_pointer_to_stack
+bl _add_0_end_of_name
+pop {pc}
+
+//==============================================================================
+db156_party_0_the:
+push {lr}
+bl 0x80DB02C
+mov r0,#0x4C
+bl _get_pointer_to_stack
+bl _add_0_end_of_name
+pop {pc}
+
+//==============================================================================
 c9c58_9f_ad_minThe: //Routine that changes The to the and viceversa if need be for 9F FF and for AD FF
 push    {r2,lr}
 ldr     r0,=#0x3005220

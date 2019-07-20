@@ -610,7 +610,12 @@ pop     {r4,pc}
 
 // "The" flag checks
 .org 0x80DB084 :: bl db04c_theflag :: nop :: nop
+.org 0x80DB110 :: bl dae9c_king_0_the
+.org 0x80DB156 :: bl db156_party_0_the
 .org 0x80DAE30 :: bl db04c_theflag :: nop :: nop
+.org 0x80DAE9C :: bl dae9c_king_0_the
+.org 0x80DAEDA :: bl daeda_party_0_the
+.org 0x80EC93C :: bl ec93c_party_0_the
 .org 0x80DCD5C :: bl dcd5c_theflag :: nop :: nop
 .org 0x80DB08E :: bl db08e_theflagflag
 .org 0x80DAE3A :: bl db08e_theflagflag
