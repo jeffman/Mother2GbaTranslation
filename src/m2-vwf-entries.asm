@@ -891,7 +891,7 @@ bx      lr
 .pool
 
 //==============================================================================
-// Add a space between enemy name and letter in multi-enemy fights for the selection window
+// Add a space between enemy name and letter in multi-enemy fights for the selection window. Called only by enemies.
 dcd00_enemy_letter:
 push    {r1-r2,lr}
 ldrb    r1,[r5,#0]
@@ -919,7 +919,7 @@ pop     {r1-r2,pc}
 .pool
 
 //==============================================================================
-// Add a space between enemy name and letter in multi-enemy fights for 9F FF and AD FF
+// Add a space between enemy name and letter in multi-enemy fights for 9F FF and AD FF. Only enemies call this.
 dae00_enemy_letter:
 push    {r1-r2,lr}
 ldrb    r1,[r4,#0]
@@ -947,7 +947,7 @@ pop     {r1-r2,pc}
 .pool
 
 //==============================================================================
-// "The" flag checks for the Target window. It will always be lowercase.
+// "The" flag checks for the Target window. It will always be lowercase, this makes things much simpler because it will never be changed due to the character printed before it, unlike how it happens with 9F FF and AD FF.
 dcd5c_theflag:
 push    {r4,lr}
 
@@ -1012,65 +1012,65 @@ pop     {pc}
 .pool
 
 //==============================================================================
-dae9c_king_0_the: //King is different than the other chosen ones, it's needed to operate on the stack before it goes to the proper address.
-push {r1,lr}
-ldmia [r0]!,r2,r3
-stmia [r1]!,r2,r3
-pop {r0}
-bl _add_0_end_of_name
-pop {pc}
+dae9c_king_0_the: //King is different than the other chosen ones, it's needed to operate on the stack before it goes to the proper address because its branch reconnects with the enemies' routine.
+push    {r1,lr}
+ldmia   [r0]!,r2,r3 //Loads and stores King's name
+stmia   [r1]!,r2,r3
+pop     {r0}
+bl      _add_0_end_of_name
+pop     {pc}
 
 _get_pointer_to_stack: //r0 has the value r1 will have
-push {r1,lr}
-mov r1,r0
-ldr r0,=#0x3005220
-ldr r0,[r0,#0]
-lsl r1,r1,#4
-add r0,r0,r1
-pop {r1,pc}
+push    {r1,lr}
+mov     r1,r0
+ldr     r0,=#0x3005220
+ldr     r0,[r0,#0]
+lsl     r1,r1,#4
+add     r0,r0,r1 //Writing stack address
+pop     {r1,pc}
 
-_add_0_end_of_name: //assumes r0 has the address to the stack.
-push {r1,lr}
-@@cycle:
-ldrb r1,[r0,#0]
-cmp r1,#0
-beq @@end_of_cycle
+_add_0_end_of_name: //assumes r0 has the address to the stack. Stores 0 after the end of the name.
+push    {r1,lr}
+@@cycle: //Get to the end of the name
+ldrb    r1,[r0,#0]
+cmp     r1,#0
+beq     @@end_of_cycle
 @@keep_going:
-add r0,#1
-b @@cycle
+add     r0,#1
+b       @@cycle
 @@end_of_cycle:
-ldrb r1,[r0,#1]
-cmp r1,#0xFF
-bne @@keep_going
-mov r1,#0
-strb r1,[r0,#2]
-pop {r1,pc}
+ldrb    r1,[r0,#1]
+cmp     r1,#0xFF
+bne     @@keep_going
+mov     r1,#0 //Store 0 after the 0xFF00
+strb    r1,[r0,#2]
+pop     {r1,pc}
 //==============================================================================
 daeda_party_0_the:
-push {lr}
-bl 0x80DB01C
-mov r0,#0x50
-bl _get_pointer_to_stack
-bl _add_0_end_of_name
-pop {pc}
+push    {lr}
+bl      0x80DB01C
+mov     r0,#0x50
+bl      _get_pointer_to_stack
+bl      _add_0_end_of_name
+pop     {pc}
 
 //==============================================================================
 ec93c_party_0_the:
-push {lr}
-bl 0x80EC010
-mov r0,#0x50
-bl _get_pointer_to_stack
-bl _add_0_end_of_name
-pop {pc}
+push    {lr}
+bl      0x80EC010
+mov     r0,#0x50
+bl      _get_pointer_to_stack
+bl      _add_0_end_of_name
+pop     {pc}
 
 //==============================================================================
 db156_party_0_the:
-push {lr}
-bl 0x80DB02C
-mov r0,#0x4C
-bl _get_pointer_to_stack
-bl _add_0_end_of_name
-pop {pc}
+push    {lr}
+bl      0x80DB02C
+mov     r0,#0x4C
+bl      _get_pointer_to_stack
+bl      _add_0_end_of_name
+pop     {pc}
 
 //==============================================================================
 c9c58_9f_ad_minThe: //Routine that changes The to the and viceversa if need be for 9F FF and for AD FF
@@ -1102,6 +1102,20 @@ add     r2,#1
 ldrb    r0,[r1,r2]
 cmp     r0,#1 //Does this string have the the flag? If it does not, then proceed to the end
 bne     @@end
+ldr     r2,=0x50959884 //Does this string have "The "? If it does, check if it ends instantly.
+ldr     r0,[r1,#0]
+cmp     r0,r2
+beq     @@next_found_the
+sub     r0,r0,r2 //Does this string have "the "? If it does not, then it's a character. Proceed to the end.
+cmp     r0,#0x20
+bne     @@end
+
+@@next_found_the: //A starting "The " or "the " has been found
+mov     r2,#0xFF
+lsl     r2,r2,#8 //r2 has 0xFF00
+ldrh    r0,[r1,#4] //Load the next two bytes after "The " or "the "
+cmp     r0,r2 //If they're the same as r2, then it's a character. End this here.
+beq     @@end
 ldr     r0,=m2_cstm_last_printed
 ldrb    r0,[r0,#0]
 cmp     r0,#0x70 //Is the previous character an @?
