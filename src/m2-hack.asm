@@ -610,7 +610,12 @@ pop     {r4,pc}
 
 // "The" flag checks
 .org 0x80DB084 :: bl db04c_theflag :: nop :: nop
+.org 0x80DB110 :: bl dae9c_king_0_the
+.org 0x80DB156 :: bl db156_party_0_the //Not needed anymore, but is a good measure
 .org 0x80DAE30 :: bl db04c_theflag :: nop :: nop
+.org 0x80DAE9C :: bl dae9c_king_0_the
+.org 0x80DAEDA :: bl daeda_party_0_the //Not needed anymore, but is a good measure
+.org 0x80EC93C :: bl ec93c_party_0_the //Leveling up - Not needed anymore, but is a good measure
 .org 0x80DCD5C :: bl dcd5c_theflag :: nop :: nop
 .org 0x80DB08E :: bl db08e_theflagflag
 .org 0x80DAE3A :: bl db08e_theflagflag
@@ -794,10 +799,10 @@ nop
 .org 0x80C9918 :: dw m2_poo_name
 .org 0x80C9928 :: dw m2_food
 .org 0x80C9938 :: dw m2_rockin
-.org 0x80C9BC0 :: dw m2_king_name
-.org 0x80DB134 :: dw m2_king_name
-.org 0x80DAEB8 :: dw m2_king_name
-.org 0x80133E8 :: dw m2_king_name
+.org 0x80C9BC0 :: dw m2_king_name //Control Code for printing its name
+.org 0x80DB134 :: dw m2_king_name //Action user related
+.org 0x80DAEB8 :: dw m2_king_name //Action target related
+.org 0x80133E8 :: dw m2_king_name //Cast Roll
 .org 0x80C2368 :: dw m2_rockin
 .org 0x80C2424 :: dw m2_rockin
 .org 0x80C24E0 :: dw m2_rockin
