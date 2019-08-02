@@ -790,6 +790,11 @@ nop
 nop
 
 //---------------------------------------------------------
+// Carpainter's timing fix
+//---------------------------------------------------------
+.org 0x802A75F :: db 0x30 //Add 8 extra frames before the game can start reading again.
+
+//---------------------------------------------------------
 // Names hacks
 //---------------------------------------------------------
 //Change location of the names to allow 5-letter long characters and 6 letters long food, rockin and king
