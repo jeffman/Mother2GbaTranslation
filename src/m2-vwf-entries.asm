@@ -1380,3 +1380,74 @@ mov r2,#1
 mov r5,#0
 
 pop {pc}
+
+//==============================================================================
+//Routine for window headers that fixes the issue character - tiles
+fix_char_tiles:
+push {lr}
+lsl r0,r2,#1
+lsl r1,r2,#2
+add r1,r1,r0 //Multiply r2 (character count) by 6
+lsr r0,r1,#3 //Divide by 8
+lsl r0,r0,#3 //Re-multiply by 8
+cmp r0,r1 //Can it stay in r0 pixels? (Was this a division by 8 without remainder?)
+beq @@next
+add r0,#8 //If it cannot stay in x tiles, add 1 to the amount of tiles needed
+@@next:
+lsr r0,r0,#3 //Get the amount of tiles needed
+cmp r0,r2 //If it's not the same amout as the characters, 
+beq @@end
+sub r0,r2,r0
+lsl r0,r0,#1
+sub r6,r6,r0 //Remove the amount of extra tiles
+@@end:
+pop {pc}
+
+//==============================================================================
+//Specific fix_char_tiles routine - Status window
+c0b28_fix_char_tiles:
+push {lr}
+bl fix_char_tiles
+ldr r0,[r4,#0] //Clobbered code
+add r0,#0xB3
+pop {pc}
+
+//==============================================================================
+//Specific fix_char_tiles routine - Give window
+c009e_fix_char_tiles:
+push {lr}
+mov r2,r5
+bl fix_char_tiles
+ldr r2,=#0x30051EC //Clobbered code
+ldrh r0,[r2]
+pop {pc}
+
+//==============================================================================
+//Specific fix_char_tiles routine - Equip window
+c4bd6_fix_char_tiles:
+push {lr}
+mov r6,r7
+bl fix_char_tiles
+mov r7,r6
+ldr r2,=#0x30051EC //Clobbered code
+ldrh r0,[r2]
+pop {pc}
+
+.pool
+//==============================================================================
+//Specific fix_char_tiles routine - Outer PSI window
+c42e0_fix_char_tiles:
+push {lr}
+bl fix_char_tiles
+mov r2,r9 //Clobbered code
+ldrh r0,[r2,#0]
+pop {pc}
+
+//==============================================================================
+//Specific fix_char_tiles routine - Inner PSI window - part 2
+c4448_fix_char_tiles:
+push {lr}
+bl fix_char_tiles
+mov r2,r8 //Clobbered code
+ldrh r0,[r2,#0]
+pop {pc}
