@@ -1,0 +1,23 @@
+80035AC: print file select/naming string
+    r0: tile x
+    r1: tile y
+    r2: characters to print
+    r3: string buffer (0xFF terminated)
+    sp: arg4
+
+g = arg4 * 20
+row = 0 or 1 (note that it scans each string twice, once for the first row of tiles and once for the second row)
+tileset destination = [82B79B4 + g] + (x * 2) + ((y + row) * [82B79BC + g] * 2)
+
+----
+
+A template tileset is decompressed from 86DB070 to 200A400 (note: "1: Ness" starts printing to 200A434)
+It seems to get fully overwritten, so we can replace it with all blank tiles
+
+----
+
+We also need to blank out the font that gets loaded to VRAM at 6008000
+
+----
+
+Note that the palette on these screens uses 0x1 for background, 0x9 for foreground
