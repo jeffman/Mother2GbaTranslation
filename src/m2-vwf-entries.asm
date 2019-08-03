@@ -1395,7 +1395,7 @@ beq @@next
 add r0,#8 //If it cannot stay in x tiles, add 1 to the amount of tiles needed
 @@next:
 lsr r0,r0,#3 //Get the amount of tiles needed
-cmp r0,r2 //If it's not the same amout as the characters, 
+cmp r0,r2 //If it's not the same amout as the characters... 
 beq @@end
 sub r0,r2,r0
 lsl r0,r0,#1
