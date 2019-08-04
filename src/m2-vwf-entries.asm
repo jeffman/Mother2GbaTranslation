@@ -891,7 +891,7 @@ bx      lr
 .pool
 
 //==============================================================================
-// Add a space between enemy name and letter in multi-enemy fights for the selection window
+// Add a space between enemy name and letter in multi-enemy fights for the selection window. Called only by enemies.
 dcd00_enemy_letter:
 push    {r1-r2,lr}
 ldrb    r1,[r5,#0]
@@ -919,7 +919,7 @@ pop     {r1-r2,pc}
 .pool
 
 //==============================================================================
-// Add a space between enemy name and letter in multi-enemy fights for 9F FF and AD FF
+// Add a space between enemy name and letter in multi-enemy fights for 9F FF and AD FF. Only enemies call this.
 dae00_enemy_letter:
 push    {r1-r2,lr}
 ldrb    r1,[r4,#0]
@@ -947,7 +947,7 @@ pop     {r1-r2,pc}
 .pool
 
 //==============================================================================
-// "The" flag checks for the Target window. It will always be lowercase.
+// "The" flag checks for the Target window. It will always be lowercase, this makes things much simpler because it will never be changed due to the character printed before it, unlike how it happens with 9F FF and AD FF.
 dcd5c_theflag:
 push    {r4,lr}
 
@@ -1012,6 +1012,67 @@ pop     {pc}
 .pool
 
 //==============================================================================
+dae9c_king_0_the: //King is different than the other chosen ones, it's needed to operate on the stack before it goes to the proper address because its branch reconnects with the enemies' routine.
+push    {r1,lr}
+ldmia   [r0]!,r2,r3 //Loads and stores King's name
+stmia   [r1]!,r2,r3
+pop     {r0}
+bl      _add_0_end_of_name
+pop     {pc}
+
+_get_pointer_to_stack: //r0 has the value r1 will have
+push    {r1,lr}
+mov     r1,r0
+ldr     r0,=#0x3005220
+ldr     r0,[r0,#0]
+lsl     r1,r1,#4
+add     r0,r0,r1 //Writing stack address
+pop     {r1,pc}
+
+_add_0_end_of_name: //assumes r0 has the address to the stack. Stores 0 after the end of the name.
+push    {r1,lr}
+@@cycle: //Get to the end of the name
+ldrb    r1,[r0,#0]
+cmp     r1,#0
+beq     @@end_of_cycle
+@@keep_going:
+add     r0,#1
+b       @@cycle
+@@end_of_cycle:
+ldrb    r1,[r0,#1]
+cmp     r1,#0xFF
+bne     @@keep_going
+mov     r1,#0 //Store 0 after the 0xFF00
+strb    r1,[r0,#2]
+pop     {r1,pc}
+//==============================================================================
+daeda_party_0_the:
+push    {lr}
+bl      0x80DB01C
+mov     r0,#0x50
+bl      _get_pointer_to_stack
+bl      _add_0_end_of_name
+pop     {pc}
+
+//==============================================================================
+ec93c_party_0_the:
+push    {lr}
+bl      0x80EC010
+mov     r0,#0x50
+bl      _get_pointer_to_stack
+bl      _add_0_end_of_name
+pop     {pc}
+
+//==============================================================================
+db156_party_0_the:
+push    {lr}
+bl      0x80DB02C
+mov     r0,#0x4C
+bl      _get_pointer_to_stack
+bl      _add_0_end_of_name
+pop     {pc}
+
+//==============================================================================
 c9c58_9f_ad_minThe: //Routine that changes The to the and viceversa if need be for 9F FF and for AD FF
 push    {r2,lr}
 ldr     r0,=#0x3005220
@@ -1039,7 +1100,21 @@ b       @@cycle
 @@next:
 add     r2,#1
 ldrb    r0,[r1,r2]
-cmp     r0,#0 //Does this string have the the flag? If it does not, then proceed to the end
+cmp     r0,#1 //Does this string have the the flag? If it does not, then proceed to the end
+bne     @@end
+ldr     r2,=0x50959884 //Does this string have "The "? If it does, check if it ends instantly.
+ldr     r0,[r1,#0]
+cmp     r0,r2
+beq     @@next_found_the
+sub     r0,r0,r2 //Does this string have "the "? If it does not, then it's a character. Proceed to the end.
+cmp     r0,#0x20
+bne     @@end
+
+@@next_found_the: //A starting "The " or "the " has been found
+mov     r2,#0xFF
+lsl     r2,r2,#8 //r2 has 0xFF00
+ldrh    r0,[r1,#4] //Load the next two bytes after "The " or "the "
+cmp     r0,r2 //If they're the same as r2, then it's a character. End this here.
 beq     @@end
 ldr     r0,=m2_cstm_last_printed
 ldrb    r0,[r0,#0]
@@ -1201,107 +1276,242 @@ pop     {pc}
 //==============================================================================
 //Hacks that load specific numbers for the new names
 _2352_load_1d7:
-mov r0,#0xEB
-lsl r0,r0,#1
-add r0,r0,#1
-bx lr
+mov     r0,#0xEB
+lsl     r0,r0,#1
+add     r0,r0,#1
+bx      lr
 
 _2372_load_1e5:
-mov r0,#0xF2
-lsl r0,r0,#1
-add r0,r0,#1
-bx lr
+mov     r0,#0xF2
+lsl     r0,r0,#1
+add     r0,r0,#1
+bx      lr
 
 c98c4_load_1d7:
-mov r4,#0xEB
-lsl r4,r4,#1
-add r4,r4,#1
-bx lr
+mov     r4,#0xEB
+lsl     r4,r4,#1
+add     r4,r4,#1
+bx      lr
 
 c98d4_load_1e5:
-mov r4,#0xF2
-lsl r4,r4,#1
-add r4,r4,#1
-bx lr
+mov     r4,#0xF2
+lsl     r4,r4,#1
+add     r4,r4,#1
+bx      lr
 
 //==============================================================================
 //Fast routine that uses the defaults and stores them. Original one is a nightmare. Rewriting it from scratch. r1 has the target address. r5 has 0.
 cb2f2_hardcoded_defaults:
-push {lr}
-mov r0,#0x7E //Ness' name
-strb r0,[r1,#0]
-mov r2,#0x95
-strb r2,[r1,#1]
-strb r2,[r1,#0xF]
-mov r0,#0xA3
-strb r0,[r1,#2]
-strb r0,[r1,#3]
-mov r4,#0xFF
-lsl r5,r4,#8
-strh r5,[r1,#4]
-add r1,#7
-mov r0,#0x80 //Paula's name
-strb r0,[r1,#0]
-strb r0,[r1,#0xE]
-mov r3,#0x91
-strb r3,[r1,#1]
-strb r3,[r1,#4]
-mov r0,#0xA5
-strb r0,[r1,#2]
-mov r0,#0x9C
-strb r0,[r1,#3]
-strb r5,[r1,#5]
-strb r4,[r1,#6]
-add r1,#7
-mov r0,#0x7A //Jeff's name
-strb r0,[r1,#0]
-mov r0,#0x95
-strb r0,[r1,#1]
-mov r0,#0x96
-strb r0,[r1,#2]
-strb r0,[r1,#3]
-strh r5,[r1,#4]
-add r1,#7
-strb r4,[r1,#4]
-mov r4,#0x9F //Poo's name
-strb r4,[r1,#1]
-strb r4,[r1,#2]
-strb r5,[r1,#3]
-add r1,#7
-mov r0,#0x7B //King's name
-strb r0,[r1,#0]
-mov r0,#0x99
-strb r0,[r1,#1]
-mov r0,#0x9E
-strb r0,[r1,#2]
-mov r0,#0x97
-strb r0,[r1,#3]
-strh r5,[r1,#4]
-add r1,#8
-mov r0,#0x83 //Steak's name
-strb r0,[r1,#0]
-mov r0,#0xA4
-strb r0,[r1,#1]
-strb r2,[r1,#2]
-strb r3,[r1,#3]
-mov r3,#0x9B
-strb r3,[r1,#4]
-mov r2,#0xFF
-strb r5,[r1,#5]
-strb r2,[r1,#6]
-add r1,#8
-mov r0,#0x82 //Rockin's name
-strb r0,[r1,#0]
-strb r4,[r1,#1]
-mov r0,#0x93
-strb r0,[r1,#2]
-strb r3,[r1,#3]
-mov r0,#0x99
-strb r0,[r1,#4]
-mov r0,#0x9E
-strb r0,[r1,#5]
-strh r5,[r1,#6]
-mov r2,#1
-mov r5,#0
+push    {lr}
+mov     r0,#0x7E //Ness' name
+strb    r0,[r1,#0]
+mov     r2,#0x95
+strb    r2,[r1,#1]
+strb    r2,[r1,#0xF]
+mov     r0,#0xA3
+strb    r0,[r1,#2]
+strb    r0,[r1,#3]
+mov     r4,#0xFF
+lsl     r5,r4,#8
+strh    r5,[r1,#4]
+add     r1,#7
+mov     r0,#0x80 //Paula's name
+strb    r0,[r1,#0]
+strb    r0,[r1,#0xE]
+mov     r3,#0x91
+strb    r3,[r1,#1]
+strb    r3,[r1,#4]
+mov     r0,#0xA5
+strb    r0,[r1,#2]
+mov     r0,#0x9C
+strb    r0,[r1,#3]
+strb    r5,[r1,#5]
+strb    r4,[r1,#6]
+add     r1,#7
+mov     r0,#0x7A //Jeff's name
+strb    r0,[r1,#0]
+mov     r0,#0x95
+strb    r0,[r1,#1]
+mov     r0,#0x96
+strb    r0,[r1,#2]
+strb    r0,[r1,#3]
+strh    r5,[r1,#4]
+add     r1,#7
+strb    r4,[r1,#4]
+mov     r4,#0x9F //Poo's name
+strb    r4,[r1,#1]
+strb    r4,[r1,#2]
+strb    r5,[r1,#3]
+add     r1,#7
+mov     r0,#0x7B //King's name
+strb    r0,[r1,#0]
+mov     r0,#0x99
+strb    r0,[r1,#1]
+mov     r0,#0x9E
+strb    r0,[r1,#2]
+mov     r0,#0x97
+strb    r0,[r1,#3]
+strh    r5,[r1,#4]
+add     r1,#8
+mov     r0,#0x83 //Steak's name
+strb    r0,[r1,#0]
+mov     r0,#0xA4
+strb    r0,[r1,#1]
+strb    r2,[r1,#2]
+strb    r3,[r1,#3]
+mov     r3,#0x9B
+strb    r3,[r1,#4]
+mov     r2,#0xFF
+strb    r5,[r1,#5]
+strb    r2,[r1,#6]
+add     r1,#8
+mov     r0,#0x82 //Rockin's name
+strb    r0,[r1,#0]
+strb    r4,[r1,#1]
+mov     r0,#0x93
+strb    r0,[r1,#2]
+strb    r3,[r1,#3]
+mov     r0,#0x99
+strb    r0,[r1,#4]
+mov     r0,#0x9E
+strb    r0,[r1,#5]
+strh    r5,[r1,#6]
+mov     r2,#1
+mov     r5,#0
 
-pop {pc}
+pop     {pc}
+
+//==============================================================================
+//Routine for window headers that fixes the issue character - tiles
+fix_char_tiles:
+push    {lr}
+lsl     r0,r2,#1
+lsl     r1,r2,#2
+add     r1,r1,r0 //Multiply r2 (character count) by 6
+lsr     r0,r1,#3 //Divide by 8
+lsl     r0,r0,#3 //Re-multiply by 8
+cmp     r0,r1 //Can it stay in r0 pixels? (Was this a division by 8 without remainder?)
+beq     @@next
+add     r0,#8 //If it cannot stay in x tiles, add 1 to the amount of tiles needed
+
+@@next:
+lsr     r0,r0,#3 //Get the amount of tiles needed
+cmp     r0,r2 //If it's not the same amout as the characters... 
+beq     @@end
+sub     r0,r2,r0
+lsl     r0,r0,#1
+sub     r6,r6,r0 //Remove the amount of extra tiles
+
+@@end:
+pop     {pc}
+
+//==============================================================================
+//Specific fix_char_tiles routine - Status window
+c0b28_fix_char_tiles:
+push    {lr}
+bl      fix_char_tiles
+ldr     r0,[r4,#0] //Clobbered code
+add     r0,#0xB3
+pop     {pc}
+
+//==============================================================================
+//Specific fix_char_tiles routine - Give window
+c009e_fix_char_tiles:
+push    {lr}
+mov     r2,r5
+bl      fix_char_tiles
+ldr     r2,=#0x30051EC //Clobbered code
+ldrh    r0,[r2]
+pop     {pc}
+
+//==============================================================================
+//Specific fix_char_tiles routine - Equip window
+c4bd6_fix_char_tiles:
+push    {lr}
+mov     r6,r7
+bl      fix_char_tiles
+mov     r7,r6
+ldr     r2,=#0x30051EC //Clobbered code
+ldrh    r0,[r2]
+pop     {pc}
+
+.pool
+//==============================================================================
+//Specific fix_char_tiles routine - Outer PSI window
+c42e0_fix_char_tiles:
+push    {lr}
+bl      fix_char_tiles
+mov     r2,r9 //Clobbered code
+ldrh    r0,[r2,#0]
+pop     {pc}
+
+//==============================================================================
+//Specific fix_char_tiles routine - Inner PSI window - part 2
+c4448_fix_char_tiles:
+push    {lr}
+bl      fix_char_tiles
+mov     r2,r8 //Clobbered code
+ldrh    r0,[r2,#0]
+pop     {pc}
+
+//==============================================================================
+//Routine which clears the header and THEN makes it so the string is printed
+c6190_clean_print:
+push    {lr}
+push    {r0-r3}
+mov     r1,#6 //Number of tiles to clean
+bl      clear_window_header
+pop     {r0-r3}
+bl      0x80CAB90
+pop     {pc}
+
+//==============================================================================
+//Routine which clears the header and THEN makes it so the string is printed
+c65da_clean_print:
+push    {lr}
+push    {r0-r3}
+mov     r1,#3 //Number of tiles to clean
+bl      clear_window_header
+pop     {r0-r3}
+bl      0x80CAB90
+pop     {pc}
+
+//==============================================================================
+//Routine which clears the header and THEN makes it so the string is printed
+_0x10_clean_print:
+push    {lr}
+push    {r0-r3}
+mov     r1,#0x10 //Number of tiles to clean
+bl      clear_window_header
+pop     {r0-r3}
+bl      0x80CAB90
+pop     {pc}
+
+//==============================================================================
+//Routine which calls the header clearer and changes the position of Stored Goods in the arrangement
+c6570_clean_print_change_pos:
+push    {lr}
+bl      _0x10_clean_print
+ldr     r2,=#0x230 //Change starting position
+mov     r0,r2 //Clobbered code
+ldrh    r3,[r4,#0]
+add     r0,r0,r3
+mov     r2,r8
+ldrh    r1,[r2,#0]
+orr     r0,r1
+mov     r2,#0
+
+@@cycle: //Print 9 tiles in the arrangement
+lsl     r0,r0,#0x10
+lsr     r0,r0,#0x10
+mov     r1,r0
+add     r0,r1,#1
+strh    r1,[r5,#0]
+add     r5,#2
+add     r2,#1
+cmp     r2,#9
+bne     @@cycle
+
+pop     {pc}
+
+.pool

@@ -116,6 +116,9 @@ b       0x80BADD8
 .org    0x80C55F8
 mov     r4,r0
 mov     r0,r9
+mov     r1,#0x10 //Tiles to clear
+mov     r2,#0x10 //x
+mov     r3,#0x11 //y
 bl      clear_window_header
 mov     r0,r4
 mov     r1,r6 // tilemap
@@ -610,7 +613,12 @@ pop     {r4,pc}
 
 // "The" flag checks
 .org 0x80DB084 :: bl db04c_theflag :: nop :: nop
+.org 0x80DB110 :: bl dae9c_king_0_the
+.org 0x80DB156 :: bl db156_party_0_the //Not needed anymore, but is a good measure
 .org 0x80DAE30 :: bl db04c_theflag :: nop :: nop
+.org 0x80DAE9C :: bl dae9c_king_0_the
+.org 0x80DAEDA :: bl daeda_party_0_the //Not needed anymore, but is a good measure
+.org 0x80EC93C :: bl ec93c_party_0_the //Leveling up - Not needed anymore, but is a good measure
 .org 0x80DCD5C :: bl dcd5c_theflag :: nop :: nop
 .org 0x80DB08E :: bl db08e_theflagflag
 .org 0x80DAE3A :: bl db08e_theflagflag
@@ -785,6 +793,42 @@ nop
 nop
 
 //---------------------------------------------------------
+// Carpainter's timing fix
+//---------------------------------------------------------
+.org 0x802A75F :: db 0x30 //Add 8 extra frames before the game can start reading again.
+
+//---------------------------------------------------------
+// Teleport header fix
+//---------------------------------------------------------
+.org 0x80C5DE0 :: bl c65da_clean_print //To:
+.org 0x80C5E30 :: bl c6190_clean_print //Number on first entering the menu
+.org 0x80C6190 :: bl c6190_clean_print //Number on page change
+.org 0x80C5E04 :: nop :: strh r0,[r4,#0] :: add r4,#2 :: nop ::nop //Remove extra tile
+
+//---------------------------------------------------------
+// Stored Goods header fix
+//---------------------------------------------------------
+.org 0x80C656C :: mov r2,#0x10 :: mov r3,#0x11 :: bl c6570_clean_print_change_pos :: b 0x80C65C0 //Changes position and cleans tiles for Stored Goods
+.org 0x80C65DA :: bl c65da_clean_print //Number on first entering the menu
+.org 0x80C6996 :: bl c65da_clean_print //Number on page change
+
+//---------------------------------------------------------
+// Call header fix
+//---------------------------------------------------------
+.org 0x80BD26A :: bl c6190_clean_print //Call:
+
+//---------------------------------------------------------
+// Fix windows printing too many tiles due to not going off of pixels, but off of characters
+//---------------------------------------------------------
+.org 0x80C0B28 :: bl c0b28_fix_char_tiles //Status window
+.org 0x80C009E :: bl c009e_fix_char_tiles //Give window
+.org 0x80C4BD6 :: bl c4bd6_fix_char_tiles //Equip window
+.org 0x80C42E0 :: bl c42e0_fix_char_tiles //Outer PSI window
+.org 0x80C3FD8 :: bl c42e0_fix_char_tiles //Inner PSI window
+.org 0x80C4448 :: bl c4448_fix_char_tiles //Inner PSI window - part 2
+.org 0x80DBF36 :: bl c009e_fix_char_tiles //Battle menu window
+
+//---------------------------------------------------------
 // Names hacks
 //---------------------------------------------------------
 //Change location of the names to allow 5-letter long characters and 6 letters long food, rockin and king
@@ -794,10 +838,10 @@ nop
 .org 0x80C9918 :: dw m2_poo_name
 .org 0x80C9928 :: dw m2_food
 .org 0x80C9938 :: dw m2_rockin
-.org 0x80C9BC0 :: dw m2_king_name
-.org 0x80DB134 :: dw m2_king_name
-.org 0x80DAEB8 :: dw m2_king_name
-.org 0x80133E8 :: dw m2_king_name
+.org 0x80C9BC0 :: dw m2_king_name //Control Code for printing its name
+.org 0x80DB134 :: dw m2_king_name //Action user related
+.org 0x80DAEB8 :: dw m2_king_name //Action target related
+.org 0x80133E8 :: dw m2_king_name //Cast Roll
 .org 0x80C2368 :: dw m2_rockin
 .org 0x80C2424 :: dw m2_rockin
 .org 0x80C24E0 :: dw m2_rockin
@@ -836,6 +880,8 @@ nop
 .org 0x80D6B44 :: lsl r1,r4,#3 :: sub r1,r1,r4 :: nop
 .org 0x80D6E3A :: lsl r1,r4,#3 :: sub r1,r1,r4 :: nop
 .org 0x80D6ED0 :: lsl r1,r4,#3 :: sub r1,r1,r4 :: nop
+.org 0x80C3FC6 :: lsl r1,r0,#3 :: sub r1,r1,r0 :: nop
+.org 0x80C4436 :: lsl r1,r0,#3 :: sub r1,r1,r0 :: nop
 
 //Change the way the characters' names are called. Instead of number * 6, it's now number * 7. These ones already received an lsl of 1 beforehand.
 .org 0x80C0AC8 :: lsl r1,r1,#2 :: sub r1,r1,r5
@@ -917,7 +963,13 @@ nop
 
 .org 0x80121DC :: cmp r2,#4
 .org 0x8013672 :: cmp r5,#4
-.org 0x80C0B0A :: cmp r2,#4
+.org 0x80C0B0A :: cmp r2,#4 //Status window header
+.org 0x80C4BBC :: cmp r2,#4 //Equip window header
+.org 0x80C42C6 :: cmp r2,#4 //Outer PSI window header
+.org 0x80C3FBE :: cmp r2,#4 //Inner PSI window header
+.org 0x80C442E :: cmp r2,#4 //Inner PSI window - part 2 header
+.org 0x80C0082 :: cmp r5,#4 //Give window header
+.org 0x80DBF28 :: cmp r0,#4 //Battle menu window header
 .org 0x80C97E2 :: cmp r1,#6
 .org 0x80DAF3A :: cmp r0,#6
 .org 0x80D33BC :: cmp r2,#6

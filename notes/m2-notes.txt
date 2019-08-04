@@ -286,3 +286,8 @@ Each character's default names list is 0x214 bytes long, so each character has 7
 First 4 bytes are the name's length.
 After that there is the name.
 There are 7 character's entries.
+---------
+
+Around the zone near 0x802A753 there seems to be scripting data. (This one in particular is Carpainter's lightning script data)
+Control code [06 XX] makes it so the game doesn't read from the script for XX frames.
+
