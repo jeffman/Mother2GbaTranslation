@@ -46,6 +46,56 @@ byte reduce_bit_depth(int row, int foreground)
     return lower | (upper << 4);
 }
 
+void print_file_string(int x, int y, int length, byte *str, int unknown)
+{
+    int *tilesetBasePtr = (int *)(0x82B79B4 + (unknown * 20));
+    int width = tilesetBasePtr[2];
+    unsigned short *tilesetDestPtr = (unsigned short *)(tilesetBasePtr[0]);
+
+    int pixelX = x * 8;
+    int pixelY = y * 8;
+
+    for (int i = 0; i < length; i++)
+    {
+        byte chr = str[i];
+        
+        if (chr == 0xFF)
+        {
+            break; // the game does something else here, haven't looked into what exactly
+        }
+        else if (chr == 0xFE)
+        {
+            // Define 0xFE as a control code
+            byte cmd = str[++i];
+            switch (cmd)
+            {
+                case CUSTOMCC_ADD_X:
+                    pixelX += str[++i];
+                    break;
+                    
+                case CUSTOMCC_SET_X:
+                    pixelX = str[++i];
+                    break;
+            }
+            continue;
+        }
+        
+        chr = decode_character(chr);
+        int pixels = print_character_with_callback(
+            chr,
+            pixelX,
+            pixelY,
+            0,
+            9,
+            vram + 0x2000,
+            &get_tile_number_grid,
+            tilesetDestPtr,
+            width);
+
+        pixelX += pixels;
+    }
+}
+
 byte print_character(byte chr, int x, int y)
 {
     return print_character_formatted(chr, x, y, 0, 0xF);
@@ -67,12 +117,12 @@ byte print_character_formatted(byte chr, int x, int y, int font, int foreground)
         return 8;
     }
 
-    return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, TRUE);
+    return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, *tilemap_pointer, 32);
 }
 
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground)
 {
-    return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, FALSE);
+    return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, NULL, 32);
 }
 
 // Prints a special tile. Pixels are copied to the VWF buffer.
@@ -110,7 +160,7 @@ void map_tile(unsigned short tile, int x, int y)
 }
 
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
-    int *dest, int (*getTileCallback)(int, int), int useTilemap)
+    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth)
 {
     int tileWidth = m2_font_widths[font];
     int tileHeight = m2_font_heights[font];
@@ -149,8 +199,8 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                 dest[(tileIndex * 8) + row] = canvasRow;
             }
 
-            if (useTilemap)
-                (*tilemap_pointer)[tileX + dTileX + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
+            if (tilemapPtr != NULL)
+                tilemapPtr[tileX + dTileX + ((tileY + dTileY) * tilemapWidth)] = paletteMask | tileIndex;
 
             if (renderedWidth - leftPortionWidth > 0 && leftPortionWidth < 8)
             {
@@ -171,8 +221,8 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                     dest[(tileIndex * 8) + row] = canvasRow;
                 }
 
-                if (useTilemap)
-                    (*tilemap_pointer)[tileX + dTileX + 1 + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
+                if (tilemapPtr != NULL)
+                    tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY) * tilemapWidth)] = paletteMask | tileIndex;
             }
 
             renderedWidth -= 8;

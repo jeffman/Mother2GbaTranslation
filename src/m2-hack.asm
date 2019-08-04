@@ -972,6 +972,13 @@ nop
 .org 0x86DB070
 .incbin "data/m2-fileselect-template.bin"
 
+.org 0x86D9808
+.incbin "data/m2-fileselect-tileset.bin"
+
+.org 0x80038CE :: bl print_file_string
+.org 0x80038E0 :: bl print_file_string
+.org 0x80038F4 :: bl print_file_string
+
 //==============================================================================
 // Data files
 //==============================================================================
