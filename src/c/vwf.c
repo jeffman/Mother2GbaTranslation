@@ -206,10 +206,10 @@ int print_window_header_string(int *dest, byte *str, int x, int y)
     return pixelX - (x & 7);
 }
 
-void clear_window_header(int *dest)
+void clear_window_header(int *dest, int length, int x, int y)
 {
-    dest += (WINDOW_HEADER_X + (WINDOW_HEADER_Y * 32)) * 8;
-    clear_rect_ram(dest, 16, WINDOW_HEADER_BG);
+    dest += (x + (y * 32)) * 8;
+    clear_rect_ram(dest, length, WINDOW_HEADER_BG);
 }
 
 unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned int *dest, WINDOW *window)
