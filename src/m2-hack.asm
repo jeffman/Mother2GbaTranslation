@@ -116,6 +116,9 @@ b       0x80BADD8
 .org    0x80C55F8
 mov     r4,r0
 mov     r0,r9
+mov     r1,#0x10 //Tiles to clear
+mov     r2,#0x10 //x
+mov     r3,#0x11 //y
 bl      clear_window_header
 mov     r0,r4
 mov     r1,r6 // tilemap
@@ -793,6 +796,26 @@ nop
 // Carpainter's timing fix
 //---------------------------------------------------------
 .org 0x802A75F :: db 0x30 //Add 8 extra frames before the game can start reading again.
+
+//---------------------------------------------------------
+// Teleport header fix
+//---------------------------------------------------------
+.org 0x80C5DE0 :: bl c65da_clean_print //To:
+.org 0x80C5E30 :: bl c6190_clean_print //Number on first entering the menu
+.org 0x80C6190 :: bl c6190_clean_print //Number on page change
+.org 0x80C5E04 :: nop :: strh r0,[r4,#0] :: add r4,#2 :: nop ::nop //Remove extra tile
+
+//---------------------------------------------------------
+// Stored Goods header fix
+//---------------------------------------------------------
+.org 0x80C656C :: mov r2,#0x10 :: mov r3,#0x11 :: bl c6570_clean_print_change_pos :: b 0x80C65C0 //Changes position and cleans tiles for Stored Goods
+.org 0x80C65DA :: bl c65da_clean_print //Number on first entering the menu
+.org 0x80C6996 :: bl c65da_clean_print //Number on page change
+
+//---------------------------------------------------------
+// Call header fix
+//---------------------------------------------------------
+.org 0x80BD26A :: bl c6190_clean_print //Call:
 
 //---------------------------------------------------------
 // Fix windows printing too many tiles due to not going off of pixels, but off of characters

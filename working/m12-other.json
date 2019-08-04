@@ -126,7 +126,7 @@
       810724
     ],
     "Old": "ばしょ[00 FF]",
-    "New": "To[00 FF]"
+    "New": "To:[00 FF]"
   },
   {
     "OldPointer": 11647572,
@@ -134,7 +134,7 @@
       813508
     ],
     "Old": "➨あずかりもの(1)へ[00 FF]",
-    "New": "➨Stored goods(1)[00 FF]"
+    "New": "➨Stored Goods(1)[00 FF]"
   },
   {
     "OldPointer": 11647585,
@@ -143,13 +143,13 @@
       813768
     ],
     "Old": "➨あずかりもの(2)へ[00 FF]",
-    "New": "➨Stored goods(2)[00 FF]"
+    "New": "➨Stored Goods(2)[00 FF]"
   },
   {
     "OldPointer": 11647598,
     "PointerLocations": [],
     "Old": "➨あずかりもの(3)へ[00 FF]",
-    "New": "➨Stored goods(3)[00 FF]"
+    "New": "➨Stored Goods(3)[00 FF]"
   },
   {
     "OldPointer": 11647611,
@@ -157,6 +157,6 @@
       812788
     ],
     "Old": "あずかりもの[00 FF]",
-    "New": "Stored goods[00 FF]"
+    "New": "Stored Goods[00 FF]"
   }
 ]
