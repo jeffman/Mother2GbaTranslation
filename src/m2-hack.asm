@@ -663,6 +663,16 @@ bl      goods_outer_process
 pop     {pc}
 
 //---------------------------------------------------------
+// C7CA4 hacks (Shop)
+//---------------------------------------------------------
+.org    0x80C7CA4
+mov     r0,r8 //Window
+ldr     r1,[sp,#0xC] //Items in shop
+mov     r2,#0 //y_offset | r3 already has the item total for this window
+bl      shop_print_items //Print the items
+b       0x80C7E12 //Avoid the game's printing by jumping it
+
+//---------------------------------------------------------
 // C1C98 hacks (menu selection)
 //---------------------------------------------------------
 
@@ -1142,6 +1152,7 @@ m2_enemy_attributes:
 .definelabel m2_hpwindow_up         ,0x80D3F0C
 .definelabel m2_curhpwindow_down    ,0x80D41D8
 .definelabel m2_div                 ,0x80F49D8
+.definelabel m2_items               ,0x8B1D62C
 .definelabel m2_default_names       ,0x82B9330
 
 //==============================================================================
