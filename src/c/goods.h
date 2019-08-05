@@ -30,6 +30,6 @@ extern int m2_sub_a334c(int value);
 extern int m2_sub_a3384(int value);
 extern void m2_clearwindowtiles(WINDOW* window);
 extern int bin_to_bcd(int value, int* digit_count);
-extern byte *m2_items;
+extern int m2_items;
 
 #endif

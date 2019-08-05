@@ -482,8 +482,8 @@ void goods_print_items(WINDOW *window, unsigned short *items, int y_offset)
 //Original code is at 0x80C7D58
 unsigned short getPrice(int item)
 {
-	byte **value = (&m2_items + (item * 5));
-	return (unsigned short)((int)value[0]);
+    unsigned short *value = (unsigned short *)(&m2_items + (item * 5));
+    return value[0];
 }
 
 // Prints all itemsnum items to a shop window.
@@ -506,16 +506,16 @@ void shop_print_items(WINDOW *window, unsigned char *items, int y_offset, int it
             int x_offset = 0;
             byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
             print_string(item_str, x + x_offset, y);
-			int digit_count;
-			int bcd = bin_to_bcd(getPrice(item), &digit_count); //Get the price in bcd, so it can be printed
-			int base = 120;
-			print_character(decode_character(0x56), x + base, y); //00, it will be at the end, always at the same position
-			print_character(decode_character(0x54), x + base - 8 - (digit_count * 6), y); //dollar, it must be before all digits
-	        // Write the digits
+            int digit_count;
+            int bcd = bin_to_bcd(getPrice(item), &digit_count); //Get the price in bcd, so it can be printed
+            int base = 120;
+            print_character(decode_character(0x56), x + base, y); //00, it will be at the end, always at the same position
+            print_character(decode_character(0x54), x + base - 8 - (digit_count * 6), y); //dollar, it must be before all digits
+            // Write the digits
             for (int j = 0; j < digit_count; j++)
             {
                 byte digit = ((bcd >> ((digit_count - 1 - j) * 4)) & 0xF) + ZERO;
-			    print_character(decode_character(digit), x + base - 8 - ((digit_count - j - 1) * 6), y); //write a single digit
+                print_character(decode_character(digit), x + base - 8 - ((digit_count - j - 1) * 6), y); //write a single digit
             }
         }
     }
