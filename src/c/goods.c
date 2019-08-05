@@ -476,3 +476,48 @@ void goods_print_items(WINDOW *window, unsigned short *items, int y_offset)
         }
     }
 }
+
+//This works. Gets price given the item (Could not get a proper thumb routine to work, it would automatically go to arm)
+//What this routine does is: it receives the item value, multiplies it by 20 and then sums it with the address of m2_items to get the item price that is at that address.
+//Original code is at 0x80C7D58
+unsigned short getPrice(int item)
+{
+	byte **value = (&m2_items + (item * 5));
+	return (unsigned short)((int)value[0]);
+}
+
+// Prints all itemsnum items to a shop window.
+// Erases the slot before printing. Prints blanks for null items.
+void shop_print_items(WINDOW *window, unsigned char *items, int y_offset, int itemsnum)
+{
+    int item_x = (window->window_x << 3) + 8;
+    int item_y = (window->window_y + y_offset) << 3;
+
+    for (int i = 0; i < itemsnum; i++)
+    {
+        int item = items[i];
+        int x = item_x;
+        int y = item_y + (i * 16);
+
+        print_blankstr(x >> 3, y >> 3, 16);
+
+        if (item > 0)
+        {
+            int x_offset = 0;
+            byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
+            print_string(item_str, x + x_offset, y);
+			int digit_count;
+			int bcd = bin_to_bcd(getPrice(item), &digit_count); //Get the price in bcd, so it can be printed
+			int base = 120;
+			print_character(decode_character(0x56), x + base, y); //00, it will be at the end, always at the same position
+			print_character(decode_character(0x54), x + base - 8 - (digit_count * 6), y); //dollar, it must be before all digits
+	        // Write the digits
+            for (int j = 0; j < digit_count; j++)
+            {
+                byte digit = ((bcd >> ((digit_count - 1 - j) * 4)) & 0xF) + ZERO;
+			    print_character(decode_character(digit), x + base - 8 - ((digit_count - j - 1) * 6), y); //write a single digit
+            }
+        }
+    }
+}
+

@@ -21,6 +21,7 @@ typedef enum GOODS_ACTION
 int goods_outer_process(WINDOW* window, int y_offset);
 int goods_inner_process(WINDOW *window, unsigned short *items);
 void goods_print_items(WINDOW *window, unsigned short *items, int y_offset);
+void shop_print_items(WINDOW *window, unsigned char *items, int y_offset, int itemsnum);
 
 extern bool m2_isequipped(int item_index);
 extern void m2_soundeffect(int index);
@@ -28,5 +29,7 @@ extern int m2_div(int dividend, int divisor);
 extern int m2_sub_a334c(int value);
 extern int m2_sub_a3384(int value);
 extern void m2_clearwindowtiles(WINDOW* window);
+extern int bin_to_bcd(int value, int* digit_count);
+extern byte *m2_items;
 
 #endif
