@@ -863,6 +863,12 @@ nop
 .org 0x80DBF36 :: bl c009e_fix_char_tiles //Battle menu window
 
 //---------------------------------------------------------
+// Proper dollar and 00 symbols for [9C FF]
+//---------------------------------------------------------
+.org 0x80B8AA0 :: mov r0,#0x54 //Dollar
+.org 0x80B8AA6 :: mov r0,#0x56 //00
+
+//---------------------------------------------------------
 // Names hacks
 //---------------------------------------------------------
 //Change location of the names to allow 5-letter long characters and 6 letters long food, rockin and king
