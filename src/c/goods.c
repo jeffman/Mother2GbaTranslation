@@ -6,12 +6,12 @@
 
 // Process the outer Goods window (i.e. character selection)
 // Called every frame. Replaces $80BF858 fully.
-// Returns 1 if the user steps into the inner window,
+// Returns 1 if the user steps into the inner window, or the chosen party member's number if it's the give window,
 // -1 if the user steps back out to the previous window,
 // and 0 for no action.
 // y_offset is added to account for the Tracy goods window, which
 // the game offsets by one tile downwards
-int goods_outer_process(WINDOW* window, int y_offset)
+int goods_outer_process(WINDOW* window, int y_offset, bool give)
 {
     // Get the weird signed parity value
     short unknown = window->unknown6;
@@ -129,7 +129,7 @@ int goods_outer_process(WINDOW* window, int y_offset)
         {
             if (current_pc != original_pc)
             {
-                if (*window_flags & 0x800)
+                if ((!give) && (*window_flags & 0x800))
                     m2_soundeffect(0x131);
                 else
                     m2_soundeffect(0x12E);
@@ -156,15 +156,17 @@ int goods_outer_process(WINDOW* window, int y_offset)
     {
         m2_soundeffect(0x12D);
         window->counter = 0;
-
-        unsigned short first_item = current_items[0];
-        if (first_item > 0)
+        if(!give)
         {
-            // If the first item isn't null, erase the arrow border tiles
-            clear_window_arrows(window);
+            unsigned short first_item = current_items[0];
+            if (first_item > 0)
+            {
+                // If the first item isn't null, erase the arrow border tiles
+                clear_window_arrows(window);
+            }
+            return signed_parity + 1;
         }
-
-        return signed_parity + 1;
+        return current_pc + 1;
     }
 
     window->counter++;
@@ -510,12 +512,12 @@ void shop_print_items(WINDOW *window, unsigned char *items, int y_offset, int it
             int bcd = bin_to_bcd(getPrice(item), &digit_count); //Get the price in bcd, so it can be printed
             int base = 120;
             print_character(decode_character(0x56), x + base, y); //00, it will be at the end, always at the same position
-            print_character(decode_character(0x54), x + base - 8 - (digit_count * 6), y); //dollar, it must be before all digits
+            print_character(decode_character(0x54), x + base - 6 - (digit_count * 6), y); //dollar, it must be before all digits
             // Write the digits
             for (int j = 0; j < digit_count; j++)
             {
                 byte digit = ((bcd >> ((digit_count - 1 - j) * 4)) & 0xF) + ZERO;
-                print_character(decode_character(digit), x + base - 8 - ((digit_count - j - 1) * 6), y); //write a single digit
+                print_character(decode_character(digit), x + base - 6 - ((digit_count - j - 1) * 6), y); //write a single digit
             }
         }
     }

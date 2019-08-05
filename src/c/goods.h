@@ -18,7 +18,7 @@ typedef enum GOODS_ACTION
     ACTION_STEPOUT = -1
 } GOODS_ACTION;
 
-int goods_outer_process(WINDOW* window, int y_offset);
+int goods_outer_process(WINDOW* window, int y_offset, bool give);
 int goods_inner_process(WINDOW *window, unsigned short *items);
 void goods_print_items(WINDOW *window, unsigned short *items, int y_offset);
 void shop_print_items(WINDOW *window, unsigned char *items, int y_offset, int itemsnum);
