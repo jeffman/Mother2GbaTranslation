@@ -685,6 +685,18 @@ bl      goods_outer_process
 pop     {pc}
 
 //---------------------------------------------------------
+// BA61C hacks (Fixes inventory when out of Give via B button)
+//---------------------------------------------------------
+.org 0x80BA61C
+bl ba61c_get_print_inventory_window
+
+//---------------------------------------------------------
+// BA48E hacks (Fixes inventory when out of Give via text)
+//---------------------------------------------------------
+.org 0x80BA48E
+bl ba48e_get_print_inventory_window
+
+//---------------------------------------------------------
 // C1C98 hacks (menu selection)
 //---------------------------------------------------------
 
@@ -1145,6 +1157,7 @@ m2_enemy_attributes:
 .definelabel m2_enable_script       ,0x80A1F6C
 .definelabel m2_sub_a334c           ,0x80A334C
 .definelabel m2_sub_a3384           ,0x80A3384
+.definelabel m2_get_selected_item   ,0x80A469C
 .definelabel m2_psitargetwindow     ,0x80B8AE0
 .definelabel m2_isequipped          ,0x80BC670
 .definelabel m2_swapwindowbuf       ,0x80BD7AC
