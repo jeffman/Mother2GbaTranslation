@@ -649,6 +649,7 @@ pop     {pc}
 .org 0x80BF858
 push    {lr}
 mov     r1,0
+mov     r2,0
 bl      goods_outer_process
 pop     {pc}
 
@@ -659,18 +660,29 @@ pop     {pc}
 .org 0x80C0420
 push    {lr}
 mov     r1,1
+mov     r2,0
 bl      goods_outer_process
 pop     {pc}
 
 //---------------------------------------------------------
 // C7CA4 hacks (Shop)
 //---------------------------------------------------------
-.org    0x80C7CA4
+.org 0x80C7CA4
 mov     r0,r8 //Window
 ldr     r1,[sp,#0xC] //Items in shop
 mov     r2,#0 //y_offset | r3 already has the item total for this window
 bl      shop_print_items //Print the items
 b       0x80C7E12 //Avoid the game's printing by jumping it
+
+//---------------------------------------------------------
+// BFE74 hacks (Goods outer menu for Give)
+//---------------------------------------------------------
+.org 0x80BFE74
+push    {lr}
+mov     r1,#1
+mov     r2,#1
+bl      goods_outer_process
+pop     {pc}
 
 //---------------------------------------------------------
 // C1C98 hacks (menu selection)
