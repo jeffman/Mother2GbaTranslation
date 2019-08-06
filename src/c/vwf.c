@@ -13,6 +13,11 @@ byte decode_character(byte chr)
     return c;
 }
 
+byte encode_ascii(char chr)
+{
+    return (byte)(chr + 48);
+}
+
 int get_tile_number(int x, int y)
 {
     x--;
@@ -59,7 +64,7 @@ void print_file_string(int x, int y, int length, byte *str, int unknown)
     for (int i = 0; i < length; i++)
     {
         byte chr = str[i];
-        
+
         if (chr == 0xFF)
         {
             break; // the game does something else here, haven't looked into what exactly
@@ -73,14 +78,14 @@ void print_file_string(int x, int y, int length, byte *str, int unknown)
                 case CUSTOMCC_ADD_X:
                     pixelX += str[++i];
                     break;
-                    
+
                 case CUSTOMCC_SET_X:
                     pixelX = str[++i];
                     break;
             }
             continue;
         }
-        
+
         chr = decode_character(chr);
         int pixels = print_character_with_callback(
             chr,
@@ -89,12 +94,97 @@ void print_file_string(int x, int y, int length, byte *str, int unknown)
             0,
             9,
             vram + 0x2000,
-            &get_tile_number_grid,
+            &get_tile_number,
             tilesetDestPtr,
             width);
 
         pixelX += pixels;
     }
+}
+
+void format_file_cc(FILE_SELECT *file, int *index, byte cmd)
+{
+    file->formatted_str[(*index)++] = 0xFE;
+    file->formatted_str[(*index)++] = cmd;
+}
+
+int ascii_strlen(char *str)
+{
+    int len = 0;
+    while (str[len] != 0)
+        len++;
+    return len;
+}
+
+void format_file_string(FILE_SELECT *file)
+{
+    int index = 0;
+
+    // Slot
+    int slot = file->slot + 1;
+    file->formatted_str[index++] = (byte)(slot + ZERO);
+    file->formatted_str[index++] = encode_ascii(':');
+    file->formatted_str[index++] = encode_ascii(' ');
+
+    if (file->status != 0)
+    {
+        char startNewStr[] = "Start New Game";
+        for (int i = 0; i < (sizeof(startNewStr) - 1); i++)
+            file->formatted_str[index++] = encode_ascii(startNewStr[i]);
+
+        file->formatted_str[index++] = 0xFF;
+        return;
+    }
+
+    // Name
+    for (int i = 0; i < 5; i++)
+    {
+        byte name_chr = file->ness_name[i];
+
+        if (name_chr != 0xFF)
+            file->formatted_str[index++] = name_chr;
+        else
+            file->formatted_str[index++] = encode_ascii(' ');
+    }
+
+    // Re-position
+    format_file_cc(file, &index, CUSTOMCC_SET_X);
+    file->formatted_str[index++] = 80;
+
+    // Level
+    char levelStr[] = "Level: ";
+    for (int i = 0; i < (sizeof(levelStr) - 1); i++)
+        file->formatted_str[index++] = encode_ascii(levelStr[i]);
+
+    int level = file->ness_level;
+    int ones = m2_remainder(level, 10);
+    int tens = m2_div(level, 10);
+
+    if (tens > 0)
+        file->formatted_str[index++] = tens + ZERO;
+
+    file->formatted_str[index++] = ones + ZERO;
+
+    // Re-position
+    format_file_cc(file, &index, CUSTOMCC_SET_X);
+    file->formatted_str[index++] = 128;
+
+    // Text speed
+    char textSpeedStr[] = "Text Speed: ";
+    for (int i = 0; i < (sizeof(textSpeedStr) - 1); i++)
+        file->formatted_str[index++] = encode_ascii(textSpeedStr[i]);
+
+    char speedStrs[][6] = {
+        "Fast",
+        "Medium",
+        "Slow"
+    };
+
+    char *speedStr = speedStrs[file->text_speed];
+    for (int i = 0; i < 1; i++) // note: only print one letter for now, until we expand the window size
+        file->formatted_str[index++] = encode_ascii(speedStr[i]);
+
+    file->formatted_str[index++] = 0xFF;
 }
 
 byte print_character(byte chr, int x, int y)

@@ -26,6 +26,7 @@
 #define CUSTOMCC_ADD_X 0x60
 
 byte decode_character(byte chr);
+byte encode_ascii(char chr);
 int get_tile_number(int x, int y);
 int expand_bit_depth(byte row, int foreground);
 byte reduce_bit_depth(int row, int foreground);
@@ -67,6 +68,7 @@ void clear_number_menu(WINDOW* window);
 void format_cash_window(int value, int padding, byte* str);
 void handle_first_window(WINDOW* window);
 void print_file_string(int x, int y, int length, byte *str, int unknown);
+void format_file_string(FILE_SELECT *file);
 
 extern unsigned short m2_coord_table[];
 extern int m2_bits_to_nybbles[];
