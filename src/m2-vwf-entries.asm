@@ -1515,3 +1515,69 @@ bne     @@cycle
 pop     {pc}
 
 .pool
+
+//==============================================================================
+//Routine which gives the address to the party member's inventory
+get_inventory_selected:
+push    {r3,lr}
+ldr     r0,[r5,#0x1C] //Load source pc
+lsl     r0,r0,#0x10
+asr     r0,r0,#0x10
+ldr     r3,=#0x3001D40 //Get inventory
+mov     r2,#0x6C
+mul     r0,r2
+add     r3,#0x14
+add     r0,r0,r3
+pop     {r3,pc}
+
+//==============================================================================
+//Routine which gets the address to the selected party member's inventory and then prints it
+get_print_inventory_window:
+push    {r0-r4,lr}
+bl      get_inventory_selected
+mov     r1,r0 //Inventory
+ldr     r0,[r4,#0x10] //Window
+
+ldr     r3,=m2_active_window_pc //Change the pc of the window so m2_isequipped can work properly
+ldr     r2,[r3,#0]
+lsl     r2,r2,#0x10
+asr     r2,r2,#0x10
+push    {r2}
+ldr     r2,[r5,#0x1C] //Load source pc
+lsl     r2,r2,#0x10
+asr     r2,r2,#0x10
+str     r2,[r3,#0] //Store it
+
+mov     r2,#0 //No y offset
+bl      goods_print_items //Print the inventory
+
+pop     {r2}
+ldr     r3,=m2_active_window_pc //Restore pc of the window 
+lsl     r2,r2,#0x10
+asr     r2,r2,#0x10
+str     r2,[r3,#0]
+
+pop     {r0-r4,pc}
+
+//==============================================================================
+//Specific Routine which calls get_print_inventory_window 
+ba48e_get_print_inventory_window:
+push    {lr}
+push    {r4}
+ldr     r4,=#0x3005230
+bl      get_print_inventory_window //Prints old inventory
+pop     {r4}
+bl      0x80BD7F8 //Copies old arrangements, this includes the highlight
+pop     {pc}
+
+
+//==============================================================================
+//Specific Routine which calls get_print_inventory_window 
+ba61c_get_print_inventory_window:
+push    {r5,lr}
+mov     r5,r7
+bl      get_print_inventory_window //Prints old inventory
+bl      0x80BD7F8 //Copies old arrangements, this includes the highlight
+pop     {r5,pc}
+
+.pool
