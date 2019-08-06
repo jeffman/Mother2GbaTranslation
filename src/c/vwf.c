@@ -60,6 +60,8 @@ void print_file_string(int x, int y, int length, byte *str, int unknown)
 
     int pixelX = x * 8;
     int pixelY = y * 8;
+	int realmask = *palette_mask;
+	*palette_mask = 0; //File select is special and changes its palette_mask on the fly.
 
     for (int i = 0; i < length; i++)
     {
@@ -100,6 +102,7 @@ void print_file_string(int x, int y, int length, byte *str, int unknown)
 
         pixelX += pixels;
     }
+	*palette_mask = realmask;
 }
 
 void format_file_cc(FILE_SELECT *file, int *index, byte cmd)
