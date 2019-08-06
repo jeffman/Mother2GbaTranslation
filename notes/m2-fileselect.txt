@@ -35,4 +35,4 @@ but we need at least 41:
     "Text speed: Medium"    18
                           = 41
 
-~8001EAE: file slot number formatting
+However, the game allocates 32 bytes per row per file slot, which is actually 64 total, so we should be ok.
