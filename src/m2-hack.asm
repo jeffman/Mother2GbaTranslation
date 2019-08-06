@@ -975,9 +975,9 @@ nop
 .org 0x86D9808
 .incbin "data/m2-fileselect-tileset.bin"
 
-.org 0x80038CE :: bl print_file_string
-.org 0x80038E0 :: bl print_file_string
-.org 0x80038F4 :: bl print_file_string
+.org 0x80038CC :: mov r2,0x40 :: bl print_file_string
+.org 0x80038DE :: mov r2,0x40 :: bl print_file_string
+.org 0x80038F2 :: mov r2,0x40 :: bl print_file_string
 
 //==============================================================================
 // Data files
