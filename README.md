@@ -1,7 +1,7 @@
 | Branch | Status |
 | --- | --- |
 | Project | [![Build status](https://ci.appveyor.com/api/projects/status/9ml81r7fn0k7i8g1?svg=true)](https://ci.appveyor.com/project/jeffman/mother2gbatranslation) |
-| `master` | [![Build status](https://ci.appveyor.com/api/projects/status/9ml81r7fn0k7i8g1?svg=true)](https://ci.appveyor.com/project/jeffman/mother2gbatranslation) |
+| `master` | [![Build status](https://ci.appveyor.com/api/projects/status/9ml81r7fn0k7i8g1/branch/master?svg=true)](https://ci.appveyor.com/project/jeffman/mother2gbatranslation/branch/master) |
 
 # MOTHER 2 Translation for the GBA
 This is a work-in-progress translation patch for MOTHER 2 on the GBA.
