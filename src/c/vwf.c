@@ -52,6 +52,26 @@ byte reduce_bit_depth(int row, int foreground)
     return lower | (upper << 4);
 }
 
+// x,y: tile coordinates
+void clear_tile_file(int x, int y, int pixels)
+{
+    // Clear pixels
+    int tileIndex = get_tile_number(x, y) + *tile_offset;
+    cpufastset(&pixels, &vram[tileIndex * 8], CPUFASTSET_FILL | 8);
+}
+
+// x,y: tile coordinates
+void clear_rect_file(int x, int y, int width, int height, int pixels)
+{
+    for (int tileY = 0; tileY < height; tileY++)
+    {
+        for (int tileX = 0; tileX < width; tileX++)
+        {
+            clear_tile_file(x + tileX, y + tileY, pixels);
+        }
+    }
+}
+
 void print_file_string(int x, int y, int length, byte *str, int unknown)
 {
     int *tilesetBasePtr = (int *)(0x82B79B4 + (unknown * 20));
@@ -62,6 +82,10 @@ void print_file_string(int x, int y, int length, byte *str, int unknown)
     int pixelY = y * 8;
 	int realmask = *palette_mask;
 	*palette_mask = 0; //File select is special and changes its palette_mask on the fly.
+	int realTileOffset = *tile_offset;
+	*tile_offset = 0x400;
+	clear_rect_file(x, y, width, 2, 0x11111111);
+	*tile_offset = realTileOffset;
 
     for (int i = 0; i < length; i++)
     {
