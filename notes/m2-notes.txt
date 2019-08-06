@@ -85,6 +85,11 @@ English names:
              - 04: Body select
              - 05: Arms select
              - 06: Other select
+           - PSI:
+             - 01: character select
+             - 02: PSI select
+             - 03: target select
+             - 04: text box
 0x3005228: current text palette, << 0xC
 0x3005230: addresses of all 11 windows
            [00]: A menu

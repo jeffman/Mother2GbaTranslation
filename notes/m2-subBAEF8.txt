@@ -64,7 +64,7 @@
 // ----------------------------------------------------------------------------
 // Substate 1 (character select)
 080BAF5C (T)  ldr     r6,=3005230h                            ;9  495
-080BAF5E (T)  ldr     r0,[r6,18h]                             ;4  499
+080BAF5E (T)  ldr     r0,[r6,18h]                             ;4  499 slot window pointer
 080BAF60 (T)  bl      80C4EB0h                                ;10 509
 080BAF64 (T)  lsl     r0,r0,10h                               ;2  511
 080BAF66 (T)  asr     r5,r0,10h                               ;2  513

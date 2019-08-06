@@ -40,7 +40,7 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
     int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth);
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground);
 int print_window_header_string(int *dest, byte *str, int x, int y);
-void clear_window_header(int *dest);
+void clear_window_header(int *dest, int length, int x, int y);
 unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned int *dest,
     WINDOW *window);
 unsigned short format_tile(unsigned short tile, bool flip_x, bool flip_y);
