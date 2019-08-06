@@ -2,6 +2,7 @@
 #include "vwf.h"
 #include "number-selector.h"
 #include "locs.h"
+#include "fileselect.h"
 
 byte decode_character(byte chr)
 {

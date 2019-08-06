@@ -1,5 +1,6 @@
 #include "types.h"
 #include "pc.h"
+#include "fileselect.h"
 
 #define NULL (0)
 #define QUESTION_MARK 0x1F
