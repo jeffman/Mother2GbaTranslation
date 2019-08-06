@@ -149,7 +149,7 @@ void format_file_string(FILE_SELECT *file)
 
     // Re-position
     format_file_cc(file, &index, CUSTOMCC_SET_X);
-    file->formatted_str[index++] = 80;
+    file->formatted_str[index++] = 76;
 
     // Level
     char levelStr[] = "Level: ";
