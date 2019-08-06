@@ -62,7 +62,7 @@ $combine_script_contents =
 "SECTIONS { .text 0x$($base_c_address.ToString('X')) : { *(.text .rodata) } }"
 
 $link_script_contents =
-"SECTIONS { .text 0x$($base_c_address.ToString('X')) : { *(.text .data .rodata) } }"
+"SECTIONS { .text 0x$($base_c_address.ToString('X')) : { *(.text .data .rodata*) } }"
 #EndRegion Variables
 
 #Region Functions

@@ -1,5 +1,6 @@
 #include "types.h"
 #include "pc.h"
+#include "fileselect.h"
 
 #define NULL (0)
 #define QUESTION_MARK 0x1F
@@ -25,6 +26,7 @@
 #define CUSTOMCC_ADD_X 0x60
 
 byte decode_character(byte chr);
+byte encode_ascii(char chr);
 int get_tile_number(int x, int y);
 int expand_bit_depth(byte row, int foreground);
 byte reduce_bit_depth(int row, int foreground);
@@ -35,7 +37,7 @@ void print_special_character(int tile, int x, int y);
 void map_special_character(unsigned short tile, int x, int y);
 void map_tile(unsigned short tile, int x, int y);
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
-    int *dest, int (*getTileCallback)(int, int), int useTilemap);
+    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth);
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground);
 int print_window_header_string(int *dest, byte *str, int x, int y);
 void clear_window_header(int *dest, int length, int x, int y);
@@ -65,6 +67,8 @@ void print_number_menu_current(byte digit, WINDOW* window);
 void clear_number_menu(WINDOW* window);
 void format_cash_window(int value, int padding, byte* str);
 void handle_first_window(WINDOW* window);
+void print_file_string(int x, int y, int length, byte *str, int unknown);
+void format_file_string(FILE_SELECT *file);
 
 extern unsigned short m2_coord_table[];
 extern int m2_bits_to_nybbles[];
@@ -84,3 +88,5 @@ extern int bin_to_bcd(int value, int* digit_count);
 extern int m2_drawwindow(WINDOW* window);
 extern int m2_resetwindow(WINDOW* window, bool skip_redraw);
 extern void m2_hpwindow_up(int character);
+extern int m2_div(int dividend, int divisor);
+extern int m2_remainder(int dividend, int divisor);

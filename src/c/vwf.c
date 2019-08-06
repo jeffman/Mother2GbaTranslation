@@ -2,6 +2,7 @@
 #include "vwf.h"
 #include "number-selector.h"
 #include "locs.h"
+#include "fileselect.h"
 
 byte decode_character(byte chr)
 {
@@ -10,6 +11,11 @@ byte decode_character(byte chr)
         c = QUESTION_MARK;
 
     return c;
+}
+
+byte encode_ascii(char chr)
+{
+    return (byte)(chr + 48);
 }
 
 int get_tile_number(int x, int y)
@@ -46,6 +52,141 @@ byte reduce_bit_depth(int row, int foreground)
     return lower | (upper << 4);
 }
 
+void print_file_string(int x, int y, int length, byte *str, int unknown)
+{
+    int *tilesetBasePtr = (int *)(0x82B79B4 + (unknown * 20));
+    int width = tilesetBasePtr[2];
+    unsigned short *tilesetDestPtr = (unsigned short *)(tilesetBasePtr[0]);
+
+    int pixelX = x * 8;
+    int pixelY = y * 8;
+
+    for (int i = 0; i < length; i++)
+    {
+        byte chr = str[i];
+
+        if (chr == 0xFF)
+        {
+            break; // the game does something else here, haven't looked into what exactly
+        }
+        else if (chr == 0xFE)
+        {
+            // Define 0xFE as a control code
+            byte cmd = str[++i];
+            switch (cmd)
+            {
+                case CUSTOMCC_ADD_X:
+                    pixelX += str[++i];
+                    break;
+
+                case CUSTOMCC_SET_X:
+                    pixelX = str[++i];
+                    break;
+            }
+            continue;
+        }
+
+        chr = decode_character(chr);
+        int pixels = print_character_with_callback(
+            chr,
+            pixelX,
+            pixelY,
+            0,
+            9,
+            vram + 0x2000,
+            &get_tile_number,
+            tilesetDestPtr,
+            width);
+
+        pixelX += pixels;
+    }
+}
+
+void format_file_cc(FILE_SELECT *file, int *index, byte cmd)
+{
+    file->formatted_str[(*index)++] = 0xFE;
+    file->formatted_str[(*index)++] = cmd;
+}
+
+int ascii_strlen(char *str)
+{
+    int len = 0;
+    while (str[len] != 0)
+        len++;
+    return len;
+}
+
+void format_file_string(FILE_SELECT *file)
+{
+    int index = 0;
+
+    // Slot
+    int slot = file->slot + 1;
+    file->formatted_str[index++] = (byte)(slot + ZERO);
+    file->formatted_str[index++] = encode_ascii(':');
+    file->formatted_str[index++] = encode_ascii(' ');
+
+    if (file->status != 0)
+    {
+        char startNewStr[] = "Start New Game";
+        for (int i = 0; i < (sizeof(startNewStr) - 1); i++)
+            file->formatted_str[index++] = encode_ascii(startNewStr[i]);
+
+        file->formatted_str[index++] = 0xFF;
+        return;
+    }
+
+    // Name
+    for (int i = 0; i < 5; i++)
+    {
+        byte name_chr = file->ness_name[i];
+
+        if (name_chr != 0xFF)
+            file->formatted_str[index++] = name_chr;
+        else
+            file->formatted_str[index++] = encode_ascii(' ');
+    }
+
+    // Re-position
+    format_file_cc(file, &index, CUSTOMCC_SET_X);
+    file->formatted_str[index++] = 76;
+
+    // Level
+    char levelStr[] = "Level: ";
+    for (int i = 0; i < (sizeof(levelStr) - 1); i++)
+        file->formatted_str[index++] = encode_ascii(levelStr[i]);
+
+    int level = file->ness_level;
+    int ones = m2_remainder(level, 10);
+    int tens = m2_div(level, 10);
+
+    if (tens > 0)
+        file->formatted_str[index++] = tens + ZERO;
+
+    file->formatted_str[index++] = ones + ZERO;
+
+    // Re-position
+    format_file_cc(file, &index, CUSTOMCC_SET_X);
+    file->formatted_str[index++] = 128;
+
+    // Text speed
+    char textSpeedStr[] = "Text Speed: ";
+    for (int i = 0; i < (sizeof(textSpeedStr) - 1); i++)
+        file->formatted_str[index++] = encode_ascii(textSpeedStr[i]);
+
+    char speedStrs[][7] = {
+        "Fast",
+        "Medium",
+        "Slow"
+    };
+
+    char *speedStr = speedStrs[file->text_speed];
+    for (int i = 0; i < ascii_strlen(speedStr); i++)
+        file->formatted_str[index++] = encode_ascii(speedStr[i]);
+
+    file->formatted_str[index++] = 0xFF;
+}
+
 byte print_character(byte chr, int x, int y)
 {
     return print_character_formatted(chr, x, y, 0, 0xF);
@@ -67,12 +208,12 @@ byte print_character_formatted(byte chr, int x, int y, int font, int foreground)
         return 8;
     }
 
-    return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, TRUE);
+    return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, *tilemap_pointer, 32);
 }
 
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground)
 {
-    return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, FALSE);
+    return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, NULL, 32);
 }
 
 // Prints a special tile. Pixels are copied to the VWF buffer.
@@ -110,7 +251,7 @@ void map_tile(unsigned short tile, int x, int y)
 }
 
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
-    int *dest, int (*getTileCallback)(int, int), int useTilemap)
+    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth)
 {
     int tileWidth = m2_font_widths[font];
     int tileHeight = m2_font_heights[font];
@@ -149,8 +290,8 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                 dest[(tileIndex * 8) + row] = canvasRow;
             }
 
-            if (useTilemap)
-                (*tilemap_pointer)[tileX + dTileX + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
+            if (tilemapPtr != NULL)
+                tilemapPtr[tileX + dTileX + ((tileY + dTileY) * tilemapWidth)] = paletteMask | tileIndex;
 
             if (renderedWidth - leftPortionWidth > 0 && leftPortionWidth < 8)
             {
@@ -171,8 +312,8 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                     dest[(tileIndex * 8) + row] = canvasRow;
                 }
 
-                if (useTilemap)
-                    (*tilemap_pointer)[tileX + dTileX + 1 + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
+                if (tilemapPtr != NULL)
+                    tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY) * tilemapWidth)] = paletteMask | tileIndex;
             }
 
             renderedWidth -= 8;

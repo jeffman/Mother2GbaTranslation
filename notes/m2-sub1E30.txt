@@ -1,0 +1,291 @@
+// Format file select strings
+// r0: file select struct
+
+08001E30 (T)  push    r4-r7,r14
+08001E32 (T)  mov     r7,r10
+08001E34 (T)  mov     r6,r9
+08001E36 (T)  mov     r5,r8
+08001E38 (T)  push    r5-r7
+08001E3A (T)  add     sp,-1Ch
+08001E3C (T)  mov     r7,r0
+08001E3E (T)  mov     r0,r13
+08001E40 (T)  ldr     r1,=80FC454h
+08001E42 (T)  ldmia   [r1]!,r2-r4
+08001E44 (T)  stmia   [r0]!,r2-r4
+08001E46 (T)  mov     r1,0h
+08001E48 (T)  ldsh    r0,[r7,r1]                // 0 if file exists, -1 otherwise
+08001E4A (T)  cmp     r0,0h
+08001E4C (T)  bge     8001E5Ch
+08001E4E (T)  mov     r0,r7
+08001E50 (T)  bl      8001DC8h                  // presumably this formats the Start New Game string
+08001E54 (T)  b       8002062h
+08001E56 (T)  lsl     r0,r0,0h
+08001E58 (T)  stmia   [r4]!,r2,r4,r6
+08001E5A (T)  lsr     r7,r1,20h
+
+08001E5C (T)  mov     r4,0h
+08001E5E (T)  ldr     r2,=205h
+08001E60 (T)  add     r2,r2,r7
+08001E62 (T)  mov     r9,r2                     // address of file number colon (1st row)
+08001E64 (T)  ldr     r3,=225h
+08001E66 (T)  add     r3,r3,r7
+08001E68 (T)  mov     r10,r3                    // address of file number colon (2nd row)
+08001E6A (T)  ldr     r0,=206h
+08001E6C (T)  add     r0,r7,r0
+08001E6E (T)  str     r0,[sp,0Ch]               // address of space after colon (1st)
+08001E70 (T)  ldr     r1,=226h
+08001E72 (T)  add     r1,r7,r1
+08001E74 (T)  str     r1,[sp,14h]               // address of space after colon (2nd)
+08001E76 (T)  ldr     r2,=207h
+08001E78 (T)  add     r2,r7,r2
+08001E7A (T)  str     r2,[sp,10h]               // address of ness' name (1st)
+08001E7C (T)  ldr     r3,=227h
+08001E7E (T)  add     r3,r7,r3
+08001E80 (T)  str     r3,[sp,18h]               // address of ness' name (2nd)
+08001E82 (T)  mov     r0,0Ch
+08001E84 (T)  add     r0,r0,r7
+08001E86 (T)  mov     r8,r0                     // address of ness' name (source string)
+08001E88 (T)  mov     r1,89h
+08001E8A (T)  lsl     r1,r1,2h
+08001E8C (T)  add     r5,r7,r1                  // address of 2nd row
+
+// Fill second row (32 bytes) with spaces
+08001E8E (T)  bl      80057B0h                  // literally just returns a space (0x4D)
+08001E92 (T)  add     r1,r5,r4
+08001E94 (T)  strb    r0,[r1]
+08001E96 (T)  add     r4,1h
+08001E98 (T)  cmp     r4,1Fh
+08001E9A (T)  ble     8001E8Eh
+
+// Format file slot number
+08001E9C (T)  mov     r2,81h
+08001E9E (T)  lsl     r2,r2,2h
+08001EA0 (T)  add     r5,r7,r2                  // address of 1st row
+08001EA2 (T)  mov     r3,89h
+08001EA4 (T)  lsl     r3,r3,2h
+08001EA6 (T)  add     r6,r7,r3                  // address of 2nd row
+08001EA8 (T)  mov     r4,2h
+08001EAA (T)  ldsh    r0,[r7,r4]                // file slot index (0-2)
+08001EAC (T)  add     r0,1h
+08001EAE (T)  bl      80057A8h                  // format number (1 -> E1)
+08001EB2 (T)  strb    r0,[r5]
+08001EB4 (T)  mov     r5,r9
+08001EB6 (T)  mov     r1,2h
+08001EB8 (T)  ldsh    r0,[r7,r1]
+08001EBA (T)  add     r0,1h
+08001EBC (T)  bl      80057A8h                  // literally doing exactly what it just did...
+08001EC0 (T)  strb    r0,[r6]
+
+// Format colon
+08001EC2 (T)  mov     r6,r10
+08001EC4 (T)  ldr     r4,=80FC438h
+08001EC6 (T)  mov     r0,r4
+08001EC8 (T)  bl      80057B4h                  // some weird jump table that ultimately returns a colon tile (EE)
+08001ECC (T)  strb    r0,[r5]
+08001ECE (T)  ldr     r5,[sp,0Ch]
+08001ED0 (T)  mov     r0,r4
+08001ED2 (T)  bl      80057B4h
+08001ED6 (T)  strb    r0,[r6]
+
+// Format space after colon
+08001ED8 (T)  ldr     r6,[sp,14h]
+08001EDA (T)  bl      80057B0h
+08001EDE (T)  strb    r0,[r5]
+08001EE0 (T)  ldr     r5,[sp,10h]
+08001EE2 (T)  bl      80057B0h
+08001EE6 (T)  strb    r0,[r6]
+
+// Format Ness' name (1st row)
+08001EE8 (T)  ldr     r6,[sp,18h]               // address of ness' name (dest)
+08001EEA (T)  mov     r4,0h
+08001EEC (T)  mov     r2,r8
+08001EEE (T)  add     r0,r2,r4                  // address of ness' name (source); struct+0xC
+08001EF0 (T)  ldrb    r1,[r0]
+08001EF2 (T)  mov     r0,r1
+08001EF4 (T)  cmp     r0,0FFh
+08001EF6 (T)  bne     8001F1Ch
+
+    // If 0xFF: write a space
+    08001EF8 (T)  bl      80057B0h
+    08001EFC (T)  strb    r0,[r5]
+    08001EFE (T)  b       8001F1Eh
+    08001F00 (T)  lsl     r5,r0,8h
+    08001F02 (T)  lsl     r0,r0,0h
+    08001F04 (T)  lsl     r5,r4,8h
+    08001F06 (T)  lsl     r0,r0,0h
+    08001F08 (T)  lsl     r6,r0,8h
+    08001F0A (T)  lsl     r0,r0,0h
+    08001F0C (T)  lsl     r6,r4,8h
+    08001F0E (T)  lsl     r0,r0,0h
+    08001F10 (T)  lsl     r7,r0,8h
+    08001F12 (T)  lsl     r0,r0,0h
+    08001F14 (T)  lsl     r7,r4,8h
+    08001F16 (T)  lsl     r0,r0,0h
+    08001F18 (T)  stmia   [r4]!,r3-r5
+    08001F1A (T)  lsr     r7,r1,20h
+
+    // Else: format the letter
+    08001F1C (T)  strb    r1,[r5]
+    08001F1E (T)  add     r5,1h
+    08001F20 (T)  add     r4,1h
+    08001F22 (T)  cmp     r4,4h
+    08001F24 (T)  ble     8001EECh
+
+// Format Ness' name (2nd row) + put spaces after both rows
+08001F26 (T)  mov     r4,0h
+08001F28 (T)  ldrb    r0,[r7,0Ch]
+08001F2A (T)  cmp     r0,0FFh
+08001F2C (T)  beq     8001F44h
+08001F2E (T)  mov     r1,r8
+08001F30 (T)  ldrb    r0,[r1]
+08001F32 (T)  strb    r0,[r6]
+08001F34 (T)  add     r6,1h
+08001F36 (T)  add     r1,1h
+08001F38 (T)  add     r4,1h
+08001F3A (T)  cmp     r4,4h
+08001F3C (T)  bgt     8001F44h
+08001F3E (T)  ldrb    r0,[r1]
+08001F40 (T)  cmp     r0,0FFh
+08001F42 (T)  bne     8001F30h
+08001F44 (T)  bl      80057B0h
+08001F48 (T)  strb    r0,[r5]
+08001F4A (T)  add     r5,1h
+08001F4C (T)  bl      80057B0h
+08001F50 (T)  strb    r0,[r6]
+08001F52 (T)  add     r6,1h
+
+// Format "Level:" string (weirdly, it puts it at different spots in the two rows... bug?)
+08001F54 (T)  ldr     r4,=80FC460h
+08001F56 (T)  mov     r0,r4
+08001F58 (T)  bl      80057B4h
+08001F5C (T)  strb    r0,[r5]
+08001F5E (T)  add     r5,1h
+08001F60 (T)  mov     r0,r4
+08001F62 (T)  bl      80057B4h
+08001F66 (T)  strb    r0,[r6]
+08001F68 (T)  add     r6,1h
+08001F6A (T)  ldr     r4,=80FC464h
+08001F6C (T)  mov     r0,r4
+08001F6E (T)  bl      80057B4h
+08001F72 (T)  strb    r0,[r5]
+08001F74 (T)  add     r5,1h
+08001F76 (T)  mov     r0,r4
+08001F78 (T)  bl      80057B4h
+08001F7C (T)  strb    r0,[r6]
+08001F7E (T)  add     r6,1h
+08001F80 (T)  ldr     r4,=80FC468h
+08001F82 (T)  mov     r0,r4
+08001F84 (T)  bl      80057B4h
+08001F88 (T)  strb    r0,[r5]
+08001F8A (T)  add     r5,1h
+08001F8C (T)  mov     r0,r4
+08001F8E (T)  bl      80057B4h
+08001F92 (T)  strb    r0,[r6]
+08001F94 (T)  add     r6,1h
+08001F96 (T)  ldr     r4,=80FC438h
+08001F98 (T)  mov     r0,r4
+08001F9A (T)  bl      80057B4h
+08001F9E (T)  strb    r0,[r5]
+08001FA0 (T)  add     r5,1h
+08001FA2 (T)  mov     r0,r4
+08001FA4 (T)  bl      80057B4h
+08001FA8 (T)  strb    r0,[r6]
+08001FAA (T)  add     r6,1h
+
+// Format level
+08001FAC (T)  ldrb    r3,[r7,0Ah]                   // level
+08001FAE (T)  mov     r8,r3
+08001FB0 (T)  mov     r0,r8
+08001FB2 (T)  mov     r1,0Ah
+08001FB4 (T)  bl      80F4A70h
+08001FB8 (T)  mov     r8,r0                         // ones digit
+08001FBA (T)  ldrb    r0,[r7,0Ah]
+08001FBC (T)  mov     r1,0Ah
+08001FBE (T)  bl      m2_div
+08001FC2 (T)  mov     r4,r0                         // tens digit
+08001FC4 (T)  cmp     r4,0h
+08001FC6 (T)  beq     8001FE8h
+
+    // If level is greater than nine: print tens digit
+    08001FC8 (T)  bl      80057A8h
+    08001FCC (T)  strb    r0,[r5]
+    08001FCE (T)  add     r5,1h
+    08001FD0 (T)  mov     r0,r4
+    08001FD2 (T)  bl      80057A8h
+    08001FD6 (T)  b       8001FF4h
+    08001FD8 (T)  stmia   [r4]!,r5,r6
+    08001FDA (T)  lsr     r7,r1,20h
+    08001FDC (T)  stmia   [r4]!,r2,r5,r6
+    08001FDE (T)  lsr     r7,r1,20h
+    08001FE0 (T)  stmia   [r4]!,r3,r5,r6
+    08001FE2 (T)  lsr     r7,r1,20h
+    08001FE4 (T)  stmia   [r4]!,r3-r5
+    08001FE6 (T)  lsr     r7,r1,20h
+
+    // Else: print space
+    08001FE8 (T)  bl      80057B0h
+    08001FEC (T)  strb    r0,[r5]
+    08001FEE (T)  add     r5,1h
+    08001FF0 (T)  bl      80057B0h
+
+    // Print tens digit (2nd row)
+    08001FF4 (T)  strb    r0,[r6]
+
+    // Print tens digit
+    08001FF6 (T)  add     r6,1h
+    08001FF8 (T)  mov     r0,r8
+    08001FFA (T)  bl      80057A8h
+    08001FFE (T)  strb    r0,[r5]
+    08002000 (T)  add     r5,1h
+    08002002 (T)  mov     r0,r8
+    08002004 (T)  bl      80057A8h
+    08002008 (T)  strb    r0,[r6]
+
+// Print "Text speed:"
+0800200A (T)  bl      80057B0h
+0800200E (T)  strb    r0,[r5]
+08002010 (T)  add     r5,1h
+08002012 (T)  ldr     r0,=80FC46Ch
+08002014 (T)  bl      80057B4h
+08002018 (T)  strb    r0,[r5]
+0800201A (T)  add     r5,1h
+0800201C (T)  ldr     r0,=80FC470h
+0800201E (T)  bl      80057B4h
+08002022 (T)  strb    r0,[r5]
+08002024 (T)  add     r5,1h
+08002026 (T)  ldr     r0,=80FC474h
+08002028 (T)  bl      80057B4h
+0800202C (T)  strb    r0,[r5]
+0800202E (T)  add     r5,1h
+08002030 (T)  ldr     r0,=80FC478h
+08002032 (T)  bl      80057B4h
+08002036 (T)  strb    r0,[r5]
+08002038 (T)  add     r5,1h
+0800203A (T)  ldr     r0,=80FC438h
+0800203C (T)  bl      80057B4h
+08002040 (T)  strb    r0,[r5]
+08002042 (T)  add     r5,1h
+
+// Print speed
+08002044 (T)  mov     r4,0h
+08002046 (T)  mov     r1,4h
+08002048 (T)  ldsh    r0,[r7,r1]
+0800204A (T)  lsl     r0,r0,2h
+0800204C (T)  add     r0,r13
+0800204E (T)  lsl     r1,r4,1h
+08002050 (T)  ldr     r0,[r0]
+08002052 (T)  add     r0,r0,r1
+08002054 (T)  bl      80057B4h
+08002058 (T)  strb    r0,[r5]
+0800205A (T)  add     r5,1h
+0800205C (T)  add     r4,1h
+0800205E (T)  cmp     r4,2h
+08002060 (T)  ble     8002046h
+08002062 (T)  add     sp,1Ch
+08002064 (T)  pop     r3-r5
+08002066 (T)  mov     r8,r3
+08002068 (T)  mov     r9,r4
+0800206A (T)  mov     r10,r5
+0800206C (T)  pop     r4-r7
+0800206E (T)  pop     r0
+08002070 (T)  bx      r0
