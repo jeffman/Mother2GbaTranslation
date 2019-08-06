@@ -174,14 +174,14 @@ void format_file_string(FILE_SELECT *file)
     for (int i = 0; i < (sizeof(textSpeedStr) - 1); i++)
         file->formatted_str[index++] = encode_ascii(textSpeedStr[i]);
 
-    char speedStrs[][6] = {
+    char speedStrs[][7] = {
         "Fast",
         "Medium",
         "Slow"
     };
 
     char *speedStr = speedStrs[file->text_speed];
-    for (int i = 0; i < 1; i++) // note: only print one letter for now, until we expand the window size
+    for (int i = 0; i < ascii_strlen(speedStr); i++)
         file->formatted_str[index++] = encode_ascii(speedStr[i]);
 
     file->formatted_str[index++] = 0xFF;
