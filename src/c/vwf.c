@@ -53,28 +53,33 @@ byte reduce_bit_depth(int row, int foreground)
 }
 
 // x,y: tile coordinates
-void clear_tile_file(int x, int y, int pixels)
+void clear_tile_file(int x, int y, int pixels, int tile_offset_file)
 {
     // Clear pixels
-    int tileIndex = get_tile_number(x, y) + *tile_offset;
+    int tileIndex = get_tile_number(x, y) + tile_offset_file;
     cpufastset(&pixels, &vram[tileIndex * 8], CPUFASTSET_FILL | 8);
 }
 
 // x,y: tile coordinates
-void clear_rect_file(int x, int y, int width, int height, int pixels)
+void clear_rect_file(int x, int y, int width, int height, int pixels, int tile_offset_file)
 {
     for (int tileY = 0; tileY < height; tileY++)
     {
         for (int tileX = 0; tileX < width; tileX++)
         {
-            clear_tile_file(x + tileX, y + tileY, pixels);
+            clear_tile_file(x + tileX, y + tileY, pixels, tile_offset_file);
         }
     }
 }
 
-void print_file_string(int x, int y, int length, byte *str, int unknown)
+void wrapper_file_string(int x, int y, int length, byte *str, int window_selector)
 {
-    int *tilesetBasePtr = (int *)(0x82B79B4 + (unknown * 20));
+	print_file_string(x, y, length, str, window_selector, 0);
+}
+
+void print_file_string(int x, int y, int length, byte *str, int window_selector, int offset)
+{
+    int *tilesetBasePtr = (int *)(0x82B79B4 + (window_selector * 20));
     int width = tilesetBasePtr[2];
     unsigned short *tilesetDestPtr = (unsigned short *)(tilesetBasePtr[0]);
 
@@ -82,10 +87,7 @@ void print_file_string(int x, int y, int length, byte *str, int unknown)
     int pixelY = y * 8;
 	int realmask = *palette_mask;
 	*palette_mask = 0; //File select is special and changes its palette_mask on the fly.
-	int realTileOffset = *tile_offset;
-	*tile_offset = 0x400;
-	clear_rect_file(x, y, width, 2, 0x11111111);
-	*tile_offset = realTileOffset;
+	clear_rect_file(x, y, width, 2, 0x11111111, 0x400 + (offset >> 5)); //Clean the rectangle before printing
 
     for (int i = 0; i < length; i++)
     {
@@ -119,15 +121,178 @@ void print_file_string(int x, int y, int length, byte *str, int unknown)
             pixelY,
             0,
             9,
-            vram + 0x2000,
+            vram + 0x2000 + (offset >> 2),
             &get_tile_number,
             tilesetDestPtr,
-            width);
+            width,
+			(offset >>5));
 
         pixelX += pixels;
     }
 	*palette_mask = realmask;
 }
+
+void format_options_cc(char String[], int *index, byte cmd)
+{
+    String[(*index)++] = 0xFE;
+    String[(*index)++] = cmd;
+}
+
+void options_setup(char String[])
+{
+	int index = 0;
+	char Continue[] = "Continue";
+	for(int i = 0; i < (sizeof(Continue) -1); i++)
+		String[index++] = encode_ascii(Continue[i]);
+	
+	// Re-position
+	format_options_cc(String, &index, CUSTOMCC_SET_X);
+	String[index++] = 64;
+			
+	char Copy[] = "Copy";
+	for(int i = 0; i < (sizeof(Copy) -1); i++)
+		String[index++] = encode_ascii(Copy[i]);
+			
+	// Re-position
+	format_options_cc(String, &index, CUSTOMCC_SET_X);
+	String[index++] = 97;
+			
+	char Delete[] = "Delete";
+	for(int i = 0; i < (sizeof(Delete) -1); i++)
+		String[index++] = encode_ascii(Delete[i]);
+			
+	// Re-position
+	format_options_cc(String, &index, CUSTOMCC_SET_X);
+	String[index++] = 137;
+			
+	char Setup[] = "Set Up";
+	for(int i = 0; i < (sizeof(Setup) -1); i++)
+		String[index++] = encode_ascii(Setup[i]);
+			
+	//END
+	String[index++] = 0xFF;
+}
+
+void text_speed_setup(char String[], int selector)
+{
+	int index = 0;
+	char Text_Speed[] = "Please select text speed.";
+	char Medium[] = "Medium";
+	char Fast[] = "Fast";
+	char Slow[] = "Slow";
+	switch(selector)
+	{
+		case 0:
+		for(int i = 0; i < (sizeof(Text_Speed) -1); i++)
+			String[index++] = encode_ascii(Text_Speed[i]);
+		break;
+		case 1:
+		for(int i = 0; i < (sizeof(Fast) -1); i++)
+			String[index++] = encode_ascii(Fast[i]);
+		break;
+		case 2:
+		for(int i = 0; i < (sizeof(Medium) -1); i++)
+			String[index++] = encode_ascii(Medium[i]);
+		break;
+		default:
+		for(int i = 0; i < (sizeof(Slow) -1); i++)
+			String[index++] = encode_ascii(Slow[i]);
+		break;
+	}
+	//END
+	String[index++] = 0xFF;
+}
+
+void text_flavour_setup(char String[], int selector)
+{
+	int index = 0;
+	char Text_Flavour_1[] = "Which style of windows";
+	char Text_Flavour_2[] = "do you prefer?";
+	char Plain[] = "Plain flavor";
+	char Mint[] = "Mint flavor";
+	char Strawberry[] = "Strawberry flavor";
+	char Banana[] = "Banana flavor";
+	char Peanut[] = "Peanut flavor";
+	switch(selector)
+	{
+		case 0:
+		for(int i = 0; i < (sizeof(Text_Flavour_1) -1); i++)
+			String[index++] = encode_ascii(Text_Flavour_1[i]);
+		break;
+		case 1:
+		for(int i = 0; i < (sizeof(Text_Flavour_2) -1); i++)
+			String[index++] = encode_ascii(Text_Flavour_2[i]);
+		break;
+		case 2:
+		for(int i = 0; i < (sizeof(Plain) -1); i++)
+			String[index++] = encode_ascii(Plain[i]);
+		break;
+		case 3:
+		for(int i = 0; i < (sizeof(Mint) -1); i++)
+			String[index++] = encode_ascii(Mint[i]);
+		break;
+		case 4:
+		for(int i = 0; i < (sizeof(Strawberry) -1); i++)
+			String[index++] = encode_ascii(Strawberry[i]);
+		break;
+		case 5:
+		for(int i = 0; i < (sizeof(Banana) -1); i++)
+			String[index++] = encode_ascii(Banana[i]);
+		break;
+		default:
+		for(int i = 0; i < (sizeof(Peanut) -1); i++)
+			String[index++] = encode_ascii(Peanut[i]);
+		break;
+	}
+	//END
+	String[index++] = 0xFF;
+}
+
+void print_windows(int window_selector)
+{
+	char String[64];
+	int offset = 0;
+	switch(window_selector)
+	{
+		case 0xE:
+			offset = 0x1800;
+			options_setup(String);
+			print_file_string(2, 1, 0x40, String, window_selector, offset);
+		break;
+		case 1:
+			offset = 0x6000;
+			text_speed_setup(String, 0);
+			print_file_string(1, 1, 0x40, String, window_selector, offset);
+			text_speed_setup(String, 1);
+			print_file_string(2, 3, 0x40, String, window_selector, offset);
+			text_speed_setup(String, 2);
+			print_file_string(2, 5, 0x40, String, window_selector, offset);
+			text_speed_setup(String, 3);
+			print_file_string(2, 7, 0x40, String, window_selector, offset);
+		break;
+		case 0x2:
+			offset = 0x2800;
+			text_flavour_setup(String, 0);
+			print_file_string(1, 1, 0x40, String, window_selector, offset);
+			text_flavour_setup(String, 1);
+			print_file_string(1, 3, 0x40, String, window_selector, offset);
+			text_flavour_setup(String, 2);
+			print_file_string(2, 5, 0x40, String, window_selector, offset);
+			text_flavour_setup(String, 3);
+			print_file_string(2, 7, 0x40, String, window_selector, offset);
+			text_flavour_setup(String, 4);
+			print_file_string(2, 9, 0x40, String, window_selector, offset);
+			text_flavour_setup(String, 5);
+			print_file_string(2, 11, 0x40, String, window_selector, offset);
+			text_flavour_setup(String, 6);
+			print_file_string(2, 13, 0x40, String, window_selector, offset);
+		break;
+		default:
+		break;
+	}
+	
+}
+
 
 void format_file_cc(FILE_SELECT *file, int *index, byte cmd)
 {
@@ -235,12 +400,12 @@ byte print_character_formatted(byte chr, int x, int y, int font, int foreground)
         return 8;
     }
 
-    return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, *tilemap_pointer, 32);
+    return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, *tilemap_pointer, 32, 0);
 }
 
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground)
 {
-    return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, NULL, 32);
+    return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, NULL, 32, 0);
 }
 
 // Prints a special tile. Pixels are copied to the VWF buffer.
@@ -278,7 +443,7 @@ void map_tile(unsigned short tile, int x, int y)
 }
 
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
-    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth)
+    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth, int tilemapOffset)
 {
     int tileWidth = m2_font_widths[font];
     int tileHeight = m2_font_heights[font];
@@ -318,7 +483,7 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
             }
 
             if (tilemapPtr != NULL)
-                tilemapPtr[tileX + dTileX + ((tileY + dTileY) * tilemapWidth)] = paletteMask | tileIndex;
+                tilemapPtr[tileX + dTileX + ((tileY + dTileY) * tilemapWidth)] = paletteMask | (tileIndex + tilemapOffset);
 
             if (renderedWidth - leftPortionWidth > 0 && leftPortionWidth < 8)
             {
@@ -340,7 +505,7 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                 }
 
                 if (tilemapPtr != NULL)
-                    tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY) * tilemapWidth)] = paletteMask | tileIndex;
+                    tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY) * tilemapWidth)] = paletteMask | (tileIndex + tilemapOffset);
             }
 
             renderedWidth -= 8;

@@ -1054,7 +1054,9 @@ nop
 // Main file select window resize
 .org 0x82B79BC :: dw 0x1C       // new window width
 .org 0x8003998 :: mov r0,1      // new window x
-.org 0x8003A04 :: mov r1,1
+.org 0x8003F92 :: mov r0,1
+.org 0x80053DC :: mov r0,1
+.org 0x8003A04 :: mov r0,1
 .org 0x8003B40 :: mov r0,0x10   // new cursor x
 .org 0x86DB070 :: .incbin "data/m2-fileselect-template.bin"
 
@@ -1066,12 +1068,35 @@ nop
 .org 0x8002284 :: bl format_file_string
 
 // Printing
-.org 0x80038CC :: mov r2,0x40 :: bl print_file_string
-.org 0x80038DE :: mov r2,0x40 :: bl print_file_string
-.org 0x80038F2 :: mov r2,0x40 :: bl print_file_string
+.org 0x80038CC :: mov r2,0x40 :: bl wrapper_file_string
+.org 0x80038DE :: mov r2,0x40 :: bl wrapper_file_string
+.org 0x80038F2 :: mov r2,0x40 :: bl wrapper_file_string
 
 // Bump file select cursor up by 3 pixels
 .org 0x8003844 :: add r0,r5,1
+
+// File select options
+.org 0x8004092 :: bl _4092_print_window //Printing
+.org 0x80041D4 :: bl _41D4_cursor_X //New cursor's X
+.org 0x86DBDAC :: .incbin "data/m2-options-template.bin"
+
+//Text Speed options
+.org 0x8003BBC :: bl _4092_print_window //Printing
+.org 0x82B79D0 :: dw 0x10 //new window width
+.org 0x86DB0FC :: .incbin "data/m2-textspeed-template.bin"
+
+//Text Flavour options
+.org 0x8003D8A :: bl _4092_print_window //Printing
+.org 0x8003D86 :: mov r1,#4 //new window Y
+.org 0x8003DB6 :: mov r1,#4
+.org 0x8003E0C :: mov r1,#4
+.org 0x8003E8C :: mov r1,#4
+.org 0x8003EF8 :: mov r1,#4
+.org 0x80053F2 :: mov r1,#4
+.org 0x82B79E4 :: dw 0xF //new window width
+.org 0x82B79E8 :: dw 0x10 //new window height
+.org 0x86DB1F8 :: .incbin "data/m2-flavour-template.bin"
+
 
 //==============================================================================
 // Data files
