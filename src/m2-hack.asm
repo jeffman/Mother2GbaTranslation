@@ -1036,7 +1036,7 @@ nop
 
 //Naming screen name length
 .org 0x8004F54 :: mov r2,#5 //Ness
-.org 0x8004F78 :: mov r0,#5 //Paula
+.org 0x8004F78 :: mov r0,#5 :: str r0,[sp,#0x18] :: bl _4f7c_window_selector //Paula
 .org 0x8004F9C :: mov r0,#5 //Jeff
 .org 0x8004FC0 :: mov r1,#5 //Poo
 
@@ -1078,7 +1078,6 @@ nop
 // File select options
 .org 0x8004092 :: bl _4092_print_window //Printing
 .org 0x80041D4 :: bl _41D4_cursor_X //New cursor's X
-.org 0x86DBDAC :: .incbin "data/m2-options-template.bin"
 
 //Text Speed options
 .org 0x8003BBC :: bl _4092_print_window //Printing
@@ -1097,6 +1096,16 @@ nop
 .org 0x82B79E8 :: dw 0x10 //new window height
 .org 0x86DB1F8 :: .incbin "data/m2-flavour-template.bin"
 
+//Delete
+.org 0x8004410 :: mov r1,#3 :: mov r2,#0x15 :: bl wrapper_delete_string
+.org 0x800441E :: bl _4092_print_window //Printing
+.org 0x82B7AFC :: dw 0x15 //new window width
+.org 0x86DBE8C :: .incbin "data/m2-delete-template.bin"
+
+//Copy
+.org 0x8004294 :: bl _4298_print_window //Printing - 1 slot available
+.org 0x80042BA :: bl _4092_print_window //Printing - 2 slots available
+.org 0x8004268 :: mov r2,#0x2 :: bl wrapper_copy_string
 
 //==============================================================================
 // Data files
