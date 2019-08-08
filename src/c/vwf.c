@@ -129,7 +129,7 @@ void print_file_string(int x, int y, int length, byte *str, int window_selector,
     clearArr(x, y, width, tilesetDestPtr); //Cleans all of the arrangements this line could ever use
     
     int pixelX = x * 8;
-    int pixelY = (y * 8) + 2;
+    int pixelY = (y * 8) + 3;
     int realmask = *palette_mask;
     *palette_mask = 0; //File select is special and changes its palette_mask on the fly.
     clear_rect_file(x, y, width, 2, 0x11111111, 0x400 + (offset >> 5), tilesetDestPtr); //Clean the rectangle before printing
@@ -826,7 +826,9 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
         {
             // Glue the leftmost part of the glyph onto the rightmost part of the canvas
             int tileIndex = getTileCallback(tileX + dTileX, tileY + dTileY); //get_tile_number(tileX + dTileX, tileY + dTileY) + tileOffset;
+            bool availableSwap = (dTileY != (tileHeight - 1));
             int realTileIndex = tileIndex;
+            bool useful = false; //Maybe we go over the maximum tile height, let's make sure the extra tile is properly set IF it's useful
 
             for (int row = 0; row < 8; row++)
             {
@@ -836,8 +838,12 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
 
                 int expandedGlyphRow = expand_bit_depth(glyphRow, foreground);
                 int expandedGlyphRowMask = ~expand_bit_depth(glyphRow, 0xF);
+                int tmpCanvasRow = canvasRow;
                 canvasRow &= expandedGlyphRowMask;
                 canvasRow |= expandedGlyphRow;
+                
+                if(!availableSwap && ((row + offsetY) >> 3) == 1 && canvasRow != tmpCanvasRow) //This changed the canvas, then it's useful... IF it's the extra vertical tile
+                    useful = true;
 
                 dest[(realTileIndex * 8) + ((row + offsetY) & 7)] = canvasRow;
                 if(offsetY != 0 && ((row + offsetY) == 7))
@@ -845,14 +851,20 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
             }
 
             if (tilemapPtr != NULL)
+            {
                 tilemapPtr[tileX + dTileX + ((tileY + dTileY) * tilemapWidth)] = paletteMask | (tileIndex + tilemapOffset);
+                if(useful)
+                    tilemapPtr[tileX + dTileX + ((tileY + dTileY + 1) * tilemapWidth)] = paletteMask | (realTileIndex + tilemapOffset);
+            }
 
             if (renderedWidth - leftPortionWidth > 0 && leftPortionWidth < 8)
             {
                 // Glue the rightmost part of the glyph onto the leftmost part of the next tile
                 // on the canvas
                 tileIndex = getTileCallback(tileX + dTileX + 1, tileY + dTileY); //get_tile_number(tileX + dTileX + 1, tileY + dTileY) + tileOffset;
+                availableSwap = (dTileY != (tileHeight - 1));
                 realTileIndex = tileIndex;
+                useful = false; //Maybe we go over the maximum tile height, let's make sure the extra tile is properly set IF it's useful
 
                 for (int row = 0; row < 8; row++)
                 {
@@ -861,8 +873,12 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
 
                     int expandedGlyphRow = expand_bit_depth(glyphRow, foreground);
                     int expandedGlyphRowMask = ~expand_bit_depth(glyphRow, 0xF);
+                    int tmpCanvasRow = canvasRow;
                     canvasRow &= expandedGlyphRowMask;
                     canvasRow |= expandedGlyphRow;
+                    
+                    if(!availableSwap && ((row + offsetY) >> 3) == 1 && canvasRow != tmpCanvasRow) //This changed the canvas, then it's useful... IF it's the extra vertical tile
+                        useful = true;
 
                     dest[(realTileIndex * 8) + ((row + offsetY) & 7)] = canvasRow;
                     if(offsetY != 0 && ((row + offsetY) == 7))
@@ -870,7 +886,11 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                 }
                 
                 if (tilemapPtr != NULL)
+                {
                     tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY) * tilemapWidth)] = paletteMask | (tileIndex + tilemapOffset);
+                    if(useful)
+                        tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY + 1) * tilemapWidth)] = paletteMask | (realTileIndex + tilemapOffset);
+                }
             }
 
             renderedWidth -= 8;
