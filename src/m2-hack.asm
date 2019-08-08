@@ -1081,6 +1081,7 @@ nop
 
 //Text Speed options
 .org 0x8003BBC :: bl _4092_print_window //Printing
+.org 0x8003FA2 :: bl _4092_print_window
 .org 0x82B79D0 :: dw 0x10 //new window width
 .org 0x86DB0FC :: .incbin "data/m2-textspeed-template.bin"
 
@@ -1106,6 +1107,26 @@ nop
 .org 0x8004294 :: bl _4298_print_window //Printing - 1 slot available
 .org 0x80042BA :: bl _4092_print_window //Printing - 2 slots available
 .org 0x8004268 :: mov r2,#0x2 :: bl wrapper_copy_string
+
+//Descriptions and Names
+.org 0x8004ED2 :: bl wrapper_name_string //Printing names
+.org 0x8004EDC :: bl _4092_print_window //Printing descriptions
+.org 0x86DB2B8 :: .incbin "data/m2-descriptions-template.bin"
+.org 0x82B7A00 :: dw 0x86DB2B8 //Point all the descriptions + names to the same template
+.org 0x82B7A14 :: dw 0x86DB2B8
+.org 0x82B7A28 :: dw 0x86DB2B8
+.org 0x82B7A3C :: dw 0x86DB2B8
+.org 0x82B7A50 :: dw 0x86DB2B8
+.org 0x82B7A64 :: dw 0x86DB2B8
+
+//Alphabets
+.org 0x80051A4 :: bl _4092_print_window //Printing
+.org 0x8004EA2 :: bl _4092_print_window //Printing
+.org 0x82B7A8C :: dw 0x86DB5C4
+.org 0x86DB5C4 :: .incbin "data/m2-alphabet-template.bin"
+
+//Summary
+.org 0x80055B0 :: bl _4092_print_window //Printing
 
 //==============================================================================
 // Data files

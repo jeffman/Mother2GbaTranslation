@@ -82,6 +82,7 @@ extern byte m12_other_str5[];
 extern byte m12_other_str6[];
 extern byte m12_other_str7[];
 extern byte m12_other_str8[];
+extern byte m2_cstm_last_printed[];
 
 extern void cpufastset(void *source, void *dest, int mode);
 extern byte* m2_strlookup(int *offset_table, byte *strings, int index);
