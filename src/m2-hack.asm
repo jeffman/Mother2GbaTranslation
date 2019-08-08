@@ -1036,7 +1036,7 @@ nop
 
 //Naming screen name length
 .org 0x8004F54 :: mov r2,#5 //Ness
-.org 0x8004F78 :: mov r0,#5 //Paula
+.org 0x8004F78 :: mov r0,#5 :: str r0,[sp,#0x18] :: bl _4f7c_window_selector //Paula
 .org 0x8004F9C :: mov r0,#5 //Jeff
 .org 0x8004FC0 :: mov r1,#5 //Poo
 
@@ -1054,7 +1054,9 @@ nop
 // Main file select window resize
 .org 0x82B79BC :: dw 0x1C       // new window width
 .org 0x8003998 :: mov r0,1      // new window x
-.org 0x8003A04 :: mov r1,1
+.org 0x8003F92 :: mov r0,1
+.org 0x80053DC :: mov r0,1
+.org 0x8003A04 :: mov r0,1
 .org 0x8003B40 :: mov r0,0x10   // new cursor x
 .org 0x86DB070 :: .incbin "data/m2-fileselect-template.bin"
 
@@ -1066,12 +1068,79 @@ nop
 .org 0x8002284 :: bl format_file_string
 
 // Printing
-.org 0x80038CC :: mov r2,0x40 :: bl print_file_string
-.org 0x80038DE :: mov r2,0x40 :: bl print_file_string
-.org 0x80038F2 :: mov r2,0x40 :: bl print_file_string
+.org 0x80038CC :: mov r2,0x40 :: bl wrapper_file_string
+.org 0x80038DE :: mov r2,0x40 :: bl wrapper_file_string
+.org 0x80038F2 :: mov r2,0x40 :: bl wrapper_file_string
 
-// Bump file select cursor up by 3 pixels
-.org 0x8003844 :: add r0,r5,1
+// Bump file select cursor up by 3 pixels - Not needed now that the text is 3 pixels lower
+//.org 0x8003844 :: add r0,r5,1
+
+// File select options
+.org 0x8004092 :: bl _4092_print_window //Printing
+.org 0x80041D4 :: bl _41D4_cursor_X //New cursor's X
+
+//Text Speed options
+.org 0x8003BBC :: bl _4092_print_window //Printing
+.org 0x8003FA2 :: bl _4092_print_window
+.org 0x82B79D0 :: dw 0x10 //new window width
+.org 0x86DB0FC :: .incbin "data/m2-textspeed-template.bin"
+
+//Text Flavour options
+.org 0x8003D8A :: bl _4092_print_window //Printing
+.org 0x8003D86 :: mov r1,#4 //new window Y
+.org 0x8003DB6 :: mov r1,#4
+.org 0x8003E0C :: mov r1,#4
+.org 0x8003E8C :: mov r1,#4
+.org 0x8003EF8 :: mov r1,#4
+.org 0x80053F2 :: mov r1,#4
+.org 0x82B79E4 :: dw 0xF //new window width
+.org 0x82B79E8 :: dw 0x10 //new window height
+.org 0x86DB1F8 :: .incbin "data/m2-flavour-template.bin"
+
+//Delete
+.org 0x8004410 :: mov r1,#3 :: mov r2,#0x15 :: bl wrapper_delete_string
+.org 0x800441E :: bl _4092_print_window //Printing
+.org 0x82B7AFC :: dw 0x15 //new window width
+.org 0x86DBE8C :: .incbin "data/m2-delete-template.bin"
+
+//Copy
+.org 0x8004294 :: bl _4298_print_window //Printing - 1 slot available
+.org 0x80042BA :: bl _4092_print_window //Printing - 2 slots available
+.org 0x8004268 :: mov r2,#0x2 :: bl wrapper_copy_string
+
+//Descriptions and Names
+.org 0x8004ED2 :: bl wrapper_name_string //Printing names
+.org 0x8004EDC :: bl _4092_print_window //Printing descriptions
+.org 0x86DB2B8 :: .incbin "data/m2-descriptions-template.bin"
+.org 0x82B7A00 :: dw 0x86DB2B8 //Point all the descriptions + names to the same template
+.org 0x82B7A14 :: dw 0x86DB2B8
+.org 0x82B7A28 :: dw 0x86DB2B8
+.org 0x82B7A3C :: dw 0x86DB2B8
+.org 0x82B7A50 :: dw 0x86DB2B8
+.org 0x82B7A64 :: dw 0x86DB2B8
+
+//Alphabets
+.org 0x80051A4 :: bl _4092_print_window //Printing
+.org 0x8004EA2 :: bl _4092_print_window //Printing
+.org 0x82B7A8C :: dw 0x86DB5C4
+.org 0x86DB5C4 :: .incbin "data/m2-alphabet-template.bin"
+
+//Summary
+.org 0x80055B0 :: bl _4092_print_window //Printing
+.org 0x80054F2 :: mov r2,#5 :: bl wrapper_name_summary_string //Printing Ness' name
+.org 0x8005502 :: mov r2,#5 :: bl wrapper_name_summary_string //Printing Paula's name
+.org 0x8005512 :: mov r2,#5 :: bl wrapper_name_summary_string //Printing Jeff's name
+.org 0x8005522 :: mov r2,#5 :: bl wrapper_name_summary_string //Printing Poo's name
+.org 0x800555C :: nop :: nop //Sends to a bunch of 0xFF
+.org 0x800556A :: nop :: nop //Sends to a bunch of 0xFF
+.org 0x8005530 :: mov r0,#0x11 //New x for King's name
+.org 0x8005536 :: bl wrapper_name_summary_string //Printing King's name
+.org 0x8005578 :: bl count_pixels :: mov r2,#6 :: mov r4,#0x17 :: sub r0,r4,r0 //Count length of Food's name in tiles
+.org 0x8005588 :: bl wrapper_name_summary_string //Printing Food's name
+.org 0x8005596 :: bl count_pixels :: mov r2,#6 :: sub r4,r4,r0 //Count length of Food's name in tiles
+.org 0x80055A6 :: bl wrapper_name_summary_string //Printing Thing's name
+.org 0x80056F0 :: add r0,#0x90 //New cursor's X
+.org 0x86DBC6C :: .incbin "data/m2-summary-template.bin"
 
 //==============================================================================
 // Data files

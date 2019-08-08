@@ -1581,3 +1581,58 @@ bl      0x80BD7F8 //Copies old arrangements, this includes the highlight
 pop     {r5,pc}
 
 .pool
+
+//==============================================================================
+_4092_print_window:
+push    {lr}
+push    {r0-r4}
+mov     r0,r2
+bl      print_windows
+pop     {r0-r4}
+bl      0x800341C
+pop     {pc}
+
+//==============================================================================
+_4298_print_window:
+push    {lr}
+push    {r0-r4}
+ldr     r0,[sp,#0x20]
+bl      print_windows
+pop     {r0-r4}
+mov     r2,#0
+mov     r3,#0
+pop     {pc}
+
+//==============================================================================
+_41D4_cursor_X:
+push    {lr}
+cmp     r0,#1
+bne     @@next1
+mov     r0,#5
+b       @@end
+@@next1:
+cmp     r0,#6
+bne     @@next2
+mov     r0,#11
+b       @@end
+@@next2:
+cmp     r0,#11
+bne     @@next3
+mov     r0,#15
+b       @@end
+@@next3:
+mov     r0,#20
+
+@@end:
+lsl     r0,r0,#3
+pop     {pc}
+
+//==============================================================================
+_4f7c_window_selector:
+push    {lr}
+mov     r0,#4
+mov     r10,r0
+ldr     r1,=#0x82B7FF8
+pop     {pc}
+
+.pool
