@@ -22,7 +22,9 @@ int get_tile_number(int x, int y)
 {
     x--;
     y--;
-    return m2_coord_table[x + ((y >> 1) * 28)] + (y & 1) * 32;
+	if(y > 0xF)
+		y = 0xE + (y & 1);
+    return m2_coord_table[x + ((y >> 1) * 28)] + (y & 1) * 32; //This is... Very not suited for tilemaps of variable width, which can have more than 0x10 tiles vertically.
 }
 
 int get_tile_number_with_offset(int x, int y)
@@ -100,6 +102,26 @@ void wrapper_name_string(int x, int y, int length, byte *str, int window_selecto
             String[i] = str[i];
     }
     print_file_string(x, y, length, String, window_selector, 0x7800);
+}
+
+void wrapper_name_summary_string(int x, int y, int length, byte *str, int window_selector)
+{
+    char String[length];
+    for(int i = 0; i < length; i++)
+            String[i] = str[i];
+    print_file_string(x, y, length, String, window_selector, 0x2800);
+}
+
+int count_pixels(byte *str, int length)
+{
+	int pixels = 0;
+    for(int i = 0; i < length; i++)
+		if((str[i] != 0xFF) && (str[i] != 0xFE)) //The latter one is not really needed
+            pixels += (m2_widths_table[0][decode_character(str[i])] & 0xFF);
+	int tiles = pixels >> 3;
+	if((pixels & 7) != 0)
+		tiles +=1;
+	return tiles;
 }
 
 void wrapper_copy_string(int x, int y, int length, byte *str, int window_selector)
@@ -486,6 +508,43 @@ void alphabet_setup(char String[], int selector, bool capital)
     String[index++] = 0xFF;
 }
 
+void summary_setup(char String[], int selector)
+{
+    int index = 0;
+    char FavFood[] = "Favorite food:";
+    char FavThing[] = "Coolest thing:";
+    char AreYouSure[] = "Are you sure?";
+    char Yep[] = "Yep";
+    char Nope[] = "Nope";
+    switch(selector)
+    {
+        case 0:
+            for(int i = 0; i < (sizeof(FavFood) -1); i++)
+                String[index++] = encode_ascii(FavFood[i]);
+        break;
+        case 1:
+            for(int i = 0; i < (sizeof(FavThing) -1); i++)
+                String[index++] = encode_ascii(FavThing[i]);
+        break;
+        default:
+            for(int i = 0; i < (sizeof(AreYouSure) -1); i++)
+                String[index++] = encode_ascii(AreYouSure[i]);
+            //Re-position
+            format_options_cc(String, &index, CUSTOMCC_SET_X);
+            String[index++] = (0x10) << 3;
+            for(int i = 0; i < (sizeof(Yep) -1); i++)
+                String[index++] = encode_ascii(Yep[i]);
+            //Re-position
+            format_options_cc(String, &index, CUSTOMCC_SET_X);
+            String[index++] = (0x14) << 3;
+            for(int i = 0; i < (sizeof(Nope) -1); i++)
+                String[index++] = encode_ascii(Nope[i]);
+        break;
+    }
+    //END
+    String[index++] = 0xFF;
+}
+
 void print_windows(int window_selector)
 {
     char String[64];
@@ -607,8 +666,13 @@ void print_windows(int window_selector)
         
         break;
         case 0xD: //Is this okay? Yes No
-        
-        
+            offset = 0x2800;
+            summary_setup(String, 0);
+            print_file_string(0xC, 5, 0x40, String, window_selector, offset);
+            summary_setup(String, 1);
+            print_file_string(0xC, 0xB, 0x40, String, window_selector, offset);
+            summary_setup(String, 2);
+            print_file_string(0x1, 0x11, 0x40, String, window_selector, offset);
             m2_cstm_last_printed[0] = window_selector; //Set the alphabet bit to 0.
         break;
         default: //File select string, already printed

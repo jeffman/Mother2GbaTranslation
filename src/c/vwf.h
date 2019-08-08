@@ -28,6 +28,7 @@
 byte decode_character(byte chr);
 byte encode_ascii(char chr);
 int get_tile_number(int x, int y);
+int count_pixels(byte *str, int length);
 int expand_bit_depth(byte row, int foreground);
 byte reduce_bit_depth(int row, int foreground);
 byte print_character(byte chr, int x, int y);
