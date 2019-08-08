@@ -1072,8 +1072,8 @@ nop
 .org 0x80038DE :: mov r2,0x40 :: bl wrapper_file_string
 .org 0x80038F2 :: mov r2,0x40 :: bl wrapper_file_string
 
-// Bump file select cursor up by 3 pixels
-.org 0x8003844 :: add r0,r5,1
+// Bump file select cursor up by 3 pixels - Not needed now that the text is 3 pixels lower
+//.org 0x8003844 :: add r0,r5,1
 
 // File select options
 .org 0x8004092 :: bl _4092_print_window //Printing
