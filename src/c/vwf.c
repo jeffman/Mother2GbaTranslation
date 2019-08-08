@@ -57,8 +57,8 @@ void clear_tile_file(int x, int y, int pixels, int tile_offset_file)
 {
     // Clear pixels
     int tileIndex = get_tile_number(x, y) + tile_offset_file;
-	if(((tileIndex << 3) != (0xC9C0 >> 2)) && ((tileIndex << 3) != (0xC9E0 >> 2)))
-		cpufastset(&pixels, &vram[tileIndex * 8], CPUFASTSET_FILL | 8);
+    if(((tileIndex << 3) != (0xC9C0 >> 2)) && ((tileIndex << 3) != (0xC9E0 >> 2)))
+        cpufastset(&pixels, &vram[tileIndex * 8], CPUFASTSET_FILL | 8);
 }
 
 // x,y: tile coordinates
@@ -129,7 +129,7 @@ void print_file_string(int x, int y, int length, byte *str, int window_selector,
     clearArr(x, y, width, tilesetDestPtr); //Cleans all of the arrangements this line could ever use
     
     int pixelX = x * 8;
-    int pixelY = y * 8;
+    int pixelY = (y * 8) + 2;
     int realmask = *palette_mask;
     *palette_mask = 0; //File select is special and changes its palette_mask on the fly.
     clear_rect_file(x, y, width, 2, 0x11111111, 0x400 + (offset >> 5), tilesetDestPtr); //Clean the rectangle before printing
@@ -375,113 +375,113 @@ void copy_setup(char String[])
 
 void letterSetup(char String[], int selector, bool capital, int *index)
 {
-	char base = capital ? 'A' : 'a';
-	int value = 9 - (selector >> 1);
-	for(int i = 0; i < value; i++)
-	{
-		String[(*index)++] = encode_ascii(base + i + (selector * 9));
-		// Re-position
-		format_options_cc(String, &(*index), CUSTOMCC_SET_X);
-		if(i != value -1)
-			String[(*index)++] = (2 * (i + 2)) << 3;
-		else
-			String[(*index)++] = (24) << 3;
-	}
-	switch(selector)
-	{
-		case 0:
-			String[(*index)++] = 93;
-			// Re-position
-			format_options_cc(String, &(*index), CUSTOMCC_SET_X);
-			String[(*index)++] = (26) << 3;
-			String[(*index)++] = 83;
-		break;
-		case 1:
-			String[(*index)++] = 87;
-			// Re-position
-			format_options_cc(String, &(*index), CUSTOMCC_SET_X);
-			String[(*index)++] = (26) << 3;
-			String[(*index)++] = 174;
-		break;
-		default:
-			String[(*index)++] = 94;
-			// Re-position
-			format_options_cc(String, &(*index), CUSTOMCC_SET_X);
-			String[(*index)++] = (26) << 3;
-			String[(*index)++] = 95;
-		break;
-	}
+    char base = capital ? 'A' : 'a';
+    int value = 9 - (selector >> 1);
+    for(int i = 0; i < value; i++)
+    {
+        String[(*index)++] = encode_ascii(base + i + (selector * 9));
+        // Re-position
+        format_options_cc(String, &(*index), CUSTOMCC_SET_X);
+        if(i != value -1)
+            String[(*index)++] = (2 * (i + 2)) << 3;
+        else
+            String[(*index)++] = (24) << 3;
+    }
+    switch(selector)
+    {
+        case 0:
+            String[(*index)++] = 93;
+            // Re-position
+            format_options_cc(String, &(*index), CUSTOMCC_SET_X);
+            String[(*index)++] = (26) << 3;
+            String[(*index)++] = 83;
+        break;
+        case 1:
+            String[(*index)++] = 87;
+            // Re-position
+            format_options_cc(String, &(*index), CUSTOMCC_SET_X);
+            String[(*index)++] = (26) << 3;
+            String[(*index)++] = 174;
+        break;
+        default:
+            String[(*index)++] = 94;
+            // Re-position
+            format_options_cc(String, &(*index), CUSTOMCC_SET_X);
+            String[(*index)++] = (26) << 3;
+            String[(*index)++] = 95;
+        break;
+    }
 }
 void numbersSetup(char String[], int *index)
 {
-	char base = '0';
-	for(int i = 0; i < 10; i++)
-	{
-		String[(*index)++] = encode_ascii(base + i);
-		// Re-position
-		format_options_cc(String, &(*index), CUSTOMCC_SET_X);
-		if(i != 9)
-			String[(*index)++] = (2 * (i + 2)) << 3;
-		else
-			String[(*index)++] = (24) << 3;
-	}
-	String[(*index)++] = 81;
-	// Re-position
-	format_options_cc(String, &(*index), CUSTOMCC_SET_X);
-	String[(*index)++] = (26) << 3;
-	String[(*index)++] = 0xAC;
+    char base = '0';
+    for(int i = 0; i < 10; i++)
+    {
+        String[(*index)++] = encode_ascii(base + i);
+        // Re-position
+        format_options_cc(String, &(*index), CUSTOMCC_SET_X);
+        if(i != 9)
+            String[(*index)++] = (2 * (i + 2)) << 3;
+        else
+            String[(*index)++] = (24) << 3;
+    }
+    String[(*index)++] = 81;
+    // Re-position
+    format_options_cc(String, &(*index), CUSTOMCC_SET_X);
+    String[(*index)++] = (26) << 3;
+    String[(*index)++] = 0xAC;
 }
 
 void alphabet_setup(char String[], int selector, bool capital)
 {
     int index = 0;
-	char Capital[] = "CAPITAL";
-	char Small[] = "small";
-	char DontCare[] = "Don't Care";
-	char Backspace[] = "Backspace";
-	char Ok[] = "OK";
-	switch(selector)
-	{
-		case 0:
-		case 1:
-		case 2:
-			letterSetup(String, selector, capital, &index);
-		break;
-		case 3:
-			numbersSetup(String, &index);
-		break;
-		case 4:
-			for(int i = 0; i < (sizeof(Capital) -1); i++)
-				String[index++] = encode_ascii(Capital[i]);
-			//Re-position
-			format_options_cc(String, &index, CUSTOMCC_SET_X);
-			String[index++] = (9) << 3;
-			for(int i = 0; i < (sizeof(Small) -1); i++)
-				String[index++] = encode_ascii(Small[i]);
-			//Re-position
-			format_options_cc(String, &index, CUSTOMCC_SET_X);
-			String[index++] = (24) << 3;
-			String[index++] = 111;
-			// Re-position
-			format_options_cc(String, &index, CUSTOMCC_SET_X);
-			String[index++] = (26) << 3;
-			String[index++] = 0xAF;
-		break;
-		default:
-			for(int i = 0; i < (sizeof(DontCare) -1); i++)
-				String[index++] = encode_ascii(DontCare[i]);
-			//Re-position
-			format_options_cc(String, &index, CUSTOMCC_SET_X);
-			String[index++] = (19) << 3;
-			for(int i = 0; i < (sizeof(Backspace) -1); i++)
-				String[index++] = encode_ascii(Backspace[i]);
-			//Re-position
-			format_options_cc(String, &index, CUSTOMCC_SET_X);
-			String[index++] = (27) << 3;
-			for(int i = 0; i < (sizeof(Ok) -1); i++)
-				String[index++] = encode_ascii(Ok[i]);
-		break;
-	}
+    char Capital[] = "CAPITAL";
+    char Small[] = "small";
+    char DontCare[] = "Don't Care";
+    char Backspace[] = "Backspace";
+    char Ok[] = "OK";
+    switch(selector)
+    {
+        case 0:
+        case 1:
+        case 2:
+            letterSetup(String, selector, capital, &index);
+        break;
+        case 3:
+            numbersSetup(String, &index);
+        break;
+        case 4:
+            for(int i = 0; i < (sizeof(Capital) -1); i++)
+                String[index++] = encode_ascii(Capital[i]);
+            //Re-position
+            format_options_cc(String, &index, CUSTOMCC_SET_X);
+            String[index++] = (9) << 3;
+            for(int i = 0; i < (sizeof(Small) -1); i++)
+                String[index++] = encode_ascii(Small[i]);
+            //Re-position
+            format_options_cc(String, &index, CUSTOMCC_SET_X);
+            String[index++] = (24) << 3;
+            String[index++] = 111;
+            // Re-position
+            format_options_cc(String, &index, CUSTOMCC_SET_X);
+            String[index++] = (26) << 3;
+            String[index++] = 0xAF;
+        break;
+        default:
+            for(int i = 0; i < (sizeof(DontCare) -1); i++)
+                String[index++] = encode_ascii(DontCare[i]);
+            //Re-position
+            format_options_cc(String, &index, CUSTOMCC_SET_X);
+            String[index++] = (19) << 3;
+            for(int i = 0; i < (sizeof(Backspace) -1); i++)
+                String[index++] = encode_ascii(Backspace[i]);
+            //Re-position
+            format_options_cc(String, &index, CUSTOMCC_SET_X);
+            String[index++] = (27) << 3;
+            for(int i = 0; i < (sizeof(Ok) -1); i++)
+                String[index++] = encode_ascii(Ok[i]);
+        break;
+    }
     //END
     String[index++] = 0xFF;
 }
@@ -567,17 +567,17 @@ void print_windows(int window_selector)
             {
                 //Main thing
                 offset = 0x2800;
-				alphabet_setup(String, 0, true);
+                alphabet_setup(String, 0, true);
                 print_file_string(2, 1, 0x40, String, window_selector, offset);
-				alphabet_setup(String, 1, true);
+                alphabet_setup(String, 1, true);
                 print_file_string(2, 3, 0x40, String, window_selector, offset);
-				alphabet_setup(String, 2, true);
+                alphabet_setup(String, 2, true);
                 print_file_string(2, 5, 0x40, String, window_selector, offset);
-				alphabet_setup(String, 3, true);
+                alphabet_setup(String, 3, true);
                 print_file_string(2, 7, 0x40, String, window_selector, offset);
-				alphabet_setup(String, 4, true);
+                alphabet_setup(String, 4, true);
                 print_file_string(2, 9, 0x40, String, window_selector, offset);
-				alphabet_setup(String, 5, true);
+                alphabet_setup(String, 5, true);
                 print_file_string(2, 13, 0x40, String, window_selector, offset);
                 m2_cstm_last_printed[0] = (m2_cstm_last_printed[0] & 0x1F) | 0x20; //Printed flag
             }
@@ -587,17 +587,17 @@ void print_windows(int window_selector)
             {
                 //Main thing
                 offset = 0x2800;
-				alphabet_setup(String, 0, false);
+                alphabet_setup(String, 0, false);
                 print_file_string(2, 1, 0x40, String, window_selector, offset);
-				alphabet_setup(String, 1, false);
+                alphabet_setup(String, 1, false);
                 print_file_string(2, 3, 0x40, String, window_selector, offset);
-				alphabet_setup(String, 2, false);
+                alphabet_setup(String, 2, false);
                 print_file_string(2, 5, 0x40, String, window_selector, offset);
-				alphabet_setup(String, 3, false);
+                alphabet_setup(String, 3, false);
                 print_file_string(2, 7, 0x40, String, window_selector, offset);
-				alphabet_setup(String, 4, true);
+                alphabet_setup(String, 4, true);
                 print_file_string(2, 9, 0x40, String, window_selector, offset);
-				alphabet_setup(String, 5, true);
+                alphabet_setup(String, 5, true);
                 print_file_string(2, 13, 0x40, String, window_selector, offset);
                 m2_cstm_last_printed[0] = (m2_cstm_last_printed[0] & 0x1F) | 0x40; //Printed flag
             }
@@ -814,6 +814,8 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
 
     int tileX = x >> 3;
     int tileY = y >> 3;
+    
+    int offsetY = y & 7;
 
     for (int dTileY = 0; dTileY < tileHeight; dTileY++) // dest tile Y
     {
@@ -824,10 +826,11 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
         {
             // Glue the leftmost part of the glyph onto the rightmost part of the canvas
             int tileIndex = getTileCallback(tileX + dTileX, tileY + dTileY); //get_tile_number(tileX + dTileX, tileY + dTileY) + tileOffset;
+            int realTileIndex = tileIndex;
 
             for (int row = 0; row < 8; row++)
             {
-                int canvasRow = dest[(tileIndex * 8) + row];
+                int canvasRow = dest[(realTileIndex * 8) + ((row + offsetY) & 7)];
                 byte glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] & ((1 << leftPortionWidth) - 1);
                 glyphRow <<= (8 - leftPortionWidth);
 
@@ -836,7 +839,9 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                 canvasRow &= expandedGlyphRowMask;
                 canvasRow |= expandedGlyphRow;
 
-                dest[(tileIndex * 8) + row] = canvasRow;
+                dest[(realTileIndex * 8) + ((row + offsetY) & 7)] = canvasRow;
+                if(offsetY != 0 && ((row + offsetY) == 7))
+                    realTileIndex = getTileCallback(tileX + dTileX, tileY + dTileY + 1);
             }
 
             if (tilemapPtr != NULL)
@@ -847,10 +852,11 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                 // Glue the rightmost part of the glyph onto the leftmost part of the next tile
                 // on the canvas
                 tileIndex = getTileCallback(tileX + dTileX + 1, tileY + dTileY); //get_tile_number(tileX + dTileX + 1, tileY + dTileY) + tileOffset;
+                realTileIndex = tileIndex;
 
                 for (int row = 0; row < 8; row++)
                 {
-                    int canvasRow = dest[(tileIndex * 8) + row];
+                    int canvasRow = dest[(realTileIndex * 8) + ((row + offsetY) & 7)];
                     byte glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] >> leftPortionWidth;
 
                     int expandedGlyphRow = expand_bit_depth(glyphRow, foreground);
@@ -858,9 +864,11 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                     canvasRow &= expandedGlyphRowMask;
                     canvasRow |= expandedGlyphRow;
 
-                    dest[(tileIndex * 8) + row] = canvasRow;
+                    dest[(realTileIndex * 8) + ((row + offsetY) & 7)] = canvasRow;
+                    if(offsetY != 0 && ((row + offsetY) == 7))
+                        realTileIndex = getTileCallback(tileX + dTileX + 1, tileY + dTileY + 1);
                 }
-
+                
                 if (tilemapPtr != NULL)
                     tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY) * tilemapWidth)] = paletteMask | (tileIndex + tilemapOffset);
             }
