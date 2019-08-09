@@ -93,3 +93,4 @@ extern int m2_resetwindow(WINDOW* window, bool skip_redraw);
 extern void m2_hpwindow_up(int character);
 extern int m2_div(int dividend, int divisor);
 extern int m2_remainder(int dividend, int divisor);
+extern void m2_soundeffect(int index);

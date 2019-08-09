@@ -1124,6 +1124,11 @@ nop
 .org 0x8004EA2 :: bl _4092_print_window //Printing
 .org 0x82B7A8C :: dw 0x86DB5C4
 .org 0x86DB5C4 :: .incbin "data/m2-alphabet-template.bin"
+.org 0x8005222 :: bl setupCursorAction
+.org 0x8005382 :: bl setupCursorMovement
+.org 0x800538A :: bl setupCursorPosition //Cursor position
+.org 0x800536C :: bl setupCursorPosition //Cursor position
+.org 0x82B8FFC :: .incbin "data/m2-alphabet-table.bin"
 
 //Summary
 .org 0x80055B0 :: bl _4092_print_window //Printing

@@ -22,8 +22,8 @@ int get_tile_number(int x, int y)
 {
     x--;
     y--;
-	if(y > 0xF)
-		y = 0xE + (y & 1);
+    if(y > 0xF)
+        y = 0xE + (y & 1);
     return m2_coord_table[x + ((y >> 1) * 28)] + (y & 1) * 32; //This is... Very not suited for tilemaps of variable width, which can have more than 0x10 tiles vertically.
 }
 
@@ -114,14 +114,14 @@ void wrapper_name_summary_string(int x, int y, int length, byte *str, int window
 
 int count_pixels(byte *str, int length)
 {
-	int pixels = 0;
+    int pixels = 0;
     for(int i = 0; i < length; i++)
-		if((str[i] != 0xFF) && (str[i] != 0xFE)) //The latter one is not really needed
+        if((str[i] != 0xFF) && (str[i] != 0xFE)) //The latter one is not really needed
             pixels += (m2_widths_table[0][decode_character(str[i])] & 0xFF);
-	int tiles = pixels >> 3;
-	if((pixels & 7) != 0)
-		tiles +=1;
-	return tiles;
+    int tiles = pixels >> 3;
+    if((pixels & 7) != 0)
+        tiles +=1;
+    return tiles;
 }
 
 void wrapper_copy_string(int x, int y, int length, byte *str, int window_selector)
@@ -197,6 +197,237 @@ void print_file_string(int x, int y, int length, byte *str, int window_selector,
         pixelX += pixels;
     }
     *palette_mask = realmask;
+}
+
+unsigned short setupCursorAction(int *Pos1, int *Pos2)
+{
+    int *a = (int *)0x3000024;
+    int *caller = (int *)a[0];
+    int CursorX = caller[0xDA4 >> 2];
+    int CursorY = caller[0xDA8 >> 2];
+    int alphabet = caller[0xDAC >> 2];
+    int *table = (int *)0x82B8FFC; //Address of the alphabet table
+    
+    int choice = 0;
+    int counter = 0;
+    
+    for(int i = 0; i < CursorY; i++)
+    {
+        if(i <= 4)
+            choice += 0xE;
+        else
+            choice += 3;
+    }
+    
+    choice += CursorX;
+    (*Pos1) = alphabet;
+    (*Pos2) = choice;
+    
+    unsigned short letter = (table[choice] >> (16 * alphabet));
+    return letter;
+}
+
+void setupCursorMovement()
+{
+    int *a = (int *)0x3000024;
+    int *caller = (int *)a[0];
+    int CursorX = caller[0xDA4 >> 2];
+    int CursorY = caller[0xDA8 >> 2];
+    int yAxys = 0;
+    int xAxys = 0;
+    
+    // Check for pressing left or right
+    PAD_STATE state = *pad_state;
+
+    if (state.right)
+        xAxys = 1;
+    else if (state.left)
+        xAxys = -1;
+    else if (state.up)
+        yAxys = -1;
+    else if(state.down)
+        yAxys = 1;
+
+    if(xAxys != 0)
+    {
+        CursorX += xAxys;
+        switch(CursorY)
+        {
+            case 0:
+            case 1:
+            case 2:
+                if(CursorX < 0)
+                    CursorX = 0xA;
+                if(CursorX > 0xA)
+                    CursorX = 0;
+            break;
+            case 3:
+                if(CursorX < 0)
+                    CursorX = 0xB;
+                if(CursorX > 0xB)
+                    CursorX = 0;
+            break;
+            case 4:
+                if(CursorX < 0)
+                    CursorX = 0x3;
+                if(CursorX > 0x3)
+                    CursorX = 0;
+            break;
+            default:
+                if(CursorX < 0)
+                    CursorX = 0x2;
+                if(CursorX > 0x2)
+                    CursorX = 0;
+            break;
+        }
+        m2_soundeffect(0x1A7);
+    }
+    else if(yAxys != 0)
+    {
+        switch(CursorY)
+        {
+            case 0:
+            case 1:
+            case 2:
+                CursorY += yAxys;
+                if(CursorY < 0)
+                {
+                    if((CursorX >= 0x9))
+                    {
+                        CursorX = 2 + CursorX - 0x9;
+                        CursorY = 4;
+                    }
+                    else if(CursorX == 0)
+                        CursorY = 5;
+                    else
+                        CursorY = 3;
+                }
+                else if(CursorY == 3 && CursorX >= 0x9)
+                    CursorX += 1;
+            break;
+            case 3:
+                CursorY += yAxys;
+                if(CursorY == 2 && CursorX >= 9)
+                    CursorX -=1;
+                if(CursorY == 4)
+                {
+                    if(CursorX <= 3)
+                        CursorX = 0;
+                    else if (CursorX <= 9)
+                        CursorX = 1;
+                    else
+                        CursorX = 2 + CursorX - 0xA;
+                }
+            break;
+            case 4:
+                CursorY += yAxys;
+                if(CursorY == 3)
+                {
+                    if(CursorX >= 2)
+                        CursorX = 0xA + CursorX - 2;
+                    if(CursorX == 1)
+                        CursorX = 4;
+                }
+                if(CursorY == 5)
+                {
+                    if(CursorX >= 2)
+                        CursorX = 1;
+                    else
+                        CursorX = 0;
+                }
+            break;
+            default:
+                CursorY += yAxys;
+                if(CursorY == 4 && CursorX == 2)
+                    CursorX = 3;
+                if(CursorY == 6)
+                {
+                    if(CursorX == 0)
+                        CursorY = 0;
+                    else
+                        CursorY = 5;
+                }
+            break;
+        }
+        m2_soundeffect(0x1A8);
+    }
+    
+    caller[0xDA4 >> 2] = CursorX;
+    caller[0xDA8 >> 2] = CursorY;
+}
+
+void setupCursorPosition(int *x, int *y)
+{
+    int *a = (int *)0x3000024;
+    int *caller = (int *)a[0];
+    int CursorX = caller[0xDA4 >> 2];
+    int CursorY = caller[0xDA8 >> 2];
+    (*x) = 0;
+    (*y) = 0;
+    if(CursorY <= 4)
+    {
+        (*y) = 2 + (CursorY << 1);
+        switch(CursorY)
+        {
+            case 0:
+            case 1:
+            case 2:
+                switch(CursorX)
+                {
+                    case 9:
+                    case 0xA:
+                        (*x) = 23 + ((CursorX -9) << 1);
+                    break;
+                    default:
+                        (*x) = 1 + (CursorX << 1);
+                    break;
+                }
+            break;
+            case 3:
+                switch(CursorX)
+                {
+                    case 0xA:
+                    case 0xB:
+                        (*x) = 23 + ((CursorX -0xA) << 1);
+                    break;
+                    default:
+                        (*x) = 1 + (CursorX << 1);
+                    break;
+                }
+            break;
+            default:
+                switch(CursorX)
+                {
+                    case 0:
+                        (*x) = 1;
+                    break;
+                    case 1:
+                        (*x) = 8;
+                    break;
+                    case 2:
+                    case 3:
+                        (*x) = 23 + ((CursorX- 2) << 1);
+                    break;
+                }
+            break;
+        }
+    }
+    else
+    {
+        (*y) = 14;
+        switch(CursorX)
+        {
+            case 0:
+                (*x) = 1;
+            break;
+            case 1:
+                (*x) = 18;
+            break;
+            default:
+                (*x) = 26;
+            break;
+        }
+    }
 }
 
 void format_options_cc(char String[], int *index, byte cmd)
