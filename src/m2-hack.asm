@@ -1129,6 +1129,7 @@ nop
 .org 0x800538A :: bl setupCursorPosition //Cursor position
 .org 0x800536C :: bl setupCursorPosition //Cursor position
 .org 0x82B8FFC :: .incbin "data/m2-alphabet-table.bin"
+.org 0x8002322 :: bl _2322_setup_windowing
 
 //Summary
 .org 0x80055B0 :: bl _4092_print_window //Printing

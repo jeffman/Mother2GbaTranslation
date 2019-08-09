@@ -846,9 +846,7 @@ void print_windows(int window_selector)
         case 0x8: //FavFood's name + description
         case 0x9: //FavThing's name + description
             if((m2_cstm_last_printed[0] & 0x1F) != window_selector){
-				if(window_selector == 3)
-					m2_cstm_last_printed[0] = window_selector; //Set the alphabet bits to 0. Fixes issue where random garbage would go in here when transitioning screen from the main menu.
-                offset = 0x1800;
+				offset = 0x1800;
                 description_setup(String, window_selector);
                 print_file_string(9, 1, 0x40, String, window_selector, offset);
                 m2_cstm_last_printed[0] = window_selector | (m2_cstm_last_printed[0] & 0x20);

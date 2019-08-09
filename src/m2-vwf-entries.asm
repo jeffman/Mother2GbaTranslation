@@ -1636,3 +1636,14 @@ ldr     r1,=#0x82B7FF8
 pop     {pc}
 
 .pool
+
+////==============================================================================
+_2322_setup_windowing: //Fix the random garbage issue for the alphabet for good
+push {lr}
+bl 0x8012460 //Default code which sets up the names by copying memory which can be random
+push {r0-r1}
+ldr r0,=#m2_cstm_last_printed  //Set the window flag to 0 so no issue can happen
+mov r1,#0
+strb r1,[r0,#0]
+pop {r0-r1}
+pop {pc}
