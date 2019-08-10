@@ -1221,6 +1221,9 @@ m2_nybbles_to_bits:
 m2_enemy_attributes:
 .incbin "data/m2-enemy-attributes.bin"
 
+m2_coord_table_file:
+.incbin "data/m2-coord-table-file-select.bin"
+
 //==============================================================================
 // Existing subroutines/data
 //==============================================================================
@@ -1285,8 +1288,8 @@ m2_enemy_attributes:
 .definelabel m2_curhpwindow_down    ,0x80D41D8
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70
-.definelabel m2_items               ,0x8B1D62C
 .definelabel m2_default_names       ,0x82B9330
+.definelabel m2_items               ,0x8B1D62C
 
 //==============================================================================
 // Code files

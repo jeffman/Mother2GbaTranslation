@@ -22,9 +22,14 @@ int get_tile_number(int x, int y)
 {
     x--;
     y--;
-    if(y > 0xF)
-        y = 0xE + (y & 1);
-    return m2_coord_table[x + ((y >> 1) * 28)] + (y & 1) * 32; //This is... Very not suited for tilemaps of variable width, which can have more than 0x10 tiles vertically.
+    return m2_coord_table[x + ((y >> 1) * 28)] + (y & 1) * 32;
+}
+
+int get_tile_number_file_select(int x, int y)
+{
+    x--;
+    y--;
+    return m2_coord_table_file[x + ((y >> 1) * 28)] + (y & 1) * 32;
 }
 
 int get_tile_number_with_offset(int x, int y)
@@ -58,9 +63,8 @@ byte reduce_bit_depth(int row, int foreground)
 void clear_tile_file(int x, int y, int pixels, int tile_offset_file)
 {
     // Clear pixels
-    int tileIndex = get_tile_number(x, y) + tile_offset_file;
-    if(((tileIndex << 3) != (0xC9C0 >> 2)) && ((tileIndex << 3) != (0xC9E0 >> 2)))
-        cpufastset(&pixels, &vram[tileIndex * 8], CPUFASTSET_FILL | 8);
+    int tileIndex = get_tile_number_file_select(x, y) + tile_offset_file;
+    cpufastset(&pixels, &vram[tileIndex * 8], CPUFASTSET_FILL | 8);
 }
 
 // x,y: tile coordinates
@@ -81,12 +85,12 @@ void clear_rect_file(int x, int y, int width, int height, int pixels, int tile_o
 void wrapper_file_string(int x, int y, int length, byte *str, int window_selector)
 {
     m2_cstm_last_printed[0] = window_selector; //First time setup
-    print_file_string(x, y, length, str, window_selector, 0);
+    print_file_string(x, y, length, str, window_selector, 1, 0);
 }
 
 void wrapper_delete_string(int x, int y, int length, byte *str, int window_selector)
 {
-    print_file_string(x, y, length, str - 0x20 + 0x40 - 0x15, window_selector, 0x6000);
+    print_file_string(x, y, length, str - 0x20 + 0x40 - 0x15, window_selector, 7, 0xA);
 }
 
 void wrapper_name_string(int x, int y, int length, byte *str, int window_selector)
@@ -101,7 +105,7 @@ void wrapper_name_string(int x, int y, int length, byte *str, int window_selecto
         else
             String[i] = str[i];
     }
-    print_file_string(x, y, length, String, window_selector, 0x7800);
+    print_file_string(x, y, length, String, window_selector, 5, 0);
 }
 
 void wrapper_name_summary_string(int x, int y, int length, byte *str, int window_selector)
@@ -109,7 +113,12 @@ void wrapper_name_summary_string(int x, int y, int length, byte *str, int window
     char String[length];
     for(int i = 0; i < length; i++)
             String[i] = str[i];
-    print_file_string(x, y, length, String, window_selector, 0x2800);
+    print_file_string(x, y, length, String, window_selector, 3, 0);
+}
+
+void wrapper_copy_string(int x, int y, int length, byte *str, int window_selector)
+{
+    print_file_string(x, y, length, str, window_selector, 8, 0xC);
 }
 
 int count_pixels(byte *str, int length)
@@ -122,11 +131,6 @@ int count_pixels(byte *str, int length)
     if((pixels & 7) != 0)
         tiles +=1;
     return tiles;
-}
-
-void wrapper_copy_string(int x, int y, int length, byte *str, int window_selector)
-{
-    print_file_string(x, y, length, str, window_selector, 0x6000);
 }
 
 void clearArr(int x, int y, int width, unsigned short *tilesetDestPtr)
@@ -143,18 +147,19 @@ void clearArr(int x, int y, int width, unsigned short *tilesetDestPtr)
     }
 }
 
-void print_file_string(int x, int y, int length, byte *str, int window_selector, int offset)
+void print_file_string(int x, int y, int length, byte *str, int window_selector, int windowX, int windowY)
 {
     int *tilesetBasePtr = (int *)(0x82B79B4 + (window_selector * 20));
     int width = tilesetBasePtr[2];
     unsigned short *tilesetDestPtr = (unsigned short *)(tilesetBasePtr[0]);
-    clearArr(x, y, width, tilesetDestPtr); //Cleans all of the arrangements this line could ever use
+	tilesetDestPtr = tilesetDestPtr - windowX - (windowY * width);
+    clearArr(x + windowX, y + windowY, width, tilesetDestPtr); //Cleans all of the arrangements this line could ever use
     
-    int pixelX = x * 8;
-    int pixelY = (y * 8) + 3;
+    int pixelX = (x + windowX) * 8;
+    int pixelY = ((y + windowY) * 8) + 3;
     int realmask = *palette_mask;
     *palette_mask = 0; //File select is special and changes its palette_mask on the fly.
-    clear_rect_file(x, y, width, 2, 0x11111111, 0x400 + (offset >> 5), tilesetDestPtr); //Clean the rectangle before printing
+    clear_rect_file(x + windowX, y + windowY, width, 2, 0x11111111, 0x400, tilesetDestPtr); //Clean the rectangle before printing
 
     for (int i = 0; i < length; i++)
     {
@@ -188,11 +193,10 @@ void print_file_string(int x, int y, int length, byte *str, int window_selector,
             pixelY,
             0,
             9,
-            vram + 0x2000 + (offset >> 2),
-            &get_tile_number,
+            vram + 0x2000,
+            &get_tile_number_file_select,
             tilesetDestPtr,
-            width,
-            (offset >>5));
+            width);
 
         pixelX += pixels;
     }
@@ -445,7 +449,7 @@ void options_setup(char String[])
     
     // Re-position
     format_options_cc(String, &index, CUSTOMCC_SET_X);
-    String[index++] = 64;
+    String[index++] = (0xC << 3);
             
     char Copy[] = "Copy";
     for(int i = 0; i < (sizeof(Copy) -1); i++)
@@ -453,7 +457,7 @@ void options_setup(char String[])
             
     // Re-position
     format_options_cc(String, &index, CUSTOMCC_SET_X);
-    String[index++] = 97;
+    String[index++] = (0x10 << 3);
             
     char Delete[] = "Delete";
     for(int i = 0; i < (sizeof(Delete) -1); i++)
@@ -461,7 +465,7 @@ void options_setup(char String[])
             
     // Re-position
     format_options_cc(String, &index, CUSTOMCC_SET_X);
-    String[index++] = 137;
+    String[index++] = (0x15 << 3);
             
     char Setup[] = "Set Up";
     for(int i = 0; i < (sizeof(Setup) -1); i++)
@@ -762,12 +766,12 @@ void summary_setup(char String[], int selector)
                 String[index++] = encode_ascii(AreYouSure[i]);
             //Re-position
             format_options_cc(String, &index, CUSTOMCC_SET_X);
-            String[index++] = (0x10) << 3;
+            String[index++] = (0x13) << 3;
             for(int i = 0; i < (sizeof(Yep) -1); i++)
                 String[index++] = encode_ascii(Yep[i]);
             //Re-position
             format_options_cc(String, &index, CUSTOMCC_SET_X);
-            String[index++] = (0x14) << 3;
+            String[index++] = (0x17) << 3;
             for(int i = 0; i < (sizeof(Nope) -1); i++)
                 String[index++] = encode_ascii(Nope[i]);
         break;
@@ -776,67 +780,61 @@ void summary_setup(char String[], int selector)
     String[index++] = 0xFF;
 }
 
-void print_windows(int window_selector)
+void print_windows(int windowX, int windowY, int window_selector)
 {
     char String[64];
-    int offset = 0;
     switch(window_selector)
     {
         case 0x10: //Delete
-            offset = 0x6000;
             delete_setup(String, 0);
-            print_file_string(1, 1, 0x40, String, window_selector, offset);
+            print_file_string(1, 1, 0x40, String, window_selector, windowX, windowY);
             delete_setup(String, 1);
-            print_file_string(2, 5, 0x40, String, window_selector, offset);
+            print_file_string(2, 5, 0x40, String, window_selector, windowX, windowY);
             delete_setup(String, 2);
-            print_file_string(2, 7, 0x40, String, window_selector, offset);
+            print_file_string(2, 7, 0x40, String, window_selector, windowX, windowY);
             m2_cstm_last_printed[0] = window_selector | (m2_cstm_last_printed[0] & 0x20);
             break;
         case 0xE: //Options
-            offset = 0x1800;
             options_setup(String);
-            print_file_string(2, 1, 0x40, String, window_selector, offset);
+            print_file_string(2, 1, 0x40, String, window_selector, windowX, windowY);
             m2_cstm_last_printed[0] = window_selector | (m2_cstm_last_printed[0] & 0x20);
         break;
         case 1: //Text Speed
             if(((m2_cstm_last_printed[0] & 0x1F) != 2) && ((m2_cstm_last_printed[0] & 0x1F) != 1)) //If Text Flavour is printed, then this is too. No need to reprint. Avoids tearing
             {
-                offset = 0x6000;
                 text_speed_setup(String, 0);
-                print_file_string(1, 1, 0x40, String, window_selector, offset);
+                print_file_string(1, 1, 0x40, String, window_selector, windowX, windowY);
                 text_speed_setup(String, 1);
-                print_file_string(2, 3, 0x40, String, window_selector, offset);
+                print_file_string(2, 3, 0x40, String, window_selector, windowX, windowY);
                 text_speed_setup(String, 2);
-                print_file_string(2, 5, 0x40, String, window_selector, offset);
+                print_file_string(2, 5, 0x40, String, window_selector, windowX, windowY);
                 text_speed_setup(String, 3);
-                print_file_string(2, 7, 0x40, String, window_selector, offset);
+                print_file_string(2, 7, 0x40, String, window_selector, windowX, windowY);
                 m2_cstm_last_printed[0] = window_selector | (m2_cstm_last_printed[0] & 0x20);
             }
         break;
         case 0x2: //Text Flavour
             if((m2_cstm_last_printed[0] & 0x1F) != 2){
-                offset = 0x2800;
                 text_flavour_setup(String, 0);
-                print_file_string(1, 1, 0x40, String, window_selector, offset);
+                print_file_string(1, 1, 0x40, String, window_selector, windowX, windowY);
                 text_flavour_setup(String, 1);
-                print_file_string(1, 3, 0x40, String, window_selector, offset);
+                print_file_string(1, 3, 0x40, String, window_selector, windowX, windowY);
                 text_flavour_setup(String, 2);
-                print_file_string(2, 5, 0x40, String, window_selector, offset);
+                print_file_string(2, 5, 0x40, String, window_selector, windowX, windowY);
                 text_flavour_setup(String, 3);
-                print_file_string(2, 7, 0x40, String, window_selector, offset);
+                print_file_string(2, 7, 0x40, String, window_selector, windowX, windowY);
                 text_flavour_setup(String, 4);
-                print_file_string(2, 9, 0x40, String, window_selector, offset);
+                print_file_string(2, 9, 0x40, String, window_selector, windowX, windowY);
                 text_flavour_setup(String, 5);
-                print_file_string(2, 11, 0x40, String, window_selector, offset);
+                print_file_string(2, 11, 0x40, String, window_selector, windowX, windowY);
                 text_flavour_setup(String, 6);
-                print_file_string(2, 13, 0x40, String, window_selector, offset);
+                print_file_string(2, 13, 0x40, String, window_selector, windowX, windowY);
                 m2_cstm_last_printed[0] = window_selector; //Set the alphabet bit to 0.
             }
         break;
         case 0xF: //Copy
-            offset = 0x6000;
             copy_setup(String);
-            print_file_string(1, 1, 0x40, String, window_selector, offset);
+            print_file_string(1, 1, 0x40, String, window_selector, windowX, windowY);
         break;
         case 0x3: //Ness' name + description
         case 0x4: //Paula's name + description
@@ -846,9 +844,8 @@ void print_windows(int window_selector)
         case 0x8: //FavFood's name + description
         case 0x9: //FavThing's name + description
             if((m2_cstm_last_printed[0] & 0x1F) != window_selector){
-				offset = 0x1800;
                 description_setup(String, window_selector);
-                print_file_string(9, 1, 0x40, String, window_selector, offset);
+                print_file_string(9, 1, 0x40, String, window_selector, windowX, windowY);
                 m2_cstm_last_printed[0] = window_selector | (m2_cstm_last_printed[0] & 0x20);
             }
         break;
@@ -856,19 +853,18 @@ void print_windows(int window_selector)
             if((m2_cstm_last_printed[0] & 0x20) == 0) //Print this once and stop
             {
                 //Main thing
-                offset = 0x2800;
                 alphabet_setup(String, 0, true);
-                print_file_string(2, 1, 0x40, String, window_selector, offset);
+                print_file_string(2, 1, 0x40, String, window_selector, windowX, windowY);
                 alphabet_setup(String, 1, true);
-                print_file_string(2, 3, 0x40, String, window_selector, offset);
+                print_file_string(2, 3, 0x40, String, window_selector, windowX, windowY);
                 alphabet_setup(String, 2, true);
-                print_file_string(2, 5, 0x40, String, window_selector, offset);
+                print_file_string(2, 5, 0x40, String, window_selector, windowX, windowY);
                 alphabet_setup(String, 3, true);
-                print_file_string(2, 7, 0x40, String, window_selector, offset);
+                print_file_string(2, 7, 0x40, String, window_selector, windowX, windowY);
                 alphabet_setup(String, 4, true);
-                print_file_string(2, 9, 0x40, String, window_selector, offset);
+                print_file_string(2, 9, 0x40, String, window_selector, windowX, windowY);
                 alphabet_setup(String, 5, true);
-                print_file_string(2, 13, 0x40, String, window_selector, offset);
+                print_file_string(2, 13, 0x40, String, window_selector, windowX, windowY);
                 m2_cstm_last_printed[0] = (m2_cstm_last_printed[0] & 0x1F) | 0x20; //Printed flag
             }
         break;
@@ -876,19 +872,18 @@ void print_windows(int window_selector)
             if((m2_cstm_last_printed[0] & 0x40) == 0) //Print this once and stop
             {
                 //Main thing
-                offset = 0x2800;
                 alphabet_setup(String, 0, false);
-                print_file_string(2, 1, 0x40, String, window_selector, offset);
+                print_file_string(2, 1, 0x40, String, window_selector, windowX, windowY);
                 alphabet_setup(String, 1, false);
-                print_file_string(2, 3, 0x40, String, window_selector, offset);
+                print_file_string(2, 3, 0x40, String, window_selector, windowX, windowY);
                 alphabet_setup(String, 2, false);
-                print_file_string(2, 5, 0x40, String, window_selector, offset);
+                print_file_string(2, 5, 0x40, String, window_selector, windowX, windowY);
                 alphabet_setup(String, 3, false);
-                print_file_string(2, 7, 0x40, String, window_selector, offset);
+                print_file_string(2, 7, 0x40, String, window_selector, windowX, windowY);
                 alphabet_setup(String, 4, true);
-                print_file_string(2, 9, 0x40, String, window_selector, offset);
+                print_file_string(2, 9, 0x40, String, window_selector, windowX, windowY);
                 alphabet_setup(String, 5, true);
-                print_file_string(2, 13, 0x40, String, window_selector, offset);
+                print_file_string(2, 13, 0x40, String, window_selector, windowX, windowY);
                 m2_cstm_last_printed[0] = (m2_cstm_last_printed[0] & 0x1F) | 0x40; //Printed flag
             }
         
@@ -897,13 +892,12 @@ void print_windows(int window_selector)
         
         break;
         case 0xD: //Is this okay? Yes No
-            offset = 0x2800;
             summary_setup(String, 0);
-            print_file_string(0xC, 5, 0x40, String, window_selector, offset);
+            print_file_string(0xC, 5, 0x40, String, window_selector, windowX, windowY);
             summary_setup(String, 1);
-            print_file_string(0xC, 0xB, 0x40, String, window_selector, offset);
+            print_file_string(0xC, 0xB, 0x40, String, window_selector, windowX, windowY);
             summary_setup(String, 2);
-            print_file_string(0x1, 0x11, 0x40, String, window_selector, offset);
+            print_file_string(0x1, 0x11, 0x40, String, window_selector, windowX, windowY);
             m2_cstm_last_printed[0] = window_selector; //Set the alphabet bit to 0.
         break;
         default: //File select string, already printed
@@ -1018,7 +1012,7 @@ void format_file_string(FILE_SELECT *file)
 
     // Re-position
     format_file_cc(file, &index, CUSTOMCC_SET_X);
-    file->formatted_str[index++] = 72;
+    file->formatted_str[index++] = (0x10 << 3);
     
     for (int i = 0; i < (sizeof(levelStr) - 1); i++)
         file->formatted_str[index++] = encode_ascii(levelStr[i]);
@@ -1052,12 +1046,12 @@ byte print_character_formatted(byte chr, int x, int y, int font, int foreground)
         return 8;
     }
 
-    return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, *tilemap_pointer, 32, 0);
+    return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, *tilemap_pointer, 32);
 }
 
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground)
 {
-    return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, NULL, 32, 0);
+    return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, NULL, 32);
 }
 
 // Prints a special tile. Pixels are copied to the VWF buffer.
@@ -1095,7 +1089,7 @@ void map_tile(unsigned short tile, int x, int y)
 }
 
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
-    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth, int tilemapOffset)
+    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth)
 {
     int tileWidth = m2_font_widths[font];
     int tileHeight = m2_font_heights[font];
@@ -1147,9 +1141,9 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
 
             if (tilemapPtr != NULL)
             {
-                tilemapPtr[tileX + dTileX + ((tileY + dTileY) * tilemapWidth)] = paletteMask | (tileIndex + tilemapOffset);
+                tilemapPtr[tileX + dTileX + ((tileY + dTileY) * tilemapWidth)] = paletteMask | tileIndex;
                 if(useful)
-                    tilemapPtr[tileX + dTileX + ((tileY + dTileY + 1) * tilemapWidth)] = paletteMask | (realTileIndex + tilemapOffset);
+                    tilemapPtr[tileX + dTileX + ((tileY + dTileY + 1) * tilemapWidth)] = paletteMask | realTileIndex;
             }
 
             if (renderedWidth - leftPortionWidth > 0 && leftPortionWidth < 8)
@@ -1182,9 +1176,9 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                 
                 if (tilemapPtr != NULL)
                 {
-                    tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY) * tilemapWidth)] = paletteMask | (tileIndex + tilemapOffset);
+                    tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY) * tilemapWidth)] = paletteMask | tileIndex ;
                     if(useful)
-                        tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY + 1) * tilemapWidth)] = paletteMask | (realTileIndex + tilemapOffset);
+                        tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY + 1) * tilemapWidth)] = paletteMask | realTileIndex;
                 }
             }
 

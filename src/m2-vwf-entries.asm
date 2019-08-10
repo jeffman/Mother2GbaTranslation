@@ -1586,7 +1586,6 @@ pop     {r5,pc}
 _4092_print_window:
 push    {lr}
 push    {r0-r4}
-mov     r0,r2
 bl      print_windows
 pop     {r0-r4}
 bl      0x800341C
@@ -1596,7 +1595,7 @@ pop     {pc}
 _4298_print_window:
 push    {lr}
 push    {r0-r4}
-ldr     r0,[sp,#0x20]
+ldr     r2,[sp,#0x20]
 bl      print_windows
 pop     {r0-r4}
 mov     r2,#0

@@ -38,7 +38,7 @@ void print_special_character(int tile, int x, int y);
 void map_special_character(unsigned short tile, int x, int y);
 void map_tile(unsigned short tile, int x, int y);
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
-    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth, int tilemapOffset);
+    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth);
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground);
 int print_window_header_string(int *dest, byte *str, int x, int y);
 void clear_window_header(int *dest, int length, int x, int y);
@@ -68,11 +68,12 @@ void print_number_menu_current(byte digit, WINDOW* window);
 void clear_number_menu(WINDOW* window);
 void format_cash_window(int value, int padding, byte* str);
 void handle_first_window(WINDOW* window);
-void print_file_string(int x, int y, int length, byte *str, int window_selector, int offset);
+void print_file_string(int x, int y, int length, byte *str, int window_selector, int windowX, int windowY);
 void wrapper_file_string(int x, int y, int length, byte *str, int window_selector);
 void format_file_string(FILE_SELECT *file);
 
 extern unsigned short m2_coord_table[];
+extern unsigned short m2_coord_table_file[];
 extern int m2_bits_to_nybbles[];
 extern byte m2_nybbles_to_bits[];
 extern byte *m2_font_table[];
