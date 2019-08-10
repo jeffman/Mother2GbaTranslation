@@ -133,9 +133,9 @@ int count_pixels(byte *str, int length)
     return tiles;
 }
 
-void clearArr(int x, int y, int width, unsigned short *tilesetDestPtr)
+void clearArr(int x, int y, int width, unsigned short *tilesetDestPtr, int windowX)
 {
-    for(int i = x; i < width - 2; i++)
+    for(int i = x; i < width + windowX - 2; i++)
     {
         if((tilesetDestPtr[i + (y * width)] & 0x3FF) != 0x95)
         {
@@ -153,7 +153,7 @@ void print_file_string(int x, int y, int length, byte *str, int window_selector,
     int width = tilesetBasePtr[2];
     unsigned short *tilesetDestPtr = (unsigned short *)(tilesetBasePtr[0]);
 	tilesetDestPtr = tilesetDestPtr - windowX - (windowY * width);
-    clearArr(x + windowX, y + windowY, width, tilesetDestPtr); //Cleans all of the arrangements this line could ever use
+    clearArr(x + windowX, y + windowY, width, tilesetDestPtr, windowX); //Cleans all of the arrangements this line could ever use
     
     int pixelX = (x + windowX) * 8;
     int pixelY = ((y + windowY) * 8) + 3;
