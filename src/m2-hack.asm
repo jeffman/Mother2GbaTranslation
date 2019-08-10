@@ -691,10 +691,70 @@ pop     {pc}
 bl ba61c_get_print_inventory_window
 
 //---------------------------------------------------------
+// B9ECC hacks (Fixes inventory when out of selecting a party member to give food to via B button)
+//---------------------------------------------------------
+.org 0x80B9ECC
+bl b9ecc_get_print_inventory_window
+
+//---------------------------------------------------------
 // BA48E hacks (Fixes inventory when out of Give via text)
 //---------------------------------------------------------
 .org 0x80BA48E
 bl ba48e_get_print_inventory_window
+
+//---------------------------------------------------------
+// B9F96 hacks (Fixes main window after consuming an item)
+//---------------------------------------------------------
+.org 0x80B9F96
+bl _reprint_first_menu
+
+//---------------------------------------------------------
+// B9CF8 hacks (Fixes main window after an item prints a dialogue)
+//---------------------------------------------------------
+.org 0x80B9CF8
+bl _reprint_first_menu
+
+//---------------------------------------------------------
+// B9C88 hacks (Fixes main window after an equippable item prints a dialogue)
+//---------------------------------------------------------
+.org 0x80B9C88
+bl _reprint_first_menu
+
+//---------------------------------------------------------
+// BA52C hacks (Fixes main window after giving an item)
+//---------------------------------------------------------
+.org 0x80BA52C
+bl _reprint_first_menu
+
+//---------------------------------------------------------
+// BA44E hacks (Fixes main window after not being able to give an item)
+//---------------------------------------------------------
+.org 0x80BA44E
+bl _reprint_first_menu
+
+//---------------------------------------------------------
+// BA7BE hacks (Fixes main window after calling the help function)
+//---------------------------------------------------------
+.org 0x80BA7BE
+bl ba7be_reprint_first_menu
+
+//---------------------------------------------------------
+// B9AA2 hacks (Fixes main window after exiting the item action window)
+//---------------------------------------------------------
+.org 0x80B9AA2
+bl b9aa2_reprint_first_menu
+
+//---------------------------------------------------------
+// C6BA2 hacks (Fixes main window after exiting the Stored Goods window)
+//---------------------------------------------------------
+.org 0x80C6BA2
+bl c6ba2_reprint_first_menu
+
+//---------------------------------------------------------
+// BCEB0 hacks (Fixes main window after exiting the pickup menu)
+//---------------------------------------------------------
+.org 0x80BCEB0
+bl _reprint_first_menu
 
 //---------------------------------------------------------
 // C1C98 hacks (menu selection)
@@ -1176,6 +1236,7 @@ m2_enemy_attributes:
 .definelabel m2_cstm_last_printed   ,0x3001F4F
 .definelabel m2_player1             ,0x3001F50
 .definelabel m2_script_readability  ,0x3004F08
+.definelabel m2_psi_exist           ,0x300525C
 .definelabel m2_active_window_pc    ,0x3005264
 .definelabel m2_setup_naming_mem    ,0x8001D5C
 .definelabel m2_soundeffect         ,0x8001720
