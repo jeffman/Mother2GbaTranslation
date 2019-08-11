@@ -1082,6 +1082,8 @@ nop
 //Text Speed options
 .org 0x8003BBC :: bl _4092_print_window //Printing
 .org 0x8003FA2 :: bl _4092_print_window
+.org 0x8003E86 :: bl _3e86_special_setup //Avoid printing when not necessary
+.org 0x8003EF2 :: bl _3e86_special_setup //Avoid printing when not necessary
 .org 0x82B79D0 :: dw 0x10 //new window width
 .org 0x86DB0FC :: .incbin "data/m2-textspeed-template.bin"
 

@@ -800,7 +800,7 @@ void print_windows(int windowX, int windowY, int window_selector)
             m2_cstm_last_printed[0] = window_selector | (m2_cstm_last_printed[0] & 0x20);
         break;
         case 1: //Text Speed
-            if((m2_cstm_last_printed[0] & 0x1F) != 1) //If Text Flavour is printed, don't reprint it
+            if(((m2_cstm_last_printed[0] & 0x1F) != 1) && ((m2_cstm_last_printed[0] & 0x80) == 0)) //If Text Flavour is printed, don't reprint it
             {
                 text_speed_setup(String, 0);
                 print_file_string(1, 1, 0x40, String, window_selector, windowX, windowY);
@@ -812,6 +812,8 @@ void print_windows(int windowX, int windowY, int window_selector)
                 print_file_string(2, 7, 0x40, String, window_selector, windowX, windowY);
                 m2_cstm_last_printed[0] = window_selector | (m2_cstm_last_printed[0] & 0x20);
             }
+			else if ((m2_cstm_last_printed[0] & 0x80) != 0) //This has not been printed. Instead Text Flavour has been.
+				m2_cstm_last_printed[0] = 2;
         break;
         case 0x2: //Text Flavour
             if((m2_cstm_last_printed[0] & 0x1F) != 2){

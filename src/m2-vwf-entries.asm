@@ -1603,6 +1603,7 @@ mov     r3,#0
 pop     {pc}
 
 //==============================================================================
+//X cursor for the Options submenu in the File Select window
 _41D4_cursor_X:
 push    {lr}
 cmp     r0,#1
@@ -1627,6 +1628,7 @@ lsl     r0,r0,#3
 pop     {pc}
 
 //==============================================================================
+//Makes sure Paula's window is loaded properly since the name length has been changed to 5 and the game previously used the 4 to load the window too
 _4f7c_window_selector:
 push    {lr}
 mov     r0,#4
@@ -1697,7 +1699,7 @@ pop     {r4-r5,pc}
 .pool
 
 //==============================================================================
-//
+//Fixes issue with file select menu not printing after going back to it from the alphabet
 _53f6_fix_out_of_description:
 push    {lr}
 bl      0x800341C
@@ -1705,7 +1707,7 @@ bl      _setup_file_strings
 pop     {pc}
 
 //==============================================================================
-//
+//Fixes issue with the option submenu (if it's there) and the file select menu after going back to the text speed window from the text flavour window
 _3dce_fix_out_of_text_flavour:
 push    {lr}
 bl      0x8003F44
@@ -1722,3 +1724,17 @@ bl      _4092_print_window //Prints the option menu
 @@end:
 bl      _setup_file_strings
 pop     {pc}
+
+//==============================================================================
+//Fixes text reprinting when pressing up or down in the text flavour window
+_3e86_special_setup:
+push {lr}
+push {r0-r2}
+ldr r0,=#m2_cstm_last_printed
+ldrb r2,[r0,#0]
+mov r1,#0x80
+orr r1,r2
+strb r1,[r0,#0]
+pop {r0-r2}
+bl 0x8003F44
+pop {pc}
