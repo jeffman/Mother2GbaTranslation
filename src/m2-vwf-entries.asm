@@ -1636,13 +1636,89 @@ pop     {pc}
 
 .pool
 
-////==============================================================================
-_2322_setup_windowing: //Fix the random garbage issue for the alphabet for good
-push {lr}
-bl 0x8012460 //Default code which sets up the names by copying memory which can be random
-push {r0-r1}
-ldr r0,=#m2_cstm_last_printed  //Set the window flag to 0 so no issue can happen
-mov r1,#0
-strb r1,[r0,#0]
-pop {r0-r1}
-pop {pc}
+//==============================================================================
+//Fix the random garbage issue for the alphabet for good
+_2322_setup_windowing:
+push    {lr}
+bl      0x8012460 //Default code which sets up the names by copying memory which can be random
+push    {r0-r1}
+ldr     r0,=#m2_cstm_last_printed  //Set the window flag to 0 so no issue can happen
+mov     r1,#0
+strb    r1,[r0,#0]
+pop     {r0-r1}
+pop     {pc}
+
+.pool
+
+//==============================================================================
+//Loads and prints the text lines for the file select main window
+_setup_file_strings:
+push    {r4-r5,lr}
+add     sp,#-4
+ldr     r5,=#0x3000024
+ldr     r2,[r5,#0]
+mov     r4,#0
+str     r4,[r2,#4]
+mov     r0,#0
+bl      0x8002170 //Routine which loads the save corresponding to r0
+mov     r0,#1
+bl      0x8002170
+mov     r0,#2
+bl      0x8002170
+ldr     r3,[r5,#0]
+mov     r0,#0x84
+lsl     r0,r0,#2
+add     r3,r3,r0
+str     r4,[sp,#0]
+mov     r0,#2
+mov     r1,#1
+mov     r2,#0x40
+bl      wrapper_file_string
+ldr     r3,[r5,#0]
+ldr     r0,=#0x454
+add     r3,r3,r0
+str     r4,[sp,#0]
+mov     r0,#2
+mov     r1,#3
+mov     r2,#0x40
+bl      wrapper_file_string
+ldr     r3,[r5,#0]
+mov     r0,#0xD3
+lsl     r0,r0,#3
+add     r3,r3,r0
+str     r4,[sp,#0]
+mov     r0,#2
+mov     r1,#5
+mov     r2,#0x40
+bl      wrapper_file_string
+add     sp,#4
+pop     {r4-r5,pc}
+
+.pool
+
+//==============================================================================
+//
+_53f6_fix_out_of_description:
+push    {lr}
+bl      0x800341C
+bl      _setup_file_strings
+pop     {pc}
+
+//==============================================================================
+//
+_3dce_fix_out_of_text_flavour:
+push    {lr}
+bl      0x8003F44
+mov     r0,#0
+ldsh    r0,[r5,r0] //Checks whether or not to print the option menu
+cmp     r0,#0
+blt     @@end
+
+mov     r0,#4
+mov     r1,#7
+mov     r2,#0xE
+bl      _4092_print_window //Prints the option menu
+
+@@end:
+bl      _setup_file_strings
+pop     {pc}

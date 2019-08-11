@@ -1095,6 +1095,7 @@ nop
 .org 0x80053F2 :: mov r1,#4
 .org 0x82B79E4 :: dw 0xF //new window width
 .org 0x82B79E8 :: dw 0x10 //new window height
+.org 0x8003DCE :: bl _3dce_fix_out_of_text_flavour
 .org 0x86DB1F8 :: .incbin "data/m2-flavour-template.bin"
 
 //Delete
@@ -1109,6 +1110,7 @@ nop
 .org 0x8004268 :: mov r2,#0x2 :: bl wrapper_copy_string
 
 //Descriptions and Names
+.org 0x80053F6 :: bl _53f6_fix_out_of_description
 .org 0x8004ED2 :: bl wrapper_name_string //Printing names
 .org 0x8004EDC :: bl _4092_print_window //Printing descriptions
 .org 0x86DB2B8 :: .incbin "data/m2-descriptions-template.bin"

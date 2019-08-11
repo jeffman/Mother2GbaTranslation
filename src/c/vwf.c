@@ -800,7 +800,7 @@ void print_windows(int windowX, int windowY, int window_selector)
             m2_cstm_last_printed[0] = window_selector | (m2_cstm_last_printed[0] & 0x20);
         break;
         case 1: //Text Speed
-            if(((m2_cstm_last_printed[0] & 0x1F) != 2) && ((m2_cstm_last_printed[0] & 0x1F) != 1)) //If Text Flavour is printed, then this is too. No need to reprint. Avoids tearing
+            if((m2_cstm_last_printed[0] & 0x1F) != 1) //If Text Flavour is printed, don't reprint it
             {
                 text_speed_setup(String, 0);
                 print_file_string(1, 1, 0x40, String, window_selector, windowX, windowY);
