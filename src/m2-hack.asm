@@ -1056,7 +1056,7 @@ nop
 .org 0x8003998 :: mov r0,1      // new window x
 .org 0x8003F92 :: mov r0,1
 .org 0x80053DC :: mov r0,1
-.org 0x8003A04 :: mov r0,1
+.org 0x8003A04 :: bl _3a04_highlight_file //Changes window position and makes sure the file is properly highlighted
 .org 0x8003B40 :: mov r0,0x10   // new cursor x
 .org 0x86DB070 :: .incbin "data/m2-fileselect-template.bin"
 
@@ -1068,20 +1068,26 @@ nop
 .org 0x8002284 :: bl format_file_string
 
 // Printing
-.org 0x80038CC :: mov r2,0x40 :: bl wrapper_file_string
-.org 0x80038DE :: mov r2,0x40 :: bl wrapper_file_string
-.org 0x80038F2 :: mov r2,0x40 :: bl wrapper_file_string
+.org 0x80038CC :: mov r2,0x40 :: bl wrapper_first_file_string
+.org 0x80038DE :: mov r2,0x40 :: bl wrapper_first_file_string
+.org 0x80038F2 :: mov r2,0x40 :: bl wrapper_first_file_string
 
 // Bump file select cursor up by 3 pixels - Not needed now that the text is 3 pixels lower
 //.org 0x8003844 :: add r0,r5,1
 
 // File select options
+.org 0x8003F78 :: bl _3f78_highlight_file //Keeps highlight consistent when changing palette in the text flavour window
+.org 0x8004072 :: bl _40e2_cursor_X //Removing highlight position
+.org 0x8004080 :: mov r3,#4 //Remove highlight of 4 tiles maximum
 .org 0x8004092 :: bl _4092_print_window //Printing
-.org 0x80041D4 :: bl _41D4_cursor_X //New cursor's X
+.org 0x80040E2 :: bl _40e2_cursor_X //Highlight position
+.org 0x80040F4 :: mov r3,#4 //Print highlight of 4 tiles maximum
+.org 0x80041D4 :: bl _41d4_cursor_X //New cursor's X
 
 //Text Speed options
 .org 0x8003BBC :: bl _4092_print_window //Printing
 .org 0x8003FA2 :: bl _4092_print_window
+.org 0x8003F8C :: mov r3,#4 //Print highlight of 4 tiles maximum
 .org 0x8003E86 :: bl _3e86_special_setup //Avoid printing when not necessary
 .org 0x8003EF2 :: bl _3e86_special_setup //Avoid printing when not necessary
 .org 0x82B79D0 :: dw 0x10 //new window width
@@ -1145,9 +1151,9 @@ nop
 .org 0x800556A :: nop :: nop //Sends to a bunch of 0xFF
 .org 0x8005530 :: mov r0,#0x11 //New x for King's name
 .org 0x8005536 :: bl wrapper_name_summary_string //Printing King's name
-.org 0x8005578 :: bl count_pixels :: mov r2,#6 :: mov r4,#0x17 :: sub r0,r4,r0 //Count length of Food's name in tiles
+.org 0x8005578 :: bl wrapper_count_pixels_to_tiles :: mov r2,#6 :: mov r4,#0x17 :: sub r0,r4,r0 //Count length of Food's name in tiles
 .org 0x8005588 :: bl wrapper_name_summary_string //Printing Food's name
-.org 0x8005596 :: bl count_pixels :: mov r2,#6 :: sub r4,r4,r0 //Count length of Food's name in tiles
+.org 0x8005596 :: bl wrapper_count_pixels_to_tiles :: mov r2,#6 :: sub r4,r4,r0 //Count length of Thing's name in tiles
 .org 0x80055A6 :: bl wrapper_name_summary_string //Printing Thing's name
 .org 0x80056F0 :: add r0,#0x90 //New cursor's X
 .org 0x86DBC6C :: .incbin "data/m2-summary-template.bin"

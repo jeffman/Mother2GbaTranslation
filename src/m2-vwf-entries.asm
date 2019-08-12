@@ -1602,10 +1602,11 @@ mov     r2,#0
 mov     r3,#0
 pop     {pc}
 
-//==============================================================================
-//X cursor for the Options submenu in the File Select window
-_41D4_cursor_X:
-push    {lr}
+//
+//X cursor for the Options submenu position
+_position_X_Options:
+push {lr}
+
 cmp     r0,#1
 bne     @@next1
 mov     r0,#5
@@ -1624,6 +1625,23 @@ b       @@end
 mov     r0,#20
 
 @@end:
+pop {pc}
+
+//==============================================================================
+//Sets X for highlighting the Options submenu in the File Select window
+_40e2_cursor_X:
+push    {lr}
+mov     r0,r1
+bl      _position_X_Options
+sub     r1,r0,#3
+mov     r0,#2
+pop     {pc}
+
+//==============================================================================
+//Sets X cursor for the Options submenu in the File Select window
+_41d4_cursor_X:
+push    {lr}
+bl      _position_X_Options
 lsl     r0,r0,#3
 pop     {pc}
 
@@ -1656,9 +1674,11 @@ pop     {pc}
 //Loads and prints the text lines for the file select main window
 _setup_file_strings:
 push    {r4-r5,lr}
-add     sp,#-4
+add     sp,#-8
 ldr     r5,=#0x3000024
 ldr     r2,[r5,#0]
+ldr     r4,[r2,#4]
+str     r4,[sp,#4] //Save this here
 mov     r4,#0
 str     r4,[r2,#4]
 mov     r0,#0
@@ -1675,7 +1695,7 @@ str     r4,[sp,#0]
 mov     r0,#2
 mov     r1,#1
 mov     r2,#0x40
-bl      wrapper_file_string
+bl      wrapper_file_string_selection
 ldr     r3,[r5,#0]
 ldr     r0,=#0x454
 add     r3,r3,r0
@@ -1683,7 +1703,7 @@ str     r4,[sp,#0]
 mov     r0,#2
 mov     r1,#3
 mov     r2,#0x40
-bl      wrapper_file_string
+bl      wrapper_file_string_selection
 ldr     r3,[r5,#0]
 mov     r0,#0xD3
 lsl     r0,r0,#3
@@ -1692,8 +1712,15 @@ str     r4,[sp,#0]
 mov     r0,#2
 mov     r1,#5
 mov     r2,#0x40
-bl      wrapper_file_string
-add     sp,#4
+bl      wrapper_file_string_selection
+mov r0,#1
+mov r1,#0
+mov r2,#0
+bl 0x800341C
+ldr     r2,[r5,#0]
+ldr     r4,[sp,#4]
+str     r4,[r2,#4] //Restore this
+add     sp,#8
 pop     {r4-r5,pc}
 
 .pool
@@ -1737,4 +1764,39 @@ orr r1,r2
 strb r1,[r0,#0]
 pop {r0-r2}
 bl 0x8003F44
+pop {pc}
+
+//==============================================================================
+//Highlights all of the file string with the proper palette
+_highlight_file:
+push {lr}
+mov r0,#2
+ldr r1,=#0x3000024 //Load in r1 the y co-ordinate
+ldr r1,[r1,#0]
+ldr r1,[r1,#8]
+lsl r1,r1,#1
+add r1,#1
+mov r2,#0
+mov r3,r4
+bl setPaletteOnFile
+pop {pc}
+
+.pool
+
+//==============================================================================
+//File highlighting for the up-down arrows in the text flavour window
+_3f78_highlight_file:
+push {lr}
+bl _highlight_file
+mov r0,#4 //Clobbered code
+ldsh r2,[r4,r0]
+pop {pc}
+
+//==============================================================================
+//File highlighting for when a file is selected
+_3a04_highlight_file:
+push {lr}
+bl _highlight_file
+mov r0,#1 //Clobbered code
+mov r1,#0
 pop {pc}

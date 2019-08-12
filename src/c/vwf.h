@@ -1,6 +1,5 @@
 #include "types.h"
 #include "pc.h"
-#include "fileselect.h"
 
 #define NULL (0)
 #define QUESTION_MARK 0x1F
@@ -28,7 +27,9 @@
 byte decode_character(byte chr);
 byte encode_ascii(char chr);
 int get_tile_number(int x, int y);
-int count_pixels(byte *str, int length);
+int ascii_strlen(char *str);
+int wrapper_count_pixels_to_tiles(byte *str, int length);
+int count_pixels_to_tiles(byte *str, int length, int startingPos);
 int expand_bit_depth(byte row, int foreground);
 byte reduce_bit_depth(int row, int foreground);
 byte print_character(byte chr, int x, int y);
@@ -68,12 +69,8 @@ void print_number_menu_current(byte digit, WINDOW* window);
 void clear_number_menu(WINDOW* window);
 void format_cash_window(int value, int padding, byte* str);
 void handle_first_window(WINDOW* window);
-void print_file_string(int x, int y, int length, byte *str, int window_selector, int windowX, int windowY);
-void wrapper_file_string(int x, int y, int length, byte *str, int window_selector);
-void format_file_string(FILE_SELECT *file);
 
 extern unsigned short m2_coord_table[];
-extern unsigned short m2_coord_table_file[];
 extern int m2_bits_to_nybbles[];
 extern byte m2_nybbles_to_bits[];
 extern byte *m2_font_table[];
