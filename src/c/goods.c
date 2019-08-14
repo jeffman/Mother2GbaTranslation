@@ -186,6 +186,33 @@ int goods_outer_process(WINDOW* window, int y_offset, bool give)
     return ACTION_NONE;
 }
 
+//Returns in *String a string containing either "PSI \n Check" or "Check" based on the value of PSIValid
+void setupShortMainMenu(char *String, byte PSIValid)
+{
+    String[0] = 1;
+    String[1] = 0xFF;
+    char PSI[] = "PSI";
+    char Check[] = "Check";
+    int index = 2;
+    if(PSIValid != 0xFF)
+    {
+        String[index++] = 0x5F;
+        String[index++] = 0xFF;
+        String[index++] = 0x08;
+        for(int i = 0; i < (sizeof(PSI) - 1); i++)
+            String[index++] = encode_ascii(PSI[i]);
+    }
+    String[index++] = 1;
+    String[index++] = 0xFF;
+    String[index++] = 0x5F;
+    String[index++] = 0xFF;
+    String[index++] = 0x08;
+    for(int i = 0; i < (sizeof(Check) - 1); i++)
+        String[index++] = encode_ascii(Check[i]);
+    String[index++] = 0;
+    String[index++] = 0xFF;
+}
+
 // Process the inner Goods window (i.e. item selection)
 // Called every frame. Replaces $80BEB6C fully.
 // Returns

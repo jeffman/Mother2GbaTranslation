@@ -1570,6 +1570,19 @@ pop     {r4}
 bl      0x80BD7F8 //Copies old arrangements, this includes the highlight
 pop     {pc}
 
+//==============================================================================
+//Specific Routine which calls get_print_inventory_window 
+b9ecc_get_print_inventory_window:
+push    {lr}
+push    {r4-r5}
+mov     r5,r4
+mov     r4,#0x1C
+sub     r5,r5,r4 //Address with the windows' pc
+ldr     r4,=#0x3005230
+bl      get_print_inventory_window //Prints old inventory
+pop     {r4-r5}
+bl      0x80BD7F8 //Copies old arrangements, this includes the highlight
+pop     {pc}
 
 //==============================================================================
 //Specific Routine which calls get_print_inventory_window 
@@ -1579,5 +1592,168 @@ mov     r5,r7
 bl      get_print_inventory_window //Prints old inventory
 bl      0x80BD7F8 //Copies old arrangements, this includes the highlight
 pop     {r5,pc}
+
+.pool
+
+//==============================================================================
+//Reprints both the Main window and the Cash window if need be
+generic_reprinting_first_menu:
+push    {lr}
+push    {r0-r6}
+add     sp,#-8
+ldr     r6,=#0x3005078 //Make sure the game expects only the right amount of lines to be written (so only 1)
+ldrb    r4,[r6,#0]
+str     r4,[sp,#4]
+mov     r4,#0
+strb    r4,[r6,#0]
+ldr     r4,=#0x3005230 //Window generic address
+
+//Main window
+mov     r2,#1
+ldr     r0,[r4,#0] //Main window place in ram
+ldrb    r0,[r0,#0]
+and     r2,r0
+cmp     r2,#0
+beq     @@cash //Check if window is enabled before printing in it
+
+ldr     r0,=#0x8B17EE4
+ldr     r1,=#0x8B17424
+ldr     r3,=m2_psi_exist //Flag which if not 0xFF means no one has PSI
+ldrb    r3,[r3,#0]
+cmp     r3,#0xFF
+beq     @@psiNotFound
+mov     r2,#0
+b       @@keep_going
+@@psiNotFound:
+mov     r2,#1
+@@keep_going:
+bl      m2_strlookup //Load the proper menu string based on m2_psi_exist
+mov     r1,#0
+str     r1,[sp,#0]
+mov     r1,r0
+ldr     r0,[r4,#0]
+mov     r2,#5
+mov     r3,#2
+bl      0x80BE4C8 //Let it do its things
+ldr     r0,[r4,#0]
+bl      0x80C8BE4 //Print text in the window
+
+@@cash:
+//Cash
+mov     r2,#1
+ldr     r0,[r4,#4] //Cash window place in ram
+ldrb    r0,[r0,#0]
+and     r2,r0
+cmp     r2,#0
+beq     @@end //Check if window is enabled before printing in it
+
+ldr     r2,=#0x300130C
+ldr     r0,[r2,#0]
+mov     r1,#2
+orr     r0,r1
+str     r0,[r2,#0]
+ldr     r0,=#0x3001D40
+mov     r1,#0xD2
+lsl     r1,r1,#3
+add     r0,r0,r1
+ldr     r0,[r0,#0] //Load the money
+ldr     r5,=#0x3005200
+ldr     r1,[r5,#0]
+mov     r2,r1 //Load the string address
+mov     r1,#0x30 //Padding
+bl      format_cash_window
+ldr     r0,[r4,#4]
+ldr     r1,[r5,#0]
+mov     r2,#0
+bl      m2_initwindow //Let it do its things
+ldr     r0,[r4,#4]
+bl      0x80C8BE4 //Print text in the window
+
+@@end:
+ldr     r4,[sp,#4]
+strb    r4,[r6,#0] //Restore expected amount of lines to be written
+add     sp,#8
+pop     {r0-r6}
+pop     {pc}
+
+.pool
+
+//==============================================================================
+//Specific (But still very generic) call to generic_reprinting_first_menu which then calls swapwindowbuf as expected from the game
+_reprint_first_menu:
+push    {lr}
+bl      generic_reprinting_first_menu
+mov     r0,#1
+bl      m2_swapwindowbuf
+pop     {pc}
+
+//==============================================================================
+//Specific call to generic_reprinting_first_menu which then calls a DMA transfer of the old arrangement
+c6ba2_reprint_first_menu:
+push    {lr}
+bl      generic_reprinting_first_menu
+mov     r0,#1
+bl      0x80BD7F8
+pop     {pc}
+
+//==============================================================================
+//Specific call to b9aa2_special_string, needed for the help function
+ba7be_reprint_first_menu:
+push    {lr}
+bl      b9aa2_special_string
+ldr     r1,=#0x40000D4
+ldr     r0,=#0x3005200
+pop     {pc}
+
+//==============================================================================
+//Specific call to b9aa2_special_string, needed for when you exit the item action function
+b9aa2_reprint_first_menu:
+push    {lr}
+bl      b9aa2_special_string
+mov     r0,#1
+bl      0x80BD7F8
+pop     {pc}
+
+//==============================================================================
+//Setup which only prints either "Check" or "PSI \n Check" in the main window. Needed in order to avoid the not-needed options popping in the item window for 2-3 frames
+b9aa2_special_string:
+push    {lr}
+push    {r0-r5}
+add     sp,#-68
+ldr     r5,=#0x3005078 //Make sure the game expects only the right amount of lines to be written (so only 1)
+ldrb    r4,[r5,#0]
+str     r4,[sp,#4]
+mov     r4,#0
+strb    r4,[r5,#0]
+ldr     r4,=#0x3005230 //Window generic address
+
+//Main window
+mov     r2,#1
+ldr     r0,[r4,#0] //Main window place in ram
+ldrb    r0,[r0,#0]
+and     r2,r0
+cmp     r2,#0
+beq     @@end //Check if window is enabled before printing in it
+
+ldr     r1,=m2_psi_exist
+ldrb    r1,[r1,#0]
+add     r0,sp,#8
+bl      setupShortMainMenu //Get shortened menu string
+mov     r1,#0
+str     r1,[sp,#0]
+add     r1,sp,#8
+ldr     r0,[r4,#0]
+mov     r2,#5
+mov     r3,#2
+bl      0x80BE4C8 //Let it do its things
+ldr     r0,[r4,#0]
+bl      0x80C8BE4 //Print text in the window
+
+@@end:
+ldr     r4,[sp,#4]
+strb    r4,[r5,#0] //Restore expected amount of lines to be written
+add     sp,#68
+pop     {r0-r5}
+pop     {pc}
 
 .pool
