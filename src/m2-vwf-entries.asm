@@ -1586,7 +1586,6 @@ pop     {r5,pc}
 _4092_print_window:
 push    {lr}
 push    {r0-r4}
-mov     r0,r2
 bl      print_windows
 pop     {r0-r4}
 bl      0x800341C
@@ -1596,16 +1595,18 @@ pop     {pc}
 _4298_print_window:
 push    {lr}
 push    {r0-r4}
-ldr     r0,[sp,#0x20]
+ldr     r2,[sp,#0x20]
 bl      print_windows
 pop     {r0-r4}
 mov     r2,#0
 mov     r3,#0
 pop     {pc}
 
-//==============================================================================
-_41D4_cursor_X:
-push    {lr}
+//
+//X cursor for the Options submenu position
+_position_X_Options:
+push {lr}
+
 cmp     r0,#1
 bne     @@next1
 mov     r0,#5
@@ -1624,10 +1625,28 @@ b       @@end
 mov     r0,#20
 
 @@end:
+pop {pc}
+
+//==============================================================================
+//Sets X for highlighting the Options submenu in the File Select window
+_40e2_cursor_X:
+push    {lr}
+mov     r0,r1
+bl      _position_X_Options
+sub     r1,r0,#3
+mov     r0,#2
+pop     {pc}
+
+//==============================================================================
+//Sets X cursor for the Options submenu in the File Select window
+_41d4_cursor_X:
+push    {lr}
+bl      _position_X_Options
 lsl     r0,r0,#3
 pop     {pc}
 
 //==============================================================================
+//Makes sure Paula's window is loaded properly since the name length has been changed to 5 and the game previously used the 4 to load the window too
 _4f7c_window_selector:
 push    {lr}
 mov     r0,#4
@@ -1636,3 +1655,148 @@ ldr     r1,=#0x82B7FF8
 pop     {pc}
 
 .pool
+
+//==============================================================================
+//Fix the random garbage issue for the alphabet for good
+_2322_setup_windowing:
+push    {lr}
+bl      0x8012460 //Default code which sets up the names by copying memory which can be random
+push    {r0-r1}
+ldr     r0,=#m2_cstm_last_printed  //Set the window flag to 0 so no issue can happen
+mov     r1,#0
+strb    r1,[r0,#0]
+pop     {r0-r1}
+pop     {pc}
+
+.pool
+
+//==============================================================================
+//Loads and prints the text lines for the file select main window
+_setup_file_strings:
+push    {r4-r5,lr}
+add     sp,#-8
+ldr     r5,=#0x3000024
+ldr     r2,[r5,#0]
+ldr     r4,[r2,#4]
+str     r4,[sp,#4] //Save this here
+mov     r4,#0
+str     r4,[r2,#4]
+mov     r0,#0
+bl      0x8002170 //Routine which loads the save corresponding to r0
+mov     r0,#1
+bl      0x8002170
+mov     r0,#2
+bl      0x8002170
+ldr     r3,[r5,#0]
+mov     r0,#0x84
+lsl     r0,r0,#2
+add     r3,r3,r0
+str     r4,[sp,#0]
+mov     r0,#2
+mov     r1,#1
+mov     r2,#0x40
+bl      wrapper_file_string_selection
+ldr     r3,[r5,#0]
+ldr     r0,=#0x454
+add     r3,r3,r0
+str     r4,[sp,#0]
+mov     r0,#2
+mov     r1,#3
+mov     r2,#0x40
+bl      wrapper_file_string_selection
+ldr     r3,[r5,#0]
+mov     r0,#0xD3
+lsl     r0,r0,#3
+add     r3,r3,r0
+str     r4,[sp,#0]
+mov     r0,#2
+mov     r1,#5
+mov     r2,#0x40
+bl      wrapper_file_string_selection
+mov r0,#1
+mov r1,#0
+mov r2,#0
+bl 0x800341C
+ldr     r2,[r5,#0]
+ldr     r4,[sp,#4]
+str     r4,[r2,#4] //Restore this
+add     sp,#8
+pop     {r4-r5,pc}
+
+.pool
+
+//==============================================================================
+//Fixes issue with file select menu not printing after going back to it from the alphabet
+_53f6_fix_out_of_description:
+push    {lr}
+bl      0x800341C
+bl      _setup_file_strings
+pop     {pc}
+
+//==============================================================================
+//Fixes issue with the option submenu (if it's there) and the file select menu after going back to the text speed window from the text flavour window
+_3dce_fix_out_of_text_flavour:
+push    {lr}
+bl      0x8003F44
+mov     r0,#0
+ldsh    r0,[r5,r0] //Checks whether or not to print the option menu
+cmp     r0,#0
+blt     @@end
+
+mov     r0,#4
+mov     r1,#7
+mov     r2,#0xE
+bl      _4092_print_window //Prints the option menu
+
+@@end:
+bl      _setup_file_strings
+pop     {pc}
+
+//==============================================================================
+//Fixes text reprinting when pressing up or down in the text flavour window
+_3e86_special_setup:
+push {lr}
+push {r0-r2}
+ldr r0,=#m2_cstm_last_printed
+ldrb r2,[r0,#0]
+mov r1,#0x80
+orr r1,r2
+strb r1,[r0,#0]
+pop {r0-r2}
+bl 0x8003F44
+pop {pc}
+
+//==============================================================================
+//Highlights all of the file string with the proper palette
+_highlight_file:
+push {lr}
+mov r0,#2
+ldr r1,=#0x3000024 //Load in r1 the y co-ordinate
+ldr r1,[r1,#0]
+ldr r1,[r1,#8]
+lsl r1,r1,#1
+add r1,#1
+mov r2,#0
+mov r3,r4
+bl setPaletteOnFile
+pop {pc}
+
+.pool
+
+//==============================================================================
+//File highlighting for the up-down arrows in the text flavour window
+_3f78_highlight_file:
+push {lr}
+bl _highlight_file
+mov r0,#4 //Clobbered code
+ldsh r2,[r4,r0]
+pop {pc}
+
+//==============================================================================
+//File highlighting for when a file is selected
+_3a04_highlight_file:
+push {lr}
+bl _highlight_file
+mov r0,#1 //Clobbered code
+mov r1,#0
+pop {pc}
