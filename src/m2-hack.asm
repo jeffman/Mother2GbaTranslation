@@ -50,15 +50,15 @@ mov     r3,6
 .include "m2-status-switch.asm"
 
 //---------------------------------------------------------
-// BAC18 hacks (status window switching)
+// BAC18 hacks (status window)
 //---------------------------------------------------------
 
 .org 0x80BACFC :: bl bac18_redraw_status
 .org 0x80BADE6 :: bl bac18_redraw_status
+.org 0x80BACEA :: bl bacea_status_psi_window
 .org 0x80BACEE :: bl bac18_clear_psi
-.org    0x80BADC8
-bl      bac18_check_button
-b       0x80BADD8
+.org 0x80BADB0 :: bl badb0_status_inner_window
+.org 0x80BADCC :: b 0x80BADD8
 
 //---------------------------------------------------------
 // BAEF8 hacks (equip window)
@@ -167,15 +167,6 @@ add     r2,3                       // add a space
 .org 0x80C2468 :: bl print_string_hlight_pixels
 
 //---------------------------------------------------------
-// C438C hacks (PSI window cursor movement)
-//---------------------------------------------------------
-
-.org 0x80C4580 :: bl c438c_moveup
-.org 0x80C4642 :: bl c438c_movedown
-.org 0x80C4768 :: bl c438c_moveright
-.org 0x80C48B2 :: bl c438c_moveleft
-
-//---------------------------------------------------------
 // PSI target window hacks
 //---------------------------------------------------------
 
@@ -199,8 +190,20 @@ add     r1,0x60
 mov     r0,0x50
 
 //---------------------------------------------------------
+// C438C hacks (Inner PSI window input management + target window printing + header printing)
+//---------------------------------------------------------
+
+.org 0x80C495A :: bl c495a_status_target
+
+//---------------------------------------------------------
 // B8BBC hacks (PSI window)
 //---------------------------------------------------------
+
+//Do not redraw unless it is needed
+.org 0x80B8CD2 :: bl b8cd2_psi_window
+
+//Sets up for the target window
+.org 0x80B8DB4 :: bl b8db4_psi_inner_window
 
 // Redraw main menu when exiting PSI target window
 .org 0x80B8E3A :: bl b8bbc_redraw_menu_2to1
@@ -208,6 +211,16 @@ mov     r0,0x50
 // Redraw main menu when entering PSI target window
 .org 0x80B8CF8 :: bl b8bbc_redraw_menu_13to2 // 1 to 2
 .org 0x80B920C :: bl b8bbc_redraw_menu_13to2 // 3 to 2
+
+//---------------------------------------------------------
+// E06EC hacks (PSI window in battle)
+//---------------------------------------------------------
+
+//Sets up for the target window
+.org 0x80E0854 :: bl e0854_psi_inner_window_battle
+
+//Do not redraw unless it is needed
+.org 0x80E079A :: bl e079a_battle_psi_window
 
 //---------------------------------------------------------
 // C4B2C hacks (Equip window render)
@@ -927,6 +940,13 @@ nop
 //---------------------------------------------------------
 .org 0x80B8AA0 :: mov r0,#0x54 //Dollar
 .org 0x80B8AA6 :: mov r0,#0x56 //00
+
+//---------------------------------------------------------
+// wvf_skip hacks
+//---------------------------------------------------------
+.org 0x80B8C2A :: bl b8c2a_set_proper_wvf_skip_and_window_type //Fixes bug of M2GBA
+.org 0x80BE45A :: bl be45a_set_proper_wvf_skip
+.org 0x80BE4CA :: bl be4ca_set_proper_wvf_skip_goods_battle_window
 
 //---------------------------------------------------------
 // Names hacks

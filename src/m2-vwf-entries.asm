@@ -58,7 +58,7 @@ pop     {r0-r1,pc}
 c980c_resetx:
 push    {r1,lr}
 mov     r1,0
-strh    r1,[r0,2]
+strb    r1,[r0,2]
 pop     {r1}
 bl      0x80C87D0
 pop     {pc}
@@ -68,7 +68,7 @@ c980c_resetx_newline:
 push    {lr}
 strh    r0,[r5,0x2C]
 strh    r4,[r5,0x2A]
-strh    r4,[r5,2]
+strb    r4,[r5,2]
 pop     {pc}
 
 //==============================================================================
@@ -76,7 +76,7 @@ c980c_resetx_scroll:
 push    {lr}
 strh    r0,[r5,0x2C]
 strh    r1,[r5,0x2A]
-strh    r1,[r5,2]
+strb    r1,[r5,2]
 pop     {pc}
 
 //==============================================================================
@@ -84,7 +84,7 @@ c980c_resetx_other:
 push    {lr}
 strh    r0,[r5,0x2C]
 strh    r2,[r5,0x2A]
-strh    r2,[r5,2]
+strb    r2,[r5,2]
 pop     {pc}
 
 //==============================================================================
@@ -92,7 +92,7 @@ c980c_resetx_other2:
 push    {lr}
 mov     r2,0
 strh    r2,[r5,0x2A]
-strh    r2,[r5,2]
+strb    r2,[r5,2]
 pop     {pc}
 
 //==============================================================================
@@ -100,7 +100,7 @@ c980c_resetx_other3:
 push    {lr}
 mov     r1,0
 strh    r1,[r5,0x2A]
-strh    r1,[r5,2]
+strb    r1,[r5,2]
 pop     {pc}
 
 //==============================================================================
@@ -108,7 +108,7 @@ c980c_resetx_other4:
 push    {lr}
 strh    r0,[r5,0x2C]
 strh    r6,[r5,0x2A]
-strh    r6,[r5,2]
+strb    r6,[r5,2]
 pop     {pc}
 
 //==============================================================================
@@ -117,7 +117,7 @@ push    {lr}
 
 // Reset X
 mov     r1,0
-strh    r1,[r0,2]
+strb    r1,[r0,2]
 
 // Clear window
 bl      clear_window
@@ -133,7 +133,7 @@ pop     {pc}
 c9634_resetx:
 push    {lr}
 mov     r4,0
-strh    r4,[r6,2]
+strb    r4,[r6,2]
 
 // Clobbered code
 strh    r5,[r1]
@@ -287,59 +287,6 @@ ldr     r0,=0x80C4EFF
 bx      r0
 .pool
 
-
-//==============================================================================
-// Clear PSI target window when moving left/right on PSI screen
-c438c_moveright:
-push    {r0-r1,lr}
-ldr     r1,=0x3005230
-ldr     r0,[r1,0x24] // PSI target window pointer
-bl      clear_window
-pop     {r0-r1}
-
-// Clobbered code
-add     r0,1
-strh    r0,[r5,0x34]
-pop     {pc}
-
-c438c_moveleft:
-push    {r0-r1,lr}
-ldr     r1,=0x3005230
-ldr     r0,[r1,0x24] // PSI target window pointer
-bl      clear_window
-pop     {r0-r1}
-
-// Clobbered code
-sub     r0,1
-strh    r0,[r5,0x34]
-pop     {pc}
-
-c438c_moveup:
-push    {r0-r1,lr}
-ldr     r1,=0x3005230
-ldr     r0,[r1,0x24] // PSI target window pointer
-bl      clear_window
-pop     {r0-r1}
-
-// Clobbered code
-sub     r0,1
-strh    r0,[r5,0x36]
-pop     {pc}
-
-c438c_movedown:
-push    {r0-r1,lr}
-ldr     r1,=0x3005230
-ldr     r0,[r1,0x24] // PSI target window pointer
-bl      clear_window
-pop     {r0-r1}
-
-// Clobbered code
-add     r0,1
-strh    r0,[r5,0x36]
-pop     {pc}
-.pool
-
-
 //==============================================================================
 // Prints a string in the status window
 c0a5c_printstr:
@@ -415,29 +362,6 @@ pop     {r0}
 lsl     r0,r0,0x10
 asr     r4,r0,0x10
 pop     {pc}
-
-//==============================================================================
-// Only clear+redraw the PSI help if a button has been pressed
-bac18_check_button:
-push    {lr}
-ldr     r0,=0x3002500
-ldrh    r0,[r0]
-cmp     r0,0
-beq     @@next
-
-// Clear window
-ldr     r0,[r5,0x28]
-mov     r1,r2
-mov     r2,0
-bl      0x80BE458
-
-// Render window
-ldr     r0,[r5,0x28]
-bl      0x80C8BE4
-
-@@next:
-pop     {pc}
-.pool
 
 //==============================================================================
 // Clear offense/defense changes when switching in equip select window
@@ -1754,6 +1678,380 @@ ldr     r4,[sp,#4]
 strb    r4,[r5,#0] //Restore expected amount of lines to be written
 add     sp,#68
 pop     {r0-r5}
+pop     {pc}
+
+.pool
+
+//==============================================================================
+//Makes it sure the outer PSI window of the PSI Overworld menu prints the PSIs only once
+b8cd2_psi_window:
+push    {lr}
+ldrb    r1,[r0,#3] //Checks vwf_skip
+mov     r2,#1
+and     r2,r1
+cmp     r2,#1
+beq     @@do_not_print
+mov     r2,#1 //Goes on as usual and sets vwf_skip to true
+orr     r2,r1
+strb    r2,[r0,#3]
+bl      m2_clearwindowtiles
+pop     {pc}
+
+@@do_not_print: //Doesn't print in the PSI window
+ldr     r1,=#m2_active_window_pc
+mov     r2,#0
+ldsh    r1,[r1,r2]
+push    {r1} //Stores the active window pc
+bl      0x80C3F28 //Input management function
+pop     {r1} //Restores the active window pc
+cmp     r0,#0
+bgt     @@goToInner //This is the character who's psi window we're going in, if it's > 0. We do one iteration more than needed in case 1 because that fixes the "two sounds" issue when entering the inner psi window... For some reason?
+cmp     r0,#0
+beq     @@no_change_in_window
+lsl     r0,r0,#0x10 //If r0 is 0xFFFFFFFF, then we're exiting the window
+lsr     r5,r0,#0x10 //Set up r5 properly
+b       @@goToInner
+
+@@no_change_in_window:
+mov     r5,#0
+ldr     r0,=#m2_active_window_pc
+mov     r2,#0
+ldsh    r0,[r0,r2] //Has the main character changed?
+cmp     r0,r1
+beq     @@keep
+ldr     r0,[r4,#0x1C] //If it has, set wvf_skip to false
+mov     r2,#0
+strb    r2,[r0,#3]
+pop     {r0}
+add     r0,#0xA
+bx      r0
+
+@@goToInner:
+ldr     r0,[r4,#0x1C] //Stores false in vwf_skip, which means the window will be printed
+mov     r2,#0
+strb    r2,[r0,#3]
+
+@@keep:
+ldr     r7,=#m2_active_window_pc //The game sets this up in the code we jump, so we need to set it up here
+pop     {r0}
+add     r0,#0x18
+bx      r0 //Jump to the next useful piece of code
+
+.pool
+
+//==============================================================================
+//Makes it sure the outer PSI window of the PSI Status menu prints the PSIs only once
+bacea_status_psi_window:
+push    {lr}
+ldrh    r2,[r0,#0x36]
+push    {r2} //Stores the cursor's Y position
+bl      0x80BE53C //Input management function
+push    {r0} //Stores the input
+ldr     r0,[r5,#0x20] //Loads vwf_skip
+ldrb    r1,[r0,#3]
+mov     r2,#1
+and     r2,r1
+cmp     r2,#1 //Checks if true
+beq     @@do_not_print
+mov     r2,#1 //Sets vwf_skip to true and proceeds as usual
+orr     r2,r1
+strb    r2,[r0,#3]
+pop     {r0}
+pop     {r2}
+pop     {pc}
+
+@@do_not_print:
+pop     {r0}
+cmp     r0,#0 //If the input is > 0, then we're entering one of the submenus (Offensive, Healing, etc.)
+bgt     @@goToInner
+cmp     r0,#0
+beq     @@noAction
+lsl     r0,r0,0x10 //If the input is 0xFFFFFFFF we're exiting the window. Sets r4 up and vwf_skip to false, then exits the routine.
+asr     r4,r0,0x10
+ldr     r0,[r5,#0x20]
+mov     r2,#0
+strb    r2,[r0,#3]
+pop     {r0}
+pop     {r0}
+add     r0,#4
+bx      r0
+
+@@noAction:
+mov     r4,#0
+pop     {r1}
+ldr     r0,[r5,#0x20]
+ldrh    r2,[r0,#0x36]
+cmp     r1,r2 //Checks if the cursor's Y position is the same as it was before
+beq     @@noActionAtAll
+mov     r2,#0 //If it's not, then sets vwf_skip to false
+strb    r2,[r0,#3]
+@@noActionAtAll:
+b       @@end //Goes to the end of the routine
+
+@@goToInner:
+lsl     r0,r0,0x10 //Properly stores the output into r4 and, since we're going into the inner window, sets vwf_skip to false
+asr     r4,r0,0x10
+ldr     r0,[r5,#0x20]
+mov     r2,#0
+strb    r2,[r0,#3]
+pop     {r0}
+
+@@end:
+pop     {r0}
+add     r0,#0x3E
+bx      r0 //Jump to the next useful piece of code
+
+//==============================================================================
+//Makes it sure the outer PSI window of the PSI battle menu prints the PSIs only once
+//It's the same as the one above, but the bottom exit is different
+e079a_battle_psi_window:
+push    {lr}
+ldrh    r2,[r0,#0x36]
+push    {r2} //Stores the cursor's Y position
+bl      0x80BE53C //Input management function
+push    {r0} //Stores the input
+ldr     r0,[r5,#0x20] //Loads vwf_skip
+ldrb    r1,[r0,#3]
+mov     r2,#1
+and     r2,r1
+cmp     r2,#1 //Checks if true
+beq     @@do_not_print
+mov     r2,#1 //Sets vwf_skip to true and proceeds as usual
+orr     r2,r1
+strb    r2,[r0,#3]
+pop     {r0}
+pop     {r2}
+pop     {pc}
+
+@@do_not_print:
+pop     {r0}
+cmp     r0,#0 //If the input is > 0, then we're entering one of the submenus (Offensive, Healing, etc.)
+bgt     @@goToInner
+cmp     r0,#0
+beq     @@noAction
+lsl     r0,r0,0x10 //If the input is 0xFFFFFFFF we're exiting the window. Sets r4 up and vwf_skip to false, then exits the routine.
+asr     r4,r0,0x10
+ldr     r0,[r5,#0x20]
+mov     r2,#0
+strb    r2,[r0,#3]
+pop     {r0}
+pop     {r0}
+add     r0,#4
+bx      r0
+
+@@noAction:
+mov     r4,#0
+pop     {r1}
+ldr     r0,[r5,#0x20]
+ldrh    r2,[r0,#0x36]
+cmp     r1,r2 //Checks if the cursor's Y position is the same as it was before
+beq     @@noActionAtAll
+mov     r2,#0 //If it's not, then sets vwf_skip to false
+strb    r2,[r0,#3]
+@@noActionAtAll:
+b       @@end //Goes to the end of the routine
+
+@@goToInner:
+lsl     r0,r0,0x10 //Properly stores the output into r4 and, since we're going into the inner window, sets vwf_skip to false
+asr     r4,r0,0x10
+ldr     r0,[r5,#0x20]
+mov     r2,#0
+strb    r2,[r0,#3]
+pop     {r0}
+
+@@end:
+pop     {r0}
+add     r0,#0x36
+bx      r0 //Jump to the next useful piece of code
+
+//==============================================================================
+//Makes it sure the inner PSI window of the PSI status menu prints the descriptions only once
+//It also sets things up to make it so the target window is only printed once
+badb0_status_inner_window:
+push    {lr}
+ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
+push    {r1}
+ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
+push    {r1}
+bl      0x80C438C //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
+lsl     r0,r0,#0x10
+lsr     r4,r0,#0x10 //Properly stores the output into r4
+
+ldr     r1,=#0x8B2A9B0 //Clobbered code
+ldr     r0,[r5,#0x1C]
+add     r0,#0x42
+ldrb    r0,[r0,#0]
+lsl     r0,r0,#4
+add     r1,#0xC
+add     r0,r0,r1
+ldr     r2,[r0,#0]
+
+ldr     r0,[r5,#0x1C]
+ldrh    r1,[r0,#0x34]
+ldr     r3,[sp,#0]
+cmp     r1,r3 //Checks if the cursor's X changed
+bne     @@ChangedPosition
+ldr     r3,[sp,#4] //If it did not, checks if the cursor's Y changed
+ldrh    r1,[r0,#0x36]
+cmp     r1,r3
+beq     @@print
+
+@@ChangedPosition:
+ldr     r0,[r5,0x28] //Sets wvf_skip to false
+mov     r1,#0
+strb    r1,[r0,#3]
+
+@@print: //Description printing
+ldr     r0,[r5,0x28]
+ldrb    r1,[r0,#3]
+mov     r3,#1
+and     r1,r3
+cmp     r1,#0 //Checks if vwf_skip is false
+bne     @@end
+mov     r1,r2 //If it is, prints the PSI description
+mov     r2,0
+bl      m2_initwindow //Initializes the PSI description window
+ldr     r0,[r5,0x28]
+bl      0x80C8BE4 //Prints the PSI description window
+ldr     r0,[r5,0x28]
+ldrb    r1,[r0,#3] //Sets vwf_skip to true
+mov     r3,#1
+orr     r1,r3
+strb    r1,[r0,#3]
+
+@@end:
+ldr     r0,=#0xFFFF //Are we exiting this window?
+cmp     r4,r0
+bne     @@ending
+
+//If we are, set vwf_skip to false for both the description window and the target window
+ldr     r0,[r5,0x28] //Description window
+mov     r2,#0
+strb    r2,[r0,#3]
+ldr     r0,[r5,0x24] //Target window
+strb    r2,[r0,#3]
+
+@@ending:
+pop     {r0}
+pop     {r0}
+pop     {r0}
+add     r0,#0x18
+bx      r0 //Jump to the next useful piece of code
+
+.pool
+
+//==============================================================================
+//It sets things up to make it so the target window is only printed once
+b8db4_psi_inner_window:
+push    {lr}
+ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
+push    {r1}
+ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
+push    {r1}
+bl      0x80C438C //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
+cmp     r0,#0
+beq     @@ending
+
+mov     r2,#0 //Sets vwf_skip to false since the window is change
+ldr     r1,[r4,0x24] //Target window
+strb    r2,[r1,#3]
+
+@@ending:
+pop     {r1}
+pop     {r1}
+pop     {pc}
+
+.pool
+
+//==============================================================================
+//It sets things up to make it so the target window is only printed once
+e0854_psi_inner_window_battle:
+push    {lr}
+ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
+push    {r1}
+ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
+push    {r1}
+bl      0x80C438C //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
+cmp     r0,#0
+beq     @@ending
+
+mov     r2,#0 //Sets vwf_skip to false since the window is change
+ldr     r1,[r5,0x24] //Target window
+strb    r2,[r1,#3]
+
+@@ending:
+pop     {r1}
+pop     {r1}
+pop     {pc}
+
+.pool
+
+//==============================================================================
+//Prints the target window if and only if the cursor's position changed in this input management function
+c495a_status_target:
+push    {r4,lr}
+ldr     r1,=#0x3005230
+ldr     r4,[r1,#0x24] //Loads the target window
+ldr     r3,[sp,#0x30]
+ldrh    r2,[r5,#0x34]
+cmp     r2,r3 //Has the cursor's X changed?
+bne     @@Updated
+ldr     r3,[sp,#0x34] //If not, has the cursor's Y changed?
+ldrh    r2,[r5,#0x36]
+cmp     r2,r3
+beq     @@printing
+
+@@Updated:
+mov     r2,#0 //If the cursor's position changed, set vwf_skip to false
+strb    r2,[r4,#3]
+
+@@printing:
+ldrb    r1,[r4,#0x3]
+mov     r2,#1
+and     r2,r1
+cmp     r2,#0 //Checks if vwf_skip is false
+bne     @@end
+ldrb    r1,[r4,#0x3] //If it is, sets vwf_skip to true, clears the window and updates the target window
+mov     r2,#1
+orr     r2,r1
+strb    r2,[r4,#0x3]
+mov     r3,r0
+mov     r0,r4
+mov     r4,r3
+bl      clear_window
+mov     r0,r4
+bl      m2_psitargetwindow
+
+@@end:
+pop     {r4,pc}
+
+//==============================================================================
+//Makes sure m2_initwindow properly sets vwf_skip to false
+be45a_set_proper_wvf_skip:
+push    {lr}
+mov     r3,r0
+mov     r0,#0
+strb    r0,[r3,#3]
+pop     {pc}
+
+
+//==============================================================================
+//Makes sure this initialization routine properly sets vwf_skip to false. This fixes an issue where due to a background the Goods window in battle might have not be printed
+be4ca_set_proper_wvf_skip_goods_battle_window:
+push    {lr}
+mov     r4,#0
+strb    r4,[r0,#3]
+
+mov     r12,r0 //Clobbered code
+mov     r4,r1
+pop     {pc}
+
+//==============================================================================
+//Makes sure the window type is set to 0 for the inner PSI overworld menu window. Fixes an issue in M2GBA.
+b8c2a_set_proper_wvf_skip_and_window_type:
+push    {lr}
+strb    r1,[r0,#1]
+bl      m2_initwindow
 pop     {pc}
 
 .pool

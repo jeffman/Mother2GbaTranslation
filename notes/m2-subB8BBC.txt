@@ -12,10 +12,10 @@
 080B8BC8 (T)  mov     r0,0h                                   ;2  202
 080B8BCA (T)  mov     r9,r0                                   ;2  204
 080B8BCC (T)  mov     r5,0h                                   ;2  206
-080B8BCE (T)  ldr     r0,=3005224h                            ;9  215
+080B8BCE (T)  ldr     r0,=3005224h                            ;9  215 PSI window state. 0 = not active. 1 = Outer. 2 = Inner. 3 = Target selection. 4 = Target selected.
 080B8BD0 (T)  mov     r1,0h                                   ;2  217
 080B8BD2 (T)  ldsh    r0,[r0,r1]                              ;4  221
-080B8BD4 (T)  cmp     r0,4h                                   ;2  223
+080B8BD4 (T)  cmp     r0,4h                                   ;2  223 Switch: 5 cases
 080B8BD6 (T)  bls     80B8BDCh                                ;8  231
 080B8BD8 (T)  bl      80B9638h                                ;10 241
 080B8BDC (T)  lsl     r0,r0,2h                                ;2  243
@@ -23,21 +23,14 @@
 080B8BE0 (T)  add     r0,r0,r1                                ;2  254
 080B8BE2 (T)  ldr     r0,[r0]                                 ;4  258
 080B8BE4 (T)  mov     r15,r0                                  ;2  260
-080B8BE6 (T)  lsl     r0,r0,0h                                ;2  262
-080B8BE8 (T)  strh    r4,[r4,r0]                              ;5  267
-080B8BEA (T)  lsl     r0,r0,0Ch                               ;2  269
-080B8BEC (T)  ldrh    r0,[r6,1Eh]                             ;4  273
-080B8BEE (T)  lsr     r3,r1,20h                               ;2  275
-080B8BF0 (T)  ldrh    r4,[r0,20h]                             ;4  279
-080B8BF2 (T)  lsr     r3,r1,20h                               ;2  281
-080B8BF4 (T)  ldrh    r6,[r1,26h]                             ;4  285
-080B8BF6 (T)  lsr     r3,r1,20h                               ;2  287
-080B8BF8 (T)  ldrh    r0,[r6,2Ch]                             ;4  291
-080B8BFA (T)  lsr     r3,r1,20h                               ;2  293
-080B8BFC (T)  ldrh    r0,[r1,34h]                             ;4  297
-080B8BFE (T)  lsr     r3,r1,20h                               ;2  299
-080B8C00 (T)  str     r2,[sp,268h]                            ;5  304
-080B8C02 (T)  lsr     r3,r1,20h                               ;2  306
+Address table
+080B8BF0     0x80B8C04
+080B8BF0                       ; jump table for switch statement
+080B8BF4     0x80B8CCE         ; jumptable 080B8BE4 case 1
+080B8BF8     0x80B8DB0         ; jumptable 080B8BE4 case 2
+080B8BFC     0x80B8E88         ; jumptable 080B8BE4 case 3
+080B8C00     0x80B929A         ; jumptable 080B8BE4 case 4
+
 080B8C04 (T)  mov     r0,0h                                   ;2  308
 080B8C06 (T)  bl      80BD7F8h                                ;10 318
 080B8C0A (T)  ldr     r0,=3002500h                            ;9  327
@@ -79,15 +72,8 @@
 080B8C5E (T)  mov     r2,14h                                  ;2  496
 080B8C60 (T)  mov     r3,5h                                   ;2  498
 080B8C62 (T)  bl      8000364h                                ;10 508
-080B8C66 (T)  b       80B8DB0h                                ;8  516
-080B8C68 (T)  mov     r5,0h                                   ;2  518
-080B8C6A (T)  lsl     r0,r0,0Ch                               ;2  520
-080B8C6C (T)  strh    r0,[r6,r0]                              ;5  525
-080B8C6E (T)  lsl     r0,r0,0Ch                               ;2  527
-080B8C70 (T)  strh    r4,[r4,r1]                              ;5  532
-080B8C72 (T)  lsl     r0,r0,0Ch                               ;2  534
-080B8C74 (T)  strh    r4,[r4,r0]                              ;5  539
-080B8C76 (T)  lsl     r0,r0,0Ch                               ;2  541
+080B8C66 (T)  b       80B8DB0h                                ;8  516 Jump to case 2
+Address table
 080B8C78 (T)  ldr     r0,[r6,1Ch]                             ;4  545
 080B8C7A (T)  mov     r1,0h                                   ;2  547
 080B8C7C (T)  mov     r2,0h                                   ;2  549
@@ -122,6 +108,7 @@
 080B8CC6 (T)  mov     r0,0h                                   ;2  712
 080B8CC8 (T)  mov     r1,0F0h                                 ;2  714
 080B8CCA (T)  bl      8000398h                                ;10 724
+Switch case 1
 080B8CCE (T)  ldr     r4,=3005230h                            ;9  733
 080B8CD0 (T)  ldr     r0,[r4,1Ch]                             ;4  737
 080B8CD2 (T)  bl      m2_clearwindowtiles                     ;10 747
@@ -200,22 +187,12 @@
 080B8D84 (T)  mov     r0,1h                                   ;2  1102
 080B8D86 (T)  neg     r0,r0                                   ;2  1104
 080B8D88 (T)  bl      80B963Ch                                ;10 1114
-080B8D8C (T)  strh    r4,[r4,r1]                              ;5  1119
-080B8D8E (T)  lsl     r0,r0,0Ch                               ;2  1121
-080B8D90 (T)  ldrb    r4,[r4,1Bh]                             ;4  1125
-080B8D92 (T)  lsr     r1,r6,2h                                ;2  1127
-080B8D94 (T)  strb    r4,[r4,10h]                             ;5  1132
-080B8D96 (T)  lsr     r1,r6,2h                                ;2  1134
-080B8D98 (T)  strh    r4,[r4,r0]                              ;5  1139
-080B8D9A (T)  lsl     r0,r0,0Ch                               ;2  1141
-080B8D9C (T)  strh    r0,[r6,r0]                              ;5  1146
-080B8D9E (T)  lsl     r0,r0,0Ch                               ;2  1148
-080B8DA0 (T)  bl      lr+0FFEh                                ;10 1158
-080B8DA2 (T)  lsl     r0,r0,0h                                ;2  1160
+Address table
 080B8DA4 (T)  mov     r2,0h                                   ;2  1162
 080B8DA6 (T)  ldsh    r0,[r7,r2]                              ;4  1166
 080B8DA8 (T)  bl      m2_hpwindow_up                          ;10 1176
 080B8DAC (T)  bl      80B9638h                                ;10 1186
+Switch case 2
 080B8DB0 (T)  ldr     r4,=3005230h                            ;9  1195
 080B8DB2 (T)  ldr     r0,[r4,1Ch]                             ;4  1199
 080B8DB4 (T)  bl      80C438Ch                                ;10 1209
@@ -229,9 +206,7 @@
 080B8DC6 (T)  bne     80B8DD4h                                ;8  1238
 080B8DC8 (T)  mov     r0,0h                                   ;2  1240
 080B8DCA (T)  bl      80B963Ch                                ;10 1250
-080B8DCE (T)  lsl     r0,r0,0h                                ;2  1252
-080B8DD0 (T)  strh    r0,[r6,r0]                              ;5  1257
-080B8DD2 (T)  lsl     r0,r0,0Ch                               ;2  1259
+Address table
 080B8DD4 (T)  cmp     r2,0h                                   ;2  1261
 080B8DD6 (T)  ble     80B8DF8h                                ;8  1269
 080B8DD8 (T)  ldr     r0,=3001D40h                            ;9  1278
@@ -254,7 +229,7 @@
 080B8DFC (T)  mov     r0,1h                                   ;2  1351
 080B8DFE (T)  neg     r0,r0                                   ;2  1353
 080B8E00 (T)  cmp     r5,r0                                   ;2  1355
-080B8E02 (T)  bne     80B8E88h                                ;8  1363
+080B8E02 (T)  bne     80B8E88h                                ;8  1363 Jump to case 3
 080B8E04 (T)  ldr     r4,=3005230h                            ;9  1372
 080B8E06 (T)  ldr     r0,[r4,1Ch]                             ;4  1376
 080B8E08 (T)  mov     r6,0h                                   ;2  1378
@@ -270,15 +245,7 @@
 080B8E1E (T)  mov     r0,1h                                   ;2  1428
 080B8E20 (T)  neg     r0,r0                                   ;2  1430
 080B8E22 (T)  bl      80B963Ch                                ;10 1440
-080B8E26 (T)  lsl     r0,r0,0h                                ;2  1442
-080B8E28 (T)  add     r0,r0,5                                 ;2  1444
-080B8E2A (T)  lsl     r0,r0,0Ch                               ;2  1446
-080B8E2C (T)  lsl     r3,r1,7h                                ;2  1448
-080B8E2E (T)  lsl     r0,r0,0h                                ;2  1450
-080B8E30 (T)  strh    r4,[r4,r0]                              ;5  1455
-080B8E32 (T)  lsl     r0,r0,0Ch                               ;2  1457
-080B8E34 (T)  strh    r0,[r6,r0]                              ;5  1462
-080B8E36 (T)  lsl     r0,r0,0Ch                               ;2  1464
+Address table
 080B8E38 (T)  mov     r0,1h                                   ;2  1466
 080B8E3A (T)  bl      m2_swapwindowbuf                        ;10 1476
 080B8E3E (T)  ldr     r0,[r4,1Ch]                             ;4  1480
@@ -306,13 +273,8 @@
 080B8E74 (T)  strh    r6,[r0]                                 ;5  1604
 080B8E76 (T)  mov     r0,0h                                   ;2  1606
 080B8E78 (T)  b       80B963Ch                                ;8  1614
-080B8E7A (T)  lsl     r0,r0,0h                                ;2  1616
-080B8E7C (T)  bl      lr+0FFEh                                ;10 1626
-080B8E7E (T)  lsl     r0,r0,0h                                ;2  1628
-080B8E80 (T)  strh    r4,[r4,r1]                              ;5  1633
-080B8E82 (T)  lsl     r0,r0,0Ch                               ;2  1635
-080B8E84 (T)  strh    r4,[r4,r0]                              ;5  1640
-080B8E86 (T)  lsl     r0,r0,0Ch                               ;2  1642
+Address table
+Switch case 3
 080B8E88 (T)  ldr     r2,=8B204E4h                            ;9  1651
 080B8E8A (T)  ldr     r7,=8B2A9B0h                            ;9  1660
 080B8E8C (T)  ldr     r6,=3005230h                            ;9  1669
@@ -423,27 +385,8 @@
 080B8F7C (T)  ldr     r1,=3005224h                            ;9  2152
 080B8F7E (T)  mov     r0,2h                                   ;2  2154
 080B8F80 (T)  strh    r0,[r1]                                 ;5  2159
-080B8F82 (T)  b       80B8DB0h                                ;8  2167
-080B8F84 (T)  lsl     r4,r4,13h                               ;2  2169
-080B8F86 (T)  lsr     r2,r6,2h                                ;2  2171
-080B8F88 (T)  add     r1,sp,2C0h                              ;2  2173
-080B8F8A (T)  lsr     r2,r6,2h                                ;2  2175
-080B8F8C (T)  strh    r0,[r6,r0]                              ;5  2180
-080B8F8E (T)  lsl     r0,r0,0Ch                               ;2  2182
-080B8F90 (T)  add     r0,r0,5                                 ;2  2184
-080B8F92 (T)  lsl     r0,r0,0Ch                               ;2  2186
-080B8F94 (T)  strh    r4,[r4,r1]                              ;5  2191
-080B8F96 (T)  lsl     r0,r0,0Ch                               ;2  2193
-080B8F98 (T)  lsl     r3,r1,7h                                ;2  2195
-080B8F9A (T)  lsl     r0,r0,0h                                ;2  2197
-080B8F9C (T)  lsl     r4,r3,1Ah                               ;2  2199
-080B8F9E (T)  lsl     r0,r0,0h                                ;2  2201
-:             add     r4,=80B9030h                            ;2  2203
-080B8FA2 (T)  lsr     r3,r7,2h                                ;2  2205
-080B8FA4 (T)  bl      lr+0FFEh                                ;10 2215
-080B8FA6 (T)  lsl     r0,r0,0h                                ;2  2217
-080B8FA8 (T)  strh    r4,[r4,r0]                              ;5  2222
-080B8FAA (T)  lsl     r0,r0,0Ch                               ;2  2224
+080B8F82 (T)  b       80B8DB0h                                ;8  2167 Jump to case 2
+Address table
 080B8FAC (T)  ldrb    r0,[r3,2h]                              ;4  2228
 080B8FAE (T)  cmp     r0,8h                                   ;2  2230
 080B8FB0 (T)  beq     80B8FB4h                                ;8  2238
@@ -515,22 +458,7 @@
 080B9042 (T)  lsr     r0,r0,18h                               ;2  2554
 080B9044 (T)  mov     r9,r0                                   ;2  2556
 080B9046 (T)  b       80B90B2h                                ;8  2564
-080B9048 (T)  lsl     r3,r5,8h                                ;2  2566
-080B904A (T)  lsl     r0,r0,0h                                ;2  2568
-080B904C (T)  lsl     r2,r6,0Bh                               ;2  2570
-080B904E (T)  lsl     r0,r0,0h                                ;2  2572
-080B9050 (T)  ????                                            ;10 2582
-080B9052 (T)  lsr     r2,r6,1h                                ;2  2584
-080B9054 (T)  sub     r0,0C4h                                 ;2  2586
-080B9056 (T)  lsl     r0,r0,0Ch                               ;2  2588
-080B9058 (T)  strh    r0,[r7,r3]                              ;5  2593
-080B905A (T)  lsl     r0,r0,0Ch                               ;2  2595
-080B905C (T)  lsl     r3,r1,7h                                ;2  2597
-080B905E (T)  lsl     r0,r0,0h                                ;2  2599
-080B9060 (T)  ldrb    r4,[r4,1Bh]                             ;4  2603
-080B9062 (T)  lsr     r1,r6,2h                                ;2  2605
-080B9064 (T)  strb    r4,[r4,10h]                             ;5  2610
-080B9066 (T)  lsr     r1,r6,2h                                ;2  2612
+Address table
 080B9068 (T)  ldr     r2,=2024860h                            ;9  2621
 080B906A (T)  ldr     r0,[r2]                                 ;4  2625
 080B906C (T)  mov     r1,10h                                  ;2  2627
@@ -566,7 +494,7 @@
 080B90B2 (T)  mov     r0,r9                                   ;2  2788
 080B90B4 (T)  cmp     r0,0h                                   ;2  2790
 080B90B6 (T)  beq     80B90BAh                                ;8  2798
-080B90B8 (T)  b       80B929Ah                                ;8  2806
+080B90B8 (T)  b       80B929Ah                                ;8  2806 Jump to case 4
 080B90BA (T)  mov     r0,1h                                   ;2  2808
 080B90BC (T)  bl      m2_swapwindowbuf                        ;10 2818
 080B90C0 (T)  bl      80ED480h                                ;10 2828
@@ -584,16 +512,7 @@
 080B90DC (T)  mov     r2,0h                                   ;2  2877
 080B90DE (T)  bl      m2_initwindow                           ;10 2887
 080B90E2 (T)  b       80B9104h                                ;8  2895
-080B90E4 (T)  ldr     r0,=80082002h                           ;9  2904
-080B90E6 (T)  lsl     r2,r0,8h                                ;2  2906
-:             pop     r2,r5,r15                               ;23 2929
-080B90EA (T)  lsr     r3,r7,2h                                ;2  2931
-080B90EC (T)  strh    r0,[r6,r0]                              ;5  2936
-080B90EE (T)  lsl     r0,r0,0Ch                               ;2  2938
-080B90F0 (T)  add     r0,r0,5                                 ;2  2940
-080B90F2 (T)  lsl     r0,r0,0Ch                               ;2  2942
-080B90F4 (T)  lsl     r4,r3,1Ah                               ;2  2944
-080B90F6 (T)  lsl     r0,r0,0h                                ;2  2946
+Address table
 080B90F8 (T)  ldr     r0,=3005230h                            ;9  2955
 080B90FA (T)  ldr     r0,[r0,1Ch]                             ;4  2959
 080B90FC (T)  mov     r1,0h                                   ;2  2961
@@ -631,12 +550,7 @@
 080B914A (T)  mov     r3,0h                                   ;2  3126
 080B914C (T)  ldsh    r0,[r4,r3]                              ;4  3130
 080B914E (T)  b       80B9262h                                ;8  3138
-080B9150 (T)  strh    r0,[r6,r0]                              ;5  3143
-080B9152 (T)  lsl     r0,r0,0Ch                               ;2  3145
-080B9154 (T)  bl      lr+0FFEh                                ;10 3155
-080B9156 (T)  lsl     r0,r0,0h                                ;2  3157
-080B9158 (T)  strh    r4,[r4,r1]                              ;5  3162
-080B915A (T)  lsl     r0,r0,0Ch                               ;2  3164
+Address table
 080B915C (T)  ldr     r0,=8B17EE4h                            ;9  3173
 080B915E (T)  ldr     r1,=8B17424h                            ;9  3182
 080B9160 (T)  mov     r2,57h                                  ;2  3184
@@ -698,23 +612,7 @@
 080B91DA (T)  bne     80B9204h                                ;8  3427
 080B91DC (T)  bl      80BD844h                                ;10 3437
 080B91E0 (T)  b       80B91B8h                                ;8  3445
-080B91E2 (T)  lsl     r0,r0,0h                                ;2  3447
-080B91E4 (T)  ldrb    r4,[r4,1Bh]                             ;4  3451
-080B91E6 (T)  lsr     r1,r6,2h                                ;2  3453
-080B91E8 (T)  strb    r4,[r4,10h]                             ;5  3458
-080B91EA (T)  lsr     r1,r6,2h                                ;2  3460
-080B91EC (T)  ldr     r0,=5EE22300h                           ;9  3469
-080B91EE (T)  lsl     r2,r0,8h                                ;2  3471
-080B91F0 (T)  lsl     r4,r2,3h                                ;2  3473
-080B91F2 (T)  lsl     r0,r0,10h                               ;2  3475
-080B91F4 (T)  lsl     r5,r2,0h                                ;2  3477
-080B91F6 (T)  strh    r0,[r0,8h]                              ;5  3482
-080B91F8 (T)  mov     r5,0h                                   ;2  3484
-080B91FA (T)  lsl     r0,r0,0Ch                               ;2  3486
-080B91FC (T)  strh    r0,[r6,r0]                              ;5  3491
-080B91FE (T)  lsl     r0,r0,0Ch                               ;2  3493
-080B9200 (T)  strh    r4,[r4,r1]                              ;5  3498
-080B9202 (T)  lsl     r0,r0,0Ch                               ;2  3500
+Address table
 080B9204 (T)  lsl     r0,r5,18h                               ;2  3502
 080B9206 (T)  lsr     r0,r0,18h                               ;2  3504
 080B9208 (T)  mov     r9,r0                                   ;2  3506
@@ -765,21 +663,19 @@
 080B9274 (T)  bl      8000364h                                ;10 3725
 080B9278 (T)  mov     r0,0h                                   ;2  3727
 080B927A (T)  b       80B963Ch                                ;8  3735
-080B927C (T)  bl      lr+0FFEh                                ;10 3745
-080B927E (T)  lsl     r0,r0,0h                                ;2  3747
-080B9280 (T)  strh    r4,[r4,r0]                              ;5  3752
-080B9282 (T)  lsl     r0,r0,0Ch                               ;2  3754
+Address table
 080B9284 (T)  ldr     r1,=3005224h                            ;9  3763
 080B9286 (T)  mov     r0,4h                                   ;2  3765
 080B9288 (T)  strh    r0,[r1]                                 ;5  3770
 080B928A (T)  mov     r2,r9                                   ;2  3772
 080B928C (T)  cmp     r2,0FFh                                 ;2  3774
-080B928E (T)  beq     80B929Ah                                ;8  3782
+080B928E (T)  beq     80B929Ah                                ;8  3782 Jump to case 4
 080B9290 (T)  mov     r0,r9                                   ;2  3784
 080B9292 (T)  sub     r0,1h                                   ;2  3786
 080B9294 (T)  lsl     r0,r0,18h                               ;2  3788
 080B9296 (T)  lsr     r0,r0,18h                               ;2  3790
 080B9298 (T)  mov     r9,r0                                   ;2  3792
+Switch case 4
 080B929A (T)  mov     r0,1h                                   ;2  3794
 080B929C (T)  bl      80BD7F8h                                ;10 3804
 080B92A0 (T)  bl      80D7154h                                ;10 3814
@@ -818,16 +714,7 @@
 080B92EA (T)  mov     r0,2h                                   ;2  3956
 080B92EC (T)  neg     r0,r0                                   ;2  3958
 080B92EE (T)  b       80B963Ch                                ;8  3966
-080B92F0 (T)  strh    r4,[r4,r0]                              ;5  3971
-080B92F2 (T)  lsl     r0,r0,0Ch                               ;2  3973
-080B92F4 (T)  strh    r4,[r4,r1]                              ;5  3978
-080B92F6 (T)  lsl     r0,r0,0Ch                               ;2  3980
-080B92F8 (T)  lsl     r4,r4,13h                               ;2  3982
-080B92FA (T)  lsr     r2,r6,2h                                ;2  3984
-080B92FC (T)  add     r1,sp,2C0h                              ;2  3986
-080B92FE (T)  lsr     r2,r6,2h                                ;2  3988
-080B9300 (T)  strh    r0,[r6,r0]                              ;5  3993
-080B9302 (T)  lsl     r0,r0,0Ch                               ;2  3995
+Address table
 080B9304 (T)  ldr     r1,=300538Ch                            ;9  4004
 080B9306 (T)  ldr     r0,=2020C70h                            ;9  4013
 080B9308 (T)  str     r0,[r1]                                 ;5  4018
@@ -996,36 +883,7 @@
 080B9468 (T)  beq     80B9438h                                ;8  4717
 080B946A (T)  bl      80F499Ch                                ;10 4727
 080B946E (T)  b       80B9438h                                ;8  4735
-080B9470 (T)  strh    r4,[r1,r6]                              ;5  4740
-080B9472 (T)  lsl     r0,r0,0Ch                               ;2  4742
-080B9474 (T)  lsr     r0,r6,11h                               ;2  4744
-080B9476 (T)  lsl     r2,r0,8h                                ;2  4746
-080B9478 (T)  sub     r0,r2,4                                 ;2  4748
-080B947A (T)  lsl     r0,r0,0Ch                               ;2  4750
-080B947C (T)  lsl     r4,r1,13h                               ;2  4752
-080B947E (T)  lsl     r0,r0,0h                                ;2  4754
-080B9480 (T)  lsl     r4,r4,13h                               ;2  4756
-080B9482 (T)  lsr     r2,r6,2h                                ;2  4758
-080B9484 (T)  add     r1,sp,2C0h                              ;2  4760
-080B9486 (T)  lsr     r2,r6,2h                                ;2  4762
-080B9488 (T)  strh    r0,[r6,r0]                              ;5  4767
-080B948A (T)  lsl     r0,r0,0Ch                               ;2  4769
-080B948C (T)  strh    r0,[r2,r6]                              ;5  4774
-080B948E (T)  lsl     r0,r0,0Ch                               ;2  4776
-080B9490 (T)  lsr     r4,r0,14h                               ;2  4778
-080B9492 (T)  lsl     r2,r0,8h                                ;2  4780
-080B9494 (T)  add     r0,r0,5                                 ;2  4782
-080B9496 (T)  lsl     r0,r0,0Ch                               ;2  4784
-080B9498 (T)  lsl     r3,r1,7h                                ;2  4786
-080B949A (T)  lsl     r0,r0,0h                                ;2  4788
-080B949C (T)  ldr     r0,=0F018DDF6h                          ;9  4797
-080B949E (T)  lsl     r2,r0,8h                                ;2  4799
-080B94A0 (T)  lsl     r4,r2,3h                                ;2  4801
-080B94A2 (T)  lsl     r0,r0,10h                               ;2  4803
-080B94A4 (T)  ldr     r0,=324C8019h                           ;9  4812
-080B94A6 (T)  lsl     r2,r0,8h                                ;2  4814
-080B94A8 (T)  lsl     r5,r2,0h                                ;2  4816
-080B94AA (T)  strh    r0,[r0,8h]                              ;5  4821
+Address table
 080B94AC (T)  mov     r3,1Ah                                  ;2  4823
 080B94AE (T)  ldsh    r0,[r6,r3]                              ;4  4827
 080B94B0 (T)  cmp     r0,0h                                   ;2  4829
@@ -1053,12 +911,7 @@
 080B94DE (T)  and     r0,r1                                   ;2  4920
 080B94E0 (T)  str     r0,[r2]                                 ;5  4925
 080B94E2 (T)  b       80B9438h                                ;8  4933
-080B94E4 (T)  add     r1,sp,2C0h                              ;2  4935
-080B94E6 (T)  lsr     r2,r6,2h                                ;2  4937
-080B94E8 (T)  lsl     r4,r5,13h                               ;2  4939
-080B94EA (T)  lsr     r2,r6,2h                                ;2  4941
-080B94EC (T)  bl      lr+0DFEh                                ;10 4951
-080B94EE (T)  bl      lr+0FFEh                                ;10 4961
+Address table
 080B94F0 (T)  mov     r1,r8                                   ;2  4963
 080B94F2 (T)  ldr     r0,[r1,8h]                              ;4  4967
 080B94F4 (T)  ldr     r1,[r0]                                 ;4  4971
@@ -1098,16 +951,7 @@
 080B953A (T)  bge     80B953Eh                                ;8  5127
 080B953C (T)  b       80B93E4h                                ;8  5135
 080B953E (T)  b       80B9622h                                ;8  5143
-080B9540 (T)  bl      lr+0DFEh                                ;10 5153
-080B9542 (T)  bl      lr+0FFEh                                ;10 5163
-080B9544 (T)  sub     r3,r1,4                                 ;2  5165
-080B9546 (T)  lsl     r0,r0,0Ch                               ;2  5167
-080B9548 (T)  strh    r0,[r2,r6]                              ;5  5172
-080B954A (T)  lsl     r0,r0,0Ch                               ;2  5174
-080B954C (T)  sub     r4,r0,4                                 ;2  5176
-080B954E (T)  lsl     r0,r0,0Ch                               ;2  5178
-080B9550 (T)  bl      lr+0D20h                                ;10 5188
-080B9552 (T)  bl      lr+0FFEh                                ;10 5198
+Address table
 080B9554 (T)  mov     r0,r1                                   ;2  5200
 080B9556 (T)  mov     r1,r9                                   ;2  5202
 080B9558 (T)  bl      80DA4ECh                                ;10 5212
@@ -1149,13 +993,7 @@
 080B95A6 (T)  beq     80B957Ah                                ;8  5381
 080B95A8 (T)  bl      80F499Ch                                ;10 5391
 080B95AC (T)  b       80B957Ah                                ;8  5399
-080B95AE (T)  lsl     r0,r0,0h                                ;2  5401
-080B95B0 (T)  ldr     r0,=80B9F94h                            ;9  5410
-080B95B2 (T)  lsl     r2,r0,8h                                ;2  5412
-080B95B4 (T)  lsl     r4,r2,3h                                ;2  5414
-080B95B6 (T)  lsl     r0,r0,10h                               ;2  5416
-080B95B8 (T)  lsl     r5,r2,0h                                ;2  5418
-080B95BA (T)  strh    r0,[r0,8h]                              ;5  5423
+Address table
 080B95BC (T)  mov     r1,1Ah                                  ;2  5425
 080B95BE (T)  ldsh    r0,[r4,r1]                              ;4  5429
 080B95C0 (T)  cmp     r0,0h                                   ;2  5431
@@ -1179,8 +1017,7 @@
 080B95E6 (T)  and     r0,r1                                   ;2  5510
 080B95E8 (T)  str     r0,[r2]                                 ;5  5515
 080B95EA (T)  b       80B957Ah                                ;8  5523
-080B95EC (T)  bl      lr+0DFEh                                ;10 5533
-080B95EE (T)  bl      lr+0FFEh                                ;10 5543
+Address table
 080B95F0 (T)  ldr     r2,[r5,8h]                              ;9  5552
 080B95F2 (T)  ldr     r0,[r2]                                 ;4  5556
 080B95F4 (T)  ldr     r1,=0FFFFFEFFh                          ;9  5565
@@ -1209,12 +1046,8 @@
 080B9626 (T)  mov     r0,2h                                   ;2  5658
 080B9628 (T)  neg     r0,r0                                   ;2  5660
 080B962A (T)  b       80B963Ch                                ;8  5668
-080B962C (T)  bl      lr+0DFEh                                ;10 5678
-080B962E (T)  bl      lr+0FFEh                                ;10 5688
-080B9630 (T)  add     r0,r0,5                                 ;2  5690
-080B9632 (T)  lsl     r0,r0,0Ch                               ;2  5692
-080B9634 (T)  strh    r0,[r2,r6]                              ;5  5697
-080B9636 (T)  lsl     r0,r0,0Ch                               ;2  5699
+Address table
+Switch case default
 080B9638 (T)  lsl     r0,r5,10h                               ;2  5701
 080B963A (T)  asr     r0,r0,10h                               ;2  5703
 080B963C (T)  add     sp,0Ch                                  ;2  5705
