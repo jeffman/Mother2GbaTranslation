@@ -949,6 +949,12 @@ nop
 .org 0x80BE4CA :: bl be4ca_set_proper_wvf_skip_goods_battle_window
 
 //---------------------------------------------------------
+// PSI Rockin in battle text
+//---------------------------------------------------------
+.org 0x80D3984 :: cmp r0,#3 //Now "PSI " is 4 letters long, not 2
+.org 0x80D399E :: sub r0,#4 //Subtract from r0 the length of "PSI "
+
+//---------------------------------------------------------
 // Names hacks
 //---------------------------------------------------------
 //Change location of the names to allow 5-letter long characters and 6 letters long food, rockin and king
