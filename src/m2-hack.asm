@@ -142,7 +142,7 @@ b       0x80C5726
 .org    0x80C2192
 mov     r2,r8
 str     r2,[sp]
-mov     r2,0xFD
+mov     r2,0xFE
 lsl     r2,r2,1
 add     r0,r6,r2
 mov     r1,0x71
@@ -1022,9 +1022,6 @@ nop
 .org 0x80C98C4 :: bl c98c4_load_1d7
 .org 0x80C98CC :: mov r4,#0xEF
 .org 0x80C98D4 :: bl c98d4_load_1e5
-
-//Rockin's
-.org 0x80C2196 :: mov r2,#0xFE
 
 //Name writing
 .org 0x80020B6 :: bl _2352_load_1d7
