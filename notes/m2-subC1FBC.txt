@@ -1,71 +1,61 @@
-    080C1FBC (T)  push    {r4-r7,r14}                                 ;9  178
+    080C1FBC (T)  push    {r4-r7,r14}                                 ;9  178    m2_psiwindow(unsigned short partyMember, byte Status_PSI, byte Type_Of_Window)
     080C1FBE (T)  mov     r7,r10                                      ;2  180
     080C1FC0 (T)  mov     r6,r9                                       ;2  182
     080C1FC2 (T)  mov     r5,r8                                       ;2  184
     080C1FC4 (T)  push    {r5-r7}                                     ;7  191
     080C1FC6 (T)  add     sp,-#0x18                                   ;2  193
     080C1FC8 (T)  lsl     r0,r0,#0x10                                 ;2  195
-    080C1FCA (T)  lsr     r6,r0,#0x10                                 ;2  197
+    080C1FCA (T)  lsr     r6,r0,#0x10                                 ;2  197    r6 = partyMember
     080C1FCC (T)  lsl     r1,r1,#0x18                                 ;2  199
     080C1FCE (T)  lsr     r1,r1,#0x18                                 ;2  201
-    080C1FD0 (T)  str     r1,[sp,#0x4]                                ;5  206
+    080C1FD0 (T)  str     r1,[sp,#0x4]                                ;5  206    sp + 4 = Status_Or_PSI
     080C1FD2 (T)  lsl     r2,r2,#0x18                                 ;2  208
     080C1FD4 (T)  lsr     r2,r2,#0x18                                 ;2  210
-    080C1FD6 (T)  str     r2,[sp,#0x8]                                ;5  215
-    080C1FD8 (T)  mov     r7,#0x0                                     ;2  217
-    080C1FDA (T)  ldr     r3,=#0x3000A00                              ;9  226
-    080C1FDC (T)  mov     r2,#0x0                                     ;2  228
-    080C1FDE (T)  add     r5,r3,4                                     ;2  230
-    080C1FE0 (T)  mov     r4,r3                                       ;2  232
-    080C1FE2 (T)  add     r4,#0x8                                     ;2  234
-    080C1FE4 (T)  lsl     r0,r7,#0x10                                 ;2  236
-    080C1FE6 (T)  asr     r0,r0,#0x10                                 ;2  238
-    080C1FE8 (T)  add     r1,r0,r3                                    ;2  240
-    080C1FEA (T)  strb    r2,[r1]                                     ;5  245
-    080C1FEC (T)  add     r1,r0,r5                                    ;2  247
-    080C1FEE (T)  strb    r2,[r1]                                     ;5  252
-    080C1FF0 (T)  add     r1,r0,r4                                    ;2  254
-    080C1FF2 (T)  strb    r2,[r1]                                     ;5  259
-    080C1FF4 (T)  add     r0,#0x1                                     ;2  261
-    080C1FF6 (T)  lsl     r0,r0,#0x10                                 ;2  263
-    080C1FF8 (T)  lsr     r7,r0,#0x10                                 ;2  265
-    080C1FFA (T)  asr     r0,r0,#0x10                                 ;2  267
-    080C1FFC (T)  cmp     r0,#0x3                                     ;2  269
-    080C1FFE (T)  ble     #0x80C1FE4                                  ;8  277
+    080C1FD6 (T)  str     r2,[sp,#0x8]                                ;5  215    sp + 8 = Type_Of_Window
+    080C1FD8 (T)  mov     r7,#0x0                                     ;2  217    r7 = 0
+    080C1FDA (T)  ldr     r3,=#0x3000A00                              ;9  226    r3 = 0x3000A00
+    080C1FDC (T)  mov     r2,#0x0                                     ;2  228    r2 = 0
+    080C1FDE (T)  add     r5,r3,4                                     ;2  230    r5 = 0x3000A04
+    080C1FE2 (T)  add     r4,#0x8                                     ;2  234    r4 = 0x3000A08
+                                                                                 r7 = 4 - Set all bytes between 0x3000A00 and 0x3000A0B included = 0 (Setup)
     080C2000 (T)  mov     r0,#0x0                                     ;2  279
-    080C2002 (T)  str     r0,[sp,#0xC]                                ;5  284
+    080C2002 (T)  str     r0,[sp,#0xC]                                ;5  284    sp + 0xC = 0
     080C2004 (T)  mov     r1,#0x0                                     ;2  286
-    080C2006 (T)  str     r1,[sp,#0x10]                               ;5  291
-    080C2008 (T)  lsl     r0,r6,#0x10                                 ;2  293
+    080C2006 (T)  str     r1,[sp,#0x10]                               ;5  291    sp + 0x10 = 0
+    080C2008 (T)  lsl     r0,r6,#0x10                                 ;2  293    
     080C200A (T)  asr     r1,r0,#0x10                                 ;2  295
-    080C200C (T)  str     r0,[sp,#0x14]                               ;5  300
-    080C200E (T)  cmp     r1,#0x3                                     ;2  302
+    080C200C (T)  str     r0,[sp,#0x14]                               ;5  300    sp + 0x14 = partyMember << 0x10
+    080C200E (T)  cmp     r1,#0x3                                     ;2  302    Is this Poo? If not go to End_Of_Poo
     080C2010 (T)  bne     #0x80C20DA                                  ;8  310
+Poo:
     080C2012 (T)  mov     r2,#0x2                                     ;2  312
     080C2014 (T)  ldr     r0,[sp,#0x4]                                ;4  316
     080C2016 (T)  and     r0,r2                                       ;2  318
     080C2018 (T)  cmp     r0,#0x0                                     ;2  320
-    080C201A (T)  beq     #0x80C20DA                                  ;8  328
+    080C201A (T)  beq     #0x80C20DA                                  ;8  328    Is this the Status PSI window? If not go to End_Of_Poo
+Status_PSI:
     080C201C (T)  mov     r0,#0x1                                     ;2  330
     080C201E (T)  ldr     r4,[sp,#0x8]                                ;4  334
     080C2020 (T)  and     r0,r4                                       ;2  336
     080C2022 (T)  cmp     r0,#0x0                                     ;2  338
-    080C2024 (T)  beq     #0x80C20DA                                  ;8  346
+    080C2024 (T)  beq     #0x80C20DA                                  ;8  346    Is Type_Of_Window Offense? If not go to End_Of_Poo
+Offense_Status_PSI:
     080C2026 (T)  ldr     r0,=#0x3001D40                              ;9  355
     080C2028 (T)  ldr     r1,=#0x22A                                  ;9  364
-    080C202A (T)  add     r6,r0,r1                                    ;2  366
+    080C202A (T)  add     r6,r0,r1                                    ;2  366    r6 = 0x3001F6A
     080C202C (T)  ldrb    r1,[r6]                                     ;7  373
     080C202E (T)  mov     r0,r2                                       ;2  375
     080C2030 (T)  and     r0,r1                                       ;2  377
     080C2032 (T)  cmp     r0,#0x0                                     ;2  379
-    080C2034 (T)  beq     #0x80C2084                                  ;8  387
-    080C2036 (T)  ldr     r5,=#0x8B2AB00                              ;9  396
-    080C2038 (T)  ldr     r4,=#0x3005230                              ;9  405
-    080C203A (T)  ldr     r0,[r4,#0x1C]                               ;4  409
-    080C203C (T)  ldrb    r2,[r5]                                     ;4  413
+    080C2034 (T)  beq     #0x80C2084                                  ;8  387    Does Poo have Starstorm?
+Starstorm:
+    080C2036 (T)  ldr     r5,=#0x8B2AB00                              ;9  396    r5 = 0x8B2AB00
+    080C2038 (T)  ldr     r4,=#0x3005230                              ;9  405    r4 = 0x3005230 = Base window address
+    080C203A (T)  ldr     r0,[r4,#0x1C]                               ;4  409    r0 = Window = Base Window address[7]
+    080C203C (T)  ldrb    r2,[r5]                                     ;4  413    r2 = r5[0]
     080C203E (T)  mov     r1,#0xD                                     ;2  415
-    080C2040 (T)  mul     r1,r2                                       ;3  418
-    080C2042 (T)  ldr     r2,=#0x8B73E62                              ;9  427
+    080C2040 (T)  mul     r1,r2                                       ;3  418    r1 = r2 * 0xD
+    080C2042 (T)  ldr     r2,=#0x8B73E62                              ;9  427    r2 = 0x8B73E62
     080C2044 (T)  add     r1,r1,r2                                    ;2  429
     080C2046 (T)  ldrb    r3,[r5,#0xA]                                ;4  433
     080C2048 (T)  ldr     r2,[sp,#0x10]                               ;4  437
@@ -137,6 +127,7 @@
     080C20D4 (T)  add     r1,r1,r2                                    ;2  711
     080C20D6 (T)  mov     r0,#0x16                                    ;2  713
     080C20D8 (T)  strb    r0,[r1]                                     ;5  718
+End_Of_Poo:
     080C20DA (T)  mov     r7,#0x1                                     ;2  720
     080C20DC (T)  ldr     r2,=#0x8B2A9B0                              ;9  729
     080C20DE (T)  ldrb    r0,[r2,#0x10]                               ;4  733
