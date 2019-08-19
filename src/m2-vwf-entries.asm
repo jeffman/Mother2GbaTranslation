@@ -364,42 +364,6 @@ asr     r4,r0,0x10
 pop     {pc}
 
 //==============================================================================
-// Clear offense/defense changes when switching in equip select window
-c5500_clear_up:
-push    {r1-r3,lr}
-mov     r0,0xD
-mov     r1,0xB
-mov     r2,0x3
-bl      print_blankstr
-mov     r0,0xD
-mov     r1,0xD
-mov     r2,0x3
-bl      print_blankstr
-
-// Clobbered code
-pop     {r1-r3} //r3 would otherwise be a 0x3000xxx number
-sub     r0,r3,1
-strh    r0,[r7,0x36]
-pop     {pc}
-
-c5500_clear_down:
-push    {r0-r3,lr}
-mov     r0,0xD
-mov     r1,0xB
-mov     r2,0x3
-bl      print_blankstr
-mov     r0,0xD
-mov     r1,0xD
-mov     r2,0x3
-bl      print_blankstr
-
-// Clobbered code
-pop     {r0-r3}
-add     r0,1
-strh    r0,[r7,0x36]
-pop     {pc}
-
-//==============================================================================
 // Clear offense/defense when re-equipping (or un-equipping) something
 baef8_reequip_erase:
 push    {r0-r3,lr}
@@ -2064,3 +2028,224 @@ bl      decode_character
 mov     r1,r5
 bl      print_character_to_window
 pop     {pc}
+
+//==============================================================================
+//Makes it sure the outer equip menu prints the window only when needed
+baf60_outer_equip_setup:
+push    {lr}
+ldr     r1,=#m2_active_window_pc
+ldrb    r1,[r1,#0]
+push    {r1} //Stores the active_window_pc 
+bl      0x80C4EB0 //Input management function
+pop     {r1}
+cmp     r0,#0 //Has an action happened? (Are we entering/exiting the menu?)
+beq     @@check_character_change
+
+ldr     r1,[r6,#0x18] //Main equip window - If it has, then set vwf_skip to false for both the equipment numbers window and the main equipment window 
+mov     r2,#0
+strb    r2,[r1,#3]
+ldr     r1,[r6,#0x14] //Offense and Defense window
+strb    r2,[r1,#3]
+b       @@end
+
+@@check_character_change:
+ldr     r2,=#m2_active_window_pc
+ldrb    r2,[r2,#0] //Has the character changed?
+cmp     r2,r1
+beq     @@end
+ldr     r1,[r6,#0x14] //Offense and Defense window - If it has, then set vwf_skip to false for the equipment numbers window
+mov     r2,#0
+strb    r2,[r1,#3]
+
+@@end:
+pop     {pc}
+
+//==============================================================================
+//Prints the outer equip window only when needed - makes it so 0x80C4EB0 takes the previous m2_active_window_pc as a function parameter
+c518e_outer_equip:
+push    {lr}
+ldr     r1,[sp,#0x1C]
+lsl     r1,r1,#0x18
+lsr     r1,r1,#0x18
+ldr     r2,=#m2_active_window_pc
+ldrb    r2,[r2,#0]
+cmp     r1,r2 //Has the active_window_pc changed?
+beq     @@printing
+mov     r2,#0 //If it has, then reprint the window
+strb    r2,[r0,#3]
+
+@@printing:
+ldrb    r1,[r0,#3]
+mov     r2,#1
+and     r2,r1
+cmp     r2,#1
+beq     @@skip //Check if vwf_skip is false
+
+mov     r2,#1 //If it is, print and set it to true
+orr     r2,r1
+strb    r2,[r0,#3]
+bl      0x80C4B2C //Prints the equip menu
+
+@@skip:
+pop     {pc}
+
+//==============================================================================
+//Prints the numbers in the offense/defense window for the outer equip window only when needed
+bafc8_outer_equip_attack_defense:
+push    {lr}
+ldr     r1,[r6,#0x14] //Offense and Defense window
+ldrb    r2,[r1,#3]
+mov     r3,#1
+and     r3,r2
+cmp     r3,#1 //Is vwf_skip false?
+beq     @@skip
+cmp     r5,#0 //If it is, then print, but only if no action was performed
+bne     @@skip
+
+mov     r3,#1 //Set vwf_skip to true and continue as usual
+orr     r3,r2
+strb    r3,[r1,#3]
+lsl     r0,r0,#0x18 //Clobbered code
+lsr     r0,r0,#0x18
+pop     {pc}
+
+@@skip:
+mov     r5,r7
+add     r5,#0x12 //Setup r5 just like the code skipped does
+pop     {r0}
+mov     r1,#0xF1
+lsl     r1,r1,#1
+add     r0,r0,r1 //Jump to 0x80BB1AE
+bx      r0
+
+.pool
+
+
+//==============================================================================
+//Set things up so the numbers for Offense and Defense for the innermost equipment window is only printed when needed
+bb990_inner_equip_attack_defense_setup:
+push    {lr}
+ldr     r1,=#0x3005200
+ldr     r1,[r1,#0xC] //Window's item list
+mov     r2,#0x36
+ldsh    r2,[r0,r2] //Window's Y cursor
+add     r1,r1,r2
+ldrb    r1,[r1,#0] //Selected item
+push    {r1}
+bl      0x80C5500 //Input management function - returns the currently selected item
+pop     {r1}
+cmp     r1,r0 //Has the currently selected item changed?
+bne     @@refresh
+
+ldr     r1,=#0x3005230 //If not, check if A has been pressed
+ldr     r1,[r1,#0x10]
+ldr     r2,=#0xFFFF
+ldrh    r3,[r1,#0x32] //If A has been pressed this becomes 0xFFFF
+cmp     r2,r3
+bne     @@end
+
+@@refresh:
+ldr     r1,=#0x3005230 //Set wvf_skip to false
+ldr     r1,[r1,#0x14]
+mov     r2,#0
+strb    r2,[r1,#3]
+
+@@end:
+pop     {pc}
+
+//==============================================================================
+//Prints the numbers for Offense and Defense for the innermost window only if needed - Valid weapons
+bb6b2_inner_equip_attack_defense_weapon:
+push    {lr}
+mov     r1,r9
+ldr     r1,[r1,#0x14]
+ldrb    r0,[r1,#3]
+mov     r2,#1
+and     r2,r0
+cmp     r2,#1 //Is vwf_skip false?
+beq     @@skip
+
+mov     r2,#1 //If it is, set vwf_skip to true, clear the numbers' space and proceed normally
+orr     r2,r0
+strb    r2,[r1,#3]
+bl      clear_offense_defense_inner_equip
+mov     r1,r8
+mov     r2,#0
+pop     {pc}
+
+@@skip:
+mov     r5,r7 //Otherwise skip some code
+add     r5,#0x12
+mov     r4,#0
+pop     {r0}
+add     r0,#0x62 //Go to 0x80BB718
+bx      r0
+
+//==============================================================================
+//Prints the numbers for Offense and Defense for the innermost window only if needed - None in weapons
+bb64e_inner_equip_attack_defense_none_weapon:
+push    {lr}
+mov     r1,r9
+ldr     r1,[r1,#0x14]
+ldrb    r0,[r1,#3]
+mov     r2,#1
+and     r2,r0
+cmp     r2,#1 //Is vwf_skip false?
+beq     @@skip
+
+mov     r2,#1 //If it is, set vwf_skip to true, clear the numbers' space and proceed normally
+orr     r2,r0
+strb    r2,[r1,#3]
+bl      clear_offense_defense_inner_equip
+mov     r3,r8 //This is where this differs from the routine above
+mov     r1,#0
+pop     {pc}
+
+@@skip:
+mov     r5,r7 //Otherwise skip some code
+add     r5,#0x12
+mov     r4,#0
+pop     {r0}
+add     r0,#0xC6 //Go to 0x80BB718 - The routine differs here too
+bx      r0
+
+//==============================================================================
+//Prints the numbers for Offense and Defense for the innermost window only if needed - Defensive equipment
+bbe7c_inner_equip_attack_defense_defensive_equipment:
+push    {lr}
+ldr     r1,=#0x3005230
+ldr     r1,[r1,#0x14]
+ldrb    r0,[r1,#3]
+mov     r2,#1
+and     r2,r0
+cmp     r2,#1 //Is vwf_skip false?
+beq     @@skip
+
+mov     r2,#1 //If it is, set vwf_skip to true, clear the numbers' space and proceed normally
+orr     r2,r0
+strb    r2,[r1,#3]
+bl      clear_offense_defense_inner_equip
+mov     r4,#0
+strb    r4,[r7,#0x15]
+pop     {pc}
+
+@@skip:
+pop     {r0} //Otherwise go to the routine's end
+ldr     r0,=#0x80BBEC7 //End of routine
+bx      r0
+
+//==============================================================================
+//Clears the rightmost part of the Offense/Defense window for the innermost equipment menu
+clear_offense_defense_inner_equip:
+push    {lr}
+mov     r0,0xD
+mov     r1,0xB
+mov     r2,0x3
+bl      print_blankstr
+mov     r0,0xD
+mov     r1,0xD
+mov     r2,0x3
+bl      print_blankstr
+pop     {pc}
+
+.pool
