@@ -103,10 +103,6 @@ mov     r3,6
 // C5500 hacks (equip window switching)
 //---------------------------------------------------------
 
-// Clear offense/defense changes when moving cursor
-.org 0x80C5AA2 :: bl c5500_clear_up
-.org 0x80C5B12 :: bl c5500_clear_down
-
 // Don't draw equip icon
 .org 0x80C5A1A :: nop
 .org 0x80C5A28 :: nop
@@ -541,6 +537,26 @@ b       0x80D3A14
 
 .org 0x80D37EC :: bl d37ec_print_number :: b 0x80D381C //Offense
 .org 0x80D36D0 :: bl d37ec_print_number :: b 0x80D3700 //Defense
+
+//---------------------------------------------------------
+// Remove continuous printing of outer equip window and also
+// remove continuous printing of Offense and Defense numbers
+// in both outer and innermost equipment windows
+//---------------------------------------------------------
+
+.org 0x80C518E :: bl c518e_outer_equip
+.org 0x80BAF60 :: bl baf60_outer_equip_setup
+.org 0x80BAFC8 :: bl bafc8_outer_equip_attack_defense
+.org 0x80BB26E :: bl bb990_inner_equip_attack_defense_setup //Weapon
+.org 0x80BB730 :: bl bb990_inner_equip_attack_defense_setup //Body
+.org 0x80BB860 :: bl bb990_inner_equip_attack_defense_setup //Arms
+.org 0x80BB990 :: bl bb990_inner_equip_attack_defense_setup //Other
+.org 0x80BB6B2 :: bl bb6b2_inner_equip_attack_defense_weapon
+.org 0x80BB64E :: bl bb64e_inner_equip_attack_defense_none_weapon
+.org 0x80BB80E :: bl bbe7c_inner_equip_attack_defense_defensive_equipment //Body Offense/Defense printing
+.org 0x80BB93E :: bl bbe7c_inner_equip_attack_defense_defensive_equipment //Arms Offense/Defense printing
+.org 0x80BBE7C :: bl bbe7c_inner_equip_attack_defense_defensive_equipment //Other Offense/Defense printing
+.org 0x80BBDDE :: bl bbe7c_inner_equip_attack_defense_defensive_equipment //Defensive equipment Offense/Defense none printing
 
 //---------------------------------------------------------
 // B89EC hacks (print current cash balance)
