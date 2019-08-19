@@ -536,6 +536,13 @@ b       0x80D3A14
 .org 0x80E0A16 :: bl e06ec_redraw_bash_psi
 
 //---------------------------------------------------------
+// Equipment number printing in dialogue window
+//---------------------------------------------------------
+
+.org 0x80D37EC :: bl d37ec_print_number :: b 0x80D381C //Offense
+.org 0x80D36D0 :: bl d37ec_print_number :: b 0x80D3700 //Defense
+
+//---------------------------------------------------------
 // B89EC hacks (print current cash balance)
 //---------------------------------------------------------
 

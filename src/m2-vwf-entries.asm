@@ -2055,3 +2055,12 @@ bl      m2_initwindow
 pop     {pc}
 
 .pool
+
+//==============================================================================
+//Prints a digit to the dialogue window
+d37ec_print_number:
+push    {lr}
+bl      decode_character
+mov     r1,r5
+bl      print_character_to_window
+pop     {pc}
