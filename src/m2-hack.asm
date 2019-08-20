@@ -978,6 +978,49 @@ nop
 .org 0x80D399E :: sub r0,#4 //Subtract from r0 the length of "PSI "
 
 //---------------------------------------------------------
+// Flyover hacks
+//---------------------------------------------------------
+
+//Text
+.org 0x8FB0000
+flyovertext1:
+	.incbin "data/flyovertext_FB0000.bin"
+
+//Notes
+//byte 1-3: 2,1,1 (identifier)
+//Byte 4: x pos
+//Byte 5: y pos
+//byte 6: 0x80
+//other bytes: text (character is the character value in eb-char-lookup, but with 80 subtracted. there is then a 0x80.)
+
+//Flyover pointer remapping
+.org 0x873112c :: dw flyovertext1 //The year is 199x
+.org 0x8731130 :: dw flyovertext1+0x26 //Onett, a small town in eagleland
+.org 0x8731134 :: dw flyovertext1+0x6c //Ness's House
+.org 0x8731148 :: dw flyovertext1+0x8A //Later that night...
+
+//Flyover remapping
+.org 0x80B3482 :: bl largevwf :: b 0x80B348E
+
+// Weld the odd-numbered flyover letters
+.org 0x80B3254 :: bl flyoverweld :: nop
+
+// Change the [01 XX] flyover code to pixels from left of screen
+.org 0x80B332C :: b 0x80B3334
+
+// Alter the flyover palette so the borders don't show (orig 0x739C)
+.org 0x80FCE50 :: .byte 0x00,0x00
+
+//Insert the font
+.org 0x80B3274 :: dw m2_font_big
+
+//Print all 16 rows
+.org 0x80B3262 :: cmp r7,0xF
+
+//Print all 16 columns
+.org 0x80B325C :: cmp r6,7
+
+//---------------------------------------------------------
 // Names hacks
 //---------------------------------------------------------
 //Change location of the names to allow 5-letter long characters and 6 letters long food, rockin and king
@@ -1209,7 +1252,7 @@ m2_font_main:
 m2_font_saturn:
 .incbin "data/m2-font-saturn.bin"
 m2_font_big:
-.incbin "data/m2-font-big.bin"
+.incbin "data/bigfont.bin"
 m2_font_battle:
 .incbin "data/m2-font-battle.bin"
 m2_font_tiny:
@@ -1237,7 +1280,7 @@ m2_widths_main:
 m2_widths_saturn:
 .incbin "data/m2-widths-saturn.bin"
 m2_widths_big:
-.incbin "data/m2-widths-big.bin"
+.incbin "data/largewidths.bin"
 m2_widths_battle:
 .incbin "data/m2-widths-battle.bin"
 m2_widths_tiny:
@@ -1331,5 +1374,6 @@ m2_enemy_attributes:
 .include "m2-formatting.asm"
 .include "m2-customcodes.asm"
 .include "m2-compiled.asm"
+.include "m2-flyover.asm"
 
 .close
