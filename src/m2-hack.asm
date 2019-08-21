@@ -981,29 +981,33 @@ nop
 // Flyover hacks
 //---------------------------------------------------------
 
-//Text
-.org 0x8FB0000
-flyovertext1:
-	.incbin "data/flyovertext_FB0000.bin"
-
 //Notes
-//byte 1-3: 2,1,1 (identifier)
-//Byte 4: x pos
-//Byte 5: y pos
-//byte 6: 0x80
-//other bytes: text (character is the character value in eb-char-lookup, but with 80 subtracted. there is then a 0x80.)
+//Flyover entries are made of 16 bits codes. Codes with the first byte between 0 and 9 are special cases.
+//01 XX = Position at X tile XX (Changed to Position at X pixel XX)
+//02 XX = Position at Y tile XX
+//09 00 = END
+//80 XX = Print character XX
 
 //Flyover pointer remapping
-.org 0x873112c :: dw flyovertext1 //The year is 199x
-.org 0x8731130 :: dw flyovertext1+0x26 //Onett, a small town in eagleland
-.org 0x8731134 :: dw flyovertext1+0x6c //Ness's House
-.org 0x8731148 :: dw flyovertext1+0x8A //Later that night...
+.org 0x873112c :: dw flyovertextYear //The year is 199x
+.org 0x8731130 :: dw flyovertextOnett //Onett, a small town in eagleland
+.org 0x8731134 :: dw flyovertextNess //Ness's House
+.org 0x8731138 :: dw flyovertextWinters //Winters, a small country to the north
+.org 0x873113C :: dw flyovertextSnow //Snow Wood Boarding House
+.org 0x8731140 :: dw flyovertextDalaam //Dalaam, in the Far East
+.org 0x8731144 :: dw flyovertextPoo //The palace of Poo\nThe Crown Prince
+.org 0x8731148 :: dw flyovertextLater //Later that night...
 
 //Flyover remapping
 .org 0x80B3482 :: bl largevwf :: b 0x80B348E
 
 // Weld the odd-numbered flyover letters
 .org 0x80B3254 :: bl flyoverweld :: nop
+
+// Make it so the entire possible tileset is used
+.org 0x80AE568 :: mov r0,#8
+.org 0x80AE56E :: mov r0,#7
+.org 0x80AE57A :: mov r1,#0x80 //Start at 0x100 instead of 0x120
 
 // Change the [01 XX] flyover code to pixels from left of screen
 .org 0x80B332C :: b 0x80B3334
@@ -1294,6 +1298,30 @@ m2_nybbles_to_bits:
 
 m2_enemy_attributes:
 .incbin "data/m2-enemy-attributes.bin"
+
+flyovertextYear:
+.incbin "data/flyovertextYear.bin"
+
+flyovertextOnett:
+.incbin "data/flyovertextOnett.bin"
+
+flyovertextNess:
+.incbin "data/flyovertextNess.bin"
+
+flyovertextWinters:
+.incbin "data/flyovertextWinters.bin"
+
+flyovertextSnow:
+.incbin "data/flyovertextSnow.bin"
+
+flyovertextDalaam:
+.incbin "data/flyovertextDalaam.bin"
+
+flyovertextPoo:
+.incbin "data/flyovertextPoo.bin"
+
+flyovertextLater:
+.incbin "data/flyovertextLater.bin"
 
 //==============================================================================
 // Existing subroutines/data
