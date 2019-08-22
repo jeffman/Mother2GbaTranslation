@@ -1415,15 +1415,7 @@ m2_coord_table_file:
 // Existing subroutines/data
 //==============================================================================
 
-.definelabel m2_ness_goods          ,0x3001D54
-.definelabel m2_ness_exp            ,0x3001D70
-.definelabel m2_ness_maxhp          ,0x3001D84
-.definelabel m2_ness_curhp          ,0x3001D86
-.definelabel m2_ness_maxpp          ,0x3001D8C
-.definelabel m2_ness_curpp          ,0x3001D8E
-.definelabel m2_paula_goods         ,0x3001DC0
-.definelabel m2_jeff_goods          ,0x3001E2C
-.definelabel m2_poo_goods           ,0x3001E98
+.definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10
 .definelabel m2_old_paula_name      ,0x3001F16
 .definelabel m2_paula_name          ,0x3001F17
@@ -1459,11 +1451,13 @@ m2_coord_table_file:
 .definelabel m2_psitargetwindow     ,0x80B8AE0
 .definelabel m2_isequipped          ,0x80BC670
 .definelabel m2_swapwindowbuf       ,0x80BD7AC
+.definelabel m2_setup_window        ,0x80BD844
 .definelabel m2_strlookup           ,0x80BE260
 .definelabel m2_initwindow          ,0x80BE458
 .definelabel m2_statuswindow_numbers,0x80C0A5C
 .definelabel m2_psiwindow           ,0x80C1FBC
 .definelabel m2_drawwindow          ,0x80C87D0
+.definelabel m2_print_window        ,0x80C8BE4
 .definelabel m2_printstr            ,0x80C9634
 .definelabel m2_printstr_hlight     ,0x80C96F0
 .definelabel m2_printnextch         ,0x80C980C

@@ -7,7 +7,12 @@ bl      customcodes_parse
 ldr     r1,[r6]
 
 // If 0, return [r6]+2; otherwise, return [r6]+r0
+cmp     r0,#0
 beq     @@next
+cmp     r0,#0
+bge     @@continue //If -1, then set this to 0
+mov     r0,#0
+@@continue:
 add     r0,r0,r1
 pop     {r1-r2,pc}
 @@next:
@@ -1408,9 +1413,8 @@ pop     {pc}
 //Routine which gives the address to the party member's inventory
 get_inventory_selected:
 push    {r3,lr}
-ldr     r0,[r5,#0x1C] //Load source pc
-lsl     r0,r0,#0x10
-asr     r0,r0,#0x10
+ldr     r0,=#0x30009FB //Load source pc
+ldrb    r0,[r0,#0]
 ldr     r3,=#0x3001D40 //Get inventory
 mov     r2,#0x6C
 mul     r0,r2
@@ -1431,9 +1435,8 @@ ldr     r2,[r3,#0]
 lsl     r2,r2,#0x10
 asr     r2,r2,#0x10
 push    {r2}
-ldr     r2,[r5,#0x1C] //Load source pc
-lsl     r2,r2,#0x10
-asr     r2,r2,#0x10
+ldr     r2,=#0x30009FB //Load source pc
+ldrb    r2,[r2,#0]
 str     r2,[r3,#0] //Store it
 
 mov     r2,#0 //No y offset
@@ -1462,13 +1465,10 @@ pop     {pc}
 //Specific Routine which calls get_print_inventory_window
 b9ecc_get_print_inventory_window:
 push    {lr}
-push    {r4-r5}
-mov     r5,r4
-mov     r4,#0x1C
-sub     r5,r5,r4 //Address with the windows' pc
+push    {r4}
 ldr     r4,=#0x3005230
 bl      get_print_inventory_window //Prints old inventory
-pop     {r4-r5}
+pop     {r4}
 bl      0x80BD7F8 //Copies old arrangements, this includes the highlight
 pop     {pc}
 
