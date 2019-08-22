@@ -1946,6 +1946,11 @@ strb    r2,[r1,#3]
 @@ending:
 pop     {r1}
 pop     {r1}
+pop     {pc}
+
+.pool
+
+//==============================================================================
 _4092_print_window:
 push    {lr}
 push    {r0-r4}
@@ -1965,7 +1970,7 @@ mov     r2,#0
 mov     r3,#0
 pop     {pc}
 
-//
+//==============================================================================
 //X cursor for the Options submenu position
 _position_X_Options:
 push {lr}
@@ -2086,6 +2091,9 @@ push    {lr}
 strb    r1,[r0,#1]
 bl      m2_initwindow
 pop     {pc}
+
+
+//==============================================================================
 //Fix the random garbage issue for the alphabet for good
 _2322_setup_windowing:
 push    {lr}
@@ -2142,10 +2150,10 @@ mov     r0,#2
 mov     r1,#5
 mov     r2,#0x40
 bl      wrapper_file_string_selection
-mov r0,#1
-mov r1,#0
-mov r2,#0
-bl 0x800341C
+mov     r0,#1
+mov     r1,#0
+mov     r2,#0
+bl      0x800341C
 ldr     r2,[r5,#0]
 ldr     r4,[sp,#4]
 str     r4,[r2,#4] //Restore this
@@ -2383,6 +2391,8 @@ bl      print_blankstr
 pop     {pc}
 
 .pool
+
+//==============================================================================
 //Fixes issue with file select menu not printing after going back to it from the alphabet
 _53f6_fix_out_of_description:
 push    {lr}
@@ -2412,48 +2422,48 @@ pop     {pc}
 //==============================================================================
 //Fixes text reprinting when pressing up or down in the text flavour window
 _3e86_special_setup:
-push {lr}
-push {r0-r2}
-ldr r0,=#m2_cstm_last_printed
-ldrb r2,[r0,#0]
-mov r1,#0x80
-orr r1,r2
-strb r1,[r0,#0]
-pop {r0-r2}
-bl 0x8003F44
-pop {pc}
+push    {lr}
+push    {r0-r2}
+ldr     r0,=#m2_cstm_last_printed
+ldrb    r2,[r0,#0]
+mov     r1,#0x80
+orr     r1,r2
+strb    r1,[r0,#0]
+pop     {r0-r2}
+bl      0x8003F44
+pop     {pc}
 
 //==============================================================================
 //Highlights all of the file string with the proper palette
 _highlight_file:
-push {lr}
-mov r0,#2
-ldr r1,=#0x3000024 //Load in r1 the y co-ordinate
-ldr r1,[r1,#0]
-ldr r1,[r1,#8]
-lsl r1,r1,#1
-add r1,#1
-mov r2,#0
-mov r3,r4
-bl setPaletteOnFile
-pop {pc}
+push    {lr}
+mov     r0,#2
+ldr     r1,=#0x3000024 //Load in r1 the y co-ordinate
+ldr     r1,[r1,#0]
+ldr     r1,[r1,#8]
+lsl     r1,r1,#1
+add     r1,#1
+mov     r2,#0
+mov     r3,r4
+bl      setPaletteOnFile
+pop     {pc}
 
 .pool
 
 //==============================================================================
 //File highlighting for the up-down arrows in the text flavour window
 _3f78_highlight_file:
-push {lr}
-bl _highlight_file
-mov r0,#4 //Clobbered code
-ldsh r2,[r4,r0]
-pop {pc}
+push    {lr}
+bl      _highlight_file
+mov     r0,#4 //Clobbered code
+ldsh    r2,[r4,r0]
+pop     {pc}
 
 //==============================================================================
 //File highlighting for when a file is selected
 _3a04_highlight_file:
-push {lr}
-bl _highlight_file
-mov r0,#1 //Clobbered code
-mov r1,#0
-pop {pc}
+push    {lr}
+bl      _highlight_file
+mov     r0,#1 //Clobbered code
+mov     r1,#0
+pop     {pc}

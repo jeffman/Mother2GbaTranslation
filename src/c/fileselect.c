@@ -42,52 +42,52 @@ unsigned short* getTilesetDest(int window_selector, int *width)
 }
 unsigned short getPaletteFromFileWindow(int x, int y, int window_selector)
 {
-	int width;
+    int width;
     unsigned short *tilesetDestPtr = getTilesetDest(window_selector, &width);
-	return (tilesetDestPtr[x + (y * width)] & 0x3000); //Get the palette used. Useful to keep the highlighting.
+    return (tilesetDestPtr[x + (y * width)] & 0x3000); //Get the palette used. Useful to keep the highlighting.
 }
 
 void setPaletteToFileWindow(int x, int y, int window_selector, unsigned short palette)
 {
-	int width;
+    int width;
     unsigned short *tilesetDestPtr = getTilesetDest(window_selector, &width);
-	tilesetDestPtr[x + (y * width)] = ((tilesetDestPtr[x + (y * width)] & 0x3FF) | palette); //Set the palette used. Useful to keep the highlighting.
+    tilesetDestPtr[x + (y * width)] = ((tilesetDestPtr[x + (y * width)] & 0x3FF) | palette); //Set the palette used. Useful to keep the highlighting.
 }
 
 void setPaletteToZero(int x, int y, int window_selector)
 {
-	int width;
+    int width;
     unsigned short *tilesetDestPtr = getTilesetDest(window_selector, &width);
-	tilesetDestPtr[x + (y * width)] = 0x013F; //Set palette to 0 when this one is called. No highlighting here.
+    tilesetDestPtr[x + (y * width)] = 0x013F; //Set palette to 0 when this one is called. No highlighting here.
 }
 
 void setPaletteOnAllFile(int x, int y, byte *str, int length, int window_selector)
 {
-	int width;
+    int width;
     unsigned short *tilesetDestPtr = getTilesetDest(window_selector, &width);
-	unsigned short palette = getPaletteFromFileWindow(x, y, window_selector);
-	for(int i = 0; i < count_pixels_to_tiles(str, length, (x + 1) << 3); i++)
-	{
-		tilesetDestPtr[i + x + (y * width)] = (tilesetDestPtr[i + x + (y * width)] & 0x3FF) | palette;
-		tilesetDestPtr[i + x + ((y + 1) * width)] = (tilesetDestPtr[i + x + ((y + 1) * width)] & 0x3FF) | palette;
-	}
+    unsigned short palette = getPaletteFromFileWindow(x, y, window_selector);
+    for(int i = 0; i < count_pixels_to_tiles(str, length, (x + 1) << 3); i++)
+    {
+        tilesetDestPtr[i + x + (y * width)] = (tilesetDestPtr[i + x + (y * width)] & 0x3FF) | palette;
+        tilesetDestPtr[i + x + ((y + 1) * width)] = (tilesetDestPtr[i + x + ((y + 1) * width)] & 0x3FF) | palette;
+    }
 }
 
 void wrapper_file_string_selection(int x, int y, int length, byte *str, int window_selector)
 {
     m2_cstm_last_printed[0] = window_selector; //First time setup
     print_file_string(x, y, length, str, window_selector, 1, 0);
-	setPaletteOnAllFile(x, y, str, length, window_selector);
+    setPaletteOnAllFile(x, y, str, length, window_selector);
 }
 
 void setPaletteOnFile(int x, int y, int window_selector, FILE_SELECT *file)
 {
-	setPaletteOnAllFile(x, y, file->formatted_str, 0x40, window_selector);
+    setPaletteOnAllFile(x, y, file->formatted_str, 0x40, window_selector);
 }
 
 void wrapper_first_file_string(int x, int y, int length, byte *str, int window_selector)
 {
-	setPaletteToZero(x, y, window_selector); //The game does not reset the palette for these lines. Instead it reprints them with palette 0. Hence if we want to mantain the highlighting consistent, we need to set the palette our code will use to 0 ourselves.
+    setPaletteToZero(x, y, window_selector); //The game does not reset the palette for these lines. Instead it reprints them with palette 0. Hence if we want to mantain the highlighting consistent, we need to set the palette our code will use to 0 ourselves.
     m2_cstm_last_printed[0] = window_selector; //First time setup
     print_file_string(x, y, length, str, window_selector, 1, 0);
 }
@@ -144,8 +144,8 @@ void print_file_string(int x, int y, int length, byte *str, int window_selector,
     int *tilesetBasePtr = (int *)(0x82B79B4 + (window_selector * 20));
     int width = tilesetBasePtr[2];
     unsigned short *tilesetDestPtr = (unsigned short *)(tilesetBasePtr[0]);
-	unsigned short getBasePal = tilesetDestPtr[x + (y * width)] & 0x3000;
-	tilesetDestPtr = tilesetDestPtr - windowX - (windowY * width);
+    unsigned short getBasePal = tilesetDestPtr[x + (y * width)] & 0x3000;
+    tilesetDestPtr = tilesetDestPtr - windowX - (windowY * width);
     clearArr(x + windowX, y + windowY, width, tilesetDestPtr, windowX); //Cleans all of the arrangements this line could ever use
     
     int pixelX = (x + windowX) * 8;
@@ -440,25 +440,25 @@ void options_setup(char String[], int selector)
     char Copy[] = "Copy";
     char Delete[] = "Delete";
     char Setup[] = "Set Up";
-	switch(selector)
-	{
-		case 0:
-			for(int i = 0; i < (sizeof(Continue) -1); i++)
-				String[index++] = encode_ascii(Continue[i]);
-			break;
-		case 1:
-			for(int i = 0; i < (sizeof(Copy) -1); i++)
-				String[index++] = encode_ascii(Copy[i]);
-			break;
-		case 2:
-			for(int i = 0; i < (sizeof(Delete) -1); i++)
-				String[index++] = encode_ascii(Delete[i]);
-			break;
-		default:
-			for(int i = 0; i < (sizeof(Setup) -1); i++)
-				String[index++] = encode_ascii(Setup[i]);
-			break;
-	}
+    switch(selector)
+    {
+        case 0:
+            for(int i = 0; i < (sizeof(Continue) -1); i++)
+                String[index++] = encode_ascii(Continue[i]);
+            break;
+        case 1:
+            for(int i = 0; i < (sizeof(Copy) -1); i++)
+                String[index++] = encode_ascii(Copy[i]);
+            break;
+        case 2:
+            for(int i = 0; i < (sizeof(Delete) -1); i++)
+                String[index++] = encode_ascii(Delete[i]);
+            break;
+        default:
+            for(int i = 0; i < (sizeof(Setup) -1); i++)
+                String[index++] = encode_ascii(Setup[i]);
+            break;
+    }
 
     //END
     String[index++] = 0xFF;
@@ -773,7 +773,7 @@ void summary_setup(char String[], int selector)
 void print_windows(int windowX, int windowY, int window_selector)
 {
     char String[64];
-	unsigned short palettes[3];
+    unsigned short palettes[3];
     switch(window_selector)
     {
         case 0x10: //Delete
@@ -786,19 +786,19 @@ void print_windows(int windowX, int windowY, int window_selector)
             m2_cstm_last_printed[0] = window_selector | (m2_cstm_last_printed[0] & 0x20);
             break;
         case 0xE: //Options
-			palettes[0] = getPaletteFromFileWindow(0x8, 1, window_selector);
-			palettes[1] = getPaletteFromFileWindow(0xC, 1, window_selector);
-			palettes[2] = getPaletteFromFileWindow(0x11, 1, window_selector);
+            palettes[0] = getPaletteFromFileWindow(0x8, 1, window_selector);
+            palettes[1] = getPaletteFromFileWindow(0xC, 1, window_selector);
+            palettes[2] = getPaletteFromFileWindow(0x11, 1, window_selector);
             options_setup(String, 0);
             print_file_string(2, 1, 0x40, String, window_selector, windowX, windowY);
             options_setup(String, 1);
-			setPaletteToFileWindow(0x8, 1, window_selector, palettes[0]); //Makes sure the highlighting is kept
+            setPaletteToFileWindow(0x8, 1, window_selector, palettes[0]); //Makes sure the highlighting is kept
             print_file_string(0x8, 1, 0x40, String, window_selector, windowX, windowY);
             options_setup(String, 2);
-			setPaletteToFileWindow(0xC, 1, window_selector, palettes[1]);
+            setPaletteToFileWindow(0xC, 1, window_selector, palettes[1]);
             print_file_string(0xC, 1, 0x40, String, window_selector, windowX, windowY);
             options_setup(String, 3);
-			setPaletteToFileWindow(0x11, 1, window_selector, palettes[2]);
+            setPaletteToFileWindow(0x11, 1, window_selector, palettes[2]);
             print_file_string(0x11, 1, 0x40, String, window_selector, windowX, windowY);
             m2_cstm_last_printed[0] = window_selector | (m2_cstm_last_printed[0] & 0x20);
         break;
@@ -815,8 +815,8 @@ void print_windows(int windowX, int windowY, int window_selector)
                 print_file_string(2, 7, 0x40, String, window_selector, windowX, windowY);
                 m2_cstm_last_printed[0] = window_selector | (m2_cstm_last_printed[0] & 0x20);
             }
-			else if ((m2_cstm_last_printed[0] & 0x80) != 0) //This has not been printed. Instead Text Flavour has been.
-				m2_cstm_last_printed[0] = 2;
+            else if ((m2_cstm_last_printed[0] & 0x80) != 0) //This has not been printed. Instead Text Flavour has been.
+                m2_cstm_last_printed[0] = 2;
         break;
         case 0x2: //Text Flavour
             if((m2_cstm_last_printed[0] & 0x1F) != 2){
