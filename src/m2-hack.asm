@@ -978,6 +978,53 @@ nop
 .org 0x80D399E :: sub r0,#4 //Subtract from r0 the length of "PSI "
 
 //---------------------------------------------------------
+// Flyover hacks
+//---------------------------------------------------------
+
+//Notes
+//Flyover entries are made of 16 bits codes. Codes with the first byte between 0 and 9 are special cases.
+//01 XX = Position at X tile XX (Changed to Position at X pixel XX)
+//02 XX = Position at Y tile XX
+//09 00 = END
+//80 XX = Print character XX
+
+//Flyover pointer remapping
+.org 0x873112c :: dw flyovertextYear //The year is 199x
+.org 0x8731130 :: dw flyovertextOnett //Onett, a small town in eagleland
+.org 0x8731134 :: dw flyovertextNess //Ness's House
+.org 0x8731138 :: dw flyovertextWinters //Winters, a small country to the north
+.org 0x873113C :: dw flyovertextSnow //Snow Wood Boarding House
+.org 0x8731140 :: dw flyovertextDalaam //Dalaam, in the Far East
+.org 0x8731144 :: dw flyovertextPoo //The palace of Poo\nThe Crown Prince
+.org 0x8731148 :: dw flyovertextLater //Later that night...
+
+//Flyover remapping
+.org 0x80B3482 :: bl largevwf :: b 0x80B348E
+
+// Weld the odd-numbered flyover letters
+.org 0x80B3254 :: bl flyoverweld :: nop
+
+// Make it so the entire possible tileset is used
+.org 0x80AE568 :: mov r0,#8
+.org 0x80AE56E :: mov r0,#7
+.org 0x80AE57A :: mov r1,#0x80 //Start at 0x100 instead of 0x120
+
+// Change the [01 XX] flyover code to pixels from left of screen
+.org 0x80B332C :: b 0x80B3334
+
+// Alter the flyover palette so the borders don't show (orig 0x739C)
+.org 0x80FCE50 :: .byte 0x00,0x00
+
+//Insert the font
+.org 0x80B3274 :: dw m2_font_big
+
+//Print all 16 rows
+.org 0x80B3262 :: cmp r7,0xF
+
+//Print all 16 columns
+.org 0x80B325C :: cmp r6,7
+
+//---------------------------------------------------------
 // Names hacks
 //---------------------------------------------------------
 //Change location of the names to allow 5-letter long characters and 6 letters long food, rockin and king
@@ -1209,7 +1256,7 @@ m2_font_main:
 m2_font_saturn:
 .incbin "data/m2-font-saturn.bin"
 m2_font_big:
-.incbin "data/m2-font-big.bin"
+.incbin "data/bigfont.bin"
 m2_font_battle:
 .incbin "data/m2-font-battle.bin"
 m2_font_tiny:
@@ -1237,7 +1284,7 @@ m2_widths_main:
 m2_widths_saturn:
 .incbin "data/m2-widths-saturn.bin"
 m2_widths_big:
-.incbin "data/m2-widths-big.bin"
+.incbin "data/largewidths.bin"
 m2_widths_battle:
 .incbin "data/m2-widths-battle.bin"
 m2_widths_tiny:
@@ -1251,6 +1298,30 @@ m2_nybbles_to_bits:
 
 m2_enemy_attributes:
 .incbin "data/m2-enemy-attributes.bin"
+
+flyovertextYear:
+.incbin "data/flyovertextYear.bin"
+
+flyovertextOnett:
+.incbin "data/flyovertextOnett.bin"
+
+flyovertextNess:
+.incbin "data/flyovertextNess.bin"
+
+flyovertextWinters:
+.incbin "data/flyovertextWinters.bin"
+
+flyovertextSnow:
+.incbin "data/flyovertextSnow.bin"
+
+flyovertextDalaam:
+.incbin "data/flyovertextDalaam.bin"
+
+flyovertextPoo:
+.incbin "data/flyovertextPoo.bin"
+
+flyovertextLater:
+.incbin "data/flyovertextLater.bin"
 
 //==============================================================================
 // Existing subroutines/data
@@ -1331,5 +1402,6 @@ m2_enemy_attributes:
 .include "m2-formatting.asm"
 .include "m2-customcodes.asm"
 .include "m2-compiled.asm"
+.include "m2-flyover.asm"
 
 .close
