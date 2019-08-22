@@ -69,8 +69,6 @@ void print_number_menu_current(byte digit, WINDOW* window);
 void clear_number_menu(WINDOW* window);
 void format_cash_window(int value, int padding, byte* str);
 void handle_first_window(WINDOW* window);
-void print_file_string(int x, int y, int length, byte *str, int unknown);
-void format_file_string(FILE_SELECT *file);
 void getCharName(byte character, byte *str, int *index);
 void copy_name(byte *str, byte *source, int *index, int pos);
 byte getSex(byte character);
