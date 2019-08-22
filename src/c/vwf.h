@@ -1,6 +1,5 @@
 #include "types.h"
 #include "pc.h"
-#include "fileselect.h"
 
 #define NULL (0)
 #define QUESTION_MARK 0x1F
@@ -28,6 +27,9 @@
 byte decode_character(byte chr);
 byte encode_ascii(char chr);
 int get_tile_number(int x, int y);
+int ascii_strlen(char *str);
+int wrapper_count_pixels_to_tiles(byte *str, int length);
+int count_pixels_to_tiles(byte *str, int length, int startingPos);
 int expand_bit_depth(byte row, int foreground);
 byte reduce_bit_depth(int row, int foreground);
 byte print_character(byte chr, int x, int y);
@@ -67,8 +69,6 @@ void print_number_menu_current(byte digit, WINDOW* window);
 void clear_number_menu(WINDOW* window);
 void format_cash_window(int value, int padding, byte* str);
 void handle_first_window(WINDOW* window);
-void print_file_string(int x, int y, int length, byte *str, int unknown);
-void format_file_string(FILE_SELECT *file);
 
 extern unsigned short m2_coord_table[];
 extern int m2_bits_to_nybbles[];
@@ -81,6 +81,7 @@ extern byte m12_other_str5[];
 extern byte m12_other_str6[];
 extern byte m12_other_str7[];
 extern byte m12_other_str8[];
+extern byte m2_cstm_last_printed[];
 
 extern void cpufastset(void *source, void *dest, int mode);
 extern byte* m2_strlookup(int *offset_table, byte *strings, int index);
@@ -90,3 +91,4 @@ extern int m2_resetwindow(WINDOW* window, bool skip_redraw);
 extern void m2_hpwindow_up(int character);
 extern int m2_div(int dividend, int divisor);
 extern int m2_remainder(int dividend, int divisor);
+extern void m2_soundeffect(int index);

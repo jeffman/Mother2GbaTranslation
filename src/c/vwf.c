@@ -2,7 +2,6 @@
 #include "vwf.h"
 #include "number-selector.h"
 #include "locs.h"
-#include "fileselect.h"
 
 byte decode_character(byte chr)
 {
@@ -52,62 +51,6 @@ byte reduce_bit_depth(int row, int foreground)
     return lower | (upper << 4);
 }
 
-void print_file_string(int x, int y, int length, byte *str, int unknown)
-{
-    int *tilesetBasePtr = (int *)(0x82B79B4 + (unknown * 20));
-    int width = tilesetBasePtr[2];
-    unsigned short *tilesetDestPtr = (unsigned short *)(tilesetBasePtr[0]);
-
-    int pixelX = x * 8;
-    int pixelY = y * 8;
-
-    for (int i = 0; i < length; i++)
-    {
-        byte chr = str[i];
-
-        if (chr == 0xFF)
-        {
-            break; // the game does something else here, haven't looked into what exactly
-        }
-        else if (chr == 0xFE)
-        {
-            // Define 0xFE as a control code
-            byte cmd = str[++i];
-            switch (cmd)
-            {
-                case CUSTOMCC_ADD_X:
-                    pixelX += str[++i];
-                    break;
-
-                case CUSTOMCC_SET_X:
-                    pixelX = str[++i];
-                    break;
-            }
-            continue;
-        }
-
-        chr = decode_character(chr);
-        int pixels = print_character_with_callback(
-            chr,
-            pixelX,
-            pixelY,
-            0,
-            9,
-            vram + 0x2000,
-            &get_tile_number,
-            tilesetDestPtr,
-            width);
-
-        pixelX += pixels;
-    }
-}
-
-void format_file_cc(FILE_SELECT *file, int *index, byte cmd)
-{
-    file->formatted_str[(*index)++] = 0xFE;
-    file->formatted_str[(*index)++] = cmd;
-}
-
 int ascii_strlen(char *str)
 {
     int len = 0;
@@ -116,75 +59,40 @@ int ascii_strlen(char *str)
     return len;
 }
 
-void format_file_string(FILE_SELECT *file)
+int wrapper_count_pixels_to_tiles(byte *str, int length)
 {
-    int index = 0;
+	return count_pixels_to_tiles(str, length, 0);
+}
 
-    // Slot
-    int slot = file->slot + 1;
-    file->formatted_str[index++] = (byte)(slot + ZERO);
-    file->formatted_str[index++] = encode_ascii(':');
-    file->formatted_str[index++] = encode_ascii(' ');
+int count_pixels_to_tiles(byte *str, int length, int startingPos)
+{
+    int pixels = startingPos;
+    for(int i = 0; i < length; i++)
+	{
+        if((str[i] != 0xFF) && (str[i] != 0xFE)) //The latter one is not really needed
+            pixels += (m2_widths_table[0][decode_character(str[i])] & 0xFF);
+		else if(str[i] == 0xFE)
+		{
+            // Define 0xFE as a control code
+            byte cmd = str[++i];
+            switch (cmd)
+            {
+                case CUSTOMCC_ADD_X:
+                    pixels += str[++i];
+                    break;
 
-    if (file->status != 0)
-    {
-        char startNewStr[] = "Start New Game";
-        for (int i = 0; i < (sizeof(startNewStr) - 1); i++)
-            file->formatted_str[index++] = encode_ascii(startNewStr[i]);
-
-        file->formatted_str[index++] = 0xFF;
-        return;
-    }
-
-    // Name
-    for (int i = 0; i < 5; i++)
-    {
-        byte name_chr = file->ness_name[i];
-
-        if (name_chr != 0xFF)
-            file->formatted_str[index++] = name_chr;
-        else
-            file->formatted_str[index++] = encode_ascii(' ');
-    }
-
-    // Re-position
-    format_file_cc(file, &index, CUSTOMCC_SET_X);
-    file->formatted_str[index++] = 76;
-
-    // Level
-    char levelStr[] = "Level: ";
-    for (int i = 0; i < (sizeof(levelStr) - 1); i++)
-        file->formatted_str[index++] = encode_ascii(levelStr[i]);
-
-    int level = file->ness_level;
-    int ones = m2_remainder(level, 10);
-    int tens = m2_div(level, 10);
-
-    if (tens > 0)
-        file->formatted_str[index++] = tens + ZERO;
-
-    file->formatted_str[index++] = ones + ZERO;
-
-    // Re-position
-    format_file_cc(file, &index, CUSTOMCC_SET_X);
-    file->formatted_str[index++] = 128;
-
-    // Text speed
-    char textSpeedStr[] = "Text Speed: ";
-    for (int i = 0; i < (sizeof(textSpeedStr) - 1); i++)
-        file->formatted_str[index++] = encode_ascii(textSpeedStr[i]);
-
-    char speedStrs[][7] = {
-        "Fast",
-        "Medium",
-        "Slow"
-    };
-
-    char *speedStr = speedStrs[file->text_speed];
-    for (int i = 0; i < ascii_strlen(speedStr); i++)
-        file->formatted_str[index++] = encode_ascii(speedStr[i]);
-
-    file->formatted_str[index++] = 0xFF;
+                case CUSTOMCC_SET_X:
+                    pixels = str[++i];
+                    break;
+            }
+		}
+		else
+			break;
+	}
+    int tiles = (pixels - startingPos)>> 3;
+    if((pixels & 7) != 0)
+        tiles +=1;
+    return tiles;
 }
 
 byte print_character(byte chr, int x, int y)
@@ -265,6 +173,8 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
 
     int tileX = x >> 3;
     int tileY = y >> 3;
+    
+    int offsetY = y & 7;
 
     for (int dTileY = 0; dTileY < tileHeight; dTileY++) // dest tile Y
     {
@@ -275,45 +185,71 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
         {
             // Glue the leftmost part of the glyph onto the rightmost part of the canvas
             int tileIndex = getTileCallback(tileX + dTileX, tileY + dTileY); //get_tile_number(tileX + dTileX, tileY + dTileY) + tileOffset;
+            bool availableSwap = (dTileY != (tileHeight - 1));
+            int realTileIndex = tileIndex;
+            bool useful = false; //Maybe we go over the maximum tile height, let's make sure the extra tile is properly set IF it's useful
 
             for (int row = 0; row < 8; row++)
             {
-                int canvasRow = dest[(tileIndex * 8) + row];
+                int canvasRow = dest[(realTileIndex * 8) + ((row + offsetY) & 7)];
                 byte glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] & ((1 << leftPortionWidth) - 1);
                 glyphRow <<= (8 - leftPortionWidth);
 
                 int expandedGlyphRow = expand_bit_depth(glyphRow, foreground);
                 int expandedGlyphRowMask = ~expand_bit_depth(glyphRow, 0xF);
+                int tmpCanvasRow = canvasRow;
                 canvasRow &= expandedGlyphRowMask;
                 canvasRow |= expandedGlyphRow;
+                
+                if(!availableSwap && ((row + offsetY) >> 3) == 1 && canvasRow != tmpCanvasRow) //This changed the canvas, then it's useful... IF it's the extra vertical tile
+                    useful = true;
 
-                dest[(tileIndex * 8) + row] = canvasRow;
+                dest[(realTileIndex * 8) + ((row + offsetY) & 7)] = canvasRow;
+                if(offsetY != 0 && ((row + offsetY) == 7))
+                    realTileIndex = getTileCallback(tileX + dTileX, tileY + dTileY + 1);
             }
 
             if (tilemapPtr != NULL)
+            {
                 tilemapPtr[tileX + dTileX + ((tileY + dTileY) * tilemapWidth)] = paletteMask | tileIndex;
+                if(useful)
+                    tilemapPtr[tileX + dTileX + ((tileY + dTileY + 1) * tilemapWidth)] = paletteMask | realTileIndex;
+            }
 
             if (renderedWidth - leftPortionWidth > 0 && leftPortionWidth < 8)
             {
                 // Glue the rightmost part of the glyph onto the leftmost part of the next tile
                 // on the canvas
                 tileIndex = getTileCallback(tileX + dTileX + 1, tileY + dTileY); //get_tile_number(tileX + dTileX + 1, tileY + dTileY) + tileOffset;
+                availableSwap = (dTileY != (tileHeight - 1));
+                realTileIndex = tileIndex;
+                useful = false; //Maybe we go over the maximum tile height, let's make sure the extra tile is properly set IF it's useful
 
                 for (int row = 0; row < 8; row++)
                 {
-                    int canvasRow = dest[(tileIndex * 8) + row];
+                    int canvasRow = dest[(realTileIndex * 8) + ((row + offsetY) & 7)];
                     byte glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] >> leftPortionWidth;
 
                     int expandedGlyphRow = expand_bit_depth(glyphRow, foreground);
                     int expandedGlyphRowMask = ~expand_bit_depth(glyphRow, 0xF);
+                    int tmpCanvasRow = canvasRow;
                     canvasRow &= expandedGlyphRowMask;
                     canvasRow |= expandedGlyphRow;
+                    
+                    if(!availableSwap && ((row + offsetY) >> 3) == 1 && canvasRow != tmpCanvasRow) //This changed the canvas, then it's useful... IF it's the extra vertical tile
+                        useful = true;
 
-                    dest[(tileIndex * 8) + row] = canvasRow;
+                    dest[(realTileIndex * 8) + ((row + offsetY) & 7)] = canvasRow;
+                    if(offsetY != 0 && ((row + offsetY) == 7))
+                        realTileIndex = getTileCallback(tileX + dTileX + 1, tileY + dTileY + 1);
                 }
-
+                
                 if (tilemapPtr != NULL)
-                    tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY) * tilemapWidth)] = paletteMask | tileIndex;
+                {
+                    tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY) * tilemapWidth)] = paletteMask | tileIndex ;
+                    if(useful)
+                        tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY + 1) * tilemapWidth)] = paletteMask | realTileIndex;
+                }
             }
 
             renderedWidth -= 8;
