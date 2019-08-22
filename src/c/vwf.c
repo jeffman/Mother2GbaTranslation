@@ -53,42 +53,42 @@ byte reduce_bit_depth(int row, int foreground)
 
 byte getSex(byte character)
 {
-	return character == 1 ? 1 : 0; //character 1 is Paula
+    return character == 1 ? 1 : 0; //character 1 is Paula
 }
 
 void getPossessive(byte character, byte *str, int *index)
 {
-	char his[] = "his";
-	char her[] = "her";
-	if(getSex(character) == 1)
+    char his[] = "his";
+    char her[] = "her";
+    if(getSex(character) == 1)
         for (int i = 0; i < (sizeof(her) - 1); i++)
             str[(*index)++] = encode_ascii(her[i]);
-	else
+    else
         for (int i = 0; i < (sizeof(his) - 1); i++)
             str[(*index)++] = encode_ascii(his[i]);
 }
 
 void getPronoun(byte character, byte *str, int *index)
 {
-	char he[] = "he";
-	char she[] = "she";
-	if(getSex(character) == 1)
+    char he[] = "he";
+    char she[] = "she";
+    if(getSex(character) == 1)
         for (int i = 0; i < (sizeof(she) - 1); i++)
             str[(*index)++] = encode_ascii(she[i]);
-	else
+    else
         for (int i = 0; i < (sizeof(he) - 1); i++)
             str[(*index)++] = encode_ascii(he[i]);
 }
 
 void getCharName(byte character, byte *str, int *index)
 {
-	copy_name(str, m2_ness_name, index, character * 7);
+    copy_name(str, m2_ness_name, index, character * 7);
 }
 
 void copy_name(byte *str, byte *source, int *index, int pos)
 {
-	while(source[pos + 1] != 0xFF)
-		str[(*index)++] = source[pos++];
+    while(source[pos + 1] != 0xFF)
+        str[(*index)++] = source[pos++];
 }
 
 int ascii_strlen(char *str)
@@ -101,18 +101,18 @@ int ascii_strlen(char *str)
 
 int wrapper_count_pixels_to_tiles(byte *str, int length)
 {
-	return count_pixels_to_tiles(str, length, 0);
+    return count_pixels_to_tiles(str, length, 0);
 }
 
 int count_pixels_to_tiles(byte *str, int length, int startingPos)
 {
     int pixels = startingPos;
     for(int i = 0; i < length; i++)
-	{
+    {
         if((str[i] != 0xFF) && (str[i] != 0xFE)) //The latter one is not really needed
             pixels += (m2_widths_table[0][decode_character(str[i])] & 0xFF);
-		else if(str[i] == 0xFE)
-		{
+        else if(str[i] == 0xFE)
+        {
             // Define 0xFE as a control code
             byte cmd = str[++i];
             switch (cmd)
@@ -125,10 +125,10 @@ int count_pixels_to_tiles(byte *str, int length, int startingPos)
                     pixels = str[++i];
                     break;
             }
-		}
-		else
-			break;
-	}
+        }
+        else
+            break;
+    }
     int tiles = (pixels - startingPos)>> 3;
     if((pixels & 7) != 0)
         tiles +=1;
