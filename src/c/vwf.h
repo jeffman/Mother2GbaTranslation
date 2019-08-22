@@ -69,8 +69,14 @@ void format_cash_window(int value, int padding, byte* str);
 void handle_first_window(WINDOW* window);
 void print_file_string(int x, int y, int length, byte *str, int unknown);
 void format_file_string(FILE_SELECT *file);
+void getCharName(byte character, byte *str, int *index);
+void copy_name(byte *str, byte *source, int *index, int pos);
+byte getSex(byte character);
+void getPossessive(byte character, byte *str, int *index);
+void getPronoun(byte character, byte *str, int *index);
 
 extern unsigned short m2_coord_table[];
+extern byte m2_ness_name[];
 extern int m2_bits_to_nybbles[];
 extern byte m2_nybbles_to_bits[];
 extern byte *m2_font_table[];

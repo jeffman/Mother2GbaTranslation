@@ -52,6 +52,46 @@ byte reduce_bit_depth(int row, int foreground)
     return lower | (upper << 4);
 }
 
+byte getSex(byte character)
+{
+	return character == 1 ? 1 : 0; //character 1 is Paula
+}
+
+void getPossessive(byte character, byte *str, int *index)
+{
+	char his[] = "his";
+	char her[] = "her";
+	if(getSex(character) == 1)
+        for (int i = 0; i < (sizeof(her) - 1); i++)
+            str[(*index)++] = encode_ascii(her[i]);
+	else
+        for (int i = 0; i < (sizeof(his) - 1); i++)
+            str[(*index)++] = encode_ascii(his[i]);
+}
+
+void getPronoun(byte character, byte *str, int *index)
+{
+	char he[] = "he";
+	char she[] = "she";
+	if(getSex(character) == 1)
+        for (int i = 0; i < (sizeof(she) - 1); i++)
+            str[(*index)++] = encode_ascii(she[i]);
+	else
+        for (int i = 0; i < (sizeof(he) - 1); i++)
+            str[(*index)++] = encode_ascii(he[i]);
+}
+
+void getCharName(byte character, byte *str, int *index)
+{
+	copy_name(str, m2_ness_name, index, character * 7);
+}
+
+void copy_name(byte *str, byte *source, int *index, int pos)
+{
+	while(source[pos + 1] != 0xFF)
+		str[(*index)++] = source[pos++];
+}
+
 void print_file_string(int x, int y, int length, byte *str, int unknown)
 {
     int *tilesetBasePtr = (int *)(0x82B79B4 + (unknown * 20));
