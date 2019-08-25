@@ -766,6 +766,33 @@ void format_cash_window(int value, int padding, byte* str)
     *str++ = 0xFF;
 }
 
+int player_name_printing_registration(byte* str, WINDOW* window)
+{
+	char String[26];
+	bool ended = false;
+	int total = 24;
+	for(int i = 0; i < 24; i++)
+	{
+		if(ended)
+		{
+			String[i] = 0x53;
+		}
+		else if((i < 23 && str[i + 1] == 0xFF && str[i] == 0) || (i == 23 && str[i] == 0))
+		{
+			String[i] = 0x70;
+			total = i;
+			ended = true;
+		}
+		else
+			String[i] = str[i];
+	}
+	String[24] = 0;
+	String[25] = 0xFF;
+	print_blankstr_window(0, 2, 24, window);
+	m2_printstr(window, String, 0, 1, 0);
+	return total;
+}
+
 // The game draws windows lazily: no window will be drawn to the screen until
 // a renderable token is encountered. So it's possible to have text that
 // does stuff in the background without ever showing a window. Lots of doors

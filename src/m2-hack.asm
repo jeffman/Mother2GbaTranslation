@@ -1314,9 +1314,29 @@ nop
 //==============================================================================
 // Data files
 //==============================================================================
+//Player name printing - character is added
+.org 0x80C75B4 :: bl c75b4_overworld_naming_top_printing :: b 0x80C777A
+
+//Player name printing - character is deleted via add
+.org 0x80C780E :: bl c780e_overworld_naming_top_printing :: b 0x80C789A
+
+//Player name printing - character is deleted via backspace
+.org 0x80C74CC :: bl c74cc_overworld_naming_top_printing :: b 0x80C755A
+
+//Player name printing - menu is re-entered after the name has been inserted once
+.org 0x80C6CC6 :: bl c6cc6_overworld_naming_top_printing :: b 0x80C6D5E
+
+//==============================================================================
+// Data files
+//==============================================================================
 
 .org m2_default_names
 .incbin "data/m2-default-names.bin"
+
+.org 0x8B1BBA0
+
+m2_overworld_alphabet_table:
+.incbin "data/m2-overworld-alphabet-table.bin"
 
 .org 0x8B2C000
 
@@ -1410,6 +1430,7 @@ flyovertextLater:
 
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
+
 
 //==============================================================================
 // Existing subroutines/data

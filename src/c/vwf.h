@@ -98,3 +98,4 @@ extern void m2_hpwindow_up(int character);
 extern int m2_div(int dividend, int divisor);
 extern int m2_remainder(int dividend, int divisor);
 extern void m2_soundeffect(int index);
+extern void m2_printstr(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);

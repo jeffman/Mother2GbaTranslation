@@ -2467,3 +2467,45 @@ bl      _highlight_file
 mov     r0,#1 //Clobbered code
 mov     r1,#0
 pop     {pc}
+
+//==============================================================================
+// A Press
+c75b4_overworld_naming_top_printing:
+push {lr}
+ldr r0,=#m2_player1
+mov r1,r2
+str r3,[sp,#0x24]
+bl player_name_printing_registration
+pop {pc}
+
+//==============================================================================
+// B Press
+c780e_overworld_naming_top_printing:
+push {lr}
+ldr r1,=#0x3005230
+ldr r1,[r1,#0x0C]
+ldr r0,=#m2_player1
+bl player_name_printing_registration
+pop {pc}
+
+//==============================================================================
+// Backspace
+c74cc_overworld_naming_top_printing:
+push {lr}
+ldr r1,=#0x3005230
+ldr r1,[r1,#0x0C]
+ldr r0,=#m2_player1
+bl player_name_printing_registration
+pop {pc}
+
+//==============================================================================
+// Re-enter the menu
+c6cc6_overworld_naming_top_printing:
+push {lr}
+mov r2,r0
+mov r0,r1
+mov r1,r2
+bl player_name_printing_registration
+str r0,[sp,#0x24]
+mov r9,r0
+pop {pc}
