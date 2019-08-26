@@ -2471,49 +2471,53 @@ pop     {pc}
 //==============================================================================
 // A Press
 c75b4_overworld_naming_top_printing:
-push {lr}
-ldr r0,=#m2_player1
-mov r1,r2
-str r3,[sp,#0x24]
-bl player_name_printing_registration
-pop {pc}
+push    {lr}
+ldr     r0,=#m2_player1
+mov     r1,r2
+str     r3,[sp,#0x24]
+bl      player_name_printing_registration
+pop     {pc}
 
 //==============================================================================
 // B Press
 c780e_overworld_naming_top_printing:
-push {lr}
-ldr r1,=#0x3005230
-ldr r1,[r1,#0x0C]
-ldr r0,=#m2_player1
-bl player_name_printing_registration
-pop {pc}
+push    {lr}
+ldr     r1,=#0x3005230
+ldr     r1,[r1,#0x0C]
+ldr     r0,=#m2_player1
+bl      player_name_printing_registration
+pop     {pc}
 
 //==============================================================================
 // Backspace
 c74cc_overworld_naming_top_printing:
-push {lr}
-ldr r1,=#0x3005230
-ldr r1,[r1,#0x0C]
-ldr r0,=#m2_player1
-bl player_name_printing_registration
-pop {pc}
+push    {lr}
+ldr     r1,=#0x3005230
+ldr     r1,[r1,#0x0C]
+ldr     r0,=#m2_player1
+bl      player_name_printing_registration
+pop     {pc}
 
 //==============================================================================
 // Re-enter the menu
 c6cc6_overworld_naming_top_printing:
-push {lr}
-mov r2,r0
-mov r0,r1
-mov r1,r2
-bl player_name_printing_registration
-str r0,[sp,#0x24]
-mov r9,r0
-pop {pc}
+push    {lr}
+mov     r2,r0
+mov     r0,r1
+mov     r1,r2
+bl      player_name_printing_registration
+str     r0,[sp,#0x24]
+mov     r9,r0
+pop     {pc}
 
 //==============================================================================
 //Cursor movement of overworld alphabet
 c6f24_overworld_alphabet_movement:
-push {lr}
-mov r0,r7
-bl setupCursorMovement_Overworld_Alphabet
-pop {pc}
+push    {lr}
+mov     r0,r7
+ldr     r1,=#0x3002500
+add     r1,#0x18
+bl      setupCursorMovement_Overworld_Alphabet
+pop     {pc}
+
+.pool

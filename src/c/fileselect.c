@@ -224,12 +224,20 @@ unsigned short setupCursorAction(int *Pos1, int *Pos2)
     return letter;
 }
 
-void setupCursorMovement_Overworld_Alphabet(WINDOW *window)
+void setupCursorMovement_Overworld_Alphabet(WINDOW *window, unsigned short *directionsMantainedTime)
 {
     int CursorX = window->cursor_x;
     int CursorY = window->cursor_y;
     int yAxys = 0;
     int xAxys = 0;
+    bool mantainedX = false;
+    bool mantainedY = false;
+    bool xChanged = false;
+    
+    if(directionsMantainedTime[0] >= 2 || directionsMantainedTime[1] >= 2)
+        mantainedX = true;
+    if(directionsMantainedTime[2] >= 2 || directionsMantainedTime[3] >= 2)
+        mantainedY = true;
 
     //Check for pressing a direction
     PAD_STATE state = *pad_state;
@@ -238,7 +246,7 @@ void setupCursorMovement_Overworld_Alphabet(WINDOW *window)
         xAxys = 1;
     else if (state.left)
         xAxys = -1;
-    else if (state.up)
+    if (state.up)
         yAxys = -1;
     else if(state.down)
         yAxys = 1;
@@ -251,8 +259,10 @@ void setupCursorMovement_Overworld_Alphabet(WINDOW *window)
             case 0:
             case 1:
             case 2:
-                if(CursorX < 0)
+                if(CursorX < 0 && !mantainedX)
                     CursorX = 0x18;
+                else if(CursorX < 0)
+                    CursorX = 0;
                 if(CursorX > 0x18)
                     CursorX = 0;
                 if(CursorX == 0x12)
@@ -261,8 +271,10 @@ void setupCursorMovement_Overworld_Alphabet(WINDOW *window)
                     CursorX = 0x10;
             break;
             case 3:
-                if(CursorX < 0)
+                if(CursorX < 0 && !mantainedX)
                     CursorX = 0x18;
+                else if(CursorX < 0)
+                    CursorX = 0;
                 if(CursorX > 0x18)
                     CursorX = 0;
                 if(CursorX == 0x14 && xAxys > 0)
@@ -273,25 +285,37 @@ void setupCursorMovement_Overworld_Alphabet(WINDOW *window)
             case 4:
                 if(CursorX == 0x2)
                     CursorX = 0x7;
-                if(CursorX == 0x5 || CursorX > 0x18)
+                if(CursorX == 0x5)
                     CursorX = 0;
-                if(CursorX < 0)
+                if(CursorX < 0 && !mantainedX)
                     CursorX = 0x18;
+                else if(CursorX < 0)
+                    CursorX = 0;
+                if(CursorX > 0x18)
+                    CursorX = 0;
                 if(CursorX == 0x14)
                     CursorX = 0x7;
                 if(CursorX == 0x9)
                     CursorX = 0x16;
             break;
             default:
-                if(CursorX == 0x13 || CursorX == 0xF)
+                if(CursorX == 0x13)
                     CursorX = 0x19;
-                if(CursorX == 0x1B || CursorX == 0x17)
+                if(CursorX == 0xF)
+                    CursorX = 0x19;
+                if(CursorX == 0x17)
+                    CursorX = 0x11;
+                if(CursorX == 0x1B)
                     CursorX = 0x11;
             break;
         }
-        m2_soundeffect(0x1A7);
+        if(CursorX != window->cursor_x)
+        {
+            xChanged = true;
+            m2_soundeffect(0x1A7);
+        }
     }
-    else if(yAxys != 0)
+    if(yAxys != 0)
     {
         switch(CursorY)
         {
@@ -299,7 +323,7 @@ void setupCursorMovement_Overworld_Alphabet(WINDOW *window)
             case 1:
             case 2:
                 CursorY += yAxys;
-                if(CursorY < 0)
+                if(CursorY < 0 && !mantainedY)
                 {
                     if((CursorX >= 0x16))
                     {
@@ -310,6 +334,8 @@ void setupCursorMovement_Overworld_Alphabet(WINDOW *window)
                     else
                         CursorY = 3;
                 }
+                else if(CursorY < 0)
+                    CursorY = 0;
             break;
             case 3:
                 CursorY += yAxys;
@@ -341,7 +367,8 @@ void setupCursorMovement_Overworld_Alphabet(WINDOW *window)
                     CursorY = 5;
             break;
         }
-        m2_soundeffect(0x1A8);
+        if(CursorY != window->cursor_y && !xChanged)
+            m2_soundeffect(0x1A8);
     }
     
     window->cursor_x = CursorX;
