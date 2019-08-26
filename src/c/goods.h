@@ -2,7 +2,7 @@
 #define HEADER_GOODS_INCLUDED
 
 #include "window.h"
-#include "character.h"
+#include "pc.h"
 #include "input.h"
 
 typedef enum DIRECTION_MOVED
@@ -44,6 +44,6 @@ extern void m2_clearwindowtiles(WINDOW* window);
 extern int bin_to_bcd(int value, int* digit_count);
 
 extern int m2_items;
-extern CHARACTER_DATA m2_ness_data[];
+extern PC m2_ness_data[];
 
 #endif

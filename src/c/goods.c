@@ -556,13 +556,13 @@ void give_print(byte item, byte target, byte source, WINDOW *window, byte *str)
 {
     bool notFullInventory = false;
     int index;
-    struct CHARACTER_DATA *user_data = (&m2_ness_data[source]);
-    struct CHARACTER_DATA *target_data = (&m2_ness_data[target]);
+    struct PC *user_data = (&m2_ness_data[source]);
+    struct PC *target_data = (&m2_ness_data[target]);
     bool incapable_user = false;
     bool incapable_target = false;
     
     for(index = 0; index < 0xE; index++)
-        if(target_data->inventory[index] == 0)
+        if(target_data->goods[index] == 0)
         {
             notFullInventory = true;
             break;
@@ -649,7 +649,7 @@ void setupSelf_Alive(byte *String, int *index, byte user, byte item)
 
 void setupSelf_Dead(byte *String, int *index, byte user, byte item)
 {
-    struct CHARACTER_DATA *tmp; //Get alive character
+    struct PC *tmp; //Get alive character
     byte alive = 0;
     while((alive == user))
         alive++;
@@ -853,7 +853,7 @@ void setupFull_User_Dead(byte *String, int *index, byte user, byte target, byte 
 
 void setupFull_Both_Dead(byte *String, int *index, byte user, byte target, byte item)
 {
-    struct CHARACTER_DATA *tmp; //Get alive character
+    struct PC *tmp; //Get alive character
     byte alive = 0;
     while((alive == user) || (alive == target))
         alive++;
@@ -1015,7 +1015,7 @@ void setup_User_Dead(byte *String, int *index, byte user, byte target, byte item
 
 void setup_Both_Dead(byte *String, int *index, byte user, byte target, byte item)
 {
-    struct CHARACTER_DATA *tmp; //Get alive character
+    struct PC *tmp; //Get alive character
     byte alive = 0;
     while((alive == user) || (alive == target))
         alive++;
