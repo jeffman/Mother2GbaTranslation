@@ -1312,7 +1312,7 @@ nop
 .org 0x86DBC6C :: .incbin "data/m2-summary-template.bin"
 
 //==============================================================================
-// Data files
+// Overworld player name alphabet
 //==============================================================================
 //Player name printing - character is added
 .org 0x80C75B4 :: bl c75b4_overworld_naming_top_printing :: b 0x80C777A
@@ -1325,6 +1325,9 @@ nop
 
 //Player name printing - menu is re-entered after the name has been inserted once
 .org 0x80C6CC6 :: bl c6cc6_overworld_naming_top_printing :: b 0x80C6D5E
+
+//Player name alphabet - cursor movement
+.org 0x80C6F24 :: bl c6f24_overworld_alphabet_movement :: b 0x80C7364
 
 //==============================================================================
 // Data files

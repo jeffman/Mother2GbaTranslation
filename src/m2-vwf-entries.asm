@@ -2509,3 +2509,11 @@ bl player_name_printing_registration
 str r0,[sp,#0x24]
 mov r9,r0
 pop {pc}
+
+//==============================================================================
+//Cursor movement of overworld alphabet
+c6f24_overworld_alphabet_movement:
+push {lr}
+mov r0,r7
+bl setupCursorMovement_Overworld_Alphabet
+pop {pc}

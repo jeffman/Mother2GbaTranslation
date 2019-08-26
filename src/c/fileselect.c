@@ -224,6 +224,130 @@ unsigned short setupCursorAction(int *Pos1, int *Pos2)
     return letter;
 }
 
+void setupCursorMovement_Overworld_Alphabet(WINDOW *window)
+{
+    int CursorX = window->cursor_x;
+    int CursorY = window->cursor_y;
+    int yAxys = 0;
+    int xAxys = 0;
+
+    //Check for pressing a direction
+    PAD_STATE state = *pad_state;
+
+    if (state.right)
+        xAxys = 1;
+    else if (state.left)
+        xAxys = -1;
+    else if (state.up)
+        yAxys = -1;
+    else if(state.down)
+        yAxys = 1;
+
+    if(xAxys != 0)
+    {
+        CursorX += (xAxys) * 2;
+        switch(CursorY)
+        {
+            case 0:
+            case 1:
+            case 2:
+                if(CursorX < 0)
+                    CursorX = 0x18;
+                if(CursorX > 0x18)
+                    CursorX = 0;
+                if(CursorX == 0x12)
+                    CursorX = 0x16;
+                if(CursorX == 0x14)
+                    CursorX = 0x10;
+            break;
+            case 3:
+                if(CursorX < 0)
+                    CursorX = 0x18;
+                if(CursorX > 0x18)
+                    CursorX = 0;
+                if(CursorX == 0x14 && xAxys > 0)
+                    CursorX = 0x16;
+                if(CursorX == 0x14)
+                    CursorX = 0x12;
+            break;
+            case 4:
+                if(CursorX == 0x2)
+                    CursorX = 0x7;
+                if(CursorX == 0x5 || CursorX > 0x18)
+                    CursorX = 0;
+                if(CursorX < 0)
+                    CursorX = 0x18;
+                if(CursorX == 0x14)
+                    CursorX = 0x7;
+                if(CursorX == 0x9)
+                    CursorX = 0x16;
+            break;
+            default:
+                if(CursorX == 0x13 || CursorX == 0xF)
+                    CursorX = 0x19;
+                if(CursorX == 0x1B || CursorX == 0x17)
+                    CursorX = 0x11;
+            break;
+        }
+        m2_soundeffect(0x1A7);
+    }
+    else if(yAxys != 0)
+    {
+        switch(CursorY)
+        {
+            case 0:
+            case 1:
+            case 2:
+                CursorY += yAxys;
+                if(CursorY < 0)
+                {
+                    if((CursorX >= 0x16))
+                    {
+                        CursorY = 4;
+                    }
+                    else if(CursorX == 0)
+                        CursorY = 4;
+                    else
+                        CursorY = 3;
+                }
+            break;
+            case 3:
+                CursorY += yAxys;
+                if(CursorY == 2 && CursorX == 0x12)
+                    CursorX = 0x10;
+                if(CursorY == 4)
+                {
+                    if(CursorX <= 6)
+                        CursorX = 0;
+                    else if (CursorX <= 0x12)
+                        CursorX = 0x7;
+                }
+            break;
+            case 4:
+                CursorY += yAxys;
+                if(CursorY == 3)
+                    if(CursorX == 0x7)
+                        CursorX = 0x8;
+                if(CursorY == 5)
+                    CursorX = 0x11;
+            break;
+            default:
+                CursorY += yAxys;
+                if(CursorY == 4 && CursorX == 0x11)
+                    CursorX = 0x7;
+                else if(CursorY == 4)
+                    CursorX = 0x18;
+                if(CursorY == 6)
+                    CursorY = 5;
+            break;
+        }
+        m2_soundeffect(0x1A8);
+    }
+    
+    window->cursor_x = CursorX;
+    window->cursor_y = CursorY;
+}
+
 void setupCursorMovement()
 {
     int *a = (int *)0x3000024;
@@ -233,7 +357,7 @@ void setupCursorMovement()
     int yAxys = 0;
     int xAxys = 0;
     
-    // Check for pressing left or right
+    // Check for pressing a direction
     PAD_STATE state = *pad_state;
 
     if (state.right)
