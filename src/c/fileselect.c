@@ -224,10 +224,11 @@ unsigned short setupCursorAction(int *Pos1, int *Pos2)
     return letter;
 }
 
-void setupCursorMovement_Overworld_Alphabet(WINDOW *window, unsigned short *directionsMantainedTime)
+byte setupCursorMovement_Overworld_Alphabet(WINDOW *window, unsigned short *directionsMantainedTime)
 {
     int CursorX = window->cursor_x;
     int CursorY = window->cursor_y;
+    byte returnByte = 0;
     int yAxys = 0;
     int xAxys = 0;
     bool mantainedX = false;
@@ -371,8 +372,19 @@ void setupCursorMovement_Overworld_Alphabet(WINDOW *window, unsigned short *dire
             m2_soundeffect(0x1A8);
     }
     
+    if(CursorY == 4 && CursorX == 0)
+        returnByte = 1;
+    else if(CursorY == 4 && CursorX ==0x7)
+        returnByte = 2;
+    else if(CursorY == 5 && CursorX == 0x11)
+        returnByte = 3;
+    else if(CursorY == 5)
+        returnByte = 4;
+    
     window->cursor_x = CursorX;
     window->cursor_y = CursorY;
+    
+    return returnByte;
 }
 
 void setupCursorMovement()

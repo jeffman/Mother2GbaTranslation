@@ -2469,7 +2469,7 @@ mov     r1,#0
 pop     {pc}
 
 //==============================================================================
-// A Press
+//A Press
 c75b4_overworld_naming_top_printing:
 push    {lr}
 ldr     r0,=#m2_player1
@@ -2479,7 +2479,7 @@ bl      player_name_printing_registration
 pop     {pc}
 
 //==============================================================================
-// B Press
+//B Press
 c780e_overworld_naming_top_printing:
 push    {lr}
 ldr     r1,=#0x3005230
@@ -2489,7 +2489,7 @@ bl      player_name_printing_registration
 pop     {pc}
 
 //==============================================================================
-// Backspace
+//Backspace
 c74cc_overworld_naming_top_printing:
 push    {lr}
 ldr     r1,=#0x3005230
@@ -2499,7 +2499,7 @@ bl      player_name_printing_registration
 pop     {pc}
 
 //==============================================================================
-// Re-enter the menu
+//Re-enter the menu
 c6cc6_overworld_naming_top_printing:
 push    {lr}
 mov     r2,r0
@@ -2518,6 +2518,68 @@ mov     r0,r7
 ldr     r1,=#0x3002500
 add     r1,#0x18
 bl      setupCursorMovement_Overworld_Alphabet
+mov     r9,r0
+ldr     r2,=#0x3002500
+pop     {pc}
+
+.pool
+
+//==============================================================================
+//Generic alphabet printing routine. Uses the default code. r0 is the alphabet and r1 is the alphabet string to print if need be
+print_alphabet_if_needed:
+push    {lr}
+ldr     r2,[sp,#0x2C]
+cmp     r2,r0 //Is the alphabet loaded different from the one we're going in?
+beq     @@end
+
+str     r0,[sp,#0x2C] //If it is, print the new alphabet
+ldr     r5,=#0x3005230 //Default printing code
+ldr     r4,[r5,#0x10] //Window
+mov     r2,r1 //String to load
+ldr     r0,=#0x8B17EE4 //String
+ldr     r1,=#0x8B17424
+bl      m2_strlookup
+mov     r1,r0
+mov     r0,r4
+mov     r2,#0
+bl      m2_initwindow
+ldr     r0,[r5,#0x10]
+bl      0x80C8FFC //Print alphabet
+
+@@end:
+pop     {pc}
+
+//==============================================================================
+//Loads stuff up for the small alphabet and calls print_alphabet_if_needed
+c73c0_small_overworld_alphabet:
+push    {lr}
+mov     r0,#1 //Alphabet 1, small
+mov     r1,#0x62 //String 0x62, small alphabet
+bl      print_alphabet_if_needed
+pop     {pc}
+
+//==============================================================================
+//Loads stuff up for the CAPITAL alphabet and calls print_alphabet_if_needed
+c7394_CAPITAL_overworld_alphabet:
+push    {lr}
+mov     r0,#0 //Alphabet 0, CAPITAL
+mov     r1,#0x63 //String 0x63, CAPITAL alphabet
+bl      print_alphabet_if_needed
+pop     {pc}
+
+//==============================================================================
+//Loads the proper letter table based on the loaded alphabet
+c7578_load_letters:
+push    {lr}
+ldr     r2,=#m2_overworld_alphabet_table //Letter table
+ldr     r0,[sp,#0x28]
+cmp     r0,#1
+bne     @@generic_end
+mov     r0,#0x90 //If this is the small alphabet, go to its alphabet
+add     r2,r2,r0
+
+@@generic_end:
+mov     r3,#0x36 //Clobbered code
 pop     {pc}
 
 .pool

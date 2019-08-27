@@ -1327,7 +1327,22 @@ nop
 .org 0x80C6CC6 :: bl c6cc6_overworld_naming_top_printing :: b 0x80C6D5E
 
 //Player name alphabet - cursor movement
-.org 0x80C6F24 :: bl c6f24_overworld_alphabet_movement :: b 0x80C7364
+.org 0x80C6F24 :: bl c6f24_overworld_alphabet_movement :: b 0x80C7340
+
+//Alphabet - switching support - removal of unused alphabet
+.org 0x80C7380 :: nop :: nop :: nop :: mov r0,r9 :: cmp r0,#0 :: beq 0x80C741A :: nop :: nop :: cmp r0,#1
+
+//Print CAPITAL alphabet only if needed
+.org 0x80C7394 :: bl c7394_CAPITAL_overworld_alphabet :: b 0x80C73B8
+
+//Print small alphabet
+.org 0x80C73B8 :: nop :: mov r0,r9 :: cmp r0,#2
+
+//Print small alphabet only if needed
+.org 0x80C73C0 :: bl c73c0_small_overworld_alphabet :: b 0x80C73E2
+
+//Choose character table based on alphabet loaded in
+.org 0x80C7578 :: bl c7578_load_letters
 
 //==============================================================================
 // Data files
@@ -1336,7 +1351,7 @@ nop
 .org m2_default_names
 .incbin "data/m2-default-names.bin"
 
-.org 0x8B1BBA0
+.org 0x8B1BA88
 
 m2_overworld_alphabet_table:
 .incbin "data/m2-overworld-alphabet-table.bin"
