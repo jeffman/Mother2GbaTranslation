@@ -872,6 +872,9 @@ b       0x080C959A
 bl      eeb1a_player_name //Call the new routine
 b       0x80EEB7A //Do the rest of the original routine
 
+//Remove subtract from player name printing
+.org 0x80EEB94 :: mov r2,r3
+
 //---------------------------------------------------------
 // End of battle hacks
 //---------------------------------------------------------
@@ -1343,9 +1346,6 @@ nop
 
 //Choose character table based on alphabet loaded in
 .org 0x80C7578 :: bl c7578_load_letters
-
-//Remove subtract from name printing
-.org 0x80EEB94 :: mov r2,r3
 
 //==============================================================================
 // Data files
