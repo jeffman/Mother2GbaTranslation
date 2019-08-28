@@ -1344,6 +1344,9 @@ nop
 //Choose character table based on alphabet loaded in
 .org 0x80C7578 :: bl c7578_load_letters
 
+//Remove subtract from name printing
+.org 0x80EEB94 :: mov r2,r3
+
 //==============================================================================
 // Data files
 //==============================================================================
