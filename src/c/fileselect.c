@@ -12,22 +12,22 @@ int get_tile_number_file_select(int x, int y)
 }
 
 // x,y: tile coordinates
-void clear_tile_file(int x, int y, int pixels, int tile_offset_file)
+void clear_tile_file(int x, int y, int pixels)
 {
     // Clear pixels
-    int tileIndex = get_tile_number_file_select(x, y) + tile_offset_file;
-    cpufastset(&pixels, &vram[tileIndex * 8], CPUFASTSET_FILL | 8);
+    int tileIndex = get_tile_number_file_select(x, y);
+    cpufastset(&pixels, &fileselect_pixels_location[tileIndex * 8], CPUFASTSET_FILL | 8);
 }
 
 // x,y: tile coordinates
-void clear_rect_file(int x, int y, int width, int height, int pixels, int tile_offset_file, unsigned short *tilesetDestPtr)
+void clear_rect_file(int x, int y, int width, int height, int pixels, unsigned short *tilesetDestPtr)
 {
     for (int tileY = 0; tileY < height; tileY++)
     {
         for (int tileX = 0; tileX < width; tileX++)
         {
             if((tilesetDestPtr[x + tileX + ((y + tileY) * width)] & 0x3FF) != 0x95)
-                clear_tile_file(x + tileX, y + tileY, pixels, tile_offset_file);
+                clear_tile_file(x + tileX, y + tileY, pixels);
             else
                 break;
         }
@@ -152,7 +152,7 @@ void print_file_string(int x, int y, int length, byte *str, int window_selector,
     int pixelY = ((y + windowY) * 8) + 3;
     int realmask = *palette_mask;
     *palette_mask = getBasePal; //File select is special and changes its palette_mask on the fly.
-    clear_rect_file(x + windowX, y + windowY, width, 2, 0x11111111, 0x400, tilesetDestPtr); //Clean the rectangle before printing
+    clear_rect_file(x + windowX, y + windowY, width, 2, 0x11111111, tilesetDestPtr); //Clean the rectangle before printing
 
     for (int i = 0; i < length; i++)
     {
@@ -186,7 +186,7 @@ void print_file_string(int x, int y, int length, byte *str, int window_selector,
             pixelY,
             0,
             9,
-            vram + 0x2000,
+            fileselect_pixels_location,
             &get_tile_number_file_select,
             tilesetDestPtr,
             width);

@@ -1960,11 +1960,12 @@ bl      0x800341C
 pop     {pc}
 
 //==============================================================================
-_4298_print_window:
+_4294_print_window_store:
 push    {lr}
 push    {r0-r4}
 ldr     r2,[sp,#0x20]
 bl      print_windows
+bl      store_pixels
 pop     {r0-r4}
 mov     r2,#0
 mov     r3,#0
@@ -2106,6 +2107,71 @@ pop     {r0-r1}
 pop     {pc}
 
 .pool
+
+//==============================================================================
+//Loads the vram into the buffer, it's called each time there is only the main file_select window active (a good way to set the whole thing up)
+_38c0_load_pixels:
+push    {lr}
+ldr     r3,=#0x40000D4 //DMA transfer 3
+ldr     r0,=#0x6008000 //Source
+str     r0,[r3]
+ldr     r0,=#0x2015000 //Target
+str     r0,[r3,#4]
+ldr     r0,=#0x80002400 //Store 0x4800 bytes
+str     r0,[r3,#8]
+ldr     r0,[r3,#8]
+ldr     r3,[r5,#0]
+mov     r0,#0x84
+lsl     r0,r0,#2
+pop     {pc}
+
+//==============================================================================
+//Stores the buffer into the vram. This avoids screen tearing.
+store_pixels:
+push    {r0-r1,lr}
+ldr     r1,=#0x40000D4 //DMA transfer 3
+ldr     r0,=#0x2015000 //Source
+str     r0,[r1]
+ldr     r0,=#0x6008000 //Target
+str     r0,[r1,#4]
+ldr     r0,=#0x80002400 //Store 0x4800 bytes
+str     r0,[r1,#8]
+ldr     r0,[r1,#8]
+pop     {r0-r1,pc}
+
+//==============================================================================
+//Specific routine which calls store_pixels for the main file_select window
+_38f8_store_pixels:
+push    {lr}
+bl      store_pixels
+ldr     r1,[r5,#0]
+mov     r3,#0xC
+pop     {pc}
+
+//==============================================================================
+//Generic routine which prints a window and then stores the pixels of all the other windows. It's called once, after all the other windows (which will use _4092_print_window) have printed.
+_4092_print_window_store:
+push    {lr}
+bl      _4092_print_window
+bl      store_pixels
+pop     {pc}
+
+//==============================================================================
+//Routine for the top part of the screen only. Used in order to make printing the names less CPU intensive when naming the characters 
+_4edc_print_window_store:
+push    {lr}
+bl      _4092_print_window
+push    {r0-r1}
+ldr     r1,=#0x40000D4 //DMA transfer 3
+ldr     r0,=#0x2015000 //Source
+str     r0,[r1]
+ldr     r0,=#0x6008000 //Target
+str     r0,[r1,#4]
+ldr     r0,=#0x80000400 //Store 0x800 bytes
+str     r0,[r1,#8]
+ldr     r0,[r1,#8]
+pop     {r0-r1}
+pop     {pc}
 
 //==============================================================================
 //Loads and prints the text lines for the file select main window
@@ -2398,6 +2464,15 @@ _53f6_fix_out_of_description:
 push    {lr}
 bl      0x800341C
 bl      _setup_file_strings
+mov     r0,#3
+mov     r1,#0xA
+mov     r2,#1
+bl      _4092_print_window //Prints the text speed menu
+mov     r0,#0xF
+mov     r1,#4
+mov     r2,#2
+bl      _4092_print_window //Prints the text flavour menu
+bl      store_pixels
 pop     {pc}
 
 //==============================================================================
@@ -2417,6 +2492,7 @@ bl      _4092_print_window //Prints the option menu
 
 @@end:
 bl      _setup_file_strings
+bl      store_pixels
 pop     {pc}
 
 //==============================================================================
