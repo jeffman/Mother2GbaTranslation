@@ -12,22 +12,22 @@ int get_tile_number_file_select(int x, int y)
 }
 
 // x,y: tile coordinates
-void clear_tile_file(int x, int y, int pixels, int tile_offset_file)
+void clear_tile_file(int x, int y, int pixels)
 {
     // Clear pixels
-    int tileIndex = get_tile_number_file_select(x, y) + tile_offset_file;
-    cpufastset(&pixels, &vram[tileIndex * 8], CPUFASTSET_FILL | 8);
+    int tileIndex = get_tile_number_file_select(x, y);
+    cpufastset(&pixels, &fileselect_pixels_location[tileIndex * 8], CPUFASTSET_FILL | 8);
 }
 
 // x,y: tile coordinates
-void clear_rect_file(int x, int y, int width, int height, int pixels, int tile_offset_file, unsigned short *tilesetDestPtr)
+void clear_rect_file(int x, int y, int width, int height, int pixels, unsigned short *tilesetDestPtr)
 {
     for (int tileY = 0; tileY < height; tileY++)
     {
         for (int tileX = 0; tileX < width; tileX++)
         {
             if((tilesetDestPtr[x + tileX + ((y + tileY) * width)] & 0x3FF) != 0x95)
-                clear_tile_file(x + tileX, y + tileY, pixels, tile_offset_file);
+                clear_tile_file(x + tileX, y + tileY, pixels);
             else
                 break;
         }
@@ -152,7 +152,7 @@ void print_file_string(int x, int y, int length, byte *str, int window_selector,
     int pixelY = ((y + windowY) * 8) + 3;
     int realmask = *palette_mask;
     *palette_mask = getBasePal; //File select is special and changes its palette_mask on the fly.
-    clear_rect_file(x + windowX, y + windowY, width, 2, 0x11111111, 0x400, tilesetDestPtr); //Clean the rectangle before printing
+    clear_rect_file(x + windowX, y + windowY, width, 2, 0x11111111, tilesetDestPtr); //Clean the rectangle before printing
 
     for (int i = 0; i < length; i++)
     {
@@ -186,7 +186,7 @@ void print_file_string(int x, int y, int length, byte *str, int window_selector,
             pixelY,
             0,
             9,
-            vram + 0x2000,
+            fileselect_pixels_location,
             &get_tile_number_file_select,
             tilesetDestPtr,
             width);
@@ -224,6 +224,169 @@ unsigned short setupCursorAction(int *Pos1, int *Pos2)
     return letter;
 }
 
+byte setupCursorMovement_Overworld_Alphabet(WINDOW *window, unsigned short *directionsMantainedTime)
+{
+    int CursorX = window->cursor_x;
+    int CursorY = window->cursor_y;
+    byte returnByte = 0;
+    int yAxys = 0;
+    int xAxys = 0;
+    bool mantainedX = false;
+    bool mantainedY = false;
+    bool xChanged = false;
+    
+    if(directionsMantainedTime[0] >= 2 || directionsMantainedTime[1] >= 2)
+        mantainedX = true;
+    if(directionsMantainedTime[2] >= 2 || directionsMantainedTime[3] >= 2)
+        mantainedY = true;
+
+    //Check for pressing a direction
+    PAD_STATE state = *pad_state;
+
+    if (state.right)
+        xAxys = 1;
+    else if (state.left)
+        xAxys = -1;
+    if (state.up)
+        yAxys = -1;
+    else if(state.down)
+        yAxys = 1;
+
+    if(xAxys != 0)
+    {
+        CursorX += (xAxys) * 2;
+        switch(CursorY)
+        {
+            case 0:
+            case 1:
+            case 2:
+                if(CursorX < 0 && !mantainedX)
+                    CursorX = 0x18;
+                else if(CursorX < 0)
+                    CursorX = 0;
+                if(CursorX > 0x18)
+                    CursorX = 0;
+                if(CursorX == 0x12)
+                    CursorX = 0x16;
+                if(CursorX == 0x14)
+                    CursorX = 0x10;
+            break;
+            case 3:
+                if(CursorX < 0 && !mantainedX)
+                    CursorX = 0x18;
+                else if(CursorX < 0)
+                    CursorX = 0;
+                if(CursorX > 0x18)
+                    CursorX = 0;
+                if(CursorX == 0x14 && xAxys > 0)
+                    CursorX = 0x16;
+                if(CursorX == 0x14)
+                    CursorX = 0x12;
+            break;
+            case 4:
+                if(CursorX == 0x2)
+                    CursorX = 0x7;
+                if(CursorX == 0x5)
+                    CursorX = 0;
+                if(CursorX < 0 && !mantainedX)
+                    CursorX = 0x18;
+                else if(CursorX < 0)
+                    CursorX = 0;
+                if(CursorX > 0x18)
+                    CursorX = 0;
+                if(CursorX == 0x14)
+                    CursorX = 0x7;
+                if(CursorX == 0x9)
+                    CursorX = 0x16;
+            break;
+            default:
+                if(CursorX == 0x13)
+                    CursorX = 0x19;
+                if(CursorX == 0xF)
+                    CursorX = 0x19;
+                if(CursorX == 0x17)
+                    CursorX = 0x11;
+                if(CursorX == 0x1B)
+                    CursorX = 0x11;
+            break;
+        }
+        if(CursorX != window->cursor_x)
+        {
+            xChanged = true;
+            m2_soundeffect(0x1A7);
+        }
+    }
+    if(yAxys != 0)
+    {
+        switch(CursorY)
+        {
+            case 0:
+            case 1:
+            case 2:
+                CursorY += yAxys;
+                if(CursorY < 0 && !mantainedY)
+                {
+                    if((CursorX >= 0x16))
+                    {
+                        CursorY = 4;
+                    }
+                    else if(CursorX == 0)
+                        CursorY = 4;
+                    else
+                        CursorY = 3;
+                }
+                else if(CursorY < 0)
+                    CursorY = 0;
+            break;
+            case 3:
+                CursorY += yAxys;
+                if(CursorY == 2 && CursorX == 0x12)
+                    CursorX = 0x10;
+                if(CursorY == 4)
+                {
+                    if(CursorX <= 6)
+                        CursorX = 0;
+                    else if (CursorX <= 0x12)
+                        CursorX = 0x7;
+                }
+            break;
+            case 4:
+                CursorY += yAxys;
+                if(CursorY == 3)
+                    if(CursorX == 0x7)
+                        CursorX = 0x8;
+                if(CursorY == 5)
+                    CursorX = 0x11;
+            break;
+            default:
+                CursorY += yAxys;
+                if(CursorY == 4 && CursorX == 0x11)
+                    CursorX = 0x7;
+                else if(CursorY == 4)
+                    CursorX = 0x18;
+                if(CursorY == 6)
+                    CursorY = 5;
+            break;
+        }
+        if(CursorY != window->cursor_y && !xChanged)
+            m2_soundeffect(0x1A8);
+    }
+    
+    if(CursorY == 4 && CursorX == 0)
+        returnByte = 1;
+    else if(CursorY == 4 && CursorX ==0x7)
+        returnByte = 2;
+    else if(CursorY == 5 && CursorX == 0x11)
+        returnByte = 3;
+    else if(CursorY == 5)
+        returnByte = 4;
+    
+    window->cursor_x = CursorX;
+    window->cursor_y = CursorY;
+    
+    return returnByte;
+}
+
 void setupCursorMovement()
 {
     int *a = (int *)0x3000024;
@@ -233,7 +396,7 @@ void setupCursorMovement()
     int yAxys = 0;
     int xAxys = 0;
     
-    // Check for pressing left or right
+    // Check for pressing a direction
     PAD_STATE state = *pad_state;
 
     if (state.right)

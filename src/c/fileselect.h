@@ -29,8 +29,8 @@ typedef struct FILE_SELECT {
 } FILE_SELECT;
 
 int get_tile_number_file_select(int x, int y);
-void clear_tile_file(int x, int y, int pixels, int tile_offset_file);
-void clear_rect_file(int x, int y, int width, int height, int pixels, int tile_offset_file, unsigned short *tilesetDestPtr);
+void clear_tile_file(int x, int y, int pixels);
+void clear_rect_file(int x, int y, int width, int height, int pixels, unsigned short *tilesetDestPtr);
 unsigned short* getTilesetDest(int window_selector, int *width);
 unsigned short getPaletteFromFileWindow(int x, int y, int window_selector);
 void setPaletteToFileWindow(int x, int y, int window_selector, unsigned short palette);
