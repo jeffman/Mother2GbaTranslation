@@ -595,9 +595,10 @@ ldr     r0,=0x3002500
 ldrh    r0,[r0]
 cmp     r0,0
 beq     @@next
-ldr     r0,=0x3005230
+ldr     r0,=#0x3005230
+ldr     r1,=#0x2012000
 ldr     r0,[r0,0x1C]
-bl      clear_window
+bl      clear_window_buffer
 
 @@next:
 pop     {r0-r1}
@@ -1691,6 +1692,7 @@ add     r0,#0xA
 bx      r0
 
 @@goToInner:
+bl load_pixels_overworld_psi_window
 ldr     r0,[r4,#0x1C] //Stores false in vwf_skip, which means the window will be printed
 mov     r2,#0
 strb    r2,[r0,#3]
@@ -1753,6 +1755,7 @@ strb    r2,[r0,#3]
 b       @@end //Goes to the end of the routine
 
 @@goToInner:
+bl      load_pixels_overworld
 lsl     r0,r0,0x10 //Properly stores the output into r4 and, since we're going into the inner window, sets vwf_skip to false
 asr     r4,r0,0x10
 ldr     r0,[r5,#0x20]
@@ -1816,6 +1819,7 @@ strb    r2,[r0,#3]
 b       @@end //Goes to the end of the routine
 
 @@goToInner:
+bl load_pixels_overworld_psi_window
 lsl     r0,r0,0x10 //Properly stores the output into r4 and, since we're going into the inner window, sets vwf_skip to false
 asr     r4,r0,0x10
 ldr     r0,[r5,#0x20]
@@ -1876,7 +1880,8 @@ mov     r1,r2 //If it is, prints the PSI description
 mov     r2,0
 bl      m2_initwindow //Initializes the PSI description window
 ldr     r0,[r5,0x28]
-bl      0x80C8BE4 //Prints the PSI description window
+bl      print_window_with_buffer //Prints the PSI description window
+bl      store_pixels_overworld
 ldr     r0,[r5,0x28]
 ldrb    r1,[r0,#3] //Sets vwf_skip to true
 mov     r3,#1
@@ -1908,21 +1913,47 @@ bx      r0 //Jump to the next useful piece of code
 //It sets things up to make it so the target window is only printed once
 b8db4_psi_inner_window:
 push    {lr}
+ldrb r1,[r0,#3]
+push {r1}
 ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
 push    {r1}
 ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
 push    {r1}
 bl      0x80C438C //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
+pop {r2}
+ldr     r3,[r4,0x24] //Target window
+ldrh    r1,[r3,#0x34] //Stores the cursor's X of the window
+cmp r1,r2
+bne @@store_buffer_first
+pop {r2}
+ldrh    r1,[r3,#0x36] //Stores the cursor's Y of the window
+cmp r1,r2
+bne @@store_buffer_second
+pop {r2}
+mov r1,#1
+and r1,r2
+cmp r1,#1
+beq @@continue
+b @@store_buffer
+
+@@store_buffer_first:
+pop {r2}
+@@store_buffer_second:
+pop {r2}
+@@store_buffer:
+cmp r0,#0
+bne @@continue
+bl store_pixels_overworld_psi_window
+
+@@continue:
 cmp     r0,#0
 beq     @@ending
 
-mov     r2,#0 //Sets vwf_skip to false since the window is change
+mov     r2,#0 //Sets vwf_skip to false since the window is changed
 ldr     r1,[r4,0x24] //Target window
 strb    r2,[r1,#3]
 
 @@ending:
-pop     {r1}
-pop     {r1}
 pop     {pc}
 
 .pool
@@ -1931,11 +1962,39 @@ pop     {pc}
 //It sets things up to make it so the target window is only printed once
 e0854_psi_inner_window_battle:
 push    {lr}
+ldrb r1,[r0,#3]
+push {r1}
 ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
 push    {r1}
 ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
 push    {r1}
 bl      0x80C438C //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
+pop {r2}
+ldr     r3,[r4,0x24] //Target window
+ldrh    r1,[r3,#0x34] //Stores the cursor's X of the window
+cmp r1,r2
+bne @@store_buffer_first
+pop {r2}
+ldrh    r1,[r3,#0x36] //Stores the cursor's Y of the window
+cmp r1,r2
+bne @@store_buffer_second
+pop {r2}
+mov r1,#1
+and r1,r2
+cmp r1,#1
+beq @@continue
+b @@store_buffer
+
+@@store_buffer_first:
+pop {r2}
+@@store_buffer_second:
+pop {r2}
+@@store_buffer:
+cmp r0,#0
+bne @@continue
+bl store_pixels_overworld_psi_window
+
+@@continue:
 cmp     r0,#0
 beq     @@ending
 
@@ -1944,8 +2003,6 @@ ldr     r1,[r5,0x24] //Target window
 strb    r2,[r1,#3]
 
 @@ending:
-pop     {r1}
-pop     {r1}
 pop     {pc}
 
 .pool
@@ -2056,10 +2113,11 @@ orr     r2,r1
 strb    r2,[r4,#0x3]
 mov     r3,r0
 mov     r0,r4
+ldr     r1,=#0x2012000
 mov     r4,r3
-bl      clear_window
+bl      clear_window_buffer
 mov     r0,r4
-bl      m2_psitargetwindow
+bl      psiTargetWindow
 
 @@end:
 pop     {r4,pc}
@@ -2112,12 +2170,12 @@ pop     {pc}
 //Loads the vram into the buffer, it's called each time there is only the main file_select window active (a good way to set the whole thing up)
 _38c0_load_pixels:
 push    {lr}
-ldr     r3,=#0x40000D4 //DMA transfer 3
+ldr     r3,=#0x40000B0 //DMA transfer 0
 ldr     r0,=#0x6008000 //Source
 str     r0,[r3]
 ldr     r0,=#0x2015000 //Target
 str     r0,[r3,#4]
-ldr     r0,=#0x80002400 //Store 0x4800 bytes
+ldr     r0,=#0x84001200 //Store 0x4800 bytes
 str     r0,[r3,#8]
 ldr     r0,[r3,#8]
 ldr     r3,[r5,#0]
@@ -2129,12 +2187,12 @@ pop     {pc}
 //Stores the buffer into the vram. This avoids screen tearing.
 store_pixels:
 push    {r0-r1,lr}
-ldr     r1,=#0x40000D4 //DMA transfer 3
+ldr     r1,=#0x40000B0 //DMA transfer 0
 ldr     r0,=#0x2015000 //Source
 str     r0,[r1]
 ldr     r0,=#0x6008000 //Target
 str     r0,[r1,#4]
-ldr     r0,=#0x80002400 //Store 0x4800 bytes
+ldr     r0,=#0x94001200 //Store 0x4800 bytes
 str     r0,[r1,#8]
 ldr     r0,[r1,#8]
 pop     {r0-r1,pc}
@@ -2162,12 +2220,12 @@ _4edc_print_window_store:
 push    {lr}
 bl      _4092_print_window
 push    {r0-r1}
-ldr     r1,=#0x40000D4 //DMA transfer 3
+ldr     r1,=#0x40000B0 //DMA transfer 0
 ldr     r0,=#0x2015000 //Source
 str     r0,[r1]
 ldr     r0,=#0x6008000 //Target
 str     r0,[r1,#4]
-ldr     r0,=#0x80000400 //Store 0x800 bytes
+ldr     r0,=#0x94000200 //Store 0x800 bytes
 str     r0,[r1,#8]
 ldr     r0,[r1,#8]
 pop     {r0-r1}
@@ -2659,3 +2717,59 @@ mov     r3,#0x36 //Clobbered code
 pop     {pc}
 
 .pool
+
+//==============================================================================
+//Loads the vram into the buffer, it's called each time there is only the main file_select window active (a good way to set the whole thing up)
+load_pixels_overworld:
+push    {r0-r1,lr}
+ldr     r1,=#0x40000C8 //DMA transfer 2
+ldr     r0,=#0x6002000 //Source
+str     r0,[r1]
+ldr     r0,=#0x2014000 //Target
+str     r0,[r1,#4]
+ldr     r0,=#0xA4001000 //Store 0x4000 bytes - When VBlank and in words of 32 bits
+str     r0,[r1,#8]
+ldr     r0,[r1,#8]
+pop     {r0-r1,pc}
+
+//==============================================================================
+//Stores the buffer into the vram. This avoids screen tearing.
+store_pixels_overworld:
+push    {r0-r1,lr}
+ldr     r1,=#0x40000C8 //DMA transfer 2
+ldr     r0,=#0x2014000 //Source
+str     r0,[r1]
+ldr     r0,=#0x6002000 //Target
+str     r0,[r1,#4]
+ldr     r0,=#0x94001000 //Store 0x4000 bytes - When VBlank and in words of 32 bits
+str     r0,[r1,#8]
+ldr     r0,[r1,#8]
+pop     {r0-r1,pc}
+
+//==============================================================================
+//Loads the vram into the buffer, it's called each time there is only the main file_select window active (a good way to set the whole thing up)
+load_pixels_overworld_psi_window:
+push    {r0-r1,lr}
+ldr     r1,=#0x40000C8 //DMA transfer 2
+ldr     r0,=#0x6002000 //Source
+str     r0,[r1]
+ldr     r0,=#0x2014000 //Target
+str     r0,[r1,#4]
+ldr     r0,=#0x94000800 //Store 0x1800 bytes - When VBlank and in words of 32 bits
+str     r0,[r1,#8]
+ldr     r0,[r1,#8]
+pop     {r0-r1,pc}
+
+//==============================================================================
+//Stores the buffer into the vram. This avoids screen tearing.
+store_pixels_overworld_psi_window:
+push    {r0-r1,lr}
+ldr     r1,=#0x40000C8 //DMA transfer 2
+ldr     r0,=#0x2014000 //Source
+str     r0,[r1]
+ldr     r0,=#0x6002000 //Target
+str     r0,[r1,#4]
+ldr     r0,=#0x94000800 //Store 0x1800 bytes - When VBlank and in words of 32 bits
+str     r0,[r1,#8]
+ldr     r0,[r1,#8]
+pop     {r0-r1,pc}

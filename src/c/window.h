@@ -1,3 +1,6 @@
+#ifndef HEADER_WINDOW_INCLUDED
+#define HEADER_WINDOW_INCLUDED
+
 #include "types.h"
 
 typedef struct WINDOW {
@@ -20,20 +23,20 @@ typedef struct WINDOW {
     byte* menu_text;
 
     // 0x10
-    int unknown2;
+    byte* number_text_area;
     int text_offset;
     int unknown3;
     int text_offset2;
 
     // 0x20
-    unsigned short window_area;
+    short window_area;
     unsigned short window_x;
     unsigned short window_y;
     unsigned short window_width;
     unsigned short window_height;
     unsigned short text_x;
     unsigned short text_y;
-    unsigned short unknown4;
+    unsigned short delay_between_prints;
 
     // 0x30
     unsigned short delay;
@@ -49,7 +52,10 @@ typedef struct WINDOW {
     unsigned short cursor_x_base;
     byte cursor_x_delta;
     byte unknown9a;
-    int unknown9;
+	byte loaded_code;
+	byte unknown9[3];
     int unknown10;
     int unknown11;
 } WINDOW;
+
+#endif

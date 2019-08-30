@@ -1,16 +1,24 @@
 //==============================================================================
-// void parse(int code, char* parserAddress, WINDOW* window)
+// void parse_generic(int code, char* parserAddress, WINDOW* window, int* dest)
 // In:
 //    r0: code
 //    r1: parser address
 //    r2: window
+//    r3: memory_destionation for handle_first_window_buffer
 // Out:
 //    r0: control code length (0 if not matched)
 //==============================================================================
 
 customcodes_parse:
+push {r3,lr}
+ldr r3,=#0x6000000
+bl customcodes_parse_generic
+pop {r3,pc}
+
+customcodes_parse_generic:
 
 push    {r1-r5,lr}
+mov     r5,r3
 mov     r3,0
 mov     r4,r0
 
@@ -22,7 +30,8 @@ bne     @@next
 // 60 FF should be treated as a renderable code
 push    {r0-r3}
 mov     r0,r2
-bl      handle_first_window
+mov     r1,r5
+bl      handle_first_window_buffer
 pop     {r0-r3}
 
 mov     r3,3
@@ -60,8 +69,9 @@ bne     @@next2
 
 // 5F FF should be treated as a renderable code
 push    {r0-r3}
+mov     r1,r5
 mov     r0,r2
-bl      handle_first_window
+bl      handle_first_window_buffer
 pop     {r0-r3}
 
 mov     r3,3
@@ -105,8 +115,9 @@ bne     @@end
 
 // 5D FF should be treated as a renderable code
 push    {r0-r3}
+mov     r1,r5
 mov     r0,r2
-bl      handle_first_window
+bl      handle_first_window_buffer
 pop     {r0-r3}
 
 ldr     r3,=#0x30009FB

@@ -1,5 +1,6 @@
 #include "locs.h"
 
+int            *fileselect_pixels_location = (int*)            0x2015000;
 int            *window_flags               = (int*)            0x300130C;
 PC             (*pc_stats)[4]              = (PC(*)[4])        0x3001D54;
 byte           *pc_count                   = (byte*)           0x3001F0B;
@@ -10,9 +11,9 @@ PAD_STATE      *pad_state_shadow           = (PAD_STATE*)      0x3002504;
 unsigned short *tile_offset                = (unsigned short*) 0x30051EC;
 int            *first_window_flag          = (int*)            0x30051F0;
 unsigned short *palette_mask               = (unsigned short*) 0x3005228;
+WINDOW         **window_pointers           = (WINDOW**)        0x3005230;
 short          *active_window_party_member = (short*)          0x3005264;
 unsigned short **tilemap_pointer           = (unsigned short**)0x3005270;
-int            *fileselect_pixels_location = (int*)            0x2015000;
 int            *vram                       = (int*)            0x6000000;
 int            *m2_misc_offsets            = (int*)            0x8B17EE4;
 byte           *m2_misc_strings            = (byte*)           0x8B17424;
