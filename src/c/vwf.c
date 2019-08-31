@@ -1260,7 +1260,7 @@ WINDOW* getWindow(int index)
 	return window_pointers[index];
 }
 
-void psiTargetWindow(byte target)
+void psiTargetWindow_buffer(byte target)
 {
 	WINDOW *window = getWindow(0x9); //Target Window
 	byte *string_group = (byte*)(0x8B2A9B0);

@@ -393,6 +393,8 @@ b8bbc_redraw_menu_2to1:
 push    {r1-r4,lr}
 add     sp,-4
 
+swi #5
+
 // Copied from 80B7A74
 mov     r0,0
 str     r0,[sp]
@@ -405,6 +407,8 @@ mov     r4,r0
 bl      0x80BE4C8
 mov     r0,r4
 bl      0x80C8BE4
+
+swi #5
 
 // Clobbered code (restore the window borders, etc.)
 mov     r0,1
@@ -420,6 +424,8 @@ b8bbc_redraw_menu_13to2:
 push    {r1-r4,lr}
 add     sp,-4
 
+swi #5
+
 // Copied from 80B7A74
 mov     r0,0
 str     r0,[sp]
@@ -431,7 +437,9 @@ mov     r3,2
 mov     r4,r0
 bl      0x80BE4C8
 mov     r0,r4
-bl      0x80C8BE4
+bl      print_window_with_buffer
+
+swi #5
 
 // Clobbered code (restore the window borders, etc.)
 mov     r0,1
@@ -1669,9 +1677,7 @@ ldsh    r1,[r1,r2]
 push    {r1} //Stores the active window pc
 bl      0x80C3F28 //Input management function
 pop     {r1} //Restores the active window pc
-cmp     r0,#0
-bgt     @@goToInner //This is the character who's psi window we're going in, if it's > 0. We do one iteration more than needed in case 1 because that fixes the "two sounds" issue when entering the inner psi window... For some reason?
-cmp     r0,#0
+cmp     r0,#0 //Are we changing the window we're in? If this is 0, we're not
 beq     @@no_change_in_window
 lsl     r0,r0,#0x10 //If r0 is 0xFFFFFFFF, then we're exiting the window
 lsr     r5,r0,#0x10 //Set up r5 properly
@@ -2117,7 +2123,7 @@ ldr     r1,=#0x2012000
 mov     r4,r3
 bl      clear_window_buffer
 mov     r0,r4
-bl      psiTargetWindow
+bl      psiTargetWindow_buffer
 
 @@end:
 pop     {r4,pc}
