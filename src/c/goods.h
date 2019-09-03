@@ -12,13 +12,6 @@ typedef enum DIRECTION_MOVED
     DIRECTION_LEFT
 } MOVED;
 
-typedef enum GOODS_ACTION
-{
-    ACTION_NONE = 0,
-    ACTION_STEPIN = 1,
-    ACTION_STEPOUT = -1
-} GOODS_ACTION;
-
 int goods_outer_process(WINDOW* window, int y_offset, bool give);
 int goods_inner_process(WINDOW *window, unsigned short *items);
 void goods_print_items(WINDOW *window, unsigned short *items, int y_offset);

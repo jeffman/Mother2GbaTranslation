@@ -3,6 +3,13 @@
 
 #include "types.h"
 
+typedef enum WINDOW_ACTION
+{
+    ACTION_NONE = 0,
+    ACTION_STEPIN = 1,
+    ACTION_STEPOUT = -1
+} WINDOW_ACTION;
+
 typedef struct WINDOW {
     // 0x00
     bool enable                  : 1; // 0x0001 Indicates that the window is enabled.
@@ -52,8 +59,8 @@ typedef struct WINDOW {
     unsigned short cursor_x_base;
     byte cursor_x_delta;
     byte unknown9a;
-	byte loaded_code;
-	byte unknown9[3];
+    byte loaded_code;
+    byte unknown9[3];
     int unknown10;
     int unknown11;
 } WINDOW;

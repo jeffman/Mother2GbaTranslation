@@ -14,6 +14,7 @@
 //==============================================================================
 
 .org 0x8AFED84 :: .incbin "data/m2-mainfont1-empty.bin"
+.org 0x8B03DE4 :: .incbin "data/m2-status-symbols.bin"
 .org 0x8B0F424 :: .incbin "data/m2-mainfont2-empty.bin"
 .org 0x8B13424 :: .incbin "data/m2-mainfont3-empty.bin"
 .org 0x8B088A4 :: .incbin "data/m2-shifted-cursor.bin"
@@ -50,15 +51,45 @@ mov     r3,6
 .include "m2-status-switch.asm"
 
 //---------------------------------------------------------
+// Main window hacks
+//---------------------------------------------------------
+
+.org 0x80B7D9A :: bl b7d9a_main_window_manage_input
+//.org 0x80B8A36 :: bl initWindow_buffer //Money window
+//.org 0x80B8A3C :: bl print_window_with_buffer
+.org 0x80B8890 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Status menu
+.org 0x80B831A :: bl initWindow_buffer
+.org 0x80B8320 :: bl b8320_statusWindowTextStore
+
+//---------------------------------------------------------
 // BAC18 hacks (status window)
 //---------------------------------------------------------
 
-.org 0x80BACFC :: bl bac18_redraw_status
+.org 0x80BAC46 :: nop :: nop
+.org 0x80BAC6E :: bl bac6e_statusWindowNumbersInputManagement
+.org 0x80BAD7E :: bl printstr_buffer
+.org 0x80BAD88 :: bl initWindow_buffer
+.org 0x80BAD92 :: bl initWindow_buffer
+.org 0x80BACFC :: bl bac18_redraw_status_store
 .org 0x80BADE6 :: bl bac18_redraw_status
 .org 0x80BACEA :: bl bacea_status_psi_window
+.org 0x80BACBA :: bl print_window_with_buffer
+.org 0x80BACC4 :: bl initWindow_buffer
+.org 0x80BAD1A :: bl clearWindowTiles_buffer
+.org 0x80BADF6 :: bl initWindow_buffer
 .org 0x80BACEE :: bl bac18_clear_psi
 .org 0x80BADB0 :: bl badb0_status_inner_window
 .org 0x80BADCC :: b 0x80BADD8
+
+//---------------------------------------------------------
+// PSI window hacks
+//---------------------------------------------------------
+
+.org 0x80BAE1C :: bl print_window_with_buffer
+.org 0x80BAEC6 :: bl baec6_psi_window_print_buffer
+.org 0x80BAED4 :: bl baec6_psi_window_print_buffer
+.org 0x80BAEE2 :: bl baec6_psi_window_print_buffer
+.org 0x80BAEF0 :: bl baec6_psi_window_print_buffer
 
 //---------------------------------------------------------
 // BAEF8 hacks (equip window)
@@ -1511,12 +1542,15 @@ m2_coord_table_file:
 .definelabel m2_clearwindowtiles    ,0x80CA834
 .definelabel m2_menuwindow          ,0x80C1C98
 .definelabel m2_resetwindow         ,0x80BE490
+.definelabel m2_sub_d3c50           ,0x80D3C50
 .definelabel m2_hpwindow_up         ,0x80D3F0C
 .definelabel m2_curhpwindow_down    ,0x80D41D8
+.definelabel m2_sub_d6844           ,0x80D6844
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70
-.definelabel m2_default_names       ,0x82B9330
 .definelabel m2_items               ,0x8B1D62C
+.definelabel m2_default_names       ,0x82B9330
+.definelabel m2_psi_print_table     ,0x8B2A9C0
 
 //==============================================================================
 // Code files

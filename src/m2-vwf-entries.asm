@@ -330,20 +330,50 @@ bl      0x80BE260
 mov     r1,r0
 mov     r0,r4
 mov     r2,0
-bl      0x80BE458
+bl      initWindow_buffer
 
 // Render text
 mov     r0,r4
-bl      0x80C8FFC
+bl      statusWindowText
 
 // Render numbers
 mov     r0,r4
+ldrh    r1,[r0,#0]
+ldr     r2,=#0xFBFF
+and     r1,r2
+strh    r1,[r0,#0]
 mov     r1,0
-bl      0x80C0A5C
+bl      statusNumbersPrint
 
 pop     {r4,pc}
 .pool
 
+//==============================================================================
+// Redraws the status window (when exiting the PSI menu) and stores it
+bac18_redraw_status_store:
+push    {lr}
+bl      bac18_redraw_status
+bl      store_pixels_overworld
+pop     {pc}
+.pool
+
+//==============================================================================
+// Only if the character changed store the buffer - called when reading inputs
+bac6e_statusWindowNumbersInputManagement:
+push    {lr}
+ldr     r2,=#m2_active_window_pc
+ldrb    r2,[r2,#0]
+push    {r2}
+bl      statusWindowNumbers
+pop     {r2}
+ldr     r1,=#m2_active_window_pc
+ldrb    r1,[r1,#0]
+cmp     r1,r2
+beq     @@end
+bl      store_pixels_overworld
+
+@@end:
+pop     {pc}
 
 //==============================================================================
 // Clears the PSI window when switching classes
@@ -359,7 +389,8 @@ beq     @@next
 
 // If flag 0x10 is set, clear the PSI window
 ldr     r0,[r5,0x1C] // PSI window
-bl      clear_window
+ldr     r1,=#0x2012000
+bl      clear_window_buffer
 
 @@next:
 // Clobbered code
@@ -1761,7 +1792,6 @@ strb    r2,[r0,#3]
 b       @@end //Goes to the end of the routine
 
 @@goToInner:
-bl      load_pixels_overworld
 lsl     r0,r0,0x10 //Properly stores the output into r4 and, since we're going into the inner window, sets vwf_skip to false
 asr     r4,r0,0x10
 ldr     r0,[r5,#0x20]
@@ -1884,7 +1914,7 @@ cmp     r1,#0 //Checks if vwf_skip is false
 bne     @@end
 mov     r1,r2 //If it is, prints the PSI description
 mov     r2,0
-bl      m2_initwindow //Initializes the PSI description window
+bl      initWindow_buffer //Initializes the PSI description window
 ldr     r0,[r5,0x28]
 bl      print_window_with_buffer //Prints the PSI description window
 bl      store_pixels_overworld
@@ -2087,6 +2117,28 @@ ldr     r1,=#0x82B7FF8
 pop     {pc}
 
 .pool
+
+//==============================================================================
+//Prints and stores the PSI window in the PSI menu
+baec6_psi_window_print_buffer:
+push    {lr}
+bl      psiWindow_buffer
+bl      store_pixels_overworld
+pop     {pc}
+
+//==============================================================================
+//Loads the buffer in if entering another window from the main window
+b7d9a_main_window_manage_input:
+push    {lr}
+bl      0x80BE53C
+cmp     r0,#0
+beq     @@end
+cmp     r0,#0
+blt     @@end
+bl      load_pixels_overworld
+
+@@end:
+pop     {pc}
 
 //==============================================================================
 //Prints the target window if and only if the cursor's position changed in this input management function
@@ -2725,6 +2777,34 @@ pop     {pc}
 .pool
 
 //==============================================================================
+//Prints the cash window and then stores the buffer to vram
+b8894_printCashWindowAndStore:
+push    {lr}
+bl      printCashWindow
+bl      store_pixels_overworld
+pop     {pc}
+
+//==============================================================================
+//UNUSED
+bac46_statusWindowNumbersStore:
+push    {lr}
+bl      statusWindowNumbers
+bl      store_pixels_overworld
+pop     {pc}
+
+//==============================================================================
+//Prints the status text and numbers in the buffer, then loads it in vram
+b8320_statusWindowTextStore:
+push    {lr}
+push    {r0}
+bl      statusWindowText
+pop     {r0}
+mov     r1,#0
+bl      statusNumbersPrint
+bl      store_pixels_overworld
+pop     {pc}
+
+//==============================================================================
 //Loads the vram into the buffer, it's called each time there is only the main file_select window active (a good way to set the whole thing up)
 load_pixels_overworld:
 push    {r0-r1,lr}
@@ -2733,7 +2813,7 @@ ldr     r0,=#0x6002000 //Source
 str     r0,[r1]
 ldr     r0,=#0x2014000 //Target
 str     r0,[r1,#4]
-ldr     r0,=#0xA4001000 //Store 0x4000 bytes - When VBlank and in words of 32 bits
+ldr     r0,=#0xA4001000 //Store 0x4000 bytes - When HBlank and in words of 32 bits
 str     r0,[r1,#8]
 ldr     r0,[r1,#8]
 pop     {r0-r1,pc}
