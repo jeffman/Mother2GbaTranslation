@@ -363,10 +363,34 @@ beaa6_fix_sounds:
 push    {lr}
 mov     r1,r10
 add     r1,r1,r4
+mov     r2,r5
+add     r2,#0x42
+ldrb    r2,[r2,#0] //Is this the status window? If not, then do the sound
+cmp     r2,#0
+beq     @@sound
 cmp     r1,#0
 beq     @@sound
 cmp     r1,#4
 bne     @@end
+@@sound:
+bl      m2_soundeffect
+@@end:
+pop     {pc}
+
+//==============================================================================
+// Calls m2_soundeffect only if we're out of the main menu
+bea88_fix_sounds:
+push    {lr}
+mov     r2,r5
+add     r2,#0x42
+ldrb    r2,[r2,#0] //Is this the status window? If not, then we may not want to do the sound
+cmp     r2,#0
+bne     @@sound
+ldrb    r2,[r5,#3] //If we are printing, then don't do the sound
+mov     r1,#1
+and     r1,r2
+cmp     r1,#0
+beq     @@end
 @@sound:
 bl      m2_soundeffect
 @@end:

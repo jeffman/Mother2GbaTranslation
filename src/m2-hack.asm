@@ -60,7 +60,13 @@ mov     r3,6
 .org 0x80B8890 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Status menu
 .org 0x80B831A :: bl initWindow_buffer
 .org 0x80B8320 :: bl b8320_statusWindowTextStore
+
+//---------------------------------------------------------
+// Overworld main window/PSI class window input management hacks
+//---------------------------------------------------------
+
 .org 0x80BEAA6 :: bl beaa6_fix_sounds
+.org 0x80BEA88 :: bl bea88_fix_sounds
 
 //---------------------------------------------------------
 // BAC18 hacks (status window)
