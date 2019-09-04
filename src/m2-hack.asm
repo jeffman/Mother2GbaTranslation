@@ -1238,12 +1238,6 @@ nop
 //.org 0x80BDA02 :: mov r2,#0x1B //Poo
 
 //==============================================================================
-// Fix functions table
-//==============================================================================
-
-.org 0x80F2B30 :: dw m2_functions_table
-
-//==============================================================================
 // File select hacks
 //==============================================================================
 
@@ -1391,6 +1385,13 @@ nop
 .org 0x80C7578 :: bl c7578_load_letters
 
 //==============================================================================
+// Move stuff around in order to make space for the code
+//==============================================================================
+
+.org 0x82D92D4 :: dw moved_graphics_table :: dw moved_graphics_table + 0x1CD2C
+.org 0x82D9BBC :: dw moved_graphics_table + 0x26618 :: dw moved_graphics_table + 0x3F818
+
+//==============================================================================
 // Data files
 //==============================================================================
 
@@ -1495,8 +1496,8 @@ flyovertextLater:
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
 
-m2_functions_table:
-.incbin "data/m2-functions-table.bin"
+moved_graphics_table:
+.incbin "data/moved-graphics-table.bin"
 
 
 //==============================================================================

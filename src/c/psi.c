@@ -94,6 +94,7 @@ void psiTargetWindow_buffer(byte target)
     PSIPrintInfo *printInfo = &(psi_print_info[target - 1]);
     byte *string_group1 = (byte*)(0x8B204E4);
     byte extract = (printInfo->PSIID);
+	byte *baseStrPointer = (byte*)(&psitext);
     byte value = 0;
     byte value2 = 0;
     byte *str = 0;
@@ -103,10 +104,10 @@ void psiTargetWindow_buffer(byte target)
         value = (value * 0x64);
         value2 = (*(string_group1 + (printInfo->PSIPrintInfoID * 12) + 1));
         value2 = (value2 * 0x14);
-        str = (byte*)(0x8B74390 + value + value2); //It doesn't use the pointer to the description the struct has but it obtains it like this...
+        str = baseStrPointer + (0x11 * 0x14) + value + value2; //It doesn't use the pointer to the description the struct has but it obtains it like this...
     }
     else
-        str = (byte*)(0x8B74390);
+        str = baseStrPointer + (0x11 * 0x14);
     printstr_hlight_buffer(window, str, 0, 0, 0);
     
     str = m2_strlookup((int*)0x8B17EE4, (byte*)0x8B17424, 0x1B);
@@ -123,12 +124,13 @@ void psiTargetWindow_buffer(byte target)
 void psiPrint_buffer(byte value, WINDOW* window, bool printPSILine, PSIPrintInfo *printInfo)
 {
     byte *str = 0;
+	byte *baseStrPointer = (byte*)(&psitext);
     byte (*possibleTargets)[3][4] = (byte(*)[3][4])cursorValues;
 
     if(printPSILine)
     {
         byte PSIID = printInfo->PSIID;
-        str = (byte*)(0x8B74228 + (PSIID * 0x14));
+        str = baseStrPointer + ((PSIID - 1) * 0x14);
         printstr_hlight_buffer(window, str, 0, printInfo->YPrinting << 1, 0);
         if(PSIID == 1)
         {

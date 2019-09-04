@@ -44,5 +44,6 @@ int PSITargetInput(WINDOW* window);
 
 
 extern PSIPrintInfo m2_psi_print_table[];
+extern int psitext;
 
 #endif

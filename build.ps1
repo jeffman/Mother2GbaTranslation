@@ -19,7 +19,7 @@ $input_c_files =
     "src/c/status.c",
     "src/c/psi.c"
 
-$base_c_address    = 0x8100000;
+$base_c_address    = 0x83755B8;
 $scripttool_cmd    = "bin/ScriptTool/ScriptTool.dll"
 $gcc_cmd           = "arm-none-eabi-gcc"
 $ld_cmd            = "arm-none-eabi-ld"

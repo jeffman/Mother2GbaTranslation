@@ -433,7 +433,7 @@ namespace ScriptTool
 
         static void CompileM12()
         {
-            int baseAddress = 0xB80000;
+            int baseAddress = 0xC10000;
             int referenceAddress = baseAddress;
             var buffer = new List<byte>();
 
@@ -495,7 +495,7 @@ namespace ScriptTool
 
         static void CompileM12Misc()
         {
-            int referenceAddress = 0xB70000;
+            int referenceAddress = 0xC00000;
 
             // Item names
             CompileM12MiscStringCollection("m12-itemnames", ref referenceAddress);
@@ -527,10 +527,11 @@ namespace ScriptTool
 
             IncludeFile.WriteLine();
             IncludeFile.WriteLine("// Fix pointers to \"PSI \"");
+			IncludeFile.WriteLine(".definelabel psitext, 0x{0:X8}", psiPointer | 0x8000000);
             foreach (var address in updateAddresses)
             {
-                IncludeFile.WriteLine(String.Format(".org 0x{0:X} :: dw 0x{1:X8}",
-                    address | 0x8000000, psiPointer | 0x8000000));
+                IncludeFile.WriteLine(String.Format(".org 0x{0:X} :: dw psitext",
+                    address | 0x8000000));
             }
 
             // PSI targets
