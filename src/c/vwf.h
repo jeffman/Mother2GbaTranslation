@@ -21,6 +21,8 @@
 #define WINDOW_HEADER_Y 0x11
 #define WINDOW_HEADER_TILE (WINDOW_HEADER_X + (WINDOW_HEADER_Y * 32))
 
+#define OVERWORLD_BUFFER 0x203C000
+
 #define CUSTOMCC_SET_X 0x5F
 #define CUSTOMCC_ADD_X 0x60
 
@@ -117,6 +119,7 @@ extern byte m12_other_str7[];
 extern byte m12_other_str8[];
 extern byte m2_cstm_last_printed[];
 extern byte *m2_script_readability;
+extern int overworld_buffer;
 extern PC m2_ness_data[];
 
 extern void cpufastset(void *source, void *dest, int mode);

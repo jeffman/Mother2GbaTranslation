@@ -39,6 +39,8 @@ typedef struct SpecialPSIFlag {
 void psiWindow_buffer(CHARACTER psiCharacter, PSIWindow typeOfWindow, PSIClasses printableClasses);
 void psiTargetWindow_buffer(byte target);
 void psiPrint_buffer(byte value, WINDOW* window, bool printPSILine, PSIPrintInfo *printInfo);
+int PSITargetWindowInput(WINDOW* window);
+int PSITargetInput(WINDOW* window);
 
 
 extern PSIPrintInfo m2_psi_print_table[];

@@ -7,6 +7,8 @@
 #include "window.h"
 #include "psi.h"
 
+extern int *fileselect_pixels_location;
+extern byte *cursorValues;
 extern int *window_flags;
 extern PC (*pc_stats)[4];
 extern int *cash_on_hand;
@@ -23,7 +25,6 @@ extern unsigned short *palette_mask;
 extern WINDOW **window_pointers;
 extern short *active_window_party_member;
 extern unsigned short **tilemap_pointer;
-extern int *fileselect_pixels_location;
 extern int *vram;
 extern int *m2_misc_offsets;
 extern byte *m2_misc_strings;

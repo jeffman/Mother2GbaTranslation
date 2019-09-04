@@ -358,6 +358,21 @@ pop     {pc}
 .pool
 
 //==============================================================================
+// Calls m2_soundeffect only if we're going in either talk or check
+beaa6_fix_sounds:
+push    {lr}
+mov     r1,r10
+add     r1,r1,r4
+cmp     r1,#0
+beq     @@sound
+cmp     r1,#4
+bne     @@end
+@@sound:
+bl      m2_soundeffect
+@@end:
+pop     {pc}
+
+//==============================================================================
 // Only if the character changed store the buffer - called when reading inputs
 bac6e_statusWindowNumbersInputManagement:
 push    {lr}
@@ -1877,7 +1892,7 @@ ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
 push    {r1}
 ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
 push    {r1}
-bl      0x80C438C //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
+bl      PSITargetWindowInput //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
 lsl     r0,r0,#0x10
 lsr     r4,r0,#0x10 //Properly stores the output into r4
 
@@ -1946,6 +1961,14 @@ bx      r0 //Jump to the next useful piece of code
 .pool
 
 //==============================================================================
+//Fixes issue with sounds when going from the PSI window to the inner PSI window
+b8d40_psi_going_inner_window:
+push    {lr}
+bl      PSITargetWindowInput
+bl      store_pixels_overworld_psi_window
+pop     {pc}
+
+//==============================================================================
 //It sets things up to make it so the target window is only printed once
 b8db4_psi_inner_window:
 push    {lr}
@@ -1955,7 +1978,7 @@ ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
 push    {r1}
 ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
 push    {r1}
-bl      0x80C438C //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
+bl      PSITargetWindowInput //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
 pop {r2}
 ldr     r3,[r4,0x24] //Target window
 ldrh    r1,[r3,#0x34] //Stores the cursor's X of the window
@@ -2004,7 +2027,7 @@ ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
 push    {r1}
 ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
 push    {r1}
-bl      0x80C438C //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
+bl      PSITargetWindowInput //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
 pop {r2}
 ldr     r3,[r4,0x24] //Target window
 ldrh    r1,[r3,#0x34] //Stores the cursor's X of the window
@@ -2811,7 +2834,7 @@ push    {r0-r1,lr}
 ldr     r1,=#0x40000C8 //DMA transfer 2
 ldr     r0,=#0x6002000 //Source
 str     r0,[r1]
-ldr     r0,=#0x2014000 //Target
+ldr     r0,=#overworld_buffer //Target
 str     r0,[r1,#4]
 ldr     r0,=#0xA4001000 //Store 0x4000 bytes - When HBlank and in words of 32 bits
 str     r0,[r1,#8]
@@ -2823,7 +2846,7 @@ pop     {r0-r1,pc}
 store_pixels_overworld:
 push    {r0-r1,lr}
 ldr     r1,=#0x40000C8 //DMA transfer 2
-ldr     r0,=#0x2014000 //Source
+ldr     r0,=#overworld_buffer //Source
 str     r0,[r1]
 ldr     r0,=#0x6002000 //Target
 str     r0,[r1,#4]
@@ -2839,7 +2862,7 @@ push    {r0-r1,lr}
 ldr     r1,=#0x40000C8 //DMA transfer 2
 ldr     r0,=#0x6002000 //Source
 str     r0,[r1]
-ldr     r0,=#0x2014000 //Target
+ldr     r0,=#overworld_buffer //Target
 str     r0,[r1,#4]
 ldr     r0,=#0x94000800 //Store 0x1800 bytes - When VBlank and in words of 32 bits
 str     r0,[r1,#8]
@@ -2851,7 +2874,7 @@ pop     {r0-r1,pc}
 store_pixels_overworld_psi_window:
 push    {r0-r1,lr}
 ldr     r1,=#0x40000C8 //DMA transfer 2
-ldr     r0,=#0x2014000 //Source
+ldr     r0,=#overworld_buffer //Source
 str     r0,[r1]
 ldr     r0,=#0x6002000 //Target
 str     r0,[r1,#4]

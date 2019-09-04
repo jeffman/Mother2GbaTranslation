@@ -7,7 +7,8 @@ typedef enum WINDOW_ACTION
 {
     ACTION_NONE = 0,
     ACTION_STEPIN = 1,
-    ACTION_STEPOUT = -1
+    ACTION_STEPOUT = -1,
+    ACTION_ERROR = -2
 } WINDOW_ACTION;
 
 typedef struct WINDOW {

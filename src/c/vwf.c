@@ -901,7 +901,7 @@ int print_window_with_buffer(WINDOW* window)
         while(window->loaded_code !=0)
         {
             window->delay = delay;
-            print_character_with_codes(window, (int*)(0x2014000 - ((*tile_offset) * 32)));
+            print_character_with_codes(window, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
         }
     }
     return 0;
@@ -1138,7 +1138,7 @@ byte print_character_with_codes(WINDOW* window, int* dest)
     }
     else
     {
-        handle_first_window_buffer(window, (int*)(0x2014000 - ((*tile_offset) * 32)));
+        handle_first_window_buffer(window, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
         window->delay = window->delay_between_prints;
         if(x > 0x1F)
         {
@@ -1264,7 +1264,7 @@ void printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short
     while(output != 1)
     {
         window->delay = 0;
-        output = print_character_with_codes(window, (int*)(0x2014000 - ((*tile_offset) * 32)));
+        output = print_character_with_codes(window, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
     }
     
     window->text_start = tmpTextStart;
@@ -1286,7 +1286,7 @@ unsigned short printstr_hlight_buffer(WINDOW* window, byte* str, unsigned short 
         palette_mask_highlight += 0x1000;
     (*palette_mask) = palette_mask_highlight;
     
-    unsigned short printed_Characters = print_string_in_buffer(str, printX, printY, (int*)(0x2014000 - ((*tile_offset) * 32)));
+    unsigned short printed_Characters = print_string_in_buffer(str, printX, printY, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
     
     (*palette_mask) = tmpPaletteMsk;
     
@@ -1314,13 +1314,13 @@ int initWindow_buffer(WINDOW* window, byte* text_start, unsigned short delay_bet
     window->flags_unknown1 |= 1;
     window->redraw = true;
     if(text_start == NULL)
-        buffer_drawwindow(window, (int*)(0x2014000 - 0x2000));
+        buffer_drawwindow(window, (int*)(OVERWORLD_BUFFER - 0x2000));
     return 0;
 }
 
 void clearWindowTiles_buffer(WINDOW* window)
 {
-    clear_window_buffer(window, (int*)(0x2014000 - 0x2000));
+    clear_window_buffer(window, (int*)(OVERWORLD_BUFFER - 0x2000));
     window->text_x = 0;
     window->text_y = 0;
 }

@@ -1,6 +1,7 @@
 #include "locs.h"
 
 int            *fileselect_pixels_location = (int*)                  0x2015000;
+byte           *cursorValues               = (byte*)                 0x3000A00;
 int            *window_flags               = (int*)                  0x300130C;
 byte           *character_general_data     = (byte*)                 0x3001D40;
 PC             (*pc_stats)[4]              = (PC(*)[4])              0x3001D54;

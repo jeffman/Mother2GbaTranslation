@@ -60,6 +60,7 @@ mov     r3,6
 .org 0x80B8890 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Status menu
 .org 0x80B831A :: bl initWindow_buffer
 .org 0x80B8320 :: bl b8320_statusWindowTextStore
+.org 0x80BEAA6 :: bl beaa6_fix_sounds
 
 //---------------------------------------------------------
 // BAC18 hacks (status window)
@@ -228,6 +229,9 @@ mov     r0,0x50
 
 //Do not redraw unless it is needed
 .org 0x80B8CD2 :: bl b8cd2_psi_window
+
+//Fix multiple sounds issue when going inside the psi window
+.org 0x80B8D40 :: bl b8d40_psi_going_inner_window
 
 //Sets up for the target window
 .org 0x80B8DB4 :: bl b8db4_psi_inner_window
@@ -1233,6 +1237,11 @@ nop
 //.org 0x80BD9F6 :: mov r2,#0x16 //Jeff
 //.org 0x80BDA02 :: mov r2,#0x1B //Poo
 
+//==============================================================================
+// Fix functions table
+//==============================================================================
+
+.org 0x80F2B30 :: dw m2_functions_table
 
 //==============================================================================
 // File select hacks
@@ -1486,11 +1495,15 @@ flyovertextLater:
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
 
+m2_functions_table:
+.incbin "data/m2-functions-table.bin"
+
 
 //==============================================================================
 // Existing subroutines/data
 //==============================================================================
 
+.definelabel overworld_buffer       ,0x203C000
 .definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10
 .definelabel m2_old_paula_name      ,0x3001F16

@@ -9,9 +9,9 @@ void printNumberOfStatus(int maxLength, int value, int blankX, int y, int strX, 
     int end = setNumber_getLength(value, str, maxLength);
     str[end] = 0;
     str[end + 1] = 0xFF;
-    print_blankstr_buffer(blankX, y, width, (int*)(0x2014000 - 0x2000));
+    print_blankstr_buffer(blankX, y, width, (int*)(OVERWORLD_BUFFER - 0x2000));
     int x = (strX - (end * 6));
-    print_string_in_buffer(str, x, y << 3, (int*)(0x2014000 - 0x2000));
+    print_string_in_buffer(str, x, y << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
 }
 
 void printStatusSymbolArrangement(unsigned short symbolTile, WINDOW* window)
@@ -59,7 +59,7 @@ int statusNumbersPrint(WINDOW* window, bool doNotPrint)
             printNumberOfStatus(7, experienceLevelUp - character_data->experience, 2, 0xD, 0x3D, 6);
         }
         else
-            print_blankstr_buffer(2, 0xD, 6, (int*)(0x2014000 - 0x2000));
+            print_blankstr_buffer(2, 0xD, 6, (int*)(OVERWORLD_BUFFER - 0x2000));
         printNumberOfStatus(3, character_data->offense_effective, 0x19, 0x1, 0xE1, 4);
         printNumberOfStatus(3, character_data->defense_effective, 0x19, 0x3, 0xE1, 4);
         printNumberOfStatus(3, character_data->speed_effective, 0x19, 0x5, 0xE1, 4);
@@ -67,13 +67,13 @@ int statusNumbersPrint(WINDOW* window, bool doNotPrint)
         printNumberOfStatus(3, character_data->vitality_effective, 0x19, 0x9, 0xE1, 4);
         printNumberOfStatus(3, character_data->iq_effective, 0x19, 0xB, 0xE1, 4);
         printNumberOfStatus(3, character_data->luck_effective, 0x19, 0xD, 0xE1, 4);
-        print_blankstr_buffer(5, 0xF, 0x14, (int*)(0x2014000 - 0x2000));
+        print_blankstr_buffer(5, 0xF, 0x14, (int*)(OVERWORLD_BUFFER - 0x2000));
         if((*active_window_party_member) != JEFF)
         {
             byte *str = m2_strlookup((int*)0x8B17EE4, (byte*)0x8B17424, 0x13);
-            print_string_in_buffer(str, 0x2C, (0xF) << 3, (int*)(0x2014000 - 0x2000));
+            print_string_in_buffer(str, 0x2C, (0xF) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
         }
-        print_blankstr_buffer(1, 0x3, 0xA, (int*)(0x2014000 - 0x2000));
+        print_blankstr_buffer(1, 0x3, 0xA, (int*)(OVERWORLD_BUFFER - 0x2000));
         unsigned short symbolTile = ailmentTileSetup(character_data, 0);
         if(symbolTile == 0)
         {
@@ -225,18 +225,18 @@ int statusWindowNumbers(WINDOW* window, bool doNotPrint)
 int statusWindowText(WINDOW* window)
 {
     if(window->redraw)
-        buffer_drawwindow(window, (int*)(0x2014000 - 0x2000));
+        buffer_drawwindow(window, (int*)(OVERWORLD_BUFFER - 0x2000));
     if(window->loaded_code != 0 && ((*script_readability) == 0))
     {
         window->delay = 0;
         while(true)
         {
             while(window->text_y >= window->window_height || window->window_y + window->text_y > 0x1F)
-                properScroll(window, (int*)(0x2014000 - 0x2000));
+                properScroll(window, (int*)(OVERWORLD_BUFFER - 0x2000));
             byte *str = window->text_start + window->text_offset;
             if((*(str + 1)) == 0xFF)
             {
-                int returnedLength = customcodes_parse_generic(*str, str, window, (int*)(0x2014000 - 0x2000));
+                int returnedLength = customcodes_parse_generic(*str, str, window, (int*)(OVERWORLD_BUFFER - 0x2000));
                 if(returnedLength != 0)
                 {
                     if(returnedLength < 0)
@@ -267,7 +267,7 @@ int statusWindowText(WINDOW* window)
                     window->text_y += 2;
                     window->text_x = 0;
                 }
-                weld_entry_custom_buffer(window, str, 0, 0xF, (int*)(0x2014000 - 0x2000));
+                weld_entry_custom_buffer(window, str, 0, 0xF, (int*)(OVERWORLD_BUFFER - 0x2000));
                 window->text_offset++;
             }
         }
