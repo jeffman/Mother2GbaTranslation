@@ -378,6 +378,15 @@ bl      m2_soundeffect
 pop     {pc}
 
 //==============================================================================
+// Loads the buffer up in battle
+dc22a_load_buffer_battle:
+push    {lr}
+mov     r9,r0
+ldr     r3,[r5,#0]
+bl      load_pixels_overworld
+pop     {pc}
+
+//==============================================================================
 // Calls m2_soundeffect only if we're out of the main menu
 bea88_fix_sounds:
 push    {lr}
@@ -696,7 +705,8 @@ push    {r0-r3,lr}
 mov     r0,2
 mov     r1,3
 mov     r2,1
-bl      print_blankstr
+ldr     r3,=#overworld_buffer - 0x2000
+bl      print_blankstr_buffer
 
 // Render PSI string
 add     sp,-4
@@ -707,8 +717,8 @@ ldr     r0,[r0] // window pointer
 mov     r2,1 // highlight
 str     r2,[sp]
 mov     r2,1
-mov     r3,1
-bl      0x80C96F0 // render string
+mov     r3,2
+bl      printstr_hlight_buffer // render string
 add     sp,4
 
 // Clobbered code
@@ -727,11 +737,13 @@ add     sp,-4
 mov     r0,2
 mov     r1,1
 mov     r2,1
-bl      print_blankstr
+ldr     r3,=#overworld_buffer - 0x2000
+bl      print_blankstr_buffer
 mov     r0,2
 mov     r1,3
 mov     r2,1
-bl      print_blankstr
+ldr     r3,=#overworld_buffer - 0x2000
+bl      print_blankstr_buffer
 
 // We need to figure out whether to draw Bash or Do Nothing
 // If [0x2025122] == 2, draw Do Nothing; else, draw Bash
@@ -752,7 +764,7 @@ mov     r2,0 // no highlight
 str     r2,[sp]
 mov     r2,1
 mov     r3,0
-bl      0x80C96F0 // render string
+bl      printstr_hlight_buffer // render string
 
 // Render PSI string
 ldr     r0,=0x80DC1EC // address of PSI string pointer
@@ -762,8 +774,8 @@ ldr     r0,[r0] // window pointer
 mov     r2,1 // highlight
 str     r2,[sp]
 mov     r2,1
-mov     r3,1
-bl      0x80C96F0 // render string
+mov     r3,2
+bl      printstr_hlight_buffer // render string
 add     sp,4
 
 // Clobbered code
@@ -1768,7 +1780,6 @@ add     r0,#0xA
 bx      r0
 
 @@goToInner:
-bl load_pixels_overworld_psi_window
 ldr     r0,[r4,#0x1C] //Stores false in vwf_skip, which means the window will be printed
 mov     r2,#0
 strb    r2,[r0,#3]
@@ -1894,7 +1905,6 @@ strb    r2,[r0,#3]
 b       @@end //Goes to the end of the routine
 
 @@goToInner:
-bl load_pixels_overworld_psi_window
 lsl     r0,r0,0x10 //Properly stores the output into r4 and, since we're going into the inner window, sets vwf_skip to false
 asr     r4,r0,0x10
 ldr     r0,[r5,#0x20]
@@ -1996,37 +2006,37 @@ pop     {pc}
 //It sets things up to make it so the target window is only printed once
 b8db4_psi_inner_window:
 push    {lr}
-ldrb r1,[r0,#3]
-push {r1}
+ldrb    r1,[r0,#3]
+push    {r1}
 ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
 push    {r1}
 ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
 push    {r1}
 bl      PSITargetWindowInput //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
-pop {r2}
+pop     {r2}
 ldr     r3,[r4,0x24] //Target window
 ldrh    r1,[r3,#0x34] //Stores the cursor's X of the window
-cmp r1,r2
-bne @@store_buffer_first
-pop {r2}
+cmp     r1,r2
+bne     @@store_buffer_first
+pop     {r2}
 ldrh    r1,[r3,#0x36] //Stores the cursor's Y of the window
-cmp r1,r2
-bne @@store_buffer_second
-pop {r2}
-mov r1,#1
-and r1,r2
-cmp r1,#1
-beq @@continue
-b @@store_buffer
+cmp     r1,r2
+bne     @@store_buffer_second
+pop     {r2}
+mov     r1,#1
+and     r1,r2
+cmp     r1,#1
+beq     @@continue
+b       @@store_buffer
 
 @@store_buffer_first:
-pop {r2}
+pop     {r2}
 @@store_buffer_second:
-pop {r2}
+pop     {r2}
 @@store_buffer:
-cmp r0,#0
-bne @@continue
-bl store_pixels_overworld_psi_window
+cmp     r0,#0
+bne     @@continue
+bl      store_pixels_overworld_psi_window
 
 @@continue:
 cmp     r0,#0
@@ -2045,37 +2055,37 @@ pop     {pc}
 //It sets things up to make it so the target window is only printed once
 e0854_psi_inner_window_battle:
 push    {lr}
-ldrb r1,[r0,#3]
-push {r1}
+ldrb    r1,[r0,#3]
+push    {r1}
 ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
 push    {r1}
 ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
 push    {r1}
 bl      PSITargetWindowInput //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
-pop {r2}
+pop     {r2}
 ldr     r3,[r4,0x24] //Target window
 ldrh    r1,[r3,#0x34] //Stores the cursor's X of the window
-cmp r1,r2
-bne @@store_buffer_first
-pop {r2}
+cmp     r1,r2
+bne     @@store_buffer_first
+pop     {r2}
 ldrh    r1,[r3,#0x36] //Stores the cursor's Y of the window
-cmp r1,r2
-bne @@store_buffer_second
-pop {r2}
-mov r1,#1
-and r1,r2
-cmp r1,#1
-beq @@continue
-b @@store_buffer
+cmp     r1,r2
+bne     @@store_buffer_second
+pop     {r2}
+mov     r1,#1
+and     r1,r2
+cmp     r1,#1
+beq     @@continue
+b       @@store_buffer
 
 @@store_buffer_first:
-pop {r2}
+pop     {r2}
 @@store_buffer_second:
-pop {r2}
+pop     {r2}
 @@store_buffer:
-cmp r0,#0
-bne @@continue
-bl store_pixels_overworld_psi_window
+cmp     r0,#0
+bne     @@continue
+bl      store_pixels_overworld_psi_window
 
 @@continue:
 cmp     r0,#0
@@ -2253,7 +2263,7 @@ pop     {pc}
 b8c2a_set_proper_wvf_skip_and_window_type:
 push    {lr}
 strb    r1,[r0,#1]
-bl      m2_initwindow
+bl      initWindow_buffer
 pop     {pc}
 
 

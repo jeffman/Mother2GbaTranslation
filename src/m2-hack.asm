@@ -69,6 +69,24 @@ mov     r3,6
 .org 0x80BEA88 :: bl bea88_fix_sounds
 
 //---------------------------------------------------------
+// Main battle window hacks
+//---------------------------------------------------------
+
+.org 0x80DC22A :: bl dc22a_load_buffer_battle
+
+//---------------------------------------------------------
+// PSI battle window hacks
+//---------------------------------------------------------
+
+.org 0x80E0762 :: bl initWindow_buffer
+.org 0x80E0776 :: bl print_window_with_buffer
+.org 0x80E07C2 :: bl clearWindowTiles_buffer
+.org 0x80E0892 :: bl initWindow_buffer
+.org 0x80E08A6 :: bl print_window_with_buffer
+.org 0x80E0A30 :: bl initWindow_buffer
+.org 0x80E0A54 :: bl print_window_with_buffer
+
+//---------------------------------------------------------
 // BAC18 hacks (status window)
 //---------------------------------------------------------
 
@@ -89,7 +107,16 @@ mov     r3,6
 .org 0x80BADCC :: b 0x80BADD8
 
 //---------------------------------------------------------
-// PSI window hacks
+// Normal PSI window hacks
+//---------------------------------------------------------
+
+.org 0x80B8C34 :: bl initWindow_buffer
+.org 0x80B8C42 :: bl baec6_psi_window_print_buffer
+.org 0x80B8C7E :: bl initWindow_buffer
+.org 0x80B8C8C :: bl baec6_psi_window_print_buffer
+
+//---------------------------------------------------------
+// Class PSI window hacks
 //---------------------------------------------------------
 
 .org 0x80BAE1C :: bl print_window_with_buffer
