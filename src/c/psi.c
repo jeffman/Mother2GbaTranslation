@@ -94,7 +94,7 @@ void psiTargetWindow_buffer(byte target)
     PSIPrintInfo *printInfo = &(psi_print_info[target - 1]);
     byte *string_group1 = (byte*)(0x8B204E4);
     byte extract = (printInfo->PSIID);
-	byte *baseStrPointer = (byte*)(&psitext);
+    byte *baseStrPointer = (byte*)(&psitext);
     byte value = 0;
     byte value2 = 0;
     byte *str = 0;
@@ -124,7 +124,7 @@ void psiTargetWindow_buffer(byte target)
 void psiPrint_buffer(byte value, WINDOW* window, bool printPSILine, PSIPrintInfo *printInfo)
 {
     byte *str = 0;
-	byte *baseStrPointer = (byte*)(&psitext);
+    byte *baseStrPointer = (byte*)(&psitext);
     byte (*possibleTargets)[3][4] = (byte(*)[3][4])cursorValues;
 
     if(printPSILine)
@@ -479,7 +479,7 @@ int PSITargetInput(WINDOW* window)
     else
         window->hold = false;
     
-    if(state.b || state.select)
+    if((state.b || state.select) && (beforeVWF))
     {
         m2_soundeffect(0x12E);
         window->counter = 0;
@@ -488,10 +488,9 @@ int PSITargetInput(WINDOW* window)
     
     window->cursor_x_delta = target;
     
-    if(state.a || state.l)
+    if((state.a || state.l) && (beforeVWF))
     {
-        if(beforeVWF)
-            m2_soundeffect(0x12D);
+        m2_soundeffect(0x12D);
         window->counter = 0xFFFF;
         return target;
     }

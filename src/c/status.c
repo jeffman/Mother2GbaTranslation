@@ -74,7 +74,7 @@ int statusNumbersPrint(WINDOW* window, bool doNotPrint)
             print_string_in_buffer(str, 0x2C, (0xF) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
         }
         print_blankstr_buffer(1, 0x3, 0xA, (int*)(OVERWORLD_BUFFER - 0x2000));
-        unsigned short symbolTile = ailmentTileSetup(character_data, 0);
+        unsigned short symbolTile = ailmentTileSetup(&(character_data->ailment), 0);
         if(symbolTile == 0)
         {
             printStatusSymbolArrangement(0x1FF, window);

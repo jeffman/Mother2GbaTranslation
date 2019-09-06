@@ -1278,8 +1278,13 @@ void printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short
 
 unsigned short printstr_hlight_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
 {
-    unsigned short printX = (x + window->window_x) << 3;
-    unsigned short printY = (y + window->window_y) << 3;
+    return printstr_hlight_pixels_buffer(window, str, x << 3, y << 3, highlight);
+}
+
+unsigned short printstr_hlight_pixels_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
+{
+    unsigned short printX = x + ((window->window_x) << 3);
+    unsigned short printY = y + ((window->window_y) << 3);
     unsigned short tmpPaletteMsk = (*palette_mask);
     unsigned short palette_mask_highlight = tmpPaletteMsk;
     if(highlight)
@@ -1462,40 +1467,40 @@ int setNumber_getLength(int value, byte *str, int maxLength)
     return pos;
 }
 
-unsigned short ailmentTileSetup(PC *character, unsigned short defaultVal)
+unsigned short ailmentTileSetup(byte *ailmentBase, unsigned short defaultVal)
 {
     int value = defaultVal;
     byte flagValue = 0;
-    if(character->ailment == CONSCIOUS)
+    if((*ailmentBase) == CONSCIOUS)
     {
-        if(character->ailment2 != CONSCIOUS)
+        if((*(ailmentBase + 1)) != CONSCIOUS)
         {
-            flagValue = character->ailment2;
+            flagValue = (*(ailmentBase + 1));
             value = 1;
         }
-        else if(character->ailment3 != CONSCIOUS)
+        else if((*(ailmentBase + 2)) != CONSCIOUS)
         {
-            flagValue = character->ailment3;
+            flagValue = (*(ailmentBase + 2));
             value = 2;
         }
-        else if(character->strange)
+        else if((*(ailmentBase + 3)))
         {
-            flagValue = character->strange;
+            flagValue = (*(ailmentBase + 3));
             value = 3;
         }
-        else if(character->cant_concentrate)
+        else if((*(ailmentBase + 4)))
         {
-            flagValue = character->cant_concentrate;
+            flagValue = (*(ailmentBase + 4));
             value = 4;
         }
-        else if(character->homesick)
+        else if((*(ailmentBase + 5)))
         {
-            flagValue = character->homesick;
+            flagValue = (*(ailmentBase + 5));
             value = 5;
         }
-        else if(character->unknown2[0])
+        else if((*(ailmentBase + 6)))
         {
-            flagValue = character->unknown2[0];
+            flagValue = (*(ailmentBase + 6));
             value = 6;
         }
         else 
@@ -1504,7 +1509,7 @@ unsigned short ailmentTileSetup(PC *character, unsigned short defaultVal)
     else 
     {
         value = 0;
-        flagValue = character->ailment;
+        flagValue = (*(ailmentBase));
     }
     unsigned short *returnValues = (unsigned short*)0x8B1F2E4;
     return (*(returnValues + (value * 7) + flagValue - 1));

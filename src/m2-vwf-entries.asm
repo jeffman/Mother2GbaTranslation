@@ -384,6 +384,9 @@ push    {lr}
 mov     r9,r0
 ldr     r3,[r5,#0]
 bl      load_pixels_overworld
+push    {r0-r3}
+swi     #5
+pop     {r0-r3}
 pop     {pc}
 
 //==============================================================================
@@ -421,6 +424,14 @@ beq     @@end
 bl      store_pixels_overworld
 
 @@end:
+pop     {pc}
+
+//==============================================================================
+//Prints the attack target choice menu and stores the buffer
+e02c6_print_target_store:
+push    {lr}
+bl      printTargetOfAttack
+bl      store_pixels_overworld
 pop     {pc}
 
 //==============================================================================
@@ -485,17 +496,29 @@ mov     r3,2
 mov     r4,r0
 bl      0x80BE4C8
 mov     r0,r4
-bl      0x80C8BE4
+bl      print_window_with_buffer
 
 swi #5
 
 // Clobbered code (restore the window borders, etc.)
 mov     r0,1
-bl      0x80BD7AC
+bl      m2_swapwindowbuf
 
 add     sp,4
 pop     {r1-r4,pc}
 .pool
+
+//==============================================================================
+// Redraw main menu when exiting PSI window from using a PSI and stores the buffer
+b8bbc_redraw_menu_13to2_store:
+push    {lr}
+bl      b8bbc_redraw_menu_13to2
+mov     r3,r9
+cmp     r3,#0
+beq     @@end //store only if we're exiting the menu
+bl      store_pixels_overworld
+@@end:
+pop     {pc}
 
 //==============================================================================
 // Redraw main menu when entering PSI target window
@@ -785,6 +808,15 @@ pop     {pc}
 .pool
 
 //==============================================================================
+//Calls the funcion which loads the targets in and then stores the buffer
+ba8ac_load_targets_print:
+push    {lr}
+bl      0x80BAA80
+bl      store_pixels_overworld
+pop     {pc}
+
+
+//==============================================================================
 // Print "PSI "
 c239c_print_psi:
 push    {lr}
@@ -793,7 +825,7 @@ mov     r2,0
 str     r2,[sp]
 mov     r2,r4
 lsl     r3,r3,3 // tiles-to-pixels
-bl      print_string_hlight_pixels
+bl      printstr_hlight_pixels_buffer
 add     sp,4
 pop     {pc}
 
@@ -1749,7 +1781,7 @@ beq     @@do_not_print
 mov     r2,#1 //Goes on as usual and sets vwf_skip to true
 orr     r2,r1
 strb    r2,[r0,#3]
-bl      m2_clearwindowtiles
+bl      clearWindowTiles_buffer
 pop     {pc}
 
 @@do_not_print: //Doesn't print in the PSI window
@@ -1999,7 +2031,7 @@ bx      r0 //Jump to the next useful piece of code
 b8d40_psi_going_inner_window:
 push    {lr}
 bl      PSITargetWindowInput
-bl      store_pixels_overworld_psi_window
+bl      store_pixels_overworld
 pop     {pc}
 
 //==============================================================================
@@ -2036,7 +2068,7 @@ pop     {r2}
 @@store_buffer:
 cmp     r0,#0
 bne     @@continue
-bl      store_pixels_overworld_psi_window
+bl      store_pixels_overworld
 
 @@continue:
 cmp     r0,#0
@@ -2193,6 +2225,9 @@ beq     @@end
 cmp     r0,#0
 blt     @@end
 bl      load_pixels_overworld
+push    {r0-r2}
+swi     #5
+pop     {r0-r2}
 
 @@end:
 pop     {pc}
@@ -2885,20 +2920,6 @@ str     r0,[r1]
 ldr     r0,=#0x6002000 //Target
 str     r0,[r1,#4]
 ldr     r0,=#0x94001000 //Store 0x4000 bytes - When VBlank and in words of 32 bits
-str     r0,[r1,#8]
-ldr     r0,[r1,#8]
-pop     {r0-r1,pc}
-
-//==============================================================================
-//Loads the vram into the buffer, it's called each time there is only the main file_select window active (a good way to set the whole thing up)
-load_pixels_overworld_psi_window:
-push    {r0-r1,lr}
-ldr     r1,=#0x40000C8 //DMA transfer 2
-ldr     r0,=#0x6002000 //Source
-str     r0,[r1]
-ldr     r0,=#overworld_buffer //Target
-str     r0,[r1,#4]
-ldr     r0,=#0x94000800 //Store 0x1800 bytes - When VBlank and in words of 32 bits
 str     r0,[r1,#8]
 ldr     r0,[r1,#8]
 pop     {r0-r1,pc}

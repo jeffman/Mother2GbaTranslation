@@ -15,6 +15,8 @@ int __attribute__((naked)) m2_sub_a334c(int value) {}
 int __attribute__((naked)) m2_sub_a3384(int value) {}
 void __attribute__((naked)) m2_sub_d3c50() {}
 void __attribute__((naked)) m2_sub_d6844() {}
+int __attribute__((naked)) m2_setupwindow(WINDOW* window, short window_x, short window_y, short window_width, short window_height) {}
 int __attribute__((naked)) m2_clearwindowtiles(WINDOW* window) {}
 int __attribute__((naked)) customcodes_parse_generic(int code, char* parserAddress, WINDOW* window, int* dest) {}
 void __attribute__((naked)) m2_printstr(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight) {}
+void __attribute__((naked)) m2_setupBattleName(short value) {}

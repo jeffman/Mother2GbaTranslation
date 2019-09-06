@@ -97,13 +97,14 @@ void setStuffWindow_Graphics();
 void clearWindowTiles_buffer(WINDOW* window);
 int initWindow_buffer(WINDOW* window, byte* text_start, unsigned short delay_between_prints);
 void print_blankstr_buffer(int x, int y, int width, int *dest);
-unsigned short ailmentTileSetup(PC *character, unsigned short defaultVal);
+unsigned short ailmentTileSetup(byte *ailmentBase, unsigned short defaultVal);
 int setNumber_getLength(int value, byte *str, int maxLength);
 int print_string_in_buffer(byte *str, int x, int y, int *dest);
 void printCashWindow();
 WINDOW* getWindow(int index);
 void printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
 unsigned short printstr_hlight_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
+unsigned short printstr_hlight_pixels_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
 
 extern unsigned short m2_coord_table[];
 extern byte m2_ness_name[];
@@ -136,3 +137,5 @@ extern void m2_printstr(WINDOW* window, byte* str, unsigned short x, unsigned sh
 extern int customcodes_parse_generic(int code, char* parserAddress, WINDOW* window, int* dest);
 extern void m2_sub_d3c50();
 extern void m2_sub_d6844();
+extern int m2_setupwindow(WINDOW* window, short window_x, short window_y, short window_width, short window_height);
+extern void m2_setupBattleName(short value);
