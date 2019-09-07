@@ -238,14 +238,14 @@
       "OffsetLocation": 11644956,
       "OldPointer": 11642833,
       "Old": "デスビーム[00 FF]",
-      "New": "Baddest beam[00 FF]"
+      "New": "Death ray[00 FF]"
     },
     {
       "Index": 34,
       "OffsetLocation": 11644960,
       "OldPointer": 11642840,
       "Old": "さいあくビーム[00 FF]",
-      "New": "Death ray[00 FF]"
+      "New": "Baddest beam[00 FF]"
     },
     {
       "Index": 35,
@@ -686,7 +686,7 @@
       "OffsetLocation": 11645212,
       "OldPointer": 11643425,
       "Old": "うみたてたまご[00 FF]",
-      "New": "Fresh egg[00 FF]"
+      "New": "Fresh Egg[00 FF]"
     },
     {
       "Index": 98,
@@ -721,7 +721,7 @@
       "OffsetLocation": 11645232,
       "OldPointer": 11643472,
       "Old": "アーモンドもなか[00 FF]",
-      "New": "Peanut cheese bar[00 FF]"
+      "New": "Peanut cheese`bar[00 FF]"
     },
     {
       "Index": 103,
@@ -931,7 +931,7 @@
       "OffsetLocation": 11645352,
       "OldPointer": 11643731,
       "Old": "チョコチップ[00 FF]",
-      "New": "Tin of cocoa[00 FF]"
+      "New": "Tin of Cocoa[00 FF]"
     },
     {
       "Index": 133,
@@ -1309,7 +1309,7 @@
       "OffsetLocation": 11645568,
       "OldPointer": 11644222,
       "Old": "はえみつ[00 FF]",
-      "New": "Jar of fly honey[00 FF]"
+      "New": "Jar of Fly Honey[00 FF]"
     },
     {
       "Index": 187,
@@ -1400,7 +1400,7 @@
       "OffsetLocation": 11645620,
       "OldPointer": 11644332,
       "Old": "ペテネラのくつした[00 FF]",
-      "New": "Pair of dirty socks[00 FF]"
+      "New": "Pair`of dirty socks[00 FF]"
     },
     {
       "Index": 200,
@@ -1435,7 +1435,7 @@
       "OffsetLocation": 11645640,
       "OldPointer": 11644375,
       "Old": "ペンシルロケット20[00 FF]",
-      "New": "Multi bottle rocket[00 FF]"
+      "New": "Multi`bottle rocket[00 FF]"
     },
     {
       "Index": 205,
