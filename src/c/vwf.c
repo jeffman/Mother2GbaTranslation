@@ -12,6 +12,11 @@ byte decode_character(byte chr)
     return c;
 }
 
+byte encode_ascii(char chr)
+{
+    return (byte)(chr + 48);
+}
+
 int get_tile_number(int x, int y)
 {
     x--;
@@ -46,6 +51,90 @@ byte reduce_bit_depth(int row, int foreground)
     return lower | (upper << 4);
 }
 
+byte getSex(byte character)
+{
+    return character == 1 ? 1 : 0; //character 1 is Paula
+}
+
+void getPossessive(byte character, byte *str, int *index)
+{
+    char his[] = "his";
+    char her[] = "her";
+    if(getSex(character) == 1)
+        for (int i = 0; i < (sizeof(her) - 1); i++)
+            str[(*index)++] = encode_ascii(her[i]);
+    else
+        for (int i = 0; i < (sizeof(his) - 1); i++)
+            str[(*index)++] = encode_ascii(his[i]);
+}
+
+void getPronoun(byte character, byte *str, int *index)
+{
+    char he[] = "he";
+    char she[] = "she";
+    if(getSex(character) == 1)
+        for (int i = 0; i < (sizeof(she) - 1); i++)
+            str[(*index)++] = encode_ascii(she[i]);
+    else
+        for (int i = 0; i < (sizeof(he) - 1); i++)
+            str[(*index)++] = encode_ascii(he[i]);
+}
+
+void getCharName(byte character, byte *str, int *index)
+{
+    copy_name(str, m2_ness_name, index, character * 7);
+}
+
+void copy_name(byte *str, byte *source, int *index, int pos)
+{
+    while(source[pos + 1] != 0xFF)
+        str[(*index)++] = source[pos++];
+}
+
+int ascii_strlen(char *str)
+{
+    int len = 0;
+    while (str[len] != 0)
+        len++;
+    return len;
+}
+
+int wrapper_count_pixels_to_tiles(byte *str, int length)
+{
+    return count_pixels_to_tiles(str, length, 0);
+}
+
+int count_pixels_to_tiles(byte *str, int length, int startingPos)
+{
+    int pixels = startingPos;
+    for(int i = 0; i < length; i++)
+    {
+        if((str[i] != 0xFF) && (str[i] != 0xFE)) //The latter one is not really needed
+            pixels += (m2_widths_table[0][decode_character(str[i])] & 0xFF);
+        else if(str[i] == 0xFE)
+        {
+            // Define 0xFE as a control code
+            byte cmd = str[++i];
+            switch (cmd)
+            {
+                case CUSTOMCC_ADD_X:
+                    pixels += str[++i];
+                    break;
+
+                case CUSTOMCC_SET_X:
+                    pixels = str[++i];
+                    break;
+            }
+        }
+        else
+            break;
+    }
+    int tiles = (pixels - startingPos)>> 3;
+    if((pixels & 7) != 0)
+        tiles +=1;
+    return tiles;
+}
+
 byte print_character(byte chr, int x, int y)
 {
     return print_character_formatted(chr, x, y, 0, 0xF);
@@ -67,12 +156,12 @@ byte print_character_formatted(byte chr, int x, int y, int font, int foreground)
         return 8;
     }
 
-    return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, TRUE);
+    return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, *tilemap_pointer, 32);
 }
 
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground)
 {
-    return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, FALSE);
+    return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, NULL, 32);
 }
 
 // Prints a special tile. Pixels are copied to the VWF buffer.
@@ -110,7 +199,7 @@ void map_tile(unsigned short tile, int x, int y)
 }
 
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
-    int *dest, int (*getTileCallback)(int, int), int useTilemap)
+    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth)
 {
     int tileWidth = m2_font_widths[font];
     int tileHeight = m2_font_heights[font];
@@ -124,6 +213,8 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
 
     int tileX = x >> 3;
     int tileY = y >> 3;
+    
+    int offsetY = y & 7;
 
     for (int dTileY = 0; dTileY < tileHeight; dTileY++) // dest tile Y
     {
@@ -134,45 +225,71 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
         {
             // Glue the leftmost part of the glyph onto the rightmost part of the canvas
             int tileIndex = getTileCallback(tileX + dTileX, tileY + dTileY); //get_tile_number(tileX + dTileX, tileY + dTileY) + tileOffset;
+            bool availableSwap = (dTileY != (tileHeight - 1));
+            int realTileIndex = tileIndex;
+            bool useful = false; //Maybe we go over the maximum tile height, let's make sure the extra tile is properly set IF it's useful
 
             for (int row = 0; row < 8; row++)
             {
-                int canvasRow = dest[(tileIndex * 8) + row];
+                int canvasRow = dest[(realTileIndex * 8) + ((row + offsetY) & 7)];
                 byte glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] & ((1 << leftPortionWidth) - 1);
                 glyphRow <<= (8 - leftPortionWidth);
 
                 int expandedGlyphRow = expand_bit_depth(glyphRow, foreground);
                 int expandedGlyphRowMask = ~expand_bit_depth(glyphRow, 0xF);
+                int tmpCanvasRow = canvasRow;
                 canvasRow &= expandedGlyphRowMask;
                 canvasRow |= expandedGlyphRow;
+                
+                if(!availableSwap && ((row + offsetY) >> 3) == 1 && canvasRow != tmpCanvasRow) //This changed the canvas, then it's useful... IF it's the extra vertical tile
+                    useful = true;
 
-                dest[(tileIndex * 8) + row] = canvasRow;
+                dest[(realTileIndex * 8) + ((row + offsetY) & 7)] = canvasRow;
+                if(offsetY != 0 && ((row + offsetY) == 7))
+                    realTileIndex = getTileCallback(tileX + dTileX, tileY + dTileY + 1);
             }
 
-            if (useTilemap)
-                (*tilemap_pointer)[tileX + dTileX + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
+            if (tilemapPtr != NULL)
+            {
+                tilemapPtr[tileX + dTileX + ((tileY + dTileY) * tilemapWidth)] = paletteMask | tileIndex;
+                if(useful)
+                    tilemapPtr[tileX + dTileX + ((tileY + dTileY + 1) * tilemapWidth)] = paletteMask | realTileIndex;
+            }
 
             if (renderedWidth - leftPortionWidth > 0 && leftPortionWidth < 8)
             {
                 // Glue the rightmost part of the glyph onto the leftmost part of the next tile
                 // on the canvas
                 tileIndex = getTileCallback(tileX + dTileX + 1, tileY + dTileY); //get_tile_number(tileX + dTileX + 1, tileY + dTileY) + tileOffset;
+                availableSwap = (dTileY != (tileHeight - 1));
+                realTileIndex = tileIndex;
+                useful = false; //Maybe we go over the maximum tile height, let's make sure the extra tile is properly set IF it's useful
 
                 for (int row = 0; row < 8; row++)
                 {
-                    int canvasRow = dest[(tileIndex * 8) + row];
+                    int canvasRow = dest[(realTileIndex * 8) + ((row + offsetY) & 7)];
                     byte glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] >> leftPortionWidth;
 
                     int expandedGlyphRow = expand_bit_depth(glyphRow, foreground);
                     int expandedGlyphRowMask = ~expand_bit_depth(glyphRow, 0xF);
+                    int tmpCanvasRow = canvasRow;
                     canvasRow &= expandedGlyphRowMask;
                     canvasRow |= expandedGlyphRow;
+                    
+                    if(!availableSwap && ((row + offsetY) >> 3) == 1 && canvasRow != tmpCanvasRow) //This changed the canvas, then it's useful... IF it's the extra vertical tile
+                        useful = true;
 
-                    dest[(tileIndex * 8) + row] = canvasRow;
+                    dest[(realTileIndex * 8) + ((row + offsetY) & 7)] = canvasRow;
+                    if(offsetY != 0 && ((row + offsetY) == 7))
+                        realTileIndex = getTileCallback(tileX + dTileX + 1, tileY + dTileY + 1);
                 }
-
-                if (useTilemap)
-                    (*tilemap_pointer)[tileX + dTileX + 1 + ((tileY + dTileY) * 32)] = paletteMask | tileIndex;
+                
+                if (tilemapPtr != NULL)
+                {
+                    tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY) * tilemapWidth)] = paletteMask | tileIndex ;
+                    if(useful)
+                        tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY + 1) * tilemapWidth)] = paletteMask | realTileIndex;
+                }
             }
 
             renderedWidth -= 8;
@@ -206,10 +323,10 @@ int print_window_header_string(int *dest, byte *str, int x, int y)
     return pixelX - (x & 7);
 }
 
-void clear_window_header(int *dest)
+void clear_window_header(int *dest, int length, int x, int y)
 {
-    dest += (WINDOW_HEADER_X + (WINDOW_HEADER_Y * 32)) * 8;
-    clear_rect_ram(dest, 16, WINDOW_HEADER_BG);
+    dest += (x + (y * 32)) * 8;
+    clear_rect_ram(dest, length, WINDOW_HEADER_BG);
 }
 
 unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned int *dest, WINDOW *window)
@@ -647,6 +764,33 @@ void format_cash_window(int value, int padding, byte* str)
     *str++ = 0x56;
     *str++ = 0;
     *str++ = 0xFF;
+}
+
+int player_name_printing_registration(byte* str, WINDOW* window)
+{
+	char String[26];
+	bool ended = false;
+	int total = 24;
+	for(int i = 0; i < 24; i++)
+	{
+		if(ended)
+		{
+			String[i] = 0x53;
+		}
+		else if((i < 23 && str[i + 1] == 0xFF && str[i] == 0) || (i == 23 && str[i] == 0))
+		{
+			String[i] = 0x70;
+			total = i;
+			ended = true;
+		}
+		else
+			String[i] = str[i];
+	}
+	String[24] = 0;
+	String[25] = 0xFF;
+	print_blankstr_window(0, 2, 24, window);
+	m2_printstr(window, String, 0, 1, 0);
+	return total;
 }
 
 // The game draws windows lazily: no window will be drawn to the screen until

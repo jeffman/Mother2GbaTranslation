@@ -3,6 +3,21 @@
 
 #include "types.h"
 
+typedef enum AILMENT
+{
+    CONSCIOUS = 0,
+    UNCONSCIOUS = 1,
+    DIAMONDIZED = 2,
+    PARALYZED = 3,
+    NAUSEOUS = 4,
+    POISONED = 5,
+    SUNSTROKE = 6,
+    SNIFFLING = 7,
+    MASHROOMIZED = 8,
+    POSSESSED = 9,
+    HOMESICK = 0xA,
+} AILMENT;
+
 typedef struct PC {
     unsigned short goods[14];
     int experience;
@@ -16,7 +31,7 @@ typedef struct PC {
     unsigned short pp_current;
     byte pp_unknown[2];
     unsigned short pp_rolling;
-    byte ailment;
+    AILMENT ailment;
     bool mashroomized;
     bool sleep;
     bool strange;

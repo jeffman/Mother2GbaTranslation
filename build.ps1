@@ -14,7 +14,8 @@ $input_c_files =
     "src/c/ext.c",
     "src/c/vwf.c",
     "src/c/locs.c",
-    "src/c/goods.c"
+    "src/c/goods.c",
+    "src/c/fileselect.c"
 
 $base_c_address    = 0x8100000;
 $scripttool_cmd    = "bin/ScriptTool/ScriptTool.dll"
@@ -62,7 +63,7 @@ $combine_script_contents =
 "SECTIONS { .text 0x$($base_c_address.ToString('X')) : { *(.text .rodata) } }"
 
 $link_script_contents =
-"SECTIONS { .text 0x$($base_c_address.ToString('X')) : { *(.text .data .rodata) } }"
+"SECTIONS { .text 0x$($base_c_address.ToString('X')) : { *(.text .data .rodata*) } }"
 #EndRegion Variables
 
 #Region Functions

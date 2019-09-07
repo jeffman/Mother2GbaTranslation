@@ -3,6 +3,7 @@ Hacking, script tool, script compiler/decompiler:
 
 Text conversion:
   JeffMan
+  Lorenzooone
   ItsIggy
   TheZunar123
   EBrent

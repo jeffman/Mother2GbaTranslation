@@ -1,3 +1,8 @@
+| Branch | Status |
+| --- | --- |
+| Project | [![Build status](https://ci.appveyor.com/api/projects/status/9ml81r7fn0k7i8g1?svg=true)](https://ci.appveyor.com/project/jeffman/mother2gbatranslation) |
+| `master` | [![Build status](https://ci.appveyor.com/api/projects/status/9ml81r7fn0k7i8g1/branch/master?svg=true)](https://ci.appveyor.com/project/jeffman/mother2gbatranslation/branch/master) |
+
 # MOTHER 2 Translation for the GBA
 This is a work-in-progress translation patch for MOTHER 2 on the GBA.
 
@@ -22,7 +27,7 @@ A few years after that, I tried it again from scratch with the intent of having 
 This project aims to both complete the VWF codebase and to provide a tool for translating the game's dialogue. My new intent is to bring the hack to a state where I can just sit down and translate text efficiently in my spare time with a graphical tool. Not only that, but having such a tool means that other people can contribute!
 
 ## Screenshots
-![](./screenshots/itshappening2.png) ![](./screenshots/itshappening4.png) ![](./screenshots/itshappening5.png) ![](./screenshots/m2-status2.png)
+![](./screenshots/itshappening2.png) ![](./screenshots/itshappening4.png) ![](./screenshots/itshappening5.png) ![](./screenshots/m2-status2.png) ![](./screenshots/m2-battle-slugs.png) ![](./screenshots/m2-fileselect.png)
 
 # Building
 
@@ -47,7 +52,7 @@ This project aims to both complete the VWF codebase and to provide a tool for tr
         - Windows: grab the latest release [here](https://github.com/Kingcom/armips/releases) and copy the executable to `bin/armips.exe`.
         - Linux: follow the [README](https://github.com/Kingcom/armips/blob/master/Readme.md) to build `armips` and copy the executable to `bin/armips`.
 2. Building the ROM
-    1. Run `build.ps1` (like in Step 4).
+    1. Run `build.ps1`.
     2. The default compiled ROM is copied to `bin/m12.gba`.
 3. (Optional) Build the GUI script tool:
     1. `dotnet build tools/ScriptTool` (don't set the output directory)

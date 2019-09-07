@@ -50,15 +50,15 @@ mov     r3,6
 .include "m2-status-switch.asm"
 
 //---------------------------------------------------------
-// BAC18 hacks (status window switching)
+// BAC18 hacks (status window)
 //---------------------------------------------------------
 
 .org 0x80BACFC :: bl bac18_redraw_status
 .org 0x80BADE6 :: bl bac18_redraw_status
+.org 0x80BACEA :: bl bacea_status_psi_window
 .org 0x80BACEE :: bl bac18_clear_psi
-.org    0x80BADC8
-bl      bac18_check_button
-b       0x80BADD8
+.org 0x80BADB0 :: bl badb0_status_inner_window
+.org 0x80BADCC :: b 0x80BADD8
 
 //---------------------------------------------------------
 // BAEF8 hacks (equip window)
@@ -103,10 +103,6 @@ b       0x80BADD8
 // C5500 hacks (equip window switching)
 //---------------------------------------------------------
 
-// Clear offense/defense changes when moving cursor
-.org 0x80C5AA2 :: bl c5500_clear_up
-.org 0x80C5B12 :: bl c5500_clear_down
-
 // Don't draw equip icon
 .org 0x80C5A1A :: nop
 .org 0x80C5A28 :: nop
@@ -116,6 +112,9 @@ b       0x80BADD8
 .org    0x80C55F8
 mov     r4,r0
 mov     r0,r9
+mov     r1,#0x10 //Tiles to clear
+mov     r2,#0x10 //x
+mov     r3,#0x11 //y
 bl      clear_window_header
 mov     r0,r4
 mov     r1,r6 // tilemap
@@ -139,7 +138,7 @@ b       0x80C5726
 .org    0x80C2192
 mov     r2,r8
 str     r2,[sp]
-mov     r2,0xFD
+mov     r2,0xFE
 lsl     r2,r2,1
 add     r0,r6,r2
 mov     r1,0x71
@@ -162,15 +161,6 @@ bl      print_string_hlight_pixels // print PSI name
 mov     r2,r1                      // record X width
 add     r2,3                       // add a space
 .org 0x80C2468 :: bl print_string_hlight_pixels
-
-//---------------------------------------------------------
-// C438C hacks (PSI window cursor movement)
-//---------------------------------------------------------
-
-.org 0x80C4580 :: bl c438c_moveup
-.org 0x80C4642 :: bl c438c_movedown
-.org 0x80C4768 :: bl c438c_moveright
-.org 0x80C48B2 :: bl c438c_moveleft
 
 //---------------------------------------------------------
 // PSI target window hacks
@@ -196,8 +186,20 @@ add     r1,0x60
 mov     r0,0x50
 
 //---------------------------------------------------------
+// C438C hacks (Inner PSI window input management + target window printing + header printing)
+//---------------------------------------------------------
+
+.org 0x80C495A :: bl c495a_status_target
+
+//---------------------------------------------------------
 // B8BBC hacks (PSI window)
 //---------------------------------------------------------
+
+//Do not redraw unless it is needed
+.org 0x80B8CD2 :: bl b8cd2_psi_window
+
+//Sets up for the target window
+.org 0x80B8DB4 :: bl b8db4_psi_inner_window
 
 // Redraw main menu when exiting PSI target window
 .org 0x80B8E3A :: bl b8bbc_redraw_menu_2to1
@@ -205,6 +207,16 @@ mov     r0,0x50
 // Redraw main menu when entering PSI target window
 .org 0x80B8CF8 :: bl b8bbc_redraw_menu_13to2 // 1 to 2
 .org 0x80B920C :: bl b8bbc_redraw_menu_13to2 // 3 to 2
+
+//---------------------------------------------------------
+// E06EC hacks (PSI window in battle)
+//---------------------------------------------------------
+
+//Sets up for the target window
+.org 0x80E0854 :: bl e0854_psi_inner_window_battle
+
+//Do not redraw unless it is needed
+.org 0x80E079A :: bl e079a_battle_psi_window
 
 //---------------------------------------------------------
 // C4B2C hacks (Equip window render)
@@ -520,6 +532,33 @@ b       0x80D3A14
 .org 0x80E0A16 :: bl e06ec_redraw_bash_psi
 
 //---------------------------------------------------------
+// Equipment number printing in dialogue window
+//---------------------------------------------------------
+
+.org 0x80D37EC :: bl d37ec_print_number :: b 0x80D381C //Offense
+.org 0x80D36D0 :: bl d37ec_print_number :: b 0x80D3700 //Defense
+
+//---------------------------------------------------------
+// Remove continuous printing of outer equip window and also
+// remove continuous printing of Offense and Defense numbers
+// in both outer and innermost equipment windows
+//---------------------------------------------------------
+
+.org 0x80C518E :: bl c518e_outer_equip
+.org 0x80BAF60 :: bl baf60_outer_equip_setup
+.org 0x80BAFC8 :: bl bafc8_outer_equip_attack_defense
+.org 0x80BB26E :: bl bb990_inner_equip_attack_defense_setup //Weapon
+.org 0x80BB730 :: bl bb990_inner_equip_attack_defense_setup //Body
+.org 0x80BB860 :: bl bb990_inner_equip_attack_defense_setup //Arms
+.org 0x80BB990 :: bl bb990_inner_equip_attack_defense_setup //Other
+.org 0x80BB6B2 :: bl bb6b2_inner_equip_attack_defense_weapon
+.org 0x80BB64E :: bl bb64e_inner_equip_attack_defense_none_weapon
+.org 0x80BB80E :: bl bbe7c_inner_equip_attack_defense_defensive_equipment //Body Offense/Defense printing
+.org 0x80BB93E :: bl bbe7c_inner_equip_attack_defense_defensive_equipment //Arms Offense/Defense printing
+.org 0x80BBE7C :: bl bbe7c_inner_equip_attack_defense_defensive_equipment //Other Offense/Defense printing
+.org 0x80BBDDE :: bl bbe7c_inner_equip_attack_defense_defensive_equipment //Defensive equipment Offense/Defense none printing
+
+//---------------------------------------------------------
 // B89EC hacks (print current cash balance)
 //---------------------------------------------------------
 
@@ -646,6 +685,7 @@ pop     {pc}
 .org 0x80BF858
 push    {lr}
 mov     r1,0
+mov     r2,0
 bl      goods_outer_process
 pop     {pc}
 
@@ -656,8 +696,101 @@ pop     {pc}
 .org 0x80C0420
 push    {lr}
 mov     r1,1
+mov     r2,0
 bl      goods_outer_process
 pop     {pc}
+
+//---------------------------------------------------------
+// C7CA4 hacks (Shop)
+//---------------------------------------------------------
+.org 0x80C7CA4
+mov     r0,r8 //Window
+ldr     r1,[sp,#0xC] //Items in shop
+mov     r2,#0 //y_offset | r3 already has the item total for this window
+bl      shop_print_items //Print the items
+b       0x80C7E12 //Avoid the game's printing by jumping it
+
+//---------------------------------------------------------
+// BFE74 hacks (Goods outer menu for Give)
+//---------------------------------------------------------
+.org 0x80BFE74
+push    {lr}
+mov     r1,#1
+mov     r2,#1
+bl      goods_outer_process
+pop     {pc}
+
+//---------------------------------------------------------
+// BA61C hacks (Fixes inventory when out of Give via B button)
+//---------------------------------------------------------
+.org 0x80BA61C
+bl ba61c_get_print_inventory_window
+
+//---------------------------------------------------------
+// B9ECC hacks (Fixes inventory when out of selecting a party member to give food to via B button)
+//---------------------------------------------------------
+.org 0x80B9ECC
+bl b9ecc_get_print_inventory_window
+
+//---------------------------------------------------------
+// BA48E hacks (Fixes inventory when out of Give via text)
+//---------------------------------------------------------
+.org 0x80BA48E
+bl ba48e_get_print_inventory_window
+
+//---------------------------------------------------------
+// B9F96 hacks (Fixes main window after consuming an item)
+//---------------------------------------------------------
+.org 0x80B9F96
+bl _reprint_first_menu
+
+//---------------------------------------------------------
+// B9CF8 hacks (Fixes main window after an item prints a dialogue)
+//---------------------------------------------------------
+.org 0x80B9CF8
+bl _reprint_first_menu
+
+//---------------------------------------------------------
+// B9C88 hacks (Fixes main window after an equippable item prints a dialogue)
+//---------------------------------------------------------
+.org 0x80B9C88
+bl _reprint_first_menu
+
+//---------------------------------------------------------
+// BA52C hacks (Fixes main window after giving an item)
+//---------------------------------------------------------
+.org 0x80BA52C
+bl _reprint_first_menu
+
+//---------------------------------------------------------
+// BA44E hacks (Fixes main window after not being able to give an item)
+//---------------------------------------------------------
+.org 0x80BA44E
+bl _reprint_first_menu
+
+//---------------------------------------------------------
+// BA7BE hacks (Fixes main window after calling the help function)
+//---------------------------------------------------------
+.org 0x80BA7BE
+bl ba7be_reprint_first_menu
+
+//---------------------------------------------------------
+// B9AA2 hacks (Fixes main window after exiting the item action window)
+//---------------------------------------------------------
+.org 0x80B9AA2
+bl b9aa2_reprint_first_menu
+
+//---------------------------------------------------------
+// C6BA2 hacks (Fixes main window after exiting the Stored Goods window)
+//---------------------------------------------------------
+.org 0x80C6BA2
+bl c6ba2_reprint_first_menu
+
+//---------------------------------------------------------
+// BCEB0 hacks (Fixes main window after exiting the pickup menu)
+//---------------------------------------------------------
+.org 0x80BCEB0
+bl _reprint_first_menu
 
 //---------------------------------------------------------
 // C1C98 hacks (menu selection)
@@ -739,6 +872,9 @@ b       0x080C959A
 bl      eeb1a_player_name //Call the new routine
 b       0x80EEB7A //Do the rest of the original routine
 
+//Remove subtract from player name printing
+.org 0x80EEB94 :: mov r2,r3
+
 //---------------------------------------------------------
 // End of battle hacks
 //---------------------------------------------------------
@@ -790,6 +926,26 @@ nop
 nop
 
 //---------------------------------------------------------
+// Teleport header fix
+//---------------------------------------------------------
+.org 0x80C5DE0 :: bl c65da_clean_print //To:
+.org 0x80C5E30 :: bl c6190_clean_print //Number on first entering the menu
+.org 0x80C6190 :: bl c6190_clean_print //Number on page change
+.org 0x80C5E04 :: nop :: strh r0,[r4,#0] :: add r4,#2 :: nop ::nop //Remove extra tile
+
+//---------------------------------------------------------
+// Stored Goods header fix
+//---------------------------------------------------------
+.org 0x80C656C :: mov r2,#0x10 :: mov r3,#0x11 :: bl c6570_clean_print_change_pos :: b 0x80C65C0 //Changes position and cleans tiles for Stored Goods
+.org 0x80C65DA :: bl c65da_clean_print //Number on first entering the menu
+.org 0x80C6996 :: bl c65da_clean_print //Number on page change
+
+//---------------------------------------------------------
+// Call header fix
+//---------------------------------------------------------
+.org 0x80BD26A :: bl c6190_clean_print //Call:
+
+//---------------------------------------------------------
 // Fix windows printing too many tiles due to not going off of pixels, but off of characters
 //---------------------------------------------------------
 .org 0x80C0B28 :: bl c0b28_fix_char_tiles //Status window
@@ -799,6 +955,72 @@ nop
 .org 0x80C3FD8 :: bl c42e0_fix_char_tiles //Inner PSI window
 .org 0x80C4448 :: bl c4448_fix_char_tiles //Inner PSI window - part 2
 .org 0x80DBF36 :: bl c009e_fix_char_tiles //Battle menu window
+
+//---------------------------------------------------------
+// Proper dollar and 00 symbols for [9C FF]
+//---------------------------------------------------------
+.org 0x80B8AA0 :: mov r0,#0x54 //Dollar
+.org 0x80B8AA6 :: mov r0,#0x56 //00
+
+//---------------------------------------------------------
+// wvf_skip hacks
+//---------------------------------------------------------
+.org 0x80B8C2A :: bl b8c2a_set_proper_wvf_skip_and_window_type //Fixes bug of M2GBA
+.org 0x80BE45A :: bl be45a_set_proper_wvf_skip
+.org 0x80BE4CA :: bl be4ca_set_proper_wvf_skip_goods_battle_window
+
+//---------------------------------------------------------
+// PSI Rockin in battle text
+//---------------------------------------------------------
+.org 0x80D3984 :: cmp r0,#3 //Now "PSI " is 4 letters long, not 2
+.org 0x80D399E :: sub r0,#4 //Subtract from r0 the length of "PSI "
+
+//---------------------------------------------------------
+// Flyover hacks
+//---------------------------------------------------------
+
+//Notes
+//Flyover entries are made of 16 bits codes. Codes with the first byte between 0 and 9 are special cases.
+//01 XX = Position at X tile XX (Changed to Position at X pixel XX)
+//02 XX = Position at Y tile XX
+//09 00 = END
+//80 XX = Print character XX
+
+//Flyover pointer remapping
+.org 0x873112c :: dw flyovertextYear //The year is 199x
+.org 0x8731130 :: dw flyovertextOnett //Onett, a small town in eagleland
+.org 0x8731134 :: dw flyovertextNess //Ness's House
+.org 0x8731138 :: dw flyovertextWinters //Winters, a small country to the north
+.org 0x873113C :: dw flyovertextSnow //Snow Wood Boarding House
+.org 0x8731140 :: dw flyovertextDalaam //Dalaam, in the Far East
+.org 0x8731144 :: dw flyovertextPoo //The palace of Poo\nThe Crown Prince
+.org 0x8731148 :: dw flyovertextLater //Later that night...
+
+//Flyover remapping
+.org 0x80B3482 :: bl largevwf :: b 0x80B348E
+
+// Weld the odd-numbered flyover letters
+.org 0x80B3254 :: bl flyoverweld :: nop
+
+// Make it so the entire possible tileset is used
+.org 0x80AE568 :: mov r0,#8
+.org 0x80AE56E :: mov r0,#7
+.org 0x80AE57A :: mov r1,#0x80 //Start at 0x100 instead of 0x120
+
+// Change the [01 XX] flyover code to pixels from left of screen
+.org 0x80B332C :: b 0x80B3334
+
+// Alter the flyover palette so the borders don't show (orig 0x739C)
+.org 0x80FCE50 :: .byte 0x00,0x00
+
+//Insert the font
+.org 0x80B3274 :: dw m2_font_big
+
+//Print all 16 rows
+.org 0x80B3262 :: cmp r7,0xF
+
+//Print all 16 columns
+.org 0x80B325C :: cmp r6,7
 
 //---------------------------------------------------------
 // Names hacks
@@ -874,9 +1096,6 @@ nop
 .org 0x80C98C4 :: bl c98c4_load_1d7
 .org 0x80C98CC :: mov r4,#0xEF
 .org 0x80C98D4 :: bl c98d4_load_1e5
-
-//Rockin's
-.org 0x80C2196 :: mov r2,#0xFE
 
 //Name writing
 .org 0x80020B6 :: bl _2352_load_1d7
@@ -968,7 +1187,7 @@ nop
 
 //Naming screen name length
 .org 0x8004F54 :: mov r2,#5 //Ness
-.org 0x8004F78 :: mov r0,#5 //Paula
+.org 0x8004F78 :: mov r0,#5 :: str r0,[sp,#0x18] :: bl _4f7c_window_selector //Paula
 .org 0x8004F9C :: mov r0,#5 //Jeff
 .org 0x8004FC0 :: mov r1,#5 //Poo
 
@@ -990,11 +1209,163 @@ nop
 
 
 //==============================================================================
+// File select hacks
+//==============================================================================
+
+// Main file select window resize
+.org 0x82B79BC :: dw 0x1C       // new window width
+.org 0x8003998 :: mov r0,1      // new window x
+.org 0x8003F92 :: mov r0,1
+.org 0x80053DC :: mov r0,1
+.org 0x8003A04 :: bl _3a04_highlight_file //Changes window position and makes sure the file is properly highlighted
+.org 0x8003B40 :: mov r0,0x10   // new cursor x
+.org 0x86DB070 :: .incbin "data/m2-fileselect-template.bin"
+
+.org 0x86D9808
+.incbin "data/m2-fileselect-tileset.bin"
+
+// Formatting
+.org 0x80021E8 :: bl format_file_string
+.org 0x8002284 :: bl format_file_string
+
+//Load the pixels in fileselect_pixels_location
+.org 0x80038C0 :: bl _38c0_load_pixels
+
+// Printing
+.org 0x80038CC :: mov r2,0x40 :: bl wrapper_first_file_string
+.org 0x80038DE :: mov r2,0x40 :: bl wrapper_first_file_string
+.org 0x80038F2 :: mov r2,0x40 :: bl wrapper_first_file_string :: bl _38f8_store_pixels
+
+// Bump file select cursor up by 3 pixels - Not needed now that the text is 3 pixels lower
+//.org 0x8003844 :: add r0,r5,1
+
+// File select options
+.org 0x8003F78 :: bl _3f78_highlight_file //Keeps highlight consistent when changing palette in the text flavour window
+.org 0x8004072 :: bl _40e2_cursor_X //Removing highlight position
+.org 0x8004080 :: mov r3,#4 //Remove highlight of 4 tiles maximum
+.org 0x8004092 :: bl _4092_print_window_store //Printing + storing pixels
+.org 0x80040E2 :: bl _40e2_cursor_X //Highlight position
+.org 0x80040F4 :: mov r3,#4 //Print highlight of 4 tiles maximum
+.org 0x80041D4 :: bl _41d4_cursor_X //New cursor's X
+
+//Text Speed options
+.org 0x8003BBC :: bl _4092_print_window_store //Printing + storing pixels
+.org 0x8003FA2 :: bl _4092_print_window
+.org 0x8003F8C :: mov r3,#4 //Print highlight of 4 tiles maximum
+.org 0x8003E86 :: bl _3e86_special_setup //Avoid printing when not necessary
+.org 0x8003EF2 :: bl _3e86_special_setup //Avoid printing when not necessary
+.org 0x82B79D0 :: dw 0x10 //new window width
+.org 0x86DB0FC :: .incbin "data/m2-textspeed-template.bin"
+
+//Text Flavour options
+.org 0x8003D8A :: bl _4092_print_window_store //Printing + storing pixels
+.org 0x8003D86 :: mov r1,#4 //new window Y
+.org 0x8003DB6 :: mov r1,#4
+.org 0x8003E0C :: mov r1,#4
+.org 0x8003E8C :: mov r1,#4
+.org 0x8003EF8 :: mov r1,#4
+.org 0x80053F2 :: mov r1,#4
+.org 0x82B79E4 :: dw 0xF //new window width
+.org 0x82B79E8 :: dw 0x10 //new window height
+.org 0x8003DCE :: bl _3dce_fix_out_of_text_flavour
+.org 0x86DB1F8 :: .incbin "data/m2-flavour-template.bin"
+
+//Delete
+.org 0x8004410 :: mov r1,#3 :: mov r2,#0x15 :: bl wrapper_delete_string
+.org 0x800441E :: bl _4092_print_window_store //Printing + storing pixels
+.org 0x82B7AFC :: dw 0x15 //new window width
+.org 0x86DBE8C :: .incbin "data/m2-delete-template.bin"
+
+//Copy
+.org 0x8004294 :: bl _4294_print_window_store //Printing - 1 slot available
+.org 0x80042BA :: bl _4092_print_window_store //Printing + storing pixels
+.org 0x8004268 :: mov r2,#0x2 :: bl wrapper_copy_string
+
+//Descriptions and Names
+.org 0x80053F6 :: bl _53f6_fix_out_of_description
+.org 0x8004ED2 :: bl wrapper_name_string //Printing names
+.org 0x8004EDC :: bl _4edc_print_window_store //Printing + storing pixels
+.org 0x86DB2B8 :: .incbin "data/m2-descriptions-template.bin"
+.org 0x82B7A00 :: dw 0x86DB2B8 //Point all the descriptions + names to the same template
+.org 0x82B7A14 :: dw 0x86DB2B8
+.org 0x82B7A28 :: dw 0x86DB2B8
+.org 0x82B7A3C :: dw 0x86DB2B8
+.org 0x82B7A50 :: dw 0x86DB2B8
+.org 0x82B7A64 :: dw 0x86DB2B8
+
+//Alphabets
+.org 0x80051A4 :: bl _4092_print_window_store //Printing + storing pixels - CAPITAL
+.org 0x8004EA2 :: bl _4092_print_window_store //Printing + storing pixels - small
+.org 0x82B7A8C :: dw 0x86DB5C4
+.org 0x86DB5C4 :: .incbin "data/m2-alphabet-template.bin"
+.org 0x8005222 :: bl setupCursorAction
+.org 0x8005382 :: bl setupCursorMovement
+.org 0x800538A :: bl setupCursorPosition //Cursor position
+.org 0x800536C :: bl setupCursorPosition //Cursor position
+.org 0x82B8FFC :: .incbin "data/m2-alphabet-table.bin"
+.org 0x8002322 :: bl _2322_setup_windowing
+
+//Summary
+.org 0x80054F2 :: mov r2,#5 :: bl wrapper_name_summary_string //Printing Ness' name
+.org 0x8005502 :: mov r2,#5 :: bl wrapper_name_summary_string //Printing Paula's name
+.org 0x8005512 :: mov r2,#5 :: bl wrapper_name_summary_string //Printing Jeff's name
+.org 0x8005522 :: mov r2,#5 :: bl wrapper_name_summary_string //Printing Poo's name
+.org 0x800555C :: nop :: nop //Sends to a bunch of 0xFF
+.org 0x800556A :: nop :: nop //Sends to a bunch of 0xFF
+.org 0x8005530 :: mov r0,#0x11 //New x for King's name
+.org 0x8005536 :: bl wrapper_name_summary_string //Printing King's name
+.org 0x8005578 :: bl wrapper_count_pixels_to_tiles :: mov r2,#6 :: mov r4,#0x17 :: sub r0,r4,r0 //Count length of Food's name in tiles
+.org 0x8005588 :: bl wrapper_name_summary_string //Printing Food's name
+.org 0x8005596 :: bl wrapper_count_pixels_to_tiles :: mov r2,#6 :: sub r4,r4,r0 //Count length of Thing's name in tiles
+.org 0x80055A6 :: bl wrapper_name_summary_string //Printing Thing's name
+.org 0x80055B0 :: bl _4092_print_window_store //Printing + storing pixels
+.org 0x80056F0 :: add r0,#0x90 //New cursor's X
+.org 0x86DBC6C :: .incbin "data/m2-summary-template.bin"
+
+//==============================================================================
+// Overworld player name alphabet
+//==============================================================================
+//Player name printing - character is added
+.org 0x80C75B4 :: bl c75b4_overworld_naming_top_printing :: b 0x80C777A
+
+//Player name printing - character is deleted via add
+.org 0x80C780E :: bl c780e_overworld_naming_top_printing :: b 0x80C789A
+
+//Player name printing - character is deleted via backspace
+.org 0x80C74CC :: bl c74cc_overworld_naming_top_printing :: b 0x80C755A
+
+//Player name printing - menu is re-entered after the name has been inserted once
+.org 0x80C6CC6 :: bl c6cc6_overworld_naming_top_printing :: b 0x80C6D5E
+
+//Player name alphabet - cursor movement
+.org 0x80C6F24 :: bl c6f24_overworld_alphabet_movement :: b 0x80C7340
+
+//Alphabet - switching support - removal of unused alphabet
+.org 0x80C7380 :: nop :: nop :: nop :: mov r0,r9 :: cmp r0,#0 :: beq 0x80C741A :: nop :: nop :: cmp r0,#1
+
+//Print CAPITAL alphabet only if needed
+.org 0x80C7394 :: bl c7394_CAPITAL_overworld_alphabet :: b 0x80C73B8
+
+//Print small alphabet
+.org 0x80C73B8 :: nop :: mov r0,r9 :: cmp r0,#2
+
+//Print small alphabet only if needed
+.org 0x80C73C0 :: bl c73c0_small_overworld_alphabet :: b 0x80C73E2
+
+//Choose character table based on alphabet loaded in
+.org 0x80C7578 :: bl c7578_load_letters
+
+//==============================================================================
 // Data files
 //==============================================================================
 
 .org m2_default_names
 .incbin "data/m2-default-names.bin"
+
+.org 0x8B1BA88
+
+m2_overworld_alphabet_table:
+.incbin "data/m2-overworld-alphabet-table.bin"
 
 .org 0x8B2C000
 
@@ -1019,7 +1390,7 @@ m2_font_main:
 m2_font_saturn:
 .incbin "data/m2-font-saturn.bin"
 m2_font_big:
-.incbin "data/m2-font-big.bin"
+.incbin "data/bigfont.bin"
 m2_font_battle:
 .incbin "data/m2-font-battle.bin"
 m2_font_tiny:
@@ -1047,7 +1418,7 @@ m2_widths_main:
 m2_widths_saturn:
 .incbin "data/m2-widths-saturn.bin"
 m2_widths_big:
-.incbin "data/m2-widths-big.bin"
+.incbin "data/largewidths.bin"
 m2_widths_battle:
 .incbin "data/m2-widths-battle.bin"
 m2_widths_tiny:
@@ -1062,19 +1433,39 @@ m2_nybbles_to_bits:
 m2_enemy_attributes:
 .incbin "data/m2-enemy-attributes.bin"
 
+flyovertextYear:
+.incbin "data/flyovertextYear.bin"
+
+flyovertextOnett:
+.incbin "data/flyovertextOnett.bin"
+
+flyovertextNess:
+.incbin "data/flyovertextNess.bin"
+
+flyovertextWinters:
+.incbin "data/flyovertextWinters.bin"
+
+flyovertextSnow:
+.incbin "data/flyovertextSnow.bin"
+
+flyovertextDalaam:
+.incbin "data/flyovertextDalaam.bin"
+
+flyovertextPoo:
+.incbin "data/flyovertextPoo.bin"
+
+flyovertextLater:
+.incbin "data/flyovertextLater.bin"
+
+m2_coord_table_file:
+.incbin "data/m2-coord-table-file-select.bin"
+
+
 //==============================================================================
 // Existing subroutines/data
 //==============================================================================
 
-.definelabel m2_ness_goods          ,0x3001D54
-.definelabel m2_ness_exp            ,0x3001D70
-.definelabel m2_ness_maxhp          ,0x3001D84
-.definelabel m2_ness_curhp          ,0x3001D86
-.definelabel m2_ness_maxpp          ,0x3001D8C
-.definelabel m2_ness_curpp          ,0x3001D8E
-.definelabel m2_paula_goods         ,0x3001DC0
-.definelabel m2_jeff_goods          ,0x3001E2C
-.definelabel m2_poo_goods           ,0x3001E98
+.definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10
 .definelabel m2_old_paula_name      ,0x3001F16
 .definelabel m2_paula_name          ,0x3001F17
@@ -1092,6 +1483,7 @@ m2_enemy_attributes:
 .definelabel m2_cstm_last_printed   ,0x3001F4F
 .definelabel m2_player1             ,0x3001F50
 .definelabel m2_script_readability  ,0x3004F08
+.definelabel m2_psi_exist           ,0x300525C
 .definelabel m2_active_window_pc    ,0x3005264
 .definelabel m2_setup_naming_mem    ,0x8001D5C
 .definelabel m2_soundeffect         ,0x8001720
@@ -1105,14 +1497,17 @@ m2_enemy_attributes:
 .definelabel m2_enable_script       ,0x80A1F6C
 .definelabel m2_sub_a334c           ,0x80A334C
 .definelabel m2_sub_a3384           ,0x80A3384
+.definelabel m2_get_selected_item   ,0x80A469C
 .definelabel m2_psitargetwindow     ,0x80B8AE0
 .definelabel m2_isequipped          ,0x80BC670
 .definelabel m2_swapwindowbuf       ,0x80BD7AC
+.definelabel m2_setup_window        ,0x80BD844
 .definelabel m2_strlookup           ,0x80BE260
 .definelabel m2_initwindow          ,0x80BE458
 .definelabel m2_statuswindow_numbers,0x80C0A5C
 .definelabel m2_psiwindow           ,0x80C1FBC
 .definelabel m2_drawwindow          ,0x80C87D0
+.definelabel m2_print_window        ,0x80C8BE4
 .definelabel m2_printstr            ,0x80C9634
 .definelabel m2_printstr_hlight     ,0x80C96F0
 .definelabel m2_printnextch         ,0x80C980C
@@ -1124,7 +1519,9 @@ m2_enemy_attributes:
 .definelabel m2_hpwindow_up         ,0x80D3F0C
 .definelabel m2_curhpwindow_down    ,0x80D41D8
 .definelabel m2_div                 ,0x80F49D8
+.definelabel m2_remainder           ,0x80F4A70
 .definelabel m2_default_names       ,0x82B9330
+.definelabel m2_items               ,0x8B1D62C
 
 //==============================================================================
 // Code files
@@ -1137,5 +1534,6 @@ m2_enemy_attributes:
 .include "m2-formatting.asm"
 .include "m2-customcodes.asm"
 .include "m2-compiled.asm"
+.include "m2-flyover.asm"
 
 .close

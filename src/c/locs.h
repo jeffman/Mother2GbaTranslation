@@ -17,6 +17,7 @@ extern int *first_window_flag;
 extern unsigned short *palette_mask;
 extern short *active_window_party_member;
 extern unsigned short **tilemap_pointer;
+extern int *fileselect_pixels_location;
 extern int *vram;
 extern int *m2_misc_offsets;
 extern byte *m2_misc_strings;

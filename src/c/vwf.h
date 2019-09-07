@@ -25,7 +25,11 @@
 #define CUSTOMCC_ADD_X 0x60
 
 byte decode_character(byte chr);
+byte encode_ascii(char chr);
 int get_tile_number(int x, int y);
+int ascii_strlen(char *str);
+int wrapper_count_pixels_to_tiles(byte *str, int length);
+int count_pixels_to_tiles(byte *str, int length, int startingPos);
 int expand_bit_depth(byte row, int foreground);
 byte reduce_bit_depth(int row, int foreground);
 byte print_character(byte chr, int x, int y);
@@ -35,10 +39,10 @@ void print_special_character(int tile, int x, int y);
 void map_special_character(unsigned short tile, int x, int y);
 void map_tile(unsigned short tile, int x, int y);
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
-    int *dest, int (*getTileCallback)(int, int), int useTilemap);
+    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth);
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground);
 int print_window_header_string(int *dest, byte *str, int x, int y);
-void clear_window_header(int *dest);
+void clear_window_header(int *dest, int length, int x, int y);
 unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned int *dest,
     WINDOW *window);
 unsigned short format_tile(unsigned short tile, bool flip_x, bool flip_y);
@@ -65,8 +69,14 @@ void print_number_menu_current(byte digit, WINDOW* window);
 void clear_number_menu(WINDOW* window);
 void format_cash_window(int value, int padding, byte* str);
 void handle_first_window(WINDOW* window);
+void getCharName(byte character, byte *str, int *index);
+void copy_name(byte *str, byte *source, int *index, int pos);
+byte getSex(byte character);
+void getPossessive(byte character, byte *str, int *index);
+void getPronoun(byte character, byte *str, int *index);
 
 extern unsigned short m2_coord_table[];
+extern byte m2_ness_name[];
 extern int m2_bits_to_nybbles[];
 extern byte m2_nybbles_to_bits[];
 extern byte *m2_font_table[];
@@ -77,6 +87,7 @@ extern byte m12_other_str5[];
 extern byte m12_other_str6[];
 extern byte m12_other_str7[];
 extern byte m12_other_str8[];
+extern byte m2_cstm_last_printed[];
 
 extern void cpufastset(void *source, void *dest, int mode);
 extern byte* m2_strlookup(int *offset_table, byte *strings, int index);
@@ -84,3 +95,7 @@ extern int bin_to_bcd(int value, int* digit_count);
 extern int m2_drawwindow(WINDOW* window);
 extern int m2_resetwindow(WINDOW* window, bool skip_redraw);
 extern void m2_hpwindow_up(int character);
+extern int m2_div(int dividend, int divisor);
+extern int m2_remainder(int dividend, int divisor);
+extern void m2_soundeffect(int index);
+extern void m2_printstr(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
