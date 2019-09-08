@@ -2963,9 +2963,17 @@ mov     r0,r4
 pop     {pc}
 
 //==============================================================================
+//Prints the alive tiles and then the names - right after the normal status is restored
+d6dac_alive_name:
+push    {r7,lr}
+mov     r7,r5
+bl      alive_name
+pop     {r7,pc}
+
+//==============================================================================
 //Prints the alive tiles and then the names
 alive_name:
-push    {lr}
+push    {r4,lr}
 push    {r5}
 mov     r5,r2
 push    {r0-r3}
@@ -3003,6 +3011,6 @@ pop     {r0-r3}
 pop     {r5}
 bl      0x80CABF8 //Name
 mov     r0,r4
-pop     {pc}
+pop     {r4,pc}
 
 .pool

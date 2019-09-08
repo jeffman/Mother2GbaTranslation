@@ -480,6 +480,7 @@ pop     {pc}
 .org 0x80D6960 :: bl sick_name
 .org 0x80D68C2 :: bl dead_name
 .org 0x80D6A8A :: bl alive_name
+.org 0x80D6DAC :: bl d6dac_alive_name
 
 .org m2_stat_symb_checker :: .incbin "data/m2-status-symbols-checkerboard.bin"
 
