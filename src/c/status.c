@@ -27,7 +27,7 @@ void printStatusSymbolArrangement(unsigned short symbolTile, WINDOW* window)
 void printStatusString(WINDOW* window, int value)
 {
     byte *str = m2_strlookup((int*)0x8B17EE4, (byte*)0x8B17424, value);
-    printstr_hlight_buffer(window, str, 1, 2, 0);
+    printstr_hlight_buffer(window, str, 1, 1, 0);
 }
 
 int statusNumbersPrint(WINDOW* window, bool doNotPrint)

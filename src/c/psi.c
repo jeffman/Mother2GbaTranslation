@@ -131,17 +131,17 @@ void psiPrint_buffer(byte value, WINDOW* window, bool printPSILine, PSIPrintInfo
     {
         byte PSIID = printInfo->PSIID;
         str = baseStrPointer + ((PSIID - 1) * 0x14);
-        printstr_hlight_buffer(window, str, 0, printInfo->YPrinting << 1, 0);
+        printstr_hlight_buffer(window, str, 0, printInfo->YPrinting, 0);
         if(PSIID == 1)
         {
             str = (byte*)(m2_ness_name + (7 * 4) + (8 * 2)); //Go to Rockin's name
-            print_string_in_buffer(str, 0x71, ((printInfo->YPrinting << 1) + window->window_y) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
+            print_string_in_buffer(str, 0x71, ((printInfo->YPrinting) + window->window_y) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
         }
     }
     
     byte symbol = printInfo->symbol;
     str = (byte*)(0x8B1B904 + (symbol * 3));
-    printstr_hlight_buffer(window, str, printInfo->XSymbol + 1, printInfo->YPrinting << 1, 0);
+    printstr_hlight_buffer(window, str, printInfo->XSymbol + 1, printInfo->YPrinting, 0);
     int targetX = (((printInfo->XSymbol - 9) >> 0x1F) + printInfo->XSymbol - 9) >> 1;
     (*possibleTargets)[printInfo->YPrinting][targetX] = value;
 }

@@ -15,6 +15,7 @@ byte           *script_readability         = (byte*)                 0x3004F08;
 unsigned short *tile_offset                = (unsigned short*)       0x30051EC;
 int            *first_window_flag          = (int*)                  0x30051F0;
 byte           **free_strings_pointers     = (byte**)                0x3005200;
+int            **buffer_pointer            = (int**)                 0x3005220;
 unsigned short *palette_mask               = (unsigned short*)       0x3005228;
 WINDOW         **window_pointers           = (WINDOW**)              0x3005230;
 short          *active_window_party_member = (short*)                0x3005264;

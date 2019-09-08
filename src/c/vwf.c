@@ -1278,7 +1278,7 @@ void printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short
 
 unsigned short printstr_hlight_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
 {
-    return printstr_hlight_pixels_buffer(window, str, x << 3, y << 3, highlight);
+    return printstr_hlight_pixels_buffer(window, str, x << 3, y << 4, highlight);
 }
 
 unsigned short printstr_hlight_pixels_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)

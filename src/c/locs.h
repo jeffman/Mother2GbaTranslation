@@ -21,6 +21,7 @@ extern byte *script_readability;
 extern unsigned short *tile_offset;
 extern int *first_window_flag;
 extern byte **free_strings_pointers;
+extern int **buffer_pointer;
 extern unsigned short *palette_mask;
 extern WINDOW **window_pointers;
 extern short *active_window_party_member;

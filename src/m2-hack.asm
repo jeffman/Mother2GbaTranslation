@@ -143,6 +143,11 @@ mov     r3,6
 .org 0x80BAB64 :: bl initWindow_buffer
 .org 0x80BABA6 :: bl printstr_hlight_buffer
 .org 0x80BA8AC :: bl ba8ac_load_targets_print
+.org 0x80B9100 :: bl initWindow_buffer
+.org 0x80B910C :: bl initWindow_buffer
+.org 0x80B9118 :: bl psiTargetWindow_buffer
+.org 0x80B9122 :: bl initWindow_buffer
+.org 0x80B9142 :: bl baec6_psi_window_print_buffer
 
 //---------------------------------------------------------
 // Class PSI window hacks
@@ -467,6 +472,16 @@ bl      print_window_header_string
 add     r0,7
 lsr     r0,r0,3 // pixels to tiles
 pop     {pc}
+
+//---------------------------------------------------------
+// Change checkerboard printing to properly handle statuses
+//---------------------------------------------------------
+
+.org 0x80D6960 :: bl sick_name
+.org 0x80D68C2 :: bl dead_name
+.org 0x80D6A8A :: bl alive_name
+
+.org m2_stat_symb_checker :: .incbin "data/m2-status-symbols-checkerboard.bin"
 
 //---------------------------------------------------------
 // CABF8 hacks (print checkerboard string)
@@ -1467,6 +1482,10 @@ m2_overworld_alphabet_table:
 
 .org 0x8B2C000
 
+//This table MUST be 4-bytes padded
+moved_graphics_table:
+.incbin "data/moved-graphics-table.bin"
+
 // Box font relocation
 m2_font_relocate:
 .incbin "data/m2-font-relocate.bin"
@@ -1558,15 +1577,12 @@ flyovertextLater:
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
 
-moved_graphics_table:
-.incbin "data/moved-graphics-table.bin"
-
 
 //==============================================================================
 // Existing subroutines/data
 //==============================================================================
 
-.definelabel overworld_buffer       ,0x203C000
+.definelabel overworld_buffer       ,0x200C000
 .definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10
 .definelabel m2_old_paula_name      ,0x3001F16
@@ -1624,6 +1640,7 @@ moved_graphics_table:
 .definelabel m2_curhpwindow_down    ,0x80D41D8
 .definelabel m2_sub_d6844           ,0x80D6844
 .definelabel m2_setupBattleName     ,0x80DCD00
+.definelabel m2_stat_symb_checker   ,0x8B0EDA4 
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70
 .definelabel m2_items               ,0x8B1D62C

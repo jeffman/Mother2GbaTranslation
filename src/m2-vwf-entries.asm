@@ -740,7 +740,7 @@ ldr     r0,[r0] // window pointer
 mov     r2,1 // highlight
 str     r2,[sp]
 mov     r2,1
-mov     r3,2
+mov     r3,1
 bl      printstr_hlight_buffer // render string
 add     sp,4
 
@@ -797,7 +797,7 @@ ldr     r0,[r0] // window pointer
 mov     r2,1 // highlight
 str     r2,[sp]
 mov     r2,1
-mov     r3,2
+mov     r3,1
 bl      printstr_hlight_buffer // render string
 add     sp,4
 
@@ -2937,3 +2937,72 @@ ldr     r0,=#0x94000800 //Store 0x1800 bytes - When VBlank and in words of 32 bi
 str     r0,[r1,#8]
 ldr     r0,[r1,#8]
 pop     {r0-r1,pc}
+
+//==============================================================================
+//Prints the sick tiles and then the names
+sick_name:
+push    {lr}
+push    {r0-r3}
+bl      0x80CAC70 //Purple tiles
+mov     r4,r0
+pop     {r0-r3}
+bl      0x80CABF8 //Name
+mov     r0,r4
+pop     {pc}
+
+//==============================================================================
+//Prints the dead tiles and then the names
+dead_name:
+push    {lr}
+push    {r0-r3}
+bl      0x80CACE8 //Red tiles
+mov     r4,r0
+pop     {r0-r3}
+bl      0x80CABF8 //Name
+mov     r0,r4
+pop     {pc}
+
+//==============================================================================
+//Prints the alive tiles and then the names
+alive_name:
+push    {lr}
+push    {r5}
+mov     r5,r2
+push    {r0-r3}
+mov     r0,r7
+mov     r1,#0x4D
+mov     r2,r5
+mov     r3,#0x12
+bl      0x80CAD60 //The 1st alive tile
+mov     r0,r7
+mov     r1,#0x4D
+mov     r2,#1
+add     r2,r2,r5
+mov     r3,#0x12
+bl      0x80CAD60 //The 2nd alive tile
+mov     r0,r7
+mov     r1,#0x4D
+mov     r2,#2
+add     r2,r2,r5
+mov     r3,#0x12
+bl      0x80CAD60 //The 3rd alive tile
+mov     r0,r7
+mov     r1,#0x4D
+mov     r2,#3
+add     r2,r2,r5
+mov     r3,#0x12
+bl      0x80CAD60 //The 4th alive tile
+mov     r0,r7
+mov     r1,#0x4D
+mov     r2,#4
+add     r2,r2,r5
+mov     r3,#0x12
+bl      0x80CAD60 //The 5th alive tile
+mov     r4,#5
+pop     {r0-r3}
+pop     {r5}
+bl      0x80CABF8 //Name
+mov     r0,r4
+pop     {pc}
+
+.pool
