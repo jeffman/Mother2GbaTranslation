@@ -95,6 +95,7 @@ mov     r3,6
 .org 0x80C24CC :: bl printstr_hlight_buffer
 .org 0x80C2500 :: bl printstr_hlight_buffer
 .org 0x80C2518 :: bl printstr_hlight_buffer
+.org 0x80E08D8 :: bl e06ec_redraw_bash_psi_goods_defend
 
 //---------------------------------------------------------
 // BAC18 hacks (status window)
@@ -1640,7 +1641,7 @@ m2_coord_table_file:
 .definelabel m2_hpwindow_up         ,0x80D3F0C
 .definelabel m2_curhpwindow_down    ,0x80D41D8
 .definelabel m2_sub_d6844           ,0x80D6844
-.definelabel m2_setupBattleName     ,0x80DCD00
+.definelabel m2_setupbattlename     ,0x80DCD00
 .definelabel m2_stat_symb_checker   ,0x8B0EDA4 
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70

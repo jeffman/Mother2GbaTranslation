@@ -724,25 +724,10 @@ pop     {pc}
 e06ec_redraw_psi:
 push    {r0-r3,lr}
 
-// Clear old tiles
-mov     r0,2
-mov     r1,3
-mov     r2,1
-ldr     r3,=#overworld_buffer - 0x2000
-bl      print_blankstr_buffer
-
-// Render PSI string
-add     sp,-4
-ldr     r0,=0x80DC1EC // address of PSI string pointer
-ldr     r1,[r0] // PSI string pointer
-ldr     r0,=0x3005230
-ldr     r0,[r0] // window pointer
-mov     r2,1 // highlight
-str     r2,[sp]
-mov     r2,1
-mov     r3,1
-bl      printstr_hlight_buffer // render string
-add     sp,4
+mov     r0,#1
+mov     r1,#2
+mov     r2,#2
+bl      printBattleMenu
 
 // Clobbered code
 pop     {r0-r3}
@@ -754,52 +739,10 @@ pop     {pc}
 // Redraw Bash/Do Nothing and PSI commands when exiting PSI ally target subwindow
 e06ec_redraw_bash_psi:
 push    {r0-r3,lr}
-add     sp,-4
-
-// Clear old tiles
-mov     r0,2
-mov     r1,1
-mov     r2,1
-ldr     r3,=#overworld_buffer - 0x2000
-bl      print_blankstr_buffer
-mov     r0,2
-mov     r1,3
-mov     r2,1
-ldr     r3,=#overworld_buffer - 0x2000
-bl      print_blankstr_buffer
-
-// We need to figure out whether to draw Bash or Do Nothing
-// If [0x2025122] == 2, draw Do Nothing; else, draw Bash
-// We'll never draw Shoot because Jeff doesn't use PSI
-ldr     r0,=0x2025122
-ldrh    r0,[r0]
-cmp     r0,2
-beq     @@donothing
-ldr     r0,=0x80DBFB0
-b       @@next
-@@donothing:
-ldr     r0,=0x80DC108
-@@next:
-ldr     r1,[r0]
-ldr     r0,=0x3005230
-ldr     r0,[r0] // window pointer
-mov     r2,0 // no highlight
-str     r2,[sp]
-mov     r2,1
-mov     r3,0
-bl      printstr_hlight_buffer // render string
-
-// Render PSI string
-ldr     r0,=0x80DC1EC // address of PSI string pointer
-ldr     r1,[r0] // PSI string pointer
-ldr     r0,=0x3005230
-ldr     r0,[r0] // window pointer
-mov     r2,1 // highlight
-str     r2,[sp]
-mov     r2,1
-mov     r3,1
-bl      printstr_hlight_buffer // render string
-add     sp,4
+mov     r0,#1
+mov     r1,#3
+mov     r2,#2
+bl      printBattleMenu
 
 // Clobbered code
 pop     {r0-r3}
@@ -808,11 +751,58 @@ pop     {pc}
 .pool
 
 //==============================================================================
+// Redraw Bash/Do Nothing, PSI commands, Goods and Defend when choosing enemy target
+e06ec_redraw_bash_psi_goods_defend:
+push    {lr}
+push    {r0-r3}
+ldr     r2,=#0x8B204E4 //Is this an offensive PSI which needs a target? If so, redraw the background window
+ldr     r1,=#0x8B2A9B0
+ldr     r0,[r6,#0x1C]
+ldr     r0,[r0,#0x10]
+ldrh    r3,[r0,#2]
+lsl     r3,r3,#4
+add     r0,r3,r1
+ldrh    r3,[r0,#4]
+lsl     r0,r3,#1
+add     r0,r0,r3
+lsl     r0,r0,#2
+add     r3,r0,r2
+ldrb    r0,[r3,#1]
+cmp     r0,#1
+beq     @@keep
+cmp     r0,#3
+bne     @@notOffensive //Otherwise, do not do it
+@@keep:
+ldrb    r0,[r3]
+cmp     r0,#0
+bne     @@notOffensive
+
+mov     r0,#3
+mov     r1,#3
+mov     r2,#2
+bl      printBattleMenu
+
+@@notOffensive:
+
+pop     {r0-r3}
+
+bl      0x80C2480 //Prints the target
+pop     {pc}
+.pool
+
+//==============================================================================
 //Calls the funcion which loads the targets in and then stores the buffer
 ba8ac_load_targets_print:
 push    {lr}
+ldr     r2,=#0x20248AC
+ldrh    r2,[r2,#0]
+push    {r2}
 bl      0x80BAA80
+pop     {r2}
+cmp     r2,#0
+bne     @@end //Store the buffer to vram only if the target window was printed.
 bl      store_pixels_overworld
+@@end:
 pop     {pc}
 
 

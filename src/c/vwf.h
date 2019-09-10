@@ -138,4 +138,4 @@ extern int customcodes_parse_generic(int code, char* parserAddress, WINDOW* wind
 extern void m2_sub_d3c50();
 extern void m2_sub_d6844();
 extern int m2_setupwindow(WINDOW* window, short window_x, short window_y, short window_width, short window_height);
-extern void m2_setupBattleName(short value);
+extern void m2_setupbattlename(short value);
