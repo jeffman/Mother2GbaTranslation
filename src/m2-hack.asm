@@ -1040,11 +1040,6 @@ nop
 nop
 
 //---------------------------------------------------------
-// Carpainter's timing fix
-//---------------------------------------------------------
-.org 0x802A75F :: db 0x30 //Add 8 extra frames before the game can start reading again.
-
-//---------------------------------------------------------
 // Teleport header fix
 //---------------------------------------------------------
 .org 0x80C5DE0 :: bl c65da_clean_print //To:
@@ -1315,6 +1310,17 @@ nop
 //.org 0x80BD9EA :: mov r2,#0x1B //Paula
 //.org 0x80BD9F6 :: mov r2,#0x16 //Jeff
 //.org 0x80BDA02 :: mov r2,#0x1B //Poo
+
+
+//---------------------------------------------------------
+// Movement code hacks
+//---------------------------------------------------------
+// Censor the spanking sound in Pokey's house
+.org 0x8027BCB :: db 70 // Add 30 extra frames before the sound plays
+.org 0x8027BD1 :: dh 84 // Replace sound effect
+
+// Carpainter's timing fix
+.org 0x802A75F :: db 0x30 //Add 8 extra frames before the game can start reading again.
 
 //==============================================================================
 // File select hacks
