@@ -16,12 +16,10 @@ void printNumberOfStatus(int maxLength, int value, int blankX, int y, int strX, 
 
 void printStatusSymbolArrangement(unsigned short symbolTile, WINDOW* window)
 {
-    unsigned short *arrangementBase = ((*tilemap_pointer) + (((window->window_y) + 2) << 5) + window->window_x);
-    unsigned short ailmentTile = ((*tile_offset) + symbolTile) | (*palette_mask);
-    (*(arrangementBase + 10)) = ailmentTile;
+	map_tile(symbolTile, window->window_x + 0xA, window->window_y + 2);
     if(symbolTile == 0x1FF)
-        ailmentTile -= 0x20;
-    (*(arrangementBase + 42)) = (ailmentTile + 0x20);
+        symbolTile -= 0x20;
+	map_tile(symbolTile + 0x20, window->window_x + 0xA, window->window_y + 3);
 }
 
 void printStatusString(WINDOW* window, int value)

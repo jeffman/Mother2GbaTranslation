@@ -26,7 +26,15 @@ void printTargetOfAttack(short a, short target)
         byte val = *(pointer2 + target);
         unsigned short ailmentTile = ailmentTileSetup((byte*)(0x2020CCF + (val * 0x94)), 0);
         if(ailmentTile >= 1)
-            map_tile(ailmentTile, window->window_x + 0x26, window->window_y);
+		{
+            map_tile(ailmentTile, window->window_x + 0x13, window->window_y);
+            map_tile(ailmentTile + 0x20, window->window_x + 0x13, window->window_y + 1);
+		}
+		else
+		{
+			map_tile(0x1FF, window->window_x + 0x13, window->window_y);
+			map_tile(0x1FF, window->window_x + 0x13, window->window_y + 1);
+		}
     }
     else
     {

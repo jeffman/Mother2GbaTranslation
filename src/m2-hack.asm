@@ -14,11 +14,13 @@
 //==============================================================================
 
 .org 0x8AFED84 :: .incbin "data/m2-mainfont1-empty.bin"
-.org 0x8B03DE4 :: .incbin "data/m2-status-symbols.bin"
 .org 0x8B0F424 :: .incbin "data/m2-mainfont2-empty.bin"
 .org 0x8B13424 :: .incbin "data/m2-mainfont3-empty.bin"
 .org 0x8B088A4 :: .incbin "data/m2-shifted-cursor.bin"
 .org 0x8B03384 :: .incbin "data/m2-header-bg.bin"
+.org 0x8B03964 :: .incbin "data/m2-header-bg-sigle-tile.bin"
+.org 0x8B03D64 :: .incbin "data/m2-header-bg-sigle-tile.bin"
+.org 0x8B03DE4 :: .incbin "data/m2-status-symbols.bin"
 
 // Greek letters
 .org 0x8B1B907 :: db 0x8B // alpha
@@ -484,9 +486,11 @@ pop     {pc}
 // Change checkerboard printing to properly handle statuses
 //---------------------------------------------------------
 
-.org 0x80D6960 :: bl sick_name
 .org 0x80D68C2 :: bl dead_name
+.org 0x80D6960 :: bl sick_name
 .org 0x80D6A8A :: bl alive_name
+.org 0x80D6B5E :: bl dead_name
+.org 0x80D6BFA :: bl sick_name
 .org 0x80D6DAC :: bl d6dac_alive_name
 
 .org m2_stat_symb_checker :: .incbin "data/m2-status-symbols-checkerboard.bin"
