@@ -1,6 +1,10 @@
 Hacking, script tool, script compiler/decompiler:
   JeffMan
 
+Hacking:
+  Lorenzooone
+  PhoenixBound
+
 Text conversion:
   JeffMan
   Lorenzooone
