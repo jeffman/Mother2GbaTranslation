@@ -18,6 +18,7 @@ $input_c_files =
     "src/c/fileselect.c",
     "src/c/status.c",
     "src/c/battle.c",
+    "src/c/equip.c",
     "src/c/psi.c"
 
 $base_c_address    = 0x83755B8;

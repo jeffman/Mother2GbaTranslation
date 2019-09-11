@@ -2442,7 +2442,7 @@ push    {lr}
 ldr     r1,=#m2_active_window_pc
 ldrb    r1,[r1,#0]
 push    {r1} //Stores the active_window_pc
-bl      0x80C4EB0 //Input management function
+bl      equipReadInput //Input management function
 pop     {r1}
 cmp     r0,#0 //Has an action happened? (Are we entering/exiting the menu?)
 beq     @@check_character_change
@@ -2526,6 +2526,17 @@ bx      r0
 
 .pool
 
+//==============================================================================
+//Prints defense number and then sotres the buffer
+bb1aa_printstr_store:
+push    {lr}
+mov     r3,#0
+push    {r3}
+mov     r3,#1
+bl      printstr_buffer
+bl      store_pixels_overworld
+pop     {r3}
+pop     {pc}
 
 //==============================================================================
 //Set things up so the numbers for Offense and Defense for the innermost equipment window is only printed when needed

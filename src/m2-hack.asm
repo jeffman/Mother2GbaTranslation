@@ -62,6 +62,7 @@ mov     r3,6
 //.org 0x80B8A3C :: bl print_window_with_buffer
 .org 0x80B8890 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Status menu
 .org 0x80B8664 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of PSI menu
+.org 0x80B8740 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Equip menu
 .org 0x80B831A :: bl initWindow_buffer
 .org 0x80B8320 :: bl b8320_statusWindowTextStore
 
@@ -166,7 +167,26 @@ mov     r3,6
 // Equip window generic hacks
 //---------------------------------------------------------
 
+.org 0x80B8066 :: bl printstr_hlight_buffer
 .org 0x80B8074 :: mov r3,#0x12
+.org 0x80B80A6 :: mov r3,#0x0D
+.org 0x80B8092 :: bl initWindow_buffer
+.org 0x80B8098 :: bl print_window_with_buffer
+.org 0x80B80BE :: bl initWindow_buffer
+.org 0x80B80C4 :: bl print_window_with_buffer
+.org 0x80B80EA :: mov r2,#6 :: mov r3,#0 :: bl printstr_buffer //Offense Number
+.org 0x80B8112 :: mov r2,#6 :: mov r3,#1 :: bl printstr_buffer //Defense Number
+.org 0x80B8138 :: bl initWindow_buffer
+.org 0x80B813E :: bl print_window_with_buffer
+.org 0x80B814A :: bl equipPrint
+.org 0x80B81A2 :: bl initWindow_buffer
+.org 0x80B81A8 :: bl print_window_with_buffer
+.org 0x80B81BC :: bl equipPrint
+.org 0x80B81CC :: bl store_pixels_overworld
+.org 0x80BAFE6 :: mov r2,#6 :: mov r3,#0 :: bl printstr_buffer //Offense Number
+.org 0x80BB00C :: mov r2,#6
+.org 0x80BB198 :: mov r2,#9 :: mov r3,#0 :: bl printstr_buffer //Offense Number
+.org 0x80BB1A6 :: mov r2,#9 :: mov r3,#1 :: bl bb1aa_printstr_store //Defense Number
 
 //---------------------------------------------------------
 // BAEF8 hacks (equip window)

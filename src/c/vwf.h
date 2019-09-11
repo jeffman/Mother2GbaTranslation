@@ -29,6 +29,7 @@
 byte decode_character(byte chr);
 byte encode_ascii(char chr);
 int get_tile_number(int x, int y);
+int get_tile_number_with_offset(int x, int y);
 int ascii_strlen(char *str);
 int wrapper_count_pixels_to_tiles(byte *str, int length);
 int count_pixels_to_tiles(byte *str, int length, int startingPos);

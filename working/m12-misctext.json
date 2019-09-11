@@ -266,7 +266,7 @@
       "OffsetLocation": 11632508,
       "OldPointer": 11630256,
       "Old": " ぶき :[01 FF] ボディ:[01 FF] うで :[01 FF] そのた:[00 FF]",
-      "New": "[5F FF 08]Weapon:[01 FF][5F FF 08]Body:[01 FF][5F FF 08]Arms:[01 FF][5F FF 08]Other:[00 FF]"
+      "New": "[5F FF 0E]Weapon[01 FF][5F FF 1A]Body[01 FF][5F FF 17]Arms[01 FF][5F FF 17]Other[00 FF]"
     },
     {
       "Index": 38,
@@ -301,14 +301,14 @@
       "OffsetLocation": 11632528,
       "OldPointer": 11630302,
       "Old": "(なし)      [00 FF]",
-      "New": "(None)[00 FF]"
+      "New": "(Nothing)[00 FF]"
     },
     {
       "Index": 43,
       "OffsetLocation": 11632532,
       "OldPointer": 11630314,
       "Old": " オフェンス:[01 FF]ディフェンス:[00 FF]",
-      "New": "[5F FF 08]Offense:[01 FF][5F FF 08]Defense:[00 FF]"
+      "New": "Offense:[01 FF]Defense:[00 FF]"
     },
     {
       "Index": 44,
