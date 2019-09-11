@@ -21,6 +21,8 @@
 #define WINDOW_HEADER_Y 0x11
 #define WINDOW_HEADER_TILE (WINDOW_HEADER_X + (WINDOW_HEADER_Y * 32))
 
+#define OVERWORLD_BUFFER 0x200C000
+
 #define CUSTOMCC_SET_X 0x5F
 #define CUSTOMCC_ADD_X 0x60
 
@@ -39,7 +41,7 @@ void print_special_character(int tile, int x, int y);
 void map_special_character(unsigned short tile, int x, int y);
 void map_tile(unsigned short tile, int x, int y);
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
-    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth);
+    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth, byte doubleTileHeight);
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground);
 int print_window_header_string(int *dest, byte *str, int x, int y);
 void clear_window_header(int *dest, int length, int x, int y);
@@ -74,6 +76,35 @@ void copy_name(byte *str, byte *source, int *index, int pos);
 byte getSex(byte character);
 void getPossessive(byte character, byte *str, int *index);
 void getPronoun(byte character, byte *str, int *index);
+int get_pointer_jump_back(byte *character);
+void print_letter_in_buffer(WINDOW* window, byte* character, int *dest);
+void weld_entry_custom_buffer(WINDOW *window, byte *str, int font, int foreground, int* dest);
+byte print_character_formatted_buffer(byte chr, int x, int y, int font, int foreground, int *dest);
+int print_window_with_buffer(WINDOW* window);
+byte print_character_with_codes(WINDOW* window, int* dest);
+int buffer_reset_window(WINDOW* window, bool skip_redraw, int* dest);
+void handle_first_window_buffer(WINDOW* window, int* dest);
+void clear_window_buffer(WINDOW *window, int* dest);
+void clear_rect_buffer(int x, int y, int width, int height, int pixels, int* dest);
+void clear_tile_buffer(int x, int y, int pixels, int* dest);
+int buffer_drawwindow(WINDOW* window, int* dest);
+void scrolltext_buffer(WINDOW* window, int* dest);
+void properScroll(WINDOW* window, int* dest);
+int jumpToOffset(byte* character);
+void copy_tile_buffer(int xSource, int ySource, int xDest, int yDest, int *dest);
+void copy_tile_up_buffer(int x, int y, int *dest);
+void setStuffWindow_Graphics();
+void clearWindowTiles_buffer(WINDOW* window);
+int initWindow_buffer(WINDOW* window, byte* text_start, unsigned short delay_between_prints);
+void print_blankstr_buffer(int x, int y, int width, int *dest);
+unsigned short ailmentTileSetup(byte *ailmentBase, unsigned short defaultVal);
+int setNumber_getLength(int value, byte *str, int maxLength);
+int print_string_in_buffer(byte *str, int x, int y, int *dest);
+void printCashWindow();
+WINDOW* getWindow(int index);
+void printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
+unsigned short printstr_hlight_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
+unsigned short printstr_hlight_pixels_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
 
 extern unsigned short m2_coord_table[];
 extern byte m2_ness_name[];
@@ -88,9 +119,13 @@ extern byte m12_other_str6[];
 extern byte m12_other_str7[];
 extern byte m12_other_str8[];
 extern byte m2_cstm_last_printed[];
+extern byte *m2_script_readability;
+extern int overworld_buffer;
+extern PC m2_ness_data[];
 
 extern void cpufastset(void *source, void *dest, int mode);
 extern byte* m2_strlookup(int *offset_table, byte *strings, int index);
+extern void m2_formatnumber(int value, byte* strDest, int length);
 extern int bin_to_bcd(int value, int* digit_count);
 extern int m2_drawwindow(WINDOW* window);
 extern int m2_resetwindow(WINDOW* window, bool skip_redraw);
@@ -99,3 +134,8 @@ extern int m2_div(int dividend, int divisor);
 extern int m2_remainder(int dividend, int divisor);
 extern void m2_soundeffect(int index);
 extern void m2_printstr(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
+extern int customcodes_parse_generic(int code, char* parserAddress, WINDOW* window, int* dest);
+extern void m2_sub_d3c50();
+extern void m2_sub_d6844();
+extern int m2_setupwindow(WINDOW* window, short window_x, short window_y, short window_width, short window_height);
+extern void m2_setupbattlename(short value);

@@ -156,12 +156,12 @@ byte print_character_formatted(byte chr, int x, int y, int font, int foreground)
         return 8;
     }
 
-    return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, *tilemap_pointer, 32);
+    return print_character_with_callback(chr, x, y, font, foreground, vram, &get_tile_number_with_offset, *tilemap_pointer, 32, 0xC);
 }
 
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground)
 {
-    return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, NULL, 32);
+    return print_character_with_callback(chr, xOffset, 0, font, foreground, dest, &get_tile_number_grid, NULL, 32, 0x10);
 }
 
 // Prints a special tile. Pixels are copied to the VWF buffer.
@@ -199,7 +199,7 @@ void map_tile(unsigned short tile, int x, int y)
 }
 
 byte print_character_with_callback(byte chr, int x, int y, int font, int foreground,
-    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth)
+    int *dest, int (*getTileCallback)(int, int), unsigned short *tilemapPtr, int tilemapWidth, byte doubleTileHeight)
 {
     int tileWidth = m2_font_widths[font];
     int tileHeight = m2_font_heights[font];
@@ -215,11 +215,20 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
     int tileY = y >> 3;
     
     int offsetY = y & 7;
+    
+    if((tileY & 1) == 0 && offsetY >= doubleTileHeight - 0x8)
+    {
+        tileY++;
+        offsetY -= (doubleTileHeight - 0x8);
+    }
 
+    int nextY = offsetY;
     for (int dTileY = 0; dTileY < tileHeight; dTileY++) // dest tile Y
     {
         int dTileX = 0;
         int renderedWidth = widths >> 8;
+        offsetY = nextY;
+        bool changed = false;
 
         while (renderedWidth > 0)
         {
@@ -228,10 +237,13 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
             bool availableSwap = (dTileY != (tileHeight - 1));
             int realTileIndex = tileIndex;
             bool useful = false; //Maybe we go over the maximum tile height, let's make sure the extra tile is properly set IF it's useful
+            int tmpTileY = dTileY;
+            int limit = ((tmpTileY + tileY) & 1) == 0 ? doubleTileHeight - 8 - 1: 7;
+            int sumRemoved = 0;
 
             for (int row = 0; row < 8; row++)
             {
-                int canvasRow = dest[(realTileIndex * 8) + ((row + offsetY) & 7)];
+                int canvasRow = dest[(realTileIndex * 8) + ((row + offsetY - sumRemoved) & 7)];
                 byte glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] & ((1 << leftPortionWidth) - 1);
                 glyphRow <<= (8 - leftPortionWidth);
 
@@ -244,9 +256,21 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                 if(!availableSwap && ((row + offsetY) >> 3) == 1 && canvasRow != tmpCanvasRow) //This changed the canvas, then it's useful... IF it's the extra vertical tile
                     useful = true;
 
-                dest[(realTileIndex * 8) + ((row + offsetY) & 7)] = canvasRow;
-                if(offsetY != 0 && ((row + offsetY) == 7))
-                    realTileIndex = getTileCallback(tileX + dTileX, tileY + dTileY + 1);
+                dest[(realTileIndex * 8) + ((row + offsetY - sumRemoved) & 7)] = canvasRow;
+
+                if((row + offsetY - sumRemoved) == limit)
+                {
+                    realTileIndex = getTileCallback(tileX + dTileX, tileY + tmpTileY + 1);
+                    tmpTileY++;
+                    sumRemoved += limit + 1;
+                    if(!changed)
+                    {
+                        nextY = (nextY + limit + 1) & 7;
+                        changed = true;
+                    }
+                    limit = ((tmpTileY + tileY) & 1) == 0 ? doubleTileHeight - 8 - 1: 7;
+                        
+                }
             }
 
             if (tilemapPtr != NULL)
@@ -264,10 +288,13 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                 availableSwap = (dTileY != (tileHeight - 1));
                 realTileIndex = tileIndex;
                 useful = false; //Maybe we go over the maximum tile height, let's make sure the extra tile is properly set IF it's useful
+                tmpTileY = dTileY;
+                limit = ((tmpTileY + tileY) & 1) == 0 ? doubleTileHeight - 8 - 1: 7;
+                sumRemoved = 0;
 
                 for (int row = 0; row < 8; row++)
                 {
-                    int canvasRow = dest[(realTileIndex * 8) + ((row + offsetY) & 7)];
+                    int canvasRow = dest[(realTileIndex * 8) + ((row + offsetY - sumRemoved) & 7)];
                     byte glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] >> leftPortionWidth;
 
                     int expandedGlyphRow = expand_bit_depth(glyphRow, foreground);
@@ -279,9 +306,20 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                     if(!availableSwap && ((row + offsetY) >> 3) == 1 && canvasRow != tmpCanvasRow) //This changed the canvas, then it's useful... IF it's the extra vertical tile
                         useful = true;
 
-                    dest[(realTileIndex * 8) + ((row + offsetY) & 7)] = canvasRow;
-                    if(offsetY != 0 && ((row + offsetY) == 7))
-                        realTileIndex = getTileCallback(tileX + dTileX + 1, tileY + dTileY + 1);
+                    dest[(realTileIndex * 8) + ((row + offsetY - sumRemoved) & 7)] = canvasRow;
+                    
+                    if((row + offsetY - sumRemoved) == limit)
+                    {
+                        realTileIndex = getTileCallback(tileX + 1 + dTileX, tileY + tmpTileY + 1);
+                        tmpTileY++;
+                        sumRemoved += limit + 1;
+                        if(!changed)
+                        {
+                            nextY = (nextY + limit + 1) & 7;
+                            changed = true;
+                        }
+                        limit = ((tmpTileY + tileY) & 1) == 0 ? doubleTileHeight - 8 - 1: 7;
+                    }
                 }
                 
                 if (tilemapPtr != NULL)
@@ -291,7 +329,7 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                         tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY + 1) * tilemapWidth)] = paletteMask | realTileIndex;
                 }
             }
-
+            
             renderedWidth -= 8;
             dTileX++;
         }
@@ -768,29 +806,29 @@ void format_cash_window(int value, int padding, byte* str)
 
 int player_name_printing_registration(byte* str, WINDOW* window)
 {
-	char String[26];
-	bool ended = false;
-	int total = 24;
-	for(int i = 0; i < 24; i++)
-	{
-		if(ended)
-		{
-			String[i] = 0x53;
-		}
-		else if((i < 23 && str[i + 1] == 0xFF && str[i] == 0) || (i == 23 && str[i] == 0))
-		{
-			String[i] = 0x70;
-			total = i;
-			ended = true;
-		}
-		else
-			String[i] = str[i];
-	}
-	String[24] = 0;
-	String[25] = 0xFF;
-	print_blankstr_window(0, 2, 24, window);
-	m2_printstr(window, String, 0, 1, 0);
-	return total;
+    char String[26];
+    bool ended = false;
+    int total = 24;
+    for(int i = 0; i < 24; i++)
+    {
+        if(ended)
+        {
+            String[i] = 0x53;
+        }
+        else if((i < 23 && str[i + 1] == 0xFF && str[i] == 0) || (i == 23 && str[i] == 0))
+        {
+            String[i] = 0x70;
+            total = i;
+            ended = true;
+        }
+        else
+            String[i] = str[i];
+    }
+    String[24] = 0;
+    String[25] = 0xFF;
+    print_blankstr_window(0, 2, 24, window);
+    m2_printstr(window, String, 0, 1, 0);
+    return total;
 }
 
 // The game draws windows lazily: no window will be drawn to the screen until
@@ -814,4 +852,696 @@ void handle_first_window(WINDOW* window)
     {
         m2_drawwindow(window);
     }
+}
+
+int get_pointer_jump_back(byte *character)
+{
+    byte *address1 = ((byte*)0x3004F24);
+    byte *address2 = ((byte*)0x3005078);
+    byte val = (*address1);
+    byte val2 = (*address2);
+    if(val != 0 || val2 == 0)
+        return 0;
+    val2--;
+    (*address2) = val2;
+    int *address3 = ((int*)0x3005080);
+    byte *str = (byte*)(*(address3 + val2));
+    return (str - character - 2);
+}
+
+void print_letter_in_buffer(WINDOW* window, byte* character, int* dest)
+{
+    m2_cstm_last_printed[0] = (*character);
+    weld_entry_custom_buffer(window, character, 0, 0xF, dest);
+    if(window->delay_between_prints == 0)
+        return;
+    byte* address = (byte*)0x3005218;
+    byte counter = (*address);
+    if(counter == 1)
+        m2_soundeffect(0x133);
+}
+
+int print_window_with_buffer(WINDOW* window)
+{
+    int delay = 0;
+    if((window->loaded_code != 0) && ((*script_readability) == 0))
+    {
+        if(window->delay_between_prints == 0)
+            delay = 0;
+        else if(!window->enable && window->flags_unknown1 == 1)
+        {
+            
+        }
+        else if(window->enable && window->flags_unknown1 == 1)
+        {
+            
+        }
+        else
+            return 0;
+        while(window->loaded_code !=0)
+        {
+            window->delay = delay;
+            print_character_with_codes(window, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
+        }
+    }
+    return 0;
+}
+
+void scrolltext_buffer(WINDOW* window, int* dest)
+{
+    unsigned short empty_tile = ((*tile_offset) + 0x1FF) | (*palette_mask);
+    unsigned short *arrangementBase = (*tilemap_pointer);
+    int start = (window->window_y * 32) + window->window_x;
+    if(window->window_height <= 2)
+    {
+        if(window->window_area > 0)
+        {
+            for(int y = 0; y  < window->window_height && y + window->window_y <= 0x1F; y++)
+                for(int x = 0; x < window->window_width && x + window->window_x <= 0x1F; x++)
+                {
+                    arrangementBase[start + x + (y * 32)] = empty_tile;
+                    clear_tile_buffer(x + window->window_x, y + window->window_y, 0x44444444, dest);
+                }
+        }
+    }
+    
+    if(window->window_area > 0)
+    {
+        for(int y = 2; y  < window->window_height && y + window->window_y <= 0x1F; y++)
+                for(int x = 0; x < window->window_width && x + window->window_x <= 0x1F; x++)
+                {
+                    if(arrangementBase[start + ((y - 2) * 32) + x] == empty_tile)
+                    {
+                        if(arrangementBase[start + (y * 32) + x] != empty_tile) //Non Blank to Blank
+                        {
+                            copy_tile_up_buffer(x, y, dest);
+                            arrangementBase[start + ((y - 2) * 32) + x] = arrangementBase[start + (y * 32) + x];
+                        }
+                    }
+                    else
+                    {
+                        if(arrangementBase[start + (y * 32) + x] == empty_tile) //Blank to Non Blank
+                        {
+                            arrangementBase[start + ((y - 2) * 32) + x] = empty_tile;
+                        }
+                        copy_tile_up_buffer(x, y, dest); //Non Blank to Non Blank
+                    }
+                    
+                }
+    }
+    
+    for(int y = window->window_height - 2; y >= 0 && y < window->window_height; y++)
+        for(int x = 0; x < window->window_width && x + window->window_x <= 0x1F; x++)
+        {
+            arrangementBase[start + x + (y * 32)] = empty_tile;
+            clear_tile_buffer(x + window->window_x, y + window->window_y, 0x44444444, dest);
+        }
+}
+
+void properScroll(WINDOW* window, int* dest)
+{
+    scrolltext_buffer(window, dest);
+    window->text_y = window->text_y - 2;
+    window->text_x = 0;
+    window->pixel_x = 0;
+}
+
+void setStuffWindow_Graphics()
+{
+    int *something = (int*)0x3005220;
+    unsigned short *address = (unsigned short*)((*something) + 0x4BA);
+    (*address) = 0;
+    (*(address + 2)) = 0;
+    (*(address - 2)) = (*(address - 2)) + 1;
+    if((*(address - 2)) >= 2)
+        (*(address + 2)) = 0;
+}
+
+int jumpToOffset(byte* character)
+{
+    int returnOffset = 0;
+    int baseOffset = 0;
+    if((*(character + 1)) != 0xFF)
+        return 0;
+    int code = 0xFFFF009F + ((*character) | 0xFF00);
+
+    switch(code)
+    {
+        case 0x25:
+            returnOffset += 2;
+            baseOffset = returnOffset;
+            for(int i = 0; i < 4; i++)
+                returnOffset = returnOffset + ((*(character + baseOffset + i)) << (8 * i));
+            byte* totalJumps = (byte*)0x3005078;
+            byte** oldOffsets = (byte**)0x3005080;
+            oldOffsets[*totalJumps] = character + 6;
+            (*totalJumps)++;
+        break;
+        default:
+            return 0;
+    }
+
+    return returnOffset;
+}
+
+byte print_character_with_codes(WINDOW* window, int* dest)
+{
+    int delay = window->delay--;
+    if(delay > 0)
+        return 0;
+    bool usingOffset2= false;
+    int offsetJump = 0;
+    int returnedLength = 0;
+    byte *character = window->text_start + window->text_offset;    
+    int y = window->window_y + window->text_y;
+    int x = window->window_x + window->text_x;
+    unsigned short *tilesetDest = (unsigned short *)(*tilemap_pointer);
+    tilesetDest = tilesetDest + (y << 6) + (x << 1);
+    
+    
+    if((*(character + 1)) != 0xFF)
+        if(window->text_y >= window->window_height || y > 0x1F)
+        {
+            properScroll(window, dest);
+            return 0;
+        }
+    
+    switch(window->loaded_code)
+    {
+        case 6:
+        break;
+        case 7:
+            character = m2_ness_name + window->text_offset2; //Ness
+            usingOffset2 = true;
+        break;
+        case 8:
+            character = (m2_ness_name + 7) + window->text_offset2; //Paula
+            usingOffset2 = true;
+        break;
+        case 9:
+            character = (m2_ness_name + 14) + window->text_offset2; //Jeff
+            usingOffset2 = true;
+        break;
+        case 10:
+            character = (m2_ness_name + 21) + window->text_offset2; //Poo
+            usingOffset2 = true;
+        break;
+        case 11:
+            character = (m2_ness_name + 36) + window->text_offset2; //Food
+            usingOffset2 = true;
+        break;
+        case 12:
+            character = (m2_ness_name + 44) + window->text_offset2; //Rockin
+            usingOffset2 = true;
+        break;
+        case 20:
+            character = (m2_ness_name + 28) + window->text_offset2; //King
+            usingOffset2 = true;
+        break;
+        case 13:
+        break; //User
+        case 14:
+        break; //Target
+        default:
+        break;
+    }
+    
+    if((*(character + 1)) == 0xFF)
+    {
+        byte code = (*character);
+        switch(code)
+        {
+            case 1:
+                window->text_y += 2;
+                window->text_x = 0;
+                window->pixel_x = 0;
+                if(!usingOffset2)
+                    window->text_offset += 2;
+                else
+                    window->text_offset2 += 2;
+                setStuffWindow_Graphics();
+                if(window->text_y >= window->window_height || window->text_y + window->window_y > 0x1F)
+                    properScroll(window, dest);
+            break;
+            case 2:
+                window->text_y += 2;
+                window->text_x = 0;
+                window->pixel_x = 0;
+                if(!usingOffset2)
+                    window->text_offset += 2;
+                else
+                    window->text_offset2 += 2;
+                window->counter = 0;
+                window->loaded_code = 2;
+                setStuffWindow_Graphics();
+                return 2;
+            case 0xD:
+            case 0xE:
+            case 0xF:
+            case 0x10:
+                window->text_offset += 2;
+                window->text_offset2 = 0;
+                window->loaded_code = 7 + code - 0xD;
+            break;
+            case 0:
+            if(window->loaded_code >= 6 && window->loaded_code <= 0x20)
+            {
+                window->loaded_code = 1;
+                return 1;
+            }
+            else
+            {
+                offsetJump = get_pointer_jump_back(character);
+                if(offsetJump != 0)
+                    window->text_offset += 2 + offsetJump;
+                else
+                {
+                    window->loaded_code = 0;
+                    return 1;
+                }
+            }
+            break;
+            default:
+                if(code >= 0x60)
+                    window->text_offset += jumpToOffset(character);
+                else
+                {
+                    returnedLength = customcodes_parse_generic(code, character, window, dest);
+                    if(returnedLength == 0)
+                        returnedLength = 2;
+                    else if(returnedLength < 0)
+                        returnedLength = 0;
+                    window->text_offset += returnedLength;
+                }
+            break;
+        }
+    }
+    else
+    {
+        handle_first_window_buffer(window, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
+        window->delay = window->delay_between_prints;
+        if(x > 0x1F)
+        {
+            window->text_y += 2;
+            window->text_x = 0;
+            window->pixel_x = 0;
+        }
+        print_letter_in_buffer(window, character, dest);
+        if(!usingOffset2)
+            window->text_offset += 1;
+        else
+            window->text_offset2 += 1;
+    }
+    return 0;
+}
+
+byte print_character_formatted_buffer(byte chr, int x, int y, int font, int foreground, int *dest)
+{
+    // 0x64 to 0x6C (inclusive) is YOU WON
+    if ((chr >= YOUWON_START) && (chr <= YOUWON_END))
+    {
+        print_special_character(chr + 0xF0, x, y);
+        return 8;
+    }
+
+    // 0x6D is an arrow ->
+    else if (chr == ARROW)
+    {
+        print_special_character(ARROW + 0x30, x, y);
+        return 8;
+    }
+
+    return print_character_with_callback(chr, x, y, font, foreground, dest, &get_tile_number_with_offset, *tilemap_pointer, 32, 0xC);
+}
+
+void weld_entry_custom_buffer(WINDOW *window, byte *str, int font, int foreground, int* dest)
+{
+    int chr = decode_character(*str);
+
+    int x = window->pixel_x + (window->window_x + window->text_x) * 8;
+    int y = (window->window_y + window->text_y) * 8;
+
+    x += print_character_formatted_buffer(chr, x, y, font, foreground, dest);
+
+    window->pixel_x = x & 7;
+    window->text_x = (x >> 3) - window->window_x;
+}
+
+void handle_first_window_buffer(WINDOW* window, int* dest)
+{
+    if (*first_window_flag == 1)
+    {
+        buffer_reset_window(window, false, dest);
+        *first_window_flag = 0;
+    }
+    else if (window->redraw)
+    {
+        window->pixel_x = 0;
+        buffer_drawwindow(window, dest);
+    }
+}
+
+void clear_window_buffer(WINDOW *window, int* dest)
+{
+    clear_rect_buffer(window->window_x, window->window_y,
+        window->window_width, window->window_height,
+        WINDOW_AREA_BG, dest);
+}
+
+// x,y: tile coordinates
+void clear_rect_buffer(int x, int y, int width, int height, int pixels, int* dest)
+{
+    for (int tileY = 0; tileY < height; tileY++)
+    {
+        for (int tileX = 0; tileX < width; tileX++)
+        {
+            clear_tile_buffer(x + tileX, y + tileY, pixels, dest);
+        }
+    }
+}
+
+int print_string_in_buffer(byte *str, int x, int y, int *dest)
+{
+    if (str == NULL)
+        return 0;
+
+    byte chr;
+    int initial_x = x;
+    int charCount = 0;
+
+    while (str[1] != 0xFF)
+    {
+        x += print_character_formatted_buffer(decode_character(*str++), x, y, 0, 0xF, dest);
+        charCount++;
+    }
+
+    int totalWidth = x - initial_x;
+
+    return (charCount & 0xFFFF) | (totalWidth << 16);
+}
+
+void printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
+{
+    int tmpOffset = window->text_offset;
+    int tmpOffset2 = window->text_offset2;
+    byte* tmpTextStart = window->text_start;
+    unsigned short tmpText_x = window->text_x;
+    unsigned short tmpText_y = window->text_y;
+    unsigned short tmpDelayPrints = window->delay_between_prints;
+    unsigned short tmpPaletteMsk = (*palette_mask);
+    unsigned short palette_mask_highlight = tmpPaletteMsk;
+    window->text_start = str;
+    window->text_offset = 0;
+    window->text_offset2 = 0;
+    window->text_x = x;
+    window->text_y = (y << 1);
+    if(highlight)
+        palette_mask_highlight += 0x1000;
+    (*palette_mask) = palette_mask_highlight;
+    
+    window->pixel_x = 0;
+    unsigned short output = 0;
+    while(output != 1)
+    {
+        window->delay = 0;
+        output = print_character_with_codes(window, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
+    }
+    
+    window->text_start = tmpTextStart;
+    window->text_offset = tmpOffset;
+    window->text_offset2 = tmpOffset2;
+    window->text_x = tmpText_x;
+    window->text_y = tmpText_y;
+    window->delay_between_prints = tmpDelayPrints;
+    (*palette_mask) = tmpPaletteMsk;
+}
+
+unsigned short printstr_hlight_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
+{
+    return printstr_hlight_pixels_buffer(window, str, x << 3, y << 4, highlight);
+}
+
+unsigned short printstr_hlight_pixels_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
+{
+    unsigned short printX = x + ((window->window_x) << 3);
+    unsigned short printY = y + ((window->window_y) << 3);
+    unsigned short tmpPaletteMsk = (*palette_mask);
+    unsigned short palette_mask_highlight = tmpPaletteMsk;
+    if(highlight)
+        palette_mask_highlight += 0x1000;
+    (*palette_mask) = palette_mask_highlight;
+    
+    unsigned short printed_Characters = print_string_in_buffer(str, printX, printY, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
+    
+    (*palette_mask) = tmpPaletteMsk;
+    
+    return printed_Characters;
+}
+
+WINDOW* getWindow(int index)
+{
+    return window_pointers[index];
+}
+
+int initWindow_buffer(WINDOW* window, byte* text_start, unsigned short delay_between_prints)
+{
+    window->vwf_skip = false;
+    window->unknown3 = 0;
+    window->text_x = 0;
+    window->text_y = 0;
+    window->text_offset = 0;
+    window->text_start = text_start;
+    window->text_start2 = text_start;
+    window->delay_between_prints = delay_between_prints;
+    window->delay = 0;
+    window->loaded_code = 1;
+    window->enable = true;
+    window->flags_unknown1 |= 1;
+    window->redraw = true;
+    if(text_start == NULL)
+        buffer_drawwindow(window, (int*)(OVERWORLD_BUFFER - 0x2000));
+    return 0;
+}
+
+void clearWindowTiles_buffer(WINDOW* window)
+{
+    clear_window_buffer(window, (int*)(OVERWORLD_BUFFER - 0x2000));
+    window->text_x = 0;
+    window->text_y = 0;
+}
+
+// x,y: tile coordinates
+void clear_tile_buffer(int x, int y, int pixels, int* dest)
+{
+    // Clear pixels
+    int tileIndex = get_tile_number(x, y) + *tile_offset;
+    cpufastset(&pixels, &dest[tileIndex * 8], CPUFASTSET_FILL | 8);
+
+    // Reset the tilemap (e.g. get rid of equip or SMAAAASH!! tiles)
+    (*tilemap_pointer)[x + (y * 32)] = tileIndex | *palette_mask;
+}
+
+int buffer_reset_window(WINDOW* window, bool skip_redraw, int* dest)
+{
+    window->delay = 0;
+    byte code = window->loaded_code - 0xD;
+    if(code >= 1)
+        window->loaded_code = 1;
+    window->enable = true;
+    window->flags_unknown1 = 1;
+    window->redraw = true;
+    window->hold = true;
+    window->flags_unknown3a = window->flags_unknown3a && 0x1C; //The first byte is set to 0x23
+    if(!skip_redraw)
+        buffer_drawwindow(window, dest);
+    return 0;
+}
+
+int buffer_drawwindow(WINDOW* window, int* dest)
+{
+    clear_window_buffer(window, dest);
+    unsigned short empty_tile = (0x1FF + (*tile_offset)) | (*palette_mask);
+    int baseOfWindow = ((window->window_y - 1) * 32) + window->window_x - 1;
+    unsigned short *arrangementBase = (*tilemap_pointer);
+    
+    for(int y = 0; y  < window->window_height && y + window->window_y <= 0x1F; y++)
+        for(int x = 0; x < window->window_width && x + window->window_x <= 0x1F; x++)
+            arrangementBase[baseOfWindow + 1 + x + ((y + 1) * 32)] = empty_tile;
+    
+    window->counter = 0;
+    unsigned short void_tile = (0x1DF + (*tile_offset)) | (*palette_mask);
+    if((window->window_x - 1 < 0) || (window->window_x - 1 + window->window_width > 0x1F) || (window->window_y - 1 < 0) || (window->window_y - 1 + window->window_height > 0x1F))
+        return -1;
+
+    //Tiles
+    unsigned short bottom_right_corner_void = (0x93 + (*tile_offset)) | (*palette_mask);
+    unsigned short bottom_right_corner_full = (0x94 + (*tile_offset)) | (*palette_mask);
+    unsigned short bottom_left_corner_void = 0x400 | bottom_right_corner_void;
+    unsigned short bottom_left_corner_full = 0x400 | bottom_right_corner_full;
+    unsigned short top_right_corner_void = 0x800 | bottom_right_corner_void;
+    unsigned short top_right_corner_full = 0x800 | bottom_right_corner_full;
+    unsigned short top_left_corner_void = 0xC00 | bottom_right_corner_void;
+    unsigned short top_left_corner_full = 0xC00 | bottom_right_corner_full;
+
+    //Check which tiles to use for the corners
+    unsigned short current_top_left_tile = arrangementBase[baseOfWindow];
+    if(current_top_left_tile == void_tile) //Top left
+        arrangementBase[baseOfWindow] = top_left_corner_void;
+    else if(current_top_left_tile != top_left_corner_void)
+        arrangementBase[baseOfWindow] = top_left_corner_full;
+    unsigned short current_top_right_tile = arrangementBase[baseOfWindow + 1 + window->window_width];
+    if(current_top_right_tile == void_tile) //Top right
+        arrangementBase[baseOfWindow + 1 + window->window_width] = top_right_corner_void;
+    else if(current_top_right_tile != top_right_corner_void)
+        arrangementBase[baseOfWindow + 1 + window->window_width] = top_right_corner_full;
+    unsigned short current_bottom_left_tile = arrangementBase[baseOfWindow + ((window->window_height + 1) * 32)];
+    if(current_bottom_left_tile == void_tile) //Bottom left
+        arrangementBase[baseOfWindow + ((window->window_height + 1) * 32)] = bottom_left_corner_void;
+    else if(current_bottom_left_tile != bottom_left_corner_void)
+        arrangementBase[baseOfWindow + ((window->window_height + 1) * 32)] = bottom_left_corner_full;
+    unsigned short current_bottom_right_tile = arrangementBase[baseOfWindow + ((window->window_height + 1) * 32) + 1 + window->window_width];
+    if(current_bottom_right_tile == void_tile) //Bottom right
+        arrangementBase[baseOfWindow + ((window->window_height + 1) * 32) + 1 + window->window_width] = bottom_right_corner_void;
+    else if(current_bottom_right_tile != bottom_right_corner_void)
+        arrangementBase[baseOfWindow + ((window->window_height + 1) * 32) + 1 + window->window_width] = bottom_right_corner_full;
+    
+    //Border tiles
+    unsigned short *address = (unsigned short*)0x3000A0E;
+    unsigned short bottom_horizontal = (0x96 + (*tile_offset)) | (*palette_mask);
+    unsigned short top_horizontal = 0x800 | bottom_horizontal;
+    unsigned short right_vertical = (0x95 + (*tile_offset)) | (*palette_mask);
+    unsigned short left_vertical = 0x400 | right_vertical;
+    
+    for(int i = 0; i < window->window_width; i++)
+    {
+        arrangementBase[baseOfWindow + 1 + i] = top_horizontal;
+        arrangementBase[baseOfWindow + ((window->window_height + 1) * 32) + 1 + i] = bottom_horizontal;
+    }
+    
+    for(int i = 0; i < window->window_height; i++)
+    {
+        arrangementBase[baseOfWindow + ((i + 1) * 32)] = left_vertical;
+        arrangementBase[baseOfWindow + ((i + 1) * 32) + 1 + window->window_width] = right_vertical;
+    }
+    
+    window->redraw = false;
+    window->enable = true;
+    
+    (*address) = 1;
+    return 0;
+}
+
+int setNumber_getLength(int value, byte *str, int maxLength)
+{
+    if(value <= 0)
+    {
+        str[0] = ZERO;
+        return 1;
+    }
+    unsigned int *upperValuesTable = (unsigned int*)0x8B1C064;
+    unsigned int upperValue = *(upperValuesTable + maxLength);
+    if(value >= upperValue)
+    {
+        for(int i = 0; i < maxLength; i++)
+            str[i] = ZERO + 9;
+        return maxLength;
+    }
+    int pos = 0;
+    int tmpValue = value;
+    for(int i=0; i < maxLength + 1; i++)
+    {
+        if(value >= upperValue)
+        {
+            byte digit;
+            if(upperValue == 0)
+                digit = tmpValue;
+            else
+            {
+                digit = m2_div(tmpValue, upperValue);
+                tmpValue -= (digit * upperValue);
+            }
+            str[pos++] = ZERO + digit;
+        }
+        upperValue = *(upperValuesTable + maxLength - i - 1);
+    }
+    return pos;
+}
+
+unsigned short ailmentTileSetup(byte *ailmentBase, unsigned short defaultVal)
+{
+    int value = defaultVal;
+    byte flagValue = 0;
+    if((*ailmentBase) == CONSCIOUS)
+    {
+        if((*(ailmentBase + 1)) != CONSCIOUS)
+        {
+            flagValue = (*(ailmentBase + 1));
+            value = 1;
+        }
+        else if((*(ailmentBase + 2)) != CONSCIOUS)
+        {
+            flagValue = (*(ailmentBase + 2));
+            value = 2;
+        }
+        else if((*(ailmentBase + 3)))
+        {
+            flagValue = (*(ailmentBase + 3));
+            value = 3;
+        }
+        else if((*(ailmentBase + 4)))
+        {
+            flagValue = (*(ailmentBase + 4));
+            value = 4;
+        }
+        else if((*(ailmentBase + 5)))
+        {
+            flagValue = (*(ailmentBase + 5));
+            value = 5;
+        }
+        else if((*(ailmentBase + 6)))
+        {
+            flagValue = (*(ailmentBase + 6));
+            value = 6;
+        }
+        else 
+            return 0;
+    }
+    else 
+    {
+        value = 0;
+        flagValue = (*(ailmentBase));
+    }
+    unsigned short *returnValues = (unsigned short*)0x8B1F2E4;
+    return (*(returnValues + (value * 7) + flagValue - 1));
+}
+
+void printCashWindow()
+{
+    (*window_flags) |= 2;
+    byte *str = (*free_strings_pointers);
+    format_cash_window(*cash_on_hand, 0x30, str);
+    initWindow_buffer(getWindow(1), str, 0);
+    print_window_with_buffer(getWindow(1));
+    m2_sub_d6844();
+    m2_sub_d3c50();
+}
+
+// x, y, width: tile coordinates
+void print_blankstr_buffer(int x, int y, int width, int *dest)
+{
+    clear_rect_buffer(x, y, width, 2, WINDOW_AREA_BG, dest);
+}
+
+// x,y: tile coordinates
+void copy_tile_buffer(int xSource, int ySource, int xDest, int yDest, int *dest)
+{
+    int sourceTileIndex = get_tile_number(xSource, ySource) + *tile_offset;
+    int destTileIndex = get_tile_number(xDest, yDest) + *tile_offset;
+    cpufastset(&dest[sourceTileIndex * 8], &dest[destTileIndex * 8], 8);
+}
+
+// x,y: tile coordinates
+void copy_tile_up_buffer(int x, int y, int *dest)
+{
+    copy_tile_buffer(x, y, x, y - 2, dest);
 }

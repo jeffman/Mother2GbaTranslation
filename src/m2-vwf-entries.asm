@@ -330,20 +330,109 @@ bl      0x80BE260
 mov     r1,r0
 mov     r0,r4
 mov     r2,0
-bl      0x80BE458
+bl      initWindow_buffer
 
 // Render text
 mov     r0,r4
-bl      0x80C8FFC
+bl      statusWindowText
 
 // Render numbers
 mov     r0,r4
+ldrh    r1,[r0,#0]
+ldr     r2,=#0xFBFF
+and     r1,r2
+strh    r1,[r0,#0]
 mov     r1,0
-bl      0x80C0A5C
+bl      statusNumbersPrint
 
 pop     {r4,pc}
 .pool
 
+//==============================================================================
+// Redraws the status window (when exiting the PSI menu) and stores it
+bac18_redraw_status_store:
+push    {lr}
+bl      bac18_redraw_status
+bl      store_pixels_overworld
+pop     {pc}
+.pool
+
+//==============================================================================
+// Calls m2_soundeffect only if we're going in either talk or check
+beaa6_fix_sounds:
+push    {lr}
+mov     r1,r10
+add     r1,r1,r4
+mov     r2,r5
+add     r2,#0x42
+ldrb    r2,[r2,#0] //Is this the status window? If not, then do the sound
+cmp     r2,#0
+beq     @@sound
+cmp     r1,#0
+beq     @@sound
+cmp     r1,#4
+bne     @@end
+@@sound:
+bl      m2_soundeffect
+@@end:
+pop     {pc}
+
+//==============================================================================
+// Loads the buffer up in battle
+dc22a_load_buffer_battle:
+push    {lr}
+mov     r9,r0
+ldr     r3,[r5,#0]
+bl      load_pixels_overworld
+push    {r0-r3}
+swi     #5
+pop     {r0-r3}
+pop     {pc}
+
+//==============================================================================
+// Calls m2_soundeffect only if we're out of the main menu
+bea88_fix_sounds:
+push    {lr}
+mov     r2,r5
+add     r2,#0x42
+ldrb    r2,[r2,#0] //Is this the status window? If not, then we may not want to do the sound
+cmp     r2,#0
+bne     @@sound
+ldrb    r2,[r5,#3] //If we are printing, then don't do the sound
+mov     r1,#1
+and     r1,r2
+cmp     r1,#0
+beq     @@end
+@@sound:
+bl      m2_soundeffect
+@@end:
+pop     {pc}
+
+//==============================================================================
+// Only if the character changed store the buffer - called when reading inputs
+bac6e_statusWindowNumbersInputManagement:
+push    {lr}
+ldr     r2,=#m2_active_window_pc
+ldrb    r2,[r2,#0]
+push    {r2}
+bl      statusWindowNumbers
+pop     {r2}
+ldr     r1,=#m2_active_window_pc
+ldrb    r1,[r1,#0]
+cmp     r1,r2
+beq     @@end
+bl      store_pixels_overworld
+
+@@end:
+pop     {pc}
+
+//==============================================================================
+//Prints the attack target choice menu and stores the buffer
+e02c6_print_target_store:
+push    {lr}
+bl      printTargetOfAttack
+bl      store_pixels_overworld
+pop     {pc}
 
 //==============================================================================
 // Clears the PSI window when switching classes
@@ -359,7 +448,8 @@ beq     @@next
 
 // If flag 0x10 is set, clear the PSI window
 ldr     r0,[r5,0x1C] // PSI window
-bl      clear_window
+ldr     r1,=#0x2012000
+bl      clear_window_buffer
 
 @@next:
 // Clobbered code
@@ -393,6 +483,8 @@ b8bbc_redraw_menu_2to1:
 push    {r1-r4,lr}
 add     sp,-4
 
+swi #5
+
 // Copied from 80B7A74
 mov     r0,0
 str     r0,[sp]
@@ -404,15 +496,29 @@ mov     r3,2
 mov     r4,r0
 bl      0x80BE4C8
 mov     r0,r4
-bl      0x80C8BE4
+bl      print_window_with_buffer
+
+swi #5
 
 // Clobbered code (restore the window borders, etc.)
 mov     r0,1
-bl      0x80BD7AC
+bl      m2_swapwindowbuf
 
 add     sp,4
 pop     {r1-r4,pc}
 .pool
+
+//==============================================================================
+// Redraw main menu when exiting PSI window from using a PSI and stores the buffer
+b8bbc_redraw_menu_13to2_store:
+push    {lr}
+bl      b8bbc_redraw_menu_13to2
+mov     r3,r9
+cmp     r3,#0
+beq     @@end //store only if we're exiting the menu
+bl      store_pixels_overworld
+@@end:
+pop     {pc}
 
 //==============================================================================
 // Redraw main menu when entering PSI target window
@@ -420,6 +526,8 @@ b8bbc_redraw_menu_13to2:
 push    {r1-r4,lr}
 add     sp,-4
 
+swi #5
+
 // Copied from 80B7A74
 mov     r0,0
 str     r0,[sp]
@@ -431,7 +539,9 @@ mov     r3,2
 mov     r4,r0
 bl      0x80BE4C8
 mov     r0,r4
-bl      0x80C8BE4
+bl      print_window_with_buffer
+
+swi #5
 
 // Clobbered code (restore the window borders, etc.)
 mov     r0,1
@@ -595,9 +705,10 @@ ldr     r0,=0x3002500
 ldrh    r0,[r0]
 cmp     r0,0
 beq     @@next
-ldr     r0,=0x3005230
+ldr     r0,=#0x3005230
+ldr     r1,=#0x2012000
 ldr     r0,[r0,0x1C]
-bl      clear_window
+bl      clear_window_buffer
 
 @@next:
 pop     {r0-r1}
@@ -613,24 +724,10 @@ pop     {pc}
 e06ec_redraw_psi:
 push    {r0-r3,lr}
 
-// Clear old tiles
-mov     r0,2
-mov     r1,3
-mov     r2,1
-bl      print_blankstr
-
-// Render PSI string
-add     sp,-4
-ldr     r0,=0x80DC1EC // address of PSI string pointer
-ldr     r1,[r0] // PSI string pointer
-ldr     r0,=0x3005230
-ldr     r0,[r0] // window pointer
-mov     r2,1 // highlight
-str     r2,[sp]
-mov     r2,1
-mov     r3,1
-bl      0x80C96F0 // render string
-add     sp,4
+mov     r0,#1
+mov     r1,#2
+mov     r2,#2
+bl      printBattleMenu
 
 // Clobbered code
 pop     {r0-r3}
@@ -642,56 +739,72 @@ pop     {pc}
 // Redraw Bash/Do Nothing and PSI commands when exiting PSI ally target subwindow
 e06ec_redraw_bash_psi:
 push    {r0-r3,lr}
-add     sp,-4
-
-// Clear old tiles
-mov     r0,2
-mov     r1,1
-mov     r2,1
-bl      print_blankstr
-mov     r0,2
-mov     r1,3
-mov     r2,1
-bl      print_blankstr
-
-// We need to figure out whether to draw Bash or Do Nothing
-// If [0x2025122] == 2, draw Do Nothing; else, draw Bash
-// We'll never draw Shoot because Jeff doesn't use PSI
-ldr     r0,=0x2025122
-ldrh    r0,[r0]
-cmp     r0,2
-beq     @@donothing
-ldr     r0,=0x80DBFB0
-b       @@next
-@@donothing:
-ldr     r0,=0x80DC108
-@@next:
-ldr     r1,[r0]
-ldr     r0,=0x3005230
-ldr     r0,[r0] // window pointer
-mov     r2,0 // no highlight
-str     r2,[sp]
-mov     r2,1
-mov     r3,0
-bl      0x80C96F0 // render string
-
-// Render PSI string
-ldr     r0,=0x80DC1EC // address of PSI string pointer
-ldr     r1,[r0] // PSI string pointer
-ldr     r0,=0x3005230
-ldr     r0,[r0] // window pointer
-mov     r2,1 // highlight
-str     r2,[sp]
-mov     r2,1
-mov     r3,1
-bl      0x80C96F0 // render string
-add     sp,4
+mov     r0,#1
+mov     r1,#3
+mov     r2,#2
+bl      printBattleMenu
 
 // Clobbered code
 pop     {r0-r3}
 bl      0x80BD7F8 // restore tilemaps
 pop     {pc}
 .pool
+
+//==============================================================================
+// Redraw Bash/Do Nothing, PSI commands, Goods and Defend when choosing enemy target
+e06ec_redraw_bash_psi_goods_defend:
+push    {lr}
+push    {r0-r3}
+ldr     r2,=#0x8B204E4 //Is this an offensive PSI which needs a target? If so, redraw the background window
+ldr     r1,=#0x8B2A9B0
+ldr     r0,[r6,#0x1C]
+ldr     r0,[r0,#0x10]
+ldrh    r3,[r0,#2]
+lsl     r3,r3,#4
+add     r0,r3,r1
+ldrh    r3,[r0,#4]
+lsl     r0,r3,#1
+add     r0,r0,r3
+lsl     r0,r0,#2
+add     r3,r0,r2
+ldrb    r0,[r3,#1]
+cmp     r0,#1
+beq     @@keep
+cmp     r0,#3
+bne     @@notOffensive //Otherwise, do not do it
+@@keep:
+ldrb    r0,[r3]
+cmp     r0,#0
+bne     @@notOffensive
+
+mov     r0,#3
+mov     r1,#3
+mov     r2,#2
+bl      printBattleMenu
+
+@@notOffensive:
+
+pop     {r0-r3}
+
+bl      0x80C2480 //Prints the target
+pop     {pc}
+.pool
+
+//==============================================================================
+//Calls the funcion which loads the targets in and then stores the buffer
+ba8ac_load_targets_print:
+push    {lr}
+ldr     r2,=#0x20248AC
+ldrh    r2,[r2,#0]
+push    {r2}
+bl      0x80BAA80
+pop     {r2}
+cmp     r2,#0
+bne     @@end //Store the buffer to vram only if the target window was printed.
+bl      store_pixels_overworld
+@@end:
+pop     {pc}
+
 
 //==============================================================================
 // Print "PSI "
@@ -702,7 +815,7 @@ mov     r2,0
 str     r2,[sp]
 mov     r2,r4
 lsl     r3,r3,3 // tiles-to-pixels
-bl      print_string_hlight_pixels
+bl      printstr_hlight_pixels_buffer
 add     sp,4
 pop     {pc}
 
@@ -1658,7 +1771,7 @@ beq     @@do_not_print
 mov     r2,#1 //Goes on as usual and sets vwf_skip to true
 orr     r2,r1
 strb    r2,[r0,#3]
-bl      m2_clearwindowtiles
+bl      clearWindowTiles_buffer
 pop     {pc}
 
 @@do_not_print: //Doesn't print in the PSI window
@@ -1668,9 +1781,7 @@ ldsh    r1,[r1,r2]
 push    {r1} //Stores the active window pc
 bl      0x80C3F28 //Input management function
 pop     {r1} //Restores the active window pc
-cmp     r0,#0
-bgt     @@goToInner //This is the character who's psi window we're going in, if it's > 0. We do one iteration more than needed in case 1 because that fixes the "two sounds" issue when entering the inner psi window... For some reason?
-cmp     r0,#0
+cmp     r0,#0 //Are we changing the window we're in? If this is 0, we're not
 beq     @@no_change_in_window
 lsl     r0,r0,#0x10 //If r0 is 0xFFFFFFFF, then we're exiting the window
 lsr     r5,r0,#0x10 //Set up r5 properly
@@ -1837,7 +1948,7 @@ ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
 push    {r1}
 ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
 push    {r1}
-bl      0x80C438C //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
+bl      PSITargetWindowInput //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
 lsl     r0,r0,#0x10
 lsr     r4,r0,#0x10 //Properly stores the output into r4
 
@@ -1874,9 +1985,10 @@ cmp     r1,#0 //Checks if vwf_skip is false
 bne     @@end
 mov     r1,r2 //If it is, prints the PSI description
 mov     r2,0
-bl      m2_initwindow //Initializes the PSI description window
+bl      initWindow_buffer //Initializes the PSI description window
 ldr     r0,[r5,0x28]
-bl      0x80C8BE4 //Prints the PSI description window
+bl      print_window_with_buffer //Prints the PSI description window
+bl      store_pixels_overworld
 ldr     r0,[r5,0x28]
 ldrb    r1,[r0,#3] //Sets vwf_skip to true
 mov     r3,#1
@@ -1905,24 +2017,58 @@ bx      r0 //Jump to the next useful piece of code
 .pool
 
 //==============================================================================
+//Fixes issue with sounds when going from the PSI window to the inner PSI window
+b8d40_psi_going_inner_window:
+push    {lr}
+bl      PSITargetWindowInput
+bl      store_pixels_overworld
+pop     {pc}
+
+//==============================================================================
 //It sets things up to make it so the target window is only printed once
 b8db4_psi_inner_window:
 push    {lr}
+ldrb    r1,[r0,#3]
+push    {r1}
 ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
 push    {r1}
 ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
 push    {r1}
-bl      0x80C438C //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
+bl      PSITargetWindowInput //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
+pop     {r2}
+ldr     r3,[r4,0x24] //Target window
+ldrh    r1,[r3,#0x34] //Stores the cursor's X of the window
+cmp     r1,r2
+bne     @@store_buffer_first
+pop     {r2}
+ldrh    r1,[r3,#0x36] //Stores the cursor's Y of the window
+cmp     r1,r2
+bne     @@store_buffer_second
+pop     {r2}
+mov     r1,#1
+and     r1,r2
+cmp     r1,#1
+beq     @@continue
+b       @@store_buffer
+
+@@store_buffer_first:
+pop     {r2}
+@@store_buffer_second:
+pop     {r2}
+@@store_buffer:
+cmp     r0,#0
+bne     @@continue
+bl      store_pixels_overworld
+
+@@continue:
 cmp     r0,#0
 beq     @@ending
 
-mov     r2,#0 //Sets vwf_skip to false since the window is change
+mov     r2,#0 //Sets vwf_skip to false since the window is changed
 ldr     r1,[r4,0x24] //Target window
 strb    r2,[r1,#3]
 
 @@ending:
-pop     {r1}
-pop     {r1}
 pop     {pc}
 
 .pool
@@ -1931,11 +2077,39 @@ pop     {pc}
 //It sets things up to make it so the target window is only printed once
 e0854_psi_inner_window_battle:
 push    {lr}
+ldrb    r1,[r0,#3]
+push    {r1}
 ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
 push    {r1}
 ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
 push    {r1}
-bl      0x80C438C //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
+bl      PSITargetWindowInput //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
+pop     {r2}
+ldr     r3,[r4,0x24] //Target window
+ldrh    r1,[r3,#0x34] //Stores the cursor's X of the window
+cmp     r1,r2
+bne     @@store_buffer_first
+pop     {r2}
+ldrh    r1,[r3,#0x36] //Stores the cursor's Y of the window
+cmp     r1,r2
+bne     @@store_buffer_second
+pop     {r2}
+mov     r1,#1
+and     r1,r2
+cmp     r1,#1
+beq     @@continue
+b       @@store_buffer
+
+@@store_buffer_first:
+pop     {r2}
+@@store_buffer_second:
+pop     {r2}
+@@store_buffer:
+cmp     r0,#0
+bne     @@continue
+bl      store_pixels_overworld_psi_window
+
+@@continue:
 cmp     r0,#0
 beq     @@ending
 
@@ -1944,8 +2118,6 @@ ldr     r1,[r5,0x24] //Target window
 strb    r2,[r1,#3]
 
 @@ending:
-pop     {r1}
-pop     {r1}
 pop     {pc}
 
 .pool
@@ -2026,6 +2198,31 @@ pop     {pc}
 .pool
 
 //==============================================================================
+//Prints and stores the PSI window in the PSI menu
+baec6_psi_window_print_buffer:
+push    {lr}
+bl      psiWindow_buffer
+bl      store_pixels_overworld
+pop     {pc}
+
+//==============================================================================
+//Loads the buffer in if entering another window from the main window
+b7d9a_main_window_manage_input:
+push    {lr}
+bl      0x80BE53C
+cmp     r0,#0
+beq     @@end
+cmp     r0,#0
+blt     @@end
+bl      load_pixels_overworld
+push    {r0-r2}
+swi     #5
+pop     {r0-r2}
+
+@@end:
+pop     {pc}
+
+//==============================================================================
 //Prints the target window if and only if the cursor's position changed in this input management function
 c495a_status_target:
 push    {r4,lr}
@@ -2056,10 +2253,11 @@ orr     r2,r1
 strb    r2,[r4,#0x3]
 mov     r3,r0
 mov     r0,r4
+ldr     r1,=#0x2012000
 mov     r4,r3
-bl      clear_window
+bl      clear_window_buffer
 mov     r0,r4
-bl      m2_psitargetwindow
+bl      psiTargetWindow_buffer
 
 @@end:
 pop     {r4,pc}
@@ -2090,7 +2288,7 @@ pop     {pc}
 b8c2a_set_proper_wvf_skip_and_window_type:
 push    {lr}
 strb    r1,[r0,#1]
-bl      m2_initwindow
+bl      initWindow_buffer
 pop     {pc}
 
 
@@ -2112,12 +2310,12 @@ pop     {pc}
 //Loads the vram into the buffer, it's called each time there is only the main file_select window active (a good way to set the whole thing up)
 _38c0_load_pixels:
 push    {lr}
-ldr     r3,=#0x40000D4 //DMA transfer 3
+ldr     r3,=#0x40000B0 //DMA transfer 0
 ldr     r0,=#0x6008000 //Source
 str     r0,[r3]
 ldr     r0,=#0x2015000 //Target
 str     r0,[r3,#4]
-ldr     r0,=#0x80002400 //Store 0x4800 bytes
+ldr     r0,=#0x84001200 //Store 0x4800 bytes
 str     r0,[r3,#8]
 ldr     r0,[r3,#8]
 ldr     r3,[r5,#0]
@@ -2129,12 +2327,12 @@ pop     {pc}
 //Stores the buffer into the vram. This avoids screen tearing.
 store_pixels:
 push    {r0-r1,lr}
-ldr     r1,=#0x40000D4 //DMA transfer 3
+ldr     r1,=#0x40000B0 //DMA transfer 0
 ldr     r0,=#0x2015000 //Source
 str     r0,[r1]
 ldr     r0,=#0x6008000 //Target
 str     r0,[r1,#4]
-ldr     r0,=#0x80002400 //Store 0x4800 bytes
+ldr     r0,=#0x94001200 //Store 0x4800 bytes
 str     r0,[r1,#8]
 ldr     r0,[r1,#8]
 pop     {r0-r1,pc}
@@ -2162,12 +2360,12 @@ _4edc_print_window_store:
 push    {lr}
 bl      _4092_print_window
 push    {r0-r1}
-ldr     r1,=#0x40000D4 //DMA transfer 3
+ldr     r1,=#0x40000B0 //DMA transfer 0
 ldr     r0,=#0x2015000 //Source
 str     r0,[r1]
 ldr     r0,=#0x6008000 //Target
 str     r0,[r1,#4]
-ldr     r0,=#0x80000400 //Store 0x800 bytes
+ldr     r0,=#0x94000200 //Store 0x800 bytes
 str     r0,[r1,#8]
 ldr     r0,[r1,#8]
 pop     {r0-r1}
@@ -2657,5 +2855,152 @@ add     r2,r2,r0
 @@generic_end:
 mov     r3,#0x36 //Clobbered code
 pop     {pc}
+
+.pool
+
+//==============================================================================
+//Prints the cash window and then stores the buffer to vram
+b8894_printCashWindowAndStore:
+push    {lr}
+bl      printCashWindow
+bl      store_pixels_overworld
+pop     {pc}
+
+//==============================================================================
+//UNUSED
+bac46_statusWindowNumbersStore:
+push    {lr}
+bl      statusWindowNumbers
+bl      store_pixels_overworld
+pop     {pc}
+
+//==============================================================================
+//Prints the status text and numbers in the buffer, then loads it in vram
+b8320_statusWindowTextStore:
+push    {lr}
+push    {r0}
+bl      statusWindowText
+pop     {r0}
+mov     r1,#0
+bl      statusNumbersPrint
+bl      store_pixels_overworld
+pop     {pc}
+
+//==============================================================================
+//Loads the vram into the buffer, it's called each time there is only the main file_select window active (a good way to set the whole thing up)
+load_pixels_overworld:
+push    {r0-r1,lr}
+ldr     r1,=#0x40000C8 //DMA transfer 2
+ldr     r0,=#0x6002000 //Source
+str     r0,[r1]
+ldr     r0,=#overworld_buffer //Target
+str     r0,[r1,#4]
+ldr     r0,=#0xA4001000 //Store 0x4000 bytes - When HBlank and in words of 32 bits
+str     r0,[r1,#8]
+ldr     r0,[r1,#8]
+pop     {r0-r1,pc}
+
+//==============================================================================
+//Stores the buffer into the vram. This avoids screen tearing.
+store_pixels_overworld:
+push    {r0-r1,lr}
+ldr     r1,=#0x40000C8 //DMA transfer 2
+ldr     r0,=#overworld_buffer //Source
+str     r0,[r1]
+ldr     r0,=#0x6002000 //Target
+str     r0,[r1,#4]
+ldr     r0,=#0x94001000 //Store 0x4000 bytes - When VBlank and in words of 32 bits
+str     r0,[r1,#8]
+ldr     r0,[r1,#8]
+pop     {r0-r1,pc}
+
+//==============================================================================
+//Stores the buffer into the vram. This avoids screen tearing.
+store_pixels_overworld_psi_window:
+push    {r0-r1,lr}
+ldr     r1,=#0x40000C8 //DMA transfer 2
+ldr     r0,=#overworld_buffer //Source
+str     r0,[r1]
+ldr     r0,=#0x6002000 //Target
+str     r0,[r1,#4]
+ldr     r0,=#0x94000800 //Store 0x1800 bytes - When VBlank and in words of 32 bits
+str     r0,[r1,#8]
+ldr     r0,[r1,#8]
+pop     {r0-r1,pc}
+
+//==============================================================================
+//Prints the sick tiles and then the names
+sick_name:
+push    {lr}
+push    {r0-r3}
+bl      0x80CAC70 //Purple tiles
+mov     r4,r0
+pop     {r0-r3}
+bl      0x80CABF8 //Name
+mov     r0,r4
+pop     {pc}
+
+//==============================================================================
+//Prints the dead tiles and then the names
+dead_name:
+push    {lr}
+push    {r0-r3}
+bl      0x80CACE8 //Red tiles
+mov     r4,r0
+pop     {r0-r3}
+bl      0x80CABF8 //Name
+mov     r0,r4
+pop     {pc}
+
+//==============================================================================
+//Prints the alive tiles and then the names - right after the normal status is restored
+d6dac_alive_name:
+push    {r7,lr}
+mov     r7,r5
+bl      alive_name
+pop     {r7,pc}
+
+//==============================================================================
+//Prints the alive tiles and then the names
+alive_name:
+push    {r4,lr}
+push    {r5}
+mov     r5,r2
+push    {r0-r3}
+mov     r0,r7
+mov     r1,#0x4D
+mov     r2,r5
+mov     r3,#0x12
+bl      0x80CAD60 //The 1st alive tile
+mov     r0,r7
+mov     r1,#0x4D
+mov     r2,#1
+add     r2,r2,r5
+mov     r3,#0x12
+bl      0x80CAD60 //The 2nd alive tile
+mov     r0,r7
+mov     r1,#0x4D
+mov     r2,#2
+add     r2,r2,r5
+mov     r3,#0x12
+bl      0x80CAD60 //The 3rd alive tile
+mov     r0,r7
+mov     r1,#0x4D
+mov     r2,#3
+add     r2,r2,r5
+mov     r3,#0x12
+bl      0x80CAD60 //The 4th alive tile
+mov     r0,r7
+mov     r1,#0x4D
+mov     r2,#4
+add     r2,r2,r5
+mov     r3,#0x12
+bl      0x80CAD60 //The 5th alive tile
+mov     r4,#5
+pop     {r0-r3}
+pop     {r5}
+bl      0x80CABF8 //Name
+mov     r0,r4
+pop     {r4,pc}
 
 .pool

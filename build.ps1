@@ -15,9 +15,12 @@ $input_c_files =
     "src/c/vwf.c",
     "src/c/locs.c",
     "src/c/goods.c",
-    "src/c/fileselect.c"
+    "src/c/fileselect.c",
+    "src/c/status.c",
+    "src/c/battle.c",
+    "src/c/psi.c"
 
-$base_c_address    = 0x8100000;
+$base_c_address    = 0x83755B8;
 $scripttool_cmd    = "bin/ScriptTool/ScriptTool.dll"
 $gcc_cmd           = "arm-none-eabi-gcc"
 $ld_cmd            = "arm-none-eabi-ld"

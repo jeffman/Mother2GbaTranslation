@@ -18,6 +18,9 @@
 .org 0x8B13424 :: .incbin "data/m2-mainfont3-empty.bin"
 .org 0x8B088A4 :: .incbin "data/m2-shifted-cursor.bin"
 .org 0x8B03384 :: .incbin "data/m2-header-bg.bin"
+.org 0x8B03964 :: .incbin "data/m2-header-bg-sigle-tile.bin"
+.org 0x8B03D64 :: .incbin "data/m2-header-bg-sigle-tile.bin"
+.org 0x8B03DE4 :: .incbin "data/m2-status-symbols.bin"
 
 // Greek letters
 .org 0x8B1B907 :: db 0x8B // alpha
@@ -50,15 +53,120 @@ mov     r3,6
 .include "m2-status-switch.asm"
 
 //---------------------------------------------------------
+// Main window hacks
+//---------------------------------------------------------
+
+.org 0x80B7D9A :: bl b7d9a_main_window_manage_input
+.org 0x80B7DD2 :: bl printCashWindow
+//.org 0x80B8A36 :: bl initWindow_buffer //Money window
+//.org 0x80B8A3C :: bl print_window_with_buffer
+.org 0x80B8890 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Status menu
+.org 0x80B8664 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of PSI menu
+.org 0x80B831A :: bl initWindow_buffer
+.org 0x80B8320 :: bl b8320_statusWindowTextStore
+
+//---------------------------------------------------------
+// Overworld main window/PSI class window input management hacks
+//---------------------------------------------------------
+
+.org 0x80BEAA6 :: bl beaa6_fix_sounds
+.org 0x80BEA88 :: bl bea88_fix_sounds
+
+//---------------------------------------------------------
+// Main battle window hacks
+//---------------------------------------------------------
+
+.org 0x80DC22A :: bl dc22a_load_buffer_battle
+
+//---------------------------------------------------------
+// PSI battle window hacks
+//---------------------------------------------------------
+
+.org 0x80E00C8 :: bl e02c6_print_target_store
+.org 0x80E02C6 :: bl e02c6_print_target_store
+.org 0x80E0762 :: bl initWindow_buffer
+.org 0x80E0776 :: bl print_window_with_buffer
+.org 0x80E07C2 :: bl clearWindowTiles_buffer
+.org 0x80E0892 :: bl initWindow_buffer
+.org 0x80E08A6 :: bl print_window_with_buffer
+.org 0x80E0990 :: bl initWindow_buffer
+.org 0x80E0A30 :: bl initWindow_buffer
+.org 0x80E0A54 :: bl print_window_with_buffer
+.org 0x80C24A2 :: bl printstr_hlight_buffer
+.org 0x80C24B4 :: bl printstr_hlight_buffer
+.org 0x80C24CC :: bl printstr_hlight_buffer
+.org 0x80C2500 :: bl printstr_hlight_buffer
+.org 0x80C2518 :: bl printstr_hlight_buffer
+.org 0x80E08D8 :: bl e06ec_redraw_bash_psi_goods_defend
+
+//---------------------------------------------------------
 // BAC18 hacks (status window)
 //---------------------------------------------------------
 
-.org 0x80BACFC :: bl bac18_redraw_status
+.org 0x80BAC46 :: nop :: nop
+.org 0x80BAC6E :: bl bac6e_statusWindowNumbersInputManagement
+.org 0x80BAD7E :: bl printstr_buffer
+.org 0x80BAD88 :: bl initWindow_buffer
+.org 0x80BAD92 :: bl initWindow_buffer
+.org 0x80BACFC :: bl bac18_redraw_status_store
 .org 0x80BADE6 :: bl bac18_redraw_status
 .org 0x80BACEA :: bl bacea_status_psi_window
+.org 0x80BACBA :: bl print_window_with_buffer
+.org 0x80BACC4 :: bl initWindow_buffer
+.org 0x80BAD1A :: bl clearWindowTiles_buffer
+.org 0x80BADF6 :: bl initWindow_buffer
 .org 0x80BACEE :: bl bac18_clear_psi
 .org 0x80BADB0 :: bl badb0_status_inner_window
 .org 0x80BADCC :: b 0x80BADD8
+
+//---------------------------------------------------------
+// Normal PSI window hacks
+//---------------------------------------------------------
+
+.org 0x80B8C34 :: bl initWindow_buffer
+.org 0x80B8C42 :: bl baec6_psi_window_print_buffer
+.org 0x80B8C7E :: bl initWindow_buffer
+.org 0x80B8C8C :: nop :: nop
+.org 0x80B8CA8 :: bl initWindow_buffer
+.org 0x80B8CAE :: bl print_window_with_buffer
+.org 0x80B8CEA :: bl baec6_psi_window_print_buffer
+.org 0x80B8D0C :: bl initWindow_buffer
+.org 0x80B8D16 :: bl initWindow_buffer
+.org 0x80B8D22 :: bl psiWindow_buffer
+.org 0x80B8E44 :: bl initWindow_buffer
+.org 0x80B8E62 :: bl baec6_psi_window_print_buffer
+.org 0x80B9222 :: bl initWindow_buffer
+.org 0x80B922E :: bl psiTargetWindow_buffer
+.org 0x80B916E :: bl initWindow_buffer
+.org 0x80B9174 :: bl print_window_with_buffer
+.org 0x80B9238 :: bl initWindow_buffer
+.org 0x80B9256 :: bl baec6_psi_window_print_buffer
+.org 0x80BA9FA :: bl initWindow_buffer
+.org 0x80BAA00 :: bl print_window_with_buffer
+.org 0x80BAB64 :: bl initWindow_buffer
+.org 0x80BABA6 :: bl printstr_hlight_buffer
+.org 0x80BA8AC :: bl ba8ac_load_targets_print
+.org 0x80B9100 :: bl initWindow_buffer
+.org 0x80B910C :: bl initWindow_buffer
+.org 0x80B9118 :: bl psiTargetWindow_buffer
+.org 0x80B9122 :: bl initWindow_buffer
+.org 0x80B9142 :: bl baec6_psi_window_print_buffer
+
+//---------------------------------------------------------
+// Class PSI window hacks
+//---------------------------------------------------------
+
+.org 0x80BAE1C :: bl print_window_with_buffer
+.org 0x80BAEC6 :: bl baec6_psi_window_print_buffer
+.org 0x80BAED4 :: bl baec6_psi_window_print_buffer
+.org 0x80BAEE2 :: bl baec6_psi_window_print_buffer
+.org 0x80BAEF0 :: bl baec6_psi_window_print_buffer
+
+//---------------------------------------------------------
+// Equip window generic hacks
+//---------------------------------------------------------
+
+.org 0x80B8074 :: mov r3,#0x12
 
 //---------------------------------------------------------
 // BAEF8 hacks (equip window)
@@ -153,14 +261,14 @@ bl      print_string
 .org 0x80C23AE :: lsr r6,r3,0xD                             // tiles-to-pixels
 .org 0x80C23CE :: bl c239c_print_psi :: nop :: nop :: nop
 .org 0x80C23DA :: add r4,17                                 // pixel width of "PSI "
-.org 0x80C23F0 :: bl print_string_hlight_pixels             // print rockin'
+.org 0x80C23F0 :: bl printstr_hlight_pixels_buffer             // print rockin'
 .org 0x80C2402 :: mov r0,3 :: lsl r0,r0,0x10                // pixel width of space
 .org 0x80C242E :: mov r0,0x14                               // new PSI name entry length
 .org    0x80C2448
-bl      print_string_hlight_pixels // print PSI name
+bl      printstr_hlight_pixels_buffer // print PSI name
 mov     r2,r1                      // record X width
 add     r2,3                       // add a space
-.org 0x80C2468 :: bl print_string_hlight_pixels
+.org 0x80C2468 :: bl printstr_hlight_pixels_buffer
 
 //---------------------------------------------------------
 // PSI target window hacks
@@ -198,6 +306,9 @@ mov     r0,0x50
 //Do not redraw unless it is needed
 .org 0x80B8CD2 :: bl b8cd2_psi_window
 
+//Fix multiple sounds issue when going inside the psi window
+.org 0x80B8D40 :: bl b8d40_psi_going_inner_window
+
 //Sets up for the target window
 .org 0x80B8DB4 :: bl b8db4_psi_inner_window
 
@@ -206,7 +317,7 @@ mov     r0,0x50
 
 // Redraw main menu when entering PSI target window
 .org 0x80B8CF8 :: bl b8bbc_redraw_menu_13to2 // 1 to 2
-.org 0x80B920C :: bl b8bbc_redraw_menu_13to2 // 3 to 2
+.org 0x80B920C :: bl b8bbc_redraw_menu_13to2_store // 3 to 2
 
 //---------------------------------------------------------
 // E06EC hacks (PSI window in battle)
@@ -370,6 +481,19 @@ bl      print_window_header_string
 add     r0,7
 lsr     r0,r0,3 // pixels to tiles
 pop     {pc}
+
+//---------------------------------------------------------
+// Change checkerboard printing to properly handle statuses
+//---------------------------------------------------------
+
+.org 0x80D68C2 :: bl dead_name
+.org 0x80D6960 :: bl sick_name
+.org 0x80D6A8A :: bl alive_name
+.org 0x80D6B5E :: bl dead_name
+.org 0x80D6BFA :: bl sick_name
+.org 0x80D6DAC :: bl d6dac_alive_name
+
+.org m2_stat_symb_checker :: .incbin "data/m2-status-symbols-checkerboard.bin"
 
 //---------------------------------------------------------
 // CABF8 hacks (print checkerboard string)
@@ -1197,6 +1321,7 @@ nop
 //.org 0x80BD9F6 :: mov r2,#0x16 //Jeff
 //.org 0x80BDA02 :: mov r2,#0x1B //Poo
 
+
 //---------------------------------------------------------
 // Movement code hacks
 //---------------------------------------------------------
@@ -1206,7 +1331,6 @@ nop
 
 // Carpainter's timing fix
 .org 0x802A75F :: db 0x30 //Add 8 extra frames before the game can start reading again.
-
 
 //==============================================================================
 // File select hacks
@@ -1356,6 +1480,13 @@ nop
 .org 0x80C7578 :: bl c7578_load_letters
 
 //==============================================================================
+// Move stuff around in order to make space for the code
+//==============================================================================
+
+.org 0x82D92D4 :: dw moved_graphics_table :: dw moved_graphics_table + 0x1CD2C
+.org 0x82D9BBC :: dw moved_graphics_table + 0x26618 :: dw moved_graphics_table + 0x3F818
+
+//==============================================================================
 // Data files
 //==============================================================================
 
@@ -1368,6 +1499,10 @@ m2_overworld_alphabet_table:
 .incbin "data/m2-overworld-alphabet-table.bin"
 
 .org 0x8B2C000
+
+//This table MUST be 4-bytes padded
+moved_graphics_table:
+.incbin "data/moved-graphics-table.bin"
 
 // Box font relocation
 m2_font_relocate:
@@ -1465,6 +1600,7 @@ m2_coord_table_file:
 // Existing subroutines/data
 //==============================================================================
 
+.definelabel overworld_buffer       ,0x200C000
 .definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10
 .definelabel m2_old_paula_name      ,0x3001F16
@@ -1515,13 +1651,19 @@ m2_coord_table_file:
 .definelabel m2_formatnumber        ,0x80CA65C
 .definelabel m2_clearwindowtiles    ,0x80CA834
 .definelabel m2_menuwindow          ,0x80C1C98
+.definelabel m2_setupwindow         ,0x80BE188
 .definelabel m2_resetwindow         ,0x80BE490
+.definelabel m2_sub_d3c50           ,0x80D3C50
 .definelabel m2_hpwindow_up         ,0x80D3F0C
 .definelabel m2_curhpwindow_down    ,0x80D41D8
+.definelabel m2_sub_d6844           ,0x80D6844
+.definelabel m2_setupbattlename     ,0x80DCD00
+.definelabel m2_stat_symb_checker   ,0x8B0EDA4 
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70
-.definelabel m2_default_names       ,0x82B9330
 .definelabel m2_items               ,0x8B1D62C
+.definelabel m2_default_names       ,0x82B9330
+.definelabel m2_psi_print_table     ,0x8B2A9C0
 
 //==============================================================================
 // Code files
