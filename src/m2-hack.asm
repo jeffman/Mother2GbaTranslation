@@ -1480,6 +1480,38 @@ nop
 .org 0x80C7578 :: bl c7578_load_letters
 
 //==============================================================================
+// Title screen hacks
+//==============================================================================
+
+// m2_title_background_pal_copyright:   File has two palettes separates by six palettes
+//                                      worth of nullspace. First palette is the copyright palette,
+//                                      last palette is a placeholder for the glow palette
+// m2_title_background_pal_glow:        20 frames, glow effect
+// m2_title_text_pal_animated:          14 frames, white horizontal line scrolling top to bottom
+// m2_title_text_pal_static:            1 frame, white text on black background
+
+// BG0 will be used for the B, the glow, and copyright info
+// OAM will be used for the other letters
+
+// Background palette RAM layout:
+// [0]:    copyright
+// [1-6]:  (blank)
+// [7]:    glow
+// [8]:    B
+// [9-15]: (blank)
+
+// Animation 3 (full title screen)
+.org 0x82D6B64 :: dh 0x008A   // Enable 8-bit BG0
+.org 0x80119C6 :: mov r0,0x88 // Disable BG1
+
+// Animation 5 (quick title screen)
+.org 0x82D6BD4 :: dh 0x008A   // Enable 8-bit BG0
+.org 0x82D6BE0 :: dh 0x1100   // Disable BG1
+
+.org 0x870F580 :: .incbin "data/m2-title-background.bin"
+.org 0x87128EC :: .incbin "data/m2-title-background-map.bin"
+
+//==============================================================================
 // Move stuff around in order to make space for the code
 //==============================================================================
 
@@ -1595,6 +1627,17 @@ flyovertextLater:
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
 
+m2_title_background_pal_copyright:
+.incbin "data/m2-title-background-pal-copyright.bin"
+
+m2_title_background_pal_glow:
+.incbin "data/m2-title-background-pal-glow.bin"
+
+m2_title_text_pal_animated:
+.incbin "data/m2-title-text-pal-animated.bin"
+
+m2_title_text_pal_static:
+.incbin "data/m2-title-text-pal-static.bin"
 
 //==============================================================================
 // Existing subroutines/data
