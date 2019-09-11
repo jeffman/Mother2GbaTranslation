@@ -1500,6 +1500,28 @@ nop
 // [8]:    B
 // [9-15]: (blank)
 
+// Frame states (BG0), from EarthBound:
+// Start    Duration    State
+// --------------------------
+// 0        g           Black
+// g        1           1/32 grey B
+// g+1      2           2/32 grey B
+// g+3      2           3/32 grey B
+// g+5      2           4/32 grey B
+// g+7      2           5/32 grey B
+// g+9      2           6/32 grey B
+// g+11     2           7/32 grey B
+// g+13     2           8/32 grey B
+// g+15     2           9/32 grey B
+// g+17     2           10/32 grey B
+// g+19     2           11/32 grey B
+// g+21     2           12/32 grey B
+// g+23     2           13/32 grey B
+// g+25     2           14/32 grey B
+// g+27     2           15/32 grey B
+// g+29     1           16/32 grey B
+// g+30     2           17/32 grey B
+
 // Animation 3 (full title screen)
 .org 0x82D6B64 :: dh 0x008A   // Enable 8-bit BG0
 .org 0x80119C6 :: mov r0,0x88 // Disable BG1
@@ -1701,7 +1723,7 @@ m2_title_text_pal_static:
 .definelabel m2_curhpwindow_down    ,0x80D41D8
 .definelabel m2_sub_d6844           ,0x80D6844
 .definelabel m2_setupbattlename     ,0x80DCD00
-.definelabel m2_stat_symb_checker   ,0x8B0EDA4 
+.definelabel m2_stat_symb_checker   ,0x8B0EDA4
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70
 .definelabel m2_items               ,0x8B1D62C
