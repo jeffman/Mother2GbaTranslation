@@ -1542,12 +1542,21 @@ nop
     dw 0x2011940
     dw 0x2011960
 
+    // Expand the null area after the fifth palette buffer (gives us 0x2A0 bytes of nullspace
+    // starting at 0x2011B60)
+    .org 0x8011490 :: dw 0x85000128
+
     // Define the proper expected uncompressed sizes
     .org 0x801141E :: mov r5,4 :: neg r5,r5
     .org 0x8011422 :: ldr r2,[r0,r5]
     .org 0x801142C :: ldr r2,[r0,r5]
     .org 0x8011436 :: ldr r2,[r0,r5]
     .org 0x8011440 :: ldr r2,[r0,r5]
+
+    // Replace per-frame functions
+    .org 0x82D6B7C
+    dw title_frame_first + 1
+    dw title_frame_second + 1
 
 // --- Animation 5 (quick title screen) ---
 .org 0x82D6BD4 :: dh 0x008A   // Enable 8-bit BG0
@@ -1749,11 +1758,13 @@ dw 0x20 :: .incbin "data/m2-title-text-pal-static.c.bin"
 .definelabel m2_sub_d6844           ,0x80D6844
 .definelabel m2_setupbattlename     ,0x80DCD00
 .definelabel m2_stat_symb_checker   ,0x8B0EDA4
+.definelabel vblank                 ,0x80F47E4
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70
 .definelabel m2_items               ,0x8B1D62C
 .definelabel m2_default_names       ,0x82B9330
 .definelabel m2_psi_print_table     ,0x8B2A9C0
+.definelabel m2_title_teardown      ,0x8000C28
 
 //==============================================================================
 // Code files

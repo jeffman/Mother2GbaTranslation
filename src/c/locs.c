@@ -27,3 +27,4 @@ int            *m2_items_offsets           = (int*)                  0x8B1AF94;
 byte           *m2_items_strings           = (byte*)                 0x8B1A694;
 unsigned short *name_header_tiles          = (unsigned short*)       0x8B1B8B0;
 PSIPrintInfo   *psi_print_info             = (PSIPrintInfo*)         0x8B2A9C0;
+int            *title_counter              = (int*)                  0x2011B60;

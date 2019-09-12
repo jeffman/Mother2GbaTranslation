@@ -20,3 +20,5 @@ int __attribute__((naked)) m2_clearwindowtiles(WINDOW* window) {}
 int __attribute__((naked)) customcodes_parse_generic(int code, char* parserAddress, WINDOW* window, int* dest) {}
 void __attribute__((naked)) m2_printstr(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight) {}
 void __attribute__((naked)) m2_setupbattlename(short value) {}
+void __attribute__((naked)) m2_title_teardown() {}
+void __attribute__((naked)) vblank() {}
