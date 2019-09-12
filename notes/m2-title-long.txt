@@ -82,12 +82,14 @@
 
 //=============================================================================
 // $80115A9:
+
+// Load a bunch of constants to the stack
 080115A8 (T)  push    r4-r7,r14
 080115AA (T)  mov     r7,r10
 080115AC (T)  mov     r6,r9
 080115AE (T)  mov     r5,r8
 080115B0 (T)  push    r5-r7
-080115B2 (T)  add     sp,-94h
+080115B2 (T)  add     sp,-94h               // damn...
 080115B4 (T)  mov     r1,r13
 080115B6 (T)  ldr     r0,=80FCB74h
 080115B8 (T)  ldmia   [r0]!,r2-r4
@@ -129,6 +131,7 @@
 08011600 (T)  stmia   [r1]!,r2,r3,r7
 08011602 (T)  ldmia   [r0]!,r2,r3
 08011604 (T)  stmia   [r1]!,r2,r3
+
 08011606 (T)  ldr     r3,=3000370h
 08011608 (T)  ldr     r7,[r3]
 0801160A (T)  mov     r12,r7
@@ -145,10 +148,12 @@
 08011620 (T)  add     r0,r0,r1
 08011622 (T)  lsl     r0,r0,4h
 08011624 (T)  add     r0,r0,r2
-08011626 (T)  ldrb    r1,[r0,8h]
+08011626 (T)  ldrb    r1,[r0,8h]            // appears to be a has-this-been-run-yet flag
 08011628 (T)  cmp     r1,0h
 0801162A (T)  beq     801162Eh
 0801162C (T)  b       8011730h
+
+// If this is the first run:
 0801162E (T)  mov     r0,r9
 08011630 (T)  add     r0,84h
 08011632 (T)  str     r1,[r0]
@@ -274,11 +279,15 @@
 0801172A (T)  lsl     r0,r0,0Ch
 0801172C (T)  cmp     r7,0B0h
 0801172E (T)  lsr     r1,r6,1h
-08011730 (T)  ldrb    r0,[r0,0Bh]
+08011730 (T)  ldrb    r0,[r0,0Bh]           // appears to be an are-we-on-the-last-run flag
 08011732 (T)  cmp     r0,1h
 08011734 (T)  bne     801173Ch
+
+// If this is the last run:
 08011736 (T)  bl      8000C28h
 0801173A (T)  b       8011BE4h
+
+// Else:
 0801173C (T)  ldr     r0,=3002500h
 0801173E (T)  ldrh    r1,[r0]
 08011740 (T)  mov     r0,9h
@@ -889,11 +898,13 @@
 080114AC (T)  add     r0,r0,r1
 080114AE (T)  lsl     r0,r0,4h
 080114B0 (T)  add     r1,r0,r2
-080114B2 (T)  ldrb    r0,[r1,8h]
+080114B2 (T)  ldrb    r0,[r1,8h]            // already-executed flag
 080114B4 (T)  cmp     r0,0h
 080114B6 (T)  bne     80114D0h
-080114B8 (T)  bl      8000454h
-080114BC (T)  bl      8005D50h
+
+// If first run:
+080114B8 (T)  bl      8000454h              // check pad input
+080114BC (T)  bl      8005D50h              // clears some flag
 080114C0 (T)  b       801156Eh
 080114C2 (T)  lsl     r0,r0,0h
 080114C4 (T)  lsl     r0,r6,0Dh
@@ -902,31 +913,40 @@
 080114CA (T)  lsl     r0,r0,0Ch
 080114CC (T)  cmp     r2,30h
 080114CE (T)  lsl     r0,r0,0Ch
+
+// If not the first run:
 080114D0 (T)  ldrb    r0,[r1,0Bh]
 080114D2 (T)  cmp     r0,1h
 080114D4 (T)  bne     80114DCh
+
+// If last run:
 080114D6 (T)  bl      8000C28h
 080114DA (T)  b       801156Eh
-080114DC (T)  bl      80F47E4h
+
+// If not last run:
+080114DC (T)  bl      80F47E4h              // wait for vblank
+
+// Set BG0 and BG1 scrolling offsets
 080114E0 (T)  ldr     r1,=4000010h
 080114E2 (T)  ldr     r0,=3001B20h
 080114E4 (T)  ldrh    r0,[r0]
-080114E6 (T)  strh    r0,[r1]
+080114E6 (T)  strh    r0,[r1]               // BG0OFSa
 080114E8 (T)  add     r1,2h
 080114EA (T)  ldr     r0,=30012DCh
 080114EC (T)  ldrh    r0,[r0]
-080114EE (T)  strh    r0,[r1]
+080114EE (T)  strh    r0,[r1]               // BG0OFSb
 080114F0 (T)  add     r1,2h
 080114F2 (T)  ldr     r0,=3001D30h
 080114F4 (T)  ldrh    r0,[r0]
-080114F6 (T)  strh    r0,[r1]
+080114F6 (T)  strh    r0,[r1]               // BG1OFSa
 080114F8 (T)  add     r1,2h
 080114FA (T)  ldr     r0,=30012E8h
 080114FC (T)  ldrh    r0,[r0]
-080114FE (T)  strh    r0,[r1]
+080114FE (T)  strh    r0,[r1]               // BG1OFSb
+
 08011500 (T)  mov     r0,r4
 08011502 (T)  add     r0,84h
-08011504 (T)  ldr     r0,[r0]
+08011504 (T)  ldr     r0,[r0]               // frame number
 08011506 (T)  cmp     r0,1h
 08011508 (T)  blt     8011536h
 0801150A (T)  cmp     r0,2h
@@ -935,22 +955,28 @@
 08011510 (T)  bgt     8011536h
 08011512 (T)  cmp     r0,9h
 08011514 (T)  blt     8011536h
+
+// If on frames 9-A:
 08011516 (T)  mov     r1,80h
 08011518 (T)  lsl     r1,r1,13h
 0801151A (T)  mov     r0,r4
 0801151C (T)  add     r0,78h
 0801151E (T)  ldrh    r0,[r0]
 08011520 (T)  strh    r0,[r1]
-08011522 (T)  ldr     r1,=4000050h
+
+// If on frames 1-2:
+08011522 (T)  ldr     r1,=4000050h          // BLDCNT (special effects)
 08011524 (T)  mov     r0,r4
 08011526 (T)  add     r0,7Ah
 08011528 (T)  ldrh    r0,[r0]
 0801152A (T)  strh    r0,[r1]
-0801152C (T)  add     r1,4h
+0801152C (T)  add     r1,4h                 // BLDY (brightness amount)
 0801152E (T)  mov     r0,r4
 08011530 (T)  add     r0,7Ch
 08011532 (T)  ldrh    r0,[r0]
 08011534 (T)  strh    r0,[r1]
+
+// If on frame 0, 3-8, or >A:
 08011536 (T)  ldr     r1,=40000D4h
 08011538 (T)  ldr     r2,=30033A0h
 0801153A (T)  str     r2,[r1]

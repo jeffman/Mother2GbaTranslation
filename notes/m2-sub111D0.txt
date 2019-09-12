@@ -27,6 +27,17 @@
 //      2 = HALKEN
 //      3 = Title screen (full)
 //      5 = Title screen (quick)
+
+// 0x18 byte struct: ($2028008)
+// Offset       Length      Description
+// ------------------------------------
+// 0            4           Animation number
+// 4            4           Current frame
+// 8            4           ?
+// C            4           ?
+// 10           4           ?
+// 14           4           Pointer to giant 0x2E0 byte struct used in $80113F5
+
 080111D0 (T)  push    r4-r7,r14
 080111D2 (T)  mov     r7,r9
 080111D4 (T)  mov     r6,r8
