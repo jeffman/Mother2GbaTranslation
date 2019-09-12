@@ -1483,7 +1483,7 @@ nop
 // Title screen hacks
 //==============================================================================
 
-// m2_title_background_pal_copyright:   File has two palettes separates by six palettes
+// m2_title_background_pal_copyright:   File has two palettes separated by six palettes
 //                                      worth of nullspace. First palette is the copyright palette,
 //                                      last palette is a placeholder for the glow palette
 // m2_title_background_pal_glow:        20 frames, glow effect
@@ -1522,11 +1522,34 @@ nop
 // g+29     1           16/32 grey B
 // g+30     2           17/32 grey B
 
-// Animation 3 (full title screen)
+// --- Animation 3 (full title screen) ---
 .org 0x82D6B64 :: dh 0x008A   // Enable 8-bit BG0
 .org 0x80119C6 :: mov r0,0x88 // Disable BG1
 
-// Animation 5 (quick title screen)
+// Initializer hacks:
+
+    // Point to new compressed palettes
+    .org 0x801147C
+    dw m2_title_text_pal_animated + 4
+    dw m2_title_text_pal_static + 4
+    dw m2_title_background_pal_copyright + 4
+    dw m2_title_background_pal_glow + 4
+
+    // The new palettes have different sizes (8, 20, 14, 1 palettes respectively), so encode the proper buffer pointers
+    .org 0x801146C
+    dw 0x2011500
+    dw 0x2011780
+    dw 0x2011940
+    dw 0x2011960
+
+    // Define the proper expected uncompressed sizes
+    .org 0x801141E :: mov r5,4 :: neg r5,r5
+    .org 0x8011422 :: ldr r2,[r0,r5]
+    .org 0x801142C :: ldr r2,[r0,r5]
+    .org 0x8011436 :: ldr r2,[r0,r5]
+    .org 0x8011440 :: ldr r2,[r0,r5]
+
+// --- Animation 5 (quick title screen) ---
 .org 0x82D6BD4 :: dh 0x008A   // Enable 8-bit BG0
 .org 0x82D6BE0 :: dh 0x1100   // Disable BG1
 
@@ -1649,17 +1672,19 @@ flyovertextLater:
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
 
+.align 4
+
 m2_title_background_pal_copyright:
-.incbin "data/m2-title-background-pal-copyright.bin"
+dw 0x100 :: .incbin "data/m2-title-background-pal-copyright.c.bin"
 
 m2_title_background_pal_glow:
-.incbin "data/m2-title-background-pal-glow.bin"
+dw 0x280 :: .incbin "data/m2-title-background-pal-glow.c.bin"
 
 m2_title_text_pal_animated:
-.incbin "data/m2-title-text-pal-animated.bin"
+dw 0x1C0 :: .incbin "data/m2-title-text-pal-animated.c.bin"
 
 m2_title_text_pal_static:
-.incbin "data/m2-title-text-pal-static.bin"
+dw 0x20 :: .incbin "data/m2-title-text-pal-static.c.bin"
 
 //==============================================================================
 // Existing subroutines/data
