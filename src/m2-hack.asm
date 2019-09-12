@@ -1500,60 +1500,6 @@ nop
 .org 0x80C7578 :: bl c7578_load_letters
 
 //==============================================================================
-// Title screen hacks
-//==============================================================================
-
-// m2_title_background_pal_copyright:   File has two palettes separates by six palettes
-//                                      worth of nullspace. First palette is the copyright palette,
-//                                      last palette is a placeholder for the glow palette
-// m2_title_background_pal_glow:        20 frames, glow effect
-// m2_title_text_pal_animated:          14 frames, white horizontal line scrolling top to bottom
-// m2_title_text_pal_static:            1 frame, white text on black background
-
-// BG0 will be used for the B, the glow, and copyright info
-// OAM will be used for the other letters
-
-// Background palette RAM layout:
-// [0]:    copyright
-// [1-6]:  (blank)
-// [7]:    glow
-// [8]:    B
-// [9-15]: (blank)
-
-// Frame states (BG0), from EarthBound:
-// Start    Duration    State
-// --------------------------
-// 0        g           Black
-// g        1           1/32 grey B
-// g+1      2           2/32 grey B
-// g+3      2           3/32 grey B
-// g+5      2           4/32 grey B
-// g+7      2           5/32 grey B
-// g+9      2           6/32 grey B
-// g+11     2           7/32 grey B
-// g+13     2           8/32 grey B
-// g+15     2           9/32 grey B
-// g+17     2           10/32 grey B
-// g+19     2           11/32 grey B
-// g+21     2           12/32 grey B
-// g+23     2           13/32 grey B
-// g+25     2           14/32 grey B
-// g+27     2           15/32 grey B
-// g+29     1           16/32 grey B
-// g+30     2           17/32 grey B
-
-// Animation 3 (full title screen)
-.org 0x82D6B64 :: dh 0x008A   // Enable 8-bit BG0
-.org 0x80119C6 :: mov r0,0x88 // Disable BG1
-
-// Animation 5 (quick title screen)
-.org 0x82D6BD4 :: dh 0x008A   // Enable 8-bit BG0
-.org 0x82D6BE0 :: dh 0x1100   // Disable BG1
-
-.org 0x870F580 :: .incbin "data/m2-title-background.bin"
-.org 0x87128EC :: .incbin "data/m2-title-background-map.bin"
-
-//==============================================================================
 // Move stuff around in order to make space for the code
 //==============================================================================
 
@@ -1669,17 +1615,6 @@ flyovertextLater:
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
 
-m2_title_background_pal_copyright:
-.incbin "data/m2-title-background-pal-copyright.bin"
-
-m2_title_background_pal_glow:
-.incbin "data/m2-title-background-pal-glow.bin"
-
-m2_title_text_pal_animated:
-.incbin "data/m2-title-text-pal-animated.bin"
-
-m2_title_text_pal_static:
-.incbin "data/m2-title-text-pal-static.bin"
 
 //==============================================================================
 // Existing subroutines/data
@@ -1743,7 +1678,7 @@ m2_title_text_pal_static:
 .definelabel m2_curhpwindow_down    ,0x80D41D8
 .definelabel m2_sub_d6844           ,0x80D6844
 .definelabel m2_setupbattlename     ,0x80DCD00
-.definelabel m2_stat_symb_checker   ,0x8B0EDA4
+.definelabel m2_stat_symb_checker   ,0x8B0EDA4 
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70
 .definelabel m2_items               ,0x8B1D62C
