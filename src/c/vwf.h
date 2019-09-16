@@ -103,7 +103,7 @@ int setNumber_getLength(int value, byte *str, int maxLength);
 int print_string_in_buffer(byte *str, int x, int y, int *dest);
 void printCashWindow();
 WINDOW* getWindow(int index);
-void printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
+int printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
 unsigned short printstr_hlight_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
 unsigned short printstr_hlight_pixels_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
 
@@ -124,6 +124,7 @@ extern byte *m2_script_readability;
 extern int overworld_buffer;
 extern PC m2_ness_data[];
 
+extern bool m2_isequipped(int item_index);
 extern void cpufastset(void *source, void *dest, int mode);
 extern byte* m2_strlookup(int *offset_table, byte *strings, int index);
 extern void m2_formatnumber(int value, byte* strDest, int length);

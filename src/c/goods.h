@@ -28,7 +28,6 @@ void setup_User_Dead(byte *String, int *index, byte user, byte target, byte item
 void setup_Both_Dead(byte *String, int *index, byte user, byte target, byte item);
 void give_print(byte item, byte target, byte source, WINDOW *window, byte *str);
 
-extern bool m2_isequipped(int item_index);
 extern void m2_soundeffect(int index);
 extern int m2_div(int dividend, int divisor);
 extern int m2_sub_a334c(int value);

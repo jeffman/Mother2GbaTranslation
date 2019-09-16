@@ -258,11 +258,11 @@ push    {r0-r3}
 mov     r0,8
 mov     r1,0xB
 mov     r2,8
-bl      print_blankstr
+bl      bb21c_print_blankstr_buffer
 mov     r0,8
 mov     r1,0xD
 mov     r2,8
-bl      print_blankstr
+bl      bb21c_print_blankstr_buffer
 pop     {r0-r3}
 
 // Clobbered code
@@ -279,11 +279,11 @@ push    {r0-r3}
 mov     r0,8
 mov     r1,0xB
 mov     r2,8
-bl      print_blankstr
+bl      bb21c_print_blankstr_buffer
 mov     r0,8
 mov     r1,0xD
 mov     r2,8
-bl      print_blankstr
+bl      bb21c_print_blankstr_buffer
 pop     {r0-r3}
 
 // Clobbered code
@@ -309,7 +309,7 @@ push    {r0-r3,lr}
 mov     r0,5
 mov     r1,0xF
 mov     r2,0x14
-bl      print_blankstr
+bl      bb21c_print_blankstr_buffer
 pop     {r0-r3,pc}
 
 //==============================================================================
@@ -448,7 +448,7 @@ beq     @@next
 
 // If flag 0x10 is set, clear the PSI window
 ldr     r0,[r5,0x1C] // PSI window
-ldr     r1,=#0x2012000
+ldr     r1,=#overworld_buffer - 0x2000
 bl      clear_window_buffer
 
 @@next:
@@ -462,14 +462,16 @@ pop     {pc}
 // Clear offense/defense when re-equipping (or un-equipping) something
 baef8_reequip_erase:
 push    {r0-r3,lr}
-mov     r0,8
+mov     r0,7
 mov     r1,0xB
 mov     r2,4
-bl      print_blankstr
-mov     r0,8
+ldr     r3,=#overworld_buffer - 0x2000
+bl      print_blankstr_buffer
+mov     r0,7
 mov     r1,0xD
 mov     r2,4
-bl      print_blankstr
+ldr     r3,=#overworld_buffer - 0x2000
+bl      print_blankstr_buffer
 
 // Clobbered code
 pop     {r0-r3}
@@ -706,7 +708,7 @@ ldrh    r0,[r0]
 cmp     r0,0
 beq     @@next
 ldr     r0,=#0x3005230
-ldr     r1,=#0x2012000
+ldr     r1,=#overworld_buffer - 0x2000
 ldr     r0,[r0,0x1C]
 bl      clear_window_buffer
 
@@ -2017,6 +2019,14 @@ bx      r0 //Jump to the next useful piece of code
 .pool
 
 //==============================================================================
+//Calls print_window_with_buffer and then stores the buffer
+baf9c_print_window_store_buffer:
+push    {lr}
+bl      print_window_with_buffer
+bl      store_pixels_overworld
+pop     {pc}
+
+//==============================================================================
 //Fixes issue with sounds when going from the PSI window to the inner PSI window
 b8d40_psi_going_inner_window:
 push    {lr}
@@ -2253,7 +2263,7 @@ orr     r2,r1
 strb    r2,[r4,#0x3]
 mov     r3,r0
 mov     r0,r4
-ldr     r1,=#0x2012000
+ldr     r1,=#overworld_buffer - 0x2000
 mov     r4,r3
 bl      clear_window_buffer
 mov     r0,r4
@@ -2529,13 +2539,31 @@ bx      r0
 //==============================================================================
 //Prints defense number and then sotres the buffer
 bb1aa_printstr_store:
-push    {lr}
+push    {r4,lr}
+mov     r4,r3
 mov     r3,#0
 push    {r3}
-mov     r3,#1
+mov     r3,r4
 bl      printstr_buffer
 bl      store_pixels_overworld
 pop     {r3}
+pop     {r4,pc}
+
+//==============================================================================
+//Prints blankstr in the buffer
+bb21c_print_blankstr_buffer:
+push    {lr}
+ldr     r3,=#overworld_buffer - 0x2000
+bl      print_blankstr_buffer
+pop     {pc}
+
+//==============================================================================
+//Prints blankstr in the buffer and stores it
+bb21c_print_blankstr_buffer_store:
+push    {lr}
+ldr     r3,=#overworld_buffer - 0x2000
+bl      print_blankstr_buffer
+bl      store_pixels_overworld
 pop     {pc}
 
 //==============================================================================
@@ -2549,7 +2577,7 @@ ldsh    r2,[r0,r2] //Window's Y cursor
 add     r1,r1,r2
 ldrb    r1,[r1,#0] //Selected item
 push    {r1}
-bl      0x80C5500 //Input management function - returns the currently selected item
+bl      equippableReadInput //Input management function - returns the currently selected item
 pop     {r1}
 cmp     r1,r0 //Has the currently selected item changed?
 bne     @@refresh
@@ -2655,14 +2683,14 @@ bx      r0
 //Clears the rightmost part of the Offense/Defense window for the innermost equipment menu
 clear_offense_defense_inner_equip:
 push    {lr}
-mov     r0,0xD
+mov     r0,0xC
 mov     r1,0xB
 mov     r2,0x3
-bl      print_blankstr
-mov     r0,0xD
+bl      bb21c_print_blankstr_buffer
+mov     r0,0xC
 mov     r1,0xD
 mov     r2,0x3
-bl      print_blankstr
+bl      bb21c_print_blankstr_buffer
 pop     {pc}
 
 .pool

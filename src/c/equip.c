@@ -4,13 +4,13 @@
 #include "locs.h"
 
 
-int equipReadInput(WINDOW* window)
+int equipReadInput(WINDOW* window) //Returns the character whose window we're going in, ACTION_NONE if nothing happens or ACTION_STEPOUT if going out og this window
 {
     unsigned short previousCharacter = *active_window_party_member;
     int currentCharacter = previousCharacter;
     PAD_STATE state = *pad_state;
     PAD_STATE state_shadow = *pad_state_shadow;
-    bool printed = false;
+    bool printed = false; //Used to avoid sound issues. If we printed, we don't make sounds
     
     if(state.right && !window->hold)
         currentCharacter += 1;
@@ -54,7 +54,7 @@ int equipReadInput(WINDOW* window)
             currentCharacter = foundChar;
         }
         (*active_window_party_member) = currentCharacter;
-        if(currentCharacter != previousCharacter)
+        if(currentCharacter != previousCharacter) //Print only if needed
         {
             equipPrint(window);
             printed = true;
@@ -115,6 +115,250 @@ int equipReadInput(WINDOW* window)
     return ACTION_NONE;
 }
 
+void equippablePrint(WINDOW* window) //Prints equippable items (The innermost equip window)
+{
+    unsigned short savedValue = 0;
+    byte* freeSpace = free_strings_pointers[3];
+    byte *none = m2_strlookup((int*)0x8B17EE4, (byte*)0x8B17424, 0x2C);
+    PC *character_data = &(m2_ness_data[*active_window_party_member]);
+    
+    unsigned short* something = (unsigned short*)0x3005224;
+    unsigned short* something2 = (unsigned short*)0x300522C;
+    
+    for(int i = 0; i < 7; i++)
+        freeSpace[i] = 0;
+    freeSpace[7] = 0xFF;
+    
+    int* headerAddress = (int*)(((int)vram) + ((*something2) << 0xE) + ((*tile_offset) << 5));
+    map_tile(0xB3, window->window_x, window->window_y - 1);
+    
+    unsigned short val = *something;
+    if(!window->vwf_skip)
+        clear_window_header(headerAddress, 8, 0x10, 0x11);
+
+    unsigned short* lastUsed = print_equip_header(*something, (unsigned short*)((*tilemap_pointer) + (((window->window_y - 1) << 5) + window->window_x + 1)), headerAddress, window);
+    
+    window->vwf_skip = true;
+    
+    if(window->cursor_x > 6) //Mode which prints only 5 items in M12. Used if one has more than 8 items of an equippable kind.
+    {
+        clearWindowTiles_buffer(window);
+        short counter = 0;
+        while(counter < 5)
+        {
+            int value = (window->cursor_x_base * 5) + counter;
+            byte equippables;
+            if(value <= 0xD)
+                equippables = *(window->number_text_area + 4 + value);
+            else 
+                equippables = 0xFF;
+            if(equippables == 0xFF)
+            {
+                freeSpace[counter] = 0xFD;
+                printstr_buffer(window, none, 1, counter, false);
+                break;
+            }
+            else
+            {
+                byte *item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[equippables - 1]);
+                byte x = 1;
+                if(m2_isequipped(equippables))
+                {
+                    map_special_character(0x1DE,(window->window_x + 1), (counter << 1) + 1); //Print the E
+                    x++;
+                }
+                printstr_buffer(window, item, x, counter, false);
+                freeSpace[counter] = equippables;
+                counter++;
+            }
+        }
+        
+        byte* str = NULL;
+        switch(val)
+        {
+            case 3:
+                str = &m12_other_str9; //->Weapons
+            break;
+            case 4:
+                str = &m12_other_str10; //->Body
+            break;
+            case 5:
+                str = &m12_other_str11; //->Arms
+            break;
+            case 6:
+                str = &m12_other_str12; //->Other
+            break;
+            default:
+            break;
+        }
+        
+        if(str != NULL)
+            savedValue = printstr_buffer(window, str, 1, 6, false); //Prints the string, savedValue is used to understand where to print "(X)"
+        
+        int tmp = m2_div(window->cursor_x, 5);
+        str = NULL;
+        if(tmp <= window->cursor_x_base)
+            str = m2_strlookup((int*)0x8B17EE4, (byte*)0x8B17424, 0x8C);
+        else
+            str = m2_strlookup((int*)0x8B17EE4, (byte*)0x8B17424, 0x8D + window->cursor_x_base);
+        printstr_buffer(window, str, savedValue, 6, false); //Prints "(X)"
+        freeSpace[5] = 0;
+        freeSpace[6] = 0xFE;
+        freeSpace[7] = 0xFF;
+    }
+    else //Prints up to 7 equippable items. It's the same as the above cycle, without the cursor_x_base stuff.
+    {
+        short counter = 0;
+        while(counter < 7)
+        {
+            byte equippables = *(window->number_text_area + 4 + counter);
+
+            if(equippables == 0xFF)
+            {
+                freeSpace[counter] = 0xFD;
+                freeSpace[counter + 1] = 0xFF; //Different from the cycle above
+                printstr_buffer(window, none, 1, counter, false);
+                break;
+            }
+            else
+            {
+                byte *item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[equippables - 1]);
+                byte x = 1;
+                if(m2_isequipped(equippables))
+                {
+                    map_special_character(0x1DE,(window->window_x + 1), (counter << 1) + 1); //Print the E
+                    x++;
+                }
+                printstr_buffer(window, item, x, counter, false);
+                freeSpace[counter] = equippables;
+                counter++;
+            }
+        }
+    }
+    
+    window->loaded_code = 0;
+}
+
+int equippableReadInput(WINDOW* window) //Manages input in equipment-choice innermost window. Returns the equippable item the cursor is on or ACTION_STEPOUT
+{
+    byte* freeSpace = free_strings_pointers[3];
+    PC *character_data = &(m2_ness_data[*active_window_party_member]);
+    bool printed = (window->loaded_code == 1);
+
+    // Get weird sign height value
+    unsigned short height = window->window_height;
+    unsigned int height_sign_bit = height >> 15;
+    unsigned int weird_value = (((height + height_sign_bit) << 15) >> 16);
+    
+    // Clear cursor tiles
+    map_tile(0x1FF, window->window_x, window->window_y + window->cursor_y * 2);
+    map_tile(0x1FF, window->window_x, window->window_y + window->cursor_y * 2 + 1);
+
+    if(window->loaded_code == 1) //We're printing
+        equippablePrint(window);
+        
+    PAD_STATE state = *pad_state;
+    PAD_STATE state_shadow = *pad_state_shadow;
+    
+    unsigned short possibleEquippablesCount = window->cursor_x;
+    short previousY = window->cursor_y;
+    short currentY = window->cursor_y;
+    
+    int counter = 0;
+    
+	//Loads the total amount of items
+    if(possibleEquippablesCount > 6)
+        counter = 7;
+    else if(weird_value > 0)
+        while(counter < weird_value && freeSpace[counter] != 0xFF)
+            counter++;
+    
+    
+    if(state.up)
+    {
+        currentY--;
+        if(currentY < 0)
+        {
+            if(window->hold)
+                currentY = 0;
+            else
+                currentY = counter - 1;
+        }
+        else 
+            while(freeSpace[currentY] == 0)
+                currentY--;
+    }
+    
+    if(state.down)
+    {
+        currentY++;
+        if(currentY >= counter)
+        {
+            if(window->hold)
+                currentY = counter - 1;
+            else
+                currentY = 0;
+        }
+        else 
+            while(freeSpace[currentY] == 0)
+                currentY++;
+    }
+    
+    if(state_shadow.up || state_shadow.down)
+    {
+        window->counter = 0;
+        if(previousY != currentY)
+            m2_soundeffect(0x12F);
+        window->hold = true;
+        window->cursor_y = currentY;
+    }
+    else
+        window->hold = false;
+    
+    if(state.b || state.select)
+    {
+        window->counter = 0;
+        m2_soundeffect(0x12E);
+        return ACTION_STEPOUT;
+    }
+    
+    if((state.a || state.l) && !printed) //Avoid sound issues when going into the window
+    {
+        window->counter = 0xFFFF;
+        m2_soundeffect(0x12D);
+        if(freeSpace[window->cursor_y] == 0xFE)
+        {
+            window->counter = 0;
+            window->cursor_x_base++;
+            if(m2_div(window->cursor_x, 5) < window->cursor_x_base)
+                window->cursor_x_base = 0;
+            return 0xFE; //Change window counter
+        }
+        if(window->cursor_y + 1 < counter)
+            return freeSpace[window->cursor_y]; //Equipment
+        return 0xFD; //None
+    }
+    
+    if (window->counter != 0xFFFF)
+    {
+        window->counter++;
+
+        // Draw cursor for current item
+        map_special_character((window->counter <= 7) ? 0x99 : 0x9A,
+            window->window_x,
+            window->window_y + window->cursor_y * 2);
+
+        if (window->counter > 0x10)
+            window->counter = 0;
+    }
+
+    if(window->cursor_y + 1 < counter)
+        return freeSpace[window->cursor_y];
+    return 0xFD; //None
+
+
+}
+
 void equipPrint(WINDOW* window) //Prints equipment
 {
         m2_hpwindow_up(*active_window_party_member);
@@ -150,34 +394,34 @@ void equipPrint(WINDOW* window) //Prints equipment
             print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x1) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
         else
         {
-            item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->equipment[0]);
+            item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[character_data->equipment[0] - 1]);
             map_special_character(0x1DE,(window->window_x + 7), 0x1); //Print the E
             printstr_buffer(window, item, 8, 0, false);
         }
         
         if(character_data->equipment[1] == 0) //Body
-            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x2) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
+            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x3) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
         else
         {
-            item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->equipment[1]);
+            item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[character_data->equipment[1] - 1]);
             map_special_character(0x1DE,(window->window_x + 7), 0x3); //Print the E
             printstr_buffer(window, item, 8, 1, false);
         }
         
         if(character_data->equipment[2] == 0) //Arms
-            print_string_in_buffer(nothing, (((window->window_x + 6)) << 3) - 2, (0x3) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
+            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x5) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
         else
         {
-            item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->equipment[2]);
+            item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[character_data->equipment[2] - 1]);
             map_special_character(0x1DE,(window->window_x + 7), 0x5); //Print the E
             printstr_buffer(window, item, 8, 2, false);
         }
         
         if(character_data->equipment[3] == 0) //Other
-            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x4) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
+            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x7) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
         else
         {
-            item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->equipment[3]);
+            item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[character_data->equipment[3] - 1]);
             map_special_character(0x1DE,(window->window_x + 7), 0x7); //Print the E
             printstr_buffer(window, item, 8, 3, false);
         }
