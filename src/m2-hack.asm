@@ -180,10 +180,11 @@ mov     r3,6
 .org 0x80B8138 :: bl initWindow_buffer
 .org 0x80B813E :: bl print_window_with_buffer
 .org 0x80B814A :: bl equipPrint
+.org 0x80B8152 :: bl innerEquipInput
 .org 0x80B81A2 :: bl initWindow_buffer
 .org 0x80B81A8 :: bl print_window_with_buffer
 .org 0x80B81BC :: bl equipPrint
-.org 0x80B81CC :: bl store_pixels_overworld
+.org 0x80B81CC :: bl print_equip_base_numbers
 .org 0x80BAF96 :: bl initWindow_buffer //Go to inner window from outer window
 .org 0x80BAF9C :: bl baf9c_print_window_store_buffer
 .org 0x80BAFE6 :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip //Offense Number

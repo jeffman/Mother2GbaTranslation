@@ -226,6 +226,49 @@ pop     {r7,pc}
 
 
 //==============================================================================
+//Print numbers in the numbers window at the beginning - Used in order to make sure the one-person version prints the numbers
+print_equip_base_numbers:
+push    {lr}
+add     sp,#-4
+bl      0x80BC034
+lsl     r0,r0,#0x18
+lsr     r0,r0,#0x18
+mov     r1,r8
+mov     r2,#3
+bl      m2_formatnumber
+mov     r5,#0
+mov     r0,r10
+strb    r5,[r0,#0x15]
+mov     r0,#0xFF
+mov     r1,r10
+strb    r0,[r1,#0x16]
+ldr     r0,[r4,#0x14]
+str     r5,[sp]
+mov     r1,r8
+mov     r2,#0x37
+mov     r3,#3
+bl      printnumberequip //Prints Offense number
+bl      0x80BC0CC
+lsl     r0,r0,#0x18
+lsr     r0,r0,#0x18
+mov     r1,r8
+mov     r2,#3
+bl      m2_formatnumber
+mov     r0,r10
+strb    r5,[r0,#0x15]
+mov     r0,#0xFF
+mov     r1,r10
+strb    r0,[r1,#0x16]
+ldr     r0,[r4,#0x14]
+str     r5,[sp]
+mov     r1,r8
+mov     r2,#0x37
+mov     r3,#0x13
+bl      printnumberequip //Prints Defense number
+bl      store_pixels_overworld
+add     sp,#4
+pop     {pc}
+//==============================================================================
 // Clears the equipment portion of the equip window
 // r0 = window pointer
 clear_equipment:
