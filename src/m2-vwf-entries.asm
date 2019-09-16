@@ -2538,13 +2538,13 @@ bx      r0
 
 //==============================================================================
 //Prints defense number and then sotres the buffer
-bb1aa_printstr_store:
+bb1aa_printnumberequip_store:
 push    {r4,lr}
 mov     r4,r3
 mov     r3,#0
 push    {r3}
 mov     r3,r4
-bl      printstr_buffer
+bl      printNumberEquip
 bl      store_pixels_overworld
 pop     {r3}
 pop     {r4,pc}

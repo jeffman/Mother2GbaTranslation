@@ -4,7 +4,7 @@
 #include "locs.h"
 
 
-int equipReadInput(WINDOW* window) //Returns the character whose window we're going in, ACTION_NONE if nothing happens or ACTION_STEPOUT if going out og this window
+int equipReadInput(WINDOW* window) //Returns the character whose window we're going in, ACTION_NONE if nothing happens or ACTION_STEPOUT if going out of this window
 {
     unsigned short previousCharacter = *active_window_party_member;
     int currentCharacter = previousCharacter;
@@ -177,16 +177,16 @@ void equippablePrint(WINDOW* window) //Prints equippable items (The innermost eq
         switch(val)
         {
             case 3:
-                str = &m12_other_str9; //->Weapons
+                str = m12_other_str9; //->Weapons
             break;
             case 4:
-                str = &m12_other_str10; //->Body
+                str = m12_other_str10; //->Body
             break;
             case 5:
-                str = &m12_other_str11; //->Arms
+                str = m12_other_str11; //->Arms
             break;
             case 6:
-                str = &m12_other_str12; //->Other
+                str = m12_other_str12; //->Other
             break;
             default:
             break;
@@ -325,9 +325,9 @@ int equippableReadInput(WINDOW* window) //Manages input in equipment-choice inne
     if((state.a || state.l) && !printed) //Avoid sound issues when going into the window
     {
         window->counter = 0xFFFF;
-        m2_soundeffect(0x12D);
         if(freeSpace[window->cursor_y] == 0xFE)
         {
+			m2_soundeffect(0x12D); //Do the sound only if we're changing the page. Otherwise the original code will do the appropriate sound
             window->counter = 0;
             window->cursor_x_base++;
             if(m2_div(window->cursor_x, 5) < window->cursor_x_base)
@@ -357,6 +357,100 @@ int equippableReadInput(WINDOW* window) //Manages input in equipment-choice inne
     return 0xFD; //None
 
 
+}
+
+//Simplified inner equip routine (The original routine had a pointer to a table of valid cursor positions as a parameter)
+int innerEquipInput(WINDOW* window)
+{
+	bool printing = !window->vwf_skip;
+	window->vwf_skip = true;
+	
+    PAD_STATE state = *pad_state;
+    PAD_STATE state_shadow = *pad_state_shadow;
+
+    short previousY = window->cursor_y;
+    short currentY = window->cursor_y;
+	
+	// Clear cursor tiles
+    map_tile(0x1FF, window->window_x, window->window_y + window->cursor_y * 2);
+    map_tile(0x1FF, window->window_x, window->window_y + window->cursor_y * 2 + 1);
+	
+    if(state.up) //This has been simplified
+    {
+        currentY--;
+        if(currentY < 0)
+        {
+            if(window->hold)
+                currentY = 0;
+            else
+                currentY = 3;
+        }
+    }
+    
+    if(state.down) //This has been simplified
+    {
+        currentY++;
+        if(currentY >= 4)
+        {
+            if(window->hold)
+                currentY = 3;
+            else
+                currentY = 0;
+        }
+    }
+	
+	//The game does stuff when pressing left or right, however for the equipment window this is not needed
+	if(state.right) //This routine in particular did both the main overworld window and the inner equip window
+	{
+	}
+	
+	
+	if(state.left)
+	{
+	}
+    
+    if(state_shadow.up || state_shadow.down)
+    {
+        window->counter = 0;
+        if(previousY != currentY)
+            m2_soundeffect(0x12F);
+        window->hold = true;
+        window->cursor_y = currentY;
+    }
+    else
+        window->hold = false;
+	
+    if((state.b || state.select) && (!printing))
+    {
+        window->counter = 0;
+        m2_soundeffect(0x12E);
+		window->vwf_skip = false;
+        return ACTION_STEPOUT;
+    }
+	
+	
+    if((state.a || state.l) && (!printing))
+    {
+        window->counter = 0xFFFF;
+        m2_soundeffect(0x12D);
+		window->vwf_skip = false;
+        return (window->cursor_y << 1) + ACTION_STEPIN;
+    }
+	
+    if (window->counter != 0xFFFF)
+    {
+        window->counter++;
+
+        // Draw cursor
+        map_special_character((window->counter <= 7) ? 0x99 : 0x9A,
+            window->window_x,
+            window->window_y + window->cursor_y * 2);
+
+        if (window->counter > 0x10)
+            window->counter = 0;
+    }
+	
+	return ACTION_NONE;
 }
 
 void equipPrint(WINDOW* window) //Prints equipment
@@ -425,4 +519,29 @@ void equipPrint(WINDOW* window) //Prints equipment
             map_special_character(0x1DE,(window->window_x + 7), 0x7); //Print the E
             printstr_buffer(window, item, 8, 3, false);
         }
+}
+
+//Prints the numbers in the window in a formatted way
+void printNumberEquip(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
+{
+	while((*str) == 0x50)
+	{
+		x += 6;
+		str++;
+	}
+	printstr_hlight_pixels_buffer(window, str, x, y, highlight);
+}
+
+//Prints Offense: and Defense:
+void printEquipWindowNumberText(WINDOW* window)
+{
+	handle_first_window_buffer(window, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
+	printstr_hlight_pixels_buffer(window, window->text_start, 0, 3, false);
+}
+
+//Prints the arrow for the numbers in the Offense/Defense menu
+void printEquipNumbersArrow(WINDOW* window)
+{
+	printTinyArrow((window->window_x + 9) << 3, (window->window_y + 0) << 3);
+	printTinyArrow((window->window_x + 9) << 3, (window->window_y + 2) << 3);
 }
