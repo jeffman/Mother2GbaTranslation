@@ -5,6 +5,8 @@
 
 void equipPrint(WINDOW* window);
 int equipReadInput(WINDOW* window);
+void equippablePrint(WINDOW* window);
+int equippableReadInput(WINDOW* window);
 
 
 extern byte m12_other_str9;

@@ -201,7 +201,7 @@ void equippablePrint(WINDOW* window) //Prints equippable items (The innermost eq
             str = m2_strlookup((int*)0x8B17EE4, (byte*)0x8B17424, 0x8C);
         else
             str = m2_strlookup((int*)0x8B17EE4, (byte*)0x8B17424, 0x8D + window->cursor_x_base);
-        printstr_buffer(window, str, savedValue, 6, false); //Prints "(X)"
+        printstr_hlight_pixels_buffer(window, str, savedValue, 6 << 4, false); //Prints "(X)"
         freeSpace[5] = 0;
         freeSpace[6] = 0xFE;
         freeSpace[7] = 0xFF;

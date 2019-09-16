@@ -1295,7 +1295,7 @@ int printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short 
         window->delay = 0;
         output = print_character_with_codes(window, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
     }
-    int retValue = window->text_x + (window->pixel_x == 0 ? 0 : 1);
+    int retValue = (window->text_x << 3) + window->pixel_x;
     window->text_start = tmpTextStart;
     window->text_offset = tmpOffset;
     window->text_offset2 = tmpOffset2;
