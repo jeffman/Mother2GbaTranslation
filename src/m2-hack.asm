@@ -597,7 +597,8 @@ pop     {pc}
 //---------------------------------------------------------
 
 .org 0x80CABF8 :: push {r4-r7,lr}
-.org    0x80CAC0C
+.org    0x80CAC0A
+mov     r6,1
 mov     r7,0
 add     sp,-4
 b       @@print_checkerboard_check
