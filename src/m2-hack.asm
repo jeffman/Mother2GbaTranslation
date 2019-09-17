@@ -1553,10 +1553,10 @@ nop
     .org 0x8011436 :: ldr r2,[r0,r5]
     .org 0x8011440 :: ldr r2,[r0,r5]
 
-    // Replace per-frame functions
-    .org 0x82D6B7C
-    dw title_frame_first + 1
-    dw title_frame_second + 1
+// Setup hacks:
+
+    // Point to sequence hacks
+    .org 0x801179C :: dw title_sequence_01
 
 // --- Animation 5 (quick title screen) ---
 .org 0x82D6BD4 :: dh 0x008A   // Enable 8-bit BG0
@@ -1778,5 +1778,6 @@ dw 0x20 :: .incbin "data/m2-title-text-pal-static.c.bin"
 .include "m2-customcodes.asm"
 .include "m2-compiled.asm"
 .include "m2-flyover.asm"
+.include "m2-title.asm"
 
 .close
