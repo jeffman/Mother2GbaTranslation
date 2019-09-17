@@ -29,6 +29,7 @@
 byte decode_character(byte chr);
 byte encode_ascii(char chr);
 int get_tile_number(int x, int y);
+int get_tile_number_with_offset(int x, int y);
 int ascii_strlen(char *str);
 int wrapper_count_pixels_to_tiles(byte *str, int length);
 int count_pixels_to_tiles(byte *str, int length, int startingPos);
@@ -102,7 +103,8 @@ int setNumber_getLength(int value, byte *str, int maxLength);
 int print_string_in_buffer(byte *str, int x, int y, int *dest);
 void printCashWindow();
 WINDOW* getWindow(int index);
-void printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
+void printTinyArrow(int x, int y);
+int printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
 unsigned short printstr_hlight_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
 unsigned short printstr_hlight_pixels_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
 
@@ -122,7 +124,9 @@ extern byte m2_cstm_last_printed[];
 extern byte *m2_script_readability;
 extern int overworld_buffer;
 extern PC m2_ness_data[];
+extern int m2_arrow_tile[];
 
+extern bool m2_isequipped(int item_index);
 extern void cpufastset(void *source, void *dest, int mode);
 extern byte* m2_strlookup(int *offset_table, byte *strings, int index);
 extern void m2_formatnumber(int value, byte* strDest, int length);

@@ -62,6 +62,7 @@ mov     r3,6
 //.org 0x80B8A3C :: bl print_window_with_buffer
 .org 0x80B8890 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Status menu
 .org 0x80B8664 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of PSI menu
+.org 0x80B8740 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Equip menu
 .org 0x80B831A :: bl initWindow_buffer
 .org 0x80B8320 :: bl b8320_statusWindowTextStore
 
@@ -166,40 +167,136 @@ mov     r3,6
 // Equip window generic hacks
 //---------------------------------------------------------
 
+.org 0x80BB02C :: bl innerEquipInput
+.org 0x80B8066 :: bl printstr_hlight_buffer
 .org 0x80B8074 :: mov r3,#0x12
+.org 0x80B80A6 :: mov r3,#0x0D
+.org 0x80B8092 :: bl initWindow_buffer //Initialize equipment window
+.org 0x80B8098 :: bl print_window_with_buffer
+.org 0x80B80BE :: bl initWindow_buffer
+.org 0x80B80C4 :: bl printEquipWindowNumberText
+.org 0x80B80EA :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip //Offense Number
+.org 0x80B8112 :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip //Defense Number
+.org 0x80B8138 :: bl initWindow_buffer
+.org 0x80B813E :: bl print_window_with_buffer
+.org 0x80B814A :: bl equipPrint
+.org 0x80B8152 :: bl innerEquipInput
+.org 0x80B81A2 :: bl initWindow_buffer
+.org 0x80B81A8 :: bl print_window_with_buffer
+.org 0x80B81BC :: bl equipPrint
+.org 0x80B81CC :: bl print_equip_base_numbers
+.org 0x80BAF96 :: bl initWindow_buffer //Go to inner window from outer window
+.org 0x80BAF9C :: bl baf9c_print_window_store_buffer
+.org 0x80BAFE6 :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip //Offense Number
+.org 0x80BB00C :: mov r2,#0x37
+.org 0x80BB17C :: bl equippableReadInput
+.org 0x80BB198 :: bl printEquipNumbersArrow :: bl store_pixels_overworld :: b 0x80BB1AE //Offense Number
+.org 0x80BB1A6 :: mov r2,#0x4C :: mov r3,#0x13 :: bl bb1aa_printnumberequip_store //Defense Number
+.org 0x80BB05E :: bl initWindow_buffer
+.org 0x80BB066 :: bl print_window_with_buffer
+.org 0x80BB08A :: nop :: nop //Remove highlighting
+.org 0x80BB0A8 :: bl initWindow_buffer
+.org 0x80BB24C :: bl initWindow_buffer //Go back to outer window - Also does going back to inner (not innermost) window from weapons - not touched equipment
+.org 0x80BB254 :: bl print_window_with_buffer
+.org 0x80BB2C2 :: bl initWindow_buffer
+.org 0x80BB2CA :: bl print_window_with_buffer
+.org 0x80BB2E0 :: bl initWindow_buffer
+.org 0x80BB2E8 :: bl print_window_with_buffer
+.org 0x80BB2F6 :: bl equipPrint
+.org 0x80BB300 :: bl innerEquipInput
+.org 0x80BB33C :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip
+.org 0x80BB36C :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip
+.org 0x80BB3FC :: bl initWindow_buffer //Go back to inner (not innermost) window from weapons - removed equipment
+.org 0x80BB404 :: bl print_window_with_buffer
+.org 0x80BB41A :: bl initWindow_buffer
+.org 0x80BB422 :: bl print_window_with_buffer
+.org 0x80BB430 :: bl equipPrint
+.org 0x80BB43A :: bl innerEquipInput
+.org 0x80BB476 :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip
+.org 0x80BB4A6 :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip
+.org 0x80BB532 :: bl initWindow_buffer //Go back to inner (not innermost) window from weapons - equipped a weapon
+.org 0x80BB53A :: bl print_window_with_buffer
+.org 0x80BB550 :: bl initWindow_buffer
+.org 0x80BB558 :: bl print_window_with_buffer
+.org 0x80BB566 :: bl equipPrint
+.org 0x80BB570 :: bl innerEquipInput
+.org 0x80BB5AC :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip
+.org 0x80BB5DC :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip
+.org 0x80BB9E4 :: bl initWindow_buffer //Go back to inner (not innermost) window from defensive equipment - not touched equipment
+.org 0x80BB9EC :: bl print_window_with_buffer
+.org 0x80BBA02 :: bl initWindow_buffer
+.org 0x80BBA0A :: bl print_window_with_buffer
+.org 0x80BBA18 :: bl equipPrint
+.org 0x80BBA22 :: bl innerEquipInput
+.org 0x80BBA5E :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip
+.org 0x80BBA8E :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip
+.org 0x80BBB2C :: bl initWindow_buffer //Go back to inner (not innermost) window from defensive equipment - removed equipment
+.org 0x80BBB34 :: bl print_window_with_buffer
+.org 0x80BBB4A :: bl initWindow_buffer
+.org 0x80BBB52 :: bl print_window_with_buffer
+.org 0x80BBB60 :: bl equipPrint
+.org 0x80BBB6A :: bl innerEquipInput
+.org 0x80BBBA6 :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip
+.org 0x80BBBD6 :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip
+.org 0x80BBC8A :: bl initWindow_buffer //Go back to inner (not innermost) window from defensive equipment - equipped something
+.org 0x80BBC92 :: bl print_window_with_buffer
+.org 0x80BBCA8 :: bl initWindow_buffer
+.org 0x80BBCB0 :: bl print_window_with_buffer
+.org 0x80BBCBE :: bl equipPrint
+.org 0x80BBCC8 :: bl innerEquipInput
+.org 0x80BBD04 :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip
+.org 0x80BBD34 :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip
+//When first entering the innermost menu
+.org 0x80BB6E0 :: mov r2,#0x54 :: mov r3,#3 :: bl printNumberEquip //Change second offense number's position - Weapon
+.org 0x80BB710 :: mov r2,#0x54 :: mov r3,#0x13 :: bl bb1aa_printnumberequip_store //Change second defense number's position - Weapon
+.org 0x80BB820 :: mov r2,#0x54 :: mov r3,#0x13 :: bl printNumberEquip //Change second defense number's position - Body
+.org 0x80BB950 :: mov r2,#0x54 :: mov r3,#0x13 :: bl printNumberEquip //Change second defense number's position - Arms
+.org 0x80BBE8E :: mov r2,#0x54 :: mov r3,#0x13 :: bl printNumberEquip //Change second defense number's position - Other
+.org 0x80BBEBE :: mov r2,#0x54 :: mov r3,#3 :: bl bb1aa_printnumberequip_store //Change second offense number's position - Other
+//When changing selection in the innermost menu
+.org 0x80BBDF0 :: mov r2,#0x54 :: mov r3,#0x13 :: bl printNumberEquip //Change second defense number's position - Defensive Equipment
+.org 0x80BBE20 :: mov r2,#0x54 :: mov r3,#3 :: bl bb1aa_printnumberequip_store //Change second offense number's position - Defensive Equipment
+
 
 //---------------------------------------------------------
 // BAEF8 hacks (equip window)
 //---------------------------------------------------------
 
 // Erase offense change
-.macro erase_offense
-    mov     r0,0xC
+.macro erase_offense_buffer
+    mov     r0,0xB
     mov     r1,0xB
     mov     r2,4
-    bl      print_blankstr
+    bl      bb21c_print_blankstr_buffer
 .endmacro
 
-.macro erase_defense
-    mov     r0,0xC
+.macro erase_defense_buffer
+    mov     r0,0xB
     mov     r1,0xD
     mov     r2,4
-    bl      print_blankstr
+    bl      bb21c_print_blankstr_buffer
 .endmacro
 
-.org 0x80BB216 :: erase_offense
-.org 0x80BB38C :: erase_offense
-.org 0x80BB4C6 :: erase_offense
-.org 0x80BB5FC :: erase_offense
-.org 0x80BBAAE :: erase_offense
-.org 0x80BBBF6 :: erase_offense
-.org 0x80BBD54 :: erase_offense
+.macro erase_defense_buffer_store
+    mov     r0,0xB
+    mov     r1,0xD
+    mov     r2,4
+    bl      bb21c_print_blankstr_buffer_store
+.endmacro
+
+.org 0x80BB216 :: erase_offense_buffer
+.org 0x80BB38C :: erase_offense_buffer
+.org 0x80BB4C6 :: erase_offense_buffer
+.org 0x80BB5FC :: erase_offense_buffer
+.org 0x80BBAAE :: erase_offense_buffer
+.org 0x80BBBF6 :: erase_offense_buffer
+.org 0x80BBD54 :: erase_offense_buffer
 
 // Erase defense change
-.org 0x80BB226 :: erase_defense
-.org 0x80BBABE :: erase_defense
-.org 0x80BBC06 :: erase_defense
-.org 0x80BBD64 :: erase_defense
+.org 0x80BB226 :: erase_defense_buffer
+.org 0x80BBABE :: erase_defense_buffer_store
+.org 0x80BBC06 :: erase_defense_buffer_store
+.org 0x80BBD64 :: erase_defense_buffer_store
 
 // Erase offense/defense after changing equipment
 .org 0x80BB3E2 :: bl baef8_reequip_erase
@@ -500,7 +597,8 @@ pop     {pc}
 //---------------------------------------------------------
 
 .org 0x80CABF8 :: push {r4-r7,lr}
-.org    0x80CAC0C
+.org    0x80CAC0A
+mov     r6,1
 mov     r7,0
 add     sp,-4
 b       @@print_checkerboard_check

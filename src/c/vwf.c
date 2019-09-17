@@ -181,6 +181,20 @@ void print_special_character(int tile, int x, int y)
     cpufastset(&vram[(sourceTileIndex + 32) * 8], &vram[(destTileIndex + 32) * 8], 8);
 }
 
+// Prints a special tile. Pixels are not copied.
+// x, y in pixels
+void print_special_character_buffer(int tile, int x, int y)
+{
+    // Special graphics must be tile-aligned
+    x >>= 3;
+    y >>= 3;
+    unsigned short sourceTileIndex = tile + *tile_offset;
+
+    (*tilemap_pointer)[x + (y * 32)] = sourceTileIndex | *palette_mask;
+    (*tilemap_pointer)[x + ((y + 1) * 32)] = (sourceTileIndex + 32) | *palette_mask;
+
+}
+
 // Maps a special character to the given tile coordinates. Only the tilemap is changed.
 // x, y in tiles
 void map_special_character(unsigned short tile, int x, int y)
@@ -398,9 +412,21 @@ unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned i
         // Print (X)
         if (window->cursor_x > 6)
         {
+            int buffer[8 * 3];
+            int mask = WINDOW_HEADER_BG;
+            for(int i = 0; i < (width & 7); i++) //Saves only the important pixels and deletes the rest in the buffer
+                mask = (mask << 4) | 0xF;
+            int *destOffset = dest + (((startX + width) & ~7) + (startY * 32));
+            
+            for(int i = 0; i < 8; i++)
+                buffer[i] = destOffset[i] & mask;
+            for(int i = 0; i < 8 * 2; i++)
+                buffer[8 + i] = WINDOW_HEADER_BG;
             int base = window->cursor_x_base;
             str = m2_strlookup(m2_misc_offsets, m2_misc_strings, base + 0x8C);
-            width += print_window_header_string(dest, str, startX + width, startY);
+            width += print_window_header_string(buffer, str, width & 7, 0);
+            for(int i = 0; i < 8 * 3; i++) //Restore the vram
+                destOffset[i] = buffer[i];
         }
 
         // Update tilemap
@@ -1160,15 +1186,15 @@ byte print_character_formatted_buffer(byte chr, int x, int y, int font, int fore
     // 0x64 to 0x6C (inclusive) is YOU WON
     if ((chr >= YOUWON_START) && (chr <= YOUWON_END))
     {
-        print_special_character(chr + 0xF0, x, y);
+        print_special_character_buffer(chr + 0xF0, x, y);
         return 8;
     }
 
     // 0x6D is an arrow ->
-    else if (chr == ARROW)
+    if (chr == ARROW)
     {
-        print_special_character(ARROW + 0x30, x, y);
-        return 8;
+        print_special_character_buffer(ARROW + 0x30, x, y);
+        return 9;
     }
 
     return print_character_with_callback(chr, x, y, font, foreground, dest, &get_tile_number_with_offset, *tilemap_pointer, 32, 0xC);
@@ -1229,10 +1255,21 @@ int print_string_in_buffer(byte *str, int x, int y, int *dest)
     int initial_x = x;
     int charCount = 0;
 
-    while (str[1] != 0xFF)
+    while (str[1] != 0xFF || str[0] != 0)
     {
-        x += print_character_formatted_buffer(decode_character(*str++), x, y, 0, 0xF, dest);
-        charCount++;
+		if(str[1] == 0xFF && str[0] == 1)
+		{
+			x = initial_x; 
+			str += 2;
+			y+= 0x10;
+		}
+		else if(str[1] != 0xFF)
+		{
+			x += print_character_formatted_buffer(decode_character(*str++), x, y, 0, 0xF, dest);
+			charCount++;
+		}
+		else
+			break;
     }
 
     int totalWidth = x - initial_x;
@@ -1240,7 +1277,7 @@ int print_string_in_buffer(byte *str, int x, int y, int *dest)
     return (charCount & 0xFFFF) | (totalWidth << 16);
 }
 
-void printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
+int printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
 {
     int tmpOffset = window->text_offset;
     int tmpOffset2 = window->text_offset2;
@@ -1266,7 +1303,7 @@ void printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short
         window->delay = 0;
         output = print_character_with_codes(window, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
     }
-    
+    int retValue = (window->text_x << 3) + window->pixel_x;
     window->text_start = tmpTextStart;
     window->text_offset = tmpOffset;
     window->text_offset2 = tmpOffset2;
@@ -1274,6 +1311,7 @@ void printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short
     window->text_y = tmpText_y;
     window->delay_between_prints = tmpDelayPrints;
     (*palette_mask) = tmpPaletteMsk;
+    return retValue;
 }
 
 unsigned short printstr_hlight_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
@@ -1513,6 +1551,11 @@ unsigned short ailmentTileSetup(byte *ailmentBase, unsigned short defaultVal)
     }
     unsigned short *returnValues = (unsigned short*)0x8B1F2E4;
     return (*(returnValues + (value * 7) + flagValue - 1));
+}
+
+void printTinyArrow(int x, int y)
+{
+	print_special_character_buffer(0x9F, x, y);
 }
 
 void printCashWindow()
