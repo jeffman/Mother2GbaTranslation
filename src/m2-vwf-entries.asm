@@ -298,11 +298,11 @@ bl      clear_equipment
 
 // Clear offense/defense
 push    {r0-r3}
-mov     r0,8
+mov     r0,9
 mov     r1,0xB
 mov     r2,8
 bl      bb21c_print_blankstr_buffer
-mov     r0,8
+mov     r0,9
 mov     r1,0xD
 mov     r2,8
 bl      bb21c_print_blankstr_buffer
@@ -319,11 +319,11 @@ bl      clear_equipment
 
 // Clear offense/defense
 push    {r0-r3}
-mov     r0,8
+mov     r0,9
 mov     r1,0xB
 mov     r2,8
 bl      bb21c_print_blankstr_buffer
-mov     r0,8
+mov     r0,9
 mov     r1,0xD
 mov     r2,8
 bl      bb21c_print_blankstr_buffer
@@ -505,16 +505,14 @@ pop     {pc}
 // Clear offense/defense when re-equipping (or un-equipping) something
 baef8_reequip_erase:
 push    {r0-r3,lr}
-mov     r0,7
+mov     r0,8
 mov     r1,0xB
 mov     r2,4
-ldr     r3,=#overworld_buffer - 0x2000
-bl      print_blankstr_buffer
-mov     r0,7
+bl      bb21c_print_blankstr_buffer
+mov     r0,8
 mov     r1,0xD
 mov     r2,4
-ldr     r3,=#overworld_buffer - 0x2000
-bl      print_blankstr_buffer
+bl      bb21c_print_blankstr_buffer
 
 // Clobbered code
 pop     {r0-r3}
@@ -2726,11 +2724,11 @@ bx      r0
 //Clears the rightmost part of the Offense/Defense window for the innermost equipment menu
 clear_offense_defense_inner_equip:
 push    {lr}
-mov     r0,0xC
+mov     r0,0xD
 mov     r1,0xB
 mov     r2,0x3
 bl      bb21c_print_blankstr_buffer
-mov     r0,0xC
+mov     r0,0xD
 mov     r1,0xD
 mov     r2,0x3
 bl      bb21c_print_blankstr_buffer
