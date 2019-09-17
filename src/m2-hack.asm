@@ -170,7 +170,7 @@ mov     r3,6
 .org 0x80BB02C :: bl innerEquipInput
 .org 0x80B8066 :: bl printstr_hlight_buffer
 .org 0x80B8074 :: mov r3,#0x12
-.org 0x80B80A6 :: mov r3,#0x0D
+.org 0x80B80A2 :: mov r1,#3 :: mov r2,#0xB :: mov r3,#0xD
 .org 0x80B8092 :: bl initWindow_buffer //Initialize equipment window
 .org 0x80B8098 :: bl print_window_with_buffer
 .org 0x80B80BE :: bl initWindow_buffer
@@ -264,21 +264,21 @@ mov     r3,6
 
 // Erase offense change
 .macro erase_offense_buffer
-    mov     r0,0xB
+    mov     r0,0xC
     mov     r1,0xB
     mov     r2,4
     bl      bb21c_print_blankstr_buffer
 .endmacro
 
 .macro erase_defense_buffer
-    mov     r0,0xB
+    mov     r0,0xC
     mov     r1,0xD
     mov     r2,4
     bl      bb21c_print_blankstr_buffer
 .endmacro
 
 .macro erase_defense_buffer_store
-    mov     r0,0xB
+    mov     r0,0xC
     mov     r1,0xD
     mov     r2,4
     bl      bb21c_print_blankstr_buffer_store

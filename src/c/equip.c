@@ -473,8 +473,8 @@ void equipPrint(WINDOW* window) //Prints equipment
         print_blankstr_buffer(window->window_x + 6, 7, 0xC, (int*)(OVERWORLD_BUFFER - 0x2000));
         
         //Clear the previous numbers
-        print_blankstr_buffer(7, 0xB, 0x8, (int*)(OVERWORLD_BUFFER - 0x2000));
-        print_blankstr_buffer(7, 0xD, 0x8, (int*)(OVERWORLD_BUFFER - 0x2000));
+        print_blankstr_buffer(8, 0xB, 0x8, (int*)(OVERWORLD_BUFFER - 0x2000));
+        print_blankstr_buffer(8, 0xD, 0x8, (int*)(OVERWORLD_BUFFER - 0x2000));
         
         //Reprint the ":"s
 
