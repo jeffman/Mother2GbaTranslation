@@ -18,8 +18,7 @@ $input_c_files =
     "src/c/fileselect.c",
     "src/c/status.c",
     "src/c/battle.c",
-    "src/c/psi.c",
-    "src/c/title.c"
+    "src/c/psi.c"
 
 $base_c_address    = 0x83755B8;
 $scripttool_cmd    = "bin/ScriptTool/ScriptTool.dll"
