@@ -491,7 +491,7 @@ beq     @@next
 
 // If flag 0x10 is set, clear the PSI window
 ldr     r0,[r5,0x1C] // PSI window
-ldr     r1,=#overworld_buffer - 0x2000
+ldr     r1,=#overworld_buffer - 0x800
 bl      clear_window_buffer
 
 @@next:
@@ -749,7 +749,7 @@ ldrh    r0,[r0]
 cmp     r0,0
 beq     @@next
 ldr     r0,=#0x3005230
-ldr     r1,=#overworld_buffer - 0x2000
+ldr     r1,=#overworld_buffer - 0x800
 ldr     r0,[r0,0x1C]
 bl      clear_window_buffer
 
@@ -2304,7 +2304,7 @@ orr     r2,r1
 strb    r2,[r4,#0x3]
 mov     r3,r0
 mov     r0,r4
-ldr     r1,=#overworld_buffer - 0x2000
+ldr     r1,=#overworld_buffer - 0x800
 mov     r4,r3
 bl      clear_window_buffer
 mov     r0,r4
@@ -2594,7 +2594,7 @@ pop     {r4,pc}
 //Prints blankstr in the buffer
 bb21c_print_blankstr_buffer:
 push    {lr}
-ldr     r3,=#overworld_buffer - 0x2000
+ldr     r3,=#overworld_buffer - 0x800
 bl      print_blankstr_buffer
 pop     {pc}
 
@@ -2602,7 +2602,7 @@ pop     {pc}
 //Prints blankstr in the buffer and stores it
 bb21c_print_blankstr_buffer_store:
 push    {lr}
-ldr     r3,=#overworld_buffer - 0x2000
+ldr     r3,=#overworld_buffer - 0x800
 bl      print_blankstr_buffer
 bl      store_pixels_overworld
 pop     {pc}
@@ -2969,44 +2969,42 @@ pop     {pc}
 //==============================================================================
 //Loads the vram into the buffer, it's called each time there is only the main file_select window active (a good way to set the whole thing up)
 load_pixels_overworld:
-push    {r0-r1,lr}
-ldr     r1,=#0x40000C8 //DMA transfer 2
-ldr     r0,=#0x6002000 //Source
-str     r0,[r1]
-ldr     r0,=#overworld_buffer //Target
-str     r0,[r1,#4]
-ldr     r0,=#0xA4001000 //Store 0x4000 bytes - When HBlank and in words of 32 bits
-str     r0,[r1,#8]
-ldr     r0,[r1,#8]
-pop     {r0-r1,pc}
+push    {r0-r3,lr}
+bl      load_pixels_overworld_buffer
+pop     {r0-r3,pc}
 
 //==============================================================================
 //Stores the buffer into the vram. This avoids screen tearing.
 store_pixels_overworld:
-push    {r0-r1,lr}
-ldr     r1,=#0x40000C8 //DMA transfer 2
-ldr     r0,=#overworld_buffer //Source
-str     r0,[r1]
-ldr     r0,=#0x6002000 //Target
-str     r0,[r1,#4]
-ldr     r0,=#0x94001000 //Store 0x4000 bytes - When VBlank and in words of 32 bits
-str     r0,[r1,#8]
-ldr     r0,[r1,#8]
-pop     {r0-r1,pc}
+push    {r0-r3,lr}
+//ldr     r1,=#0x40000C8 //DMA transfer 2, store the arrangements in order to avoid screen tearing ---> (Was actually caused by the VBlank below)
+//ldr     r0,=#0x3005270
+//ldr     r0,[r0,#0] //Source
+//str     r0,[r1]
+//ldr     r0,=#0x30051E4
+//mov     r2,#0
+//ldsh    r0,[r0,r2]
+//lsl     r0,r0,#0xB
+//mov     r2,#0xC0
+//lsl     r2,r2,#0x13
+//add     r0,r0,r2 //Target
+//str     r0,[r1,#4]
+//ldr     r0,=#0x94000200 //Store 0x800 bytes - When in VBlank and in words of 32 bits
+//str     r0,[r1,#8]
+//ldr     r0,[r1,#8]
+//swi #5 //Do this during VBlank
+mov     r0,#0x10
+bl      store_pixels_overworld_buffer
+pop     {r0-r3,pc}
 
 //==============================================================================
 //Stores the buffer into the vram. This avoids screen tearing.
 store_pixels_overworld_psi_window:
-push    {r0-r1,lr}
-ldr     r1,=#0x40000C8 //DMA transfer 2
-ldr     r0,=#overworld_buffer //Source
-str     r0,[r1]
-ldr     r0,=#0x6002000 //Target
-str     r0,[r1,#4]
-ldr     r0,=#0x94000800 //Store 0x1800 bytes - When VBlank and in words of 32 bits
-str     r0,[r1,#8]
-ldr     r0,[r1,#8]
-pop     {r0-r1,pc}
+push    {r0-r3,lr}
+//swi #5 //Do this during VBlank
+mov     r0,#0xA
+bl      store_pixels_overworld_buffer
+pop     {r0-r3,pc}
 
 //==============================================================================
 //Prints the sick tiles and then the names

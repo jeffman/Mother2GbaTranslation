@@ -266,7 +266,7 @@ int equippableReadInput(WINDOW* window) //Manages input in equipment-choice inne
     
     int counter = 0;
     
-	//Loads the total amount of items
+    //Loads the total amount of items
     if(possibleEquippablesCount > 6)
         counter = 7;
     else if(weird_value > 0)
@@ -327,7 +327,7 @@ int equippableReadInput(WINDOW* window) //Manages input in equipment-choice inne
         window->counter = 0xFFFF;
         if(freeSpace[window->cursor_y] == 0xFE)
         {
-			m2_soundeffect(0x12D); //Do the sound only if we're changing the page. Otherwise the original code will do the appropriate sound
+            m2_soundeffect(0x12D); //Do the sound only if we're changing the page. Otherwise the original code will do the appropriate sound
             window->counter = 0;
             window->cursor_x_base++;
             if(m2_div(window->cursor_x, 5) < window->cursor_x_base)
@@ -362,19 +362,19 @@ int equippableReadInput(WINDOW* window) //Manages input in equipment-choice inne
 //Simplified inner equip routine (The original routine had a pointer to a table of valid cursor positions as a parameter)
 int innerEquipInput(WINDOW* window)
 {
-	bool printing = !window->vwf_skip;
-	window->vwf_skip = true;
-	
+    bool printing = !window->vwf_skip;
+    window->vwf_skip = true;
+    
     PAD_STATE state = *pad_state;
     PAD_STATE state_shadow = *pad_state_shadow;
 
     short previousY = window->cursor_y;
     short currentY = window->cursor_y;
-	
-	// Clear cursor tiles
+    
+    // Clear cursor tiles
     map_tile(0x1FF, window->window_x, window->window_y + window->cursor_y * 2);
     map_tile(0x1FF, window->window_x, window->window_y + window->cursor_y * 2 + 1);
-	
+    
     if(state.up) //This has been simplified
     {
         currentY--;
@@ -398,16 +398,16 @@ int innerEquipInput(WINDOW* window)
                 currentY = 0;
         }
     }
-	
-	//The game does stuff when pressing left or right, however for the equipment window this is not needed
-	if(state.right) //This routine in particular did both the main overworld window and the inner equip window
-	{
-	}
-	
-	
-	if(state.left)
-	{
-	}
+    
+    //The game does stuff when pressing left or right, however for the equipment window this is not needed
+    if(state.right) //This routine in particular did both the main overworld window and the inner equip window
+    {
+    }
+    
+    
+    if(state.left)
+    {
+    }
     
     if(state_shadow.up || state_shadow.down)
     {
@@ -419,24 +419,24 @@ int innerEquipInput(WINDOW* window)
     }
     else
         window->hold = false;
-	
+    
     if((state.b || state.select) && (!printing))
     {
         window->counter = 0;
         m2_soundeffect(0x12E);
-		window->vwf_skip = false;
+        window->vwf_skip = false;
         return ACTION_STEPOUT;
     }
-	
-	
+    
+    
     if((state.a || state.l) && (!printing))
     {
         window->counter = 0xFFFF;
         m2_soundeffect(0x12D);
-		window->vwf_skip = false;
+        window->vwf_skip = false;
         return (window->cursor_y << 1) + ACTION_STEPIN;
     }
-	
+    
     if (window->counter != 0xFFFF)
     {
         window->counter++;
@@ -449,8 +449,8 @@ int innerEquipInput(WINDOW* window)
         if (window->counter > 0x10)
             window->counter = 0;
     }
-	
-	return ACTION_NONE;
+    
+    return ACTION_NONE;
 }
 
 void equipPrint(WINDOW* window) //Prints equipment
@@ -467,25 +467,25 @@ void equipPrint(WINDOW* window) //Prints equipment
         byte *item;
         
         //Clear the previous equipment
-        print_blankstr_buffer(window->window_x + 6, 1, 0xC, (int*)(OVERWORLD_BUFFER - 0x2000));
-        print_blankstr_buffer(window->window_x + 6, 3, 0xC, (int*)(OVERWORLD_BUFFER - 0x2000));
-        print_blankstr_buffer(window->window_x + 6, 5, 0xC, (int*)(OVERWORLD_BUFFER - 0x2000));
-        print_blankstr_buffer(window->window_x + 6, 7, 0xC, (int*)(OVERWORLD_BUFFER - 0x2000));
+        print_blankstr_buffer(window->window_x + 6, 1, 0xC, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+        print_blankstr_buffer(window->window_x + 6, 3, 0xC, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+        print_blankstr_buffer(window->window_x + 6, 5, 0xC, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+        print_blankstr_buffer(window->window_x + 6, 7, 0xC, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
         
         //Clear the previous numbers
-        print_blankstr_buffer(8, 0xB, 0x8, (int*)(OVERWORLD_BUFFER - 0x2000));
-        print_blankstr_buffer(8, 0xD, 0x8, (int*)(OVERWORLD_BUFFER - 0x2000));
+        print_blankstr_buffer(8, 0xB, 0x8, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+        print_blankstr_buffer(8, 0xD, 0x8, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
         
         //Reprint the ":"s
 
-        print_character_with_callback(decode_character(0x6A), ((window->window_x + 6) << 3), (0x1 << 3), 0, 0xF, (int*)(OVERWORLD_BUFFER - 0x2000), &get_tile_number_with_offset, *tilemap_pointer, 32, 0xC);
-        print_character_with_callback(decode_character(0x6A), ((window->window_x + 6) << 3), (0x3 << 3), 0, 0xF, (int*)(OVERWORLD_BUFFER - 0x2000), &get_tile_number_with_offset, *tilemap_pointer, 32, 0xC);
-        print_character_with_callback(decode_character(0x6A), ((window->window_x + 6) << 3), (0x5 << 3), 0, 0xF, (int*)(OVERWORLD_BUFFER - 0x2000), &get_tile_number_with_offset, *tilemap_pointer, 32, 0xC);
-        print_character_with_callback(decode_character(0x6A), ((window->window_x + 6) << 3), (0x7 << 3), 0, 0xF, (int*)(OVERWORLD_BUFFER - 0x2000), &get_tile_number_with_offset, *tilemap_pointer, 32, 0xC);
+        print_character_with_callback_1bpp_buffer(decode_character(0x6A), ((window->window_x + 6) << 3), (0x1 << 3), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)), &get_tile_number_with_offset, 0, *tilemap_pointer, 32, 0xC);
+        print_character_with_callback_1bpp_buffer(decode_character(0x6A), ((window->window_x + 6) << 3), (0x3 << 3), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)), &get_tile_number_with_offset, 0, *tilemap_pointer, 32, 0xC);
+        print_character_with_callback_1bpp_buffer(decode_character(0x6A), ((window->window_x + 6) << 3), (0x5 << 3), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)), &get_tile_number_with_offset, 0, *tilemap_pointer, 32, 0xC);
+        print_character_with_callback_1bpp_buffer(decode_character(0x6A), ((window->window_x + 6) << 3), (0x7 << 3), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)), &get_tile_number_with_offset, 0, *tilemap_pointer, 32, 0xC);
         
         //Print the equipment
         if(character_data->equipment[0] == 0) //Weapon
-            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x1) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
+            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x1) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
         else
         {
             item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[character_data->equipment[0] - 1]);
@@ -494,7 +494,7 @@ void equipPrint(WINDOW* window) //Prints equipment
         }
         
         if(character_data->equipment[1] == 0) //Body
-            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x3) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
+            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x3) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
         else
         {
             item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[character_data->equipment[1] - 1]);
@@ -503,7 +503,7 @@ void equipPrint(WINDOW* window) //Prints equipment
         }
         
         if(character_data->equipment[2] == 0) //Arms
-            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x5) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
+            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x5) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
         else
         {
             item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[character_data->equipment[2] - 1]);
@@ -512,7 +512,7 @@ void equipPrint(WINDOW* window) //Prints equipment
         }
         
         if(character_data->equipment[3] == 0) //Other
-            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x7) << 3, (int*)(OVERWORLD_BUFFER - 0x2000));
+            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x7) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
         else
         {
             item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[character_data->equipment[3] - 1]);
@@ -524,24 +524,24 @@ void equipPrint(WINDOW* window) //Prints equipment
 //Prints the numbers in the window in a formatted way
 void printNumberEquip(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
 {
-	while((*str) == 0x50)
-	{
-		x += 6;
-		str++;
-	}
-	printstr_hlight_pixels_buffer(window, str, x, y, highlight);
+    while((*str) == 0x50)
+    {
+        x += 6;
+        str++;
+    }
+    printstr_hlight_pixels_buffer(window, str, x, y, highlight);
 }
 
 //Prints Offense: and Defense:
 void printEquipWindowNumberText(WINDOW* window)
 {
-	handle_first_window_buffer(window, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
-	printstr_hlight_pixels_buffer(window, window->text_start, 0, 3, false);
+    handle_first_window_buffer(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+    printstr_hlight_pixels_buffer(window, window->text_start, 0, 3, false);
 }
 
 //Prints the arrow for the numbers in the Offense/Defense menu
 void printEquipNumbersArrow(WINDOW* window)
 {
-	printTinyArrow((window->window_x + 9) << 3, (window->window_y + 0) << 3);
-	printTinyArrow((window->window_x + 9) << 3, (window->window_y + 2) << 3);
+    printTinyArrow((window->window_x + 9) << 3, (window->window_y + 0) << 3);
+    printTinyArrow((window->window_x + 9) << 3, (window->window_y + 2) << 3);
 }
