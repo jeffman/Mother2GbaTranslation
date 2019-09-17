@@ -7,6 +7,7 @@
 #define TRUE 1
 #define FALSE 0
 
+#define TILESET_OFFSET_BUFFER_MULTIPLIER 0x8
 #define CHAR_OFFSET 0x50
 #define CHAR_END 0x60
 #define YOUWON_START 0x64

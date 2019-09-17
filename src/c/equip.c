@@ -467,25 +467,25 @@ void equipPrint(WINDOW* window) //Prints equipment
         byte *item;
         
         //Clear the previous equipment
-        print_blankstr_buffer(window->window_x + 6, 1, 0xC, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
-        print_blankstr_buffer(window->window_x + 6, 3, 0xC, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
-        print_blankstr_buffer(window->window_x + 6, 5, 0xC, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
-        print_blankstr_buffer(window->window_x + 6, 7, 0xC, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+        print_blankstr_buffer(window->window_x + 6, 1, 0xC, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
+        print_blankstr_buffer(window->window_x + 6, 3, 0xC, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
+        print_blankstr_buffer(window->window_x + 6, 5, 0xC, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
+        print_blankstr_buffer(window->window_x + 6, 7, 0xC, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
         
         //Clear the previous numbers
-        print_blankstr_buffer(8, 0xB, 0x8, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
-        print_blankstr_buffer(8, 0xD, 0x8, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+        print_blankstr_buffer(8, 0xB, 0x8, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
+        print_blankstr_buffer(8, 0xD, 0x8, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
         
         //Reprint the ":"s
 
-        print_character_with_callback_1bpp_buffer(decode_character(0x6A), ((window->window_x + 6) << 3), (0x1 << 3), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)), &get_tile_number_with_offset, 0, *tilemap_pointer, 32, 0xC);
-        print_character_with_callback_1bpp_buffer(decode_character(0x6A), ((window->window_x + 6) << 3), (0x3 << 3), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)), &get_tile_number_with_offset, 0, *tilemap_pointer, 32, 0xC);
-        print_character_with_callback_1bpp_buffer(decode_character(0x6A), ((window->window_x + 6) << 3), (0x5 << 3), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)), &get_tile_number_with_offset, 0, *tilemap_pointer, 32, 0xC);
-        print_character_with_callback_1bpp_buffer(decode_character(0x6A), ((window->window_x + 6) << 3), (0x7 << 3), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)), &get_tile_number_with_offset, 0, *tilemap_pointer, 32, 0xC);
+        print_character_with_callback_1bpp_buffer(decode_character(0x6A), ((window->window_x + 6) << 3), (0x1 << 3), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)), &get_tile_number_with_offset, 0, *tilemap_pointer, 32, 0xC);
+        print_character_with_callback_1bpp_buffer(decode_character(0x6A), ((window->window_x + 6) << 3), (0x3 << 3), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)), &get_tile_number_with_offset, 0, *tilemap_pointer, 32, 0xC);
+        print_character_with_callback_1bpp_buffer(decode_character(0x6A), ((window->window_x + 6) << 3), (0x5 << 3), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)), &get_tile_number_with_offset, 0, *tilemap_pointer, 32, 0xC);
+        print_character_with_callback_1bpp_buffer(decode_character(0x6A), ((window->window_x + 6) << 3), (0x7 << 3), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)), &get_tile_number_with_offset, 0, *tilemap_pointer, 32, 0xC);
         
         //Print the equipment
         if(character_data->equipment[0] == 0) //Weapon
-            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x1) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x1) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
         else
         {
             item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[character_data->equipment[0] - 1]);
@@ -494,7 +494,7 @@ void equipPrint(WINDOW* window) //Prints equipment
         }
         
         if(character_data->equipment[1] == 0) //Body
-            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x3) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x3) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
         else
         {
             item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[character_data->equipment[1] - 1]);
@@ -503,7 +503,7 @@ void equipPrint(WINDOW* window) //Prints equipment
         }
         
         if(character_data->equipment[2] == 0) //Arms
-            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x5) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x5) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
         else
         {
             item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[character_data->equipment[2] - 1]);
@@ -512,7 +512,7 @@ void equipPrint(WINDOW* window) //Prints equipment
         }
         
         if(character_data->equipment[3] == 0) //Other
-            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x7) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+            print_string_in_buffer(nothing, (((window->window_x + 7)) << 3) - 2, (0x7) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
         else
         {
             item = m2_strlookup((int*)0x8B1AF94, (byte*)0x8B1A694, character_data->goods[character_data->equipment[3] - 1]);
@@ -535,7 +535,7 @@ void printNumberEquip(WINDOW* window, byte* str, unsigned short x, unsigned shor
 //Prints Offense: and Defense:
 void printEquipWindowNumberText(WINDOW* window)
 {
-    handle_first_window_buffer(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+    handle_first_window_buffer(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
     printstr_hlight_pixels_buffer(window, window->text_start, 0, 3, false);
 }
 

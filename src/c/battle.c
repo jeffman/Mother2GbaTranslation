@@ -55,10 +55,10 @@ void printBattleMenu(byte validXs, byte validYs, byte highlighted)
     {
         if(validYs & 1)
         {
-            print_blankstr_buffer(2,1,5,(byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+            print_blankstr_buffer(2,1,5,(byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
             if((*drawValue) == 2)
             {
-                print_blankstr_buffer(7,1,5,(byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+                print_blankstr_buffer(7,1,5,(byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
                 str = m12_battle_commands_str10; //Do Nothing
             }
             else if((*drawValue) == 1)
@@ -70,7 +70,7 @@ void printBattleMenu(byte validXs, byte validYs, byte highlighted)
         
         if(validYs & 2)
         {
-            print_blankstr_buffer(2,3,5,(byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+            print_blankstr_buffer(2,3,5,(byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
             if((*active_window_party_member) != 2)
                 printstr_hlight_buffer(window, m12_battle_commands_str3, 1, 1, highlighted & 2); //PSI
             else
@@ -84,14 +84,14 @@ void printBattleMenu(byte validXs, byte validYs, byte highlighted)
         {
             if((*drawValue) != 2)
             {
-                print_blankstr_buffer(7,1,5,(byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+                print_blankstr_buffer(7,1,5,(byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
                 printstr_hlight_buffer(window, m12_battle_commands_str1, 6, 0, highlighted & 4); //Goods
             }
         }
         
         if(validYs & 2)
         {
-            print_blankstr_buffer(7,3,5,(byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+            print_blankstr_buffer(7,3,5,(byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
             if((*drawValue) != 2)
             {
                 printstr_hlight_buffer(window, m12_battle_commands_str4, 6, 1, highlighted & 8); //Defend

@@ -1040,7 +1040,7 @@ int print_window_with_buffer(WINDOW* window)
         while(window->loaded_code !=0)
         {
             window->delay = delay;
-            print_character_with_codes(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+            print_character_with_codes(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
         }
     }
     return 0;
@@ -1277,7 +1277,7 @@ byte print_character_with_codes(WINDOW* window, byte* dest)
     }
     else
     {
-        handle_first_window_buffer(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+        handle_first_window_buffer(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
         window->delay = window->delay_between_prints;
         if(x > 0x1F)
         {
@@ -1414,7 +1414,7 @@ int printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short 
     while(output != 1)
     {
         window->delay = 0;
-        output = print_character_with_codes(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+        output = print_character_with_codes(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
     }
     int retValue = (window->text_x << 3) + window->pixel_x;
     window->text_start = tmpTextStart;
@@ -1442,7 +1442,7 @@ unsigned short printstr_hlight_pixels_buffer(WINDOW* window, byte* str, unsigned
         palette_mask_highlight += 0x1000;
     (*palette_mask) = palette_mask_highlight;
     
-    unsigned short printed_Characters = print_string_in_buffer(str, printX, printY, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+    unsigned short printed_Characters = print_string_in_buffer(str, printX, printY, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
     
     (*palette_mask) = tmpPaletteMsk;
     
@@ -1470,13 +1470,13 @@ int initWindow_buffer(WINDOW* window, byte* text_start, unsigned short delay_bet
     window->flags_unknown1 |= 1;
     window->redraw = true;
     if(text_start == NULL)
-        buffer_drawwindow(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+        buffer_drawwindow(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
     return 0;
 }
 
 void clearWindowTiles_buffer(WINDOW* window)
 {
-    clear_window_buffer(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+    clear_window_buffer(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
     window->text_x = 0;
     window->text_y = 0;
 }
@@ -1695,7 +1695,7 @@ void print_blankstr_buffer(int x, int y, int width, byte *dest)
 
 void load_pixels_overworld_buffer()
 {
-    byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8));
+    byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
     for(int y = 0; y < 0x10; y++)
         for(int x = 0; x < 0x1C; x++)
         {
@@ -1715,7 +1715,7 @@ void load_pixels_overworld_buffer()
 
 void store_pixels_overworld_buffer(int totalYs)
 {
-    byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8));
+    byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
     for(int y = 0; y < totalYs; y++)
         for(int x = 0; x < 0x1C; x++)
         {

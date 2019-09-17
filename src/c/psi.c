@@ -135,7 +135,7 @@ void psiPrint_buffer(byte value, WINDOW* window, bool printPSILine, PSIPrintInfo
         if(PSIID == 1)
         {
             str = (byte*)(m2_ness_name + (7 * 4) + (8 * 2)); //Go to Rockin's name
-            print_string_in_buffer(str, 0x71, ((printInfo->YPrinting) + window->window_y) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+            print_string_in_buffer(str, 0x71, ((printInfo->YPrinting) + window->window_y) << 3, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
         }
     }
     
@@ -455,7 +455,7 @@ int PSITargetInput(WINDOW* window)
     
     if(!window->vwf_skip)
     {
-        clear_window_buffer(getWindow(9), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * 8)));
+        clear_window_buffer(getWindow(9), (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
         psiTargetWindow_buffer(target);
         window->vwf_skip = true;
     }

@@ -1701,6 +1701,7 @@ m2_coord_table_file:
 // Existing subroutines/data
 //==============================================================================
 
+.definelabel buffer_subtractor      ,0x0000800
 .definelabel overworld_buffer       ,0x200F200
 .definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10

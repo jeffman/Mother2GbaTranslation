@@ -491,7 +491,7 @@ beq     @@next
 
 // If flag 0x10 is set, clear the PSI window
 ldr     r0,[r5,0x1C] // PSI window
-ldr     r1,=#overworld_buffer - 0x800
+ldr     r1,=#overworld_buffer - buffer_subtractor
 bl      clear_window_buffer
 
 @@next:
@@ -749,7 +749,7 @@ ldrh    r0,[r0]
 cmp     r0,0
 beq     @@next
 ldr     r0,=#0x3005230
-ldr     r1,=#overworld_buffer - 0x800
+ldr     r1,=#overworld_buffer - buffer_subtractor
 ldr     r0,[r0,0x1C]
 bl      clear_window_buffer
 
@@ -2304,7 +2304,7 @@ orr     r2,r1
 strb    r2,[r4,#0x3]
 mov     r3,r0
 mov     r0,r4
-ldr     r1,=#overworld_buffer - 0x800
+ldr     r1,=#overworld_buffer - buffer_subtractor
 mov     r4,r3
 bl      clear_window_buffer
 mov     r0,r4
@@ -2594,7 +2594,7 @@ pop     {r4,pc}
 //Prints blankstr in the buffer
 bb21c_print_blankstr_buffer:
 push    {lr}
-ldr     r3,=#overworld_buffer - 0x800
+ldr     r3,=#overworld_buffer - buffer_subtractor
 bl      print_blankstr_buffer
 pop     {pc}
 
@@ -2602,7 +2602,7 @@ pop     {pc}
 //Prints blankstr in the buffer and stores it
 bb21c_print_blankstr_buffer_store:
 push    {lr}
-ldr     r3,=#overworld_buffer - 0x800
+ldr     r3,=#overworld_buffer - buffer_subtractor
 bl      print_blankstr_buffer
 bl      store_pixels_overworld
 pop     {pc}
