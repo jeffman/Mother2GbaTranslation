@@ -6,7 +6,7 @@
 //          $8011499
 //          $8011495
 
-// 0x2E0 struct:
+// 0x2E0 struct: (2028028)
 // Offset       Length      Description                                             Value for long title screen
 // ------------------------------------------------------------------------------------------------------------
 // 0            4           Palette A pointer (WRAM) -- background? x3              0x2011400
@@ -15,8 +15,31 @@
 // C            4           Palette D pointer (WRAM) -- text or orb? x4             0x2011A00
 // 10           4           Palette E pointer (WRAM) -- buffer?                     0x2011C00
 
+// Sequences:
+// ##: [dur]                        [dur]
+// M2GBA                            EBGBA
+// -----                            -----
+// 00: start-up (play sound, etc.)
+// 01: [ 48] earth fade-in          [] B fade-in
+// 02: [ 45] pause                  [] pause
+// 03: [104] text flies in          [] text flies in
+// 04: [  1] pause                  [] pause
+// 05: [] flash text                [] flash text
+// 06: [] pause                     [] pause
+// 07: [] text moves up             [] do nothing
+// 08: [] pause                     [] pause
+// 09: [] background fade-in        [] background fade-in
+// 0A: [] pause                     [] pause
+// 0B: [] flash all                 []
+// 0C: [] pause                     []
+// 0D: [] long pause                []
+// 0E: [] flash all                 []
+// 0F: [] pause                     []
+// 10: [] long pause                []
+// 11: [] quick fade-out all        []
+
 //=============================================================================
-// $80113F5:
+// $80113F5: (Start)
 080113F4 (T)  push    r4,r5,r14
 080113F6 (T)  add     sp,-4h
 
@@ -81,9 +104,9 @@
 08011462 (T)  bx      r1
 
 //=============================================================================
-// $80115A9:
+// $80115A9: (Setup)
 
-// Load a bunch of constants to the stack
+// Load a bunch of constants to the stack ([80FCB74..80FCBFF] to [sp..sp+8B])
 080115A8 (T)  push    r4-r7,r14
 080115AA (T)  mov     r7,r10
 080115AC (T)  mov     r6,r9
@@ -134,14 +157,15 @@
 
 08011606 (T)  ldr     r3,=3000370h
 08011608 (T)  ldr     r7,[r3]
-0801160A (T)  mov     r12,r7
+0801160A (T)  mov     r12,r7                // r7 = r12 = 2028008
 0801160C (T)  mov     r0,r12
 0801160E (T)  ldr     r0,[r0,14h]
 08011610 (T)  mov     r9,r0
-08011612 (T)  mov     r7,r9
+08011612 (T)  mov     r7,r9                 // r7 = r9 = 2028028
+
 08011614 (T)  add     r7,14h
 08011616 (T)  ldr     r0,=3002570h
-08011618 (T)  ldr     r1,[r0]
+08011618 (T)  ldr     r1,[r0]               // seems to always be 2?
 0801161A (T)  ldr     r0,=3002A30h
 0801161C (T)  ldr     r2,[r0]
 0801161E (T)  lsl     r0,r1,1h
@@ -154,172 +178,210 @@
 0801162C (T)  b       8011730h
 
 // If this is the first run:
-0801162E (T)  mov     r0,r9
-08011630 (T)  add     r0,84h
-08011632 (T)  str     r1,[r0]
-08011634 (T)  mov     r1,0A2h
-08011636 (T)  lsl     r1,r1,2h
-08011638 (T)  add     r1,r9
-0801163A (T)  mov     r0,88h
-0801163C (T)  lsl     r0,r0,4h
-0801163E (T)  str     r0,[r1]
-08011640 (T)  mov     r2,0B2h
-08011642 (T)  lsl     r2,r2,2h
-08011644 (T)  add     r2,r9
-08011646 (T)  ldr     r1,[sp,54h]
-08011648 (T)  mov     r0,0F0h
-0801164A (T)  sub     r0,r0,r1
-0801164C (T)  str     r0,[r2]
-0801164E (T)  mov     r1,0AEh
-08011650 (T)  lsl     r1,r1,2h
-08011652 (T)  add     r1,r9
-08011654 (T)  mov     r0,0C0h
-08011656 (T)  lsl     r0,r0,0Ah
-08011658 (T)  str     r0,[r1]
-0801165A (T)  mov     r6,1h
-0801165C (T)  mov     r7,0B2h
-0801165E (T)  lsl     r7,r7,2h
-08011660 (T)  add     r7,r9
-08011662 (T)  mov     r5,0B3h
-08011664 (T)  lsl     r5,r5,2h
-08011666 (T)  add     r5,r9
-08011668 (T)  mov     r1,r13
-0801166A (T)  add     r1,58h
-0801166C (T)  str     r1,[sp,8Ch]
-0801166E (T)  mov     r2,r13
-08011670 (T)  add     r2,78h
-08011672 (T)  str     r2,[sp,90h]
-08011674 (T)  mov     r3,0A2h
-08011676 (T)  lsl     r3,r3,2h
-08011678 (T)  add     r3,r9
-0801167A (T)  mov     r10,r3
-0801167C (T)  mov     r4,0A3h
-0801167E (T)  lsl     r4,r4,2h
-08011680 (T)  add     r4,r9
-08011682 (T)  mov     r8,r4
-08011684 (T)  lsl     r4,r6,2h
-08011686 (T)  ldr     r0,[sp,90h]
-08011688 (T)  ldmia   [r0]!,r1
-0801168A (T)  str     r0,[sp,90h]
-0801168C (T)  ldr     r2,[sp,8Ch]
-0801168E (T)  ldmia   [r2]!,r0
-08011690 (T)  str     r2,[sp,8Ch]
-08011692 (T)  sub     r1,r1,r0
-08011694 (T)  str     r1,[r5]
-08011696 (T)  mov     r0,0AEh
-08011698 (T)  lsl     r0,r0,2h
-0801169A (T)  add     r0,r9
-0801169C (T)  add     r4,r0,r4
-0801169E (T)  ldr     r0,[r0]
-080116A0 (T)  mul     r0,r1
-080116A2 (T)  ldr     r1,[r7]
-080116A4 (T)  bl      m2_div
-080116A8 (T)  str     r0,[r4]
-080116AA (T)  ldmia   [r5]!,r1
-080116AC (T)  mov     r3,r10
-080116AE (T)  ldr     r0,[r3]
-080116B0 (T)  mul     r0,r1
-080116B2 (T)  ldr     r1,[r7]
-080116B4 (T)  bl      m2_div
-080116B8 (T)  mov     r4,r8
-080116BA (T)  add     r4,4h
-080116BC (T)  mov     r8,r4
-080116BE (T)  sub     r4,4h
-080116C0 (T)  stmia   [r4]!,r0
-080116C2 (T)  add     r6,1h
-080116C4 (T)  cmp     r6,3h
-080116C6 (T)  ble     8011684h
-080116C8 (T)  mov     r6,0h
-080116CA (T)  mov     r10,r6
-080116CC (T)  add     r7,sp,2Ch
-080116CE (T)  mov     r8,r7
-080116D0 (T)  add     r7,sp,6Ch
-080116D2 (T)  mov     r5,r9
-080116D4 (T)  add     r5,0A8h
-080116D6 (T)  mov     r4,r9
-080116D8 (T)  add     r4,88h
-080116DA (T)  mov     r0,r4
-080116DC (T)  ldr     r1,=8712FB0h
-080116DE (T)  bl      80088E0h
-080116E2 (T)  strb    r6,[r5]
-080116E4 (T)  mov     r0,r4
-080116E6 (T)  bl      8008A28h
-080116EA (T)  mov     r0,r10
-080116EC (T)  strb    r0,[r5,0Eh]
-080116EE (T)  ldmia   [r7]!,r0
-080116F0 (T)  str     r0,[r5,4h]
-080116F2 (T)  mov     r1,r8
-080116F4 (T)  add     r1,4h
-080116F6 (T)  mov     r8,r1
-080116F8 (T)  sub     r1,4h
-080116FA (T)  ldmia   [r1]!,r0
-080116FC (T)  str     r0,[r5,8h]
-080116FE (T)  add     r5,40h
-08011700 (T)  add     r4,40h
-08011702 (T)  add     r6,1h
-08011704 (T)  cmp     r6,7h
-08011706 (T)  ble     80116DAh
-08011708 (T)  b       8011BE4h
-0801170A (T)  lsl     r0,r0,0h
-0801170C (T)  ldmia   [r3]!,r2,r4-r6
-0801170E (T)  lsr     r7,r1,20h
-08011710 (T)  ldmia   [r3]!,r7
-08011712 (T)  lsr     r7,r1,20h
-08011714 (T)  ldmia   [r3]!,r5,r7
-08011716 (T)  lsr     r7,r1,20h
-08011718 (T)  ldmia   [r3]!,r6,r7
-0801171A (T)  lsr     r7,r1,20h
-0801171C (T)  ldmia   [r3]!,r5-r7
-0801171E (T)  lsr     r7,r1,20h
-08011720 (T)  lsl     r0,r6,0Dh
-08011722 (T)  lsl     r0,r0,0Ch
-08011724 (T)  mov     r5,70h
-08011726 (T)  lsl     r0,r0,0Ch
-08011728 (T)  cmp     r2,30h
-0801172A (T)  lsl     r0,r0,0Ch
-0801172C (T)  cmp     r7,0B0h
-0801172E (T)  lsr     r1,r6,1h
+    // Set sequence index to 0
+    0801162E (T)  mov     r0,r9             // 2028028
+    08011630 (T)  add     r0,84h
+    08011632 (T)  str     r1,[r0]
+
+    08011634 (T)  mov     r1,0A2h
+    08011636 (T)  lsl     r1,r1,2h
+    08011638 (T)  add     r1,r9
+    0801163A (T)  mov     r0,88h
+    0801163C (T)  lsl     r0,r0,4h
+    0801163E (T)  str     r0,[r1]           // [20282B0] = 0x00000880
+
+    08011640 (T)  mov     r2,0B2h
+    08011642 (T)  lsl     r2,r2,2h
+    08011644 (T)  add     r2,r9
+    08011646 (T)  ldr     r1,[sp,54h]       // r1 = 0x68
+    08011648 (T)  mov     r0,0F0h
+    0801164A (T)  sub     r0,r0,r1
+    0801164C (T)  str     r0,[r2]           // [20282F0] = 0xF0 - 0x68 = 0x88
+
+    0801164E (T)  mov     r1,0AEh
+    08011650 (T)  lsl     r1,r1,2h
+    08011652 (T)  add     r1,r9
+    08011654 (T)  mov     r0,0C0h
+    08011656 (T)  lsl     r0,r0,0Ah
+    08011658 (T)  str     r0,[r1]           // [20282E0] = 0x30000
+
+    0801165A (T)  mov     r6,1h
+    0801165C (T)  mov     r7,0B2h
+    0801165E (T)  lsl     r7,r7,2h
+    08011660 (T)  add     r7,r9             // r7 = 20282F0
+    08011662 (T)  mov     r5,0B3h
+    08011664 (T)  lsl     r5,r5,2h
+    08011666 (T)  add     r5,r9             // r5 = 20282F4
+
+    // Looks like sp+58 and sp+78 are important variables; store their
+    // locations to sp+8C and sp+90. Let's call them X and Y respectively.
+    08011668 (T)  mov     r1,r13
+    0801166A (T)  add     r1,58h
+    0801166C (T)  str     r1,[sp,8Ch]
+    0801166E (T)  mov     r2,r13
+    08011670 (T)  add     r2,78h
+    08011672 (T)  str     r2,[sp,90h]
+
+    08011674 (T)  mov     r3,0A2h
+    08011676 (T)  lsl     r3,r3,2h
+    08011678 (T)  add     r3,r9
+    0801167A (T)  mov     r10,r3            // r3 = r10 = 20282B0
+    0801167C (T)  mov     r4,0A3h
+    0801167E (T)  lsl     r4,r4,2h
+    08011680 (T)  add     r4,r9
+    08011682 (T)  mov     r8,r4             // r4 = r8 = 20282B4
+
+    // So:
+    //  r3  = 20282B0
+    //  r4  = 20282B4
+    //  r5  = 20282F4
+    //  r6  = loop index
+    //  r7  = 20282F0
+    //  r8  = 20282B4
+    //  r9  = 2028028
+    //  r10 = 20282B0
+
+    // For r6 = 1 to 3:
+        // Load Y into r1 and increment Y
+        08011684 (T)  lsl     r4,r6,2h
+        08011686 (T)  ldr     r0,[sp,90h]
+        08011688 (T)  ldmia   [r0]!,r1
+        0801168A (T)  str     r0,[sp,90h]
+
+        // Load X into r0 and increment X
+        0801168C (T)  ldr     r2,[sp,8Ch]
+        0801168E (T)  ldmia   [r2]!,r0
+        08011690 (T)  str     r2,[sp,8Ch]
+
+        08011692 (T)  sub     r1,r1,r0
+        08011694 (T)  str     r1,[r5]
+        08011696 (T)  mov     r0,0AEh
+        08011698 (T)  lsl     r0,r0,2h
+        0801169A (T)  add     r0,r9
+        0801169C (T)  add     r4,r0,r4
+        0801169E (T)  ldr     r0,[r0]
+        080116A0 (T)  mul     r0,r1
+        080116A2 (T)  ldr     r1,[r7]
+        080116A4 (T)  bl      m2_div
+        080116A8 (T)  str     r0,[r4]
+        080116AA (T)  ldmia   [r5]!,r1
+        080116AC (T)  mov     r3,r10
+        080116AE (T)  ldr     r0,[r3]
+        080116B0 (T)  mul     r0,r1
+        080116B2 (T)  ldr     r1,[r7]
+        080116B4 (T)  bl      m2_div
+        080116B8 (T)  mov     r4,r8
+        080116BA (T)  add     r4,4h
+        080116BC (T)  mov     r8,r4
+        080116BE (T)  sub     r4,4h
+        080116C0 (T)  stmia   [r4]!,r0
+        080116C2 (T)  add     r6,1h
+        080116C4 (T)  cmp     r6,3h
+        080116C6 (T)  ble     8011684h
+
+
+    080116C8 (T)  mov     r6,0h
+    080116CA (T)  mov     r10,r6
+    080116CC (T)  add     r7,sp,2Ch
+    080116CE (T)  mov     r8,r7
+    080116D0 (T)  add     r7,sp,6Ch
+    080116D2 (T)  mov     r5,r9
+    080116D4 (T)  add     r5,0A8h
+    080116D6 (T)  mov     r4,r9
+    080116D8 (T)  add     r4,88h
+    080116DA (T)  mov     r0,r4
+    080116DC (T)  ldr     r1,=8712FB0h
+    080116DE (T)  bl      80088E0h
+    080116E2 (T)  strb    r6,[r5]
+    080116E4 (T)  mov     r0,r4
+    080116E6 (T)  bl      8008A28h
+    080116EA (T)  mov     r0,r10
+    080116EC (T)  strb    r0,[r5,0Eh]
+    080116EE (T)  ldmia   [r7]!,r0
+    080116F0 (T)  str     r0,[r5,4h]
+    080116F2 (T)  mov     r1,r8
+    080116F4 (T)  add     r1,4h
+    080116F6 (T)  mov     r8,r1
+    080116F8 (T)  sub     r1,4h
+    080116FA (T)  ldmia   [r1]!,r0
+    080116FC (T)  str     r0,[r5,8h]
+    080116FE (T)  add     r5,40h
+    08011700 (T)  add     r4,40h
+    08011702 (T)  add     r6,1h
+    08011704 (T)  cmp     r6,7h
+    08011706 (T)  ble     80116DAh
+    08011708 (T)  b       8011BE4h
+    0801170A (T)  lsl     r0,r0,0h
+    0801170C (T)  ldmia   [r3]!,r2,r4-r6
+    0801170E (T)  lsr     r7,r1,20h
+    08011710 (T)  ldmia   [r3]!,r7
+    08011712 (T)  lsr     r7,r1,20h
+    08011714 (T)  ldmia   [r3]!,r5,r7
+    08011716 (T)  lsr     r7,r1,20h
+    08011718 (T)  ldmia   [r3]!,r6,r7
+    0801171A (T)  lsr     r7,r1,20h
+    0801171C (T)  ldmia   [r3]!,r5-r7
+    0801171E (T)  lsr     r7,r1,20h
+    08011720 (T)  lsl     r0,r6,0Dh
+    08011722 (T)  lsl     r0,r0,0Ch
+    08011724 (T)  mov     r5,70h
+    08011726 (T)  lsl     r0,r0,0Ch
+    08011728 (T)  cmp     r2,30h
+    0801172A (T)  lsl     r0,r0,0Ch
+    0801172C (T)  cmp     r7,0B0h
+    0801172E (T)  lsr     r1,r6,1h
+
 08011730 (T)  ldrb    r0,[r0,0Bh]           // appears to be an are-we-on-the-last-run flag
 08011732 (T)  cmp     r0,1h
 08011734 (T)  bne     801173Ch
 
 // If this is the last run:
-08011736 (T)  bl      8000C28h
+08011736 (T)  bl      8000C28h              // tear-down
 0801173A (T)  b       8011BE4h
 
-// Else:
+// Else: check for input
 0801173C (T)  ldr     r0,=3002500h
-0801173E (T)  ldrh    r1,[r0]
+0801173E (T)  ldrh    r1,[r0]               // pad input
 08011740 (T)  mov     r0,9h
 08011742 (T)  and     r0,r1
 08011744 (T)  cmp     r0,0h
 08011746 (T)  beq     8011774h
-08011748 (T)  mov     r0,r9
-0801174A (T)  add     r0,84h
-0801174C (T)  ldr     r0,[r0]
-0801174E (T)  cmp     r0,0Ah
-08011750 (T)  ble     8011764h
-08011752 (T)  ldr     r1,=30012D0h
-08011754 (T)  ldr     r0,=8001825h
-08011756 (T)  b       8011B7Ah
-08011758 (T)  mov     r5,0h
-0801175A (T)  lsl     r0,r0,0Ch
-0801175C (T)  asr     r0,r2,0Bh
-0801175E (T)  lsl     r0,r0,0Ch
-08011760 (T)  add     r5,r4,r0
-08011762 (T)  lsr     r0,r0,20h
-08011764 (T)  ldr     r1,=30012D0h
-08011766 (T)  ldr     r0,=8010F95h
-08011768 (T)  b       8011B7Ah
-0801176A (T)  lsl     r0,r0,0h
-0801176C (T)  asr     r0,r2,0Bh
-0801176E (T)  lsl     r0,r0,0Ch
-08011770 (T)  lsr     r5,r2,1Eh
-08011772 (T)  lsr     r1,r0,20h
+
+    // A/Start is pressed
+    08011748 (T)  mov     r0,r9
+    0801174A (T)  add     r0,84h
+    0801174C (T)  ldr     r0,[r0]
+    0801174E (T)  cmp     r0,0Ah
+    08011750 (T)  ble     8011764h
+
+    // If we're on the final sequence:
+    08011752 (T)  ldr     r1,=30012D0h
+    08011754 (T)  ldr     r0,=8001825h
+    08011756 (T)  b       8011B7Ah          // store r0 to [r1] and return -1
+    08011758 (T)  mov     r5,0h
+    0801175A (T)  lsl     r0,r0,0Ch
+    0801175C (T)  asr     r0,r2,0Bh
+    0801175E (T)  lsl     r0,r0,0Ch
+    08011760 (T)  add     r5,r4,r0
+    08011762 (T)  lsr     r0,r0,20h
+
+    // If we're not on the final sequence:
+    08011764 (T)  ldr     r1,=30012D0h
+    08011766 (T)  ldr     r0,=8010F95h
+    08011768 (T)  b       8011B7Ah          // same
+    0801176A (T)  lsl     r0,r0,0h
+    0801176C (T)  asr     r0,r2,0Bh
+    0801176E (T)  lsl     r0,r0,0Ch
+    08011770 (T)  lsr     r5,r2,1Eh
+    08011772 (T)  lsr     r1,r0,20h
+
+// Increment frame counter
 08011774 (T)  mov     r2,r12
 08011776 (T)  ldr     r0,[r2,4h]
 08011778 (T)  add     r0,1h
 0801177A (T)  str     r0,[r2,4h]
+
+// Check sequence number
 0801177C (T)  mov     r0,r9
 0801177E (T)  add     r0,84h
 08011780 (T)  ldr     r1,[r0]
@@ -327,6 +389,27 @@
 08011784 (T)  cmp     r1,11h
 08011786 (T)  bls     801178Ah
 08011788 (T)  b       8011B8Ch
+
+// Should always end up here (sequence number only goes up to 11)
+// Jump table!
+// [00]: 080117E0
+// [01]: 08011802
+// [02]: 0801182A
+// [03]: 08011858
+// [04]: 080118FA
+// [05]: 080118FE
+// [06]: 0801195C
+// [07]: 08011972
+// [08]: 080119BA
+// [09]: 080119DE
+// [0A]: 08011A02
+// [0B]: 08011A1A
+// [0C]: 08011A80
+// [0D]: 08011A8A
+// [0E]: 08011AAA
+// [0F]: 08011B58
+// [10]: 08011B66
+// [11]: 08011B76
 0801178A (T)  lsl     r0,r1,2h
 0801178C (T)  ldr     r1,=8011798h
 0801178E (T)  add     r0,r0,r1
@@ -370,25 +453,31 @@
 080117DA (T)  lsr     r1,r0,20h
 080117DC (T)  sub     r6,r6,r5
 080117DE (T)  lsr     r1,r0,20h
+
+// --------------------------------------------------------
+// Sequence 00
 080117E0 (T)  mov     r1,r9
 080117E2 (T)  add     r1,7Ah
 080117E4 (T)  mov     r2,0h
-080117E6 (T)  mov     r0,0D0h
+080117E6 (T)  mov     r0,0D0h           // BLDCNT
 080117E8 (T)  strh    r0,[r1]
 080117EA (T)  add     r1,2h
-080117EC (T)  mov     r0,10h
+080117EC (T)  mov     r0,10h            // BLDY
 080117EE (T)  strh    r0,[r1]
 080117F0 (T)  ldr     r0,[r3]
-080117F2 (T)  str     r2,[r0,4h]
+080117F2 (T)  str     r2,[r0,4h]        // reset frame index
 080117F4 (T)  mov     r0,1h
 080117F6 (T)  mov     r3,r10
-080117F8 (T)  str     r0,[r3]
+080117F8 (T)  str     r0,[r3]           // move to next sequence
 080117FA (T)  mov     r0,0AFh
-080117FC (T)  bl      m2_soundeffect
+080117FC (T)  bl      m2_soundeffect    // play title music
 08011800 (T)  b       8011B8Ch
+
+// --------------------------------------------------------
+// Sequence 01
 08011802 (T)  ldr     r3,[r3]
 08011804 (T)  ldr     r0,[r3,4h]
-08011806 (T)  cmp     r0,2h
+08011806 (T)  cmp     r0,2h             // Every 3 frames, bump the brightness
 08011808 (T)  bgt     801180Ch
 0801180A (T)  b       8011B8Ch
 0801180C (T)  mov     r1,r9
@@ -406,6 +495,9 @@
 08011824 (T)  mov     r4,r10
 08011826 (T)  str     r0,[r4]
 08011828 (T)  b       8011B8Ch
+
+// --------------------------------------------------------
+// Sequence 02
 0801182A (T)  ldr     r3,[r3]
 0801182C (T)  ldr     r0,[r3,4h]
 0801182E (T)  cmp     r0,2Ch
@@ -429,6 +521,9 @@
 08011852 (T)  mov     r7,r10
 08011854 (T)  str     r0,[r7]
 08011856 (T)  b       8011B8Ch
+
+// --------------------------------------------------------
+// Sequence 03
 08011858 (T)  mov     r6,0h
 0801185A (T)  mov     r7,r13
 0801185C (T)  sub     r7,4h
@@ -510,8 +605,14 @@
 080118F4 (T)  bge     80118E6h
 080118F6 (T)  mov     r0,4h
 080118F8 (T)  b       80119D8h
+
+// --------------------------------------------------------
+// Sequence 04
 080118FA (T)  mov     r0,5h
 080118FC (T)  b       8011B60h
+
+// --------------------------------------------------------
+// Sequence 05
 080118FE (T)  ldr     r3,[r3]
 08011900 (T)  ldr     r0,[r3,4h]
 08011902 (T)  cmp     r0,3h
@@ -559,6 +660,9 @@
 08011956 (T)  b       8011B4Ch
 08011958 (T)  lsl     r0,r0,8h
 0801195A (T)  lsl     r0,r0,14h
+
+// --------------------------------------------------------
+// Sequence 06
 0801195C (T)  ldr     r3,[r3]
 0801195E (T)  ldr     r0,[r3,4h]
 08011960 (T)  cmp     r0,2Ch
@@ -570,6 +674,9 @@
 0801196C (T)  mov     r0,0h
 0801196E (T)  str     r0,[r3,4h]
 08011970 (T)  b       8011B8Ch
+
+// --------------------------------------------------------
+// Sequence 07
 08011972 (T)  ldr     r0,[r3]
 08011974 (T)  ldr     r0,[r0,4h]
 08011976 (T)  cmp     r0,1h
@@ -606,15 +713,21 @@
 080119B4 (T)  mov     r7,r10
 080119B6 (T)  str     r6,[r7]
 080119B8 (T)  b       8011B8Ch
+
+// --------------------------------------------------------
+// Sequence 08
 080119BA (T)  mov     r1,r9
 080119BC (T)  add     r1,7Ah
 080119BE (T)  mov     r2,0h
 080119C0 (T)  mov     r0,0C3h
 080119C2 (T)  strh    r0,[r1]
+
+// Enable BG0/OBJ
 080119C4 (T)  sub     r1,2h
 080119C6 (T)  mov     r0,88h
 080119C8 (T)  lsl     r0,r0,5h
 080119CA (T)  strh    r0,[r1]
+
 080119CC (T)  add     r1,4h
 080119CE (T)  mov     r0,10h
 080119D0 (T)  strh    r0,[r1]
@@ -624,6 +737,9 @@
 080119D8 (T)  mov     r1,r10
 080119DA (T)  str     r0,[r1]
 080119DC (T)  b       8011B8Ch
+
+// --------------------------------------------------------
+// Sequence 09
 080119DE (T)  ldr     r3,[r3]
 080119E0 (T)  ldr     r0,[r3,4h]
 080119E2 (T)  cmp     r0,9h
@@ -642,6 +758,9 @@
 080119FC (T)  b       8011B8Ch
 080119FE (T)  mov     r0,0Ah
 08011A00 (T)  b       8011B60h
+
+// --------------------------------------------------------
+// Sequence 0A
 08011A02 (T)  mov     r0,0Bh
 08011A04 (T)  mov     r4,r10
 08011A06 (T)  str     r0,[r4]
@@ -654,6 +773,9 @@
 08011A14 (T)  ldr     r0,[r3]
 08011A16 (T)  str     r1,[r0,4h]
 08011A18 (T)  b       8011B8Ch
+
+// --------------------------------------------------------
+// Sequence 0B
 08011A1A (T)  ldr     r3,[r3]
 08011A1C (T)  ldr     r0,[r3,4h]
 08011A1E (T)  cmp     r0,3h
@@ -704,11 +826,17 @@
 08011A7A (T)  b       8011B4Ch
 08011A7C (T)  lsl     r0,r0,8h
 08011A7E (T)  lsl     r0,r0,14h
+
+// --------------------------------------------------------
+// Sequence 0C
 08011A80 (T)  ldr     r0,[r3]
 08011A82 (T)  mov     r1,0h
 08011A84 (T)  str     r1,[r0,4h]
 08011A86 (T)  mov     r0,0Dh
 08011A88 (T)  b       8011B60h
+
+// --------------------------------------------------------
+// Sequence 0D
 08011A8A (T)  ldr     r3,[r3]
 08011A8C (T)  ldr     r0,[r3,4h]
 08011A8E (T)  cmp     r0,0EFh
@@ -725,6 +853,9 @@
 08011AA4 (T)  strh    r0,[r1]
 08011AA6 (T)  str     r0,[r3,4h]
 08011AA8 (T)  b       8011B8Ch
+
+// --------------------------------------------------------
+// Sequence 0E
 08011AAA (T)  ldr     r3,[r3]
 08011AAC (T)  ldr     r0,[r3,4h]
 08011AAE (T)  cmp     r0,3h
@@ -809,6 +940,9 @@
 08011B52 (T)  b       8011B8Ch
 08011B54 (T)  lsl     r0,r0,8h
 08011B56 (T)  lsl     r0,r0,14h
+
+// --------------------------------------------------------
+// Sequence 0F
 08011B58 (T)  ldr     r0,[r3]
 08011B5A (T)  mov     r1,0h
 08011B5C (T)  str     r1,[r0,4h]
@@ -816,6 +950,9 @@
 08011B60 (T)  mov     r2,r10
 08011B62 (T)  str     r0,[r2]
 08011B64 (T)  b       8011B8Ch
+
+// --------------------------------------------------------
+// Sequence 10
 08011B66 (T)  ldr     r0,[r3]
 08011B68 (T)  ldr     r0,[r0,4h]
 08011B6A (T)  cmp     r0,63h
@@ -824,12 +961,16 @@
 08011B70 (T)  mov     r3,r10
 08011B72 (T)  str     r0,[r3]
 08011B74 (T)  b       8011B8Ch
+
+// --------------------------------------------------------
+// Sequence 11
 08011B76 (T)  ldr     r1,=30012D0h
 08011B78 (T)  ldr     r0,=80B6F81h
 08011B7A (T)  str     r0,[r1]
 08011B7C (T)  mov     r0,1h
 08011B7E (T)  neg     r0,r0
 08011B80 (T)  b       8011BE6h
+
 08011B82 (T)  lsl     r0,r0,0h
 08011B84 (T)  asr     r0,r2,0Bh
 08011B86 (T)  lsl     r0,r0,0Ch
@@ -884,7 +1025,7 @@
 08011BF4 (T)  bx      r1
 
 //=============================================================================
-// $8011499:
+// $8011499: (Commit)
 08011498 (T)  push    r4,r14
 0801149A (T)  add     sp,-4h
 0801149C (T)  ldr     r0,=3000370h
@@ -905,7 +1046,7 @@
 // If first run:
 080114B8 (T)  bl      8000454h              // check pad input
 080114BC (T)  bl      8005D50h              // clears some flag
-080114C0 (T)  b       801156Eh
+080114C0 (T)  b       801156Eh              // return
 080114C2 (T)  lsl     r0,r0,0h
 080114C4 (T)  lsl     r0,r6,0Dh
 080114C6 (T)  lsl     r0,r0,0Ch
@@ -920,10 +1061,10 @@
 080114D4 (T)  bne     80114DCh
 
 // If last run:
-080114D6 (T)  bl      8000C28h
-080114DA (T)  b       801156Eh
+080114D6 (T)  bl      8000C28h              // tear-down
+080114DA (T)  b       801156Eh              // return
 
-// If not last run:
+// If neither first nor last run:
 080114DC (T)  bl      80F47E4h              // wait for vblank
 
 // Set BG0 and BG1 scrolling offsets
@@ -945,8 +1086,8 @@
 080114FE (T)  strh    r0,[r1]               // BG1OFSb
 
 08011500 (T)  mov     r0,r4
-08011502 (T)  add     r0,84h
-08011504 (T)  ldr     r0,[r0]               // frame number
+08011502 (T)  add     r0,84h                // r0 = 0x20280AC
+08011504 (T)  ldr     r0,[r0]               // sequence number
 08011506 (T)  cmp     r0,1h
 08011508 (T)  blt     8011536h
 0801150A (T)  cmp     r0,2h
@@ -956,52 +1097,61 @@
 08011512 (T)  cmp     r0,9h
 08011514 (T)  blt     8011536h
 
-// If on frames 9-A:
-08011516 (T)  mov     r1,80h
-08011518 (T)  lsl     r1,r1,13h
-0801151A (T)  mov     r0,r4
-0801151C (T)  add     r0,78h
-0801151E (T)  ldrh    r0,[r0]
-08011520 (T)  strh    r0,[r1]
+// If on sequence 9-A:
+    // Copy DISPCNT
+    08011516 (T)  mov     r1,80h
+    08011518 (T)  lsl     r1,r1,13h             // r1 = 0x4000000 (DISPCNT)
+    0801151A (T)  mov     r0,r4
+    0801151C (T)  add     r0,78h                // r0 = 0x20280A0
+    0801151E (T)  ldrh    r0,[r0]
+    08011520 (T)  strh    r0,[r1]
 
-// If on frames 1-2:
-08011522 (T)  ldr     r1,=4000050h          // BLDCNT (special effects)
-08011524 (T)  mov     r0,r4
-08011526 (T)  add     r0,7Ah
-08011528 (T)  ldrh    r0,[r0]
-0801152A (T)  strh    r0,[r1]
-0801152C (T)  add     r1,4h                 // BLDY (brightness amount)
-0801152E (T)  mov     r0,r4
-08011530 (T)  add     r0,7Ch
-08011532 (T)  ldrh    r0,[r0]
-08011534 (T)  strh    r0,[r1]
+// If on sequence 1-2 or 9-A:
+    // Copy BLDCNT and BLDY
+    08011522 (T)  ldr     r1,=4000050h          // BLDCNT (special effects)
+    08011524 (T)  mov     r0,r4
+    08011526 (T)  add     r0,7Ah                // r0 = 0x20280A2
+    08011528 (T)  ldrh    r0,[r0]
+    0801152A (T)  strh    r0,[r1]
+    0801152C (T)  add     r1,4h                 // BLDY (brightness amount)
+    0801152E (T)  mov     r0,r4
+    08011530 (T)  add     r0,7Ch                // r0 = 0x20280A4
+    08011532 (T)  ldrh    r0,[r0]
+    08011534 (T)  strh    r0,[r1]
 
-// If on frame 0, 3-8, or >A:
-08011536 (T)  ldr     r1,=40000D4h
-08011538 (T)  ldr     r2,=30033A0h
-0801153A (T)  str     r2,[r1]
-0801153C (T)  mov     r0,0E0h
-0801153E (T)  lsl     r0,r0,13h
-08011540 (T)  str     r0,[r1,4h]
-08011542 (T)  ldr     r0,=84000100h
-08011544 (T)  str     r0,[r1,8h]
-08011546 (T)  ldr     r0,[r1,8h]
-08011548 (T)  mov     r0,0A0h
-0801154A (T)  str     r0,[sp]
-0801154C (T)  mov     r0,r13
-0801154E (T)  str     r0,[r1]
-08011550 (T)  str     r2,[r1,4h]
-08011552 (T)  ldr     r0,=85000100h
-08011554 (T)  str     r0,[r1,8h]
-08011556 (T)  ldr     r0,[r1,8h]
-08011558 (T)  ldr     r0,=3003390h
-0801155A (T)  mov     r1,0h
-0801155C (T)  str     r1,[r0]
-0801155E (T)  ldr     r0,=3003394h
-08011560 (T)  str     r1,[r0]
-08011562 (T)  bl      8005D6Ch
-08011566 (T)  bl      800E5E4h
-0801156A (T)  bl      8000454h
+// For all sequences:
+    // Copy OAM data
+    08011536 (T)  ldr     r1,=40000D4h
+    08011538 (T)  ldr     r2,=30033A0h      // OAM buffer
+    0801153A (T)  str     r2,[r1]
+    0801153C (T)  mov     r0,0E0h
+    0801153E (T)  lsl     r0,r0,13h         // r0 = 0x7000000
+    08011540 (T)  str     r0,[r1,4h]
+    08011542 (T)  ldr     r0,=84000100h
+    08011544 (T)  str     r0,[r1,8h]
+    08011546 (T)  ldr     r0,[r1,8h]
+
+    // Blank out OAM data
+    08011548 (T)  mov     r0,0A0h
+    0801154A (T)  str     r0,[sp]
+    0801154C (T)  mov     r0,r13
+    0801154E (T)  str     r0,[r1]
+    08011550 (T)  str     r2,[r1,4h]
+    08011552 (T)  ldr     r0,=85000100h
+    08011554 (T)  str     r0,[r1,8h]
+    08011556 (T)  ldr     r0,[r1,8h]
+
+    // ?
+    08011558 (T)  ldr     r0,=3003390h
+    0801155A (T)  mov     r1,0h
+    0801155C (T)  str     r1,[r0]
+    0801155E (T)  ldr     r0,=3003394h
+    08011560 (T)  str     r1,[r0]
+
+    08011562 (T)  bl      8005D6Ch              // perform DMAs
+    08011566 (T)  bl      800E5E4h              // something with input
+    0801156A (T)  bl      8000454h              // something else with input
+
 0801156E (T)  mov     r0,0h
 08011570 (T)  add     sp,4h
 08011572 (T)  pop     r4
@@ -1009,6 +1159,6 @@
 08011576 (T)  bx      r1
 
 //=============================================================================
-// $8011495:
+// $8011495: (End)
 08011494 (T)  movs    r0,0h
 08011496 (T)  bx      r14
