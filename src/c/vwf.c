@@ -1696,43 +1696,70 @@ void print_blankstr_buffer(int x, int y, int width, byte *dest)
 void load_pixels_overworld_buffer()
 {
     byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
-    for(int y = 0; y < 0x10; y++)
-        for(int x = 0; x < 0x1C; x++)
-        {
-            int tile_buffer = get_tile_number_with_offset_buffer(x + 1, y + 1);
-            int tile = get_tile_number_with_offset(x + 1, y + 1);
-            int foregroundRow = 0xFFFFFFFF;
-            buffer[(tile_buffer * 8) + 0] = reduce_bit_depth(vram[(tile * 8) + 0], foregroundRow);
-            buffer[(tile_buffer * 8) + 1] = reduce_bit_depth(vram[(tile * 8) + 1], foregroundRow);
-            buffer[(tile_buffer * 8) + 2] = reduce_bit_depth(vram[(tile * 8) + 2], foregroundRow);
-            buffer[(tile_buffer * 8) + 3] = reduce_bit_depth(vram[(tile * 8) + 3], foregroundRow);
-            buffer[(tile_buffer * 8) + 4] = reduce_bit_depth(vram[(tile * 8) + 4], foregroundRow);
-            buffer[(tile_buffer * 8) + 5] = reduce_bit_depth(vram[(tile * 8) + 5], foregroundRow);
-            buffer[(tile_buffer * 8) + 6] = reduce_bit_depth(vram[(tile * 8) + 6], foregroundRow);
-            buffer[(tile_buffer * 8) + 7] = reduce_bit_depth(vram[(tile * 8) + 7], foregroundRow);
-        }
+    for(int i = 0; i < 8 * 0x1C; i++)
+    {
+		//Doing this saves about 100k cycles during load
+        int tile = m2_coord_table[i] + *tile_offset;
+		int addedValue = (i >> 5) << 6;
+        int tile_buffer = (i & 0x1F) + addedValue + *tile_offset;
+        int foregroundRow = 0xFFFFFFFF;
+        buffer[(tile_buffer * 8) + 0] = reduce_bit_depth(vram[(tile * 8) + 0], foregroundRow);
+        buffer[(tile_buffer * 8) + 1] = reduce_bit_depth(vram[(tile * 8) + 1], foregroundRow);
+        buffer[(tile_buffer * 8) + 2] = reduce_bit_depth(vram[(tile * 8) + 2], foregroundRow);
+        buffer[(tile_buffer * 8) + 3] = reduce_bit_depth(vram[(tile * 8) + 3], foregroundRow);
+        buffer[(tile_buffer * 8) + 4] = reduce_bit_depth(vram[(tile * 8) + 4], foregroundRow);
+        buffer[(tile_buffer * 8) + 5] = reduce_bit_depth(vram[(tile * 8) + 5], foregroundRow);
+        buffer[(tile_buffer * 8) + 6] = reduce_bit_depth(vram[(tile * 8) + 6], foregroundRow);
+        buffer[(tile_buffer * 8) + 7] = reduce_bit_depth(vram[(tile * 8) + 7], foregroundRow);
+		tile_buffer += 0x20;
+		tile += 0x20;
+        buffer[(tile_buffer * 8) + 0] = reduce_bit_depth(vram[(tile * 8) + 0], foregroundRow);
+        buffer[(tile_buffer * 8) + 1] = reduce_bit_depth(vram[(tile * 8) + 1], foregroundRow);
+        buffer[(tile_buffer * 8) + 2] = reduce_bit_depth(vram[(tile * 8) + 2], foregroundRow);
+        buffer[(tile_buffer * 8) + 3] = reduce_bit_depth(vram[(tile * 8) + 3], foregroundRow);
+        buffer[(tile_buffer * 8) + 4] = reduce_bit_depth(vram[(tile * 8) + 4], foregroundRow);
+        buffer[(tile_buffer * 8) + 5] = reduce_bit_depth(vram[(tile * 8) + 5], foregroundRow);
+        buffer[(tile_buffer * 8) + 6] = reduce_bit_depth(vram[(tile * 8) + 6], foregroundRow);
+        buffer[(tile_buffer * 8) + 7] = reduce_bit_depth(vram[(tile * 8) + 7], foregroundRow);
+    }
 }
 
 void store_pixels_overworld_buffer(int totalYs)
 {
     byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
-    for(int y = 0; y < totalYs; y++)
-        for(int x = 0; x < 0x1C; x++)
-        {
-            int tile = get_tile_number_with_offset(x + 1, y + 1);
-            int tile_buffer = get_tile_number_with_offset_buffer(x + 1, y + 1);
-            int* bufferValues = (int*)(&buffer[(tile_buffer * 8)]);
-            unsigned int first_half = bufferValues[0];
-            unsigned int second_half = bufferValues[1];
-            vram[(tile * 8) + 0] = m2_bits_to_nybbles_fast[(first_half >> 0) & 0xFF];
-            vram[(tile * 8) + 1] = m2_bits_to_nybbles_fast[(first_half >> 8) & 0xFF];
-            vram[(tile * 8) + 2] = m2_bits_to_nybbles_fast[(first_half >> 0x10) & 0xFF];
-            vram[(tile * 8) + 3] = m2_bits_to_nybbles_fast[(first_half >> 0x18) & 0xFF];
-            vram[(tile * 8) + 4] = m2_bits_to_nybbles_fast[(second_half >> 0) & 0xFF];
-            vram[(tile * 8) + 5] = m2_bits_to_nybbles_fast[(second_half >> 8) & 0xFF];
-            vram[(tile * 8) + 6] = m2_bits_to_nybbles_fast[(second_half >> 0x10) & 0xFF];
-            vram[(tile * 8) + 7] = m2_bits_to_nybbles_fast[(second_half >> 0x18) & 0xFF];
-        }
+	totalYs >>= 1;
+	int total = totalYs * 0x1C;
+    for(int i = 0; i < total; i++)
+	{
+		//Not using functions for the tile values saves about 30k cycles on average
+        int tile = m2_coord_table[i] + *tile_offset;
+		int addedValue = (i >> 5) << 6;
+        int tile_buffer = (i & 0x1F) + addedValue + *tile_offset;
+        int* bufferValues = (int*)(&buffer[(tile_buffer * 8)]);
+        unsigned int first_half = bufferValues[0];
+        unsigned int second_half = bufferValues[1];
+        vram[(tile * 8) + 0] = m2_bits_to_nybbles_fast[(first_half >> 0) & 0xFF];
+        vram[(tile * 8) + 1] = m2_bits_to_nybbles_fast[(first_half >> 8) & 0xFF];
+        vram[(tile * 8) + 2] = m2_bits_to_nybbles_fast[(first_half >> 0x10) & 0xFF];
+        vram[(tile * 8) + 3] = m2_bits_to_nybbles_fast[(first_half >> 0x18) & 0xFF];
+        vram[(tile * 8) + 4] = m2_bits_to_nybbles_fast[(second_half >> 0) & 0xFF];
+        vram[(tile * 8) + 5] = m2_bits_to_nybbles_fast[(second_half >> 8) & 0xFF];
+        vram[(tile * 8) + 6] = m2_bits_to_nybbles_fast[(second_half >> 0x10) & 0xFF];
+        vram[(tile * 8) + 7] = m2_bits_to_nybbles_fast[(second_half >> 0x18) & 0xFF];
+	    //Do the tile right below (Saves about 50k cycles on average)
+        tile += 0x20;
+        bufferValues += 0x40;
+        first_half = bufferValues[0];
+        second_half = bufferValues[1];
+        vram[(tile * 8) + 0] = m2_bits_to_nybbles_fast[(first_half >> 0) & 0xFF];
+        vram[(tile * 8) + 1] = m2_bits_to_nybbles_fast[(first_half >> 8) & 0xFF];
+        vram[(tile * 8) + 2] = m2_bits_to_nybbles_fast[(first_half >> 0x10) & 0xFF];
+        vram[(tile * 8) + 3] = m2_bits_to_nybbles_fast[(first_half >> 0x18) & 0xFF];
+        vram[(tile * 8) + 4] = m2_bits_to_nybbles_fast[(second_half >> 0) & 0xFF];
+        vram[(tile * 8) + 5] = m2_bits_to_nybbles_fast[(second_half >> 8) & 0xFF];
+        vram[(tile * 8) + 6] = m2_bits_to_nybbles_fast[(second_half >> 0x10) & 0xFF];
+        vram[(tile * 8) + 7] = m2_bits_to_nybbles_fast[(second_half >> 0x18) & 0xFF];
+    }
 }
 
 // x,y: tile coordinates
