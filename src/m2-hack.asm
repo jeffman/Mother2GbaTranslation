@@ -1660,6 +1660,9 @@ m2_widths_tiny:
 m2_bits_to_nybbles:
 .incbin "data/m2-bits-to-nybbles.bin"
 
+m2_bits_to_nybbles_fast:
+.incbin "data/m2-bits-to-nybbles-fast.bin"
+
 m2_nybbles_to_bits:
 .incbin "data/m2-nybbles-to-bits.bin"
 
@@ -1698,7 +1701,8 @@ m2_coord_table_file:
 // Existing subroutines/data
 //==============================================================================
 
-.definelabel overworld_buffer       ,0x200C000
+.definelabel buffer_subtractor      ,0x0000800
+.definelabel overworld_buffer       ,0x200F200
 .definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10
 .definelabel m2_old_paula_name      ,0x3001F16

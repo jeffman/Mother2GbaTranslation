@@ -24,9 +24,23 @@ int get_tile_number(int x, int y)
     return m2_coord_table[x + ((y >> 1) * 28)] + (y & 1) * 32;
 }
 
+int get_tile_number_buffer(int x, int y)
+{
+    x--;
+    y--;
+    int totalLenght = x + ((y >> 1) * 28);
+    int addedValue = (totalLenght >> 5) << 6;
+    return (totalLenght & 0x1F) + addedValue + (y & 1) * 32;
+}
+
 int get_tile_number_with_offset(int x, int y)
 {
     return get_tile_number(x, y) + *tile_offset;
+}
+
+int get_tile_number_with_offset_buffer(int x, int y)
+{
+    return get_tile_number_buffer(x, y) + *tile_offset;
 }
 
 int get_tile_number_grid(int x, int y)
@@ -34,15 +48,15 @@ int get_tile_number_grid(int x, int y)
     return x + (y * 32);
 }
 
-int expand_bit_depth(byte row, int foreground)
+int expand_bit_depth(byte row, byte foreground)
 {
     foreground &= 0xF;
     return m2_bits_to_nybbles[row + (foreground * 256)];
 }
 
-byte reduce_bit_depth(int row, int foreground)
+//The foregroundRow is given as a parameter in order to make this faster
+byte reduce_bit_depth(int row, int foregroundRow)
 {
-    int foregroundRow = row * 0x11111111;
     row ^= foregroundRow;
 
     int lower = m2_nybbles_to_bits[row & 0xFFFF];
@@ -344,6 +358,105 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
                 }
             }
             
+            renderedWidth -= 8;
+            dTileX++;
+        }
+    }
+
+    return virtualWidth;
+}
+
+byte print_character_with_callback_1bpp_buffer(byte chr, int x, int y, byte *dest, int (*getTileCallback)(int, int), int font,
+    unsigned short *tilemapPtr, int tilemapWidth, byte doubleTileHeight)
+{
+    int tileWidth = m2_font_widths[font];
+    int tileHeight = m2_font_heights[font];
+    int widths = m2_widths_table[font][chr];
+
+    int paletteMask = *palette_mask;
+    byte *glyphRows = &m2_font_table[font][chr * tileWidth * tileHeight * 8];
+
+    int virtualWidth = widths & 0xFF;
+
+    int tileX = x >> 3;
+    int tileY = y >> 3;
+    
+    int offsetY = y & 7;
+    int offsetX = x & 7;
+    
+    if((tileY & 1) == 0 && offsetY >= doubleTileHeight - 0x8)
+    {
+        tileY++;
+        offsetY -= (doubleTileHeight - 0x8);
+    }
+
+    int nextY = offsetY;
+    for (int dTileY = 0; dTileY < tileHeight; dTileY++) // dest tile Y
+    {
+        int dTileX = 0;
+        int renderedWidth = widths >> 8;
+        offsetY = nextY;
+        bool changed = false;
+
+        while (renderedWidth > 0)
+        {
+            // Glue the leftmost part of the glyph onto the rightmost part of the canvas
+            int tileIndex = get_tile_number_with_offset_buffer(tileX + dTileX, tileY + dTileY);
+            int tileIndexRight = get_tile_number_with_offset_buffer(tileX + dTileX + 1, tileY + dTileY);
+            bool availableSwap = (dTileY != (tileHeight - 1));
+            bool usedRight = false;
+            int realTileIndex = tileIndex;
+            int realTileIndexRight = tileIndexRight;
+            bool useful = false; //Maybe we go over the maximum tile height, let's make sure the extra tile is properly set IF it's useful
+            int tmpTileY = dTileY;
+            int limit = ((tmpTileY + tileY) & 1) == 0 ? doubleTileHeight - 8 - 1: 7;
+            int sumRemoved = 0;
+
+            for (int row = 0; row < 8; row++)
+            {
+                unsigned short canvasRow = dest[(realTileIndex * 8) + ((row + offsetY - sumRemoved) & 7)] + (dest[(realTileIndexRight * 8) + ((row + offsetY - sumRemoved) & 7)]  << 8);
+                unsigned short glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] << offsetX;
+
+                unsigned short tmpCanvasRow = canvasRow;
+                canvasRow |= glyphRow;
+                
+                if((canvasRow >> 8) != (tmpCanvasRow >> 8))
+                    usedRight = true;
+                
+                if(!availableSwap && ((row + offsetY) >> 3) == 1 && canvasRow != tmpCanvasRow) //This changed the canvas, then it's useful... IF it's the extra vertical tile
+                    useful = true;
+
+                dest[(realTileIndex * 8) + ((row + offsetY - sumRemoved) & 7)] = canvasRow;
+                dest[(realTileIndexRight * 8) + ((row + offsetY - sumRemoved) & 7)] = canvasRow >> 8;
+
+                if((row + offsetY - sumRemoved) == limit)
+                {
+                    tmpTileY++;
+                    realTileIndex = get_tile_number_with_offset_buffer(tileX + dTileX, tileY + tmpTileY);
+                    realTileIndexRight = get_tile_number_with_offset_buffer(tileX + 1 + dTileX, tileY + tmpTileY);
+                    sumRemoved += limit + 1;
+                    if(!changed)
+                    {
+                        nextY = (nextY + limit + 1) & 7;
+                        changed = true;
+                    }
+                    limit = ((tmpTileY + tileY) & 1) == 0 ? doubleTileHeight - 8 - 1: 7;
+                        
+                }
+            }
+
+            if (tilemapPtr != NULL)
+            {
+                tilemapPtr[tileX + dTileX + ((tileY + dTileY) * tilemapWidth)] = paletteMask | getTileCallback(tileX + dTileX, tileY + dTileY);
+                if(usedRight)
+                    tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY) * tilemapWidth)] = paletteMask | getTileCallback(tileX + dTileX + 1, tileY + dTileY);
+                if(useful)
+                {
+                    tilemapPtr[tileX + dTileX + ((tileY + tmpTileY) * tilemapWidth)] = paletteMask | getTileCallback(tileX + dTileX, tileY + tmpTileY);
+                    if(usedRight)
+                        tilemapPtr[tileX + dTileX + 1 + ((tileY + tmpTileY) * tilemapWidth)] = paletteMask | getTileCallback(tileX + dTileX + 1, tileY + tmpTileY);
+                }
+            }
             renderedWidth -= 8;
             dTileX++;
         }
@@ -895,7 +1008,7 @@ int get_pointer_jump_back(byte *character)
     return (str - character - 2);
 }
 
-void print_letter_in_buffer(WINDOW* window, byte* character, int* dest)
+void print_letter_in_buffer(WINDOW* window, byte* character, byte* dest)
 {
     m2_cstm_last_printed[0] = (*character);
     weld_entry_custom_buffer(window, character, 0, 0xF, dest);
@@ -927,13 +1040,13 @@ int print_window_with_buffer(WINDOW* window)
         while(window->loaded_code !=0)
         {
             window->delay = delay;
-            print_character_with_codes(window, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
+            print_character_with_codes(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
         }
     }
     return 0;
 }
 
-void scrolltext_buffer(WINDOW* window, int* dest)
+void scrolltext_buffer(WINDOW* window, byte* dest)
 {
     unsigned short empty_tile = ((*tile_offset) + 0x1FF) | (*palette_mask);
     unsigned short *arrangementBase = (*tilemap_pointer);
@@ -946,7 +1059,7 @@ void scrolltext_buffer(WINDOW* window, int* dest)
                 for(int x = 0; x < window->window_width && x + window->window_x <= 0x1F; x++)
                 {
                     arrangementBase[start + x + (y * 32)] = empty_tile;
-                    clear_tile_buffer(x + window->window_x, y + window->window_y, 0x44444444, dest);
+                    clear_tile_buffer(x + window->window_x, y + window->window_y, dest);
                 }
         }
     }
@@ -980,11 +1093,11 @@ void scrolltext_buffer(WINDOW* window, int* dest)
         for(int x = 0; x < window->window_width && x + window->window_x <= 0x1F; x++)
         {
             arrangementBase[start + x + (y * 32)] = empty_tile;
-            clear_tile_buffer(x + window->window_x, y + window->window_y, 0x44444444, dest);
+            clear_tile_buffer(x + window->window_x, y + window->window_y, dest);
         }
 }
 
-void properScroll(WINDOW* window, int* dest)
+void properScroll(WINDOW* window, byte* dest)
 {
     scrolltext_buffer(window, dest);
     window->text_y = window->text_y - 2;
@@ -1030,7 +1143,7 @@ int jumpToOffset(byte* character)
     return returnOffset;
 }
 
-byte print_character_with_codes(WINDOW* window, int* dest)
+byte print_character_with_codes(WINDOW* window, byte* dest)
 {
     int delay = window->delay--;
     if(delay > 0)
@@ -1164,7 +1277,7 @@ byte print_character_with_codes(WINDOW* window, int* dest)
     }
     else
     {
-        handle_first_window_buffer(window, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
+        handle_first_window_buffer(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
         window->delay = window->delay_between_prints;
         if(x > 0x1F)
         {
@@ -1181,7 +1294,7 @@ byte print_character_with_codes(WINDOW* window, int* dest)
     return 0;
 }
 
-byte print_character_formatted_buffer(byte chr, int x, int y, int font, int foreground, int *dest)
+byte print_character_formatted_buffer(byte chr, int x, int y, int font, int foreground, byte *dest)
 {
     // 0x64 to 0x6C (inclusive) is YOU WON
     if ((chr >= YOUWON_START) && (chr <= YOUWON_END))
@@ -1197,10 +1310,10 @@ byte print_character_formatted_buffer(byte chr, int x, int y, int font, int fore
         return 9;
     }
 
-    return print_character_with_callback(chr, x, y, font, foreground, dest, &get_tile_number_with_offset, *tilemap_pointer, 32, 0xC);
+    return print_character_with_callback_1bpp_buffer(chr, x, y, dest, &get_tile_number_with_offset, font, *tilemap_pointer, 32, 0xC);
 }
 
-void weld_entry_custom_buffer(WINDOW *window, byte *str, int font, int foreground, int* dest)
+void weld_entry_custom_buffer(WINDOW *window, byte *str, int font, int foreground, byte* dest)
 {
     int chr = decode_character(*str);
 
@@ -1213,7 +1326,7 @@ void weld_entry_custom_buffer(WINDOW *window, byte *str, int font, int foregroun
     window->text_x = (x >> 3) - window->window_x;
 }
 
-void handle_first_window_buffer(WINDOW* window, int* dest)
+void handle_first_window_buffer(WINDOW* window, byte* dest)
 {
     if (*first_window_flag == 1)
     {
@@ -1227,26 +1340,26 @@ void handle_first_window_buffer(WINDOW* window, int* dest)
     }
 }
 
-void clear_window_buffer(WINDOW *window, int* dest)
+void clear_window_buffer(WINDOW *window, byte* dest)
 {
     clear_rect_buffer(window->window_x, window->window_y,
         window->window_width, window->window_height,
-        WINDOW_AREA_BG, dest);
+        dest);
 }
 
 // x,y: tile coordinates
-void clear_rect_buffer(int x, int y, int width, int height, int pixels, int* dest)
+void clear_rect_buffer(int x, int y, int width, int height, byte* dest)
 {
     for (int tileY = 0; tileY < height; tileY++)
     {
         for (int tileX = 0; tileX < width; tileX++)
         {
-            clear_tile_buffer(x + tileX, y + tileY, pixels, dest);
+            clear_tile_buffer(x + tileX, y + tileY, dest);
         }
     }
 }
 
-int print_string_in_buffer(byte *str, int x, int y, int *dest)
+int print_string_in_buffer(byte *str, int x, int y, byte *dest)
 {
     if (str == NULL)
         return 0;
@@ -1257,19 +1370,19 @@ int print_string_in_buffer(byte *str, int x, int y, int *dest)
 
     while (str[1] != 0xFF || str[0] != 0)
     {
-		if(str[1] == 0xFF && str[0] == 1)
-		{
-			x = initial_x; 
-			str += 2;
-			y+= 0x10;
-		}
-		else if(str[1] != 0xFF)
-		{
-			x += print_character_formatted_buffer(decode_character(*str++), x, y, 0, 0xF, dest);
-			charCount++;
-		}
-		else
-			break;
+        if(str[1] == 0xFF && str[0] == 1)
+        {
+            x = initial_x; 
+            str += 2;
+            y+= 0x10;
+        }
+        else if(str[1] != 0xFF)
+        {
+            x += print_character_formatted_buffer(decode_character(*str++), x, y, 0, 0xF, dest);
+            charCount++;
+        }
+        else
+            break;
     }
 
     int totalWidth = x - initial_x;
@@ -1301,7 +1414,7 @@ int printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short 
     while(output != 1)
     {
         window->delay = 0;
-        output = print_character_with_codes(window, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
+        output = print_character_with_codes(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
     }
     int retValue = (window->text_x << 3) + window->pixel_x;
     window->text_start = tmpTextStart;
@@ -1329,7 +1442,7 @@ unsigned short printstr_hlight_pixels_buffer(WINDOW* window, byte* str, unsigned
         palette_mask_highlight += 0x1000;
     (*palette_mask) = palette_mask_highlight;
     
-    unsigned short printed_Characters = print_string_in_buffer(str, printX, printY, (int*)(OVERWORLD_BUFFER - ((*tile_offset) * 32)));
+    unsigned short printed_Characters = print_string_in_buffer(str, printX, printY, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
     
     (*palette_mask) = tmpPaletteMsk;
     
@@ -1357,29 +1470,31 @@ int initWindow_buffer(WINDOW* window, byte* text_start, unsigned short delay_bet
     window->flags_unknown1 |= 1;
     window->redraw = true;
     if(text_start == NULL)
-        buffer_drawwindow(window, (int*)(OVERWORLD_BUFFER - 0x2000));
+        buffer_drawwindow(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
     return 0;
 }
 
 void clearWindowTiles_buffer(WINDOW* window)
 {
-    clear_window_buffer(window, (int*)(OVERWORLD_BUFFER - 0x2000));
+    clear_window_buffer(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
     window->text_x = 0;
     window->text_y = 0;
 }
 
 // x,y: tile coordinates
-void clear_tile_buffer(int x, int y, int pixels, int* dest)
+void clear_tile_buffer(int x, int y, byte* dest)
 {
     // Clear pixels
-    int tileIndex = get_tile_number(x, y) + *tile_offset;
-    cpufastset(&pixels, &dest[tileIndex * 8], CPUFASTSET_FILL | 8);
+    int tileIndex = get_tile_number_buffer(x, y) + *tile_offset;
+    int *destTileInt = (int*)&dest[(tileIndex) * 8];
+    destTileInt[0] = 0;
+    destTileInt[1] = 0;
 
     // Reset the tilemap (e.g. get rid of equip or SMAAAASH!! tiles)
-    (*tilemap_pointer)[x + (y * 32)] = tileIndex | *palette_mask;
+    (*tilemap_pointer)[x + (y * 32)] = (get_tile_number(x, y) + (*tile_offset)) | *palette_mask;
 }
 
-int buffer_reset_window(WINDOW* window, bool skip_redraw, int* dest)
+int buffer_reset_window(WINDOW* window, bool skip_redraw, byte* dest)
 {
     window->delay = 0;
     byte code = window->loaded_code - 0xD;
@@ -1395,9 +1510,12 @@ int buffer_reset_window(WINDOW* window, bool skip_redraw, int* dest)
     return 0;
 }
 
-int buffer_drawwindow(WINDOW* window, int* dest)
+int buffer_drawwindow(WINDOW* window, byte* dest)
 {
-    clear_window_buffer(window, dest);
+    if((int*)dest == vram)
+        clear_window(window);
+    else
+        clear_window_buffer(window, dest);
     unsigned short empty_tile = (0x1FF + (*tile_offset)) | (*palette_mask);
     int baseOfWindow = ((window->window_y - 1) * 32) + window->window_x - 1;
     unsigned short *arrangementBase = (*tilemap_pointer);
@@ -1555,7 +1673,7 @@ unsigned short ailmentTileSetup(byte *ailmentBase, unsigned short defaultVal)
 
 void printTinyArrow(int x, int y)
 {
-	print_special_character_buffer(0x9F, x, y);
+    print_special_character_buffer(0x9F, x, y);
 }
 
 void printCashWindow()
@@ -1570,21 +1688,66 @@ void printCashWindow()
 }
 
 // x, y, width: tile coordinates
-void print_blankstr_buffer(int x, int y, int width, int *dest)
+void print_blankstr_buffer(int x, int y, int width, byte *dest)
 {
-    clear_rect_buffer(x, y, width, 2, WINDOW_AREA_BG, dest);
+    clear_rect_buffer(x, y, width, 2, dest);
+}
+
+void load_pixels_overworld_buffer()
+{
+    byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
+    for(int y = 0; y < 0x10; y++)
+        for(int x = 0; x < 0x1C; x++)
+        {
+            int tile_buffer = get_tile_number_with_offset_buffer(x + 1, y + 1);
+            int tile = get_tile_number_with_offset(x + 1, y + 1);
+            int foregroundRow = 0xFFFFFFFF;
+            buffer[(tile_buffer * 8) + 0] = reduce_bit_depth(vram[(tile * 8) + 0], foregroundRow);
+            buffer[(tile_buffer * 8) + 1] = reduce_bit_depth(vram[(tile * 8) + 1], foregroundRow);
+            buffer[(tile_buffer * 8) + 2] = reduce_bit_depth(vram[(tile * 8) + 2], foregroundRow);
+            buffer[(tile_buffer * 8) + 3] = reduce_bit_depth(vram[(tile * 8) + 3], foregroundRow);
+            buffer[(tile_buffer * 8) + 4] = reduce_bit_depth(vram[(tile * 8) + 4], foregroundRow);
+            buffer[(tile_buffer * 8) + 5] = reduce_bit_depth(vram[(tile * 8) + 5], foregroundRow);
+            buffer[(tile_buffer * 8) + 6] = reduce_bit_depth(vram[(tile * 8) + 6], foregroundRow);
+            buffer[(tile_buffer * 8) + 7] = reduce_bit_depth(vram[(tile * 8) + 7], foregroundRow);
+        }
+}
+
+void store_pixels_overworld_buffer(int totalYs)
+{
+    byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
+    for(int y = 0; y < totalYs; y++)
+        for(int x = 0; x < 0x1C; x++)
+        {
+            int tile = get_tile_number_with_offset(x + 1, y + 1);
+            int tile_buffer = get_tile_number_with_offset_buffer(x + 1, y + 1);
+            int* bufferValues = (int*)(&buffer[(tile_buffer * 8)]);
+            unsigned int first_half = bufferValues[0];
+            unsigned int second_half = bufferValues[1];
+            vram[(tile * 8) + 0] = m2_bits_to_nybbles_fast[(first_half >> 0) & 0xFF];
+            vram[(tile * 8) + 1] = m2_bits_to_nybbles_fast[(first_half >> 8) & 0xFF];
+            vram[(tile * 8) + 2] = m2_bits_to_nybbles_fast[(first_half >> 0x10) & 0xFF];
+            vram[(tile * 8) + 3] = m2_bits_to_nybbles_fast[(first_half >> 0x18) & 0xFF];
+            vram[(tile * 8) + 4] = m2_bits_to_nybbles_fast[(second_half >> 0) & 0xFF];
+            vram[(tile * 8) + 5] = m2_bits_to_nybbles_fast[(second_half >> 8) & 0xFF];
+            vram[(tile * 8) + 6] = m2_bits_to_nybbles_fast[(second_half >> 0x10) & 0xFF];
+            vram[(tile * 8) + 7] = m2_bits_to_nybbles_fast[(second_half >> 0x18) & 0xFF];
+        }
 }
 
 // x,y: tile coordinates
-void copy_tile_buffer(int xSource, int ySource, int xDest, int yDest, int *dest)
+void copy_tile_buffer(int xSource, int ySource, int xDest, int yDest, byte *dest)
 {
-    int sourceTileIndex = get_tile_number(xSource, ySource) + *tile_offset;
-    int destTileIndex = get_tile_number(xDest, yDest) + *tile_offset;
-    cpufastset(&dest[sourceTileIndex * 8], &dest[destTileIndex * 8], 8);
+    int sourceTileIndex = get_tile_number_buffer(xSource, ySource) + *tile_offset;
+    int destTileIndex = get_tile_number_buffer(xDest, yDest) + *tile_offset;
+    int* sourceTile = (int*)&dest[sourceTileIndex * 8];
+    int* destTile = (int*)&dest[destTileIndex * 8];
+    destTile[0] = sourceTile[0];
+    destTile[1] = sourceTile[1];
 }
 
 // x,y: tile coordinates
-void copy_tile_up_buffer(int x, int y, int *dest)
+void copy_tile_up_buffer(int x, int y, byte *dest)
 {
     copy_tile_buffer(x, y, x, y - 2, dest);
 }
