@@ -1483,6 +1483,25 @@ nop
 // Title screen hacks
 //==============================================================================
 
+.definelabel m2_title_sequence_00, 0x80117E0
+.definelabel m2_title_sequence_01, 0x8011802
+.definelabel m2_title_sequence_02, 0x801182A
+.definelabel m2_title_sequence_03, 0x8011858
+.definelabel m2_title_sequence_04, 0x80118FA
+.definelabel m2_title_sequence_05, 0x80118FE
+.definelabel m2_title_sequence_06, 0x801195C
+.definelabel m2_title_sequence_07, 0x8011972
+.definelabel m2_title_sequence_08, 0x80119BA
+.definelabel m2_title_sequence_09, 0x80119DE
+.definelabel m2_title_sequence_0A, 0x8011A02
+.definelabel m2_title_sequence_0B, 0x8011A1A
+.definelabel m2_title_sequence_0C, 0x8011A80
+.definelabel m2_title_sequence_0D, 0x8011A8A
+.definelabel m2_title_sequence_0E, 0x8011AAA
+.definelabel m2_title_sequence_0F, 0x8011B58
+.definelabel m2_title_sequence_10, 0x8011B66
+.definelabel m2_title_sequence_11, 0x8011B76
+
 // m2_title_background_pal_copyright:   File has two palettes separated by six palettes
 //                                      worth of nullspace. First palette is the copyright palette,
 //                                      last palette is a placeholder for the glow palette
@@ -1555,8 +1574,19 @@ nop
 
 // Setup hacks:
 
+    // Fade BG0 instead of OBJ
+    .org 0x80117E6 :: mov r0,0xC1
+
     // Point to sequence hacks
+    .org 0x8011798 :: dw title_sequence_00
     .org 0x801179C :: dw title_sequence_01
+    .org 0x80117A8 :: dw title_sequence_04
+    .org 0x80117AC :: dw title_sequence_05
+
+// Commit hacks:
+
+    // Commit all things on every sequence
+    .org 0x8011500 :: b 0x8011516
 
 // --- Animation 5 (quick title screen) ---
 .org 0x82D6BD4 :: dh 0x008A   // Enable 8-bit BG0
