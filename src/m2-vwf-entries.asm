@@ -2977,6 +2977,7 @@ pop     {r0-r3,pc}
 //Stores the buffer into the vram. This avoids screen tearing.
 store_pixels_overworld:
 push    {r0-r3,lr}
+swi #5 //The improved performances allow using a VBlank before the storage in order to prevent screen tearing effectively
 mov     r0,#0x10
 bl      store_pixels_overworld_buffer
 pop     {r0-r3,pc}
@@ -2985,6 +2986,7 @@ pop     {r0-r3,pc}
 //Stores the buffer into the vram. This avoids screen tearing.
 store_pixels_overworld_psi_window:
 push    {r0-r3,lr}
+swi #5 //The improved performances allow using a VBlank before the storage in order to prevent screen tearing effectively
 mov     r0,#0xA
 bl      store_pixels_overworld_buffer
 pop     {r0-r3,pc}
