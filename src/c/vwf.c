@@ -1703,24 +1703,32 @@ void load_pixels_overworld_buffer()
         int addedValue = (i >> 5) << 6;
         int tile_buffer = (i & 0x1F) + addedValue + *tile_offset;
         int foregroundRow = 0xFFFFFFFF;
-        buffer[(tile_buffer * 8) + 0] = reduce_bit_depth(vram[(tile * 8) + 0], foregroundRow);
-        buffer[(tile_buffer * 8) + 1] = reduce_bit_depth(vram[(tile * 8) + 1], foregroundRow);
-        buffer[(tile_buffer * 8) + 2] = reduce_bit_depth(vram[(tile * 8) + 2], foregroundRow);
-        buffer[(tile_buffer * 8) + 3] = reduce_bit_depth(vram[(tile * 8) + 3], foregroundRow);
-        buffer[(tile_buffer * 8) + 4] = reduce_bit_depth(vram[(tile * 8) + 4], foregroundRow);
-        buffer[(tile_buffer * 8) + 5] = reduce_bit_depth(vram[(tile * 8) + 5], foregroundRow);
-        buffer[(tile_buffer * 8) + 6] = reduce_bit_depth(vram[(tile * 8) + 6], foregroundRow);
-        buffer[(tile_buffer * 8) + 7] = reduce_bit_depth(vram[(tile * 8) + 7], foregroundRow);
-        tile_buffer += 0x20;
+        //Reduce total amount of stores from 16 to 4
+        int* bufferValues = (int*)(&buffer[(tile_buffer * 8)]);
+        unsigned int first_half;
+        unsigned int second_half;
+        first_half = reduce_bit_depth(vram[(tile * 8) + 0], foregroundRow);
+        first_half |= reduce_bit_depth(vram[(tile * 8) + 1], foregroundRow) << 8;
+        first_half |= reduce_bit_depth(vram[(tile * 8) + 2], foregroundRow) << 0x10;
+        first_half |= reduce_bit_depth(vram[(tile * 8) + 3], foregroundRow) << 0x18;
+        second_half = reduce_bit_depth(vram[(tile * 8) + 4], foregroundRow);
+        second_half |= reduce_bit_depth(vram[(tile * 8) + 5], foregroundRow) << 8;
+        second_half |= reduce_bit_depth(vram[(tile * 8) + 6], foregroundRow) << 0x10;
+        second_half |= reduce_bit_depth(vram[(tile * 8) + 7], foregroundRow) << 0x18;
+        bufferValues[0] = first_half;
+        bufferValues[1] = second_half;
+        bufferValues += 0x40;
         tile += 0x20;
-        buffer[(tile_buffer * 8) + 0] = reduce_bit_depth(vram[(tile * 8) + 0], foregroundRow);
-        buffer[(tile_buffer * 8) + 1] = reduce_bit_depth(vram[(tile * 8) + 1], foregroundRow);
-        buffer[(tile_buffer * 8) + 2] = reduce_bit_depth(vram[(tile * 8) + 2], foregroundRow);
-        buffer[(tile_buffer * 8) + 3] = reduce_bit_depth(vram[(tile * 8) + 3], foregroundRow);
-        buffer[(tile_buffer * 8) + 4] = reduce_bit_depth(vram[(tile * 8) + 4], foregroundRow);
-        buffer[(tile_buffer * 8) + 5] = reduce_bit_depth(vram[(tile * 8) + 5], foregroundRow);
-        buffer[(tile_buffer * 8) + 6] = reduce_bit_depth(vram[(tile * 8) + 6], foregroundRow);
-        buffer[(tile_buffer * 8) + 7] = reduce_bit_depth(vram[(tile * 8) + 7], foregroundRow);
+        first_half = reduce_bit_depth(vram[(tile * 8) + 0], foregroundRow);
+        first_half |= reduce_bit_depth(vram[(tile * 8) + 1], foregroundRow) << 8;
+        first_half |= reduce_bit_depth(vram[(tile * 8) + 2], foregroundRow) << 0x10;
+        first_half |= reduce_bit_depth(vram[(tile * 8) + 3], foregroundRow) << 0x18;
+        second_half = reduce_bit_depth(vram[(tile * 8) + 4], foregroundRow);
+        second_half |= reduce_bit_depth(vram[(tile * 8) + 5], foregroundRow) << 8;
+        second_half |= reduce_bit_depth(vram[(tile * 8) + 6], foregroundRow) << 0x10;
+        second_half |= reduce_bit_depth(vram[(tile * 8) + 7], foregroundRow) << 0x18;
+        bufferValues[0] = first_half;
+        bufferValues[1] = second_half;
     }
 }
 
