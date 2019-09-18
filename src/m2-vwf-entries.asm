@@ -2977,22 +2977,6 @@ pop     {r0-r3,pc}
 //Stores the buffer into the vram. This avoids screen tearing.
 store_pixels_overworld:
 push    {r0-r3,lr}
-//ldr     r1,=#0x40000C8 //DMA transfer 2, store the arrangements in order to avoid screen tearing ---> (Was actually caused by the VBlank below)
-//ldr     r0,=#0x3005270
-//ldr     r0,[r0,#0] //Source
-//str     r0,[r1]
-//ldr     r0,=#0x30051E4
-//mov     r2,#0
-//ldsh    r0,[r0,r2]
-//lsl     r0,r0,#0xB
-//mov     r2,#0xC0
-//lsl     r2,r2,#0x13
-//add     r0,r0,r2 //Target
-//str     r0,[r1,#4]
-//ldr     r0,=#0x94000200 //Store 0x800 bytes - When in VBlank and in words of 32 bits
-//str     r0,[r1,#8]
-//ldr     r0,[r1,#8]
-//swi #5 //Do this during VBlank
 mov     r0,#0x10
 bl      store_pixels_overworld_buffer
 pop     {r0-r3,pc}
@@ -3001,7 +2985,6 @@ pop     {r0-r3,pc}
 //Stores the buffer into the vram. This avoids screen tearing.
 store_pixels_overworld_psi_window:
 push    {r0-r3,lr}
-//swi #5 //Do this during VBlank
 mov     r0,#0xA
 bl      store_pixels_overworld_buffer
 pop     {r0-r3,pc}
