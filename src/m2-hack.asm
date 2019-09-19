@@ -1472,6 +1472,7 @@ nop
 
 //Text Speed options
 .org 0x8003BBC :: bl _4092_print_window_store //Printing + storing pixels
+.org 0x8003C44 :: mov r3,#4 //Make highlighting the same speed for all text speeds
 .org 0x8003FA2 :: bl _4092_print_window
 .org 0x8003F8C :: mov r3,#4 //Print highlight of 4 tiles maximum
 .org 0x8003E86 :: bl _3e86_special_setup //Avoid printing when not necessary
