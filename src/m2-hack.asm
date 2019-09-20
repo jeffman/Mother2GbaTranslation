@@ -154,6 +154,25 @@ mov     r3,6
 .org 0x80B9142 :: bl baec6_psi_window_print_buffer
 
 //---------------------------------------------------------
+// Teleport window hacks
+//---------------------------------------------------------
+.org 0x80B9030 :: bl initWindow_buffer//Opening teleport window - "Where?"
+.org 0x80B9036 :: bl print_window_with_buffer
+.org 0x80B9040 :: bl b9040_special_string
+.org 0x80B90D4 :: bl initWindow_buffer //Going back from teleport to the PSI window
+.org 0x80B90DE :: bl initWindow_buffer
+.org 0x80C5D1C :: bl initWindow_buffer //Initializes the actual teleport window
+.org 0x80C5EB0 :: bl printstr_hlight_buffer
+.org 0x80C5F46 :: bl printstr_hlight_buffer
+.org 0x80C5F80 :: bl c5f80_printstr_hlight_buffer_store_buffer // Multiple pages initial case
+.org 0x80C5EB0 :: bl printstr_hlight_buffer
+.org 0x80C6134 :: bl clearWindowTiles_buffer
+.org 0x80C61C8 :: lsl r0,r5,#3 :: add r0,r0,r5 :: nop //Proper string address
+.org 0x80C6224 :: bl printstr_hlight_buffer
+.org 0x80C625E :: bl c5f80_printstr_hlight_buffer_store_buffer // Multiple pages changing pages
+.org 0x80C5F04 :: bl c5f04_store_if_done //Only one page case
+
+//---------------------------------------------------------
 // Class PSI window hacks
 //---------------------------------------------------------
 
@@ -1152,7 +1171,7 @@ nop
 //---------------------------------------------------------
 .org 0x80C5DE0 :: bl c65da_clean_print //To:
 .org 0x80C5E30 :: bl c6190_clean_print //Number on first entering the menu
-.org 0x80C6190 :: bl c6190_clean_print //Number on page change
+.org 0x80C6190 :: bl c6190_buffer_number //Number on page change
 .org 0x80C5E04 :: nop :: strh r0,[r4,#0] :: add r4,#2 :: nop ::nop //Remove extra tile
 
 //---------------------------------------------------------

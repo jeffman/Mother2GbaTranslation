@@ -494,6 +494,37 @@ void clear_window_header(int *dest, int length, int x, int y)
     clear_rect_ram(dest, length, WINDOW_HEADER_BG);
 }
 
+//Prints the number header string in a tiny buffer and stores it in one go
+int print_window_number_header_string(int *dest, byte *str, int x, int y)
+{
+    int pixelX = x & 7;
+    int *destOffset = dest + ((x & ~7) + (y * 32));
+    int buffer[8 * 3];
+    
+    for(int i = 0; i < 8 * 3; i++)
+        buffer[i] = 0x33333333;
+
+    for (;;)
+    {
+        byte code = *(str + 1);
+        if (code == 0xFF)
+        {
+            if (*str == 0)
+                break;
+
+            str += 2;
+            continue;
+        }
+
+        pixelX += print_character_to_ram(decode_character(*str++), buffer, pixelX, 4, 0xF);
+    }
+    
+    for(int i = 0; i < 8 * 3; i++)
+        destOffset[i] = buffer[i];
+
+    return pixelX - (x & 7);
+}
+
 unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned int *dest, WINDOW *window)
 {
     byte *str = 0;
@@ -991,6 +1022,26 @@ void handle_first_window(WINDOW* window)
     {
         m2_drawwindow(window);
     }
+}
+
+//Returns in *String a string containing "Talk to" and "Goods"
+void setupShortMainMenu_Talk_to_Goods(char *String)
+{
+    char Talk_to[] = "Talk to";
+    char Goods[] = "Goods";
+    int index = 0;
+    String[index++] = 0x5F;
+    String[index++] = 0xFF;
+    String[index++] = 0x08;
+    for(int i = 0; i < (sizeof(Talk_to) - 1); i++)
+        String[index++] = encode_ascii(Talk_to[i]);
+    String[index++] = 0x5F;
+    String[index++] = 0xFF;
+    String[index++] = 0x30;
+    for(int i = 0; i < (sizeof(Goods) - 1); i++)
+        String[index++] = encode_ascii(Goods[i]);
+    String[index++] = 0;
+    String[index++] = 0xFF;
 }
 
 int get_pointer_jump_back(byte *character)
