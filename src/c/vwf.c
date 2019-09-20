@@ -28,6 +28,10 @@ int get_tile_number_buffer(int x, int y)
 {
     x--;
     y--;
+
+    //Covers the alphabet-printing issues
+    if(y >= 0x10)
+        y -= 0xC;
     int totalLenght = x + ((y >> 1) * 28);
     int addedValue = (totalLenght >> 5) << 6;
     return (totalLenght & 0x1F) + addedValue + (y & 1) * 32;
@@ -996,8 +1000,8 @@ int player_name_printing_registration(byte* str, WINDOW* window)
     }
     String[24] = 0;
     String[25] = 0xFF;
-    print_blankstr_window(0, 2, 24, window);
-    m2_printstr(window, String, 0, 1, 0);
+    print_blankstr_window_buffer(0, 2, 24, window);
+    printstr_buffer(window, String, 0, 1, 0);
     return total;
 }
 
@@ -1330,7 +1334,7 @@ byte print_character_with_codes(WINDOW* window, byte* dest)
     {
         handle_first_window_buffer(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
         window->delay = window->delay_between_prints;
-        if(x > 0x1F)
+        if(window->text_x >= window->window_width || (window->text_x + window->window_x) > 0x1F)
         {
             window->text_y += 2;
             window->text_x = 0;
@@ -1744,6 +1748,64 @@ void print_blankstr_buffer(int x, int y, int width, byte *dest)
     clear_rect_buffer(x, y, width, 2, dest);
 }
 
+//Function called for printing the alphabet. Seems to be a trimmed down version of the normal script-reading function. Probably done in order to make this faster
+int print_alphabet_buffer(WINDOW* window)
+{
+    byte* dest = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
+    if(window->redraw)
+        buffer_drawwindow(window, dest);
+    if(window->loaded_code == 0 || (*script_readability) != 0)
+        return 0;
+    
+    window->delay = 0;
+    byte* str = window->text_start + window->text_offset;
+
+    while(true)
+    {
+        unsigned short y = window->window_y + window->text_y;
+        while(window->text_y >= window->window_height || y > 0x1F)
+        {
+            properScroll(window, dest);
+            y = window->window_y + window->text_y;
+        }
+        
+        if(str[1] == 0xFF)
+        {
+            byte returnedVal = customcodes_parse_generic(str[0], str, window, dest);
+            if(returnedVal != 0)
+            {
+                window->text_offset += returnedVal;
+                str += returnedVal;
+            }
+            else if(str[0] == 1)
+            {
+                window->text_y += 2;
+                window->text_x = 0;
+                window->pixel_x = 0;
+                str += 2;
+                window->text_offset += 2;
+            }
+            else if(str[0] == 0)
+            {
+                window->loaded_code = 0;
+                return 0;
+            }
+        }
+        else
+        {
+            if(window->text_x >= window->window_width || (window->text_x + window->window_x) > 0x1F)
+            {
+                window->text_y += 2;
+                window->text_x = 0;
+                window->pixel_x = 0;
+            }
+            weld_entry_custom_buffer(window, str, 0, 0xF, dest);
+            str++;
+            window->text_offset++;
+        }
+    }
+}
+
 void load_pixels_overworld_buffer()
 {
     byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
@@ -1819,6 +1881,12 @@ void store_pixels_overworld_buffer(int totalYs)
         vram[(tile * 8) + 6] = m2_bits_to_nybbles_fast[(second_half >> 0x10) & 0xFF];
         vram[(tile * 8) + 7] = m2_bits_to_nybbles_fast[(second_half >> 0x18) & 0xFF];
     }
+}
+
+// x, y, width: tile coordinates
+void print_blankstr_window_buffer(int x, int y, int width, WINDOW* window)
+{
+    print_blankstr_buffer(x + window->window_x, y + window->window_y, width, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
 }
 
 // x,y: tile coordinates

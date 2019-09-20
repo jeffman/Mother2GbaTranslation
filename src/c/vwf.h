@@ -105,6 +105,8 @@ void setStuffWindow_Graphics();
 void clearWindowTiles_buffer(WINDOW* window);
 int initWindow_buffer(WINDOW* window, byte* text_start, unsigned short delay_between_prints);
 void print_blankstr_buffer(int x, int y, int width, byte *dest);
+void print_blankstr_window_buffer(int x, int y, int width, WINDOW* window);
+int print_alphabet_buffer(WINDOW* window);
 unsigned short ailmentTileSetup(byte *ailmentBase, unsigned short defaultVal);
 int setNumber_getLength(int value, byte *str, int maxLength);
 int print_string_in_buffer(byte *str, int x, int y, byte *dest);

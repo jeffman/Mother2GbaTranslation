@@ -1567,10 +1567,20 @@ nop
 //==============================================================================
 // Overworld player name alphabet
 //==============================================================================
+
+//"Register your name" in buffer
+.org 0x80C6C54 :: bl printstr_buffer
+
+//BLANK name in buffer
+.org 0x80C6C7A :: bl printstr_buffer
+
+//First time entering the menu's alphabet
+.org 0x80C6D72 :: bl initWindow_buffer :: ldr r0,[r5,#0x10] :: bl c6d78_print_slphabet_store
+
 //Player name printing - character is added
 .org 0x80C75B4 :: bl c75b4_overworld_naming_top_printing :: b 0x80C777A
 
-//Player name printing - character is deleted via add
+//Player name printing - character is deleted via b button
 .org 0x80C780E :: bl c780e_overworld_naming_top_printing :: b 0x80C789A
 
 //Player name printing - character is deleted via backspace
@@ -1766,6 +1776,7 @@ m2_coord_table_file:
 .definelabel m2_psiwindow           ,0x80C1FBC
 .definelabel m2_drawwindow          ,0x80C87D0
 .definelabel m2_print_window        ,0x80C8BE4
+.definelabel m2_print_alphabet      ,0x80C8FFC
 .definelabel m2_printstr            ,0x80C9634
 .definelabel m2_printstr_hlight     ,0x80C96F0
 .definelabel m2_printnextch         ,0x80C980C

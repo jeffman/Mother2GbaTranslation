@@ -2910,6 +2910,7 @@ ldr     r0,=#m2_player1
 mov     r1,r2
 str     r3,[sp,#0x24]
 bl      player_name_printing_registration
+bl      store_pixels_overworld_player_naming
 pop     {pc}
 
 //==============================================================================
@@ -2920,6 +2921,7 @@ ldr     r1,=#0x3005230
 ldr     r1,[r1,#0x0C]
 ldr     r0,=#m2_player1
 bl      player_name_printing_registration
+bl      store_pixels_overworld_player_naming
 pop     {pc}
 
 //==============================================================================
@@ -2930,6 +2932,7 @@ ldr     r1,=#0x3005230
 ldr     r1,[r1,#0x0C]
 ldr     r0,=#m2_player1
 bl      player_name_printing_registration
+bl      store_pixels_overworld_player_naming
 pop     {pc}
 
 //==============================================================================
@@ -2976,11 +2979,20 @@ bl      m2_strlookup
 mov     r1,r0
 mov     r0,r4
 mov     r2,#0
-bl      m2_initwindow
+bl      initWindow_buffer
 ldr     r0,[r5,#0x10]
-bl      0x80C8FFC //Print alphabet
+bl      print_alphabet_buffer //Print alphabet in buffer
+bl      store_pixels_overworld
 
 @@end:
+pop     {pc}
+
+//==============================================================================
+//Prints the first alphabet and stores the buffer
+c6d78_print_slphabet_store:
+push    {lr}
+bl      print_alphabet_buffer
+bl      store_pixels_overworld
 pop     {pc}
 
 //==============================================================================
@@ -3071,6 +3083,15 @@ store_pixels_overworld:
 push    {r0-r3,lr}
 swi #5 //The improved performances allow using a VBlank before the storage in order to prevent screen tearing effectively
 mov     r0,#0x10
+bl      store_pixels_overworld_buffer
+pop     {r0-r3,pc}
+
+//==============================================================================
+//Stores the buffer into the vram. This avoids screen tearing.
+store_pixels_overworld_player_naming:
+push    {r0-r3,lr}
+swi #5 //The improved performances allow using a VBlank before the storage in order to prevent screen tearing effectively
+mov     r0,#0x4
 bl      store_pixels_overworld_buffer
 pop     {r0-r3,pc}
 

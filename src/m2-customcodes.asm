@@ -1,5 +1,5 @@
 //==============================================================================
-// void parse_generic(int code, char* parserAddress, WINDOW* window, byte* dest)
+// int parse_generic(int code, char* parserAddress, WINDOW* window, byte* dest)
 // In:
 //    r0: code
 //    r1: parser address
