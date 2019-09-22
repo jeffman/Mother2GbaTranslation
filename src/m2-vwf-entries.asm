@@ -1515,6 +1515,17 @@ bl      0x80CAB90
 pop     {pc}
 
 //==============================================================================
+//Routine which prints just the number with a tiny buffer
+c6190_buffer_number:
+push    {lr}
+lsl     r2,r2,#3
+lsl     r3,r3,#3
+bl      print_window_number_header_string
+add     r0,#7
+lsr     r0,r0,#3
+pop     {pc}
+
+//==============================================================================
 //Routine which clears the header and THEN makes it so the string is printed
 c65da_clean_print:
 push    {lr}
@@ -1803,6 +1814,63 @@ pop     {pc}
 .pool
 
 //==============================================================================
+//Setup which only prints either "Talk to" and "Goods" in the main window.
+b9040_special_string:
+push    {lr}
+push    {r0-r5}
+add     sp,#-76
+ldr     r5,=#0x3005078 //Make sure the game expects only the right amount of lines to be written (so only 1)
+ldrb    r4,[r5,#0]
+str     r4,[sp,#4]
+mov     r4,#0
+strb    r4,[r5,#0]
+ldr     r4,=#0x3005230 //Window generic address
+
+//Main window
+lsl     r1,r0,#0x18
+lsr     r1,r1,#0x18
+cmp     r1,#0
+bne     @@end //Print only if there is an effective need to do so (So the routine before returned 0)
+ldr     r0,[r4,#0] //Main window place in ram
+ldr     r2,[r0,#4] //Save proper text_start and text_start2
+str     r2,[sp,#8]
+ldr     r2,[r0,#8]
+str     r2,[sp,#0xC]
+ldrb    r0,[r0,#0]
+mov     r2,#1
+and     r2,r0
+cmp     r2,#0
+beq     @@end //Check if window is enabled before printing in it
+
+add     r0,sp,#16
+bl      setupShortMainMenu_Talk_to_Goods //Get shortened menu string
+mov     r1,#0
+str     r1,[sp,#0]
+add     r1,sp,#16
+ldr     r0,[r4,#0]
+mov     r2,#5
+mov     r3,#2
+bl      0x80BE4C8 //Let it do its things
+ldr     r0,[r4,#0]
+bl      print_window_with_buffer //Print text in the window
+ldr     r0,[r4,#0] //Restore text_start and text_start2
+ldr     r1,[sp,#8]
+str     r1,[r0,#4]
+ldr     r1,[sp,#0xC]
+str     r1,[r0,#8]
+
+@@end:
+ldr     r4,[sp,#4]
+strb    r4,[r5,#0] //Restore expected amount of lines to be written
+add     sp,#76
+pop     {r0-r5}
+lsl     r0,r0,#0x18 //Clobbered code
+lsr     r0,r0,#0x18
+pop     {pc}
+
+.pool
+
+//==============================================================================
 //Makes it sure the outer PSI window of the PSI Overworld menu prints the PSIs only once
 b8cd2_psi_window:
 push    {lr}
@@ -2066,6 +2134,18 @@ push    {lr}
 bl      print_window_with_buffer
 bl      store_pixels_overworld
 pop     {pc}
+
+//==============================================================================
+//Calls printstr_hlight_buffer and then stores the buffer
+c5f80_printstr_hlight_buffer_store_buffer:
+push    {r4,lr}
+ldr     r4,[sp,#8]
+add     sp,#-4
+str     r4,[sp,#0]
+bl      printstr_hlight_buffer
+bl      store_pixels_overworld
+add     sp,#4
+pop     {r4,pc}
 
 //==============================================================================
 //Fixes issue with sounds when going from the PSI window to the inner PSI window
@@ -2830,6 +2910,7 @@ ldr     r0,=#m2_player1
 mov     r1,r2
 str     r3,[sp,#0x24]
 bl      player_name_printing_registration
+bl      store_pixels_overworld_player_naming
 pop     {pc}
 
 //==============================================================================
@@ -2840,6 +2921,7 @@ ldr     r1,=#0x3005230
 ldr     r1,[r1,#0x0C]
 ldr     r0,=#m2_player1
 bl      player_name_printing_registration
+bl      store_pixels_overworld_player_naming
 pop     {pc}
 
 //==============================================================================
@@ -2850,6 +2932,7 @@ ldr     r1,=#0x3005230
 ldr     r1,[r1,#0x0C]
 ldr     r0,=#m2_player1
 bl      player_name_printing_registration
+bl      store_pixels_overworld_player_naming
 pop     {pc}
 
 //==============================================================================
@@ -2896,11 +2979,20 @@ bl      m2_strlookup
 mov     r1,r0
 mov     r0,r4
 mov     r2,#0
-bl      m2_initwindow
+bl      initWindow_buffer
 ldr     r0,[r5,#0x10]
-bl      0x80C8FFC //Print alphabet
+bl      print_alphabet_buffer //Print alphabet in buffer
+bl      store_pixels_overworld
 
 @@end:
+pop     {pc}
+
+//==============================================================================
+//Prints the first alphabet and stores the buffer
+c6d78_print_slphabet_store:
+push    {lr}
+bl      print_alphabet_buffer
+bl      store_pixels_overworld
 pop     {pc}
 
 //==============================================================================
@@ -2967,6 +3059,18 @@ bl      store_pixels_overworld
 pop     {pc}
 
 //==============================================================================
+//Routine which checks if all the teleport locations have been printed. If they do, it stores the buffer
+c5f04_store_if_done:
+push    {lr}
+lsr     r5,r0,#0x10
+ldr     r2,[sp,#0x18]
+cmp     r0,r2
+blt     @@end
+bl      store_pixels_overworld
+@@end:
+pop     {pc}
+
+//==============================================================================
 //Loads the vram into the buffer, it's called each time there is only the main file_select window active (a good way to set the whole thing up)
 load_pixels_overworld:
 push    {r0-r3,lr}
@@ -2979,6 +3083,15 @@ store_pixels_overworld:
 push    {r0-r3,lr}
 swi #5 //The improved performances allow using a VBlank before the storage in order to prevent screen tearing effectively
 mov     r0,#0x10
+bl      store_pixels_overworld_buffer
+pop     {r0-r3,pc}
+
+//==============================================================================
+//Stores the buffer into the vram. This avoids screen tearing.
+store_pixels_overworld_player_naming:
+push    {r0-r3,lr}
+swi #5 //The improved performances allow using a VBlank before the storage in order to prevent screen tearing effectively
+mov     r0,#0x4
 bl      store_pixels_overworld_buffer
 pop     {r0-r3,pc}
 

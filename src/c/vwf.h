@@ -51,6 +51,7 @@ byte print_character_with_callback_1bpp_buffer(byte chr, int x, int y, byte *des
 byte print_character_to_ram(byte chr, int *dest, int xOffset, int font, int foreground);
 int print_window_header_string(int *dest, byte *str, int x, int y);
 void clear_window_header(int *dest, int length, int x, int y);
+int print_window_number_header_string(int *dest, byte *str, int x, int y);
 unsigned short* print_equip_header(int type, unsigned short *tilemap, unsigned int *dest,
     WINDOW *window);
 unsigned short format_tile(unsigned short tile, bool flip_x, bool flip_y);
@@ -82,6 +83,7 @@ void copy_name(byte *str, byte *source, int *index, int pos);
 byte getSex(byte character);
 void getPossessive(byte character, byte *str, int *index);
 void getPronoun(byte character, byte *str, int *index);
+void setupShortMainMenu_Talk_to_Goods(char *String);
 int get_pointer_jump_back(byte *character);
 void print_letter_in_buffer(WINDOW* window, byte* character, byte *dest);
 void weld_entry_custom_buffer(WINDOW *window, byte *str, int font, int foreground, byte* dest);
@@ -103,6 +105,8 @@ void setStuffWindow_Graphics();
 void clearWindowTiles_buffer(WINDOW* window);
 int initWindow_buffer(WINDOW* window, byte* text_start, unsigned short delay_between_prints);
 void print_blankstr_buffer(int x, int y, int width, byte *dest);
+void print_blankstr_window_buffer(int x, int y, int width, WINDOW* window);
+int print_alphabet_buffer(WINDOW* window);
 unsigned short ailmentTileSetup(byte *ailmentBase, unsigned short defaultVal);
 int setNumber_getLength(int value, byte *str, int maxLength);
 int print_string_in_buffer(byte *str, int x, int y, byte *dest);

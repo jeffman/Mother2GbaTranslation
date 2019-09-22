@@ -154,6 +154,25 @@ mov     r3,6
 .org 0x80B9142 :: bl baec6_psi_window_print_buffer
 
 //---------------------------------------------------------
+// Teleport window hacks
+//---------------------------------------------------------
+.org 0x80B9030 :: bl initWindow_buffer//Opening teleport window - "Where?"
+.org 0x80B9036 :: bl print_window_with_buffer
+.org 0x80B9040 :: bl b9040_special_string
+.org 0x80B90D4 :: bl initWindow_buffer //Going back from teleport to the PSI window
+.org 0x80B90DE :: bl initWindow_buffer
+.org 0x80C5D1C :: bl initWindow_buffer //Initializes the actual teleport window
+.org 0x80C5EB0 :: bl printstr_hlight_buffer
+.org 0x80C5F46 :: bl printstr_hlight_buffer
+.org 0x80C5F80 :: bl c5f80_printstr_hlight_buffer_store_buffer // Multiple pages initial case
+.org 0x80C5EB0 :: bl printstr_hlight_buffer
+.org 0x80C6134 :: bl clearWindowTiles_buffer
+.org 0x80C61C8 :: lsl r0,r5,#3 :: add r0,r0,r5 :: nop //Proper string address
+.org 0x80C6224 :: bl printstr_hlight_buffer
+.org 0x80C625E :: bl c5f80_printstr_hlight_buffer_store_buffer // Multiple pages changing pages
+.org 0x80C5F04 :: bl c5f04_store_if_done //Only one page case
+
+//---------------------------------------------------------
 // Class PSI window hacks
 //---------------------------------------------------------
 
@@ -1152,7 +1171,7 @@ nop
 //---------------------------------------------------------
 .org 0x80C5DE0 :: bl c65da_clean_print //To:
 .org 0x80C5E30 :: bl c6190_clean_print //Number on first entering the menu
-.org 0x80C6190 :: bl c6190_clean_print //Number on page change
+.org 0x80C6190 :: bl c6190_buffer_number //Number on page change
 .org 0x80C5E04 :: nop :: strh r0,[r4,#0] :: add r4,#2 :: nop ::nop //Remove extra tile
 
 //---------------------------------------------------------
@@ -1472,6 +1491,7 @@ nop
 
 //Text Speed options
 .org 0x8003BBC :: bl _4092_print_window_store //Printing + storing pixels
+.org 0x8003C44 :: mov r3,#4 //Make highlighting the same speed for all text speeds
 .org 0x8003FA2 :: bl _4092_print_window
 .org 0x8003F8C :: mov r3,#4 //Print highlight of 4 tiles maximum
 .org 0x8003E86 :: bl _3e86_special_setup //Avoid printing when not necessary
@@ -1547,10 +1567,20 @@ nop
 //==============================================================================
 // Overworld player name alphabet
 //==============================================================================
+
+//"Register your name" in buffer
+.org 0x80C6C54 :: bl printstr_buffer
+
+//BLANK name in buffer
+.org 0x80C6C7A :: bl printstr_buffer
+
+//First time entering the menu's alphabet
+.org 0x80C6D72 :: bl initWindow_buffer :: ldr r0,[r5,#0x10] :: bl c6d78_print_slphabet_store
+
 //Player name printing - character is added
 .org 0x80C75B4 :: bl c75b4_overworld_naming_top_printing :: b 0x80C777A
 
-//Player name printing - character is deleted via add
+//Player name printing - character is deleted via b button
 .org 0x80C780E :: bl c780e_overworld_naming_top_printing :: b 0x80C789A
 
 //Player name printing - character is deleted via backspace
@@ -1746,6 +1776,7 @@ m2_coord_table_file:
 .definelabel m2_psiwindow           ,0x80C1FBC
 .definelabel m2_drawwindow          ,0x80C87D0
 .definelabel m2_print_window        ,0x80C8BE4
+.definelabel m2_print_alphabet      ,0x80C8FFC
 .definelabel m2_printstr            ,0x80C9634
 .definelabel m2_printstr_hlight     ,0x80C96F0
 .definelabel m2_printnextch         ,0x80C980C
