@@ -63,6 +63,7 @@ mov     r3,6
 .org 0x80B8890 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Status menu
 .org 0x80B8664 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of PSI menu
 .org 0x80B8740 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Equip menu
+.org 0x80B859C :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Goods menu
 .org 0x80B831A :: bl initWindow_buffer
 .org 0x80B8320 :: bl b8320_statusWindowTextStore
 
@@ -78,6 +79,8 @@ mov     r3,6
 //---------------------------------------------------------
 
 .org 0x80DC22A :: bl dc22a_load_buffer_battle
+.org 0x80DC8C8 :: lsl r1,r0,#4 :: nop //Fixes wrong pointer
+.org 0x80DC8DE :: nop :: nop //Removes useless print
 
 //---------------------------------------------------------
 // PSI battle window hacks
@@ -276,6 +279,62 @@ mov     r3,6
 .org 0x80BBDF0 :: mov r2,#0x54 :: mov r3,#0x13 :: bl printNumberEquip //Change second defense number's position - Defensive Equipment
 .org 0x80BBE20 :: mov r2,#0x54 :: mov r3,#3 :: bl bb1aa_printnumberequip_store //Change second offense number's position - Defensive Equipment
 
+//---------------------------------------------------------
+// Goods window hacks
+//---------------------------------------------------------
+
+.org 0x80B7F4E :: bl c5f80_printstr_hlight_buffer_store_buffer //Prints the balance window
+.org 0x80B7F72 :: bl initWindow_cursor_buffer //Sets up the goods window
+.org 0x80B97A8 :: bl initWindow_buffer //Prints "Who?" going into the window
+.org 0x80B97AE :: bl baf9c_print_window_store_buffer_top
+.org 0x80B992A :: bl initWindow_buffer //Prints "Who?" coming from the inner window
+.org 0x80B9930 :: bl baf9c_print_window_store_buffer_top
+.org 0x80B986E :: bl initWindow_buffer
+.org 0x80B98B8 :: bl b98b8_print_window_store_buffer_needed //Prints "Which?" going into the window
+.org 0x80B99A0 :: bl highlight_string //Highlight chosen item
+.org 0x80B9A4C :: bl baf9c_print_window_store_buffer_needed //Prints "Use\nDrop\n,etc." going into the window
+.org 0x80B9ADE :: bl initWindow_buffer
+.org 0x80BA688 :: bl baf9c_print_window_store_buffer_top //Prints "Use\nDrop\n,etc." going out of the give window
+.org 0x80BA340 :: bl initWindow_buffer //Prints "Who?" going into the window
+.org 0x80BA346 :: bl print_window_with_buffer
+.org 0x80BA37A :: bl initWindow_buffer //initiates the Give window
+.org 0x80BA7FA :: bl initWindow_buffer //initiates the inventory window out of help
+.org 0x80BA810 :: bl initWindow_buffer //initiates the options window out of help
+
+//---------------------------------------------------------
+// Goods window hacks - Stored Goods
+//---------------------------------------------------------
+
+//Choose inventory
+.org 0x80BCDB4 :: bl initWindow_buffer
+//First enter window - More than one page
+.org 0x80C63BC :: bl initWindow_buffer
+.org 0x80C63CC :: bl printstr_hlight_buffer //->Stored Goods(X)
+.org 0x80C6412 :: bl printstr_hlight_buffer //Left part of the inventory
+.org 0x80C643E :: bl printstr_hlight_buffer //Right part of the inventory
+//First enter window - Only one page
+.org 0x80C6492 :: bl initWindow_buffer
+.org 0x80C64DA :: bl printstr_hlight_buffer //Left part of the inventory
+.org 0x80C6518 :: bl printstr_hlight_buffer //Right part of the inventory
+.org 0x80C694A :: bl clearWindowTiles_buffer
+//When pressing arrow to switch page
+.org 0x80C69D8 :: mov r0,#0x12 //Proper address to "->Stored Goods(3)" string
+.org 0x80C69EE :: bl printstr_hlight_buffer //->Stored Goods(X)
+.org 0x80C6A6C :: bl printstr_hlight_buffer //Left part of the inventory
+.org 0x80C6AA4 :: bl printstr_hlight_buffer //Right part of the inventory
+.org 0x80C6AC0 :: bl c6ac0_store_buffer_stored_goods_switch_page
+
+//---------------------------------------------------------
+// Goods window hacks - in battle
+//---------------------------------------------------------
+
+.org 0x80E05C0 :: lsl r1,r0,#4 :: nop //Fixes wrong pointer
+.org 0x80E05D8 :: nop :: nop //Removes useless print
+.org 0x80E0C46 :: bl initWindow_cursor_buffer //initiates the goods window in battle
+.org 0x80E0CE4 :: bl e0ce4_redraw_battle_window_first_four //Reprints the background window for the target choosing items
+.org 0x80E0D1E :: bl printstr_hlight_buffer //Prints the chosen item
+.org 0x80E0EFA :: bl initWindow_buffer :: ldr r0,[r4,#0xC] :: bl print_window_with_buffer //Out of ally target window
+.org 0x80E0FAA :: bl e0faa_redraw_battle_window_first_two
 
 //---------------------------------------------------------
 // BAEF8 hacks (equip window)
@@ -1022,12 +1081,6 @@ bl ba7be_reprint_first_menu
 bl b9aa2_reprint_first_menu
 
 //---------------------------------------------------------
-// C6BA2 hacks (Fixes main window after exiting the Stored Goods window)
-//---------------------------------------------------------
-.org 0x80C6BA2
-bl c6ba2_reprint_first_menu
-
-//---------------------------------------------------------
 // BCEB0 hacks (Fixes main window after exiting the pickup menu)
 //---------------------------------------------------------
 .org 0x80BCEB0
@@ -1772,6 +1825,7 @@ m2_coord_table_file:
 .definelabel m2_setup_window        ,0x80BD844
 .definelabel m2_strlookup           ,0x80BE260
 .definelabel m2_initwindow          ,0x80BE458
+.definelabel m2_initwindow_cursor   ,0x80BE4C8
 .definelabel m2_statuswindow_numbers,0x80C0A5C
 .definelabel m2_psiwindow           ,0x80C1FBC
 .definelabel m2_drawwindow          ,0x80C87D0

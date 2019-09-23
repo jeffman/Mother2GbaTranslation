@@ -153,6 +153,23 @@ int count_pixels_to_tiles(byte *str, int length, int startingPos)
     return tiles;
 }
 
+//For strings without any control code besides the 00 FF one
+int count_pixels_to_tiles_normal_string(byte *str, int startingPos)
+{
+    int pixels = startingPos;
+    for(int i = 0;; i++)
+    {
+        if((str[i + 1] != 0xFF)) //The latter one is not really needed
+            pixels += (m2_widths_table[0][decode_character(str[i])] & 0xFF);
+        else
+            break;
+    }
+    int tiles = (pixels - startingPos)>> 3;
+    if(((pixels - startingPos) & 7) != 0)
+        tiles +=1;
+    return tiles;
+}
+
 byte print_character(byte chr, int x, int y)
 {
     return print_character_formatted(chr, x, y, 0, 0xF);
@@ -408,7 +425,6 @@ byte print_character_with_callback_1bpp_buffer(byte chr, int x, int y, byte *des
             int tileIndex = get_tile_number_with_offset_buffer(tileX + dTileX, tileY + dTileY);
             int tileIndexRight = get_tile_number_with_offset_buffer(tileX + dTileX + 1, tileY + dTileY);
             bool availableSwap = (dTileY != (tileHeight - 1));
-            bool usedRight = false;
             int realTileIndex = tileIndex;
             int realTileIndexRight = tileIndexRight;
             bool useful = false; //Maybe we go over the maximum tile height, let's make sure the extra tile is properly set IF it's useful
@@ -423,9 +439,6 @@ byte print_character_with_callback_1bpp_buffer(byte chr, int x, int y, byte *des
 
                 unsigned short tmpCanvasRow = canvasRow;
                 canvasRow |= glyphRow;
-                
-                if((canvasRow >> 8) != (tmpCanvasRow >> 8))
-                    usedRight = true;
                 
                 if(!availableSwap && ((row + offsetY) >> 3) == 1 && canvasRow != tmpCanvasRow) //This changed the canvas, then it's useful... IF it's the extra vertical tile
                     useful = true;
@@ -452,12 +465,12 @@ byte print_character_with_callback_1bpp_buffer(byte chr, int x, int y, byte *des
             if (tilemapPtr != NULL)
             {
                 tilemapPtr[tileX + dTileX + ((tileY + dTileY) * tilemapWidth)] = paletteMask | getTileCallback(tileX + dTileX, tileY + dTileY);
-                if(usedRight)
+                if(renderedWidth - 8 + offsetX > 0 && offsetX != 0)
                     tilemapPtr[tileX + dTileX + 1 + ((tileY + dTileY) * tilemapWidth)] = paletteMask | getTileCallback(tileX + dTileX + 1, tileY + dTileY);
                 if(useful)
                 {
                     tilemapPtr[tileX + dTileX + ((tileY + tmpTileY) * tilemapWidth)] = paletteMask | getTileCallback(tileX + dTileX, tileY + tmpTileY);
-                    if(usedRight)
+                    if(renderedWidth - 8 + offsetX > 0 && offsetX != 0)
                         tilemapPtr[tileX + dTileX + 1 + ((tileY + tmpTileY) * tilemapWidth)] = paletteMask | getTileCallback(tileX + dTileX + 1, tileY + tmpTileY);
                 }
             }
@@ -786,6 +799,7 @@ int print_menu_string(WINDOW* window)
                     break;
                 default:
                     looping = false;
+					window->menu_text = NULL; //Otherwise it will keep printing indefinetly
                     break;
             }
         }
@@ -1482,6 +1496,38 @@ int printstr_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short 
     return retValue;
 }
 
+//Instead of printing an highlighted version of the string, it just highlights the corresponding arrangements
+int highlight_string(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
+{
+    int retValue = 0;
+    if(highlight)
+    {
+        unsigned short palette_mask_highlight = (*palette_mask) + (highlight == true ? 0x1000 : 0);
+        unsigned short* arrangementBase = (*tilemap_pointer) + window->window_x + x + ((window->window_y + (y << 1)) << 5);
+        int totalTiles = count_pixels_to_tiles_normal_string(str, 0);
+        for(int i = 0; i < totalTiles; i++)
+        {
+            arrangementBase[i] = (arrangementBase[i] & 0x0FFF) | palette_mask_highlight;
+            arrangementBase[i + 0x20] = (arrangementBase[i + 0x20] & 0x0FFF) | palette_mask_highlight;
+        }
+        retValue = (x + totalTiles) << 3;
+    }
+    return retValue;
+}
+
+//Highlights "Talk to"
+void highlight_talk_to()
+{
+	char Talk_to[] = "Talk to";
+	byte str[0xA];
+	int i;
+	for(i = 0; i < (sizeof(Talk_to) - 1); i++)
+		str[i] = encode_ascii(Talk_to[i]);
+	str[i++] = 0;
+	str[i] = 0xFF;
+	highlight_string(getWindow(0), str, 1, 0, true);
+}
+
 unsigned short printstr_hlight_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
 {
     return printstr_hlight_pixels_buffer(window, str, x << 3, y << 4, highlight);
@@ -1521,6 +1567,39 @@ int initWindow_buffer(WINDOW* window, byte* text_start, unsigned short delay_bet
     window->delay_between_prints = delay_between_prints;
     window->delay = 0;
     window->loaded_code = 1;
+    window->enable = true;
+    window->flags_unknown1 |= 1;
+    window->redraw = true;
+    if(text_start == NULL)
+        buffer_drawwindow(window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
+    return 0;
+}
+
+//A different initWindow called by some windows
+int initWindow_cursor_buffer(WINDOW* window, byte* text_start, unsigned short cursor_x_delta, unsigned short unknown7a, unsigned short cursor_x_base)
+{
+    window->vwf_skip = false;
+    window->unknown3 = 0;
+    window->text_x = 0;
+    window->text_y = 0;
+    window->text_offset = 0;
+    window->text_start = text_start;
+    window->text_start2 = text_start;
+    window->delay_between_prints = 0;
+    window->delay = 0;
+    window->counter = 0;
+    window->loaded_code = 1;
+    if(!window->enable)
+    {
+        window->cursor_y = 0;
+        window->unknown6 = 0;
+        window->unknown6a = 0;
+        window->unknown7 = 0;
+        window->unknown7a = unknown7a;
+        window->cursor_x = cursor_x_base;
+        window->cursor_x_base = cursor_x_base;
+        window->cursor_x_delta = cursor_x_delta;
+    }
     window->enable = true;
     window->flags_unknown1 |= 1;
     window->redraw = true;
@@ -1851,6 +1930,42 @@ void store_pixels_overworld_buffer(int totalYs)
     totalYs >>= 1;
     int total = totalYs * 0x1C;
     for(int i = 0; i < total; i++)
+    {
+        //Not using functions for the tile values saves about 30k cycles on average
+        int tile = m2_coord_table[i] + *tile_offset;
+        int addedValue = (i >> 5) << 6;
+        int tile_buffer = (i & 0x1F) + addedValue + *tile_offset;
+        int* bufferValues = (int*)(&buffer[(tile_buffer * 8)]);
+        unsigned int first_half = bufferValues[0];
+        unsigned int second_half = bufferValues[1];
+        vram[(tile * 8) + 0] = m2_bits_to_nybbles_fast[(first_half >> 0) & 0xFF];
+        vram[(tile * 8) + 1] = m2_bits_to_nybbles_fast[(first_half >> 8) & 0xFF];
+        vram[(tile * 8) + 2] = m2_bits_to_nybbles_fast[(first_half >> 0x10) & 0xFF];
+        vram[(tile * 8) + 3] = m2_bits_to_nybbles_fast[(first_half >> 0x18) & 0xFF];
+        vram[(tile * 8) + 4] = m2_bits_to_nybbles_fast[(second_half >> 0) & 0xFF];
+        vram[(tile * 8) + 5] = m2_bits_to_nybbles_fast[(second_half >> 8) & 0xFF];
+        vram[(tile * 8) + 6] = m2_bits_to_nybbles_fast[(second_half >> 0x10) & 0xFF];
+        vram[(tile * 8) + 7] = m2_bits_to_nybbles_fast[(second_half >> 0x18) & 0xFF];
+        //Do the tile right below (Saves about 50k cycles on average)
+        tile += 0x20;
+        bufferValues += 0x40;
+        first_half = bufferValues[0];
+        second_half = bufferValues[1];
+        vram[(tile * 8) + 0] = m2_bits_to_nybbles_fast[(first_half >> 0) & 0xFF];
+        vram[(tile * 8) + 1] = m2_bits_to_nybbles_fast[(first_half >> 8) & 0xFF];
+        vram[(tile * 8) + 2] = m2_bits_to_nybbles_fast[(first_half >> 0x10) & 0xFF];
+        vram[(tile * 8) + 3] = m2_bits_to_nybbles_fast[(first_half >> 0x18) & 0xFF];
+        vram[(tile * 8) + 4] = m2_bits_to_nybbles_fast[(second_half >> 0) & 0xFF];
+        vram[(tile * 8) + 5] = m2_bits_to_nybbles_fast[(second_half >> 8) & 0xFF];
+        vram[(tile * 8) + 6] = m2_bits_to_nybbles_fast[(second_half >> 0x10) & 0xFF];
+        vram[(tile * 8) + 7] = m2_bits_to_nybbles_fast[(second_half >> 0x18) & 0xFF];
+    }
+}
+
+void store_pixels_overworld_buffer_totalTiles(int totalTiles)
+{
+    byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
+    for(int i = 0; i < totalTiles; i++)
     {
         //Not using functions for the tile values saves about 30k cycles on average
         int tile = m2_coord_table[i] + *tile_offset;
