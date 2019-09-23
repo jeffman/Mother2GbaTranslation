@@ -1804,5 +1804,29 @@
     "PointerLocation": 951280,
     "OldPointer": 493444,
     "Label": "L9000"
+  },
+  {
+    "Index": 301,
+    "PointerLocation": 658200,
+    "OldPointer": 534706,
+    "Label": "L32000"
+  },
+  {
+    "Index": 302,
+    "PointerLocation": 658224,
+    "OldPointer": 532274,
+    "Label": "L32001"
+  },
+  {
+    "Index": 303,
+    "PointerLocation": 658248,
+    "OldPointer": 531267,
+    "Label": "L32002"
+  },
+  {
+    "Index": 304,
+    "PointerLocation": 658252,
+    "OldPointer": 533006,
+    "Label": "L32003"
   }
 ]

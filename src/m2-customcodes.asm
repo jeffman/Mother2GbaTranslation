@@ -161,7 +161,11 @@ b       @@end
 @@next4:
 
 //--------------------------------
-// 5C FF: UNUSED (Was previously used but instead preferred using 5B FF
+// 5C FF: Load buffer
+cmp     r4,#0x5C
+bne     @@next5
+bl      load_pixels_overworld
+b       @@end
 
 @@next5:
 
