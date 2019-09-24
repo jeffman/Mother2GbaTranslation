@@ -73,29 +73,29 @@ byte reduce_bit_depth(int row, int foregroundRow)
 void reduce_bit_depth_sp(int* TileRows, int* bufferValues)
 {
     const int foregroundRow = 0xFFFFFFFF;
-    int firstRow = *(TileRows++);
-    int secondRow = *(TileRows++);
-    int thirdRow = *(TileRows++);
-    int fourthRow = *(TileRows++);
+    unsigned int firstRow = *(TileRows++);
+    unsigned int secondRow = *(TileRows++);
+    unsigned int thirdRow = *(TileRows++);
+    unsigned int fourthRow = *(TileRows++);
 
     firstRow ^= foregroundRow;
     secondRow ^= foregroundRow;
     thirdRow ^= foregroundRow;
     fourthRow ^= foregroundRow;
 
-    int value = m2_nybbles_to_bits[(fourthRow >> 16)];
+    unsigned int value = m2_nybbles_to_bits[(fourthRow >> 16)];
     value <<= 4;
     value |= m2_nybbles_to_bits[fourthRow & 0xFFFF];
     value <<= 4;
-    value = m2_nybbles_to_bits[(thirdRow >> 16)];
+    value |= m2_nybbles_to_bits[(thirdRow >> 16)];
     value <<= 4;
     value |= m2_nybbles_to_bits[thirdRow & 0xFFFF];
     value <<= 4;
-    value = m2_nybbles_to_bits[(secondRow >> 16)];
+    value |= m2_nybbles_to_bits[(secondRow >> 16)];
     value <<= 4;
     value |= m2_nybbles_to_bits[secondRow & 0xFFFF];
     value <<= 4;
-    value = m2_nybbles_to_bits[(firstRow >> 16)];
+    value |= m2_nybbles_to_bits[(firstRow >> 16)];
     value <<= 4;
     value |= m2_nybbles_to_bits[firstRow & 0xFFFF];
     *(bufferValues++) = value;
@@ -115,15 +115,15 @@ void reduce_bit_depth_sp(int* TileRows, int* bufferValues)
     value <<= 4;
     value |= m2_nybbles_to_bits[fourthRow & 0xFFFF];
     value <<= 4;
-    value = m2_nybbles_to_bits[(thirdRow >> 16)];
+    value |= m2_nybbles_to_bits[(thirdRow >> 16)];
     value <<= 4;
     value |= m2_nybbles_to_bits[thirdRow & 0xFFFF];
     value <<= 4;
-    value = m2_nybbles_to_bits[(secondRow >> 16)];
+    value |= m2_nybbles_to_bits[(secondRow >> 16)];
     value <<= 4;
     value |= m2_nybbles_to_bits[secondRow & 0xFFFF];
     value <<= 4;
-    value = m2_nybbles_to_bits[(firstRow >> 16)];
+    value |= m2_nybbles_to_bits[(firstRow >> 16)];
     value <<= 4;
     value |= m2_nybbles_to_bits[firstRow & 0xFFFF];
     *(bufferValues) = value;
@@ -1947,21 +1947,53 @@ int print_alphabet_buffer(WINDOW* window)
 
 void load_pixels_overworld_buffer()
 {
-    byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
-    for(int i = 0; i < 8 * 0x1C; i++)
+    int tile = *tile_offset;
+    byte* buffer = (byte*)(OVERWORLD_BUFFER - (tile * TILESET_OFFSET_BUFFER_MULTIPLIER));
+    int* topBufferValues = (int*)(&buffer[tile * 8]);
+    int* bottomBufferValues = topBufferValues + 0x40;
+    int* topTilePointer;
+    int* bottomTilePointer;
+    int nextValue = 0x20;
+    int i = 0;
+    while(i < (0x1C * 8))
     {
-        //Doing this saves about 100k cycles during load
-        int tile = m2_coord_table[i] + *tile_offset;
-        int addedValue = (i >> 5) << 6;
-        int tile_buffer = (i & 0x1F) + addedValue + *tile_offset;
-        int foregroundRow = 0xFFFFFFFF;
-        //Reduce total amount of stores from 16 to 4
-        int* bufferValues = (int*)(&buffer[(tile_buffer * 8)]);
-        //Using "reduce_bit_depth_sp" reduces the total amount of cycles from 300k to 76k
-        reduce_bit_depth_sp(&vram[(tile * 8) + 0], bufferValues);
-        bufferValues += 0x40;
-        tile += 0x20;
-        reduce_bit_depth_sp(&vram[(tile * 8) + 0], bufferValues);
+        //Using pointers instead of values directly saves another 14k cycles. The total amount of cycles this routine now takes is about 151k
+        tile = m2_coord_table_fast_progression[i];
+        int remainingTiles = tile >> 0xB;
+        tile = (tile & 0x7FF) + (*tile_offset);
+        topTilePointer = &vram[(tile * 8)];
+        bottomTilePointer = topTilePointer + (0x20 * 8);
+        if(i == nextValue)
+        {
+            nextValue += 0x20;
+            topBufferValues += 0x40;
+            bottomBufferValues += 0x40;
+        }
+        i++;
+        //Using "reduce_bit_depth_sp" reduced the total amount of cycles from 300k to 165k
+        reduce_bit_depth_sp(topTilePointer, topBufferValues);
+        topTilePointer += 8;
+        topBufferValues += 2;
+        reduce_bit_depth_sp(bottomTilePointer, bottomBufferValues);
+        bottomTilePointer += 8;
+        bottomBufferValues += 2;
+        while(remainingTiles > 0)
+        {
+            if(i == nextValue)
+            {
+                nextValue += 0x20;
+                topBufferValues += 0x40;
+                bottomBufferValues += 0x40;
+            }
+            i++;
+            reduce_bit_depth_sp(topTilePointer, topBufferValues);
+            topTilePointer += 8;
+            topBufferValues += 2;
+            reduce_bit_depth_sp(bottomTilePointer, bottomBufferValues);
+            bottomTilePointer += 8;
+            bottomBufferValues += 2;
+            remainingTiles--;
+        }
     }
 }
 
