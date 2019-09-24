@@ -124,6 +124,7 @@ void load_pixels_overworld_buffer();
 void store_pixels_overworld_buffer(int totalYs);
 void store_pixels_overworld_buffer_totalTiles(int totalTiles);
 
+extern unsigned short m2_coord_table_fast_progression[];
 extern unsigned short m2_coord_table[];
 extern byte m2_ness_name[];
 extern int m2_bits_to_nybbles[];
