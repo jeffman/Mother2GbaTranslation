@@ -70,9 +70,14 @@ byte reduce_bit_depth(int row, int foregroundRow)
 }
 
 //The order is swapped in order to make this faster
+//Doing the bottom tile directly saves some cycles
 void reduce_bit_depth_sp(int* TileRows, int* bufferValues)
 {
+    int* bottomTileRows = TileRows + (0x20 * 8);
+    int* bottomBufferValues = bufferValues + 0x40;
     const int foregroundRow = 0xFFFFFFFF;
+    
+    //First value
     unsigned int firstRow = *(TileRows++);
     unsigned int secondRow = *(TileRows++);
     unsigned int thirdRow = *(TileRows++);
@@ -127,6 +132,62 @@ void reduce_bit_depth_sp(int* TileRows, int* bufferValues)
     value <<= 4;
     value |= m2_nybbles_to_bits[firstRow & 0xFFFF];
     *(bufferValues) = value;
+    
+    //First value of bottom tile
+    firstRow = *(bottomTileRows++);
+    secondRow = *(bottomTileRows++);
+    thirdRow = *(bottomTileRows++);
+    fourthRow = *(bottomTileRows++);
+
+    firstRow ^= foregroundRow;
+    secondRow ^= foregroundRow;
+    thirdRow ^= foregroundRow;
+    fourthRow ^= foregroundRow;
+
+    value = m2_nybbles_to_bits[(fourthRow >> 16)];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[fourthRow & 0xFFFF];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[(thirdRow >> 16)];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[thirdRow & 0xFFFF];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[(secondRow >> 16)];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[secondRow & 0xFFFF];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[(firstRow >> 16)];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[firstRow & 0xFFFF];
+    *(bottomBufferValues++) = value;
+    
+    //Second value of bottom tile
+    firstRow = *(bottomTileRows++);
+    secondRow = *(bottomTileRows++);
+    thirdRow = *(bottomTileRows++);
+    fourthRow = *(bottomTileRows);
+
+    firstRow ^= foregroundRow;
+    secondRow ^= foregroundRow;
+    thirdRow ^= foregroundRow;
+    fourthRow ^= foregroundRow;
+
+    value = m2_nybbles_to_bits[(fourthRow >> 16)];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[fourthRow & 0xFFFF];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[(thirdRow >> 16)];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[thirdRow & 0xFFFF];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[(secondRow >> 16)];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[secondRow & 0xFFFF];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[(firstRow >> 16)];
+    value <<= 4;
+    value |= m2_nybbles_to_bits[firstRow & 0xFFFF];
+    *(bottomBufferValues) = value;
 }
 
 byte getSex(byte character)
@@ -1950,48 +2011,37 @@ void load_pixels_overworld_buffer()
     int tile = *tile_offset;
     byte* buffer = (byte*)(OVERWORLD_BUFFER - (tile * TILESET_OFFSET_BUFFER_MULTIPLIER));
     int* topBufferValues = (int*)(&buffer[tile * 8]);
-    int* bottomBufferValues = topBufferValues + 0x40;
     int* topTilePointer;
-    int* bottomTilePointer;
     int nextValue = 0x20;
     int i = 0;
     while(i < (0x1C * 8))
     {
-        //Using pointers instead of values directly saves another 14k cycles. The total amount of cycles this routine now takes is about 151k
+        //Using pointers instead of values directly saves another 14k cycles. The total amount of cycles this routine now takes is about 148k
         tile = m2_coord_table_fast_progression[i];
         int remainingTiles = tile >> 0xB;
         tile = (tile & 0x7FF) + (*tile_offset);
         topTilePointer = &vram[(tile * 8)];
-        bottomTilePointer = topTilePointer + (0x20 * 8);
         if(i == nextValue)
         {
             nextValue += 0x20;
             topBufferValues += 0x40;
-            bottomBufferValues += 0x40;
         }
         i++;
-        //Using "reduce_bit_depth_sp" reduced the total amount of cycles from 300k to 165k
+        //Using "reduce_bit_depth_sp" reduced the total amount of cycles from 300k to 162k
         reduce_bit_depth_sp(topTilePointer, topBufferValues);
         topTilePointer += 8;
         topBufferValues += 2;
-        reduce_bit_depth_sp(bottomTilePointer, bottomBufferValues);
-        bottomTilePointer += 8;
-        bottomBufferValues += 2;
         while(remainingTiles > 0)
         {
             if(i == nextValue)
             {
                 nextValue += 0x20;
                 topBufferValues += 0x40;
-                bottomBufferValues += 0x40;
             }
             i++;
             reduce_bit_depth_sp(topTilePointer, topBufferValues);
             topTilePointer += 8;
             topBufferValues += 2;
-            reduce_bit_depth_sp(bottomTilePointer, bottomBufferValues);
-            bottomTilePointer += 8;
-            bottomBufferValues += 2;
             remainingTiles--;
         }
     }
