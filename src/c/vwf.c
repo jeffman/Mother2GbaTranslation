@@ -1986,7 +1986,7 @@ void load_pixels_overworld_buffer()
     int i = 0;
     while(i < (0x1C * 8))
     {
-        //Using pointers instead of values directly saves another 14k cycles. The total amount of cycles this routine now takes is about 148k
+        //Using pointers instead of values directly saves another 14k cycles. The total amount of cycles this routine now takes is about 92k
         tile = m2_coord_table_fast_progression[i];
         int remainingTiles = tile >> 0xB;
         tile = (tile & 0x7FF) + (*tile_offset);
@@ -2029,9 +2029,9 @@ void store_pixels_overworld_buffer(int totalYs)
     int* bottomTilePointer;
     int* bits_to_nybbles_pointer = m2_bits_to_nybbles_fast;
     int bits_to_nybbles_array[0x100];
-    //It's convenient to copy the table in IWRAM (about 0x400 cycles) only if we have more than 0x40 total tiles to copy ((total * 0x10 * 2) = total cycles used reading from EWRAM vs. (total * 0x10) + 0x400 = total cycles used writing to and reading from IWRAM)
+    //It's convenient to copy the table in IWRAM (about 0x400 cycles) only if we have more than 0x55 total tiles to copy ((total * 0xC * 2) = total cycles used reading from EWRAM vs. (total * 0xC) + 0x400 = total cycles used writing to and reading from IWRAM)
     //From a full copy it saves about 15k cycles
-    if(total > 0x40)
+    if(total >= 0x56)
     {
         cpufastset(bits_to_nybbles_pointer, bits_to_nybbles_array, 0x100);
         bits_to_nybbles_pointer = bits_to_nybbles_array;
@@ -2130,9 +2130,9 @@ void store_pixels_overworld_buffer_totalTiles(int totalTiles)
     int* bottomTilePointer;
     int* bits_to_nybbles_pointer = m2_bits_to_nybbles_fast;
     int bits_to_nybbles_array[0x100];
-    //It's convenient to copy the table in IWRAM (about 0x400 cycles) only if we have more than 0x40 total tiles to copy ((total * 0x10 * 2) = total cycles used reading from EWRAM vs. (total * 0x10) + 0x400 = total cycles used writing to and reading from IWRAM)
+    //It's convenient to copy the table in IWRAM (about 0x400 cycles) only if we have more than 0x55 total tiles to copy ((total * 0xC * 2) = total cycles used reading from EWRAM vs. (total * 0xC) + 0x400 = total cycles used writing to and reading from IWRAM)
     //From a full copy it saves about 15k cycles
-    if(totalTiles > 0x40)
+    if(totalTiles >= 0x56)
     {
         cpufastset(bits_to_nybbles_pointer, bits_to_nybbles_array, 0x100);
         bits_to_nybbles_pointer = bits_to_nybbles_array;
@@ -2167,15 +2167,20 @@ void store_pixels_overworld_buffer_totalTiles(int totalTiles)
         *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
         *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
         first_half = *(bottomBufferValues++);
-        second_half = *(bottomBufferValues++);
+        //second_half = *(bottomBufferValues++);
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 8) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
+        //Since those are unused
+        bottomBufferValues++;
+        bottomTilePointer += 4;
+        /* The game doesn't use these
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 8) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
+        */
         
         while(remainingTiles > 0 && i < totalTiles)
         {
@@ -2197,15 +2202,20 @@ void store_pixels_overworld_buffer_totalTiles(int totalTiles)
             *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
             *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
             first_half = *(bottomBufferValues++);
-            second_half = *(bottomBufferValues++);
+            //second_half = *(bottomBufferValues++);
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 8) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
+            //Since those are unused
+            bottomBufferValues++;
+            bottomTilePointer += 4;
+            /* The game doesn't use these
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 8) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
+            */
             remainingTiles--;
         }
     }
