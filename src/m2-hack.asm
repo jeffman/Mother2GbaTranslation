@@ -1693,6 +1693,10 @@ m2_font_relocate:
 m2_coord_table:
 .incbin "data/m2-coord-table.bin"
 
+// Co-ordinate table, version which has 5 bits used for how many consecutive tiles there are after each tile
+m2_coord_table_fast_progression:
+.incbin "data/m2-coord-table-fast-progression.bin"
+
 // EB fonts
 m2_font_table:
 dw      m2_font_main
@@ -1778,6 +1782,9 @@ flyovertextLater:
 
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
+
+optimized_byte_4bpp_to_1bpp_table:
+.incbin "data/optimized-byte-4bpp-to-1bpp-table.bin"
 
 
 //==============================================================================

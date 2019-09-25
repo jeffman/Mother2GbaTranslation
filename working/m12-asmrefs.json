@@ -1828,5 +1828,47 @@
     "PointerLocation": 658252,
     "OldPointer": 533006,
     "Label": "L32003"
+  },
+  {
+    "Index": 305,
+    "PointerLocation": 616180,
+    "OldPointer": 279156,
+    "Label": "L314"
+  },
+  {
+    "Index": 306,
+    "PointerLocation": 616184,
+    "OldPointer": 441774,
+    "Label": "L1031"
+  },
+  {
+    "Index": 307,
+    "PointerLocation": 616220,
+    "OldPointer": 324778,
+    "Label": "L610"
+  },
+  {
+    "Index": 308,
+    "PointerLocation": 616240,
+    "OldPointer": 325844,
+    "Label": "L615"
+  },
+  {
+    "Index": 309,
+    "PointerLocation": 616260,
+    "OldPointer": 326292,
+    "Label": "L616"
+  },
+  {
+    "Index": 310,
+    "PointerLocation": 197030,
+    "OldPointer": 471486,
+    "Label": "L32000"
+  },
+  {
+    "Index": 311,
+    "PointerLocation": 616200,
+    "OldPointer": 323841,
+    "Label": "L603"
   }
 ]

@@ -69,6 +69,97 @@ byte reduce_bit_depth(int row, int foregroundRow)
     return lower | (upper << 4);
 }
 
+//The order is swapped in order to make this faster
+//Doing the bottom tile directly saves some cycles
+void reduce_bit_depth_sp(int* TileRows, int* bufferValues)
+{
+    int* bottomTileRows = TileRows + (0x20 * 8);
+    int* bottomBufferValues = bufferValues + 0x40;
+    const int andValue = 0x11111111;
+    
+    //First value
+    unsigned int firstRow = *(TileRows++);
+    unsigned int secondRow = *(TileRows++);
+    unsigned int thirdRow = *(TileRows++);
+    unsigned int fourthRow = *(TileRows++);
+
+    firstRow &= andValue;
+    secondRow &= andValue;
+    thirdRow &= andValue;
+    fourthRow &= andValue;
+
+    unsigned int value = optimized_byte_4bpp_to_1bpp_table[(fourthRow >> 0xF) + (fourthRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(thirdRow >> 0xF) + (thirdRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(secondRow >> 0xF) + (secondRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(firstRow >> 0xF) + (firstRow & 0xFFFF)];
+    *(bufferValues++) = value;
+    
+    //Second value
+    firstRow = *(TileRows++);
+    secondRow = *(TileRows++);
+    thirdRow = *(TileRows++);
+    fourthRow = *(TileRows);
+    
+    firstRow &= andValue;
+    secondRow &= andValue;
+    thirdRow &= andValue;
+    fourthRow &= andValue;
+
+    value = optimized_byte_4bpp_to_1bpp_table[(fourthRow >> 0xF) + (fourthRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(thirdRow >> 0xF) + (thirdRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(secondRow >> 0xF) + (secondRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(firstRow >> 0xF) + (firstRow & 0xFFFF)];
+    *(bufferValues) = value;
+    
+    //First value of bottom tile
+    firstRow = *(bottomTileRows++);
+    secondRow = *(bottomTileRows++);
+    thirdRow = *(bottomTileRows++);
+    fourthRow = *(bottomTileRows++);
+
+    firstRow &= andValue;
+    secondRow &= andValue;
+    thirdRow &= andValue;
+    fourthRow &= andValue;
+
+    value = optimized_byte_4bpp_to_1bpp_table[(fourthRow >> 0xF) + (fourthRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(thirdRow >> 0xF) + (thirdRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(secondRow >> 0xF) + (secondRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(firstRow >> 0xF) + (firstRow & 0xFFFF)];
+    *(bottomBufferValues++) = value;
+    
+    //Second value of bottom tile - Is not used by the game
+    /*
+    firstRow = *(bottomTileRows++);
+    secondRow = *(bottomTileRows++);
+    thirdRow = *(bottomTileRows++);
+    fourthRow = *(bottomTileRows);
+
+    firstRow &= andValue;
+    secondRow &= andValue;
+    thirdRow &= andValue;
+    fourthRow &= andValue;
+
+    value = optimized_byte_4bpp_to_1bpp_table[(fourthRow >> 0xF) + (fourthRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(thirdRow >> 0xF) + (thirdRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(secondRow >> 0xF) + (secondRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(firstRow >> 0xF) + (firstRow & 0xFFFF)];
+    *(bottomBufferValues) = value;
+    */
+}
+
 byte getSex(byte character)
 {
     return character == 1 ? 1 : 0; //character 1 is Paula
@@ -799,7 +890,7 @@ int print_menu_string(WINDOW* window)
                     break;
                 default:
                     looping = false;
-					window->menu_text = NULL; //Otherwise it will keep printing indefinetly
+                    window->menu_text = NULL; //Otherwise it will keep printing indefinetly
                     break;
             }
         }
@@ -1518,14 +1609,14 @@ int highlight_string(WINDOW* window, byte* str, unsigned short x, unsigned short
 //Highlights "Talk to"
 void highlight_talk_to()
 {
-	char Talk_to[] = "Talk to";
-	byte str[0xA];
-	int i;
-	for(i = 0; i < (sizeof(Talk_to) - 1); i++)
-		str[i] = encode_ascii(Talk_to[i]);
-	str[i++] = 0;
-	str[i] = 0xFF;
-	highlight_string(getWindow(0), str, 1, 0, true);
+    char Talk_to[] = "Talk to";
+    byte str[0xA];
+    int i;
+    for(i = 0; i < (sizeof(Talk_to) - 1); i++)
+        str[i] = encode_ascii(Talk_to[i]);
+    str[i++] = 0;
+    str[i] = 0xFF;
+    highlight_string(getWindow(0), str, 1, 0, true);
 }
 
 unsigned short printstr_hlight_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
@@ -1887,114 +1978,246 @@ int print_alphabet_buffer(WINDOW* window)
 
 void load_pixels_overworld_buffer()
 {
-    byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
-    for(int i = 0; i < 8 * 0x1C; i++)
+    int tile = *tile_offset;
+    byte* buffer = (byte*)(OVERWORLD_BUFFER - (tile * TILESET_OFFSET_BUFFER_MULTIPLIER));
+    int* topBufferValues = (int*)(&buffer[tile * 8]);
+    int* topTilePointer;
+    int nextValue = 0x20;
+    int i = 0;
+    while(i < (0x1C * 8))
     {
-        //Doing this saves about 100k cycles during load
-        int tile = m2_coord_table[i] + *tile_offset;
-        int addedValue = (i >> 5) << 6;
-        int tile_buffer = (i & 0x1F) + addedValue + *tile_offset;
-        int foregroundRow = 0xFFFFFFFF;
-        //Reduce total amount of stores from 16 to 4
-        int* bufferValues = (int*)(&buffer[(tile_buffer * 8)]);
-        unsigned int first_half;
-        unsigned int second_half;
-        first_half = reduce_bit_depth(vram[(tile * 8) + 0], foregroundRow);
-        first_half |= reduce_bit_depth(vram[(tile * 8) + 1], foregroundRow) << 8;
-        first_half |= reduce_bit_depth(vram[(tile * 8) + 2], foregroundRow) << 0x10;
-        first_half |= reduce_bit_depth(vram[(tile * 8) + 3], foregroundRow) << 0x18;
-        second_half = reduce_bit_depth(vram[(tile * 8) + 4], foregroundRow);
-        second_half |= reduce_bit_depth(vram[(tile * 8) + 5], foregroundRow) << 8;
-        second_half |= reduce_bit_depth(vram[(tile * 8) + 6], foregroundRow) << 0x10;
-        second_half |= reduce_bit_depth(vram[(tile * 8) + 7], foregroundRow) << 0x18;
-        bufferValues[0] = first_half;
-        bufferValues[1] = second_half;
-        bufferValues += 0x40;
-        tile += 0x20;
-        first_half = reduce_bit_depth(vram[(tile * 8) + 0], foregroundRow);
-        first_half |= reduce_bit_depth(vram[(tile * 8) + 1], foregroundRow) << 8;
-        first_half |= reduce_bit_depth(vram[(tile * 8) + 2], foregroundRow) << 0x10;
-        first_half |= reduce_bit_depth(vram[(tile * 8) + 3], foregroundRow) << 0x18;
-        second_half = reduce_bit_depth(vram[(tile * 8) + 4], foregroundRow);
-        second_half |= reduce_bit_depth(vram[(tile * 8) + 5], foregroundRow) << 8;
-        second_half |= reduce_bit_depth(vram[(tile * 8) + 6], foregroundRow) << 0x10;
-        second_half |= reduce_bit_depth(vram[(tile * 8) + 7], foregroundRow) << 0x18;
-        bufferValues[0] = first_half;
-        bufferValues[1] = second_half;
+        //Using pointers instead of values directly saves another 14k cycles. The total amount of cycles this routine now takes is about 92k
+        tile = m2_coord_table_fast_progression[i];
+        int remainingTiles = tile >> 0xB;
+        tile = (tile & 0x7FF) + (*tile_offset);
+        topTilePointer = &vram[(tile * 8)];
+        if(i == nextValue)
+        {
+            nextValue += 0x20;
+            topBufferValues += 0x40;
+        }
+        i++;
+        //Using "reduce_bit_depth_sp" reduced the total amount of cycles from 300k to 162k
+        reduce_bit_depth_sp(topTilePointer, topBufferValues);
+        topTilePointer += 8;
+        topBufferValues += 2;
+        while(remainingTiles > 0)
+        {
+            if(i == nextValue)
+            {
+                nextValue += 0x20;
+                topBufferValues += 0x40;
+            }
+            i++;
+            reduce_bit_depth_sp(topTilePointer, topBufferValues);
+            topTilePointer += 8;
+            topBufferValues += 2;
+            remainingTiles--;
+        }
     }
 }
 
 void store_pixels_overworld_buffer(int totalYs)
 {
-    byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
+    int tile = *tile_offset;
+    byte* buffer = (byte*)(OVERWORLD_BUFFER - (tile * TILESET_OFFSET_BUFFER_MULTIPLIER));
     totalYs >>= 1;
     int total = totalYs * 0x1C;
-    for(int i = 0; i < total; i++)
+    int* topBufferValues = (int*)(&buffer[tile * 8]);
+    int* bottomBufferValues = topBufferValues + 0x40;
+    int* topTilePointer;
+    int* bottomTilePointer;
+    int* bits_to_nybbles_pointer = m2_bits_to_nybbles_fast;
+    int bits_to_nybbles_array[0x100];
+    //It's convenient to copy the table in IWRAM (about 0x400 cycles) only if we have more than 0x55 total tiles to copy ((total * 0xC * 2) = total cycles used reading from EWRAM vs. (total * 0xC) + 0x400 = total cycles used writing to and reading from IWRAM)
+    //From a full copy it saves about 15k cycles
+    if(total >= 0x56)
+    {
+        cpufastset(bits_to_nybbles_pointer, bits_to_nybbles_array, 0x100);
+        bits_to_nybbles_pointer = bits_to_nybbles_array;
+    }
+    int nextValue = 0x20;
+    int i = 0;
+    while(i < total)
     {
         //Not using functions for the tile values saves about 30k cycles on average
-        int tile = m2_coord_table[i] + *tile_offset;
-        int addedValue = (i >> 5) << 6;
-        int tile_buffer = (i & 0x1F) + addedValue + *tile_offset;
-        int* bufferValues = (int*)(&buffer[(tile_buffer * 8)]);
-        unsigned int first_half = bufferValues[0];
-        unsigned int second_half = bufferValues[1];
-        vram[(tile * 8) + 0] = m2_bits_to_nybbles_fast[(first_half >> 0) & 0xFF];
-        vram[(tile * 8) + 1] = m2_bits_to_nybbles_fast[(first_half >> 8) & 0xFF];
-        vram[(tile * 8) + 2] = m2_bits_to_nybbles_fast[(first_half >> 0x10) & 0xFF];
-        vram[(tile * 8) + 3] = m2_bits_to_nybbles_fast[(first_half >> 0x18) & 0xFF];
-        vram[(tile * 8) + 4] = m2_bits_to_nybbles_fast[(second_half >> 0) & 0xFF];
-        vram[(tile * 8) + 5] = m2_bits_to_nybbles_fast[(second_half >> 8) & 0xFF];
-        vram[(tile * 8) + 6] = m2_bits_to_nybbles_fast[(second_half >> 0x10) & 0xFF];
-        vram[(tile * 8) + 7] = m2_bits_to_nybbles_fast[(second_half >> 0x18) & 0xFF];
-        //Do the tile right below (Saves about 50k cycles on average)
-        tile += 0x20;
-        bufferValues += 0x40;
-        first_half = bufferValues[0];
-        second_half = bufferValues[1];
-        vram[(tile * 8) + 0] = m2_bits_to_nybbles_fast[(first_half >> 0) & 0xFF];
-        vram[(tile * 8) + 1] = m2_bits_to_nybbles_fast[(first_half >> 8) & 0xFF];
-        vram[(tile * 8) + 2] = m2_bits_to_nybbles_fast[(first_half >> 0x10) & 0xFF];
-        vram[(tile * 8) + 3] = m2_bits_to_nybbles_fast[(first_half >> 0x18) & 0xFF];
-        vram[(tile * 8) + 4] = m2_bits_to_nybbles_fast[(second_half >> 0) & 0xFF];
-        vram[(tile * 8) + 5] = m2_bits_to_nybbles_fast[(second_half >> 8) & 0xFF];
-        vram[(tile * 8) + 6] = m2_bits_to_nybbles_fast[(second_half >> 0x10) & 0xFF];
-        vram[(tile * 8) + 7] = m2_bits_to_nybbles_fast[(second_half >> 0x18) & 0xFF];
+        //Using pointers + a way to keep track of subsequent tiles saves 50k cycles on average from a full copy
+        //m2_coord_table_fast_progression has the tile number and the number of tiles used without interruction after it in a single short
+        tile = m2_coord_table_fast_progression[i];
+        int remainingTiles = tile >> 0xB;
+        tile = (tile & 0x7FF) + (*tile_offset);
+        topTilePointer = &vram[(tile * 8)];
+        bottomTilePointer = topTilePointer + (0x20 * 8);
+        if(i == nextValue)
+        {
+            nextValue += 0x20;
+            topBufferValues += 0x40;
+            bottomBufferValues += 0x40;
+        }
+        i++;
+        unsigned int first_half = *(topBufferValues++);
+        unsigned int second_half = *(topBufferValues++);
+        *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 8) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 8) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
+        first_half = *(bottomBufferValues++);
+        //second_half = *(bottomBufferValues++);
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0) & 0xFF];
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 8) & 0xFF];
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
+        //Since those are unused
+        bottomBufferValues++;
+        bottomTilePointer += 4;
+        /* The game doesn't use these
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 8) & 0xFF];
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
+        */
+        
+        while(remainingTiles > 0)
+        {
+            if(i == nextValue)
+            {
+                nextValue += 0x20;
+                topBufferValues += 0x40;
+                bottomBufferValues += 0x40;
+            }
+            i++;
+            first_half = *(topBufferValues++);
+            second_half = *(topBufferValues++);
+            *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 8) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 8) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
+            first_half = *(bottomBufferValues++);
+            //second_half = *(bottomBufferValues++);
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0) & 0xFF];
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 8) & 0xFF];
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
+            //Since those are unused
+            bottomBufferValues++;
+            bottomTilePointer += 4;
+            /* The game doesn't use these
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 8) & 0xFF];
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
+            */
+            remainingTiles--;
+        }
     }
 }
 
 void store_pixels_overworld_buffer_totalTiles(int totalTiles)
 {
-    byte* buffer = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
-    for(int i = 0; i < totalTiles; i++)
+    int tile = *tile_offset;
+    byte* buffer = (byte*)(OVERWORLD_BUFFER - (tile * TILESET_OFFSET_BUFFER_MULTIPLIER));
+    int* topBufferValues = (int*)(&buffer[tile * 8]);
+    int* bottomBufferValues = topBufferValues + 0x40;
+    int* topTilePointer;
+    int* bottomTilePointer;
+    int* bits_to_nybbles_pointer = m2_bits_to_nybbles_fast;
+    int bits_to_nybbles_array[0x100];
+    //It's convenient to copy the table in IWRAM (about 0x400 cycles) only if we have more than 0x55 total tiles to copy ((total * 0xC * 2) = total cycles used reading from EWRAM vs. (total * 0xC) + 0x400 = total cycles used writing to and reading from IWRAM)
+    //From a full copy it saves about 15k cycles
+    if(totalTiles >= 0x56)
+    {
+        cpufastset(bits_to_nybbles_pointer, bits_to_nybbles_array, 0x100);
+        bits_to_nybbles_pointer = bits_to_nybbles_array;
+    }
+    int nextValue = 0x20;
+    int i = 0;
+    while(i < totalTiles)
     {
         //Not using functions for the tile values saves about 30k cycles on average
-        int tile = m2_coord_table[i] + *tile_offset;
-        int addedValue = (i >> 5) << 6;
-        int tile_buffer = (i & 0x1F) + addedValue + *tile_offset;
-        int* bufferValues = (int*)(&buffer[(tile_buffer * 8)]);
-        unsigned int first_half = bufferValues[0];
-        unsigned int second_half = bufferValues[1];
-        vram[(tile * 8) + 0] = m2_bits_to_nybbles_fast[(first_half >> 0) & 0xFF];
-        vram[(tile * 8) + 1] = m2_bits_to_nybbles_fast[(first_half >> 8) & 0xFF];
-        vram[(tile * 8) + 2] = m2_bits_to_nybbles_fast[(first_half >> 0x10) & 0xFF];
-        vram[(tile * 8) + 3] = m2_bits_to_nybbles_fast[(first_half >> 0x18) & 0xFF];
-        vram[(tile * 8) + 4] = m2_bits_to_nybbles_fast[(second_half >> 0) & 0xFF];
-        vram[(tile * 8) + 5] = m2_bits_to_nybbles_fast[(second_half >> 8) & 0xFF];
-        vram[(tile * 8) + 6] = m2_bits_to_nybbles_fast[(second_half >> 0x10) & 0xFF];
-        vram[(tile * 8) + 7] = m2_bits_to_nybbles_fast[(second_half >> 0x18) & 0xFF];
-        //Do the tile right below (Saves about 50k cycles on average)
-        tile += 0x20;
-        bufferValues += 0x40;
-        first_half = bufferValues[0];
-        second_half = bufferValues[1];
-        vram[(tile * 8) + 0] = m2_bits_to_nybbles_fast[(first_half >> 0) & 0xFF];
-        vram[(tile * 8) + 1] = m2_bits_to_nybbles_fast[(first_half >> 8) & 0xFF];
-        vram[(tile * 8) + 2] = m2_bits_to_nybbles_fast[(first_half >> 0x10) & 0xFF];
-        vram[(tile * 8) + 3] = m2_bits_to_nybbles_fast[(first_half >> 0x18) & 0xFF];
-        vram[(tile * 8) + 4] = m2_bits_to_nybbles_fast[(second_half >> 0) & 0xFF];
-        vram[(tile * 8) + 5] = m2_bits_to_nybbles_fast[(second_half >> 8) & 0xFF];
-        vram[(tile * 8) + 6] = m2_bits_to_nybbles_fast[(second_half >> 0x10) & 0xFF];
-        vram[(tile * 8) + 7] = m2_bits_to_nybbles_fast[(second_half >> 0x18) & 0xFF];
+        //Using pointers + a way to keep track of subsequent tiles saves 50k cycles on average
+        //m2_coord_table_fast_progression has the tile number and the number of tiles used without interruction after it in a single short
+        tile = m2_coord_table_fast_progression[i];
+        int remainingTiles = tile >> 0xB;
+        tile = (tile & 0x7FF) + (*tile_offset);
+        topTilePointer = &vram[(tile * 8)];
+        bottomTilePointer = topTilePointer + (0x20 * 8);
+        if(i == nextValue)
+        {
+            nextValue += 0x20;
+            topBufferValues += 0x40;
+            bottomBufferValues += 0x40;
+        }
+        i++;
+        unsigned int first_half = *(topBufferValues++);
+        unsigned int second_half = *(topBufferValues++);
+        *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 8) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 8) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
+        *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
+        first_half = *(bottomBufferValues++);
+        //second_half = *(bottomBufferValues++);
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0) & 0xFF];
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 8) & 0xFF];
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
+        //Since those are unused
+        bottomBufferValues++;
+        bottomTilePointer += 4;
+        /* The game doesn't use these
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 8) & 0xFF];
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
+        *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
+        */
+        
+        while(remainingTiles > 0 && i < totalTiles)
+        {
+            if(i == nextValue)
+            {
+                nextValue += 0x20;
+                topBufferValues += 0x40;
+                bottomBufferValues += 0x40;
+            }
+            i++;
+            first_half = *(topBufferValues++);
+            second_half = *(topBufferValues++);
+            *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 8) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 8) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
+            *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
+            first_half = *(bottomBufferValues++);
+            //second_half = *(bottomBufferValues++);
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0) & 0xFF];
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 8) & 0xFF];
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
+            //Since those are unused
+            bottomBufferValues++;
+            bottomTilePointer += 4;
+            /* The game doesn't use these
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 8) & 0xFF];
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
+            *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
+            */
+            remainingTiles--;
+        }
     }
 }
 
