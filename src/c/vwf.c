@@ -75,7 +75,7 @@ void reduce_bit_depth_sp(int* TileRows, int* bufferValues)
 {
     int* bottomTileRows = TileRows + (0x20 * 8);
     int* bottomBufferValues = bufferValues + 0x40;
-    const int foregroundRow = 0xFFFFFFFF;
+    const int andValue = 0x11111111;
     
     //First value
     unsigned int firstRow = *(TileRows++);
@@ -83,26 +83,18 @@ void reduce_bit_depth_sp(int* TileRows, int* bufferValues)
     unsigned int thirdRow = *(TileRows++);
     unsigned int fourthRow = *(TileRows++);
 
-    firstRow ^= foregroundRow;
-    secondRow ^= foregroundRow;
-    thirdRow ^= foregroundRow;
-    fourthRow ^= foregroundRow;
+    firstRow &= andValue;
+    secondRow &= andValue;
+    thirdRow &= andValue;
+    fourthRow &= andValue;
 
-    unsigned int value = m2_nybbles_to_bits[(fourthRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[fourthRow & 0xFFFF];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[(thirdRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[thirdRow & 0xFFFF];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[(secondRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[secondRow & 0xFFFF];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[(firstRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[firstRow & 0xFFFF];
+    unsigned int value = optimized_byte_4bpp_to_1bpp_table[(fourthRow >> 0xF) + (fourthRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(thirdRow >> 0xF) + (thirdRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(secondRow >> 0xF) + (secondRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(firstRow >> 0xF) + (firstRow & 0xFFFF)];
     *(bufferValues++) = value;
     
     //Second value
@@ -110,27 +102,19 @@ void reduce_bit_depth_sp(int* TileRows, int* bufferValues)
     secondRow = *(TileRows++);
     thirdRow = *(TileRows++);
     fourthRow = *(TileRows);
+    
+    firstRow &= andValue;
+    secondRow &= andValue;
+    thirdRow &= andValue;
+    fourthRow &= andValue;
 
-    firstRow ^= foregroundRow;
-    secondRow ^= foregroundRow;
-    thirdRow ^= foregroundRow;
-    fourthRow ^= foregroundRow;
-
-    value = m2_nybbles_to_bits[(fourthRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[fourthRow & 0xFFFF];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[(thirdRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[thirdRow & 0xFFFF];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[(secondRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[secondRow & 0xFFFF];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[(firstRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[firstRow & 0xFFFF];
+    value = optimized_byte_4bpp_to_1bpp_table[(fourthRow >> 0xF) + (fourthRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(thirdRow >> 0xF) + (thirdRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(secondRow >> 0xF) + (secondRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(firstRow >> 0xF) + (firstRow & 0xFFFF)];
     *(bufferValues) = value;
     
     //First value of bottom tile
@@ -139,55 +123,41 @@ void reduce_bit_depth_sp(int* TileRows, int* bufferValues)
     thirdRow = *(bottomTileRows++);
     fourthRow = *(bottomTileRows++);
 
-    firstRow ^= foregroundRow;
-    secondRow ^= foregroundRow;
-    thirdRow ^= foregroundRow;
-    fourthRow ^= foregroundRow;
+    firstRow &= andValue;
+    secondRow &= andValue;
+    thirdRow &= andValue;
+    fourthRow &= andValue;
 
-    value = m2_nybbles_to_bits[(fourthRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[fourthRow & 0xFFFF];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[(thirdRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[thirdRow & 0xFFFF];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[(secondRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[secondRow & 0xFFFF];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[(firstRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[firstRow & 0xFFFF];
+    value = optimized_byte_4bpp_to_1bpp_table[(fourthRow >> 0xF) + (fourthRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(thirdRow >> 0xF) + (thirdRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(secondRow >> 0xF) + (secondRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(firstRow >> 0xF) + (firstRow & 0xFFFF)];
     *(bottomBufferValues++) = value;
     
-    //Second value of bottom tile
+    //Second value of bottom tile - Is not used by the game
+    /*
     firstRow = *(bottomTileRows++);
     secondRow = *(bottomTileRows++);
     thirdRow = *(bottomTileRows++);
     fourthRow = *(bottomTileRows);
 
-    firstRow ^= foregroundRow;
-    secondRow ^= foregroundRow;
-    thirdRow ^= foregroundRow;
-    fourthRow ^= foregroundRow;
+    firstRow &= andValue;
+    secondRow &= andValue;
+    thirdRow &= andValue;
+    fourthRow &= andValue;
 
-    value = m2_nybbles_to_bits[(fourthRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[fourthRow & 0xFFFF];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[(thirdRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[thirdRow & 0xFFFF];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[(secondRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[secondRow & 0xFFFF];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[(firstRow >> 16)];
-    value <<= 4;
-    value |= m2_nybbles_to_bits[firstRow & 0xFFFF];
+    value = optimized_byte_4bpp_to_1bpp_table[(fourthRow >> 0xF) + (fourthRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(thirdRow >> 0xF) + (thirdRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(secondRow >> 0xF) + (secondRow & 0xFFFF)];
+    value <<= 8;
+    value |= optimized_byte_4bpp_to_1bpp_table[(firstRow >> 0xF) + (firstRow & 0xFFFF)];
     *(bottomBufferValues) = value;
+    */
 }
 
 byte getSex(byte character)
@@ -2096,15 +2066,20 @@ void store_pixels_overworld_buffer(int totalYs)
         *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
         *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
         first_half = *(bottomBufferValues++);
-        second_half = *(bottomBufferValues++);
+        //second_half = *(bottomBufferValues++);
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 8) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
+        //Since those are unused
+        bottomBufferValues++;
+        bottomTilePointer += 4;
+        /* The game doesn't use these
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 8) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
+        */
         
         while(remainingTiles > 0)
         {
@@ -2126,15 +2101,20 @@ void store_pixels_overworld_buffer(int totalYs)
             *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
             *(topTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
             first_half = *(bottomBufferValues++);
-            second_half = *(bottomBufferValues++);
+            //second_half = *(bottomBufferValues++);
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 8) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
+            //Since those are unused
+            bottomBufferValues++;
+            bottomTilePointer += 4;
+            /* The game doesn't use these
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 8) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x10) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0x18) & 0xFF];
+            */
             remainingTiles--;
         }
     }

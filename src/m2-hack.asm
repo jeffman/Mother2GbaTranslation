@@ -1783,6 +1783,9 @@ flyovertextLater:
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
 
+optimized_byte_4bpp_to_1bpp_table:
+.incbin "data/optimized-byte-4bpp-to-1bpp-table.bin"
+
 
 //==============================================================================
 // Existing subroutines/data

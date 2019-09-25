@@ -131,6 +131,7 @@ extern byte m2_ness_name[];
 extern int m2_bits_to_nybbles[];
 extern int m2_bits_to_nybbles_fast[];
 extern byte m2_nybbles_to_bits[];
+extern byte optimized_byte_4bpp_to_1bpp_table[];
 extern byte *m2_font_table[];
 extern byte m2_font_widths[];
 extern byte m2_font_heights[];
