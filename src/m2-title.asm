@@ -27,6 +27,7 @@ title_sequence_00:
 
 // Normally the game enables BG0 in sequence 8, but we want
 // it enabled from the start so copy that code to here
+push    {r3}
 mov     r1,r9
 add     r1,0x78
 mov     r0,0x88
@@ -44,6 +45,7 @@ str     r0,[r1,4]
 ldr     r0,=0x84000008
 str     r0,[r1,8]
 ldr     r0,[r1,8]
+pop     {r3}
 
 // Return to old sequence 0 code
 ldr     r0,=m2_title_sequence_00
