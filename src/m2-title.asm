@@ -219,4 +219,173 @@ add     r0,1
 str     r0,[r4,4]
 b       title_return
 
+//---------------------------------------------------------
+title_sequence_07:
+
+// We're not moving the text so just do a delay for this sequence
+ldr     r3,[r3]
+ldr     r0,[r3,4]
+cmp     r0,0x2C
+bgt     @@nextsequence
+b       title_return
+
+@@nextsequence:
+mov     r0,8
+mov     r4,r10
+str     r0,[r4]
+mov     r0,0
+str     r0,[r3,4]
+b       title_return
+
+//---------------------------------------------------------
+title_sequence_08:
+
+// We're not messing with the video registers so just do a delay for this sequence
+ldr     r3,[r3]
+ldr     r0,[r3,4]
+cmp     r0,0x2C
+bgt     @@nextsequence
+b       title_return
+
+@@nextsequence:
+mov     r0,9
+mov     r4,r10
+str     r0,[r4]
+mov     r0,1
+neg     r0,r0           // want to start the next sequence on frame 0
+str     r0,[r3,4]
+b       title_return
+
+//---------------------------------------------------------
+title_sequence_09:
+
+// Copyright palette fade in
+push    {r4-r7}
+ldr     r3,[r3]
+mov     r4,r3
+ldr     r0,[r3,4]       // frame number
+
+// Frame 0-215: re-calculate palette every frame
+cmp     r0,215
+bgt     @@nextsequence
+
+add     sp,-16
+str     r0,[sp]
+ldr     r1,=215
+str     r1,[sp,4]
+ldr     r5,[r4,0x14]
+ldr     r5,[r5]         // copyright palette source
+mov     r6,5
+lsl     r6,r6,24        // copyright palette dest
+mov     r7,0
+
+@@loop:
+// Scale R
+ldrh    r1,[r5]
+lsl     r1,r1,27
+lsr     r1,r1,9
+ldr     r0,[sp]
+mul     r0,r1
+ldr     r1,[sp,4]
+bl      m2_div
+lsr     r0,r0,18
+str     r0,[sp,8]
+
+// Scale G
+ldrh    r1,[r5]
+lsr     r1,r1,5
+lsl     r1,r1,27
+lsr     r1,r1,9
+ldr     r0,[sp]
+mul     r0,r1
+ldr     r1,[sp,4]
+bl      m2_div
+lsr     r0,r0,18
+str     r0,[sp,12]
+
+// Scale B
+ldrh    r1,[r5]
+lsr     r1,r1,10
+lsl     r1,r1,27
+lsr     r1,r1,9
+ldr     r0,[sp]
+mul     r0,r1
+ldr     r1,[sp,4]
+bl      m2_div
+lsr     r0,r0,18
+
+// Pack colours and store
+lsl     r0,r0,10
+ldr     r1,[sp,12]
+lsl     r1,r1,5
+orr     r0,r1
+ldr     r1,[sp,8]
+orr     r0,r1
+strh    r0,[r6]
+
+add     r5,2
+add     r6,2
+add     r7,1
+cmp     r7,16
+blt     @@loop
+
+add     sp,16
+pop     {r4-r7}
+b       title_return
+
+@@nextsequence:
+mov     r0,0
+str     r0,[r4,4]
+mov     r0,0xA
+mov     r4,r10
+str     r0,[r4]
+pop     {r4-r7}
+b       title_return
+
+//---------------------------------------------------------
+title_sequence_0B:
+
+// Background palette fade in
+push    {r4}
+ldr     r3,[r3]
+mov     r4,r3
+ldr     r0,[r3,4]       // frame number
+
+// Frame 0-159: change palette every 8 frames
+lsl     r3,r0,29
+lsr     r3,r3,29
+cmp     r3,0
+bne     @@end
+
+lsr     r0,r0,3         // source palete index
+cmp     r0,20
+bge     @@nextsequence
+
+lsl     r0,r0,5         // source palette offset
+ldr     r3,[r4,0x14]
+ldr     r3,[r3,4]       // source palette buffer
+add     r0,r0,r3
+
+// Copy palette
+ldr     r1,=0x40000D4
+str     r0,[r1]
+ldr     r0,=0x50000E0
+str     r0,[r1,4]
+ldr     r0,=0x84000008
+str     r0,[r1,8]
+ldr     r0,[r1,8]
+b       @@end
+
+@@nextsequence:
+mov     r0,1
+neg     r0,r0           // want to start the next sequence on frame 0
+str     r0,[r4,4]
+mov     r0,0xC
+mov     r4,r10
+str     r0,[r4]
+
+@@end:
+pop     {r4}
+b       title_return
+
 .pool

@@ -1543,7 +1543,6 @@ nop
 
 // --- Animation 3 (full title screen) ---
 .org 0x82D6B64 :: dh 0x008A   // Enable 8-bit BG0
-.org 0x80119C6 :: mov r0,0x88 // Disable BG1
 
 // Initializer hacks:
 
@@ -1585,6 +1584,10 @@ nop
     .org 0x801179C :: dw title_sequence_01
     .org 0x80117A8 :: dw title_sequence_04
     .org 0x80117AC :: dw title_sequence_05
+    .org 0x80117B4 :: dw title_sequence_07
+    .org 0x80117B8 :: dw title_sequence_08
+    .org 0x80117BC :: dw title_sequence_09
+    .org 0x80117C4 :: dw title_sequence_0B
 
 // Commit hacks:
 
