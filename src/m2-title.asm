@@ -1,3 +1,17 @@
+//---------------------------------------------------------
+title_initializer:
+push    {r1}
+ldr     r0,=0x3001B20
+mov     r1,8        // BG0 X offset
+strh    r1,[r0]
+ldr     r0,=0x30012DC
+mov     r1,8*6      // BG0 Y offset
+strh    r1,[r0]
+pop     {r1}
+ldr     r0,=0x80113F4
+mov     pc,r0       // Run the existing routine
+
+//---------------------------------------------------------
 // r3 has 2028008
 // [r3+14] has 2028028
 // [2028028+10] has pointer to our palette buffer, 0x200 bytes after which

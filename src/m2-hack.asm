@@ -1572,6 +1572,9 @@ nop
     .org 0x8011436 :: ldr r2,[r0,r5]
     .org 0x8011440 :: ldr r2,[r0,r5]
 
+    // Point to custom initializer routine
+    .org 0x82D6B78 :: dw title_initializer + 1
+
 // Setup hacks:
 
     // Fade BG0 instead of OBJ
