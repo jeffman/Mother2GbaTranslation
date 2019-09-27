@@ -1599,6 +1599,7 @@ nop
 .org 0x82D6BE0 :: dh 0x1100   // Disable BG1
 
 .org 0x870F580 :: .incbin "data/m2-title-background.bin"
+.org 0x87126CC :: .incbin "data/m2-title-background-pal-empty.bin"
 .org 0x87128EC :: .incbin "data/m2-title-background-map.bin"
 
 //==============================================================================
