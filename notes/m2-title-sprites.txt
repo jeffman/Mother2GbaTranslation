@@ -1,0 +1,16 @@
+712F10
+------
+Title text sprite entry table. First word is OAM source pointer, second word is number of sprites to load.
+
+68 2E 71 08 02 00 00 00     M (2 sprites)
+78 2E 71 08 06 00 00 00     O (6 sprites)
+A8 2E 71 08 02 00 00 00     T (2 sprites)
+B8 2E 71 08 02 00 00 00     H (2 sprites)
+C8 2E 71 08 02 00 00 00     E (2 sprites)
+D8 2E 71 08 02 00 00 00     R (2 sprites)
+E8 2E 71 08 04 00 00 00     Subtitle (4 sprites)
+08 2F 71 08 01 00 00 00     (R) (1 sprites)
+
+We have nine letters to do but there's only room in the table for eight; will figure out how to expand it later.
+
+We'll use 32x64 sprites so that we only need one sprite for each letter (the Japanese version uses 2-6 sprites for each letter).

@@ -1604,8 +1604,11 @@ nop
 .org 0x82D6BE0 :: dh 0x1100   // Disable BG1
 
 .org 0x870F580 :: .incbin "data/m2-title-background.bin"
+.org 0x8711280 :: .incbin "data/m2-title-text.bin"
 .org 0x87126CC :: .incbin "data/m2-title-background-pal-empty.bin"
 .org 0x87128EC :: .incbin "data/m2-title-background-map.bin"
+.org 0x8712E68 :: .incbin "data/m2-title-text-oam.bin"
+.org 0x8712F10 :: .incbin "data/m2-title-text-oam-entries.bin"
 
 //==============================================================================
 // Move stuff around in order to make space for the code
