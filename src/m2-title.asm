@@ -323,6 +323,21 @@ ldr     r1,[sp,8]
 orr     r0,r1
 strh    r0,[r6]
 
+// Copy background colour to the glow palette
+cmp     r7,0
+bgt     @@next
+mov     r1,0
+add     r6,0xE0
+@@copyloop:
+strh    r0,[r6]
+add     r6,2
+add     r1,1
+cmp     r1,16
+blt     @@copyloop
+sub     r6,0xE0
+sub     r6,0x20
+
+@@next:
 add     r5,2
 add     r6,2
 add     r7,1
