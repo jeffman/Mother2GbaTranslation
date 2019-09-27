@@ -1588,6 +1588,11 @@ nop
     .org 0x80117B8 :: dw title_sequence_08
     .org 0x80117BC :: dw title_sequence_09
     .org 0x80117C4 :: dw title_sequence_0B
+    .org 0x80117C8 :: dw title_sequence_0C
+    .org 0x80117CC :: dw title_sequence_0D
+    .org 0x80117D0 :: dw title_sequence_0D
+    .org 0x80117D4 :: dw title_sequence_0D
+    .org 0x80117D8 :: dw title_sequence_0D
 
 // Commit hacks:
 

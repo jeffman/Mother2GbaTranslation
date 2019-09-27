@@ -28,15 +28,15 @@
 // 06: [] pause                     [] pause
 // 07: [] text moves up             [] do nothing
 // 08: [] pause                     [] pause
-// 09: [] background fade-in        [] background fade-in
+// 09: [] background fade-in        [] copyright fade-in
 // 0A: [] pause                     [] pause
-// 0B: [] flash all                 []
-// 0C: [] pause                     []
-// 0D: [] long pause                []
-// 0E: [] flash all                 []
-// 0F: [] pause                     []
-// 10: [] long pause                []
-// 11: [] quick fade-out all        []
+// 0B: [] flash all                 [] glow
+// 0C: [] pause                     [] pause
+// 0D: [] long pause                [] do nothing
+// 0E: [] flash all                 [] do nothing
+// 0F: [] pause                     [] do nothing
+// 10: [] long pause                [] do nothing
+// 11: [] quick fade-out all        [] quick fade-out all
 
 //=============================================================================
 // $80113F5: (Start)

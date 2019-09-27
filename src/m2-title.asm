@@ -403,4 +403,31 @@ str     r0,[r4]
 pop     {r4}
 b       title_return
 
+//---------------------------------------------------------
+title_sequence_0C:
+
+ldr     r3,[r3]
+ldr     r0,[r3,4]
+cmp     r0,0x2C
+bgt     @@nextsequence
+b       title_return
+
+@@nextsequence:
+mov     r0,0xD
+mov     r4,r10
+str     r0,[r4]
+mov     r0,1
+neg     r0,r0
+str     r0,[r3,4]
+b       title_return
+
+//---------------------------------------------------------
+title_sequence_0D:
+
+mov     r4,r10
+ldr     r0,[r4]
+add     r0,1
+str     r0,[r4]
+b       title_return
+
 .pool
