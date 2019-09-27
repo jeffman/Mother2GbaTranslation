@@ -59,6 +59,15 @@ str     r0,[r1,4]
 ldr     r0,=0x84000008
 str     r0,[r1,8]
 ldr     r0,[r1,8]
+
+// Copy to OBJ pal 0 as well for the text
+str     r2,[r1]
+ldr     r0,=0x5000200
+str     r0,[r1,4]
+ldr     r0,=0x84000008
+str     r0,[r1,8]
+ldr     r0,[r1,8]
+
 pop     {r3}
 
 // Return to old sequence 0 code
@@ -150,6 +159,7 @@ bhi     @@next1
         ldr     r0,[r1,8]
         mov     r2,0
         str     r2,[sp]
+
         mov     r2,sp
         str     r2,[r1]
         ldr     r0,=0x5000100
@@ -157,6 +167,15 @@ bhi     @@next1
         ldr     r0,=0x85000040
         str     r0,[r1,8]
         ldr     r0,[r1,8]
+
+        // Black for OBJ pal 0
+        str     r2,[r1]
+        ldr     r0,=0x5000200
+        str     r0,[r1,4]
+        ldr     r0,=0x85000040
+        str     r0,[r1,8]
+        ldr     r0,[r1,8]
+
         pop     {r2}
         b       @@advance_frame
 
@@ -192,6 +211,7 @@ bhi     @@next2
     add     r0,r0,r1
 
     // Copy to BG pal 8
+    mov     r4,r0
     ldr     r1,=0x40000D4
     str     r0,[r1]
     ldr     r0,=0x5000100
@@ -199,6 +219,15 @@ bhi     @@next2
     ldr     r0,=0x84000008
     str     r0,[r1,8]
     ldr     r0,[r1,8]
+
+    // Copy to OBJ pal 0
+    str     r4,[r1]
+    ldr     r0,=0x5000200
+    str     r0,[r1,4]
+    ldr     r0,=0x84000008
+    str     r0,[r1,8]
+    ldr     r0,[r1,8]
+
     b       @@advance_frame
 
 @@next2:
