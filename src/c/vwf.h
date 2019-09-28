@@ -27,6 +27,8 @@
 #define CUSTOMCC_SET_X 0x5F
 #define CUSTOMCC_ADD_X 0x60
 
+#define BUILD_PALETTE false
+
 byte decode_character(byte chr);
 byte encode_ascii(char chr);
 int get_tile_number(int x, int y);
@@ -124,6 +126,7 @@ unsigned short printstr_hlight_pixels_buffer(WINDOW* window, byte* str, unsigned
 void load_pixels_overworld_buffer();
 void store_pixels_overworld_buffer(int totalYs);
 void store_pixels_overworld_buffer_totalTiles(int totalTiles);
+void eb_cartridge_palette_change(bool background);
 
 extern unsigned short m2_coord_table_fast_progression[];
 extern unsigned short m2_coord_table[];
@@ -142,12 +145,16 @@ extern byte m12_other_str7[];
 extern byte m12_other_str8[];
 extern byte m2_cstm_last_printed[];
 extern byte *m2_script_readability;
+extern unsigned short m12_cartridge_palettes[];
+extern unsigned short m12_cartridge_palettes_dimmed[];
 extern int overworld_buffer;
 extern PC m2_ness_data[];
 extern int m2_arrow_tile[];
 
 extern bool m2_isequipped(int item_index);
 extern void cpufastset(void *source, void *dest, int mode);
+extern void cpuset(void *source, void *dest, int mode);
+extern void m12_dim_palette(unsigned short* palette, int total, int dimmingFactor);
 extern byte* m2_strlookup(int *offset_table, byte *strings, int index);
 extern void m2_formatnumber(int value, byte* strDest, int length);
 extern int bin_to_bcd(int value, int* digit_count);

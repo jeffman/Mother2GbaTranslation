@@ -1668,6 +1668,21 @@ nop
 .org 0x82D9BBC :: dw moved_graphics_table + 0x26618 :: dw moved_graphics_table + 0x3F818
 
 //==============================================================================
+// Cartridge choosing screen hacks
+//==============================================================================
+
+.org 0x8013C62 :: bl change_palette_needed_foreground
+.org 0x8013CAA :: bl change_palette_needed_background
+
+.org 0x86DD794 :: .incbin "data/m2-cartridge-tiles.bin"
+.org 0x8706994 :: .incbin "data/m2-cartridge-arrangements.bin"
+
+.org 0x8705794
+
+m12_cartridge_palettes:
+.incbin "data/m2-cartridge-palettes.bin"
+
+//==============================================================================
 // Data files
 //==============================================================================
 
@@ -1786,6 +1801,9 @@ m2_coord_table_file:
 optimized_byte_4bpp_to_1bpp_table:
 .incbin "data/optimized-byte-4bpp-to-1bpp-table.bin"
 
+m12_cartridge_palettes_dimmed:
+.incbin "data/m12-cartridge-palettes-dimmed.bin"
+
 
 //==============================================================================
 // Existing subroutines/data
@@ -1822,6 +1840,7 @@ optimized_byte_4bpp_to_1bpp_table:
 .definelabel m2_change_naming_space ,0x8004E08
 .definelabel m2_copy_name_temp_mem  ,0x8004E34
 .definelabel m2_insert_default_name ,0x8005708
+.definelabel m12_dim_palette        ,0x80137DC
 .definelabel m2_enable_script       ,0x80A1F6C
 .definelabel m2_sub_a334c           ,0x80A334C
 .definelabel m2_sub_a3384           ,0x80A3384
@@ -1855,6 +1874,7 @@ optimized_byte_4bpp_to_1bpp_table:
 .definelabel m2_stat_symb_checker   ,0x8B0EDA4 
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70
+.definelabel cpuset                 ,0x80F47C0
 .definelabel m2_items               ,0x8B1D62C
 .definelabel m2_default_names       ,0x82B9330
 .definelabel m2_psi_print_table     ,0x8B2A9C0
