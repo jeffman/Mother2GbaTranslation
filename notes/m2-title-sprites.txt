@@ -14,3 +14,14 @@ E8 2E 71 08 04 00 00 00     Subtitle (4 sprites)
 We have nine letters to do but there's only room in the table for eight; will figure out how to expand it later.
 
 We'll use 32x64 sprites so that we only need one sprite for each letter (the Japanese version uses 2-6 sprites for each letter).
+
+Final text positions:
+
+18 -> 0E
+38 -> 22
+68 -> 38
+80 -> 4A
+A0 -> 5C
+B8 -> 8C
+98 -> A0
+D2 -> B5

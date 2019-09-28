@@ -193,7 +193,8 @@
     08011640 (T)  mov     r2,0B2h
     08011642 (T)  lsl     r2,r2,2h
     08011644 (T)  add     r2,r9
-    08011646 (T)  ldr     r1,[sp,54h]       // r1 = 0x68
+
+    08011646 (T)  ldr     r1,[sp,54h]       // r1 = 0x68 (X coordinate of the R)
     08011648 (T)  mov     r0,0F0h
     0801164A (T)  sub     r0,r0,r1
     0801164C (T)  str     r0,[r2]           // [20282F0] = 0xF0 - 0x68 = 0x88
@@ -215,6 +216,8 @@
 
     // Looks like sp+58 and sp+78 are important variables; store their
     // locations to sp+8C and sp+90. Let's call them X and Y respectively.
+    // sp+58: pointer to end X coordinate of T
+    // sp+78: pointer to start X coordinate of T
     08011668 (T)  mov     r1,r13
     0801166A (T)  add     r1,58h
     0801166C (T)  str     r1,[sp,8Ch]
@@ -254,7 +257,7 @@
         08011690 (T)  str     r2,[sp,8Ch]
 
         08011692 (T)  sub     r1,r1,r0
-        08011694 (T)  str     r1,[r5]
+        08011694 (T)  str     r1,[r5] // delta between start and end X coordinates of the T
         08011696 (T)  mov     r0,0AEh
         08011698 (T)  lsl     r0,r0,2h
         0801169A (T)  add     r0,r9
@@ -263,8 +266,8 @@
         080116A0 (T)  mul     r0,r1
         080116A2 (T)  ldr     r1,[r7]
         080116A4 (T)  bl      m2_div
-        080116A8 (T)  str     r0,[r4]
-        080116AA (T)  ldmia   [r5]!,r1
+        080116A8 (T)  str     r0,[r4]  // r0 = increment per frame?
+        080116AA (T)  ldmia   [r5]!,r1 // r1 = delta
         080116AC (T)  mov     r3,r10
         080116AE (T)  ldr     r0,[r3]
         080116B0 (T)  mul     r0,r1
