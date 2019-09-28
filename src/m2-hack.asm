@@ -1603,6 +1603,7 @@ nop
 .org 0x82D6BD4 :: dh 0x008A   // Enable 8-bit BG0
 .org 0x82D6BE0 :: dh 0x1100   // Disable BG1
 
+.org 0x80FCB74 :: .incbin "data/m2-title-text-constants.bin"
 .org 0x870F580 :: .incbin "data/m2-title-background.bin"
 .org 0x8711280 :: .incbin "data/m2-title-text.bin"
 .org 0x87126CC :: .incbin "data/m2-title-background-pal-empty.bin"
