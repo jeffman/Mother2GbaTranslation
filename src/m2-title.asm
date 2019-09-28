@@ -112,6 +112,18 @@ beq     @@unset
 b       title_return
 
 //---------------------------------------------------------
+title_sequence_03:
+
+push    {r0-r3}
+mov     r0,r2           // 0x2028008
+mov     r1,r9           // 0x2028028
+mov     r2,sp
+add     r2,0x10         // coord table on the stack
+bl      title_text_sequence
+pop     {r0-r3}
+b       title_return
+
+//---------------------------------------------------------
 title_sequence_04:
 
 // Just need to reset the frame counter

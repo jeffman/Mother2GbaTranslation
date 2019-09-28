@@ -1582,6 +1582,7 @@ nop
     // Point to sequence hacks
     .org 0x8011798 :: dw title_sequence_00
     .org 0x801179C :: dw title_sequence_01
+    .org 0x80117A4 :: dw title_sequence_03
     .org 0x80117A8 :: dw title_sequence_04
     .org 0x80117AC :: dw title_sequence_05
     .org 0x80117B4 :: dw title_sequence_07
