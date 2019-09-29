@@ -1469,6 +1469,7 @@ flyover_tea:
 flyover_coffee:
 .include "data/flyover-coffee.asm"
 
+.align 2
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
 
