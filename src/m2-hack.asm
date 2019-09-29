@@ -1598,6 +1598,10 @@ nop
     // Clamp initial X values for text
     .org 0x80116F0 :: bl title_setup_clamp
 
+    // Show all eight text sprites from the start
+    .org 0x8011B94 :: mov r6,7
+    .org 0x8011BAC :: b 0x8011BDC
+
 // Commit hacks:
 
     // Commit all things on every sequence
