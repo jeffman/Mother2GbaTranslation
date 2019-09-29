@@ -12,13 +12,6 @@ typedef enum DIRECTION_MOVED
     DIRECTION_LEFT
 } MOVED;
 
-typedef enum GOODS_ACTION
-{
-    ACTION_NONE = 0,
-    ACTION_STEPIN = 1,
-    ACTION_STEPOUT = -1
-} GOODS_ACTION;
-
 int goods_outer_process(WINDOW* window, int y_offset, bool give);
 int goods_inner_process(WINDOW *window, unsigned short *items);
 void goods_print_items(WINDOW *window, unsigned short *items, int y_offset);
@@ -35,7 +28,6 @@ void setup_User_Dead(byte *String, int *index, byte user, byte target, byte item
 void setup_Both_Dead(byte *String, int *index, byte user, byte target, byte item);
 void give_print(byte item, byte target, byte source, WINDOW *window, byte *str);
 
-extern bool m2_isequipped(int item_index);
 extern void m2_soundeffect(int index);
 extern int m2_div(int dividend, int divisor);
 extern int m2_sub_a334c(int value);

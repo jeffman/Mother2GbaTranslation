@@ -12,17 +12,37 @@ typedef enum AILMENT
     NAUSEOUS = 4,
     POISONED = 5,
     SUNSTROKE = 6,
-    SNIFFLING = 7,
-    MASHROOMIZED = 8,
-    POSSESSED = 9,
-    HOMESICK = 0xA,
+    SNIFFLING = 7
 } AILMENT;
+
+typedef enum AILMENT2
+{
+    MASHROOMIZED = 1,
+    POSSESSED = 2
+} AILMENT2;
+
+typedef enum AILMENT3
+{
+    SLEEP = 1,
+    CRYING = 2
+} AILMENT3;
+
+typedef enum CHARACTER
+{
+    NESS = 0,
+    PAULA = 1,
+    JEFF = 2,
+    POO = 3
+} CHARACTER;
 
 typedef struct PC {
     unsigned short goods[14];
     int experience;
+    //0x20
     byte unknown[12];
-    int level;
+    short level;
+    short unknown2a;
+    //0x30
     unsigned short hp_max;
     unsigned short hp_current;
     byte hp_unknown[2]; // possibly a rolling flag + a fractional value
@@ -31,13 +51,14 @@ typedef struct PC {
     unsigned short pp_current;
     byte pp_unknown[2];
     unsigned short pp_rolling;
+    //0x40
     AILMENT ailment;
-    bool mashroomized;
-    bool sleep;
+    AILMENT2 ailment2;
+    AILMENT3 ailment3;
     bool strange;
     bool cant_concentrate;
     bool homesick;
-    byte unknown2[2];
+    bool unknown2[2];
     byte offense_base;
     byte defense_base;
     byte speed_base;
@@ -46,6 +67,7 @@ typedef struct PC {
     byte vitality_base;
     byte iq_base;
     byte offense_effective;
+    //0x50
     byte defense_effective;
     byte speed_effective;
     byte guts_effective;
@@ -53,6 +75,7 @@ typedef struct PC {
     byte vitality_effective;
     byte iq_effective;
     byte unknown3[11];
+    //0x61
     byte equipment[4];
     byte unknown4[7];
 } PC;

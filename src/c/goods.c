@@ -110,14 +110,15 @@ int goods_outer_process(WINDOW* window, int y_offset, bool give)
     }
 
     *active_window_party_member = current_pc;
-    m2_hpwindow_up(current_pc);
-    clear_name_header(window);
-    copy_name_header(window, current_pc);
 
     // Print item names
     if (!window->vwf_skip)
     {
         goods_print_items(window, current_items, y_offset);
+        m2_hpwindow_up(current_pc); //Why were these done repeatedly? I made it so they're done only when printing, however if there is a reason why they shouldn't, feel free to put them back
+        clear_name_header(window);
+        copy_name_header(window, current_pc);
+        store_pixels_overworld();
         window->vwf_skip = true;
     }
 
@@ -417,10 +418,13 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
         clear_name_header(window);
         copy_name_header(window, *active_window_party_member);
 
-        m2_clearwindowtiles(window);
+        clearWindowTiles_buffer(window);
 
         if (weird_value > 0)
+        {
             goods_print_items(window, items, 0);
+            store_pixels_overworld();
+        }
     }
 
     if (state_shadow.up || state_shadow.down || state_shadow.left || state_shadow.right)
@@ -479,6 +483,7 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
 // Erases the slot before printing. Prints blanks for null items.
 void goods_print_items(WINDOW *window, unsigned short *items, int y_offset)
 {
+    byte* dest = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
     int item_x = (window->window_x << 3) + 8;
     int item_y = (window->window_y + y_offset) << 3;
 
@@ -488,7 +493,7 @@ void goods_print_items(WINDOW *window, unsigned short *items, int y_offset)
         int x = item_x + ((i & 1) * 88);
         int y = item_y + ((i >> 1) * 16);
 
-        print_blankstr(x >> 3, y >> 3, 11);
+        print_blankstr_buffer(x >> 3, y >> 3, 11, dest);
 
         if (item > 0)
         {
@@ -501,7 +506,7 @@ void goods_print_items(WINDOW *window, unsigned short *items, int y_offset)
             }
 
             byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-            print_string(item_str, x + x_offset, y);
+            print_string_in_buffer(item_str, x + x_offset, y, dest);
         }
     }
 }
