@@ -5,10 +5,10 @@
 
 typedef struct TITLE_COORD_TABLE {
     int unknown_a[3];
-    int y_end[8];
-    int y_start[8];
-    int x_end[8];
-    int x_start[8];
+    int y_end[9];
+    int y_start[9];
+    int x_end[9];
+    int x_start[9];
 } TITLE_COORD_TABLE;
 
 typedef struct TITLE_SPRITE {
@@ -26,7 +26,7 @@ typedef struct TITLE_EXTENDED {
     unsigned short *pal_buffer[5];
     byte unknown_a[0x70];
     int sequence;
-    TITLE_SPRITE sprites[8];
+    TITLE_SPRITE sprites[9];
     int unknown[0x16];
 } TITLE_EXTENDED;
 

@@ -17,7 +17,7 @@ void title_text_sequence(
         return;
     }
 
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < 9; i++)
     {
         int x_start = coords->x_start[i];
         int x_end = coords->x_end[i];

@@ -1599,11 +1599,42 @@ nop
     .org 0x80116F0 :: bl title_setup_clamp
 
     // Show all eight text sprites from the start
-    .org 0x8011B94 :: mov r6,7
+    .org 0x8011B94 :: mov r6,8
     .org 0x8011BAC :: b 0x8011BDC
 
     // Allocate space for nine sprites
     .org 0x80113F8 :: mov r0,0xC8
+    .org 0x80115B2 :: add sp,-0xA4
+    .org 0x8011BE6 :: add sp,0xA4
+
+    .org 0x80115CC
+    ldmia   [r0]!,r2,r4,r7
+    stmia   [r1]!,r2,r4,r7
+    add     r6,sp,0x30
+
+    .org 0x80115DE
+    ldmia   [r0]!,r2,r4,r7
+    stmia   [r1]!,r2,r4,r7
+    add     r5,sp,0x54
+
+    .org 0x80115F0
+    ldmia   [r0]!,r2,r4,r7
+    stmia   [r1]!,r2,r4,r7
+    add     r4,sp,0x78
+
+    .org 0x8011602
+    ldmia   [r0]!,r2,r3,r7
+    stmia   [r1]!,r2,r3,r7
+
+    .org 0x8011646 :: ldr r1,[sp,0x5C]
+    .org 0x801166A :: add r1,0x60 :: str r1,[sp,0x9C]
+    .org 0x8011670 :: add r2,0x84 :: str r2,[sp,0xA0]
+    .org 0x8011686 :: ldr r0,[sp,0xA0]
+    .org 0x801168A :: str r0,[sp,0xA0] :: ldr r2,[sp,0x9C]
+    .org 0x8011690 :: str r2,[sp,0x9C]
+    .org 0x80116CC :: add r7,sp,0x30
+    .org 0x80116D0 :: add r7,sp,0x78
+    .org 0x8011704 :: cmp r6,8
 
     // Relocate stuff from after the sprite data
     .org 0x8011634 :: mov r1,0xB2
@@ -1627,9 +1658,9 @@ nop
 
 .org 0x801170C :: dw m2_title_text_constants
 .org 0x8011710 :: dw m2_title_text_constants + 12
-.org 0x8011714 :: dw m2_title_text_constants + 12 + 32
-.org 0x8011718 :: dw m2_title_text_constants + 12 + 32 + 32
-.org 0x801171C :: dw m2_title_text_constants + 12 + 32 + 32 + 32
+.org 0x8011714 :: dw m2_title_text_constants + 12 + 36
+.org 0x8011718 :: dw m2_title_text_constants + 12 + 36 + 36
+.org 0x801171C :: dw m2_title_text_constants + 12 + 36 + 36 + 36
 .org 0x870F580 :: .incbin "data/m2-title-background.bin"
 .org 0x8711280 :: .incbin "data/m2-title-text.bin"
 .org 0x87126CC :: .incbin "data/m2-title-background-pal-empty.bin"
