@@ -23,3 +23,4 @@ void __attribute__((naked)) m2_printstr(WINDOW* window, byte* str, unsigned shor
 void __attribute__((naked)) m2_setupbattlename(short value) {}
 void __attribute__((naked)) store_pixels_overworld() {}
 void __attribute__((naked)) m12_dim_palette(short* palette, int total, int dimmingFactor) {}
+int __attribute__((naked)) m2_jump_to_offset(byte* character) {}

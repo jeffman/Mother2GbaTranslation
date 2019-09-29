@@ -1844,6 +1844,7 @@ m12_cartridge_palettes_dimmed:
 .definelabel m2_enable_script       ,0x80A1F6C
 .definelabel m2_sub_a334c           ,0x80A334C
 .definelabel m2_sub_a3384           ,0x80A3384
+.definelabel m2_jump_to_offset      ,0x80A6C24
 .definelabel m2_get_selected_item   ,0x80A469C
 .definelabel m2_psitargetwindow     ,0x80B8AE0
 .definelabel m2_isequipped          ,0x80BC670

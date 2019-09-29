@@ -1276,33 +1276,6 @@ void setStuffWindow_Graphics()
         (*(address + 2)) = 0;
 }
 
-int jumpToOffset(byte* character)
-{
-    int returnOffset = 0;
-    int baseOffset = 0;
-    if((*(character + 1)) != 0xFF)
-        return 0;
-    int code = 0xFFFF009F + ((*character) | 0xFF00);
-
-    switch(code)
-    {
-        case 0x25:
-            returnOffset += 2;
-            baseOffset = returnOffset;
-            for(int i = 0; i < 4; i++)
-                returnOffset = returnOffset + ((*(character + baseOffset + i)) << (8 * i));
-            byte* totalJumps = (byte*)0x3005078;
-            byte** oldOffsets = (byte**)0x3005080;
-            oldOffsets[*totalJumps] = character + 6;
-            (*totalJumps)++;
-        break;
-        default:
-            return 0;
-    }
-
-    return returnOffset;
-}
-
 byte print_character_with_codes(WINDOW* window, byte* dest)
 {
     int delay = window->delay--;
@@ -1422,7 +1395,7 @@ byte print_character_with_codes(WINDOW* window, byte* dest)
             break;
             default:
                 if(code >= 0x60)
-                    window->text_offset += jumpToOffset(character);
+                    window->text_offset += m2_jump_to_offset(character);
                 else
                 {
                     returnedLength = customcodes_parse_generic(code, character, window, dest);
