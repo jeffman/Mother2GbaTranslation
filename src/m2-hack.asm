@@ -1602,6 +1602,20 @@ nop
     .org 0x8011B94 :: mov r6,7
     .org 0x8011BAC :: b 0x8011BDC
 
+    // Allocate space for nine sprites
+    .org 0x80113F8 :: mov r0,0xC8
+
+    // Relocate stuff from after the sprite data
+    .org 0x8011634 :: mov r1,0xB2
+    .org 0x8011640 :: mov r2,0xC2
+    .org 0x801164E :: mov r1,0xBE
+    .org 0x801165C :: mov r7,0xC2
+    .org 0x8011662 :: mov r5,0xC3
+    .org 0x8011674 :: mov r3,0xB2
+    .org 0x801167C :: mov r4,0xB3
+    .org 0x8011696 :: mov r0,0xBE
+    .org 0x8011838 :: mov r1,0xB6
+
 // Commit hacks:
 
     // Commit all things on every sequence
@@ -1611,7 +1625,11 @@ nop
 .org 0x82D6BD4 :: dh 0x008A   // Enable 8-bit BG0
 .org 0x82D6BE0 :: dh 0x1100   // Disable BG1
 
-.org 0x80FCB74 :: .incbin "data/m2-title-text-constants.bin"
+.org 0x801170C :: dw m2_title_text_constants
+.org 0x8011710 :: dw m2_title_text_constants + 12
+.org 0x8011714 :: dw m2_title_text_constants + 12 + 32
+.org 0x8011718 :: dw m2_title_text_constants + 12 + 32 + 32
+.org 0x801171C :: dw m2_title_text_constants + 12 + 32 + 32 + 32
 .org 0x870F580 :: .incbin "data/m2-title-background.bin"
 .org 0x8711280 :: .incbin "data/m2-title-text.bin"
 .org 0x87126CC :: .incbin "data/m2-title-background-pal-empty.bin"
@@ -1748,6 +1766,11 @@ dw 0x1C0 :: .incbin "data/m2-title-text-pal-animated.c.bin"
 
 m2_title_text_pal_static:
 dw 0x20 :: .incbin "data/m2-title-text-pal-static.c.bin"
+
+.align 4
+
+m2_title_text_constants:
+.incbin "data/m2-title-text-constants.bin"
 
 //==============================================================================
 // Existing subroutines/data
