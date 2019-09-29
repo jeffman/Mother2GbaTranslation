@@ -1595,6 +1595,9 @@ nop
     .org 0x80117D4 :: dw title_sequence_0D
     .org 0x80117D8 :: dw title_sequence_0D
 
+    // Clamp initial X values for text
+    .org 0x80116F0 :: bl title_setup_clamp
+
 // Commit hacks:
 
     // Commit all things on every sequence

@@ -12,6 +12,24 @@ ldr     r0,=0x80113F4
 mov     pc,r0       // Run the existing routine
 
 //---------------------------------------------------------
+title_setup_clamp:
+mov     r1,250
+cmp     r0,r1
+bgt     @@clamp
+neg     r1,r1
+cmp     r0,r1
+blt     @@clamp
+b       @@clamp_end
+
+@@clamp:
+mov     r0,r1
+
+@@clamp_end:
+str     r0,[r5,4]
+mov     r1,r8       // clobbered code
+bx      lr
+
+//---------------------------------------------------------
 // r3 has 2028008
 // [r3+14] has 2028028
 // [2028028+10] has pointer to our palette buffer, 0x200 bytes after which
