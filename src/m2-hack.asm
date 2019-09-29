@@ -1636,6 +1636,7 @@ nop
 .org 0x87128EC :: .incbin "data/m2-title-background-map.bin"
 .org 0x8712E68 :: .incbin "data/m2-title-text-oam.bin"
 .org 0x8712F10 :: .incbin "data/m2-title-text-oam-entries.bin"
+.org 0x8712FB0 :: dw m2_title_text_params, m2_title_text_params + 0x6C
 
 //==============================================================================
 // Move stuff around in order to make space for the code
@@ -1771,6 +1772,18 @@ dw 0x20 :: .incbin "data/m2-title-text-pal-static.c.bin"
 
 m2_title_text_constants:
 .incbin "data/m2-title-text-constants.bin"
+
+m2_title_text_params:
+.incbin "data/m2-title-text-params.bin"
+.org m2_title_text_params + 0x6C :: dw m2_title_text_params + 0x48
+.org m2_title_text_params + 0x74 :: dw m2_title_text_params + 0x4C
+.org m2_title_text_params + 0x7C :: dw m2_title_text_params + 0x50
+.org m2_title_text_params + 0x84 :: dw m2_title_text_params + 0x54
+.org m2_title_text_params + 0x8C :: dw m2_title_text_params + 0x58
+.org m2_title_text_params + 0x94 :: dw m2_title_text_params + 0x5C
+.org m2_title_text_params + 0x9C :: dw m2_title_text_params + 0x60
+.org m2_title_text_params + 0xA4 :: dw m2_title_text_params + 0x64
+.org m2_title_text_params + 0xAC :: dw m2_title_text_params + 0x68
 
 //==============================================================================
 // Existing subroutines/data
