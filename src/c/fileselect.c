@@ -189,7 +189,7 @@ void print_file_string(int x, int y, int length, byte *str, int window_selector,
             fileselect_pixels_location,
             &get_tile_number_file_select,
             tilesetDestPtr,
-            width);
+            width, 0x10);
 
         pixelX += pixels;
     }

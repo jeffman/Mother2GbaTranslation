@@ -1,16 +1,24 @@
 //==============================================================================
-// void parse(int code, char* parserAddress, WINDOW* window)
+// int parse_generic(int code, char* parserAddress, WINDOW* window, byte* dest)
 // In:
 //    r0: code
 //    r1: parser address
 //    r2: window
+//    r3: memory_destionation for handle_first_window_buffer
 // Out:
 //    r0: control code length (0 if not matched)
 //==============================================================================
 
 customcodes_parse:
+push {r3,lr}
+ldr r3,=#0x6000000
+bl customcodes_parse_generic
+pop {r3,pc}
+
+customcodes_parse_generic:
 
 push    {r1-r5,lr}
+mov     r5,r3
 mov     r3,0
 mov     r4,r0
 
@@ -22,7 +30,8 @@ bne     @@next
 // 60 FF should be treated as a renderable code
 push    {r0-r3}
 mov     r0,r2
-bl      handle_first_window
+mov     r1,r5
+bl      handle_first_window_buffer
 pop     {r0-r3}
 
 mov     r3,3
@@ -60,8 +69,9 @@ bne     @@next2
 
 // 5F FF should be treated as a renderable code
 push    {r0-r3}
+mov     r1,r5
 mov     r0,r2
-bl      handle_first_window
+bl      handle_first_window_buffer
 pop     {r0-r3}
 
 mov     r3,3
@@ -101,12 +111,13 @@ b @@end
 //--------------------------------
 // 5D FF: Print give text
 cmp     r4,0x5D
-bne     @@end
+bne     @@next4
 
 // 5D FF should be treated as a renderable code
 push    {r0-r3}
+mov     r1,r5
 mov     r0,r2
-bl      handle_first_window
+bl      handle_first_window_buffer
 pop     {r0-r3}
 
 ldr     r3,=#0x30009FB
@@ -145,6 +156,40 @@ bl      give_print
 pop     {r0}
 mov     r3,#0
 sub     r3,r3,#1 //r3 is now -1
+b       @@end
+
+@@next4:
+
+//--------------------------------
+// 5C FF: Load buffer
+cmp     r4,#0x5C
+bne     @@next5
+bl      load_pixels_overworld
+b       @@end
+
+@@next5:
+
+//--------------------------------
+// 5B FF: Print main window (if enabled) without restore of window buffer
+cmp     r4,#0x5B
+bne     @@next6
+bl      generic_reprinting_first_menu_talk_to_highlight
+mov     r3,#2
+b       @@end
+
+@@next6:
+//--------------------------------
+// 5A FF: Restore the dialogue window
+cmp     r4,#0x5A
+bne     @@end
+ldr     r0,=#0x3005230
+ldr     r0,[r0,#8]
+mov     r1,#0
+strh    r1,[r0,#0x2A]
+strh    r1,[r0,#0x2C]
+strb    r1,[r0,#3]
+bl      m2_drawwindow
+mov     r3,#2
 
 //--------------------------------
 @@end:
