@@ -1790,11 +1790,17 @@ m2_coord_table_file:
 m2_title_background_pal_copyright:
 dw 0x100 :: .incbin "data/m2-title-background-pal-copyright.c.bin"
 
+.align 4
+
 m2_title_background_pal_glow:
 dw 0x280 :: .incbin "data/m2-title-background-pal-glow.c.bin"
 
+.align 4
+
 m2_title_text_pal_animated:
 dw 0x1C0 :: .incbin "data/m2-title-text-pal-animated.c.bin"
+
+.align 4
 
 m2_title_text_pal_static:
 dw 0x20 :: .incbin "data/m2-title-text-pal-static.c.bin"
