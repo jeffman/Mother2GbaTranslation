@@ -3332,6 +3332,35 @@ bl      store_pixels_overworld_buffer
 pop     {r0-r3,pc}
 
 //==============================================================================
+//Change tile only if need be (it's different) - foreground call
+change_palette_needed_foreground:
+push    {lr}
+mov     r3,#0
+bl      change_palette_needed
+pop     {pc}
+
+//==============================================================================
+//Change tile only if need be (it's different) - background call
+change_palette_needed_background:
+push    {lr}
+mov     r3,#1
+bl      change_palette_needed
+pop     {pc}
+
+//==============================================================================
+//Change tile only if need be (it's different), r3 contains whether the EB cart is in the background or not
+change_palette_needed:
+push    {lr}
+ldrh    r2,[r1,#0]
+ldrh    r1,[r0,#0]
+cmp     r1,r2
+beq     @@end
+mov     r0,r3
+bl      eb_cartridge_palette_change
+@@end:
+pop     {pc}
+
+//==============================================================================
 //Prints the sick tiles and then the names
 sick_name:
 push    {lr}
