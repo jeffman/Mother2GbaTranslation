@@ -1274,10 +1274,13 @@ nop
 //---------------------------------------------------------
 
 //Notes
-//Flyover entries are made of 16 bits codes. Codes with the first byte between 0 and 9 are special cases.
+//Flyover entries are made of 8-bit codes with arguments.
+//Codes with the first byte between 0 and 9 are special cases.
+//00    = End
 //01 XX = Position at X tile XX (Changed to Position at X pixel XX)
 //02 XX = Position at Y tile XX
-//09 00 = END
+//08 XX = Print PC name (for this hack, use 80 FC-FF instead)
+//09    = line break
 //80 XX = Print character XX
 
 //Flyover pointer remapping
@@ -1289,6 +1292,9 @@ nop
 .org 0x8731140 :: dw flyovertextDalaam //Dalaam, in the Far East
 .org 0x8731144 :: dw flyovertextPoo //The palace of Poo\nThe Crown Prince
 .org 0x8731148 :: dw flyovertextLater //Later that night...
+
+.org 0x80B3A80 :: dw flyover_tea
+.org 0x80B3AA4 :: dw flyover_coffee
 
 //Flyover remapping
 .org 0x80B3482 :: bl largevwf :: b 0x80B348E
@@ -1772,29 +1778,36 @@ m2_enemy_attributes:
 .incbin "data/m2-enemy-attributes.bin"
 
 flyovertextYear:
-.incbin "data/flyovertextYear.bin"
+.include "data/flyover-text-year.asm"
 
 flyovertextOnett:
-.incbin "data/flyovertextOnett.bin"
+.include "data/flyover-text-onett.asm"
 
 flyovertextNess:
-.incbin "data/flyovertextNess.bin"
+.include "data/flyover-text-ness.asm"
 
 flyovertextWinters:
-.incbin "data/flyovertextWinters.bin"
+.include "data/flyover-text-winters.asm"
 
 flyovertextSnow:
-.incbin "data/flyovertextSnow.bin"
+.include "data/flyover-text-snow.asm"
 
 flyovertextDalaam:
-.incbin "data/flyovertextDalaam.bin"
+.include "data/flyover-text-dalaam.asm"
 
 flyovertextPoo:
-.incbin "data/flyovertextPoo.bin"
+.include "data/flyover-text-poo.asm"
 
 flyovertextLater:
-.incbin "data/flyovertextLater.bin"
+.include "data/flyover-text-later.asm"
 
+flyover_tea:
+.include "data/flyover-tea.asm"
+
+flyover_coffee:
+.include "data/flyover-coffee.asm"
+
+.align 2
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
 
