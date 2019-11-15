@@ -1,4 +1,13 @@
 //==============================================================================
+//Makes it so largevwf gets what it expects from the tea routine
+wrapper_largevwf_tea:
+push {r4,lr}
+mov r4,r5
+bl largevwf
+mov r5,r4
+pop {r4,pc}
+
+//==============================================================================
 //Writes the bigfont letters to RAM
 largevwf:
 push    {r5,lr}
@@ -95,6 +104,44 @@ strb    r0,[r4]
 
 @@end:
 pop     {r5-r7,pc}
+
+.pool
+
+//==============================================================================
+//Gets in r0 the current height. In r5 DMA channel 3 and in r4 the letter buffer
+flyover_scroll_routine:
+push {lr}
+sub r0,r0,#1
+mov r1,#0x3F
+mov r2,r0
+and r2,r1
+cmp r2,r1
+bne @@end
+lsr r0,r0,#6 //Get the value beyond the 0x40
+mov r1,#3
+and r0,r1
+add r1,r0,#1
+lsl r0,r0,#0xD //Multiply the value obtained by 0x2000
+lsl r1,r1,#0xD //Get ending address
+ldr r2,=#0x06008000
+ldr r3,=#0x84000100
+add r0,r0,r2
+add r1,r1,r2
+mov r2,r5 //DMA Transfer channel 3
+@@cycle:
+str r4,[r2,#0]
+str r0,[r2,#4]
+str r3,[r2,#8]
+ldr r5,[r2,#8]
+mov r5,#0x80
+lsl r5,r5,#0x3
+add r0,r0,r5
+add r4,r4,r5
+cmp r0,r1
+bne @@cycle
+mov r5,r2
+@@end:
+pop {pc}
 
 .pool
 

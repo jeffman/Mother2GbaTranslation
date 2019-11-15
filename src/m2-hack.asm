@@ -1296,8 +1296,18 @@ nop
 .org 0x80B3A80 :: dw flyover_tea
 .org 0x80B3AA4 :: dw flyover_coffee
 
+//Change line size to 0x20 pixels
+//.org 0x80B3ABA :: add r0,#0x20
+//.org 0x80B3B0C :: mov r1,#0x3F :: and r0,r1 :: nop
+//.org 0x80B4162 :: bl flyover_scroll_routine :: b 0x80B41B0
+//.org 0x80B3B44 :: dw 0x85000900
+
+
 //Flyover remapping
 .org 0x80B3482 :: bl largevwf :: b 0x80B348E
+
+//Flyover remapping
+.org 0x80B3B5E :: bl wrapper_largevwf_tea :: b 0x80B3A18
 
 // Weld the odd-numbered flyover letters
 .org 0x80B3254 :: bl flyoverweld :: nop
