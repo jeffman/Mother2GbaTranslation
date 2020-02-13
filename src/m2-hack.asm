@@ -280,6 +280,12 @@ mov     r3,6
 .org 0x80BBE20 :: mov r2,#0x54 :: mov r3,#3 :: bl bb1aa_printnumberequip_store //Change second offense number's position - Defensive Equipment
 
 //---------------------------------------------------------
+// Target dialogue window hacks
+//---------------------------------------------------------
+
+.org 0x80BD496 :: bl ba8ac_load_targets_print
+
+//---------------------------------------------------------
 // Goods window hacks
 //---------------------------------------------------------
 
