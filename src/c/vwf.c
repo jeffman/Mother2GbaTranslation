@@ -863,7 +863,7 @@ int print_string_edited(byte *str, int x, int y)
         }
         else if(str[0] == 0x5F)
         {
-            x += str[2];
+            x = initial_x + str[2];
             str += 3;
         }
     }
