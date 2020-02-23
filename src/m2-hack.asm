@@ -1009,6 +1009,9 @@ pop     {pc}
 //---------------------------------------------------------
 // C7CA4 hacks (Shop)
 //---------------------------------------------------------
+.org 0x80C7C90
+bl clearWindowTiles_buffer //Setup the buffer
+
 .org 0x80C7CA4
 mov     r0,r8 //Window
 ldr     r1,[sp,#0xC] //Items in shop
