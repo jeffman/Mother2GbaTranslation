@@ -878,6 +878,19 @@ b       0x80B8A2E
 .org 0x80B786C :: mov r3,6   // make window 1 fewer tiles wide
 
 //---------------------------------------------------------
+// B8A60 hacks (print current cash balance, called from script. Since the script is already executing,
+// this version cannot use m2_printnextch, so it requires an edited version of m2_printstr_hlight which recognizes 5F FF)
+//---------------------------------------------------------
+
+.org 0x80B8A80
+ldr     r2,[r5,#0]
+mov     r1,0x30 // right-align to 48 pixels
+bl      format_cash_window
+b       0x80B8AAA
+
+.org 0x80B8AC0 :: bl printstr_hlight_edited
+
+//---------------------------------------------------------
 // [68 FF] - clear window
 //---------------------------------------------------------
 
