@@ -95,7 +95,7 @@ English names:
            [00]: A menu
            [01]: Money
            [02]: ?
-           [03]: Action subject ("Who?", etc.)
+           [03]: Action subject ("Who?", etc.) / Money window (called by script)
            [04]: New equipment selection
            [05]: Offense/Defense
            [06]: Equip

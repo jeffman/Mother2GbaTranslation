@@ -841,6 +841,60 @@ int print_string(byte *str, int x, int y)
     return (charCount & 0xFFFF) | (totalWidth << 16);
 }
 
+// Edited version which recognizes the 5F FF code
+// Returns: ____XXXX = number of characters printed
+//          XXXX____ = number of pixels printed
+// x, y: pixels
+int print_string_edited(byte *str, int x, int y)
+{
+    if (str == NULL)
+        return 0;
+
+    byte chr;
+    int initial_x = x;
+    int charCount = 0;
+
+    while (!(str[1] == 0xFF && str[0] == 0x00))
+    {
+        if(str[1] != 0xFF)
+        {
+            x += print_character(decode_character(*str++), x, y);
+            charCount++;
+        }
+        else if(str[0] == 0x5F)
+        {
+            x = initial_x + str[2];
+            str += 3;
+        }
+    }
+
+    int totalWidth = x - initial_x;
+
+    return (charCount & 0xFFFF) | (totalWidth << 16);
+}
+
+unsigned short printstr_hlight_edited(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
+{
+    return printstr_hlight_pixels_edited(window, str, x << 3, y << 4, highlight);
+}
+
+unsigned short printstr_hlight_pixels_edited(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight)
+{
+    unsigned short printX = x + ((window->window_x) << 3);
+    unsigned short printY = y + ((window->window_y) << 3);
+    unsigned short tmpPaletteMsk = (*palette_mask);
+    unsigned short palette_mask_highlight = tmpPaletteMsk;
+    if(highlight)
+        palette_mask_highlight += 0x1000;
+    (*palette_mask) = palette_mask_highlight;
+    
+    unsigned short printed_Characters = print_string_edited(str, printX, printY);
+    
+    (*palette_mask) = tmpPaletteMsk;
+    
+    return printed_Characters;
+}
+
 int print_menu_string(WINDOW* window)
 {
     byte *menu_text = window->menu_text;
