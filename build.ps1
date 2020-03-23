@@ -35,10 +35,7 @@ $undefine_obj_file = "src/c/ext.o"
 
 If     ($IsWindows) { $asm_cmd = "bin/armips.exe" }
 ElseIf ($IsLinux)   { $asm_cmd = "bin/armips" }
-Else {
-    Write-Host "TODO: what's the Mac version of armips?"
-    Exit -1
-}
+ElseIf ($IsMacOS)   { $asm_cmd = "bin/armips" }
 
 $includes_sym_file   = [IO.Path]::ChangeExtension($includes_asm_file, "sym")
 $output_rom_sym_file = [IO.Path]::ChangeExtension($output_rom_file, "sym")
