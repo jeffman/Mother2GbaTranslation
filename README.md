@@ -47,10 +47,11 @@ This project aims to both complete the VWF codebase and to provide a tool for tr
     4. Copy EarthBound ROM to `bin/eb.smc`.
     5. Run `build-tools.ps1`.
         - Windows: `.\build-tools.ps1` in a PowerShell prompt
-        - Linux: `pwsh build-tools.ps1`
+        - Linux and MacOS: `pwsh build-tools.ps1`
     6. Copy/build `armips` to `bin`.
         - Windows: grab the latest release [here](https://github.com/Kingcom/armips/releases) and copy the executable to `bin/armips.exe`.
         - Linux: follow the [README](https://github.com/Kingcom/armips/blob/master/Readme.md) to build `armips` and copy the executable to `bin/armips`.
+        - MacOS: grab the latest release [here](https://github.com/Emory-M/armips/releases) and copy the executable to `bin/armips`.
 2. Building the ROM
     1. Run `build.ps1`.
     2. The default compiled ROM is copied to `bin/m12.gba`.
