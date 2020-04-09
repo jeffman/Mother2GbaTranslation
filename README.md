@@ -59,3 +59,4 @@ This project aims to both complete the VWF codebase and to provide a tool for tr
     1. `dotnet build tools/ScriptTool` (don't set the output directory)
     2. `dotnet build tools/ScriptToolGui -o bin/ScriptToolGui`
     3. Run with `dotnet bin/ScriptToolGui/ScriptToolGui.dll` (or just run the EXE file directly).
+
