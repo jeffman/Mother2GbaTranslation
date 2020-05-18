@@ -23,6 +23,7 @@ Text conversion:
   Masaru
   Sterophonick
   Normmatt
+  KillThad
 
 Special thanks:
   TragicManner
