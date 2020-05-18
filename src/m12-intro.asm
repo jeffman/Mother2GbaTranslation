@@ -48,7 +48,7 @@ m12_intro_screen:
 		
 	ldr r0,=disclaimer_palette
 	ldr r1,=BGCRAM
-	ldr r4,=#159*2
+	ldr r4,=#256*2
 	@@palette:
 		ldrh r3,[r0,r5]
 		strh r3,[r1,r5]
