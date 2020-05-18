@@ -1,0 +1,98 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "asm", "asm", "{E105BE23-4E1F-4928-A393-27ABD25A7A44}"
+	ProjectSection(SolutionItems) = preProject
+		src\m1-ntsc.asm = src\m1-ntsc.asm
+		src\m12-gfx.asm = src\m12-gfx.asm
+		src\m12-intro.asm = src\m12-intro.asm
+		src\m2-customcodes.asm = src\m2-customcodes.asm
+		src\m2-flyover.asm = src\m2-flyover.asm
+		src\m2-formatting.asm = src\m2-formatting.asm
+		src\m2-hack.asm = src\m2-hack.asm
+		src\m2-status-initial.asm = src\m2-status-initial.asm
+		src\m2-status-switch.asm = src\m2-status-switch.asm
+		src\m2-vwf-entries.asm = src\m2-vwf-entries.asm
+		src\m2-vwf.asm = src\m2-vwf.asm
+		src\syscalls.asm = src\syscalls.asm
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "c", "c", "{C51E37BC-2B4D-4961-B869-933A46D3A563}"
+	ProjectSection(SolutionItems) = preProject
+		src\c\battle.c = src\c\battle.c
+		src\c\battle.h = src\c\battle.h
+		src\c\equip.c = src\c\equip.c
+		src\c\equip.h = src\c\equip.h
+		src\c\ext.c = src\c\ext.c
+		src\c\fileselect.c = src\c\fileselect.c
+		src\c\fileselect.h = src\c\fileselect.h
+		src\c\goods.c = src\c\goods.c
+		src\c\goods.h = src\c\goods.h
+		src\c\input.h = src\c\input.h
+		src\c\locs.c = src\c\locs.c
+		src\c\locs.h = src\c\locs.h
+		src\c\number-selector.h = src\c\number-selector.h
+		src\c\pc.h = src\c\pc.h
+		src\c\psi.c = src\c\psi.c
+		src\c\psi.h = src\c\psi.h
+		src\c\status.c = src\c\status.c
+		src\c\status.h = src\c\status.h
+		src\c\stdbool.h = src\c\stdbool.h
+		src\c\types.h = src\c\types.h
+		src\c\vwf.c = src\c\vwf.c
+		src\c\vwf.h = src\c\vwf.h
+		src\c\window.h = src\c\window.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "working", "working", "{D4841236-055E-46EA-8CCA-A897568740F0}"
+	ProjectSection(SolutionItems) = preProject
+		working\eb-battle-actions.json = working\eb-battle-actions.json
+		working\eb-enemy-deaths.json = working\eb-enemy-deaths.json
+		working\eb-enemy-encounters.json = working\eb-enemy-encounters.json
+		working\eb-enemynames.json = working\eb-enemynames.json
+		working\eb-item-help.json = working\eb-item-help.json
+		working\eb-itemnames.txt = working\eb-itemnames.txt
+		working\eb-phone.json = working\eb-phone.json
+		working\eb-prayers.json = working\eb-prayers.json
+		working\eb-psi-help.json = working\eb-psi-help.json
+		working\eb-strings.txt = working\eb-strings.txt
+		working\eb-tpt-primary.json = working\eb-tpt-primary.json
+		working\eb-tpt-secondary.json = working\eb-tpt-secondary.json
+		working\m12-asmrefs.json = working\m12-asmrefs.json
+		working\m12-battle-actions.json = working\m12-battle-actions.json
+		working\m12-battle-commands.json = working\m12-battle-commands.json
+		working\m12-dadtext.json = working\m12-dadtext.json
+		working\m12-enemy-deaths.json = working\m12-enemy-deaths.json
+		working\m12-enemy-encounters.json = working\m12-enemy-encounters.json
+		working\m12-enemynames.json = working\m12-enemynames.json
+		working\m12-item-help.json = working\m12-item-help.json
+		working\m12-itemnames.json = working\m12-itemnames.json
+		working\m12-menuchoices.json = working\m12-menuchoices.json
+		working\m12-misctext.json = working\m12-misctext.json
+		working\m12-movements.json = working\m12-movements.json
+		working\m12-objects.json = working\m12-objects.json
+		working\m12-other.json = working\m12-other.json
+		working\m12-phone-list.json = working\m12-phone-list.json
+		working\m12-prayers.json = working\m12-prayers.json
+		working\m12-psi-help.json = working\m12-psi-help.json
+		working\m12-psinames.json = working\m12-psinames.json
+		working\m12-psitargets.json = working\m12-psitargets.json
+		working\m12-psitext.json = working\m12-psitext.json
+		working\m12-strings-english.txt = working\m12-strings-english.txt
+		working\m12-strings.txt = working\m12-strings.txt
+		working\m12-teleport-names.json = working\m12-teleport-names.json
+		working\m12-tpt-primary.json = working\m12-tpt-primary.json
+		working\m12-tpt-secondary.json = working\m12-tpt-secondary.json
+		working\m12-unknown.json = working\m12-unknown.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17CAE8CE-15B1-4BA1-965C-D9D63FD96143}
+	EndGlobalSection
+EndGlobal
