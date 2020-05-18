@@ -11,6 +11,8 @@ BGCRAM equ 0x05000000 //BG Color RAM, 16-bit
 REG_KEYINPUT  equ 0x04000130 //Key Status
 LZ77UnCompVRAM equ #18
 
+// Note: THIS IS A TERRIBLE WAY OF DOING THIS STUFF... TOO BAD!
+
 m12_intro_screen:
 	push {r0-r4}
 	ldr r0,=REG_DISPCNT
