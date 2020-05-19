@@ -4,9 +4,11 @@
 .org 0x869ff28 :: .incbin "data/m2-ness-pajamas.bin" //Ness' Pajamas
 .org 0x874d4bc :: .incbin "data/m2-runaway-five.bin" //Runaway Five Sprites
 .org 0x8764FBC :: .incbin "data/m2-iron-pencil.bin" //Iron Pencil Statue
+.org 0x8764E3C :: .incbin "data/m2-iron-eraser.bin" //Iron Pencil Statue
 
 //Palettes
 .org 0x873d99c :: .incbin "data/m2-iron-pencil-palette.bin" //Iron Pencil Statue Palette
+.org 0x87d427c :: .incbin "data/m2-iron-pencil-palette.bin" //Iron Pencil Statue Palette
 
 //Compressed Graphics Data
 .org 0x8BA5630
