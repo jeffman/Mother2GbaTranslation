@@ -8,7 +8,7 @@
 
 //Palettes
 .org 0x873d99c :: .incbin "data/m2-iron-statues-palette.bin" //Iron Pencil Statue Palette
-.org 0x87d427c :: .incbin "data/m2-iron-statues-palette.bin" //Iron Pencil Statue Palette
+.org 0x87d427c :: .incbin "data/m2-iron-statues-palette.bin" //Iron Eraser Statue Palette
 
 //Pointers
 .org 0x8b1f684 :: .word m2InsaneCultist //Insane Cultist
