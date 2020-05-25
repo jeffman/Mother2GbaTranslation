@@ -1852,6 +1852,9 @@ flyover_tea:
 flyover_coffee:
 .include "data/flyover-coffee.asm"
 
+m2InsaneCultist:
+.incbin "data/m2-insane-cultist.bin"
+
 .align 2
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"

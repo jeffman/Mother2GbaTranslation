@@ -10,10 +10,5 @@
 .org 0x873d99c :: .incbin "data/m2-iron-statues-palette.bin" //Iron Pencil Statue Palette
 .org 0x87d427c :: .incbin "data/m2-iron-statues-palette.bin" //Iron Pencil Statue Palette
 
-//Compressed Graphics Data
-.org 0x8BA5630
-m2InsaneCultist:
-.incbin "data/m2-insane-cultist.bin"
-
 //Pointers
 .org 0x8b1f684 :: .word m2InsaneCultist //Insane Cultist
