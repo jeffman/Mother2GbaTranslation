@@ -2475,6 +2475,15 @@ mov     r3,#0
 pop     {pc}
 
 //==============================================================================
+c7ea2_shop_clear:
+push    {lr}
+bl      m2_sub_a334c
+ldr     r0,=#0x3005230 //Window generic address
+ldr     r0,[r0,#8]        //Load the dialogue window
+bl      clear_window
+pop     {pc}
+
+//==============================================================================
 //X cursor for the Options submenu position
 _position_X_Options:
 push {lr}

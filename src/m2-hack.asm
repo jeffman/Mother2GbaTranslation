@@ -1009,8 +1009,14 @@ pop     {pc}
 //---------------------------------------------------------
 // C7CA4 hacks (Shop)
 //---------------------------------------------------------
+.org 0x80C7EA2
+bl      c7ea2_shop_clear //Clear the dialogue window when exiting a shop window - Pressing B
+
+.org 0x80C7ECE
+bl      c7ea2_shop_clear //Clear the dialogue window when exiting a shop window - Pressing L or A
+
 .org 0x80C7C90
-bl clearWindowTiles_buffer //Setup the buffer
+bl      clearWindowTiles_buffer //Setup the buffer
 
 .org 0x80C7CA4
 mov     r0,r8 //Window
