@@ -1583,7 +1583,15 @@ pop     {pc}
 //Routine which calls the header clearer and changes the position of Stored Goods in the arrangement
 c6570_clean_print_change_pos:
 push    {lr}
+ldrb    r0,[r6,#2] //Load pixel_x
+cmp     r0,#0xFF
+bne     @@after_header
+mov     r0,#0
+strb    r0,[r6,#2]
+mov     r0,r7
 bl      _0x10_clean_print
+
+@@after_header:
 ldr     r2,=#0x230 //Change starting position
 mov     r0,r2 //Clobbered code
 ldrh    r3,[r4,#0]
