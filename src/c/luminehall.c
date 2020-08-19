@@ -67,7 +67,7 @@ void readLumineCharacter(byte chr, int *Tiles, unsigned short *hallAddress, int 
         case PC_START+1:
         case PC_START+2:
         case PC_START+3:
-            readLumineCharacterName(pc_names+(chr-PC_START)*PC_NAME_SIZE, Tiles, AlternativeTiles, hallAddress, length, currPos, currLen);
+            readLumineCharacterName(pc_names+(chr-PC_START)*(PC_NAME_SIZE + 2), Tiles, AlternativeTiles, hallAddress, length, currPos, currLen);
             return;
         default:
             chosenLen = m2_widths_table[0][chr] & 0xFF;
@@ -281,7 +281,7 @@ int getCharWidth(byte chr)
         case PC_START+1:
         case PC_START+2:
         case PC_START+3:
-            return getPCWidth(pc_names+(chr-PC_START)*PC_NAME_SIZE);
+            return getPCWidth(pc_names+(chr-PC_START)*(PC_NAME_SIZE + 2));
         default:
             return m2_widths_table[0][chr] & 0xFF;
     }
