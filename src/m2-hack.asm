@@ -1712,11 +1712,7 @@ nop
 // Lumine Hall hacks
 //==============================================================================
 
-.org 0x82DCF94
-lumine_char_tilemap:
-.area 4000h,00h
-.incbin "data/lumine-char-tilemap.bin"
-.endarea
+.org 0x800ECB2 :: bl writeLumineHallText
 
 //==============================================================================
 // Cartridge choosing screen hacks
@@ -1822,6 +1818,12 @@ m2_nybbles_to_bits:
 m2_enemy_attributes:
 .incbin "data/m2-enemy-attributes.bin"
 
+luminesquaretable:
+.incbin "data/luminesquaretable.bin"
+
+luminetext:
+.include "data/lumine-text.asm"
+
 flyovertextYear:
 .include "data/flyover-text-year.asm"
 
@@ -1882,6 +1884,7 @@ disclaimer_map:
 
 .definelabel buffer_subtractor      ,0x0000800
 .definelabel overworld_buffer       ,0x200F200
+.definelabel m2_hall_line_size      ,0x3000374
 .definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10
 .definelabel m2_old_paula_name      ,0x3001F16
@@ -1911,6 +1914,7 @@ disclaimer_map:
 .definelabel m2_change_naming_space ,0x8004E08
 .definelabel m2_copy_name_temp_mem  ,0x8004E34
 .definelabel m2_insert_default_name ,0x8005708
+.definelabel m2_get_hall_address    ,0x800D7BC
 .definelabel m12_dim_palette        ,0x80137DC
 .definelabel m2_enable_script       ,0x80A1F6C
 .definelabel m2_sub_a334c           ,0x80A334C
