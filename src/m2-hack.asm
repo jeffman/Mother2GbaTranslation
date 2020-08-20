@@ -1818,6 +1818,7 @@ m2_nybbles_to_bits:
 m2_enemy_attributes:
 .incbin "data/m2-enemy-attributes.bin"
 
+.align 2
 luminesquaretable:
 .incbin "data/luminesquaretable.bin"
 

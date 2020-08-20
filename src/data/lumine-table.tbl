@@ -10,9 +10,7 @@
 4C=\x4C
 56=\x56
 
-FF=\end
-FE=\n
-FD=\blank
+FE=\blank
 00= 
 01=!
 02="
@@ -110,8 +108,8 @@ FD=\blank
 5E=~
 5F=[AF]
 
-F9=\cness
-FA=\cpaula
-FB=\cjeff
-FC=\cpoo
-/00
+FA=\cness
+FB=\cpaula
+FC=\cjeff
+FD=\cpoo
+/FF

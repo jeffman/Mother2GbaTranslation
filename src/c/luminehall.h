@@ -7,11 +7,9 @@
 
 #define START_Y 2
 #define END 0xFF
-#define ENDL 0xFE
-#define ENDL_SIZE 0x8
-#define BLANK 0xFD
+#define BLANK 0xFE
 #define BLANK_SIZE 0x40
-#define PC_START 0xF9
+#define PC_START 0xFA
 #define PC_NAME_SIZE 5
 
 void writeLumineHallText();

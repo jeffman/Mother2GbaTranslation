@@ -20,7 +20,7 @@ void writeLumineHallText()
     }
     //It then gets the length in arrangements. It also makes sure it's a number divisible by 8.
     //This avoids having empty tiles showing
-    length = (length & 8 == 0 ? length : (length + (8 - (length & 7)))) >> 1;
+    length = (length & 7 == 0 ? length : (length + (8 - (length & 7)))) >> 1;
     (*hallLineSize) = length;
     lumineText_curr_ptr = luminetext;
     unsigned short *hallAddress = m2_get_hall_address();
@@ -52,10 +52,6 @@ void readLumineCharacter(byte chr, int *Tiles, unsigned short *hallAddress, int 
     switch(chr)
     {
         case END:
-            return;
-        case ENDL:
-            printEmptyLumineTile(Tiles, hallAddress, length, *currPos, *currLen);
-            (*currPos)++;
             return;
         case BLANK:
             printEmptyLumineTile(Tiles, hallAddress, length, *currPos, *currLen);
@@ -273,8 +269,6 @@ int getCharWidth(byte chr)
     {
         case END:
             return 0;
-        case ENDL:
-            return ENDL_SIZE;
         case BLANK:
             return BLANK_SIZE;
         case PC_START:
