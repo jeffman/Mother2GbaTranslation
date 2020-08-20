@@ -5,6 +5,8 @@
 #include "locs.h"
 #include "vwf.h"
 
+#define LUMINE_FONT 0
+#define SIDE_BUFFER_SIZE 2
 #define START_Y 2
 #define END 0xFF
 #define BLANK 0xFE
@@ -20,10 +22,11 @@ void printLumineTiles(int *Tiles, unsigned short *hallAddress, int length, int c
 void printVoidLumineTiles(unsigned short *hallAddress, int length, int currPos);
 void printEmptyLumineTile(int *Tiles, unsigned short *hallAddress, int length, int currPos, int currLen);
 void readLumineCharacter(byte chr, int *Tiles, unsigned short *hallAddress, int length, int *currPos, int *currLen);
-void readLumineCharacterName(byte* str, int *Tiles, int* AlternativeTiles, unsigned short *hallAddress, int length, int *currPos, int *currLen);
-void printLumineCharacterInMultiTiles(int *Tiles, int *AlternativeTiles, byte *glyphRows, int glyphLen, int currLen);
+void readLumineCharacterName(byte* str, int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], unsigned short *hallAddress, int length, int *currPos, int *currLen);
+void printLumineCharacterInMultiTiles(int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], byte *glyphRows, int glyphLen, int currLen);
 void printLumineCharacterInSingleTiles(int *Tiles, byte *glyphRows, int glyphLen, int currLen);
-void copyTiles(int *Tiles, int* AlternativeTiles);
+void copyTiles(int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], int indexMatrix);
+void printLumineCharacter(byte chr, int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], unsigned short *hallAddress, int length, int *currPos, int *currLen);
 
 
 extern unsigned short* m2_get_hall_address();

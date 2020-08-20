@@ -43,12 +43,7 @@ void readLumineCharacter(byte chr, int *Tiles, unsigned short *hallAddress, int 
     //Reads a character. Handles special cases.
     //The valid characters are printed to the Tiles 1bpp buffer that stores the VWF form of the text.
     //This is then converted (when it makes sense to do so) to arrangements by printLumineTiles.
-    int tileWidth = 2;
-    int tileHeight = 2;
-    int chosenLen;
-    int renderedLen;
-    byte *glyphRows;
-    int AlternativeTiles[4];
+    int AlternativeTiles[SIDE_BUFFER_SIZE][4];
     switch(chr)
     {
         case END:
@@ -66,20 +61,42 @@ void readLumineCharacter(byte chr, int *Tiles, unsigned short *hallAddress, int 
             readLumineCharacterName(pc_names+(chr-PC_START)*(PC_NAME_SIZE + 2), Tiles, AlternativeTiles, hallAddress, length, currPos, currLen);
             return;
         default:
-            chosenLen = m2_widths_table[0][chr] & 0xFF;
-            renderedLen = m2_widths_table[0][chr] >> 8;
-            glyphRows = &m2_font_table[0][chr * tileWidth * tileHeight * 8];
+            printLumineCharacter(chr, Tiles, AlternativeTiles, hallAddress, length, currPos, currLen);
     }
+}
+
+void printLumineCharacter(byte chr, int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], unsigned short *hallAddress, int length, int *currPos, int *currLen)
+{
+    //Function that gets a character and then prints it to the Tiles buffer.
+    //If the buffer is full, it uses the AlternativeTiles side-buffer and then prints Tiles to the arrangements.
+    //The same happens to any AlternativeTiles side-buffer that gets full
+    int tileWidth = 2;
+    int tileHeight = 2;
+    int chosenLen = m2_widths_table[LUMINE_FONT][chr] & 0xFF;
+    int renderedLen = m2_widths_table[LUMINE_FONT][chr] >> 8;
+    byte *glyphRows = &m2_font_table[LUMINE_FONT][chr * tileWidth * tileHeight * 8];
+    
     if(chosenLen <= 0)
         return;
     if(((*currLen) + chosenLen) >= 8)
     {
-        setTilesToBlank(AlternativeTiles);
+        for(int i = 0; i < SIDE_BUFFER_SIZE; i++)
+            setTilesToBlank(AlternativeTiles[i]);
+        
         if(renderedLen > 0)
             printLumineCharacterInMultiTiles(Tiles, AlternativeTiles, glyphRows, renderedLen, *currLen);
+        
         printLumineTiles(Tiles, hallAddress, length, *currPos);
         (*currPos)++;
-        copyTiles(Tiles, AlternativeTiles);
+        
+        int fullAlternatives = (((*currLen) + chosenLen) >> 3) - 1;
+        for(int i = 0; i < fullAlternatives; i++)
+        {
+            printLumineTiles(AlternativeTiles[i], hallAddress, length, *currPos);
+            (*currPos)++;
+        }
+        
+        copyTiles(Tiles, AlternativeTiles, fullAlternatives);
         (*currLen) = ((*currLen) + chosenLen) & 7;
     }
     else
@@ -102,48 +119,23 @@ void printEmptyLumineTile(int *Tiles, unsigned short *hallAddress, int length, i
     }
 }
 
-void readLumineCharacterName(byte* str, int *Tiles, int* AlternativeTiles, unsigned short *hallAddress, int length, int *currPos, int *currLen)
+void readLumineCharacterName(byte* str, int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], unsigned short *hallAddress, int length, int *currPos, int *currLen)
 {
     //Reads a playable character's name.
     //The characters are printed to the Tiles 1bpp buffer that stores the VWF form of the text.
     //This is then converted (when it makes sense to do so) to arrangements by printLumineTiles.
     //This is separate in order to avoid recursive issues caused by user's tinkering
-    int tileWidth = 2;
-    int tileHeight = 2;
-    int chosenLen;
-    int renderedLen;
-    byte *glyphRows;
     for(int i = 0; i < PC_NAME_SIZE; i++)
     {
         if(*(str + 1) == 0xFF)
             return;
         byte chr = decode_character(*(str++));
-        chosenLen = m2_widths_table[0][chr] & 0xFF;
-        renderedLen = m2_widths_table[0][chr] >> 8;
-        glyphRows = &m2_font_table[0][chr * tileWidth * tileHeight * 8];
-        if(chosenLen <= 0)
-            continue;
-        if(((*currLen) + chosenLen) >= 8)
-        {
-            setTilesToBlank(AlternativeTiles);
-            if(renderedLen > 0)
-                printLumineCharacterInMultiTiles(Tiles, AlternativeTiles, glyphRows, renderedLen, *currLen);
-            printLumineTiles(Tiles, hallAddress, length, *currPos);
-            (*currPos)++;
-            copyTiles(Tiles, AlternativeTiles);
-            (*currLen) = ((*currLen) + chosenLen) & 7;
-        }
-        else
-        {
-            if(renderedLen > 0)
-                printLumineCharacterInSingleTiles(Tiles, glyphRows, renderedLen, *currLen);
-            (*currLen) += chosenLen;
-        }
+        printLumineCharacter(chr, Tiles, AlternativeTiles, hallAddress, length, currPos, currLen);
     }
     
 }
 
-void printLumineCharacterInMultiTiles(int *Tiles, int *AlternativeTiles, byte *glyphRows, int glyphLen, int currLen)
+void printLumineCharacterInMultiTiles(int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], byte *glyphRows, int glyphLen, int currLen)
 {
     //Prints a character to the tiles 1bpp buffer.
     //The part that goes beyond the tiles buffer will be printed to the AlternativeTiles buffer
@@ -154,26 +146,38 @@ void printLumineCharacterInMultiTiles(int *Tiles, int *AlternativeTiles, byte *g
     for(int dTileY = 0; dTileY < tileHeight; dTileY++)
     {
         int tileIndex = dTileY * 2;
-        for(int half = 0; half < 2; half++)
+        int renderedWidth = glyphLen;
+        int currSelected = 0;
+        int dTileX = 0;
+        int *currTile = Tiles;
+        int *currAlt = AlternativeTiles[currSelected];
+        while(renderedWidth > 0)
         {
-            int tile = Tiles[tileIndex + half];
-            int alternativeTile = AlternativeTiles[tileIndex + half];
-            int endingTile = 0;
-            int endingAlternativeTile = 0;
-            for(int row = 0; row < 4; row++)
+            for(int half = 0; half < 2; half++)
             {
-                unsigned short canvasRow = ((tile >> (8 * row))&0xFF) | (((alternativeTile >> (8 * row))&0xFF) << 8);
-                unsigned short glyphRow = 0;
-                if(row + (half * 4) - startY >= 0)
-                    glyphRow = glyphRows[row + (half * 4) - startY + (dTileY * 8 * tileWidth)] << currLen;
-                else if(dTileY == 1)
-                    glyphRow = glyphRows[row + (half * 4) - startY + 8] << currLen;
-                canvasRow |= glyphRow;
-                endingTile |= (canvasRow & 0xFF) << (8 * row);
-                endingAlternativeTile |= ((canvasRow >> 8) & 0xFF) << (8 * row);
+                int tile = currTile[tileIndex + half];
+                int alternativeTile = currAlt[tileIndex + half];
+                int endingTile = 0;
+                int endingAlternativeTile = 0;
+                for(int row = 0; row < 4; row++)
+                {
+                    unsigned short canvasRow = ((tile >> (8 * row))&0xFF) | (((alternativeTile >> (8 * row))&0xFF) << 8);
+                    unsigned short glyphRow = 0;
+                    if(row + (half * 4) - startY >= 0)
+                        glyphRow = glyphRows[row + (half * 4) - startY + (dTileY * 8 * tileWidth) + (dTileX * 8)] << currLen;
+                    else if(dTileY == 1)
+                        glyphRow = glyphRows[row + (half * 4) - startY + 8 + (dTileX * 8)] << currLen;
+                    canvasRow |= glyphRow;
+                    endingTile |= (canvasRow & 0xFF) << (8 * row);
+                    endingAlternativeTile |= ((canvasRow >> 8) & 0xFF) << (8 * row);
+                }
+                currTile[tileIndex + half] = endingTile;
+                currAlt[tileIndex + half] = endingAlternativeTile;
             }
-            Tiles[tileIndex + half] = endingTile;
-            AlternativeTiles[tileIndex + half] = endingAlternativeTile;
+            renderedWidth -= 8;
+            currTile = AlternativeTiles[dTileX];
+            currAlt = AlternativeTiles[dTileX + 1];
+            dTileX++;
         }
     }
 }
@@ -209,10 +213,10 @@ void printLumineCharacterInSingleTiles(int *Tiles, byte *glyphRows, int glyphLen
     }
 }
 
-void copyTiles(int *Tiles, int* AlternativeTiles)
+void copyTiles(int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], int indexMatrix)
 {
     for(int i = 0; i < 4; i++)
-        Tiles[i] = AlternativeTiles[i];
+        Tiles[i] = AlternativeTiles[indexMatrix][i];
 }
 
 void setTilesToBlank(int *Tiles)
@@ -241,7 +245,6 @@ void printLumineTiles(int *Tiles, unsigned short *hallAddress, int length, int c
             start += length;
         }
     }
-        
 }
 
 void printVoidLumineTiles(unsigned short *hallAddress, int length, int currPos)
@@ -259,7 +262,6 @@ void printVoidLumineTiles(unsigned short *hallAddress, int length, int currPos)
             start += length;
         }
     }
-        
 }
 
 int getCharWidth(byte chr)
@@ -277,7 +279,7 @@ int getCharWidth(byte chr)
         case PC_START+3:
             return getPCWidth(pc_names+(chr-PC_START)*(PC_NAME_SIZE + 2));
         default:
-            return m2_widths_table[0][chr] & 0xFF;
+            return m2_widths_table[LUMINE_FONT][chr] & 0xFF;
     }
 }
 
@@ -293,7 +295,7 @@ int getPCWidth(byte* pc_ptr)
         if(chr == 0xFF)
             return length;
         chr = decode_character(*(pc_ptr+i));
-        length += m2_widths_table[0][chr] & 0xFF;
+        length += m2_widths_table[LUMINE_FONT][chr] & 0xFF;
     }
     return length;
 }
