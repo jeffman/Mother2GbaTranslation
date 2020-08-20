@@ -70,8 +70,8 @@ void printLumineCharacter(byte chr, int *Tiles, int AlternativeTiles[SIDE_BUFFER
     //Function that gets a character and then prints it to the Tiles buffer.
     //If the buffer is full, it uses the AlternativeTiles side-buffer and then prints Tiles to the arrangements.
     //The same happens to any AlternativeTiles side-buffer that gets full
-    int tileWidth = 2;
-    int tileHeight = 2;
+    int tileWidth = LUMINE_FONT_WIDTH;
+    int tileHeight = LUMINE_FONT_HEIGHT;
     int chosenLen = m2_widths_table[LUMINE_FONT][chr] & 0xFF;
     int renderedLen = m2_widths_table[LUMINE_FONT][chr] >> 8;
     byte *glyphRows = &m2_font_table[LUMINE_FONT][chr * tileWidth * tileHeight * 8];
@@ -139,8 +139,8 @@ void printLumineCharacterInMultiTiles(int *Tiles, int AlternativeTiles[SIDE_BUFF
 {
     //Prints a character to the tiles 1bpp buffer.
     //The part that goes beyond the tiles buffer will be printed to the AlternativeTiles buffer
-    int tileWidth = 2;
-    int tileHeight = 2;
+    int tileWidth = LUMINE_FONT_WIDTH;
+    int tileHeight = LUMINE_FONT_HEIGHT;
     int startY = START_Y;
     
     for(int dTileY = 0; dTileY < tileHeight; dTileY++)
@@ -186,8 +186,8 @@ void printLumineCharacterInSingleTiles(int *Tiles, byte *glyphRows, int glyphLen
 {
     //Prints a character to the tiles 1bpp buffer.
     //We know this won't go outside of the buffer's range, so we avoid some checks
-    int tileWidth = 2;
-    int tileHeight = 2;
+    int tileWidth = LUMINE_FONT_WIDTH;
+    int tileHeight = LUMINE_FONT_HEIGHT;
     int startY = START_Y;
     
     for(int dTileY = 0; dTileY < tileHeight; dTileY++)

@@ -6,6 +6,8 @@
 #include "vwf.h"
 
 #define LUMINE_FONT 0
+#define LUMINE_FONT_WIDTH 2
+#define LUMINE_FONT_HEIGHT 2
 #define SIDE_BUFFER_SIZE 2
 #define START_Y 2
 #define END 0xFF
