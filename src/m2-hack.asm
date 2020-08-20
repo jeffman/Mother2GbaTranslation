@@ -1702,6 +1702,11 @@ nop
 .org 0x80C7578 :: bl c7578_load_letters
 
 //==============================================================================
+// Fix Gyigas' poison bug
+//==============================================================================
+.org 0x80DEE6C :: bl dee6c_fix_poison_gyigas
+
+//==============================================================================
 // Move stuff around in order to make space for the code
 //==============================================================================
 
@@ -1852,6 +1857,9 @@ flyover_tea:
 flyover_coffee:
 .include "data/flyover-coffee.asm"
 
+status_damage_table:
+.incbin "data/status_damage_immune_table.bin"
+
 m2InsaneCultist:
 .incbin "data/m2-insane-cultist.bin"
 
@@ -1961,6 +1969,7 @@ disclaimer_map:
 .include "syscalls.asm"
 .include "m2-vwf.asm"
 .include "m2-vwf-entries.asm"
+.include "m2-bugfixes.asm"
 .include "m2-formatting.asm"
 .include "m2-customcodes.asm"
 .include "m2-compiled.asm"
