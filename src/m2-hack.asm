@@ -995,6 +995,18 @@ pop     {r4,pc}
 .org 0x80DAF12 :: cmp r0,0xAC
 
 //---------------------------------------------------------
+// Name setup hacks (improves the "The" fix and makes it portable)
+//---------------------------------------------------------
+.org 0x80020AE :: bl copy_name_perm_mem
+.org 0x80020BE :: bl copy_name_perm_mem
+.org 0x80020CE :: bl copy_name_perm_mem
+.org 0x80020DE :: bl copy_name_perm_mem
+.org 0x80020EE :: bl copy_name_perm_mem
+.org 0x80020FE :: bl copy_name_perm_mem
+.org 0x800210E :: bl copy_name_perm_mem
+.org 0x800215A :: bl _215a_load_names
+
+//---------------------------------------------------------
 // BEB6C hacks (Goods inner menu)
 //---------------------------------------------------------
 

@@ -34,6 +34,44 @@ void clear_rect_file(int x, int y, int width, int height, int pixels, unsigned s
     }
 }
 
+void set_background_loaded_names()
+{
+    set_names_to_default_background(THING_NAME_LENGTH,
+    set_names_to_default_background(FOOD_NAME_LENGTH,
+    set_names_to_default_background(DOG_NAME_LENGTH,
+    set_names_to_default_background(POO_NAME_LENGTH,
+    set_names_to_default_background(JEFF_NAME_LENGTH,
+    set_names_to_default_background(PAULA_NAME_LENGTH,
+    set_names_to_default_background(NESS_NAME_LENGTH, pc_names)))))));
+}
+
+byte* set_names_to_default_background(int maxLetters, byte *source)
+{
+    //Reads a name and sets the bytes after it to a fixed value
+    int i = 0;
+    while(i < maxLetters + 2 && (*source) != 0xFF)
+    {
+        source++;
+        i++;
+    }
+    source++;
+    i++;
+    for(; i < maxLetters + 2; i++)
+        *(source++) = 0;
+    return source;
+}
+
+void copy_name_perm_mem(int maxLetters, byte *source, byte *destination)
+{
+    //Copies the names to perm memory, but also makes the background of them a fixed value
+    for(int i = 0; i < maxLetters + 2; i++)
+        destination[i] = 0;
+    byte *finalSource = source + maxLetters;
+    while(source < finalSource && (*source) != 0xFF)
+        (*destination++) = (*source++);
+    *(destination + 1) = 0xFF;
+}
+
 unsigned short* getTilesetDest(int window_selector, int *width)
 {
     int *tilesetBasePtr = (int *)(0x82B79B4 + (window_selector * 20));

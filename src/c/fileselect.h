@@ -4,6 +4,14 @@
 #include "types.h"
 #include "vwf.h"
 
+#define NESS_NAME_LENGTH 5
+#define PAULA_NAME_LENGTH 5
+#define JEFF_NAME_LENGTH 5
+#define POO_NAME_LENGTH 5
+#define DOG_NAME_LENGTH 6
+#define FOOD_NAME_LENGTH 6
+#define THING_NAME_LENGTH 6
+
 typedef struct FILE_SELECT {
     short status;       // 0 = used, -1 = empty
     short slot;         // 0-2
@@ -31,6 +39,9 @@ typedef struct FILE_SELECT {
 int get_tile_number_file_select(int x, int y);
 void clear_tile_file(int x, int y, int pixels);
 void clear_rect_file(int x, int y, int width, int height, int pixels, unsigned short *tilesetDestPtr);
+void set_background_loaded_names();
+byte* set_names_to_default_background(int maxLetters, byte *source);
+void copy_name_perm_mem(int maxLetters, byte *source, byte *destination);
 unsigned short* getTilesetDest(int window_selector, int *width);
 unsigned short getPaletteFromFileWindow(int x, int y, int window_selector);
 void setPaletteToFileWindow(int x, int y, int window_selector, unsigned short palette);
