@@ -1701,6 +1701,15 @@ nop
 //Choose character table based on alphabet loaded in
 .org 0x80C7578 :: bl c7578_load_letters
 
+
+//==============================================================================
+// Bug fixes for the original game
+//==============================================================================
+
+// Disallow warping with an Exit mouse in the Cave of the Past
+.org 0x8731046 :: dh 00h
+
+
 //==============================================================================
 // Move stuff around in order to make space for the code
 //==============================================================================
