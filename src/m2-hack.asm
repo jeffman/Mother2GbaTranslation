@@ -1704,7 +1704,7 @@ nop
 //==============================================================================
 // Fix Gyigas' poison bug
 //==============================================================================
-.org 0x80DEE6C :: bl dee6c_fix_poison_gyigas
+.org 0x80DEE6C :: bl dee6c_fix_poison_gyigas :: nop :: nop :: nop
 
 //==============================================================================
 // Move stuff around in order to make space for the code
@@ -1856,9 +1856,6 @@ flyover_tea:
 
 flyover_coffee:
 .include "data/flyover-coffee.asm"
-
-status_damage_table:
-.incbin "data/status_damage_immune_table.bin"
 
 m2InsaneCultist:
 .incbin "data/m2-insane-cultist.bin"
