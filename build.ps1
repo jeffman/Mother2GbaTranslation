@@ -14,6 +14,7 @@ $input_c_files =
     "src/c/ext.c",
     "src/c/vwf.c",
     "src/c/locs.c",
+    "src/c/credits.c",
     "src/c/goods.c",
     "src/c/fileselect.c",
     "src/c/status.c",

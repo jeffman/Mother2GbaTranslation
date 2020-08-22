@@ -1702,6 +1702,14 @@ nop
 .org 0x80C7578 :: bl c7578_load_letters
 
 //==============================================================================
+// Credits hacks
+//==============================================================================
+
+//Repoint credits font (Before it pointed to 0x82FF1B8)
+.org 0x82DB284 :: dw m2_credits_font
+.org 0x801352E :: bl printPlayerNameCredits
+
+//==============================================================================
 // Move stuff around in order to make space for the code
 //==============================================================================
 
@@ -1858,6 +1866,14 @@ m2InsaneCultist:
 .align 2
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
+
+.align 2
+m2_credits_conversion_table:
+.incbin "data/m2-credits-conversion-table.bin"
+
+.align 4
+m2_credits_font:
+.incbin "data/m2-credits-font_[c].bin"
 
 optimized_byte_4bpp_to_1bpp_table:
 .incbin "data/optimized-byte-4bpp-to-1bpp-table.bin"
