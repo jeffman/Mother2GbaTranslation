@@ -1205,11 +1205,11 @@ beq     @@next_found_the //Does this string have "the "? If it does, proceed acc
 b       @@end
 
 @@next_found_the: //A starting "The " or "the " has been found
-//Assumes the maiuscule and minuscule characters are 0x20 apart
+//Assumes the uppercase and lowercase characters are 0x20 apart
 ldr     r0,=m2_cstm_last_printed
 ldrb    r0,[r0,#0]
 cmp     r0,#0x70 //Is the previous character an @?
-beq     @@Maius
+beq     @@Upper
 
 mov     r0,#0x20
 sub     r2,r0,r2 //Is this "t"? If it is, this will be 0. Otherwise, it will be 0x20
@@ -1218,7 +1218,7 @@ add     r0,r0,r2 //Ensure it is the
 strb    r0,[r1,#0]
 b       @@end
 
-@@Maius:
+@@Upper:
 ldr     r0,[r1,#0]
 sub     r0,r0,r2 //Ensure it is The
 strb    r0,[r1,#0]
