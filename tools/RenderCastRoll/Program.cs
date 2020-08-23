@@ -89,10 +89,11 @@ namespace RenderCastRoll
             }
 
             //File.WriteAllBytes(dataFolder + "cast_roll_graphics.bin", Graphics);
-            //File.WriteAllBytes(dataFolder + "cast_roll_arrangements.bin", convertUShortArrToByteLE(Arrangements));
+            //File.WriteAllBytes(dataFolder + "cast_roll_arrangements.bin", convertUShortArrToByteArrLE(Arrangements));
 
+            File.WriteAllBytes(dataFolder + "cast_roll_first_free.bin", convertUShortToByteArrLE((ushort)(UsedTiles + 0x100)));
             File.WriteAllBytes(dataFolder + "cast_roll_graphics_[c].bin", GBA.LZ77.Compress(Graphics));
-            File.WriteAllBytes(dataFolder + "cast_roll_arrangements_[c].bin", GBA.LZ77.Compress(convertUShortArrToByteLE(Arrangements)));
+            File.WriteAllBytes(dataFolder + "cast_roll_arrangements_[c].bin", GBA.LZ77.Compress(convertUShortArrToByteArrLE(Arrangements)));
         }
 
         static int readIntLE(byte[] arr, int pos)
@@ -104,8 +105,16 @@ namespace RenderCastRoll
         {
             return (ushort)(arr[pos] + (arr[pos + 1] << 8));
         }
+        
+        static byte[] convertUShortToByteArrLE(ushort val)
+        {
+            byte[] newArr = new byte[2];
+            newArr[0] = (byte)((val) & 0xFF);
+            newArr[1] = (byte)((val >> 8) & 0xFF);
+            return newArr;
+        }
 
-        static byte[] convertUShortArrToByteLE(ushort[] arr)
+        static byte[] convertUShortArrToByteArrLE(ushort[] arr)
         {
             byte[] newArr = new byte[arr.Length * 2];
             for (int i = 0; i < arr.Length; i++)
@@ -208,6 +217,8 @@ namespace RenderCastRoll
             int chrPos = chr * tileWidth * tileHeight * 8;
             int offsetX = x & 7;
             int startOffsetY = 3 & 7;
+            if(font == 1) //Saturn font is higher, for some reason...
+                startOffsetY = 0;
             byte vWidth = Fonts[font].fontWidth[chr * 2];
             byte rWidth = Fonts[font].fontWidth[(chr * 2) + 1];
 

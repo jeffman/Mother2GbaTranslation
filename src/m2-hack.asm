@@ -1875,6 +1875,10 @@ m2_coord_table_file:
 m2_credits_conversion_table:
 .incbin "data/m2-credits-conversion-table.bin"
 
+.align 2
+m2_cast_vwf_free:
+.incbin "data/cast_roll_first_free.bin"
+
 .align 4
 m2_cast_graphics:
 .incbin "data/cast_roll_graphics_[c].bin"
