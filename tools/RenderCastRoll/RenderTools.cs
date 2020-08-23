@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RenderCastRoll
 {
@@ -98,10 +95,20 @@ namespace RenderCastRoll
             }
             return newTile;
         }
+        
+        public override String ToString()
+        {
+            String str = "";
+            for (int i = 0; i < 8; i++)
+                str += getRow(i).ToString("X") + " ";
+            return str;
+        }
+        
     }
 
     public class WritingBuffer
     {
+        public static readonly int yLength = 3;
         public _1bppTile[,] tiles;
         public ushort[,] arrangements;
         public int used;
@@ -111,9 +118,9 @@ namespace RenderCastRoll
         {
             used = 0;
             startPos = 0;
-            tiles = new _1bppTile[2, 0x20];
-            arrangements = new ushort[2, 0x20];
-            for (int i = 0; i < 2; i++)
+            tiles = new _1bppTile[yLength, 0x20];
+            arrangements = new ushort[yLength, 0x20];
+            for (int i = 0; i < yLength; i++)
                 for (int j = 0; j < 0x20; j++)
                 {
                     tiles[i, j] = new _1bppTile();

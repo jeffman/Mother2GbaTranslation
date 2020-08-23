@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace RenderCastRoll
@@ -74,10 +71,8 @@ namespace RenderCastRoll
             {
                 int pos = buffers[i].startPos + 1 + (renders[i].Y * 0x20); //The + 1 is here because the scene's map starts from tile 1. Not tile 0
                 for (int j = 0; j < buffers[i].used; j++)
-                {
-                    Arrangements[pos + j] = buffers[i].arrangements[0, j];
-                    Arrangements[pos + 0x20 + j] = buffers[i].arrangements[1, j];
-                }
+                    for(int k = 0; k < WritingBuffer.yLength; k++)
+                        Arrangements[pos + j + (k * 0x20)] = buffers[i].arrangements[k, j];
             }
 
             //Convert the 1bpp tiles to 4bpp
@@ -128,12 +123,9 @@ namespace RenderCastRoll
 
             for (int i = 0; i < buf.used; i++)
             {
-                for (int j = 0; j < 2; j++)
+                for (int j = 0; j < WritingBuffer.yLength; j++)
                 {
                     _1bppTile tile = buf.tiles[j, i];
-                    _1bppTile rotatedXTile = null;
-                    _1bppTile rotatedYTile = null;
-                    _1bppTile rotatedXYTile = null;
 
                     int rot = 0;
                     int pos = -1;
@@ -145,20 +137,17 @@ namespace RenderCastRoll
                     if (pos == -1)
                     {
                         rot = 1;
-                        rotatedXTile = tile.rotateX();
-                        pos = getPosInFinal(rotatedXTile, total, _1bppGraphics_RotX);
+                        pos = getPosInFinal(tile, total, _1bppGraphics_RotX);
 
                         if (pos == -1)
                         {
                             rot = 2;
-                            rotatedYTile = tile.rotateY();
-                            pos = getPosInFinal(rotatedYTile, total, _1bppGraphics_RotY);
+                            pos = getPosInFinal(tile, total, _1bppGraphics_RotY);
 
                             if (pos == -1)
                             {
-                                rotatedXYTile = rotatedXTile.rotateY();
                                 rot = 3;
-                                pos = getPosInFinal(rotatedXYTile, total, _1bppGraphics_RotXY);
+                                pos = getPosInFinal(tile, total, _1bppGraphics_RotXY);
                             }
                         }
                     }
@@ -168,9 +157,9 @@ namespace RenderCastRoll
                         rot = 0;
                         pos = total++;
                         _1bppGraphics[pos] = tile; //If we're here, we already calculated all four of them
-                        _1bppGraphics_RotX[pos] = rotatedXTile;
-                        _1bppGraphics_RotY[pos] = rotatedYTile;
-                        _1bppGraphics_RotXY[pos] = rotatedXYTile;
+                        _1bppGraphics_RotX[pos] = tile.rotateX();
+                        _1bppGraphics_RotY[pos] = tile.rotateY();
+                        _1bppGraphics_RotXY[pos] = _1bppGraphics_RotX[pos].rotateY();
                     }
 
                     buf.arrangements[j, i] = (ushort)(Palette | (pos + arrStart) | (rot << 0xA));
@@ -218,26 +207,41 @@ namespace RenderCastRoll
             int tileX = x >> 3;
             int chrPos = chr * tileWidth * tileHeight * 8;
             int offsetX = x & 7;
+            int startOffsetY = 3 & 7;
             byte vWidth = Fonts[font].fontWidth[chr * 2];
             byte rWidth = Fonts[font].fontWidth[(chr * 2) + 1];
+
+            if (font == 1 && vWidth != rWidth) //The Saturn font is compressed horizontally by removing 1 trailing pixel
+                vWidth -= 1;
+
             for(int dTileY = 0; dTileY < tileHeight; dTileY++)
             {
                 int dTileX = 0;
                 int renderedWidth = rWidth;
                 while (renderedWidth > 0)
                 {
+                    int offsetY = startOffsetY & 7;
                     int tileIndexX = tileX + dTileX;
+                    int tileIndexY = dTileY;
                     _1bppTile leftTile = buf.tiles[dTileY, tileIndexX];
                     _1bppTile rightTile = buf.tiles[dTileY, tileIndexX + 1];
 
                     for (int row = 0; row < 8; row++)
                     {
-                        ushort canvasRow = (ushort)(leftTile.getRow(row) | (rightTile.getRow(row) << 8));
+                        ushort canvasRow = (ushort)(leftTile.getRow(row + offsetY) | (rightTile.getRow(row + offsetY) << 8));
                         ushort glyphRow = (ushort)(Fonts[font].font[chrPos + row + (((dTileY * tileWidth) + dTileX) * 8)] << offsetX);
 
                         canvasRow |= glyphRow;
-                        leftTile.setRow(row, (byte)(canvasRow & 0xFF));
-                        rightTile.setRow(row, (byte)((canvasRow >> 8) & 0xFF));
+                        leftTile.setRow(row + offsetY, (byte)(canvasRow & 0xFF));
+                        rightTile.setRow(row + offsetY, (byte)((canvasRow >> 8) & 0xFF));
+
+                        if(row != 7 && row + offsetY == 7)
+                        {
+                            offsetY = -(row + 1);
+                            tileIndexY++;
+                            leftTile = buf.tiles[tileIndexY, tileIndexX];
+                            rightTile = buf.tiles[tileIndexY, tileIndexX + 1];
+                        }
                     }
 
                     renderedWidth -= 8;
@@ -271,7 +275,11 @@ namespace RenderCastRoll
         {
             int len = 0;
             for (int i = 0; i < text.Length; i++)
-                    len += Fonts[Font].fontWidth[2 * text[i]];
+            {
+                len += Fonts[Font].fontWidth[2 * text[i]];
+                if (Font == 1 && Fonts[Font].fontWidth[2 * text[i]] != Fonts[Font].fontWidth[(2 * text[i]) + 1]) //Handle Saturn font compression
+                    len -= 1;
+            }
             return len;
         }
     }
