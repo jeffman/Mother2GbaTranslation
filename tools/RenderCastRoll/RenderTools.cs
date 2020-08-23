@@ -45,13 +45,13 @@ namespace RenderCastRoll
 
         public byte getRow(int i)
         {
-            return (byte)((tile >> i) & 0xFF);
+            return (byte)((tile >> (i * 8)) & 0xFF);
         }
 
         public void setRow(int i, byte val)
         {
-            UInt64 mask = ~((UInt64)(0xFF) << i);
-            tile = (tile & mask) | ((UInt64)val << i);
+            UInt64 mask = ~((UInt64)(0xFF) << (i * 8));
+            tile = (tile & mask) | ((UInt64)val << (i * 8));
         }
 
         public UInt64 getColumn(int i)

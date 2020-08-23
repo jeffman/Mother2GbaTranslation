@@ -1709,6 +1709,10 @@ nop
 .org 0x82DB284 :: dw m2_credits_font
 .org 0x801352E :: bl printPlayerNameCredits
 
+//Repoint cast graphical data
+.org 0x82DB25C :: dw m2_cast_graphics
+.org 0x82DB264 :: dw m2_cast_arrangements
+
 //==============================================================================
 // Move stuff around in order to make space for the code
 //==============================================================================
@@ -1870,6 +1874,14 @@ m2_coord_table_file:
 .align 2
 m2_credits_conversion_table:
 .incbin "data/m2-credits-conversion-table.bin"
+
+.align 4
+m2_cast_graphics:
+.incbin "data/cast_roll_graphics_[c].bin"
+
+.align 4
+m2_cast_arrangements:
+.incbin "data/cast_roll_arrangements_[c].bin"
 
 .align 4
 m2_credits_font:

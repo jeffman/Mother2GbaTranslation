@@ -39,14 +39,14 @@ namespace RenderCastRoll
             List<Render> renders = JsonConvert.DeserializeObject<RenderRoot>(rendersJson).Renders;
             BitsToNybbleLookup = Asset.ReadAllBytes("bits_to_nybbles.bin");
             m12CharByteLookup = JsonConvert.DeserializeObject<Dictionary<string, byte>>(Asset.ReadAllText("m12-byte-lookup.json"));
-            Graphics = new byte[0x6000];
-            Arrangements = new ushort[0x4E80];
+            Graphics = new byte[0x8000];
+            Arrangements = new ushort[0x48E0];
 
             for (int i = 0; i < Arrangements.Length; i++)
                 Arrangements[i] = 0x3FF; //Empty tile
 
             for (int i = 0; i < CastGraphics.Length; i++)
-                Graphics[0x6000 - CastGraphics.Length + i] = CastGraphics[i]; //Put the CAST graphics in
+                Graphics[0x8000 - CastGraphics.Length + i] = CastGraphics[i]; //Put the CAST graphics in
 
             int castArrPos = readIntLE(CastArrangements, 0); //First 4 bytes are the position of the CAST arrangements
             for (int i = 0; i < ((CastArrangements.Length - 4) >> 1); i++) //Put the CAST arrangements in
@@ -83,18 +83,21 @@ namespace RenderCastRoll
             //Convert the 1bpp tiles to 4bpp
             for (int tile = 0; tile < UsedTiles; tile++)
             {
-                int basePos = tile * 0x20;
+                int basePos = (tile * 0x20) + 0x2000;
                 _1bppTile pre_converted_tile = _1bppGraphics[tile];
                 for (int i = 0; i < 8; i++)
                 {
-                    int row = BitsToNybbleLookup[pre_converted_tile.getRow(i)];
+                    int row = readIntLE(BitsToNybbleLookup, pre_converted_tile.getRow(i) * 4);
                     for (int j = 0; j < 4; j++)
                         Graphics[basePos + (i * 4) + j] = (byte)((row >> (j * 8)) & 0xFF);
                 }
             }
 
-            File.WriteAllBytes(dataFolder + "cast_roll_graphics.bin", Graphics);
-            File.WriteAllBytes(dataFolder + "cast_roll_arrangement.bin", convertUShortArrToByteLE(Arrangements));
+            //File.WriteAllBytes(dataFolder + "cast_roll_graphics.bin", Graphics);
+            //File.WriteAllBytes(dataFolder + "cast_roll_arrangements.bin", convertUShortArrToByteLE(Arrangements));
+
+            File.WriteAllBytes(dataFolder + "cast_roll_graphics_[c].bin", GBA.LZ77.Compress(Graphics));
+            File.WriteAllBytes(dataFolder + "cast_roll_arrangements_[c].bin", GBA.LZ77.Compress(convertUShortArrToByteLE(Arrangements)));
         }
 
         static int readIntLE(byte[] arr, int pos)
