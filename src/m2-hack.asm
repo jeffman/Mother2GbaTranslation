@@ -1711,7 +1711,22 @@ nop
 
 //Repoint cast graphical data
 .org 0x82DB25C :: dw m2_cast_graphics
+.org 0x82DB260 :: dw m2_cast_palette
 .org 0x82DB264 :: dw m2_cast_arrangements
+
+//Remove flavour changing the palette
+.org 0x801043A :: b 0x8010500
+
+//Cast Roll VWF
+.org 0x800F640 :: bl writeCastText
+
+//Master Belch and Star Master text appearing later
+.org 0x8018934 :: dw m2_cast_belch_arrangement
+.org 0x80188B2 :: .incbin "data/cast_roll_master_belch_size.bin"
+.org 0x82D92BC :: .incbin "data/cast_roll_master_belch_data.bin"
+.org 0x8018940 :: dw m2_cast_star_arrangement
+.org 0x8018904 :: .incbin "data/cast_roll_star_master_size.bin"
+.org 0x82D92C4 :: .incbin "data/cast_roll_star_master_data.bin"
 
 //==============================================================================
 // Move stuff around in order to make space for the code
@@ -1822,17 +1837,24 @@ m2_widths_battle:
 m2_widths_tiny:
 .incbin "data/m2-widths-tiny.bin"
 
+.align 4
 m2_bits_to_nybbles:
 .incbin "data/m2-bits-to-nybbles.bin"
 
 m2_bits_to_nybbles_fast:
 .incbin "data/m2-bits-to-nybbles-fast.bin"
 
+m2_bits_to_nybbles_fast_cast:
+.incbin "data/m2-bits-to-nybbles-fast-cast.bin"
+
 m2_nybbles_to_bits:
 .incbin "data/m2-nybbles-to-bits.bin"
 
 m2_enemy_attributes:
 .incbin "data/m2-enemy-attributes.bin"
+
+cast_vwf_names:
+.include "data/cast-vwf-names.asm"
 
 flyovertextYear:
 .include "data/flyover-text-year.asm"
@@ -1890,6 +1912,10 @@ m2_cast_vwf_free:
 .align 4
 m2_cast_graphics:
 .incbin "data/cast_roll_graphics_[c].bin"
+
+.align 4
+m2_cast_palette:
+.incbin "data/cast_roll_palette_[c].bin"
 
 .align 4
 m2_cast_arrangements:

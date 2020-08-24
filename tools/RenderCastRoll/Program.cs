@@ -83,6 +83,8 @@ namespace RenderCastRoll
 
                     //Save this in an external file
                     File.WriteAllBytes(dataFolder + "cast_roll_" + renders[i].Separate_file_name + "_arrangement.bin", prepareSeparateRender(buffers[i]));
+                    File.WriteAllBytes(dataFolder + "cast_roll_" + renders[i].Separate_file_name + "_data.bin", prepareSeparateRenderData(buffers[i], renders[i]));
+                    File.WriteAllBytes(dataFolder + "cast_roll_" + renders[i].Separate_file_name + "_size.bin", prepareSeparateRenderSize(buffers[i]));
                 }
             }
 
@@ -107,15 +109,30 @@ namespace RenderCastRoll
             File.WriteAllBytes(dataFolder + "cast_roll_arrangements_[c].bin", GBA.LZ77.Compress(convertUShortArrToByteArrLE(Arrangements)));
         }
 
+        static byte[] prepareSeparateRenderSize(WritingBuffer buf)
+        {
+            byte[] newArr = new byte[1]; //Used in order to have a properly sized buffer
+            newArr[0] = (byte)((buf.used * 2 * WritingBuffer.yLength) & 0xFF);
+            return newArr;
+        }
+
+        static byte[] prepareSeparateRenderData(WritingBuffer buf, Render ren)
+        {
+            byte[] newArr = new byte[8]; //Data used to display the separate arrangements
+            writeUShortToByteArrLE(newArr, 0, (ushort)(buf.startPos + 1)); //The + 1 is needed because the map starts from 1, not from 0
+            writeUShortToByteArrLE(newArr, 2, (ushort)(ren.Y + 0x19)); //Apparently, the actual arrangements start at y = 0x19...
+            writeUShortToByteArrLE(newArr, 4, (ushort)(buf.used));
+            writeUShortToByteArrLE(newArr, 6, (ushort)(WritingBuffer.yLength));
+            return newArr;
+        }
+
         static byte[] prepareSeparateRender(WritingBuffer buf)
         {
-            //Converts the arrangements to an array that contains the arrangements starting position, the length and the arrangements themselves
-            byte[] newArr = new byte[8 + (WritingBuffer.yLength * buf.used * 2)];
-            writeIntToByteArrLE(newArr, 0, buf.startPos + 1); //The + 1 is needed because the map starts from 1, not from 0
-            writeIntToByteArrLE(newArr, 4, buf.used);
+            //Converts the arrangements to an array that is to be included separately
+            byte[] newArr = new byte[WritingBuffer.yLength * buf.used * 2];
             for (int j = 0; j < WritingBuffer.yLength; j++)
                 for (int i = 0; i < buf.used; i++)
-                    writeUShortToByteArrLE(newArr, 8 + ((i + (j * buf.used)) * 2), buf.arrangements[j, i]);
+                    writeUShortToByteArrLE(newArr, (i + (j * buf.used)) * 2, buf.arrangements[j, i]);
 
             return newArr;
         }
@@ -232,8 +249,13 @@ namespace RenderCastRoll
             byte[] text = getTextBytes(r.Text);
             int len = getTextLength(text, r.Font);
             int x = r.Center_X - (len / 2);
+
+            //Boundary checks
+            if (x + len > 240)
+                x = 240 - len;
             if (x < 0)
                 x = 0;
+
             a.startPos = (x >> 3);
             int bufferPos = x & 7;
 
