@@ -3361,6 +3361,30 @@ bl      eb_cartridge_palette_change
 pop     {pc}
 
 //==============================================================================
+//Prevents changing the palette based on the flavour for the cast roll sequence
+prevent_cast_changed_palettes:
+push    {lr}
+ldr     r1,=#m2_cast_roll_pointers
+cmp     r0,r1
+beq     @@alternate_end
+bl      0x8010028
+pop     {pc}
+
+@@alternate_end:
+bl      0x8010028
+ldr     r1,=#0x40000D4
+ldr     r0,=#0x2010000
+str     r0,[r1,#0]
+ldr     r3,=#0x3001B30
+str     r3,[r1,#4]
+ldr     r0,=#0x84000080
+str     r0,[r1,#8]
+ldr     r0,[r1,#8]
+pop     {r0}
+ldr     r0,=#0x8010501 //Go to the end of the routine
+bx      r0
+
+//==============================================================================
 //Prints the sick tiles and then the names
 sick_name:
 push    {lr}

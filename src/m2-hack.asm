@@ -1710,12 +1710,10 @@ nop
 .org 0x801352E :: bl printPlayerNameCredits
 
 //Repoint cast graphical data
-.org 0x82DB25C :: dw m2_cast_graphics
-.org 0x82DB260 :: dw m2_cast_palette
-.org 0x82DB264 :: dw m2_cast_arrangements
+.org m2_cast_roll_pointers :: dw m2_cast_graphics :: dw m2_cast_palette :: dw m2_cast_arrangements
 
 //Remove flavour changing the palette
-.org 0x801043A :: b 0x8010500
+.org 0x8010426 :: bl prevent_cast_changed_palettes
 
 //Cast Roll VWF
 .org 0x800F640 :: bl writeCastText
@@ -2013,6 +2011,7 @@ disclaimer_map:
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70
 .definelabel cpuset                 ,0x80F47C0
+.definelabel m2_cast_roll_pointers  ,0x82DB25C
 .definelabel m2_items               ,0x8B1D62C
 .definelabel m2_default_names       ,0x82B9330
 .definelabel m2_psi_print_table     ,0x8B2A9C0
