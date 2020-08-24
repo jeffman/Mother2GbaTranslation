@@ -70,9 +70,20 @@ namespace RenderCastRoll
             for (int i = 0; i < renders.Count; i++)
             {
                 int pos = buffers[i].startPos + 1 + (renders[i].Y * 0x20); //The + 1 is here because the scene's map starts from tile 1. Not tile 0
-                for (int j = 0; j < buffers[i].used; j++)
-                    for(int k = 0; k < WritingBuffer.yLength; k++)
-                        Arrangements[pos + j + (k * 0x20)] = buffers[i].arrangements[k, j];
+                if (renders[i].Separate_file_name == "")
+                    for (int j = 0; j < buffers[i].used; j++)
+                        for (int k = 0; k < WritingBuffer.yLength; k++)
+                            Arrangements[pos + j + (k * 0x20)] = buffers[i].arrangements[k, j];
+                else
+                {
+                    //This is an arrangement that changes when the game is running. Set the starting arrangements to empty
+                    for (int j = 0; j < buffers[i].used; j++)
+                        for (int k = 0; k < WritingBuffer.yLength; k++)
+                            Arrangements[pos + j + (k * 0x20)] = 0x3FF; //Empty tile
+
+                    //Save this in an external file
+                    File.WriteAllBytes(dataFolder + "cast_roll_" + renders[i].Separate_file_name + "_arrangement.bin", prepareSeparateRender(buffers[i]));
+                }
             }
 
             //Convert the 1bpp tiles to 4bpp
@@ -96,6 +107,19 @@ namespace RenderCastRoll
             File.WriteAllBytes(dataFolder + "cast_roll_arrangements_[c].bin", GBA.LZ77.Compress(convertUShortArrToByteArrLE(Arrangements)));
         }
 
+        static byte[] prepareSeparateRender(WritingBuffer buf)
+        {
+            //Converts the arrangements to an array that contains the arrangements starting position, the length and the arrangements themselves
+            byte[] newArr = new byte[8 + (WritingBuffer.yLength * buf.used * 2)];
+            writeIntToByteArrLE(newArr, 0, buf.startPos + 1); //The + 1 is needed because the map starts from 1, not from 0
+            writeIntToByteArrLE(newArr, 4, buf.used);
+            for (int j = 0; j < WritingBuffer.yLength; j++)
+                for (int i = 0; i < buf.used; i++)
+                    writeUShortToByteArrLE(newArr, 8 + ((i + (j * buf.used)) * 2), buf.arrangements[j, i]);
+
+            return newArr;
+        }
+
         static int readIntLE(byte[] arr, int pos)
         {
             return arr[pos] + (arr[pos + 1] << 8) + (arr[pos + 2] << 16) + (arr[pos + 3] << 24);
@@ -105,7 +129,19 @@ namespace RenderCastRoll
         {
             return (ushort)(arr[pos] + (arr[pos + 1] << 8));
         }
-        
+
+        static void writeIntToByteArrLE(byte[] arr, int pos, int val)
+        {
+            for (int i = 0; i < 4; i++)
+                arr[pos + i] = (byte)((val >> (i * 8)) & 0xFF);
+        }
+
+        static void writeUShortToByteArrLE(byte[] arr, int pos, ushort val)
+        {
+            for (int i = 0; i < 2; i++)
+                arr[pos + i] = (byte)((val >> (i * 8)) & 0xFF);
+        }
+
         static byte[] convertUShortToByteArrLE(ushort val)
         {
             byte[] newArr = new byte[2];

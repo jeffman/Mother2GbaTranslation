@@ -10,6 +10,7 @@ namespace RenderCastRoll
         public int Center_X { get; set; }
         public string Text { get; set; }
         public int Font { get; set; }
+        public string Separate_file_name { get; set; }
     }
 
     public class RenderRoot

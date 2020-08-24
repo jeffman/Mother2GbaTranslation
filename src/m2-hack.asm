@@ -1875,6 +1875,14 @@ m2_coord_table_file:
 m2_credits_conversion_table:
 .incbin "data/m2-credits-conversion-table.bin"
 
+.align 4
+m2_cast_belch_arrangement:
+.incbin "data/cast_roll_master_belch_arrangement.bin"
+
+.align 4
+m2_cast_star_arrangement:
+.incbin "data/cast_roll_star_master_arrangement.bin"
+
 .align 2
 m2_cast_vwf_free:
 .incbin "data/cast_roll_first_free.bin"
