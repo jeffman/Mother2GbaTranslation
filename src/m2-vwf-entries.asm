@@ -3385,6 +3385,25 @@ ldr     r0,=#0x8010501 //Go to the end of the routine
 bx      r0
 
 //==============================================================================
+//Creates a new event that updates the "THE END..." screen to the second frame
+extra_event_end_question_mark:
+push    {lr}
+add     r0,r0,r1
+asr     r0,r0,#0x10
+cmp     r0,#0x48
+bne     @@end
+push    {r0}
+ldr     r0,=#m2_end_frame1
+ldr     r1,=#0x6001000
+mov     r2,#0xA0
+lsl     r2,r2,#1
+swi     #0xC
+pop     {r0}
+
+@@end:
+pop     {pc}
+
+//==============================================================================
 //Prints the sick tiles and then the names
 sick_name:
 push    {lr}
