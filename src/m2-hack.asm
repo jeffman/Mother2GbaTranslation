@@ -1711,6 +1711,11 @@ nop
 
 
 //==============================================================================
+// Fix Gyigas' poison bug
+//==============================================================================
+.org 0x80DEE6C :: bl dee6c_fix_poison_gyigas :: nop :: nop :: nop
+
+//==============================================================================
 // Move stuff around in order to make space for the code
 //==============================================================================
 
@@ -1975,6 +1980,7 @@ disclaimer_map:
 .include "syscalls.asm"
 .include "m2-vwf.asm"
 .include "m2-vwf-entries.asm"
+.include "m2-bugfixes.asm"
 .include "m2-formatting.asm"
 .include "m2-customcodes.asm"
 .include "m2-compiled.asm"
