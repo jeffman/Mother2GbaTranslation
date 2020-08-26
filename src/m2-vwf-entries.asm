@@ -972,6 +972,14 @@ bx      lr
 .pool
 
 //==============================================================================
+//Sets the names' background to a default
+_215a_load_names:
+push    {lr}
+bl      0x8012460
+bl      set_background_loaded_names
+pop     {pc}
+
+//==============================================================================
 // Add a space between enemy name and letter in multi-enemy fights for the selection window. Called only by enemies.
 dcd00_enemy_letter:
 push    {r1-r2,lr}
@@ -1183,29 +1191,36 @@ add     r2,#1
 ldrb    r0,[r1,r2]
 cmp     r0,#1 //Does this string have the the flag? If it does not, then proceed to the end
 bne     @@end
-ldr     r2,=0x50959884 //Does this string have "The "? If it does, check if it ends instantly.
+ldr     r2,=0x50959884 //"The "
 ldr     r0,[r1,#0]
-cmp     r0,r2
-beq     @@next_found_the
-sub     r0,r0,r2 //Does this string have "the "? If it does not, then it's a character. Proceed to the end.
-cmp     r0,#0x20
-bne     @@end
+sub     r2,r0,r2 
+cmp     r2,#0
+beq     @@next_found_the //Does this string have "The "? If it does, proceed accordingly
+cmp     r2,#0x20
+beq     @@next_found_the //Does this string have "the "? If it does, proceed accordingly
+
+//For the other languages: add the other things to compare to here...? Maybe you can do it in a smarter way though...
+
+//No articles found. Go to the end
+b       @@end
 
 @@next_found_the: //A starting "The " or "the " has been found
-mov     r2,#0xFF
-lsl     r2,r2,#8 //r2 has 0xFF00
-ldrh    r0,[r1,#4] //Load the next two bytes after "The " or "the "
-cmp     r0,r2 //If they're the same as r2, then it's a character. End this here.
-beq     @@end
+//Assumes the uppercase and lowercase characters are 0x20 apart
 ldr     r0,=m2_cstm_last_printed
 ldrb    r0,[r0,#0]
 cmp     r0,#0x70 //Is the previous character an @?
-beq     @@Maius
-mov     r0,#0xA4 //Change The to the
+beq     @@Upper
+
+mov     r0,#0x20
+sub     r2,r0,r2 //Is this "t"? If it is, this will be 0. Otherwise, it will be 0x20
+ldr     r0,[r1,#0]
+add     r0,r0,r2 //Ensure it is the
 strb    r0,[r1,#0]
 b       @@end
-@@Maius:
-mov     r0,#0x84 //Ensure it is The
+
+@@Upper:
+ldr     r0,[r1,#0]
+sub     r0,r0,r2 //Ensure it is The
 strb    r0,[r1,#0]
 
 @@end:
