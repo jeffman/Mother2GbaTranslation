@@ -10,7 +10,7 @@ pop {r4,pc}
 //==============================================================================
 //Writes the bigfont letters to RAM
 largevwf:
-push    {r5,lr}
+push    {r2,r5,lr}
 mov     r0,r2
 ldrb    r1,[r4]
 add     r4,r4,1
@@ -21,7 +21,7 @@ ldrb    r2,[r2,r1]
 bl      0x80B3280 //Print the letter to RAM
 
 @@end:
-pop     {r5,pc}
+pop     {r2,r5,pc}
 
 @@name:
 mov     r5,#0xFC

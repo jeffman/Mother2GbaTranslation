@@ -181,7 +181,7 @@ b       @@end
 //--------------------------------
 // 5A FF: Restore the dialogue window
 cmp     r4,#0x5A
-bne     @@end
+bne     @@next7
 ldr     r0,=#0x3005230
 ldr     r0,[r0,#8]
 mov     r1,#0
@@ -189,6 +189,18 @@ strh    r1,[r0,#0x2A]
 strh    r1,[r0,#0x2C]
 strb    r1,[r0,#3]
 bl      m2_drawwindow
+mov     r3,#2
+b       @@end
+
+@@next7:
+//--------------------------------
+// 59 FF: Set stored goods window's data so it prints the header from scratch
+cmp     r4,#0x59
+bne     @@end
+ldr     r0,=#0x3005230
+ldr     r0,[r0,#0x10]
+mov     r1,#0xFF //Set pixel_x as 0xFF
+strb    r1,[r0,#2]
 mov     r3,#2
 
 //--------------------------------

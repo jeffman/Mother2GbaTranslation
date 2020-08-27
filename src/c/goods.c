@@ -539,20 +539,22 @@ void shop_print_items(WINDOW *window, unsigned char *items, int y_offset, int it
         {
             int x_offset = 0;
             byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-            print_string(item_str, x + x_offset, y);
+            print_string_in_buffer(item_str, x + x_offset, y, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
             int digit_count;
             int bcd = bin_to_bcd(getPrice(item), &digit_count); //Get the price in bcd, so it can be printed
             int base = 120;
-            print_character(decode_character(0x56), x + base, y); //00, it will be at the end, always at the same position
-            print_character(decode_character(0x54), x + base - 6 - (digit_count * 6), y); //dollar, it must be before all digits
+            print_character_formatted_buffer(decode_character(0x56), x + base, y, 0, 0xF, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER))); //00, it will be at the end, always at the same position
+            print_character_formatted_buffer(decode_character(0x54), x + base - 6 - (digit_count * 6), y, 0, 0xF, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER))); //dollar, it must be before all digits
             // Write the digits
             for (int j = 0; j < digit_count; j++)
             {
                 byte digit = ((bcd >> ((digit_count - 1 - j) * 4)) & 0xF) + ZERO;
-                print_character(decode_character(digit), x + base - 6 - ((digit_count - j - 1) * 6), y); //write a single digit
+                print_character_formatted_buffer(decode_character(digit), x + base - 6 - ((digit_count - j - 1) * 6), y, 0, 0xF, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER))); //write a single digit
             }
         }
     }
+    
+    store_pixels_overworld();
 }
 
 //Load proper give text into str and then go to it
