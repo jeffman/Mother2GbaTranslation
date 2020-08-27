@@ -50,11 +50,11 @@ void writeCastText(unsigned short *bg0Arrangements, unsigned short *bg1Arrangeme
         //Setup
         castText_curr_ptr = castText_curr_start;
         length = 0;
-        setTilesToBlank(Tiles[0]);
+        setTilesToBlankCast(Tiles[0]);
         
         //First things first, it calculates the total length of the text in pixels
         while((*castText_curr_ptr) != END)
-            length += getCharWidth(*(castText_curr_ptr++));
+            length += getCharWidthCast(*(castText_curr_ptr++));
         
         //Calculate the starting position of the text
         int x = center_x - (length >> 1);
@@ -154,7 +154,7 @@ int printCastCharacter(byte chr, int Tiles[SIDE_BUFFER_SIZE + 1][4], unsigned sh
     if((currLen + chosenLen) >= 8)
     {
         for(int i = 0; i < SIDE_BUFFER_SIZE; i++)
-            setTilesToBlank(Tiles[i + 1]);
+            setTilesToBlankCast(Tiles[i + 1]);
         
         if(renderedLen > 0)
             printCastCharacterInMultiTiles(Tiles, glyphRows, renderedLen, currLen);
@@ -167,7 +167,7 @@ int printCastCharacter(byte chr, int Tiles[SIDE_BUFFER_SIZE + 1][4], unsigned sh
             printCastTiles(Tiles[i], baseArrangementsPointer + i, baseGraphicsPointer + (tileValue << 3), baseTileValue + tileValue);
         }
         
-        copyTiles(Tiles, fullAlternatives);
+        copyTilesCast(Tiles, fullAlternatives);
     }
     else if(renderedLen > 0)
         printCastCharacterInSingleTiles(Tiles, glyphRows, renderedLen, currLen);
@@ -250,13 +250,13 @@ void printCastCharacterInSingleTiles(int Tiles[SIDE_BUFFER_SIZE + 1][4], byte *g
     }
 }
 
-void copyTiles(int Tiles[SIDE_BUFFER_SIZE + 1][4], int indexMatrix)
+void copyTilesCast(int Tiles[SIDE_BUFFER_SIZE + 1][4], int indexMatrix)
 {
     for(int i = 0; i < 4; i++)
         Tiles[0][i] = Tiles[indexMatrix][i];
 }
 
-void setTilesToBlank(int *Tiles)
+void setTilesToBlankCast(int *Tiles)
 {
     for(int i = 0; i < 4; i++)
         Tiles[i] = 0;
@@ -279,7 +279,7 @@ void printCastTiles(int Tiles[4], unsigned short *arrangements, int *graphics, u
     }
 }
 
-int getCharWidth(byte chr)
+int getCharWidthCast(byte chr)
 {
     //Gets the length for a character. Also handles special cases
     switch(chr)
@@ -290,15 +290,15 @@ int getCharWidth(byte chr)
         case PC_START+1:
         case PC_START+2:
         case PC_START+3:
-            return getPCWidth(pc_names+(chr-PC_START)*(PC_NAME_SIZE + 2), PC_NAME_SIZE);
+            return getPCWidthCast(pc_names+(chr-PC_START)*(PC_NAME_SIZE + 2), PC_NAME_SIZE);
         case PC_START+4:
-            return getPCWidth(pc_names+(chr-PC_START)*(PC_NAME_SIZE + 2), DOG_NAME_SIZE);
+            return getPCWidthCast(pc_names+(chr-PC_START)*(PC_NAME_SIZE + 2), DOG_NAME_SIZE);
         default:
             return m2_widths_table[CAST_FONT][chr] & 0xFF;
     }
 }
 
-int getPCWidth(byte* pc_ptr, int max_size)
+int getPCWidthCast(byte* pc_ptr, int max_size)
 {
     //Gets the length for a playable character's name.
     //This is separate in order to avoid recursive issues caused by user's tinkering
