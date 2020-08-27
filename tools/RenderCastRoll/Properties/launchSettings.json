@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "ScriptTool": {
+      "commandName": "Project",
+      "commandLineArgs": "-compile -main -misc \"..\\working\" \"..\\eb.smc\" \"..\\m12fresh.gba\"",
+      "workingDirectory": "C:\\Users\\jeffe\\M12\\bin\\ScriptTool"
+    }
+  }
+}

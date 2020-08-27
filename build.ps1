@@ -6,6 +6,8 @@ $output_rom_file   = "bin/m12.gba"
 $eb_rom_file       = "bin/eb.smc"
 $working_dir       = "working"
 $src_dir           = "src"
+$data_dir          = "src/data"
+$cast_roll_file    = "working/cast_roll.json"
 $compiled_asm_file = "src/m2-compiled.asm"
 $includes_asm_file = "m12-includes.asm"    # implicitly rooted in working_dir
 $hack_asm_file     = "m2-hack.asm"         # implicitly rooted in src_dir
@@ -14,6 +16,7 @@ $input_c_files =
     "src/c/ext.c",
     "src/c/vwf.c",
     "src/c/locs.c",
+    "src/c/credits.c",
     "src/c/goods.c",
     "src/c/fileselect.c",
     "src/c/status.c",
@@ -24,6 +27,7 @@ $input_c_files =
 
 $base_c_address    = 0x83755B8;
 $scripttool_cmd    = "bin/ScriptTool/ScriptTool.dll"
+$rendercastroll_cmd= "bin/RenderCastRoll/RenderCastRoll.dll"
 $gcc_cmd           = "arm-none-eabi-gcc"
 $ld_cmd            = "arm-none-eabi-ld"
 $objdump_cmd       = "arm-none-eabi-objdump"
@@ -48,6 +52,10 @@ $scripttool_args =
     $working_dir,
     $eb_rom_file,
     $input_rom_file
+    
+$rendercastroll_args =
+    $cast_roll_file,
+    $data_dir
 
 $gcc_args =
     "-c",
@@ -346,6 +354,10 @@ Copy-Item -Path $input_rom_file -Destination $output_rom_file
 
 "Compiling game text..."
 & dotnet $scripttool_cmd $scripttool_args
+if ($LASTEXITCODE -ne 0) { exit -1 }
+
+"Pre-rendering cast roll..."
+& dotnet $rendercastroll_cmd $rendercastroll_args
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
 # ------------------------ ASSEMBLE GAME TEXT -----------------------

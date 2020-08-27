@@ -1728,6 +1728,41 @@ nop
 .org 0x80DEE6C :: bl dee6c_fix_poison_gyigas :: nop :: nop :: nop
 
 //==============================================================================
+// Credits hacks
+//==============================================================================
+
+//Repoint credits font (Before it pointed to 0x82FF1B8)
+.org 0x82DB284 :: dw m2_credits_font
+.org 0x801352E :: bl printPlayerNameCredits
+
+//Repoint cast graphical data
+.org m2_cast_roll_pointers :: dw m2_cast_graphics :: dw m2_cast_palette :: dw m2_cast_arrangements
+
+//Remove flavour changing the palette
+.org 0x8010426 :: bl prevent_cast_changed_palettes
+
+//Cast Roll VWF
+.org 0x800F640 :: bl writeCastText
+
+//Master Belch and Star Master text appearing later
+.org 0x8018934 :: dw m2_cast_belch_arrangement
+.org 0x80188B2 :: .incbin "data/cast_roll_master_belch_size.bin"
+.org 0x82D92BC :: .incbin "data/cast_roll_master_belch_data.bin"
+.org 0x8018940 :: dw m2_cast_star_arrangement
+.org 0x8018904 :: .incbin "data/cast_roll_star_master_size.bin"
+.org 0x82D92C4 :: .incbin "data/cast_roll_star_master_data.bin"
+
+//==============================================================================
+// "THE END...?" hacks
+//==============================================================================
+.org 0x88B5AA0 :: .incbin "data/the_end_graphics.bin"
+.org 0x88B62A0 :: .incbin "data/the_end_palette.bin"
+.org 0x88B62C0 :: .incbin "data/the_end_arrangements_frame0.bin"
+
+//Add an extra event for the "?" in "THE END..."
+.org 0x80A5F5C :: bl extra_event_end_question_mark
+
+//==============================================================================
 // Move stuff around in order to make space for the code
 //==============================================================================
 
@@ -1832,17 +1867,24 @@ m2_widths_battle:
 m2_widths_tiny:
 .incbin "data/m2-widths-tiny.bin"
 
+.align 4
 m2_bits_to_nybbles:
 .incbin "data/m2-bits-to-nybbles.bin"
 
 m2_bits_to_nybbles_fast:
 .incbin "data/m2-bits-to-nybbles-fast.bin"
 
+m2_bits_to_nybbles_fast_cast:
+.incbin "data/m2-bits-to-nybbles-fast-cast.bin"
+
 m2_nybbles_to_bits:
 .incbin "data/m2-nybbles-to-bits.bin"
 
 m2_enemy_attributes:
 .incbin "data/m2-enemy-attributes.bin"
+
+cast_vwf_names:
+.include "data/cast-vwf-names.asm"
 
 .align 2
 luminesquaretable:
@@ -1887,6 +1929,42 @@ m2InsaneCultist:
 .align 2
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
+
+.align 2
+m2_credits_conversion_table:
+.incbin "data/m2-credits-conversion-table.bin"
+
+.align 4
+m2_cast_belch_arrangement:
+.incbin "data/cast_roll_master_belch_arrangement.bin"
+
+.align 4
+m2_cast_star_arrangement:
+.incbin "data/cast_roll_star_master_arrangement.bin"
+
+.align 2
+m2_cast_vwf_free:
+.incbin "data/cast_roll_first_free.bin"
+
+.align 4
+m2_cast_graphics:
+.incbin "data/cast_roll_graphics_[c].bin"
+
+.align 4
+m2_cast_palette:
+.incbin "data/cast_roll_palette_[c].bin"
+
+.align 4
+m2_cast_arrangements:
+.incbin "data/cast_roll_arrangements_[c].bin"
+
+.align 4
+m2_credits_font:
+.incbin "data/m2-credits-font_[c].bin"
+
+.align 4
+m2_end_frame1:
+.incbin "data/the_end_arrangements_frame1.bin"
 
 optimized_byte_4bpp_to_1bpp_table:
 .incbin "data/optimized-byte-4bpp-to-1bpp-table.bin"
@@ -1978,6 +2056,7 @@ disclaimer_map:
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70
 .definelabel cpuset                 ,0x80F47C0
+.definelabel m2_cast_roll_pointers  ,0x82DB25C
 .definelabel m2_items               ,0x8B1D62C
 .definelabel m2_default_names       ,0x82B9330
 .definelabel m2_psi_print_table     ,0x8B2A9C0
