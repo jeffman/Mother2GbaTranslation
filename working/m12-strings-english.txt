@@ -1106,7 +1106,7 @@
 ^L1108^[00 FF]
 ^L1109^@[9F FF][C1 FF][87 FF] used[01 FF]  the [90 FF 00][1A FF 02 00].[02 FF]@But nothing happened.[02 FF][00 FF]
 ^L1110^@[9F FF][C1 FF][87 FF] used[01 FF]  the [90 FF 00][1A FF 02 00].[02 FF]@But nothing happened.[02 FF][00 FF]
-^L1111^[C1 FF][87 FF]@[9F FF] tried[01 FF]  to use the[90 FF 00][1A FF 02 00].[02 FF]@but [9F FF] could not use[01 FF]  the [90 FF 00][1A FF 02 00] very well.[02 FF][00 FF]
+^L1111^[C1 FF][87 FF]@[9F FF] tried[01 FF]  to use the [90 FF 00][1A FF 02 00].[02 FF]@but [9F FF] could not use[01 FF]  the [90 FF 00][1A FF 02 00] very well.[02 FF][00 FF]
 ^L1112^[FC FF 08 00][82 FF _L3462_][D4 FF 19 00]@[9F FF] is[01 FF]  attacking![D4 FF 1A 00][02 FF][00 FF]
 ^L1113^[D4 FF 18 00]@[9F FF] attacks![D4 FF 1B 00][02 FF][00 FF]
 ^L1114^@[9F FF] spies on[01 FF]  [AD FF]![02 FF][00 FF]

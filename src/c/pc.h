@@ -24,7 +24,9 @@ typedef enum AILMENT2
 typedef enum AILMENT3
 {
     SLEEP = 1,
-    CRYING = 2
+    CRYING = 2,
+    CANNOT_MOVE = 3,
+    SOLIDIFIED = 4
 } AILMENT3;
 
 typedef enum CHARACTER

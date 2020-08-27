@@ -995,6 +995,18 @@ pop     {r4,pc}
 .org 0x80DAF12 :: cmp r0,0xAC
 
 //---------------------------------------------------------
+// Name setup hacks (improves the "The" fix and makes it portable)
+//---------------------------------------------------------
+.org 0x80020AE :: bl copy_name_perm_mem
+.org 0x80020BE :: bl copy_name_perm_mem
+.org 0x80020CE :: bl copy_name_perm_mem
+.org 0x80020DE :: bl copy_name_perm_mem
+.org 0x80020EE :: bl copy_name_perm_mem
+.org 0x80020FE :: bl copy_name_perm_mem
+.org 0x800210E :: bl copy_name_perm_mem
+.org 0x800215A :: bl _215a_load_names
+
+//---------------------------------------------------------
 // BEB6C hacks (Goods inner menu)
 //---------------------------------------------------------
 
@@ -1701,6 +1713,20 @@ nop
 //Choose character table based on alphabet loaded in
 .org 0x80C7578 :: bl c7578_load_letters
 
+
+//==============================================================================
+// Bug fixes for the original game
+//==============================================================================
+
+// Disallow warping with an Exit mouse in the Cave of the Past
+.org 0x8731046 :: dh 00h
+
+
+//==============================================================================
+// Fix Gyigas' poison bug
+//==============================================================================
+.org 0x80DEE6C :: bl dee6c_fix_poison_gyigas :: nop :: nop :: nop
+
 //==============================================================================
 // Credits hacks
 //==============================================================================
@@ -1747,11 +1773,7 @@ nop
 // Lumine Hall hacks
 //==============================================================================
 
-.org 0x82DCF94
-lumine_char_tilemap:
-.area 4000h,00h
-.incbin "data/lumine-char-tilemap.bin"
-.endarea
+.org 0x800ECB2 :: bl writeLumineHallText
 
 //==============================================================================
 // Cartridge choosing screen hacks
@@ -1864,6 +1886,13 @@ m2_enemy_attributes:
 cast_vwf_names:
 .include "data/cast-vwf-names.asm"
 
+.align 2
+luminesquaretable:
+.incbin "data/luminesquaretable.bin"
+
+luminetext:
+.include "data/lumine-text.asm"
+
 flyovertextYear:
 .include "data/flyover-text-year.asm"
 
@@ -1960,6 +1989,7 @@ disclaimer_map:
 
 .definelabel buffer_subtractor      ,0x0000800
 .definelabel overworld_buffer       ,0x200F200
+.definelabel m2_hall_line_size      ,0x3000374
 .definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10
 .definelabel m2_old_paula_name      ,0x3001F16
@@ -1989,6 +2019,7 @@ disclaimer_map:
 .definelabel m2_change_naming_space ,0x8004E08
 .definelabel m2_copy_name_temp_mem  ,0x8004E34
 .definelabel m2_insert_default_name ,0x8005708
+.definelabel m2_get_hall_address    ,0x800D7BC
 .definelabel m12_dim_palette        ,0x80137DC
 .definelabel m2_enable_script       ,0x80A1F6C
 .definelabel m2_sub_a334c           ,0x80A334C
@@ -2040,6 +2071,7 @@ disclaimer_map:
 .include "syscalls.asm"
 .include "m2-vwf.asm"
 .include "m2-vwf-entries.asm"
+.include "m2-bugfixes.asm"
 .include "m2-formatting.asm"
 .include "m2-customcodes.asm"
 .include "m2-compiled.asm"
