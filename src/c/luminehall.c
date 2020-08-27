@@ -11,11 +11,11 @@ void writeLumineHallText()
     int currLenInTile = 0;
     int currPos = 0;
     int Tiles[4];
-    setTilesToBlank(Tiles);
+    setTilesToBlankLumine(Tiles);
     //First things first, it calculates the total length of the text in pixels
     while((*lumineText_curr_ptr) != END)
     {
-        length += getCharWidth(*lumineText_curr_ptr);
+        length += getCharWidthLumine(*lumineText_curr_ptr);
         lumineText_curr_ptr++;
     }
     //It then gets the length in arrangements. It also makes sure it's a number divisible by 8.
@@ -81,7 +81,7 @@ void printLumineCharacter(byte chr, int *Tiles, int AlternativeTiles[SIDE_BUFFER
     if(((*currLen) + chosenLen) >= 8)
     {
         for(int i = 0; i < SIDE_BUFFER_SIZE; i++)
-            setTilesToBlank(AlternativeTiles[i]);
+            setTilesToBlankLumine(AlternativeTiles[i]);
         
         if(renderedLen > 0)
             printLumineCharacterInMultiTiles(Tiles, AlternativeTiles, glyphRows, renderedLen, *currLen);
@@ -96,7 +96,7 @@ void printLumineCharacter(byte chr, int *Tiles, int AlternativeTiles[SIDE_BUFFER
             (*currPos)++;
         }
         
-        copyTiles(Tiles, AlternativeTiles, fullAlternatives);
+        copyTilesLumine(Tiles, AlternativeTiles, fullAlternatives);
         (*currLen) = ((*currLen) + chosenLen) & 7;
     }
     else
@@ -115,7 +115,7 @@ void printEmptyLumineTile(int *Tiles, unsigned short *hallAddress, int length, i
     else
     {
         printLumineTiles(Tiles, hallAddress, length, currPos);
-        setTilesToBlank(Tiles);
+        setTilesToBlankLumine(Tiles);
     }
 }
 
@@ -213,13 +213,13 @@ void printLumineCharacterInSingleTiles(int *Tiles, byte *glyphRows, int glyphLen
     }
 }
 
-void copyTiles(int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], int indexMatrix)
+void copyTilesLumine(int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], int indexMatrix)
 {
     for(int i = 0; i < 4; i++)
         Tiles[i] = AlternativeTiles[indexMatrix][i];
 }
 
-void setTilesToBlank(int *Tiles)
+void setTilesToBlankLumine(int *Tiles)
 {
     for(int i = 0; i < 4; i++)
         Tiles[i] = 0;
@@ -264,7 +264,7 @@ void printVoidLumineTiles(unsigned short *hallAddress, int length, int currPos)
     }
 }
 
-int getCharWidth(byte chr)
+int getCharWidthLumine(byte chr)
 {
     //Gets the length for a character. Also handles special cases
     switch(chr)
@@ -277,13 +277,13 @@ int getCharWidth(byte chr)
         case PC_START+1:
         case PC_START+2:
         case PC_START+3:
-            return getPCWidth(pc_names+(chr-PC_START)*(PC_NAME_SIZE + 2));
+            return getPCWidthLumine(pc_names+(chr-PC_START)*(PC_NAME_SIZE + 2));
         default:
             return m2_widths_table[LUMINE_FONT][chr] & 0xFF;
     }
 }
 
-int getPCWidth(byte* pc_ptr)
+int getPCWidthLumine(byte* pc_ptr)
 {
     //Gets the length for a playable character's name.
     //This is separate in order to avoid recursive issues caused by user's tinkering

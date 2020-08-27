@@ -17,9 +17,9 @@
 #define PC_NAME_SIZE 5
 
 void writeLumineHallText();
-int getCharWidth(byte chr);
-int getPCWidth(byte* pc_ptr);
-void setTilesToBlank(int *Tiles);
+int getCharWidthLumine(byte chr);
+int getPCWidthLumine(byte* pc_ptr);
+void setTilesToBlankLumine(int *Tiles);
 void printLumineTiles(int *Tiles, unsigned short *hallAddress, int length, int currPos);
 void printVoidLumineTiles(unsigned short *hallAddress, int length, int currPos);
 void printEmptyLumineTile(int *Tiles, unsigned short *hallAddress, int length, int currPos, int currLen);
@@ -27,7 +27,7 @@ void readLumineCharacter(byte chr, int *Tiles, unsigned short *hallAddress, int 
 void readLumineCharacterName(byte* str, int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], unsigned short *hallAddress, int length, int *currPos, int *currLen);
 void printLumineCharacterInMultiTiles(int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], byte *glyphRows, int glyphLen, int currLen);
 void printLumineCharacterInSingleTiles(int *Tiles, byte *glyphRows, int glyphLen, int currLen);
-void copyTiles(int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], int indexMatrix);
+void copyTilesLumine(int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], int indexMatrix);
 void printLumineCharacter(byte chr, int *Tiles, int AlternativeTiles[SIDE_BUFFER_SIZE][4], unsigned short *hallAddress, int length, int *currPos, int *currLen);
 
 

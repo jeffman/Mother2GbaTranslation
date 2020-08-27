@@ -20,15 +20,15 @@
 
 void printPlayerNameCredits(unsigned short *arrangements);
 void writeCastText(unsigned short *bg0Arrangements, unsigned short *bg1Arrangements);
-int getCharWidth(byte chr);
-int getPCWidth(byte* pc_ptr, int max_size);
-void setTilesToBlank(int *Tiles);
+int getCharWidthCast(byte chr);
+int getPCWidthCast(byte* pc_ptr, int max_size);
+void setTilesToBlankCast(int *Tiles);
 void printCastTiles(int Tiles[4], unsigned short *arrangements, int *graphics, unsigned short tileValue);
 int readCastCharacter(byte chr, int Tiles[SIDE_BUFFER_SIZE + 1][4], unsigned short *arrangements, int x, int tile_y, unsigned short *lastEdited);
 int readCastCharacterName(byte* str, int Tiles[SIDE_BUFFER_SIZE + 1][4], unsigned short *arrangements, int x, int tile_y, int max_size, unsigned short *lastEdited);
 void printCastCharacterInMultiTiles(int Tiles[SIDE_BUFFER_SIZE + 1][4], byte *glyphRows, int glyphLen, int currLen);
 void printCastCharacterInSingleTiles(int Tiles[SIDE_BUFFER_SIZE + 1][4], byte *glyphRows, int glyphLen, int currLen);
-void copyTiles(int Tiles[SIDE_BUFFER_SIZE + 1][4], int indexMatrix);
+void copyTilesCast(int Tiles[SIDE_BUFFER_SIZE + 1][4], int indexMatrix);
 int printCastCharacter(byte chr, int Tiles[SIDE_BUFFER_SIZE + 1][4], unsigned short *arrangements, int x, int tile_y, unsigned short *lastEdited);
 
 extern byte m2_player1[];
