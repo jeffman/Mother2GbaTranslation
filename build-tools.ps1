@@ -5,3 +5,5 @@ $pwd = $pwd.Path
 if ($LASTEXITCODE -ne 0) { exit -1 }
 & dotnet build tools/RenderCastRoll -o "$([IO.Path]::Combine($pwd, "bin/RenderCastRoll"))"
 if ($LASTEXITCODE -ne 0) { exit -1 }
+& dotnet build tools/RenderStaffCredits -o "$([IO.Path]::Combine($pwd, "bin/RenderStaffCredits"))"
+if ($LASTEXITCODE -ne 0) { exit -1 }

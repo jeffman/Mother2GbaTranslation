@@ -5,18 +5,20 @@ void printPlayerNameCredits(unsigned short *arrangements)
     //Converts the player name to arrangements
     int length = 0;
     byte *player_name = m2_player1;
+    unsigned short yPosition = m2_credits_extras[0];
+    unsigned short defaultNameLength = m2_credits_extras[1];
     //First things first, it calculates the length of the string
     for(length = 0; length < PLAYER_NAME_SIZE && (*(++player_name)) != 0xFF; length++);
     
     //Gets where to position the arrangements...
     int start_pos = ((0x1F - length) >> 1) + 1;
-    int start_pos_default = ((0x1F - 5) >> 1) + 1;
-    unsigned short *player_name_arrangements = ((0x89 << 2) << 5) + arrangements + start_pos;
-    unsigned short *default_player_name_arrangements = ((0x89 << 2) << 5) + arrangements + start_pos_default;
+    int start_pos_default = ((0x1F - defaultNameLength) >> 1) + 1;
+    unsigned short *player_name_arrangements = (yPosition << 5) + arrangements + start_pos;
+    unsigned short *default_player_name_arrangements = (yPosition << 5) + arrangements + start_pos_default;
     player_name = m2_player1;
     
     //Clears the default MARIO player name...
-    for(int i = 0; i < 5; i++)
+    for(int i = 0; i < defaultNameLength; i++)
     {
         default_player_name_arrangements[i] = 0xF19B;
         default_player_name_arrangements[i + 0x20] = 0xF19B;

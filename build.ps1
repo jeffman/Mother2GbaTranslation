@@ -1,16 +1,17 @@
 [Environment]::CurrentDirectory = (Get-Location -PSProvider FileSystem).ProviderPath
 
 #Region Variables
-$input_rom_file    = "bin/m12fresh.gba"
-$output_rom_file   = "bin/m12.gba"
-$eb_rom_file       = "bin/eb.smc"
-$working_dir       = "working"
-$src_dir           = "src"
-$data_dir          = "src/data"
-$cast_roll_file    = "working/cast_roll.json"
-$compiled_asm_file = "src/m2-compiled.asm"
-$includes_asm_file = "m12-includes.asm"    # implicitly rooted in working_dir
-$hack_asm_file     = "m2-hack.asm"         # implicitly rooted in src_dir
+$input_rom_file     = "bin/m12fresh.gba"
+$output_rom_file    = "bin/m12.gba"
+$eb_rom_file        = "bin/eb.smc"
+$working_dir        = "working"
+$src_dir            = "src"
+$data_dir           = "src/data"
+$cast_roll_file     = "working/cast_roll.json"
+$staff_credits_file = "working/staff_text.md"
+$compiled_asm_file  = "src/m2-compiled.asm"
+$includes_asm_file  = "m12-includes.asm"    # implicitly rooted in working_dir
+$hack_asm_file      = "m2-hack.asm"         # implicitly rooted in src_dir
 
 $input_c_files =
     "src/c/ext.c",
@@ -25,18 +26,19 @@ $input_c_files =
     "src/c/psi.c",
     "src/c/luminehall.c"
 
-$base_c_address    = 0x83755B8;
-$scripttool_cmd    = "bin/ScriptTool/ScriptTool.dll"
-$rendercastroll_cmd= "bin/RenderCastRoll/RenderCastRoll.dll"
-$gcc_cmd           = "arm-none-eabi-gcc"
-$ld_cmd            = "arm-none-eabi-ld"
-$objdump_cmd       = "arm-none-eabi-objdump"
-$readelf_cmd       = "arm-none-eabi-readelf"
-$combined_obj_file = "src/c/combined.o"
-$linked_obj_file   = "src/c/linked.o"
-$combine_script    = "src/c/combine.ld"
-$link_script       = "src/c/link.ld"
-$undefine_obj_file = "src/c/ext.o"
+$base_c_address         = 0x83755B8;
+$scripttool_cmd         = "bin/ScriptTool/ScriptTool.dll"
+$rendercastroll_cmd     = "bin/RenderCastRoll/RenderCastRoll.dll"
+$renderstaffcredits_cmd = "bin/RenderStaffCredits/RenderStaffCredits.dll"
+$gcc_cmd                = "arm-none-eabi-gcc"
+$ld_cmd                 = "arm-none-eabi-ld"
+$objdump_cmd            = "arm-none-eabi-objdump"
+$readelf_cmd            = "arm-none-eabi-readelf"
+$combined_obj_file      = "src/c/combined.o"
+$linked_obj_file        = "src/c/linked.o"
+$combine_script         = "src/c/combine.ld"
+$link_script            = "src/c/link.ld"
+$undefine_obj_file      = "src/c/ext.o"
 
 If     ($IsWindows)            { $asm_cmd = "bin/armips.exe" }
 ElseIf ($IsLinux -or $IsMacOS) { $asm_cmd = "bin/armips" }
@@ -55,6 +57,10 @@ $scripttool_args =
     
 $rendercastroll_args =
     $cast_roll_file,
+    $data_dir
+    
+$renderstaffcredits_args =
+    $staff_credits_file,
     $data_dir
 
 $gcc_args =
@@ -358,6 +364,10 @@ if ($LASTEXITCODE -ne 0) { exit -1 }
 
 "Pre-rendering cast roll..."
 & dotnet $rendercastroll_cmd $rendercastroll_args
+if ($LASTEXITCODE -ne 0) { exit -1 }
+
+"Pre-rendering staff credits..."
+& dotnet $renderstaffcredits_cmd $renderstaffcredits_args
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
 # ------------------------ ASSEMBLE GAME TEXT -----------------------
