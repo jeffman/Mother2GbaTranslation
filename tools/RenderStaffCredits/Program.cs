@@ -41,7 +41,7 @@ namespace RenderStaffCredits
             writeIntToByteArrLE(extra_things, player_Y_Pos, 0, 2);
             writeIntToByteArrLE(extra_things, defaultPlayerName.Length, 2, 2);
             File.WriteAllBytes(dataFolder + "m2-credits-extra-data.bin", extra_things);
-            //Save some data that tells us how many vertical tiles the arrangement is long
+            //Save some data that tells us how many vertical tiles long the arrangement is
             int arrSize = Arrangements.Length / 0x20;
             byte[] size = new byte[4];
             writeIntToByteArrLE(size, arrSize, 0, 4);
