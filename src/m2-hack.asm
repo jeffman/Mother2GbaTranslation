@@ -1932,6 +1932,50 @@ flyover_tea:
 flyover_coffee:
 .include "data/flyover-coffee.asm"
 
+give_self:
+.include "m12-give-strings/m12-give-self-alive.asm"
+
+give_self_dead:
+.include "m12-give-strings/m12-give-self-dead.asm"
+
+give_alive:
+.include "m12-give-strings/m12-give-both-alive.asm"
+
+give_giver_dead:
+.include "m12-give-strings/m12-give-giver-dead.asm"
+
+give_target_dead:
+.include "m12-give-strings/m12-give-target-dead.asm"
+
+give_dead:
+.include "m12-give-strings/m12-give-both-dead.asm"
+
+give_alive_full:
+.include "m12-give-strings/m12-give-both-alive-full.asm"
+
+give_giver_dead_full:
+.include "m12-give-strings/m12-give-giver-dead-full.asm"
+
+give_target_dead_full:
+.include "m12-give-strings/m12-give-target-dead-full.asm"
+
+give_dead_full:
+.include "m12-give-strings/m12-give-both-dead-full.asm"
+
+.align 4
+give_strings_table:
+dw      give_self
+dw      give_self_dead
+dw      give_alive
+dw      give_giver_dead
+dw      give_target_dead
+dw      give_dead
+dw      give_alive_full
+dw      give_giver_dead_full
+dw      give_target_dead_full
+dw      give_dead_full
+
+.align 4
 m2InsaneCultist:
 .incbin "data/m2-insane-cultist.bin"
 
