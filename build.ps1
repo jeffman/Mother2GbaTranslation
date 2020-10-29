@@ -5,8 +5,10 @@ $input_rom_file     = "bin/m12fresh.gba"
 $output_rom_file    = "bin/m12.gba"
 $eb_rom_file        = "bin/eb.smc"
 $working_dir        = "working"
+$give_dir           = "working/m12-give-strings"
 $src_dir            = "src"
 $data_dir           = "src/data"
+$give_new_dir       = "src/m12-give-strings"
 $cast_roll_file     = "working/cast_roll.json"
 $staff_credits_file = "working/staff_text.md"
 $compiled_asm_file  = "src/m2-compiled.asm"
@@ -362,6 +364,9 @@ Copy-Item -Path $input_rom_file -Destination $output_rom_file
 & dotnet $scripttool_cmd $scripttool_args
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
+"Copying give strings to src folder..."
+Copy-Item -Path $give_dir -Destination $give_new_dir -Recurse
+
 "Pre-rendering cast roll..."
 & dotnet $rendercastroll_cmd $rendercastroll_args
 if ($LASTEXITCODE -ne 0) { exit -1 }
@@ -454,5 +459,7 @@ $rom_bytes = [IO.File]::ReadAllBytes($output_rom_file)
 ($hack_symbols + $includes_symbols) | Sort-Object Name | ForEach-Object { "$($_.Value.ToString("X8")) $($_.Name)" } | Set-Content $output_rom_sym_file
 
 "Finished compiling $output_rom_file in $($timer.Elapsed.TotalSeconds.ToString("F3")) s"
+
+Remove-Item -Path $give_new_dir -Recurse
 
 exit 0
