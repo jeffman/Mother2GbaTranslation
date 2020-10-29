@@ -1742,6 +1742,10 @@ nop
 
 //Repoint credits font (Before it pointed to 0x82FF1B8)
 .org 0x82DB284 :: dw m2_credits_font
+.org 0x82DB28C :: dw m2_credits_arrangements
+.org 0x82DB2A4 :: .incbin "data/m2-credits-size.bin"
+.org 0x80B53BC :: .incbin "data/m2-credits-scroll-size-limit.bin"
+.org 0x80B53C0 :: .incbin "data/m2-credits-scroll-size.bin"
 .org 0x801352E :: bl printPlayerNameCredits
 
 //Repoint cast graphical data
@@ -2016,9 +2020,18 @@ m2_credits_font:
 .incbin "data/m2-credits-font_[c].bin"
 
 .align 4
+m2_credits_arrangements:
+.incbin "data/m2-credits-arrangements_[c].bin"
+
+.align 2
+m2_credits_extras:
+.incbin "data/m2-credits-extra-data.bin"
+
+.align 4
 m2_end_frame1:
 .incbin "data/the_end_arrangements_frame1.bin"
 
+.align 4
 optimized_byte_4bpp_to_1bpp_table:
 .incbin "data/optimized-byte-4bpp-to-1bpp-table.bin"
 

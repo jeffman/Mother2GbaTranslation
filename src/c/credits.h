@@ -35,6 +35,7 @@ extern byte m2_player1[];
 extern byte cast_vwf_names[];
 extern unsigned short m2_cast_vwf_free;
 extern unsigned short m2_credits_conversion_table[];
+extern unsigned short m2_credits_extras[];
 extern int m2_bits_to_nybbles_fast_cast[];
 
 #endif
