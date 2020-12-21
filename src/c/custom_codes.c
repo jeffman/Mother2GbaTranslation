@@ -39,7 +39,7 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
             addedSize = 3;
             break;
             
-        case STORE_ENEMY_PLURALITY:
+        case STORE_TO_WINDOW_DATA:
             // 5E FF XX : Load a value into memory, based on XX
             val_to_store = 0;
             store = false;
