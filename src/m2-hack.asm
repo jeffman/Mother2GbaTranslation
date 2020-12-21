@@ -2055,7 +2055,9 @@ disclaimer_map:
 
 .definelabel buffer_subtractor      ,0x0000800
 .definelabel overworld_buffer       ,0x200F200
+.definelabel m2_bat_enemies_size    ,0x2025038
 .definelabel m2_hall_line_size      ,0x3000374
+.definelabel m2_source_pc           ,0x30009FB
 .definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10
 .definelabel m2_old_paula_name      ,0x3001F16
@@ -2088,7 +2090,7 @@ disclaimer_map:
 .definelabel m2_get_hall_address    ,0x800D7BC
 .definelabel m12_dim_palette        ,0x80137DC
 .definelabel m2_enable_script       ,0x80A1F6C
-.definelabel m2_sub_a334c           ,0x80A334C
+.definelabel m2_store_to_win_memory ,0x80A334C
 .definelabel m2_sub_a3384           ,0x80A3384
 .definelabel m2_jump_to_offset      ,0x80A6C24
 .definelabel m2_get_selected_item   ,0x80A469C
@@ -2139,7 +2141,6 @@ disclaimer_map:
 .include "m2-vwf-entries.asm"
 .include "m2-bugfixes.asm"
 .include "m2-formatting.asm"
-.include "m2-customcodes.asm"
 .include "m2-compiled.asm"
 .include "m2-flyover.asm"
 .include "m12-intro.asm"

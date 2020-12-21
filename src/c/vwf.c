@@ -2,6 +2,7 @@
 #include "vwf.h"
 #include "number-selector.h"
 #include "locs.h"
+#include "custom_codes.h"
 
 byte decode_character(byte chr)
 {
@@ -1452,7 +1453,7 @@ byte print_character_with_codes(WINDOW* window, byte* dest)
                     window->text_offset += m2_jump_to_offset(character);
                 else
                 {
-                    returnedLength = customcodes_parse_generic(code, character, window, dest);
+                    returnedLength = custom_codes_parse_generic(code, character, window, dest);
                     if(returnedLength == 0)
                         returnedLength = 2;
                     else if(returnedLength < 0)
@@ -1968,7 +1969,7 @@ int print_alphabet_buffer(WINDOW* window)
         
         if(str[1] == 0xFF)
         {
-            byte returnedVal = customcodes_parse_generic(str[0], str, window, dest);
+            byte returnedVal = custom_codes_parse_generic(str[0], str, window, dest);
             if(returnedVal != 0)
             {
                 window->text_offset += returnedVal;

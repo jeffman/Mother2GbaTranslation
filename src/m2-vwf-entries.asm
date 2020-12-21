@@ -3,7 +3,7 @@ c980c_custom_codes:
 push    {r1-r2,lr}
 mov     r1,r7
 mov     r2,r5
-bl      customcodes_parse
+bl      custom_codes_parse
 ldr     r1,[r6]
 
 // If 0, return [r6]+2; otherwise, return [r6]+r0
@@ -34,7 +34,7 @@ ldrb    r0,[r2]
 mov     r5,r0
 mov     r1,r2
 mov     r2,r4
-bl      customcodes_parse
+bl      custom_codes_parse
 cmp     r0,0
 beq     @@next
 mov     r2,r12
@@ -1637,7 +1637,7 @@ pop     {pc}
 //Routine which gives the address to the party member's inventory
 get_inventory_selected:
 push    {r3,lr}
-ldr     r0,=#0x30009FB //Load source pc
+ldr     r0,=m2_source_pc //Load source pc
 ldrb    r0,[r0,#0]
 ldr     r3,=#0x3001D40 //Get inventory
 mov     r2,#0x6C
@@ -1659,7 +1659,7 @@ ldr     r2,[r3,#0]
 lsl     r2,r2,#0x10
 asr     r2,r2,#0x10
 push    {r2}
-ldr     r2,=#0x30009FB //Load source pc
+ldr     r2,=m2_source_pc //Load source pc
 ldrb    r2,[r2,#0]
 str     r2,[r3,#0] //Store it
 
@@ -2500,7 +2500,7 @@ pop     {pc}
 //==============================================================================
 c7ea2_shop_clear:
 push    {lr}
-bl      m2_sub_a334c
+bl      m2_store_to_win_memory
 ldr     r0,=#0x3005230 //Window generic address
 ldr     r0,[r0,#8]        //Load the dialogue window
 bl      clear_window
