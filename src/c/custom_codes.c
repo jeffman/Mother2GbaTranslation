@@ -37,6 +37,29 @@ int load_The_user_target(byte* base_data_ptr)
     return val_to_store;
 }
 
+int load_gender_user_target(byte* base_data_ptr)
+{
+    int val_to_store = 1;
+    short user;
+    
+    if((*(base_data_ptr + BATTLE_USER_INFO_BASE) == 1) || (*(base_data_ptr + BATTLE_USER_INFO_BASE + 1) != 0))
+    {
+        user = *((short*)(base_data_ptr + BATTLE_USER_DATA_BASE));
+        val_to_store = ((m2_enemy_attributes[user] >> 8) & 0xFF);
+        
+        if(user == KING)
+            val_to_store = NEUTRAL;
+    }
+    else
+    {
+        user = *((short*)(base_data_ptr + BATTLE_USER_DATA_BASE));
+        if(user <= 3)
+            val_to_store = (*(base_data_ptr + BATTLE_USER_INFO_BASE + 2)) != PAULA ? MALE : FEMALE; //Only Paula is female
+    }
+
+    return val_to_store;
+}
+
 int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, byte* dest)
 {
     int addedSize = 0;
@@ -85,6 +108,18 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
                 case BATTLE_TARGET_THE:
                     // 5E FF 03 : Load target's usage of "The " into memory
                     val_to_store = load_The_user_target(m2_btl_target_ptr);
+                    store = true;
+                    break;
+                    
+                case BATTLE_USER_GENDER:
+                    // 5E FF 04 : Load user's gender into memory
+                    val_to_store = load_gender_user_target(m2_btl_user_ptr);
+                    store = true;
+                    break;
+                    
+                case BATTLE_TARGET_GENDER:
+                    // 5E FF 05 : Load target's gender into memory - UNUSED but coded, just like in EB
+                    val_to_store = load_gender_user_target(m2_btl_target_ptr);
                     store = true;
                     break;
                     
