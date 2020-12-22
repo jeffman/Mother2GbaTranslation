@@ -972,20 +972,9 @@ pop     {r4,pc}
 .org 0x80DB0D2 :: strb r5,[r4,2]
 .org 0x80DB0D6 :: strb r0,[r4,3]
 
-// "The" flag checks
-.org 0x80DB084 :: bl db04c_theflag :: nop :: nop
-.org 0x80DB110 :: bl dae9c_king_0_the
-.org 0x80DB156 :: bl db156_party_0_the //Not needed anymore, but is a good measure
-.org 0x80DAE30 :: bl db04c_theflag :: nop :: nop
-.org 0x80DAE9C :: bl dae9c_king_0_the
-.org 0x80DAEDA :: bl daeda_party_0_the //Not needed anymore, but is a good measure
-.org 0x80EC93C :: bl ec93c_party_0_the //Leveling up - Not needed anymore, but is a good measure
+// "The" flag checks - for target window
 .org 0x80DCD5C :: bl dcd5c_theflag :: nop :: nop
-.org 0x80DB08E :: bl db08e_theflagflag
-.org 0x80DAE3A :: bl db08e_theflagflag
 .org 0x80DCD66 :: bl db08e_theflagflag
-.org 0x80C9C58 :: bl c9c58_9f_ad_minThe
-.org 0x80C9C84 :: bl c9c58_9f_ad_minThe
 .org 0x80CA442 :: bl ca442_store_letter
 
 // Ignore the hard-coded Japanese "and cohorts"
@@ -2078,6 +2067,8 @@ disclaimer_map:
 .definelabel m2_script_readability  ,0x3004F08
 .definelabel m2_psi_exist           ,0x300525C
 .definelabel m2_active_window_pc    ,0x3005264
+.definelabel m2_btl_user_ptr        ,0x300538C
+.definelabel m2_btl_target_ptr      ,0x3005390
 .definelabel m2_setup_naming_mem    ,0x8001D5C
 .definelabel m2_soundeffect         ,0x8001720
 .definelabel m2_copy_names_perm_mem ,0x8002088
@@ -2119,6 +2110,7 @@ disclaimer_map:
 .definelabel m2_hpwindow_up         ,0x80D3F0C
 .definelabel m2_curhpwindow_down    ,0x80D41D8
 .definelabel m2_sub_d6844           ,0x80D6844
+.definelabel m2_sub_daf84           ,0x80DAF84
 .definelabel m2_setupbattlename     ,0x80DCD00
 .definelabel m2_stat_symb_checker   ,0x8B0EDA4 
 .definelabel m2_div                 ,0x80F49D8

@@ -984,7 +984,7 @@ pop     {pc}
 dcd00_enemy_letter:
 push    {r1-r2,lr}
 ldrb    r1,[r5,#0]
-cmp     r1,#1 //In case the name has a "The " at the beginning, remove it
+cmp     r1,#1 //In case the name has a "the " at the beginning, remove it
 bne     @@end
 mov     r2,sp
 add     r2,#0xC //Get where the writing stack for the name starts
@@ -1010,29 +1010,14 @@ pop     {r1-r2,pc}
 //==============================================================================
 // Add a space between enemy name and letter in multi-enemy fights for 9F FF and AD FF. Only enemies call this.
 dae00_enemy_letter:
-push    {r1-r2,lr}
-ldrb    r1,[r4,#0]
-cmp     r1,#1 //In case the name has a "The " at the beginning, remove it
-bne     @@end
-mov     r2,sp
-add     r2,#0xC //Get where the writing stack for the name starts
-sub     r4,r4,#4
-@@cycle: //The removed and shifted everything by 4 bytes
-ldr     r1,[r2,#4]
-str     r1,[r2,#0]
-add     r2,#4
-cmp     r2,r4
-ble     @@cycle
-
-@@end:
-sub     r4,r4,#2 //The the flag must be accounted for. It moves the pointer by 2, so we put it back
+push    {lr}
 sub     r0,0x90
 strb    r0,[r4,#1] //Put the letter near the enemy writing space
 mov     r0,#0x50 //Store the space
 strb    r0,[r4]
 mov     r0,#0 //Store the the flag as 0
 strb    r0,[r4,#4]
-pop     {r1-r2,pc}
+pop     {pc}
 .pool
 
 //==============================================================================
@@ -1063,33 +1048,6 @@ pop     {r4,pc}
 .pool
 
 //==============================================================================
-// "The" flag checks for AD FF and 9F FF
-db04c_theflag:
-push    {r4,lr}
-
-// Clobbered code: get enemy string pointer
-lsl     r4,r2,1
-bl      0x80BE260
-mov     r1,r0
-mov     r0,sp
-add     r0,8
-
-// Check for "The" flag
-ldr     r3,=m2_enemy_attributes
-ldrb    r3,[r3,r4] // "The" flag
-cmp     r3,0
-beq     @@next
-
-// Write "The " before the enemy name
-ldr     r2,=0x50959884
-str     r2,[r0]
-add     r0,4
-
-@@next:
-pop     {r4,pc}
-.pool
-
-//==============================================================================
 db08e_theflagflag: //Puts a flag at the end of the name that is 1 if the has been added. 0 otherwise. (called right after db04c_theflag or dcd5c_theflag)
 push    {r3,lr}
 bl      0x80DAEEC
@@ -1098,135 +1056,6 @@ add     r0,#2
 strb    r3,[r0,#0]
 mov     r3,r0
 pop     {pc}
-.pool
-
-//==============================================================================
-dae9c_king_0_the: //King is different than the other chosen ones, it's needed to operate on the stack before it goes to the proper address because its branch reconnects with the enemies' routine.
-push    {r1,lr}
-ldmia   [r0]!,r2,r3 //Loads and stores King's name
-stmia   [r1]!,r2,r3
-pop     {r0}
-bl      _add_0_end_of_name
-pop     {pc}
-
-_get_pointer_to_stack: //r0 has the value r1 will have
-push    {r1,lr}
-mov     r1,r0
-ldr     r0,=#0x3005220
-ldr     r0,[r0,#0]
-lsl     r1,r1,#4
-add     r0,r0,r1 //Writing stack address
-pop     {r1,pc}
-
-_add_0_end_of_name: //assumes r0 has the address to the stack. Stores 0 after the end of the name.
-push    {r1,lr}
-@@cycle: //Get to the end of the name
-ldrb    r1,[r0,#0]
-cmp     r1,#0
-beq     @@end_of_cycle
-@@keep_going:
-add     r0,#1
-b       @@cycle
-@@end_of_cycle:
-ldrb    r1,[r0,#1]
-cmp     r1,#0xFF
-bne     @@keep_going
-mov     r1,#0 //Store 0 after the 0xFF00
-strb    r1,[r0,#2]
-pop     {r1,pc}
-//==============================================================================
-daeda_party_0_the:
-push    {lr}
-bl      0x80DB01C
-mov     r0,#0x50
-bl      _get_pointer_to_stack
-bl      _add_0_end_of_name
-pop     {pc}
-
-//==============================================================================
-ec93c_party_0_the:
-push    {lr}
-bl      0x80EC010
-mov     r0,#0x50
-bl      _get_pointer_to_stack
-bl      _add_0_end_of_name
-pop     {pc}
-
-//==============================================================================
-db156_party_0_the:
-push    {lr}
-bl      0x80DB02C
-mov     r0,#0x4C
-bl      _get_pointer_to_stack
-bl      _add_0_end_of_name
-pop     {pc}
-
-//==============================================================================
-c9c58_9f_ad_minThe: //Routine that changes The to the and viceversa if need be for 9F FF and for AD FF
-push    {r2,lr}
-ldr     r0,=#0x3005220
-cmp     r4,#0x9F //If this is 9F, then load the user string pointer
-bne     @@ad_setup
-bl      custom_user_pointer //Load the user string pointer
-b       @@common
-
-@@ad_setup: //If this is AD, then load the target string pointer
-push    {r7}
-bl      c980c_target_pointer //Load the target string pointer
-pop     {r7}
-mov     r1,r0
-
-@@common:
-mov     r2,#0
-
-@@cycle:
-ldrb    r0,[r1,r2]
-cmp     r0,#0xFF
-beq     @@next //Find its end
-add     r2,#1
-b       @@cycle
-
-@@next:
-add     r2,#1
-ldrb    r0,[r1,r2]
-cmp     r0,#1 //Does this string have the the flag? If it does not, then proceed to the end
-bne     @@end
-ldr     r2,=0x50959884 //"The "
-ldr     r0,[r1,#0]
-sub     r2,r0,r2 
-cmp     r2,#0
-beq     @@next_found_the //Does this string have "The "? If it does, proceed accordingly
-cmp     r2,#0x20
-beq     @@next_found_the //Does this string have "the "? If it does, proceed accordingly
-
-//For the other languages: add the other things to compare to here...? Maybe you can do it in a smarter way though...
-
-//No articles found. Go to the end
-b       @@end
-
-@@next_found_the: //A starting "The " or "the " has been found
-//Assumes the uppercase and lowercase characters are 0x20 apart
-ldr     r0,=m2_cstm_last_printed
-ldrb    r0,[r0,#0]
-cmp     r0,#0x70 //Is the previous character an @?
-beq     @@Upper
-
-mov     r0,#0x20
-sub     r2,r0,r2 //Is this "t"? If it is, this will be 0. Otherwise, it will be 0x20
-ldr     r0,[r1,#0]
-add     r0,r0,r2 //Ensure it is the
-strb    r0,[r1,#0]
-b       @@end
-
-@@Upper:
-ldr     r0,[r1,#0]
-sub     r0,r0,r2 //Ensure it is The
-strb    r0,[r1,#0]
-
-@@end:
-ldr     r0,[r6,#0] //Clobbered code
-add     r0,#2
-pop     {r2,pc}
 .pool
 
 //==============================================================================

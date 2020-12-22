@@ -8,7 +8,15 @@
 #define INV_WINDOW_VALUE      4
 #define DIALOGUE_WINDOW_VALUE 2
 
+#define BATTLE_USER_DATA_BASE 0x42
+#define BATTLE_USER_INFO_BASE 0x5C
+#define BATTLE_USER_VAL_BASE  0x92
+#define KING                  0xA0
+#define PORKY                 0xD8
+
 #define ENEMY_PLURALITY 1
+#define BATTLE_USER_THE 2
+#define BATTLE_TARGET_THE 3
 
 #define RESET_STORED_GOODS    0x59
 #define RESTORE_DIALOGUE      0x5A
@@ -18,6 +26,7 @@
 #define STORE_TO_WINDOW_DATA  0x5E
 #define SET_PIXEL_X_RENDERER  0x5F
 #define ADD_PIXEL_X_RENDERER  0x60
+
 #define BASE_GRAPHICS_ADDRESS 0x6000000
 
 int custom_codes_parse(int code, char* parserAddress, WINDOW* window);
@@ -25,7 +34,11 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
 
 extern void load_pixels_overworld();
 extern void generic_reprinting_first_menu_talk_to_highlight();
+extern byte m2_sub_daf84(short value);
 
+extern unsigned short m2_enemy_attributes[];
+extern byte* m2_btl_user_ptr;
+extern byte* m2_btl_target_ptr;
 extern byte m2_bat_enemies_size;
 extern byte m2_source_pc;
 extern byte m2_active_window_pc;

@@ -17,6 +17,7 @@ int __attribute__((naked)) m2_store_to_win_memory(int value) {}
 int __attribute__((naked)) m2_sub_a3384(int value) {}
 void __attribute__((naked)) m2_sub_d3c50() {}
 void __attribute__((naked)) m2_sub_d6844() {}
+byte __attribute__((naked)) m2_sub_daf84(short value) {}
 int __attribute__((naked)) m2_setupwindow(WINDOW* window, short window_x, short window_y, short window_width, short window_height) {}
 int __attribute__((naked)) m2_clearwindowtiles(WINDOW* window) {}
 void __attribute__((naked)) m2_printstr(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight) {}
