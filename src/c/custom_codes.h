@@ -44,6 +44,8 @@ extern void generic_reprinting_first_menu_talk_to_highlight();
 extern byte m2_sub_daf84(short value);
 
 extern unsigned short m2_enemy_attributes[];
+extern short m2_is_battle;
+extern byte m2_cstm_last_pc;
 extern byte* m2_btl_user_ptr;
 extern byte* m2_btl_target_ptr;
 extern byte m2_bat_enemies_size;

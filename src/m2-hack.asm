@@ -2062,11 +2062,13 @@ disclaimer_map:
 .definelabel m2_old_rockin          ,0x3001F3A
 .definelabel m2_rockin              ,0x3001F3C
 .definelabel m2_old_japanese_name   ,0x3001F42
+.definelabel m2_cstm_last_pc        ,0x3001F4E
 .definelabel m2_cstm_last_printed   ,0x3001F4F
 .definelabel m2_player1             ,0x3001F50
 .definelabel m2_script_readability  ,0x3004F08
 .definelabel m2_psi_exist           ,0x300525C
 .definelabel m2_active_window_pc    ,0x3005264
+.definelabel m2_is_battle           ,0x3005344
 .definelabel m2_btl_user_ptr        ,0x300538C
 .definelabel m2_btl_target_ptr      ,0x3005390
 .definelabel m2_setup_naming_mem    ,0x8001D5C

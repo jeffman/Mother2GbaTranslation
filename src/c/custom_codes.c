@@ -18,6 +18,9 @@ int load_The_user_target(byte* base_data_ptr)
     int val_to_store = 1;
     short user;
     
+    if(!m2_is_battle)
+        return 1;
+    
     if((*(base_data_ptr + BATTLE_USER_INFO_BASE) == 1) || (*(base_data_ptr + BATTLE_USER_INFO_BASE + 1) != 0))
     {
         user = *((short*)(base_data_ptr + BATTLE_USER_DATA_BASE));
@@ -41,6 +44,9 @@ int load_gender_user_target(byte* base_data_ptr)
 {
     int val_to_store = 1;
     short user;
+    
+    if(!m2_is_battle)
+        return m2_cstm_last_pc != PAULA ? MALE : FEMALE; //Only Paula is female
     
     if((*(base_data_ptr + BATTLE_USER_INFO_BASE) == 1) || (*(base_data_ptr + BATTLE_USER_INFO_BASE + 1) != 0))
     {

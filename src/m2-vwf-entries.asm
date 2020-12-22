@@ -898,6 +898,7 @@ pop     {pc}
 // Use new pointer for user/target strings
 ebfd4_user_pointer:
 push    {lr}
+bl      save_last_pc_overworld
 mov     r4,0x4C
 lsl     r4,r4,4
 add     r0,r0,r4
@@ -970,6 +971,40 @@ lsl     r7,r7,4
 add     r0,r0,r7
 bx      lr
 .pool
+
+//==============================================================================
+//Saves the last loaded pc for the overworld
+save_last_pc_overworld:
+push    {r0-r1,lr}
+ldr     r1,=m2_is_battle
+ldrh    r1,[r1]
+cmp     r1,#0 //Are we in the overworld?
+bne     @@total_end
+mov     r1,0 //If we are, find out which pc it is...
+ldr     r0,=m2_ness_name //Ness
+cmp     r0,r2
+beq     @@end
+mov     r1,1
+add     r0,7 //Paula
+cmp     r0,r2
+beq     @@end
+mov     r1,2
+add     r0,7 //Jeff
+cmp     r0,r2
+beq     @@end
+mov     r1,3
+add     r0,7 //Poo
+cmp     r0,r2
+beq     @@end
+mov     r1,0xFF
+
+@@end:
+ldr     r0,=m2_cstm_last_pc //Save it here
+strb    r1,[r0]
+
+@@total_end:
+pop     {r0-r1,pc}
+
 
 //==============================================================================
 //Sets the names' background to a default
