@@ -13,7 +13,7 @@ int custom_codes_parse(int code, char* parserAddress, WINDOW* window)
     return custom_codes_parse_generic(code, parserAddress, window, (byte*)BASE_GRAPHICS_ADDRESS);
 }
 
-int load_The_user_target(byte* base_data_ptr)
+int load_The_user_target(BATTLE_DATA* bd, bool ignore_letters)
 {
     int val_to_store = 1;
     short user;
@@ -21,36 +21,36 @@ int load_The_user_target(byte* base_data_ptr)
     if(!m2_is_battle)
         return 1;
     
-    if((*(base_data_ptr + BATTLE_USER_INFO_BASE) == 1) || (*(base_data_ptr + BATTLE_USER_INFO_BASE + 1) != 0))
+    if(bd->is_enemy || bd->npc_id != 0)
     {
-        user = *((short*)(base_data_ptr + BATTLE_USER_DATA_BASE));
+        user = m2_btl_target_ptr->id;
         val_to_store = (m2_enemy_attributes[user] & 0xFF) + 1;
         
-        if(user != PORKY && (*(base_data_ptr + BATTLE_USER_INFO_BASE) == 1))
+        if(!ignore_letters && user != PORKY && bd->is_enemy)
         {
-            if(((*(base_data_ptr + BATTLE_USER_INFO_BASE - 3) != 1) || m2_sub_daf84((*((short*)(base_data_ptr + BATTLE_USER_VAL_BASE)))) != 2))
-                val_to_store = 1; //Multiple of the same enemy are on the field...
+            if(bd->letter != 1 || m2_sub_daf84(bd->enemy_id) != 2)
+                val_to_store = NO_THE; //Multiple of the same enemy are on the field...
         }
         if(user == KING)
-            val_to_store = 1;
+            val_to_store = NO_THE;
     }
     else
-        val_to_store = 1; //It's a party member, no "The "
+        val_to_store = NO_THE; //It's a party member, no "The "
 
     return val_to_store;
 }
 
-int load_gender_user_target(byte* base_data_ptr)
+int load_gender_user_target(BATTLE_DATA* bd)
 {
-    int val_to_store = 1;
+    int val_to_store = MALE; //Default is male
     short user;
     
     if(!m2_is_battle)
         return m2_cstm_last_pc != PAULA ? MALE : FEMALE; //Only Paula is female
     
-    if((*(base_data_ptr + BATTLE_USER_INFO_BASE) == 1) || (*(base_data_ptr + BATTLE_USER_INFO_BASE + 1) != 0))
+    if(bd->is_enemy || bd->npc_id != 0)
     {
-        user = *((short*)(base_data_ptr + BATTLE_USER_DATA_BASE));
+        user = m2_btl_target_ptr->id;
         val_to_store = ((m2_enemy_attributes[user] >> 8) & 0xFF);
         
         if(user == KING)
@@ -58,9 +58,9 @@ int load_gender_user_target(byte* base_data_ptr)
     }
     else
     {
-        user = *((short*)(base_data_ptr + BATTLE_USER_DATA_BASE));
+        user = bd->id;
         if(user <= 3)
-            val_to_store = (*(base_data_ptr + BATTLE_USER_INFO_BASE + 2)) != PAULA ? MALE : FEMALE; //Only Paula is female
+            val_to_store = bd->pc_id != PAULA ? MALE : FEMALE; //Only Paula is female
     }
 
     return val_to_store;
@@ -95,6 +95,7 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
             
         case STORE_TO_WINDOW_DATA:
             // 5E FF XX : Load a value into memory, based on XX
+            addedSize = 3;
             val_to_store = 0;
             store = false;
             switch((byte)parserAddress[2])
@@ -107,13 +108,14 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
                 
                 case BATTLE_USER_THE:
                     // 5E FF 02 : Load user's usage of "The " into memory
-                    val_to_store = load_The_user_target(m2_btl_user_ptr);
+                    val_to_store = load_The_user_target(m2_btl_user_ptr, (bool)parserAddress[3]);
+                    addedSize += 1;
                     store = true;
                     break;
                     
                 case BATTLE_TARGET_THE:
                     // 5E FF 03 : Load target's usage of "The " into memory
-                    val_to_store = load_The_user_target(m2_btl_target_ptr);
+                    val_to_store = load_The_user_target(m2_btl_target_ptr, false);
                     store = true;
                     break;
                     
@@ -134,7 +136,6 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
             }
             if(store)
                 m2_store_to_win_memory(val_to_store);
-            addedSize = 3;
             break;
         
         case CALL_GIVE_TEXT:

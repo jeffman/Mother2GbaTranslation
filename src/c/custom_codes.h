@@ -4,6 +4,7 @@
 #include "types.h"
 #include "locs.h"
 #include "window.h"
+#include "battle_data.h"
 
 #define INV_WINDOW_VALUE      4
 #define DIALOGUE_WINDOW_VALUE 2
@@ -13,9 +14,8 @@
 #define FEMALE 2
 #define NEUTRAL 3
 
-#define BATTLE_USER_DATA_BASE 0x42
-#define BATTLE_USER_INFO_BASE 0x5C
-#define BATTLE_USER_VAL_BASE  0x92
+#define NO_THE 1
+
 #define KING                  0xA0
 #define PORKY                 0xD8
 
@@ -46,8 +46,8 @@ extern byte m2_sub_daf84(short value);
 extern unsigned short m2_enemy_attributes[];
 extern short m2_is_battle;
 extern byte m2_cstm_last_pc;
-extern byte* m2_btl_user_ptr;
-extern byte* m2_btl_target_ptr;
+extern BATTLE_DATA* m2_btl_user_ptr;
+extern BATTLE_DATA* m2_btl_target_ptr;
 extern byte m2_bat_enemies_size;
 extern byte m2_source_pc;
 extern byte m2_active_window_pc;
