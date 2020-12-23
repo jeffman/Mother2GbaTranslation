@@ -48,7 +48,7 @@ extern short m2_is_battle;
 extern byte m2_cstm_last_pc;
 extern BATTLE_DATA* m2_btl_user_ptr;
 extern BATTLE_DATA* m2_btl_target_ptr;
-extern byte m2_bat_enemies_size;
+extern byte m2_btl_enemies_size;
 extern byte m2_source_pc;
 extern byte m2_active_window_pc;
 

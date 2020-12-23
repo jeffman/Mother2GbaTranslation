@@ -102,7 +102,7 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
             {
                 case ENEMY_PLURALITY:
                     // 5E FF 01 : Load enemy plurality into memory
-                    val_to_store = m2_bat_enemies_size > 3 ? 3 : m2_bat_enemies_size;
+                    val_to_store = m2_btl_enemies_size > 3 ? 3 : m2_btl_enemies_size;
                     store = true;
                     break;
                 

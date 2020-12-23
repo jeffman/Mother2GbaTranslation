@@ -2044,7 +2044,7 @@ disclaimer_map:
 
 .definelabel buffer_subtractor      ,0x0000800
 .definelabel overworld_buffer       ,0x200F200
-.definelabel m2_bat_enemies_size    ,0x2025038
+.definelabel m2_btl_enemies_size    ,0x2025038
 .definelabel m2_hall_line_size      ,0x3000374
 .definelabel m2_source_pc           ,0x30009FB
 .definelabel m2_ness_data           ,0x3001D54
