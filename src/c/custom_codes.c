@@ -146,11 +146,16 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
             byte target = m2_active_window_pc;
             int item_index = inv_window->cursor_x == 0 ? 0 : 1;
             item_index += (inv_window->cursor_y << 1);
-            unsigned short item = pc_stats[source]->goods[item_index];
+            unsigned short item = (*pc_stats)[source].goods[item_index];
             byte* free_string = *free_strings_pointers;
             if(item != NULL)
+            {
                 give_print(item, target, source, (*window_pointers) + DIALOGUE_WINDOW_VALUE, free_string);
-            addedSize = -1;
+                clearWindowTiles_buffer((*window_pointers) + DIALOGUE_WINDOW_VALUE);
+                addedSize = -1;
+            }
+            else // Not really needed, but will just make the game not print anything instead of softlocking
+                addedSize = 2;
             break;
         
         case LOAD_BUFFER:
