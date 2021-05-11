@@ -23,7 +23,7 @@ int load_The_user_target(BATTLE_DATA* bd, bool ignore_letters)
     
     if(bd->is_enemy || bd->npc_id != 0)
     {
-        user = m2_btl_target_ptr->id;
+        user = bd->id;
         val_to_store = (m2_enemy_attributes[user] & 0xFF) + 1;
         
         if(!ignore_letters && user != PORKY && bd->is_enemy)
@@ -50,7 +50,7 @@ int load_gender_user_target(BATTLE_DATA* bd)
     
     if(bd->is_enemy || bd->npc_id != 0)
     {
-        user = m2_btl_target_ptr->id;
+        user = bd->id;
         val_to_store = ((m2_enemy_attributes[user] >> 8) & 0xFF);
         
         if(user == KING)
