@@ -46,7 +46,7 @@ byte *readCharacterGive(byte *outputString, byte chr, byte source, byte target, 
 
 extern void m2_soundeffect(int index);
 extern int m2_div(int dividend, int divisor);
-extern int m2_sub_a334c(int value);
+extern int m2_store_to_win_memory(int value);
 extern int m2_sub_a3384(int value);
 extern void m2_clearwindowtiles(WINDOW* window);
 extern int bin_to_bcd(int value, int* digit_count);
