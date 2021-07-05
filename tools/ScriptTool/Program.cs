@@ -440,6 +440,9 @@ namespace ScriptTool
             // Get the strings
             string m12Strings = File.ReadAllText(Path.Combine(options.WorkingDirectory, "m12-strings-english.txt"));
 
+            // Preprocess the strings
+            m12Strings = PreProcessStrings.PrepareMainText(m12Strings);
+
             // Compile
             m12Compiler.ScanString(m12Strings, ref referenceAddress, ebCharLookup, false);
             referenceAddress = baseAddress;
