@@ -8,6 +8,7 @@
 #define FALSE 0
 
 #define TILESET_OFFSET_BUFFER_MULTIPLIER 0x8
+#define DEFAULT_DOUBLE_TILE_HEIGHT 0xC
 #define CHAR_OFFSET 0x50
 #define CHAR_END 0x60
 #define YOUWON_START 0x64
@@ -41,7 +42,7 @@ int count_pixels_to_tiles(byte *str, int length, int startingPos);
 int count_pixels_to_tiles_normal_string(byte *str, int startingPos);
 int expand_bit_depth(byte row, byte foreground);
 byte reduce_bit_depth(int row, int foregroundRow);
-void reduce_bit_depth_sp(int* TileRows, int* bufferValues);
+void reduce_bit_depth_sp(int* TileRows, int* bufferValues, int* bottomBufferValues);
 byte print_character(byte chr, int x, int y);
 byte print_character_formatted(byte chr, int x, int y, int font, int foreground);
 byte print_character_to_window(byte chr, WINDOW* window);
