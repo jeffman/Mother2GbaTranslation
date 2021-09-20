@@ -52,6 +52,12 @@ mov     r3,6
 .org 0x800027A :: bl m12_intro_screen
 
 //---------------------------------------------------------
+// Allocate the printing buffer when the content previously allocated is reset
+//---------------------------------------------------------
+
+.org 0x8005B80 :: bl _05b80_alloc_buffer
+
+//---------------------------------------------------------
 // C0A5C hacks (status window)
 //---------------------------------------------------------
 
@@ -2053,8 +2059,9 @@ disclaimer_map:
 // Existing subroutines/data
 //==============================================================================
 
+.definelabel buffer_size            ,0x0000A80
 .definelabel buffer_subtractor      ,0x0000800
-.definelabel overworld_buffer       ,0x200F200
+.definelabel overworld_buffer       ,0x2028008
 .definelabel m2_hall_line_size      ,0x3000374
 .definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10
