@@ -3303,6 +3303,19 @@ bl      store_pixels_overworld
 pop     {pc}
 
 //==============================================================================
+//Allocs the printing buffer. The buffer currently is 0xA80 bytes long
+_05b80_alloc_buffer:
+push    {lr}
+
+ldr     r0,=#buffer_size
+bl      0x8005B9C
+
+ldr     r0,=#0x3002A4C
+str     r4,[r0,#0]
+pop     {pc}
+
+
+//==============================================================================
 //Loads the vram into the buffer, it's called each time there is only the main file_select window active (a good way to set the whole thing up)
 load_pixels_overworld:
 push    {r0-r3,lr}
