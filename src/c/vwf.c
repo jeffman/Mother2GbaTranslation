@@ -2037,6 +2037,19 @@ int print_alphabet_buffer(WINDOW* window)
     }
 }
 
+int check_overworld_buffer()
+{
+    int address = *((int*)(OVERWORLD_BUFFER_POINTER));
+    if(address == 0)
+    {
+        int tmp_counter = m2_buffer_counter;
+        address = (int)m2_malloc(OVERWORLD_BUFFER_SIZE);
+        *((int*)(OVERWORLD_BUFFER_POINTER)) = address;
+        m2_buffer_counter = tmp_counter;
+    }
+    return address;
+}
+
 void load_pixels_overworld_buffer()
 {
     int tile = *tile_offset;

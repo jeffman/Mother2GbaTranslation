@@ -55,7 +55,7 @@ mov     r3,6
 // Allocate the printing buffer when the content previously allocated is reset
 //---------------------------------------------------------
 
-.org 0x8005B80 :: bl _05b80_alloc_buffer
+.org 0x8005B80 :: bl _05b80_alloc_buffer_pointer
 
 //---------------------------------------------------------
 // C0A5C hacks (status window)
@@ -2059,9 +2059,7 @@ disclaimer_map:
 // Existing subroutines/data
 //==============================================================================
 
-.definelabel buffer_size            ,0x0000A80
 .definelabel buffer_subtractor      ,0x0000800
-.definelabel overworld_buffer       ,0x2028008
 .definelabel m2_hall_line_size      ,0x3000374
 .definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10
@@ -2080,6 +2078,7 @@ disclaimer_map:
 .definelabel m2_old_japanese_name   ,0x3001F42
 .definelabel m2_cstm_last_printed   ,0x3001F4F
 .definelabel m2_player1             ,0x3001F50
+.definelabel m2_buffer_counter      ,0x3002A4C
 .definelabel m2_script_readability  ,0x3004F08
 .definelabel m2_psi_exist           ,0x300525C
 .definelabel m2_active_window_pc    ,0x3005264
@@ -2092,6 +2091,7 @@ disclaimer_map:
 .definelabel m2_change_naming_space ,0x8004E08
 .definelabel m2_copy_name_temp_mem  ,0x8004E34
 .definelabel m2_insert_default_name ,0x8005708
+.definelabel m2_malloc              ,0x8005B9C
 .definelabel m2_get_hall_address    ,0x800D7BC
 .definelabel m12_dim_palette        ,0x80137DC
 .definelabel m2_enable_script       ,0x80A1F6C
