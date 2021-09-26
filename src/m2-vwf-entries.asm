@@ -2618,12 +2618,12 @@ ldrb    r1,[r4,#0x3] //If it is, sets vwf_skip to true, clears the window and up
 mov     r2,#1
 orr     r2,r1
 strb    r2,[r4,#0x3]
-mov     r3,r0
+push    {r0}
 bl      check_overworld_buffer
 ldr     r1,=#buffer_subtractor
 sub     r1,r0,r1
 mov     r0,r4
-mov     r4,r3
+pop     {r4}
 bl      clear_window_buffer
 mov     r0,r4
 bl      psiTargetWindow_buffer
