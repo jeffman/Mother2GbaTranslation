@@ -23,7 +23,9 @@
 #define WINDOW_HEADER_Y 0x11
 #define WINDOW_HEADER_TILE (WINDOW_HEADER_X + (WINDOW_HEADER_Y * 32))
 
-#define OVERWORLD_BUFFER 0x2028008
+#define OVERWORLD_BUFFER_POINTER 0x2028008
+#define OVERWORLD_BUFFER_SIZE 0xA80
+#define OVERWORLD_BUFFER check_overworld_buffer()
 
 #define CUSTOMCC_SET_X 0x5F
 #define CUSTOMCC_ADD_X 0x60
@@ -126,6 +128,7 @@ int highlight_string(WINDOW* window, byte* str, unsigned short x, unsigned short
 void highlight_talk_to();
 unsigned short printstr_hlight_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
 unsigned short printstr_hlight_pixels_buffer(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
+int check_overworld_buffer();
 void load_pixels_overworld_buffer();
 void store_pixels_overworld_buffer(int totalYs);
 void store_pixels_overworld_buffer_totalTiles(int totalTiles);
@@ -134,6 +137,7 @@ void eb_cartridge_palette_change(bool background);
 extern unsigned short m2_coord_table_fast_progression[];
 extern unsigned short m2_coord_table[];
 extern byte m2_ness_name[];
+extern int m2_buffer_counter;
 extern int m2_bits_to_nybbles[];
 extern int m2_bits_to_nybbles_fast[];
 extern byte m2_nybbles_to_bits[];
@@ -175,3 +179,4 @@ extern void m2_sub_d6844();
 extern int m2_setupwindow(WINDOW* window, short window_x, short window_y, short window_width, short window_height);
 extern void m2_setupbattlename(short value);
 extern void store_pixels_overworld();
+extern byte* m2_malloc();
