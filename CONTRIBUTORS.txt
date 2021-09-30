@@ -1,7 +1,5 @@
-Hacking, script tool, script compiler/decompiler:
-  JeffMan
-
 Hacking:
+  JeffMan
   Lorenzooone
   PhoenixBound
 
@@ -24,6 +22,16 @@ Text conversion:
   Sterophonick
   Normmatt
   KillThad
+
+Graphics:
+  JeffMan
+  surrashubound
+  Masaru
+
+Testing:
+  Eevs
+  John Enigma
+  CloverCharBoyBound
 
 Special thanks:
   TragicManner
