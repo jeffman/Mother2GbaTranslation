@@ -1,44 +1,50 @@
 [Environment]::CurrentDirectory = (Get-Location -PSProvider FileSystem).ProviderPath
 
 #Region Variables
-$input_rom_file    = "bin/m12fresh.gba"
-$output_rom_file   = "bin/m12.gba"
-$eb_rom_file       = "bin/eb.smc"
-$working_dir       = "working"
-$src_dir           = "src"
-$compiled_asm_file = "src/m2-compiled.asm"
-$includes_asm_file = "m12-includes.asm"    # implicitly rooted in working_dir
-$hack_asm_file     = "m2-hack.asm"         # implicitly rooted in src_dir
+$input_rom_file     = "bin/m12fresh.gba"
+$output_rom_file    = "bin/m12.gba"
+$eb_rom_file        = "bin/eb.smc"
+$working_dir        = "working"
+$give_dir           = "working/m12-give-strings"
+$src_dir            = "src"
+$data_dir           = "src/data"
+$give_new_dir       = "src/m12-give-strings"
+$cast_roll_file     = "working/cast_roll.json"
+$staff_credits_file = "working/staff_text.md"
+$compiled_asm_file  = "src/m2-compiled.asm"
+$includes_asm_file  = "m12-includes.asm"    # implicitly rooted in working_dir
+$hack_asm_file      = "m2-hack.asm"         # implicitly rooted in src_dir
 
 $input_c_files =
     "src/c/ext.c",
     "src/c/vwf.c",
     "src/c/locs.c",
+    "src/c/credits.c",
     "src/c/goods.c",
     "src/c/fileselect.c",
     "src/c/status.c",
     "src/c/battle.c",
+    "src/c/equip.c",
     "src/c/psi.c",
-    "src/c/title.c"
+    "src/c/title.c",
+    "src/c/luminehall.c"
 
-$base_c_address    = 0x83755B8;
-$scripttool_cmd    = "bin/ScriptTool/ScriptTool.dll"
-$gcc_cmd           = "arm-none-eabi-gcc"
-$ld_cmd            = "arm-none-eabi-ld"
-$objdump_cmd       = "arm-none-eabi-objdump"
-$readelf_cmd       = "arm-none-eabi-readelf"
-$combined_obj_file = "src/c/combined.o"
-$linked_obj_file   = "src/c/linked.o"
-$combine_script    = "src/c/combine.ld"
-$link_script       = "src/c/link.ld"
-$undefine_obj_file = "src/c/ext.o"
+$base_c_address         = 0x83755B8;
+$scripttool_cmd         = "bin/ScriptTool/ScriptTool.dll"
+$rendercastroll_cmd     = "bin/RenderCastRoll/RenderCastRoll.dll"
+$renderstaffcredits_cmd = "bin/RenderStaffCredits/RenderStaffCredits.dll"
+$gcc_cmd                = "arm-none-eabi-gcc"
+$ld_cmd                 = "arm-none-eabi-ld"
+$objdump_cmd            = "arm-none-eabi-objdump"
+$readelf_cmd            = "arm-none-eabi-readelf"
+$combined_obj_file      = "src/c/combined.o"
+$linked_obj_file        = "src/c/linked.o"
+$combine_script         = "src/c/combine.ld"
+$link_script            = "src/c/link.ld"
+$undefine_obj_file      = "src/c/ext.o"
 
-If     ($IsWindows) { $asm_cmd = "bin/armips.exe" }
-ElseIf ($IsLinux)   { $asm_cmd = "bin/armips" }
-Else {
-    Write-Host "TODO: what's the Mac version of armips?"
-    Exit -1
-}
+If     ($IsWindows)            { $asm_cmd = "bin/armips.exe" }
+ElseIf ($IsLinux -or $IsMacOS) { $asm_cmd = "bin/armips" }
 
 $includes_sym_file   = [IO.Path]::ChangeExtension($includes_asm_file, "sym")
 $output_rom_sym_file = [IO.Path]::ChangeExtension($output_rom_file, "sym")
@@ -51,6 +57,14 @@ $scripttool_args =
     $working_dir,
     $eb_rom_file,
     $input_rom_file
+    
+$rendercastroll_args =
+    $cast_roll_file,
+    $data_dir
+    
+$renderstaffcredits_args =
+    $staff_credits_file,
+    $data_dir
 
 $gcc_args =
     "-c",
@@ -351,6 +365,17 @@ Copy-Item -Path $input_rom_file -Destination $output_rom_file
 & dotnet $scripttool_cmd $scripttool_args
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
+"Copying give strings to src folder..."
+Copy-Item -Path $give_dir -Destination $give_new_dir -Recurse
+
+"Pre-rendering cast roll..."
+& dotnet $rendercastroll_cmd $rendercastroll_args
+if ($LASTEXITCODE -ne 0) { exit -1 }
+
+"Pre-rendering staff credits..."
+& dotnet $renderstaffcredits_cmd $renderstaffcredits_args
+if ($LASTEXITCODE -ne 0) { exit -1 }
+
 # ------------------------ ASSEMBLE GAME TEXT -----------------------
 "Assembling game text..."
 & $asm_cmd -root $working_dir -sym $includes_sym_file $includes_asm_file
@@ -435,5 +460,7 @@ $rom_bytes = [IO.File]::ReadAllBytes($output_rom_file)
 ($hack_symbols + $includes_symbols) | Sort-Object Name | ForEach-Object { "$($_.Value.ToString("X8")) $($_.Name)" } | Set-Content $output_rom_sym_file
 
 "Finished compiling $output_rom_file in $($timer.Elapsed.TotalSeconds.ToString("F3")) s"
+
+Remove-Item -Path $give_new_dir -Recurse
 
 exit 0

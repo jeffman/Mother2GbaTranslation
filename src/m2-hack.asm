@@ -46,6 +46,18 @@ mov     r2,1
 mov     r3,6
 
 //---------------------------------------------------------
+// 00270 hacks (intro screen)
+//---------------------------------------------------------
+
+.org 0x800027A :: bl m12_intro_screen
+
+//---------------------------------------------------------
+// Allocate the printing buffer when the content previously allocated is reset
+//---------------------------------------------------------
+
+.org 0x8005B80 :: bl _05b80_alloc_buffer_pointer
+
+//---------------------------------------------------------
 // C0A5C hacks (status window)
 //---------------------------------------------------------
 
@@ -62,6 +74,8 @@ mov     r3,6
 //.org 0x80B8A3C :: bl print_window_with_buffer
 .org 0x80B8890 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Status menu
 .org 0x80B8664 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of PSI menu
+.org 0x80B8740 :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Equip menu
+.org 0x80B859C :: bl print_window_with_buffer :: bl b8894_printCashWindowAndStore //Main window + Cash Window out of Goods menu
 .org 0x80B831A :: bl initWindow_buffer
 .org 0x80B8320 :: bl b8320_statusWindowTextStore
 
@@ -77,6 +91,8 @@ mov     r3,6
 //---------------------------------------------------------
 
 .org 0x80DC22A :: bl dc22a_load_buffer_battle
+.org 0x80DC8C8 :: lsl r1,r0,#4 :: nop //Fixes wrong pointer
+.org 0x80DC8DE :: nop :: nop //Removes useless print
 
 //---------------------------------------------------------
 // PSI battle window hacks
@@ -153,6 +169,25 @@ mov     r3,6
 .org 0x80B9142 :: bl baec6_psi_window_print_buffer
 
 //---------------------------------------------------------
+// Teleport window hacks
+//---------------------------------------------------------
+.org 0x80B9030 :: bl initWindow_buffer//Opening teleport window - "Where?"
+.org 0x80B9036 :: bl print_window_with_buffer
+.org 0x80B9040 :: bl b9040_special_string
+.org 0x80B90D4 :: bl initWindow_buffer //Going back from teleport to the PSI window
+.org 0x80B90DE :: bl initWindow_buffer
+.org 0x80C5D1C :: bl initWindow_buffer //Initializes the actual teleport window
+.org 0x80C5EB0 :: bl printstr_hlight_buffer
+.org 0x80C5F46 :: bl printstr_hlight_buffer
+.org 0x80C5F80 :: bl c5f80_printstr_hlight_buffer_store_buffer // Multiple pages initial case
+.org 0x80C5EB0 :: bl printstr_hlight_buffer
+.org 0x80C6134 :: bl clearWindowTiles_buffer
+.org 0x80C61C8 :: lsl r0,r5,#3 :: add r0,r0,r5 :: nop //Proper string address
+.org 0x80C6224 :: bl printstr_hlight_buffer
+.org 0x80C625E :: bl c5f80_printstr_hlight_buffer_store_buffer // Multiple pages changing pages
+.org 0x80C5F04 :: bl c5f04_store_if_done //Only one page case
+
+//---------------------------------------------------------
 // Class PSI window hacks
 //---------------------------------------------------------
 
@@ -166,40 +201,198 @@ mov     r3,6
 // Equip window generic hacks
 //---------------------------------------------------------
 
+.org 0x80BB02C :: bl innerEquipInput
+.org 0x80B8066 :: bl printstr_hlight_buffer
 .org 0x80B8074 :: mov r3,#0x12
+.org 0x80B80A2 :: mov r1,#3 :: mov r2,#0xB :: mov r3,#0xD
+.org 0x80B8092 :: bl initWindow_buffer //Initialize equipment window
+.org 0x80B8098 :: bl print_window_with_buffer
+.org 0x80B80BE :: bl initWindow_buffer
+.org 0x80B80C4 :: bl printEquipWindowNumberText
+.org 0x80B80EA :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip //Offense Number
+.org 0x80B8112 :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip //Defense Number
+.org 0x80B8138 :: bl initWindow_buffer
+.org 0x80B813E :: bl print_window_with_buffer
+.org 0x80B814A :: bl equipPrint
+.org 0x80B8152 :: bl innerEquipInput
+.org 0x80B81A2 :: bl initWindow_buffer
+.org 0x80B81A8 :: bl print_window_with_buffer
+.org 0x80B81BC :: bl equipPrint
+.org 0x80B81CC :: bl print_equip_base_numbers
+.org 0x80BAF96 :: bl initWindow_buffer //Go to inner window from outer window
+.org 0x80BAF9C :: bl baf9c_print_window_store_buffer
+.org 0x80BAFE6 :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip //Offense Number
+.org 0x80BB00C :: mov r2,#0x37
+.org 0x80BB17C :: bl equippableReadInput
+.org 0x80BB198 :: bl printEquipNumbersArrow :: bl store_pixels_overworld :: b 0x80BB1AE //Offense Number
+.org 0x80BB1A6 :: mov r2,#0x4C :: mov r3,#0x13 :: bl bb1aa_printnumberequip_store //Defense Number
+.org 0x80BB05E :: bl initWindow_buffer
+.org 0x80BB066 :: bl print_window_with_buffer
+.org 0x80BB08A :: nop :: nop //Remove highlighting
+.org 0x80BB0A8 :: bl initWindow_buffer
+.org 0x80BB24C :: bl initWindow_buffer //Go back to outer window - Also does going back to inner (not innermost) window from weapons - not touched equipment
+.org 0x80BB254 :: bl print_window_with_buffer
+.org 0x80BB2C2 :: bl initWindow_buffer
+.org 0x80BB2CA :: bl print_window_with_buffer
+.org 0x80BB2E0 :: bl initWindow_buffer
+.org 0x80BB2E8 :: bl print_window_with_buffer
+.org 0x80BB2F6 :: bl equipPrint
+.org 0x80BB300 :: bl innerEquipInput
+.org 0x80BB33C :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip
+.org 0x80BB36C :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip
+.org 0x80BB3FC :: bl initWindow_buffer //Go back to inner (not innermost) window from weapons - removed equipment
+.org 0x80BB404 :: bl print_window_with_buffer
+.org 0x80BB41A :: bl initWindow_buffer
+.org 0x80BB422 :: bl print_window_with_buffer
+.org 0x80BB430 :: bl equipPrint
+.org 0x80BB43A :: bl innerEquipInput
+.org 0x80BB476 :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip
+.org 0x80BB4A6 :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip
+.org 0x80BB532 :: bl initWindow_buffer //Go back to inner (not innermost) window from weapons - equipped a weapon
+.org 0x80BB53A :: bl print_window_with_buffer
+.org 0x80BB550 :: bl initWindow_buffer
+.org 0x80BB558 :: bl print_window_with_buffer
+.org 0x80BB566 :: bl equipPrint
+.org 0x80BB570 :: bl innerEquipInput
+.org 0x80BB5AC :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip
+.org 0x80BB5DC :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip
+.org 0x80BB9E4 :: bl initWindow_buffer //Go back to inner (not innermost) window from defensive equipment - not touched equipment
+.org 0x80BB9EC :: bl print_window_with_buffer
+.org 0x80BBA02 :: bl initWindow_buffer
+.org 0x80BBA0A :: bl print_window_with_buffer
+.org 0x80BBA18 :: bl equipPrint
+.org 0x80BBA22 :: bl innerEquipInput
+.org 0x80BBA5E :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip
+.org 0x80BBA8E :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip
+.org 0x80BBB2C :: bl initWindow_buffer //Go back to inner (not innermost) window from defensive equipment - removed equipment
+.org 0x80BBB34 :: bl print_window_with_buffer
+.org 0x80BBB4A :: bl initWindow_buffer
+.org 0x80BBB52 :: bl print_window_with_buffer
+.org 0x80BBB60 :: bl equipPrint
+.org 0x80BBB6A :: bl innerEquipInput
+.org 0x80BBBA6 :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip
+.org 0x80BBBD6 :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip
+.org 0x80BBC8A :: bl initWindow_buffer //Go back to inner (not innermost) window from defensive equipment - equipped something
+.org 0x80BBC92 :: bl print_window_with_buffer
+.org 0x80BBCA8 :: bl initWindow_buffer
+.org 0x80BBCB0 :: bl print_window_with_buffer
+.org 0x80BBCBE :: bl equipPrint
+.org 0x80BBCC8 :: bl innerEquipInput
+.org 0x80BBD04 :: mov r2,#0x37 :: mov r3,#3 :: bl printNumberEquip
+.org 0x80BBD34 :: mov r2,#0x37 :: mov r3,#0x13 :: bl printNumberEquip
+//When first entering the innermost menu
+.org 0x80BB6E0 :: mov r2,#0x54 :: mov r3,#3 :: bl printNumberEquip //Change second offense number's position - Weapon
+.org 0x80BB710 :: mov r2,#0x54 :: mov r3,#0x13 :: bl bb1aa_printnumberequip_store //Change second defense number's position - Weapon
+.org 0x80BB820 :: mov r2,#0x54 :: mov r3,#0x13 :: bl printNumberEquip //Change second defense number's position - Body
+.org 0x80BB950 :: mov r2,#0x54 :: mov r3,#0x13 :: bl printNumberEquip //Change second defense number's position - Arms
+.org 0x80BBE8E :: mov r2,#0x54 :: mov r3,#0x13 :: bl printNumberEquip //Change second defense number's position - Other
+.org 0x80BBEBE :: mov r2,#0x54 :: mov r3,#3 :: bl bb1aa_printnumberequip_store //Change second offense number's position - Other
+//When changing selection in the innermost menu
+.org 0x80BBDF0 :: mov r2,#0x54 :: mov r3,#0x13 :: bl printNumberEquip //Change second defense number's position - Defensive Equipment
+.org 0x80BBE20 :: mov r2,#0x54 :: mov r3,#3 :: bl bb1aa_printnumberequip_store //Change second offense number's position - Defensive Equipment
+
+//---------------------------------------------------------
+// Target dialogue window hacks
+//---------------------------------------------------------
+
+.org 0x80BD496 :: bl ba8ac_load_targets_print
+
+//---------------------------------------------------------
+// Goods window hacks
+//---------------------------------------------------------
+
+.org 0x80B7F4E :: bl c5f80_printstr_hlight_buffer_store_buffer //Prints the balance window
+.org 0x80B7F72 :: bl initWindow_cursor_buffer //Sets up the goods window
+.org 0x80B97A8 :: bl initWindow_buffer //Prints "Who?" going into the window
+.org 0x80B97AE :: bl baf9c_print_window_store_buffer_top
+.org 0x80B992A :: bl initWindow_buffer //Prints "Who?" coming from the inner window
+.org 0x80B9930 :: bl baf9c_print_window_store_buffer_top
+.org 0x80B986E :: bl initWindow_buffer
+.org 0x80B98B8 :: bl b98b8_print_window_store_buffer_needed //Prints "Which?" going into the window
+.org 0x80B99A0 :: bl highlight_string //Highlight chosen item
+.org 0x80B9A4C :: bl baf9c_print_window_store_buffer_needed //Prints "Use\nDrop\n,etc." going into the window
+.org 0x80B9ADE :: bl initWindow_buffer
+.org 0x80BA688 :: bl baf9c_print_window_store_buffer_top //Prints "Use\nDrop\n,etc." going out of the give window
+.org 0x80BA340 :: bl initWindow_buffer //Prints "Who?" going into the window
+.org 0x80BA346 :: bl print_window_with_buffer
+.org 0x80BA37A :: bl initWindow_buffer //initiates the Give window
+.org 0x80BA7FA :: bl initWindow_buffer //initiates the inventory window out of help
+.org 0x80BA810 :: bl initWindow_buffer //initiates the options window out of help
+
+//---------------------------------------------------------
+// Goods window hacks - Stored Goods
+//---------------------------------------------------------
+
+//Choose inventory
+.org 0x80BCDB4 :: bl initWindow_buffer
+//First enter window - More than one page
+.org 0x80C63BC :: bl initWindow_buffer
+.org 0x80C63CC :: bl printstr_hlight_buffer //->Stored Goods(X)
+.org 0x80C6412 :: bl printstr_hlight_buffer //Left part of the inventory
+.org 0x80C643E :: bl printstr_hlight_buffer //Right part of the inventory
+//First enter window - Only one page
+.org 0x80C6492 :: bl initWindow_buffer
+.org 0x80C64DA :: bl printstr_hlight_buffer //Left part of the inventory
+.org 0x80C6518 :: bl printstr_hlight_buffer //Right part of the inventory
+.org 0x80C694A :: bl clearWindowTiles_buffer
+//When pressing arrow to switch page
+.org 0x80C69D8 :: mov r0,#0x12 //Proper address to "->Stored Goods(3)" string
+.org 0x80C69EE :: bl printstr_hlight_buffer //->Stored Goods(X)
+.org 0x80C6A6C :: bl printstr_hlight_buffer //Left part of the inventory
+.org 0x80C6AA4 :: bl printstr_hlight_buffer //Right part of the inventory
+.org 0x80C6AC0 :: bl c6ac0_store_buffer_stored_goods_switch_page
+
+//---------------------------------------------------------
+// Goods window hacks - in battle
+//---------------------------------------------------------
+
+.org 0x80E05C0 :: lsl r1,r0,#4 :: nop //Fixes wrong pointer
+.org 0x80E05D8 :: nop :: nop //Removes useless print
+.org 0x80E0C46 :: bl initWindow_cursor_buffer //initiates the goods window in battle
+.org 0x80E0CE4 :: bl e0ce4_redraw_battle_window_first_four //Reprints the background window for the target choosing items
+.org 0x80E0D1E :: bl printstr_hlight_buffer //Prints the chosen item
+.org 0x80E0EFA :: bl initWindow_buffer :: ldr r0,[r4,#0xC] :: bl print_window_with_buffer //Out of ally target window
+.org 0x80E0FAA :: bl e0faa_redraw_battle_window_first_two
 
 //---------------------------------------------------------
 // BAEF8 hacks (equip window)
 //---------------------------------------------------------
 
 // Erase offense change
-.macro erase_offense
+.macro erase_offense_buffer
     mov     r0,0xC
     mov     r1,0xB
     mov     r2,4
-    bl      print_blankstr
+    bl      bb21c_print_blankstr_buffer
 .endmacro
 
-.macro erase_defense
+.macro erase_defense_buffer
     mov     r0,0xC
     mov     r1,0xD
     mov     r2,4
-    bl      print_blankstr
+    bl      bb21c_print_blankstr_buffer
 .endmacro
 
-.org 0x80BB216 :: erase_offense
-.org 0x80BB38C :: erase_offense
-.org 0x80BB4C6 :: erase_offense
-.org 0x80BB5FC :: erase_offense
-.org 0x80BBAAE :: erase_offense
-.org 0x80BBBF6 :: erase_offense
-.org 0x80BBD54 :: erase_offense
+.macro erase_defense_buffer_store
+    mov     r0,0xC
+    mov     r1,0xD
+    mov     r2,4
+    bl      bb21c_print_blankstr_buffer_store
+.endmacro
+
+.org 0x80BB216 :: erase_offense_buffer
+.org 0x80BB38C :: erase_offense_buffer
+.org 0x80BB4C6 :: erase_offense_buffer
+.org 0x80BB5FC :: erase_offense_buffer
+.org 0x80BBAAE :: erase_offense_buffer
+.org 0x80BBBF6 :: erase_offense_buffer
+.org 0x80BBD54 :: erase_offense_buffer
 
 // Erase defense change
-.org 0x80BB226 :: erase_defense
-.org 0x80BBABE :: erase_defense
-.org 0x80BBC06 :: erase_defense
-.org 0x80BBD64 :: erase_defense
+.org 0x80BB226 :: erase_defense_buffer
+.org 0x80BBABE :: erase_defense_buffer_store
+.org 0x80BBC06 :: erase_defense_buffer_store
+.org 0x80BBD64 :: erase_defense_buffer_store
 
 // Erase offense/defense after changing equipment
 .org 0x80BB3E2 :: bl baef8_reequip_erase
@@ -500,7 +693,8 @@ pop     {pc}
 //---------------------------------------------------------
 
 .org 0x80CABF8 :: push {r4-r7,lr}
-.org    0x80CAC0C
+.org    0x80CAC0A
+mov     r6,1
 mov     r7,0
 add     sp,-4
 b       @@print_checkerboard_check
@@ -696,6 +890,19 @@ b       0x80B8A2E
 .org 0x80B786C :: mov r3,6   // make window 1 fewer tiles wide
 
 //---------------------------------------------------------
+// B8A60 hacks (print current cash balance, called from script. Since the script is already executing,
+// this version cannot use m2_printnextch, so it requires an edited version of m2_printstr_hlight which recognizes 5F FF)
+//---------------------------------------------------------
+
+.org 0x80B8A80
+ldr     r2,[r5,#0]
+mov     r1,0x30 // right-align to 48 pixels
+bl      format_cash_window
+b       0x80B8AAA
+
+.org 0x80B8AC0 :: bl printstr_hlight_edited
+
+//---------------------------------------------------------
 // [68 FF] - clear window
 //---------------------------------------------------------
 
@@ -794,6 +1001,18 @@ pop     {r4,pc}
 .org 0x80DAF12 :: cmp r0,0xAC
 
 //---------------------------------------------------------
+// Name setup hacks (improves the "The" fix and makes it portable)
+//---------------------------------------------------------
+.org 0x80020AE :: bl copy_name_perm_mem
+.org 0x80020BE :: bl copy_name_perm_mem
+.org 0x80020CE :: bl copy_name_perm_mem
+.org 0x80020DE :: bl copy_name_perm_mem
+.org 0x80020EE :: bl copy_name_perm_mem
+.org 0x80020FE :: bl copy_name_perm_mem
+.org 0x800210E :: bl copy_name_perm_mem
+.org 0x800215A :: bl _215a_load_names
+
+//---------------------------------------------------------
 // BEB6C hacks (Goods inner menu)
 //---------------------------------------------------------
 
@@ -827,6 +1046,15 @@ pop     {pc}
 //---------------------------------------------------------
 // C7CA4 hacks (Shop)
 //---------------------------------------------------------
+.org 0x80C7EA2
+bl      c7ea2_shop_clear //Clear the dialogue window when exiting a shop window - Pressing B
+
+.org 0x80C7ECE
+bl      c7ea2_shop_clear //Clear the dialogue window when exiting a shop window - Pressing L or A
+
+.org 0x80C7C90
+bl      clearWindowTiles_buffer //Setup the buffer
+
 .org 0x80C7CA4
 mov     r0,r8 //Window
 ldr     r1,[sp,#0xC] //Items in shop
@@ -903,12 +1131,6 @@ bl ba7be_reprint_first_menu
 //---------------------------------------------------------
 .org 0x80B9AA2
 bl b9aa2_reprint_first_menu
-
-//---------------------------------------------------------
-// C6BA2 hacks (Fixes main window after exiting the Stored Goods window)
-//---------------------------------------------------------
-.org 0x80C6BA2
-bl c6ba2_reprint_first_menu
 
 //---------------------------------------------------------
 // BCEB0 hacks (Fixes main window after exiting the pickup menu)
@@ -1054,7 +1276,7 @@ nop
 //---------------------------------------------------------
 .org 0x80C5DE0 :: bl c65da_clean_print //To:
 .org 0x80C5E30 :: bl c6190_clean_print //Number on first entering the menu
-.org 0x80C6190 :: bl c6190_clean_print //Number on page change
+.org 0x80C6190 :: bl c6190_buffer_number //Number on page change
 .org 0x80C5E04 :: nop :: strh r0,[r4,#0] :: add r4,#2 :: nop ::nop //Remove extra tile
 
 //---------------------------------------------------------
@@ -1104,10 +1326,13 @@ nop
 //---------------------------------------------------------
 
 //Notes
-//Flyover entries are made of 16 bits codes. Codes with the first byte between 0 and 9 are special cases.
+//Flyover entries are made of 8-bit codes with arguments.
+//Codes with the first byte between 0 and 9 are special cases.
+//00    = End
 //01 XX = Position at X tile XX (Changed to Position at X pixel XX)
 //02 XX = Position at Y tile XX
-//09 00 = END
+//08 XX = Print PC name (for this hack, use 80 FC-FF instead)
+//09    = line break
 //80 XX = Print character XX
 
 //Flyover pointer remapping
@@ -1120,8 +1345,21 @@ nop
 .org 0x8731144 :: dw flyovertextPoo //The palace of Poo\nThe Crown Prince
 .org 0x8731148 :: dw flyovertextLater //Later that night...
 
+.org 0x80B3A80 :: dw flyover_tea
+.org 0x80B3AA4 :: dw flyover_coffee
+
+//Change line size to 0x20 pixels
+//.org 0x80B3ABA :: add r0,#0x20
+//.org 0x80B3B0C :: mov r1,#0x3F :: and r0,r1 :: nop
+//.org 0x80B4162 :: bl flyover_scroll_routine :: b 0x80B41B0
+//.org 0x80B3B44 :: dw 0x85000900
+
+
 //Flyover remapping
 .org 0x80B3482 :: bl largevwf :: b 0x80B348E
+
+//Flyover remapping
+.org 0x80B3B5E :: bl wrapper_largevwf_tea :: b 0x80B3A18
 
 // Weld the odd-numbered flyover letters
 .org 0x80B3254 :: bl flyoverweld :: nop
@@ -1374,6 +1612,7 @@ nop
 
 //Text Speed options
 .org 0x8003BBC :: bl _4092_print_window_store //Printing + storing pixels
+.org 0x8003C44 :: mov r3,#4 //Make highlighting the same speed for all text speeds
 .org 0x8003FA2 :: bl _4092_print_window
 .org 0x8003F8C :: mov r3,#4 //Print highlight of 4 tiles maximum
 .org 0x8003E86 :: bl _3e86_special_setup //Avoid printing when not necessary
@@ -1449,10 +1688,20 @@ nop
 //==============================================================================
 // Overworld player name alphabet
 //==============================================================================
+
+//"Register your name" in buffer
+.org 0x80C6C54 :: bl printstr_buffer
+
+//BLANK name in buffer
+.org 0x80C6C7A :: bl printstr_buffer
+
+//First time entering the menu's alphabet
+.org 0x80C6D72 :: bl initWindow_buffer :: ldr r0,[r5,#0x10] :: bl c6d78_print_slphabet_store
+
 //Player name printing - character is added
 .org 0x80C75B4 :: bl c75b4_overworld_naming_top_printing :: b 0x80C777A
 
-//Player name printing - character is deleted via add
+//Player name printing - character is deleted via b button
 .org 0x80C780E :: bl c780e_overworld_naming_top_printing :: b 0x80C789A
 
 //Player name printing - character is deleted via backspace
@@ -1479,8 +1728,61 @@ nop
 //Choose character table based on alphabet loaded in
 .org 0x80C7578 :: bl c7578_load_letters
 
+
 //==============================================================================
-// Title screen hacks
+// Bug fixes for the original game
+//==============================================================================
+
+// Disallow warping with an Exit mouse in the Cave of the Past
+.org 0x8731046 :: dh 00h
+
+
+//==============================================================================
+// Fix Gyigas' poison bug
+//==============================================================================
+.org 0x80DEE6C :: bl dee6c_fix_poison_gyigas :: nop :: nop :: nop
+
+//==============================================================================
+// Credits hacks
+//==============================================================================
+
+//Repoint credits font (Before it pointed to 0x82FF1B8)
+.org 0x82DB284 :: dw m2_credits_font
+.org 0x82DB28C :: dw m2_credits_arrangements
+.org 0x82DB2A4 :: .incbin "data/m2-credits-size.bin"
+.org 0x80B53BC :: .incbin "data/m2-credits-scroll-size-limit.bin"
+.org 0x80B53C0 :: .incbin "data/m2-credits-scroll-size.bin"
+.org 0x801352E :: bl printPlayerNameCredits
+
+//Repoint cast graphical data
+.org m2_cast_roll_pointers :: dw m2_cast_graphics :: dw m2_cast_palette :: dw m2_cast_arrangements
+
+//Remove flavour changing the palette
+.org 0x8010426 :: bl prevent_cast_changed_palettes
+
+//Cast Roll VWF
+.org 0x800F640 :: bl writeCastText
+
+//Master Belch and Star Master text appearing later
+.org 0x8018934 :: dw m2_cast_belch_arrangement
+.org 0x80188B2 :: .incbin "data/cast_roll_master_belch_size.bin"
+.org 0x82D92BC :: .incbin "data/cast_roll_master_belch_data.bin"
+.org 0x8018940 :: dw m2_cast_star_arrangement
+.org 0x8018904 :: .incbin "data/cast_roll_star_master_size.bin"
+.org 0x82D92C4 :: .incbin "data/cast_roll_star_master_data.bin"
+
+//==============================================================================
+// "THE END...?" hacks
+//==============================================================================
+.org 0x88B5AA0 :: .incbin "data/the_end_graphics.bin"
+.org 0x88B62A0 :: .incbin "data/the_end_palette.bin"
+.org 0x88B62C0 :: .incbin "data/the_end_arrangements_frame0.bin"
+
+//Add an extra event for the "?" in "THE END..."
+.org 0x80A5F5C :: bl extra_event_end_question_mark
+
+//==============================================================================
+// M2 Title hacks
 //==============================================================================
 
 .definelabel m2_title_sequence_00, 0x80117E0
@@ -1677,6 +1979,27 @@ nop
 .org 0x82D9BBC :: dw moved_graphics_table + 0x26618 :: dw moved_graphics_table + 0x3F818
 
 //==============================================================================
+// Lumine Hall hacks
+//==============================================================================
+
+.org 0x800ECB2 :: bl writeLumineHallText
+
+//==============================================================================
+// Cartridge choosing screen hacks
+//==============================================================================
+
+.org 0x8013C62 :: bl change_palette_needed_foreground
+.org 0x8013CAA :: bl change_palette_needed_background
+
+.org 0x86DD794 :: .incbin "data/m2-cartridge-tiles.bin"
+.org 0x8706994 :: .incbin "data/m2-cartridge-arrangements.bin"
+
+.org 0x8705794
+
+m12_cartridge_palettes:
+.incbin "data/m2-cartridge-palettes.bin"
+
+//==============================================================================
 // Data files
 //==============================================================================
 
@@ -1701,6 +2024,10 @@ m2_font_relocate:
 // Co-ordinate table
 m2_coord_table:
 .incbin "data/m2-coord-table.bin"
+
+// Co-ordinate table, version which has 5 bits used for how many consecutive tiles there are after each tile
+m2_coord_table_fast_progression:
+.incbin "data/m2-coord-table-fast-progression.bin"
 
 // EB fonts
 m2_font_table:
@@ -1749,8 +2076,15 @@ m2_widths_battle:
 m2_widths_tiny:
 .incbin "data/m2-widths-tiny.bin"
 
+.align 4
 m2_bits_to_nybbles:
 .incbin "data/m2-bits-to-nybbles.bin"
+
+m2_bits_to_nybbles_fast:
+.incbin "data/m2-bits-to-nybbles-fast.bin"
+
+m2_bits_to_nybbles_fast_cast:
+.incbin "data/m2-bits-to-nybbles-fast-cast.bin"
 
 m2_nybbles_to_bits:
 .incbin "data/m2-nybbles-to-bits.bin"
@@ -1758,32 +2092,147 @@ m2_nybbles_to_bits:
 m2_enemy_attributes:
 .incbin "data/m2-enemy-attributes.bin"
 
+cast_vwf_names:
+.include "data/cast-vwf-names.asm"
+
+.align 2
+luminesquaretable:
+.incbin "data/luminesquaretable.bin"
+
+luminetext:
+.include "data/lumine-text.asm"
+
 flyovertextYear:
-.incbin "data/flyovertextYear.bin"
+.include "data/flyover-text-year.asm"
 
 flyovertextOnett:
-.incbin "data/flyovertextOnett.bin"
+.include "data/flyover-text-onett.asm"
 
 flyovertextNess:
-.incbin "data/flyovertextNess.bin"
+.include "data/flyover-text-ness.asm"
 
 flyovertextWinters:
-.incbin "data/flyovertextWinters.bin"
+.include "data/flyover-text-winters.asm"
 
 flyovertextSnow:
-.incbin "data/flyovertextSnow.bin"
+.include "data/flyover-text-snow.asm"
 
 flyovertextDalaam:
-.incbin "data/flyovertextDalaam.bin"
+.include "data/flyover-text-dalaam.asm"
 
 flyovertextPoo:
-.incbin "data/flyovertextPoo.bin"
+.include "data/flyover-text-poo.asm"
 
 flyovertextLater:
-.incbin "data/flyovertextLater.bin"
+.include "data/flyover-text-later.asm"
 
+flyover_tea:
+.include "data/flyover-tea.asm"
+
+flyover_coffee:
+.include "data/flyover-coffee.asm"
+
+give_self:
+.include "m12-give-strings/m12-give-self-alive.asm"
+
+give_self_dead:
+.include "m12-give-strings/m12-give-self-dead.asm"
+
+give_alive:
+.include "m12-give-strings/m12-give-both-alive.asm"
+
+give_giver_dead:
+.include "m12-give-strings/m12-give-giver-dead.asm"
+
+give_target_dead:
+.include "m12-give-strings/m12-give-target-dead.asm"
+
+give_dead:
+.include "m12-give-strings/m12-give-both-dead.asm"
+
+give_alive_full:
+.include "m12-give-strings/m12-give-both-alive-full.asm"
+
+give_giver_dead_full:
+.include "m12-give-strings/m12-give-giver-dead-full.asm"
+
+give_target_dead_full:
+.include "m12-give-strings/m12-give-target-dead-full.asm"
+
+give_dead_full:
+.include "m12-give-strings/m12-give-both-dead-full.asm"
+
+.align 4
+give_strings_table:
+dw      give_self
+dw      give_self_dead
+dw      give_alive
+dw      give_giver_dead
+dw      give_target_dead
+dw      give_dead
+dw      give_alive_full
+dw      give_giver_dead_full
+dw      give_target_dead_full
+dw      give_dead_full
+
+.align 4
+m2InsaneCultist:
+.incbin "data/m2-insane-cultist.bin"
+
+.align 2
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
+
+.align 2
+m2_credits_conversion_table:
+.incbin "data/m2-credits-conversion-table.bin"
+
+.align 4
+m2_cast_belch_arrangement:
+.incbin "data/cast_roll_master_belch_arrangement.bin"
+
+.align 4
+m2_cast_star_arrangement:
+.incbin "data/cast_roll_star_master_arrangement.bin"
+
+.align 2
+m2_cast_vwf_free:
+.incbin "data/cast_roll_first_free.bin"
+
+.align 4
+m2_cast_graphics:
+.incbin "data/cast_roll_graphics_[c].bin"
+
+.align 4
+m2_cast_palette:
+.incbin "data/cast_roll_palette_[c].bin"
+
+.align 4
+m2_cast_arrangements:
+.incbin "data/cast_roll_arrangements_[c].bin"
+
+.align 4
+m2_credits_font:
+.incbin "data/m2-credits-font_[c].bin"
+
+.align 4
+m2_credits_arrangements:
+.incbin "data/m2-credits-arrangements_[c].bin"
+
+.align 2
+m2_credits_extras:
+.incbin "data/m2-credits-extra-data.bin"
+
+.align 4
+m2_end_frame1:
+.incbin "data/the_end_arrangements_frame1.bin"
+
+.align 4
+optimized_byte_4bpp_to_1bpp_table:
+.incbin "data/optimized-byte-4bpp-to-1bpp-table.bin"
+
+m12_cartridge_palettes_dimmed:
+.incbin "data/m12-cartridge-palettes-dimmed.bin"
 
 .align 4
 
@@ -1822,11 +2271,22 @@ m2_title_text_params:
 .org m2_title_text_params + 0xA4 :: dw m2_title_text_params + 0x64
 .org m2_title_text_params + 0xAC :: dw m2_title_text_params + 0x68
 
+.org 0x8FEE000
+disclaimer_palette:
+.incbin "data/intro-screen-pal.bin"
+.align 4
+disclaimer_graphics:
+.incbin "data/intro-screen-gfx.bin"
+.align 4
+disclaimer_map:
+.incbin "data/intro-screen-map.bin"
+
 //==============================================================================
 // Existing subroutines/data
 //==============================================================================
 
-.definelabel overworld_buffer       ,0x200C000
+.definelabel buffer_subtractor      ,0x0000800
+.definelabel m2_hall_line_size      ,0x3000374
 .definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10
 .definelabel m2_old_paula_name      ,0x3001F16
@@ -1844,6 +2304,7 @@ m2_title_text_params:
 .definelabel m2_old_japanese_name   ,0x3001F42
 .definelabel m2_cstm_last_printed   ,0x3001F4F
 .definelabel m2_player1             ,0x3001F50
+.definelabel m2_buffer_counter      ,0x3002A4C
 .definelabel m2_script_readability  ,0x3004F08
 .definelabel m2_psi_exist           ,0x300525C
 .definelabel m2_active_window_pc    ,0x3005264
@@ -1856,9 +2317,13 @@ m2_title_text_params:
 .definelabel m2_change_naming_space ,0x8004E08
 .definelabel m2_copy_name_temp_mem  ,0x8004E34
 .definelabel m2_insert_default_name ,0x8005708
+.definelabel m2_malloc              ,0x8005B9C
+.definelabel m2_get_hall_address    ,0x800D7BC
+.definelabel m12_dim_palette        ,0x80137DC
 .definelabel m2_enable_script       ,0x80A1F6C
 .definelabel m2_sub_a334c           ,0x80A334C
 .definelabel m2_sub_a3384           ,0x80A3384
+.definelabel m2_jump_to_offset      ,0x80A6C24
 .definelabel m2_get_selected_item   ,0x80A469C
 .definelabel m2_psitargetwindow     ,0x80B8AE0
 .definelabel m2_isequipped          ,0x80BC670
@@ -1866,10 +2331,12 @@ m2_title_text_params:
 .definelabel m2_setup_window        ,0x80BD844
 .definelabel m2_strlookup           ,0x80BE260
 .definelabel m2_initwindow          ,0x80BE458
+.definelabel m2_initwindow_cursor   ,0x80BE4C8
 .definelabel m2_statuswindow_numbers,0x80C0A5C
 .definelabel m2_psiwindow           ,0x80C1FBC
 .definelabel m2_drawwindow          ,0x80C87D0
 .definelabel m2_print_window        ,0x80C8BE4
+.definelabel m2_print_alphabet      ,0x80C8FFC
 .definelabel m2_printstr            ,0x80C9634
 .definelabel m2_printstr_hlight     ,0x80C96F0
 .definelabel m2_printnextch         ,0x80C980C
@@ -1888,6 +2355,8 @@ m2_title_text_params:
 .definelabel vblank                 ,0x80F47E4
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70
+.definelabel cpuset                 ,0x80F47C0
+.definelabel m2_cast_roll_pointers  ,0x82DB25C
 .definelabel m2_items               ,0x8B1D62C
 .definelabel m2_default_names       ,0x82B9330
 .definelabel m2_psi_print_table     ,0x8B2A9C0
@@ -1897,14 +2366,18 @@ m2_title_text_params:
 // Code files
 //==============================================================================
 
+.include "m2-localize.asm"
+
 .org 0x80FCE6C
 .include "syscalls.asm"
 .include "m2-vwf.asm"
 .include "m2-vwf-entries.asm"
+.include "m2-bugfixes.asm"
 .include "m2-formatting.asm"
 .include "m2-customcodes.asm"
 .include "m2-compiled.asm"
 .include "m2-flyover.asm"
+.include "m12-intro.asm"
 .include "m2-title.asm"
 
 .close

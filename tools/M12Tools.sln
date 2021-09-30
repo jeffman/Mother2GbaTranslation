@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28407.52
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScriptTool", "ScriptTool\ScriptTool.csproj", "{29AB41A8-6405-4C4B-A374-BF1BD7AF1A27}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScriptToolGui", "ScriptToolGui\ScriptToolGui.csproj", "{BAE5CBBF-D0B3-4F82-A80A-957CEC379238}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenderCastRoll", "RenderCastRoll\RenderCastRoll.csproj", "{DD1C607C-5A74-4921-81A4-6BF530A191D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderStaffCredits", "RenderStaffCredits\RenderStaffCredits.csproj", "{D4885175-8BD3-4B91-B905-6BA845DBDC2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{BAE5CBBF-D0B3-4F82-A80A-957CEC379238}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAE5CBBF-D0B3-4F82-A80A-957CEC379238}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAE5CBBF-D0B3-4F82-A80A-957CEC379238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD1C607C-5A74-4921-81A4-6BF530A191D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD1C607C-5A74-4921-81A4-6BF530A191D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD1C607C-5A74-4921-81A4-6BF530A191D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD1C607C-5A74-4921-81A4-6BF530A191D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4885175-8BD3-4B91-B905-6BA845DBDC2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4885175-8BD3-4B91-B905-6BA845DBDC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4885175-8BD3-4B91-B905-6BA845DBDC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4885175-8BD3-4B91-B905-6BA845DBDC2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

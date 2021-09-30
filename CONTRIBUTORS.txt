@@ -21,6 +21,17 @@ Text conversion:
   Masaru
   Sterophonick
   Normmatt
+  KillThad
+
+Graphics:
+  JeffMan
+  surrashubound
+  Masaru
+
+Testing:
+  Eevs
+  John Enigma
+  CloverCharBoyBound
 
 Graphics:
   JeffMan

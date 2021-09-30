@@ -18,7 +18,8 @@ English names:
 - Jeff: 7A 95 96 96
 - Poo:  80 9F 9F
 
-0x2020C70: enemy data slots in-battle? separated by 0x94 bytes
+0x2020C70: party character slots in battle. 0x94 bytes long
+0x2021110: enemy slots in battle. 0x94 bytes long
 0x2025038: enemy count (initial, not current)
 0x20251D8: item drop
 0x3000A00: Current PSI list when displaying a PSI window?
@@ -95,7 +96,7 @@ English names:
            [00]: A menu
            [01]: Money
            [02]: ?
-           [03]: Action subject ("Who?", etc.)
+           [03]: Action subject ("Who?", etc.) / Money window (called by script)
            [04]: New equipment selection
            [05]: Offense/Defense
            [06]: Equip

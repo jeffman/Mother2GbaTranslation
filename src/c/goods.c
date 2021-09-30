@@ -110,14 +110,15 @@ int goods_outer_process(WINDOW* window, int y_offset, bool give)
     }
 
     *active_window_party_member = current_pc;
-    m2_hpwindow_up(current_pc);
-    clear_name_header(window);
-    copy_name_header(window, current_pc);
 
     // Print item names
     if (!window->vwf_skip)
     {
         goods_print_items(window, current_items, y_offset);
+        m2_hpwindow_up(current_pc); //Why were these done repeatedly? I made it so they're done only when printing, however if there is a reason why they shouldn't, feel free to put them back
+        clear_name_header(window);
+        copy_name_header(window, current_pc);
+        store_pixels_overworld();
         window->vwf_skip = true;
     }
 
@@ -417,10 +418,13 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
         clear_name_header(window);
         copy_name_header(window, *active_window_party_member);
 
-        m2_clearwindowtiles(window);
+        clearWindowTiles_buffer(window);
 
         if (weird_value > 0)
+        {
             goods_print_items(window, items, 0);
+            store_pixels_overworld();
+        }
     }
 
     if (state_shadow.up || state_shadow.down || state_shadow.left || state_shadow.right)
@@ -479,6 +483,7 @@ int goods_inner_process(WINDOW *window, unsigned short *items)
 // Erases the slot before printing. Prints blanks for null items.
 void goods_print_items(WINDOW *window, unsigned short *items, int y_offset)
 {
+    byte* dest = (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER));
     int item_x = (window->window_x << 3) + 8;
     int item_y = (window->window_y + y_offset) << 3;
 
@@ -488,7 +493,7 @@ void goods_print_items(WINDOW *window, unsigned short *items, int y_offset)
         int x = item_x + ((i & 1) * 88);
         int y = item_y + ((i >> 1) * 16);
 
-        print_blankstr(x >> 3, y >> 3, 11);
+        print_blankstr_buffer(x >> 3, y >> 3, 11, dest);
 
         if (item > 0)
         {
@@ -501,7 +506,7 @@ void goods_print_items(WINDOW *window, unsigned short *items, int y_offset)
             }
 
             byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-            print_string(item_str, x + x_offset, y);
+            print_string_in_buffer(item_str, x + x_offset, y, dest);
         }
     }
 }
@@ -534,27 +539,29 @@ void shop_print_items(WINDOW *window, unsigned char *items, int y_offset, int it
         {
             int x_offset = 0;
             byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-            print_string(item_str, x + x_offset, y);
+            print_string_in_buffer(item_str, x + x_offset, y, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
             int digit_count;
             int bcd = bin_to_bcd(getPrice(item), &digit_count); //Get the price in bcd, so it can be printed
             int base = 120;
-            print_character(decode_character(0x56), x + base, y); //00, it will be at the end, always at the same position
-            print_character(decode_character(0x54), x + base - 6 - (digit_count * 6), y); //dollar, it must be before all digits
+            print_character_formatted_buffer(decode_character(0x56), x + base, y, 0, 0xF, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER))); //00, it will be at the end, always at the same position
+            print_character_formatted_buffer(decode_character(0x54), x + base - 6 - (digit_count * 6), y, 0, 0xF, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER))); //dollar, it must be before all digits
             // Write the digits
             for (int j = 0; j < digit_count; j++)
             {
                 byte digit = ((bcd >> ((digit_count - 1 - j) * 4)) & 0xF) + ZERO;
-                print_character(decode_character(digit), x + base - 6 - ((digit_count - j - 1) * 6), y); //write a single digit
+                print_character_formatted_buffer(decode_character(digit), x + base - 6 - ((digit_count - j - 1) * 6), y, 0, 0xF, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER))); //write a single digit
             }
         }
     }
+    
+    store_pixels_overworld();
 }
 
 //Load proper give text into str and then go to it
 //It's based on the party's status, whether the target's inventory is full or not and whether the source is the target
 void give_print(byte item, byte target, byte source, WINDOW *window, byte *str)
 {
-    bool notFullInventory = false;
+    bool fullInventory = true;
     int index;
     struct PC *user_data = (&m2_ness_data[source]);
     struct PC *target_data = (&m2_ness_data[target]);
@@ -564,507 +571,121 @@ void give_print(byte item, byte target, byte source, WINDOW *window, byte *str)
     for(index = 0; index < 0xE; index++)
         if(target_data->goods[index] == 0)
         {
-            notFullInventory = true;
+            fullInventory = false;
             break;
         }
     if((user_data->ailment == UNCONSCIOUS) ||(user_data->ailment == DIAMONDIZED)) 
         incapable_user = true;
     if((target_data->ailment == UNCONSCIOUS) ||(target_data->ailment == DIAMONDIZED)) 
         incapable_target = true;
-    index = 0;
+    
     if(source == target)
     {
         if(incapable_user)
-            setupSelf_Dead(str, &index, source, item);
+            readStringGive(str, give_strings_table[SELF_DEAD], source, target, item);
         else
-            setupSelf_Alive(str, &index, source, item);
+            readStringGive(str, give_strings_table[SELF], source, target, item);
     }
-    else if(!notFullInventory)
+    else if(fullInventory)
     {
         if(!incapable_target && !incapable_user)
-            setupFull_Both_Alive(str, &index, source, target, item);
+            readStringGive(str, give_strings_table[ALIVE_BOTH_FULL], source, target, item);
         else if(incapable_target && incapable_user)
-            setupFull_Both_Dead(str, &index, source, target, item);
+            readStringGive(str, give_strings_table[DEAD_FULL], source, target, item);
         else if(incapable_target && !incapable_user)
-            setupFull_Target_Dead(str, &index, source, target, item);
+            readStringGive(str, give_strings_table[TARGET_DEAD_FULL], source, target, item);
         else
-            setupFull_User_Dead(str, &index, source, target, item);
+            readStringGive(str, give_strings_table[GIVER_DEAD_FULL], source, target, item);
     }
     else
     {
         if(!incapable_target && !incapable_user)
-            setup_Both_Alive(str, &index, source, target, item);
+            readStringGive(str, give_strings_table[ALIVE_BOTH], source, target, item);
         else if(incapable_target && !incapable_user)
-            setup_Target_Dead(str, &index, source, target, item);
+            readStringGive(str, give_strings_table[TARGET_DEAD], source, target, item);
         else if(!incapable_target && incapable_user)
-            setup_User_Dead(str, &index, source, target, item);
+            readStringGive(str, give_strings_table[GIVER_DEAD], source, target, item);
         else
-            setup_Both_Dead(str, &index, source, target, item);
+            readStringGive(str, give_strings_table[DEAD], source, target, item);
     }
-    str[index++] = 0x1D;
-    str[index++] = 0xFF; //END
-    str[index++] = 0;
-    str[index++] = 0xFF; //END
 
     window->text_start = str;
     window->text_start2 = str;
 }
 
-void setupSelf_Alive(byte *String, int *index, byte user, byte item)
+void readStringGive(byte *outputString, byte *baseString, byte source, byte target, byte item)
 {
-    char rearranged[] = " rearranged ";
-    char own[] = " own";
-    char items[] = "  items and the ";
-    char moved[] = " moved.";
-
-    String[(*index)++] = 0x70; //Initial bullet
-    getCharName(user, String, index);
-
-    for (int i = 0; i < (sizeof(rearranged) - 1); i++)
-        String[(*index)++] = encode_ascii(rearranged[i]);
-
-    getPossessive(user, String, index);
-
-    for (int i = 0; i < (sizeof(own) - 1); i++)
-        String[(*index)++] = encode_ascii(own[i]);
-
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-
-    for (int i = 0; i < (sizeof(items) - 1); i++)
-        String[(*index)++] = encode_ascii(items[i]);
-
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-
-    String[(*index)++] = encode_ascii(' '); //Format
-    String[(*index)++] = encode_ascii(' ');
-
-    byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-    copy_name(String, item_str, index, 0);
-
-    for (int i = 0; i < (sizeof(moved) - 1); i++)
-        String[(*index)++] = encode_ascii(moved[i]);
-}
-
-void setupSelf_Dead(byte *String, int *index, byte user, byte item)
-{
-    struct PC *tmp; //Get alive character
-    byte alive = 0;
-    while((alive == user))
-        alive++;
-    for(int i = alive; i < 4; i++)
+    while(*baseString != END)
     {
-        tmp = &(m2_ness_data[i]);
-        if((tmp->ailment != UNCONSCIOUS) && (tmp->ailment != DIAMONDIZED))
-        {
-            alive = i;
-            break;
-        }
-    }
-
-    char rearranged[] = " rearranged";
-    char items[] = "'s items and the";
-    char moved[] = " moved.";
-
-    String[(*index)++] = 0x70; //Initial bullet
-    getCharName(alive, String, index);
-
-    for (int i = 0; i < (sizeof(rearranged) - 1); i++)
-        String[(*index)++] = encode_ascii(rearranged[i]);
-
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    String[(*index)++] = encode_ascii(' ');
-    String[(*index)++] = encode_ascii(' '); //Format
-    
-    getCharName(user, String, index);
-
-    for (int i = 0; i < (sizeof(items) - 1); i++)
-        String[(*index)++] = encode_ascii(items[i]);
-
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-
-    String[(*index)++] = encode_ascii(' ');
-    String[(*index)++] = encode_ascii(' '); //Format
-
-    byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-    copy_name(String, item_str, index, 0);
-
-    for (int i = 0; i < (sizeof(moved) - 1); i++)
-        String[(*index)++] = encode_ascii(moved[i]);
-}
-
-void setupFull_Both_Alive(byte *String, int *index, byte user, byte target, byte item)
-{
-    char tried[] = " tried to give";
-    char the[] = "  the ";
-    char to[] = "  to ";
-    char but[] = "but ";
-    char was[] = " was already";
-    char carrying[] = "  carrying too much stuff.";
-
-    String[(*index)++] = 0x70; //Initial bullet
-    getCharName(user, String, index);
-
-    for (int i = 0; i < (sizeof(tried) - 1); i++)
-        String[(*index)++] = encode_ascii(tried[i]);
-
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-
-    for (int i = 0; i < (sizeof(the) - 1); i++)
-        String[(*index)++] = encode_ascii(the[i]);
-
-    byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-    copy_name(String, item_str, index, 0);
-    
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    for (int i = 0; i < (sizeof(to) - 1); i++)
-        String[(*index)++] = encode_ascii(to[i]);
-    
-    getCharName(target, String, index);
-    
-    String[(*index)++] = encode_ascii(',');
-    
-    String[(*index)++] = 0x2;
-    String[(*index)++] = 0xFF; //prompt + newline
-    
-    String[(*index)++] = 0x70; //Initial bullet
-
-    for (int i = 0; i < (sizeof(but) - 1); i++)
-        String[(*index)++] = encode_ascii(but[i]);
-    
-    getPronoun(target, String, index);
-
-    for (int i = 0; i < (sizeof(was) - 1); i++)
-        String[(*index)++] = encode_ascii(was[i]);
-
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-
-    for (int i = 0; i < (sizeof(carrying) - 1); i++)
-        String[(*index)++] = encode_ascii(carrying[i]);
-}
-
-void setupFull_Target_Dead(byte *String, int *index, byte user, byte target, byte item)
-{
-    char tried[] = " tried to add";
-    char the[] = "  the ";
-    char to[] = "  to ";
-    char s_stuff[]= "'s stuff,";
-    char but[] = "but there was no room for it.";
-
-    String[(*index)++] = 0x70; //Initial bullet
-    getCharName(user, String, index);
-
-    for (int i = 0; i < (sizeof(tried) - 1); i++)
-        String[(*index)++] = encode_ascii(tried[i]);
-
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-
-    for (int i = 0; i < (sizeof(the) - 1); i++)
-        String[(*index)++] = encode_ascii(the[i]);
-
-    byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-    copy_name(String, item_str, index, 0);
-    
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    for (int i = 0; i < (sizeof(to) - 1); i++)
-        String[(*index)++] = encode_ascii(to[i]);
-    
-    getCharName(target, String, index);
-    
-    for (int i = 0; i < (sizeof(s_stuff) - 1); i++)
-        String[(*index)++] = encode_ascii(s_stuff[i]);
-    
-    String[(*index)++] = 0x2;
-    String[(*index)++] = 0xFF; //prompt + newline
-    
-    String[(*index)++] = 0x70; //Initial bullet
-
-    for (int i = 0; i < (sizeof(but) - 1); i++)
-        String[(*index)++] = encode_ascii(but[i]);
-}
-
-void setupFull_User_Dead(byte *String, int *index, byte user, byte target, byte item)
-{
-    char tried[] = " tried to take";
-    char the[] = "  the ";
-    char from[] = "  from ";
-    char s_stuff[]= "'s stuff,";
-    char but[] = "but ";
-    char was[] = " was already";
-    char carrying[] = "  carrying too much stuff.";
-
-
-    String[(*index)++] = 0x70; //Initial bullet
-    getCharName(target, String, index);
-
-    for (int i = 0; i < (sizeof(tried) - 1); i++)
-        String[(*index)++] = encode_ascii(tried[i]);
-
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-
-    for (int i = 0; i < (sizeof(the) - 1); i++)
-        String[(*index)++] = encode_ascii(the[i]);
-
-    byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-    copy_name(String, item_str, index, 0);
-    
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    for (int i = 0; i < (sizeof(from) - 1); i++)
-        String[(*index)++] = encode_ascii(from[i]);
-    
-    getCharName(user, String, index);
-    
-    for (int i = 0; i < (sizeof(s_stuff) - 1); i++)
-        String[(*index)++] = encode_ascii(s_stuff[i]);
-    
-    String[(*index)++] = 0x2;
-    String[(*index)++] = 0xFF; //prompt + newline
-    
-    String[(*index)++] = 0x70; //Initial bullet
-
-    for (int i = 0; i < (sizeof(but) - 1); i++)
-        String[(*index)++] = encode_ascii(but[i]);
-    
-    getPronoun(target, String, index);
-
-    for (int i = 0; i < (sizeof(was) - 1); i++)
-        String[(*index)++] = encode_ascii(was[i]);
-
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-
-    for (int i = 0; i < (sizeof(carrying) - 1); i++)
-        String[(*index)++] = encode_ascii(carrying[i]);
-}
-
-void setupFull_Both_Dead(byte *String, int *index, byte user, byte target, byte item)
-{
-    struct PC *tmp; //Get alive character
-    byte alive = 0;
-    while((alive == user) || (alive == target))
-        alive++;
-    for(int i = alive; i < 4; i++)
-    {
-        tmp = &(m2_ness_data[i]);
-        if((tmp->ailment != UNCONSCIOUS) && (tmp->ailment != DIAMONDIZED))
-        {
-            alive = i;
-            break;
-        }
+        outputString = readCharacterGive(outputString, *baseString, source, target, item);
+        baseString++;
     }
     
-    char tried[] = " tried to add";
-    char s_[] = "'s ";
-    char to[] = "  to ";
-    char s_stuff[]= "'s stuff,";
-    char but[] = "but there was no room for it.";
-
-    String[(*index)++] = 0x70; //Initial bullet
-    getCharName(alive, String, index);
-
-    for (int i = 0; i < (sizeof(tried) - 1); i++)
-        String[(*index)++] = encode_ascii(tried[i]);
-
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    String[(*index)++] = encode_ascii(' ');
-    String[(*index)++] = encode_ascii(' '); //Format
-    
-    getCharName(user, String, index);
-
-    for (int i = 0; i < (sizeof(s_) - 1); i++)
-        String[(*index)++] = encode_ascii(s_[i]);
-
-    byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-    copy_name(String, item_str, index, 0);
-    
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    for (int i = 0; i < (sizeof(to) - 1); i++)
-        String[(*index)++] = encode_ascii(to[i]);
-    
-    getCharName(target, String, index);
-    
-    for (int i = 0; i < (sizeof(s_stuff) - 1); i++)
-        String[(*index)++] = encode_ascii(s_stuff[i]);
-    
-    String[(*index)++] = 0x2;
-    String[(*index)++] = 0xFF; //prompt + newline
-    
-    String[(*index)++] = 0x70; //Initial bullet
-
-    for (int i = 0; i < (sizeof(but) - 1); i++)
-        String[(*index)++] = encode_ascii(but[i]);
+    outputString[0] = 0x1D;
+    outputString[1] = 0xFF; //END
+    outputString[2] = 0;
+    outputString[3] = 0xFF; //END
 }
 
-void setup_Both_Alive(byte *String, int *index, byte user, byte target, byte item)
+byte *readCharacterGive(byte *outputString, byte chr, byte source, byte target, byte item)
 {
-    char gave[] = " gave";
-    char the[] = "  the ";
-    char to[] = "  to ";
+    int index = 0; //Index used by multi-characters entries
+    struct PC *tmp; //Struct to get alive character
+    byte alive;
+    byte *item_str; //Item string
     
-    String[(*index)++] = 0x70; //Initial bullet
-    getCharName(user, String, index);
-
-    for (int i = 0; i < (sizeof(gave) - 1); i++)
-        String[(*index)++] = encode_ascii(gave[i]);
-
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    for (int i = 0; i < (sizeof(the) - 1); i++)
-        String[(*index)++] = encode_ascii(the[i]);
-    
-    byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-    copy_name(String, item_str, index, 0);
-    
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    for (int i = 0; i < (sizeof(to) - 1); i++)
-        String[(*index)++] = encode_ascii(to[i]);
-    
-    getCharName(target, String, index);
-
-    String[(*index)++] = encode_ascii('.');
-}
-
-void setup_Target_Dead(byte *String, int *index, byte user, byte target, byte item)
-{
-    char added[] = " added";
-    char the[] = "  the ";
-    char to[] = "  to ";
-    char s_stuff[] = "'s stuff.";
-    
-    String[(*index)++] = 0x70; //Initial bullet
-    getCharName(user, String, index);
-
-    for (int i = 0; i < (sizeof(added) - 1); i++)
-        String[(*index)++] = encode_ascii(added[i]);
-
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    for (int i = 0; i < (sizeof(the) - 1); i++)
-        String[(*index)++] = encode_ascii(the[i]);
-    
-    byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-    copy_name(String, item_str, index, 0);
-    
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    for (int i = 0; i < (sizeof(to) - 1); i++)
-        String[(*index)++] = encode_ascii(to[i]);
-    
-    getCharName(target, String, index);
-
-    for (int i = 0; i < (sizeof(s_stuff) - 1); i++)
-        String[(*index)++] = encode_ascii(s_stuff[i]);
-}
-
-void setup_User_Dead(byte *String, int *index, byte user, byte target, byte item)
-{
-    char took[] = " took";
-    char the[] = "  the ";
-    char from[] = "  from ";
-    char s_stuff[] = "'s stuff.";
-    
-    String[(*index)++] = 0x70; //Initial bullet
-    getCharName(target, String, index);
-
-    for (int i = 0; i < (sizeof(took) - 1); i++)
-        String[(*index)++] = encode_ascii(took[i]);
-
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    for (int i = 0; i < (sizeof(the) - 1); i++)
-        String[(*index)++] = encode_ascii(the[i]);
-    
-    byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-    copy_name(String, item_str, index, 0);
-    
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    for (int i = 0; i < (sizeof(from) - 1); i++)
-        String[(*index)++] = encode_ascii(from[i]);
-    
-    getCharName(user, String, index);
-
-    for (int i = 0; i < (sizeof(s_stuff) - 1); i++)
-        String[(*index)++] = encode_ascii(s_stuff[i]);
-}
-
-void setup_Both_Dead(byte *String, int *index, byte user, byte target, byte item)
-{
-    struct PC *tmp; //Get alive character
-    byte alive = 0;
-    while((alive == user) || (alive == target))
-        alive++;
-    for(int i = alive; i < 4; i++)
+    switch(chr)
     {
-        tmp = &(m2_ness_data[i]);
-        if((tmp->ailment != UNCONSCIOUS) && (tmp->ailment != DIAMONDIZED))
-        {
-            alive = i;
+        case PROMPT:
+            outputString[0] = 2;
+            outputString[1] = 0xFF;
+            index = 2;
             break;
-        }
+        case NEWLINE:
+            outputString[0] = 1;
+            outputString[1] = 0xFF;
+            index = 2;
+            break;
+        case TARGET:
+            getCharName(target, outputString, &index);
+            break;
+        case SOURCE:
+            getCharName(source, outputString, &index);
+            break;
+        case ALIVE:
+            alive = 0;
+            while((alive == source))
+                alive++;
+            for(int i = alive; i < 4; i++)
+            {
+                tmp = &(m2_ness_data[i]);
+                if((tmp->ailment != UNCONSCIOUS) && (tmp->ailment != DIAMONDIZED))
+                {
+                    alive = i;
+                    break;
+                }
+            }
+            getCharName(alive, outputString, &index);
+            break;
+        case TARGET_POSS:
+            getPossessive(target, outputString, &index);
+            break;
+        case SOURCE_POSS:
+            getPossessive(source, outputString, &index);
+            break;
+        case TARGET_PRON:
+            getPronoun(target, outputString, &index);
+            break;
+        case SOURCE_PRON:
+            getPronoun(source, outputString, &index);
+            break;
+        case ITEM:
+            item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
+            copy_name(outputString, item_str, &index, 0);
+            break;
+        default:
+            outputString[0] = chr + CHAR_OFFSET;
+            index = 1;
     }
-
-    char added[] = " added ";
-    char _s[] = "'s";
-    char to[] = " to";
-    char s_stuff[] = "'s stuff.";
-    
-    String[(*index)++] = 0x70; //Initial bullet
-    getCharName(alive, String, index);
-
-    for (int i = 0; i < (sizeof(added) - 1); i++)
-        String[(*index)++] = encode_ascii(added[i]);
-    
-    getCharName(user, String, index);
-    
-    for (int i = 0; i < (sizeof(_s) - 1); i++)
-        String[(*index)++] = encode_ascii(_s[i]);
-    
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    String[(*index)++] = encode_ascii(' '); //Format
-    String[(*index)++] = encode_ascii(' ');
-    
-    byte *item_str = m2_strlookup(m2_items_offsets, m2_items_strings, item);
-    copy_name(String, item_str, index, 0);
-    
-    for (int i = 0; i < (sizeof(to) - 1); i++)
-        String[(*index)++] = encode_ascii(to[i]);
-    
-    String[(*index)++] = 1;
-    String[(*index)++] = 0xFF; //newline
-    
-    String[(*index)++] = encode_ascii(' '); //Format
-    String[(*index)++] = encode_ascii(' ');
-    
-    getCharName(target, String, index);
-
-    for (int i = 0; i < (sizeof(s_stuff) - 1); i++)
-        String[(*index)++] = encode_ascii(s_stuff[i]);
+    return outputString + index;
 }

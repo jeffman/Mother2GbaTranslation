@@ -1,0 +1,10 @@
+.loadtable "data/cast-table.tbl"
+
+.strn   078h, 000h, 050h, "\cpaula's mom[END]"
+.strn   078h, 000h, 0A0h, "\cpaula's dad[END]"
+.strn   080h, 000h, 078h, "\cpaula[END]"
+.strn   01Ah, 001h, 078h, "\cjeff[END]"
+.strn   0A2h, 001h, 078h, "\cpoo[END]"
+.strn   0ADh, 001h, 0B0h, "\cpoo's Master[END]"
+.strn   03Ah, 002h, 090h, "\cking[END]"
+.str   043h, 002h, 078h, "\cness[END]"

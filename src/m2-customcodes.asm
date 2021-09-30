@@ -1,5 +1,5 @@
 //==============================================================================
-// void parse_generic(int code, char* parserAddress, WINDOW* window, int* dest)
+// int parse_generic(int code, char* parserAddress, WINDOW* window, byte* dest)
 // In:
 //    r0: code
 //    r1: parser address
@@ -111,7 +111,7 @@ b @@end
 //--------------------------------
 // 5D FF: Print give text
 cmp     r4,0x5D
-bne     @@end
+bne     @@next4
 
 // 5D FF should be treated as a renderable code
 push    {r0-r3}
@@ -156,6 +156,52 @@ bl      give_print
 pop     {r0}
 mov     r3,#0
 sub     r3,r3,#1 //r3 is now -1
+b       @@end
+
+@@next4:
+
+//--------------------------------
+// 5C FF: Load buffer
+cmp     r4,#0x5C
+bne     @@next5
+bl      load_pixels_overworld
+b       @@end
+
+@@next5:
+
+//--------------------------------
+// 5B FF: Print main window (if enabled) without restore of window buffer
+cmp     r4,#0x5B
+bne     @@next6
+bl      generic_reprinting_first_menu_talk_to_highlight
+mov     r3,#2
+b       @@end
+
+@@next6:
+//--------------------------------
+// 5A FF: Restore the dialogue window
+cmp     r4,#0x5A
+bne     @@next7
+ldr     r0,=#0x3005230
+ldr     r0,[r0,#8]
+mov     r1,#0
+strh    r1,[r0,#0x2A]
+strh    r1,[r0,#0x2C]
+strb    r1,[r0,#3]
+bl      m2_drawwindow
+mov     r3,#2
+b       @@end
+
+@@next7:
+//--------------------------------
+// 59 FF: Set stored goods window's data so it prints the header from scratch
+cmp     r4,#0x59
+bne     @@end
+ldr     r0,=#0x3005230
+ldr     r0,[r0,#0x10]
+mov     r1,#0xFF //Set pixel_x as 0xFF
+strb    r1,[r0,#2]
+mov     r3,#2
 
 //--------------------------------
 @@end:
