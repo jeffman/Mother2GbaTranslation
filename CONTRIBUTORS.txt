@@ -33,5 +33,15 @@ Testing:
   John Enigma
   CloverCharBoyBound
 
+Graphics:
+  JeffMan
+  surrashubound
+  Masaru
+
+Testing:
+  Eevs
+  John Enigma
+  CloverCharBoyBound
+
 Special thanks:
   TragicManner

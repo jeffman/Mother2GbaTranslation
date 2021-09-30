@@ -2351,7 +2351,7 @@ disclaimer_map:
 .definelabel m2_curhpwindow_down    ,0x80D41D8
 .definelabel m2_sub_d6844           ,0x80D6844
 .definelabel m2_setupbattlename     ,0x80DCD00
-.definelabel m2_stat_symb_checker   ,0x8B0EDA4 
+.definelabel m2_stat_symb_checker   ,0x8B0EDA4
 .definelabel vblank                 ,0x80F47E4
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70
