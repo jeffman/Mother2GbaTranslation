@@ -490,8 +490,10 @@ cmp     r0,0
 beq     @@next
 
 // If flag 0x10 is set, clear the PSI window
+bl      check_overworld_buffer
+ldr     r1,=#buffer_subtractor
+sub     r1,r0,r1
 ldr     r0,[r5,0x1C] // PSI window
-ldr     r1,=#overworld_buffer - buffer_subtractor
 bl      clear_window_buffer
 
 @@next:
@@ -748,8 +750,10 @@ ldr     r0,=0x3002500
 ldrh    r0,[r0]
 cmp     r0,0
 beq     @@next
+bl      check_overworld_buffer
+ldr     r1,=#buffer_subtractor
+sub     r1,r0,r1
 ldr     r0,=#0x3005230
-ldr     r1,=#overworld_buffer - buffer_subtractor
 ldr     r0,[r0,0x1C]
 bl      clear_window_buffer
 
@@ -2478,10 +2482,12 @@ ldrb    r1,[r4,#0x3] //If it is, sets vwf_skip to true, clears the window and up
 mov     r2,#1
 orr     r2,r1
 strb    r2,[r4,#0x3]
-mov     r3,r0
+push    {r0}
+bl      check_overworld_buffer
+ldr     r1,=#buffer_subtractor
+sub     r1,r0,r1
 mov     r0,r4
-ldr     r1,=#overworld_buffer - buffer_subtractor
-mov     r4,r3
+pop     {r4}
 bl      clear_window_buffer
 mov     r0,r4
 bl      psiTargetWindow_buffer
@@ -2770,7 +2776,11 @@ pop     {r4,pc}
 //Prints blankstr in the buffer
 bb21c_print_blankstr_buffer:
 push    {lr}
-ldr     r3,=#overworld_buffer - buffer_subtractor
+push    {r0-r2}
+bl      check_overworld_buffer
+ldr     r3,=#buffer_subtractor
+sub     r3,r0,r3
+pop     {r0-r2}
 bl      print_blankstr_buffer
 pop     {pc}
 
@@ -2778,7 +2788,11 @@ pop     {pc}
 //Prints blankstr in the buffer and stores it
 bb21c_print_blankstr_buffer_store:
 push    {lr}
-ldr     r3,=#overworld_buffer - buffer_subtractor
+push    {r0-r2}
+bl      check_overworld_buffer
+ldr     r3,=#buffer_subtractor
+sub     r3,r0,r3
+pop     {r0-r2}
 bl      print_blankstr_buffer
 bl      store_pixels_overworld
 pop     {pc}
@@ -3165,6 +3179,19 @@ blt     @@end
 bl      store_pixels_overworld
 @@end:
 pop     {pc}
+
+//==============================================================================
+//Allocs the printing buffer's pointer. It needs 4 bytes
+_05b80_alloc_buffer_pointer:
+push    {lr}
+
+mov     r0,#4
+bl      0x8005B9C
+
+ldr     r0,=#0x3002A4C
+str     r4,[r0,#0]
+pop     {pc}
+
 
 //==============================================================================
 //Loads the vram into the buffer, it's called each time there is only the main file_select window active (a good way to set the whole thing up)

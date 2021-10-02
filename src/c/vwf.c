@@ -72,10 +72,9 @@ byte reduce_bit_depth(int row, int foregroundRow)
 
 //The order is swapped in order to make this faster
 //Doing the bottom tile directly saves some cycles
-void reduce_bit_depth_sp(int* TileRows, int* bufferValues)
+void reduce_bit_depth_sp(int* TileRows, int* bufferValues, int* bottomBufferValues)
 {
     int* bottomTileRows = TileRows + (0x20 * 8);
-    int* bottomBufferValues = bufferValues + 0x40;
     const int andValue = 0x11111111;
     
     //First value
@@ -479,6 +478,19 @@ byte print_character_with_callback(byte chr, int x, int y, int font, int foregro
     return virtualWidth;
 }
 
+int convert_tile_address_buffer(int tile)
+{
+    //Allows using tiles with different size to make the buffer smaller
+    tile -= *tile_offset;
+    int inner_line = tile & 0x3F;
+    int lines = (tile >> 6) << 5;
+    int returned_address = ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER) + (lines * DEFAULT_DOUBLE_TILE_HEIGHT);
+    
+    if(inner_line >= 0x20)
+        return returned_address + (0x20 * 8) + ((inner_line & 0x1F) * (DEFAULT_DOUBLE_TILE_HEIGHT - 8));
+    return returned_address + (inner_line * 8);
+}
+
 byte print_character_with_callback_1bpp_buffer(byte chr, int x, int y, byte *dest, int (*getTileCallback)(int, int), int font,
     unsigned short *tilemapPtr, int tilemapWidth, byte doubleTileHeight)
 {
@@ -526,7 +538,7 @@ byte print_character_with_callback_1bpp_buffer(byte chr, int x, int y, byte *des
 
             for (int row = 0; row < 8; row++)
             {
-                unsigned short canvasRow = dest[(realTileIndex * 8) + ((row + offsetY - sumRemoved) & 7)] + (dest[(realTileIndexRight * 8) + ((row + offsetY - sumRemoved) & 7)]  << 8);
+                unsigned short canvasRow = dest[convert_tile_address_buffer(realTileIndex) + ((row + offsetY - sumRemoved) & 7)] + (dest[convert_tile_address_buffer(realTileIndexRight) + ((row + offsetY - sumRemoved) & 7)]  << 8);
                 unsigned short glyphRow = glyphRows[row + (dTileY * 8 * tileWidth) + (dTileX * 8)] << offsetX;
 
                 unsigned short tmpCanvasRow = canvasRow;
@@ -535,8 +547,8 @@ byte print_character_with_callback_1bpp_buffer(byte chr, int x, int y, byte *des
                 if(!availableSwap && ((row + offsetY) >> 3) == 1 && canvasRow != tmpCanvasRow) //This changed the canvas, then it's useful... IF it's the extra vertical tile
                     useful = true;
 
-                dest[(realTileIndex * 8) + ((row + offsetY - sumRemoved) & 7)] = canvasRow;
-                dest[(realTileIndexRight * 8) + ((row + offsetY - sumRemoved) & 7)] = canvasRow >> 8;
+                dest[convert_tile_address_buffer(realTileIndex) + ((row + offsetY - sumRemoved) & 7)] = canvasRow;
+                dest[convert_tile_address_buffer(realTileIndexRight) + ((row + offsetY - sumRemoved) & 7)] = canvasRow >> 8;
 
                 if((row + offsetY - sumRemoved) == limit)
                 {
@@ -1739,9 +1751,10 @@ void clear_tile_buffer(int x, int y, byte* dest)
 {
     // Clear pixels
     int tileIndex = get_tile_number_buffer(x, y) + *tile_offset;
-    int *destTileInt = (int*)&dest[(tileIndex) * 8];
+    int *destTileInt = (int*)&dest[convert_tile_address_buffer(tileIndex)];
     destTileInt[0] = 0;
-    destTileInt[1] = 0;
+    if(((tileIndex - *tile_offset) & 0x20) == 0)
+        destTileInt[1] = 0;
 
     // Reset the tilemap (e.g. get rid of equip or SMAAAASH!! tiles)
     (*tilemap_pointer)[x + (y * 32)] = (get_tile_number(x, y) + (*tile_offset)) | *palette_mask;
@@ -1940,6 +1953,27 @@ void printCashWindow()
     m2_sub_d3c50();
 }
 
+void eb_cartridge_palette_change(bool background)
+{
+    unsigned short *paletteDest = (unsigned short*)0x5000040;
+    if(background)
+    {
+        if(BUILD_PALETTE)
+        {
+            //Makes the game do the palette work. Copy the result in a bin file and use that instead in order to make the swap fast
+            unsigned short palettes[0x50];
+            cpuset(paletteDest, palettes, 0x50);
+            for(int i = 0; i < 5; i++)
+                m12_dim_palette(&palettes[i * 0x10], 0x10, 0x800);
+            cpuset(palettes, paletteDest, 0x50);
+        }
+        else
+            cpuset(m12_cartridge_palettes_dimmed, paletteDest, 0x50);
+    }
+    else
+        cpuset(&m12_cartridge_palettes[0x20], paletteDest, 0x50);
+}
+
 // x, y, width: tile coordinates
 void print_blankstr_buffer(int x, int y, int width, byte *dest)
 {
@@ -2004,11 +2038,25 @@ int print_alphabet_buffer(WINDOW* window)
     }
 }
 
+int check_overworld_buffer()
+{
+    int address = *((int*)(OVERWORLD_BUFFER_POINTER));
+    if(address == 0)
+    {
+        int tmp_counter = m2_buffer_counter;
+        address = (int)m2_malloc(OVERWORLD_BUFFER_SIZE);
+        *((int*)(OVERWORLD_BUFFER_POINTER)) = address;
+        m2_buffer_counter = tmp_counter;
+    }
+    return address;
+}
+
 void load_pixels_overworld_buffer()
 {
     int tile = *tile_offset;
     byte* buffer = (byte*)(OVERWORLD_BUFFER - (tile * TILESET_OFFSET_BUFFER_MULTIPLIER));
     int* topBufferValues = (int*)(&buffer[tile * 8]);
+    int* bottomBufferValues = topBufferValues + 0x40;
     int* topTilePointer;
     int nextValue = 0x20;
     int i = 0;
@@ -2022,24 +2070,28 @@ void load_pixels_overworld_buffer()
         if(i == nextValue)
         {
             nextValue += 0x20;
-            topBufferValues += 0x40;
+            topBufferValues = bottomBufferValues;
+            bottomBufferValues += 0x40;
         }
         i++;
         //Using "reduce_bit_depth_sp" reduced the total amount of cycles from 300k to 162k
-        reduce_bit_depth_sp(topTilePointer, topBufferValues);
+        reduce_bit_depth_sp(topTilePointer, topBufferValues, bottomBufferValues);
         topTilePointer += 8;
         topBufferValues += 2;
+        bottomBufferValues++;
         while(remainingTiles > 0)
         {
             if(i == nextValue)
             {
                 nextValue += 0x20;
-                topBufferValues += 0x40;
+                topBufferValues = bottomBufferValues;
+                bottomBufferValues += 0x40;
             }
             i++;
-            reduce_bit_depth_sp(topTilePointer, topBufferValues);
+            reduce_bit_depth_sp(topTilePointer, topBufferValues, bottomBufferValues);
             topTilePointer += 8;
             topBufferValues += 2;
+            bottomBufferValues++;
             remainingTiles--;
         }
     }
@@ -2079,7 +2131,7 @@ void store_pixels_overworld_buffer(int totalYs)
         if(i == nextValue)
         {
             nextValue += 0x20;
-            topBufferValues += 0x40;
+            topBufferValues += 0x20;
             bottomBufferValues += 0x40;
         }
         i++;
@@ -2100,7 +2152,6 @@ void store_pixels_overworld_buffer(int totalYs)
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
         //Since those are unused
-        bottomBufferValues++;
         bottomTilePointer += 4;
         /* The game doesn't use these
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
@@ -2114,7 +2165,7 @@ void store_pixels_overworld_buffer(int totalYs)
             if(i == nextValue)
             {
                 nextValue += 0x20;
-                topBufferValues += 0x40;
+                topBufferValues += 0x20;
                 bottomBufferValues += 0x40;
             }
             i++;
@@ -2135,7 +2186,6 @@ void store_pixels_overworld_buffer(int totalYs)
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
             //Since those are unused
-            bottomBufferValues++;
             bottomTilePointer += 4;
             /* The game doesn't use these
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
@@ -2146,27 +2196,6 @@ void store_pixels_overworld_buffer(int totalYs)
             remainingTiles--;
         }
     }
-}
-
-void eb_cartridge_palette_change(bool background)
-{
-    unsigned short *paletteDest = (unsigned short*)0x5000040;
-    if(background)
-    {
-        if(BUILD_PALETTE)
-        {
-            //Makes the game do the palette work. Copy the result in a bin file and use that instead in order to make the swap fast
-            unsigned short palettes[0x50];
-            cpuset(paletteDest, palettes, 0x50);
-            for(int i = 0; i < 5; i++)
-                m12_dim_palette(&palettes[i * 0x10], 0x10, 0x800);
-            cpuset(palettes, paletteDest, 0x50);
-        }
-        else
-            cpuset(m12_cartridge_palettes_dimmed, paletteDest, 0x50);
-    }
-    else
-        cpuset(&m12_cartridge_palettes[0x20], paletteDest, 0x50);
 }
 
 void store_pixels_overworld_buffer_totalTiles(int totalTiles)
@@ -2201,7 +2230,7 @@ void store_pixels_overworld_buffer_totalTiles(int totalTiles)
         if(i == nextValue)
         {
             nextValue += 0x20;
-            topBufferValues += 0x40;
+            topBufferValues += 0x20;
             bottomBufferValues += 0x40;
         }
         i++;
@@ -2222,7 +2251,6 @@ void store_pixels_overworld_buffer_totalTiles(int totalTiles)
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
         //Since those are unused
-        bottomBufferValues++;
         bottomTilePointer += 4;
         /* The game doesn't use these
         *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
@@ -2236,7 +2264,7 @@ void store_pixels_overworld_buffer_totalTiles(int totalTiles)
             if(i == nextValue)
             {
                 nextValue += 0x20;
-                topBufferValues += 0x40;
+                topBufferValues += 0x20;
                 bottomBufferValues += 0x40;
             }
             i++;
@@ -2257,7 +2285,6 @@ void store_pixels_overworld_buffer_totalTiles(int totalTiles)
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x10) & 0xFF];
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(first_half >> 0x18) & 0xFF];
             //Since those are unused
-            bottomBufferValues++;
             bottomTilePointer += 4;
             /* The game doesn't use these
             *(bottomTilePointer++) = bits_to_nybbles_pointer[(second_half >> 0) & 0xFF];
@@ -2281,10 +2308,23 @@ void copy_tile_buffer(int xSource, int ySource, int xDest, int yDest, byte *dest
 {
     int sourceTileIndex = get_tile_number_buffer(xSource, ySource) + *tile_offset;
     int destTileIndex = get_tile_number_buffer(xDest, yDest) + *tile_offset;
-    int* sourceTile = (int*)&dest[sourceTileIndex * 8];
-    int* destTile = (int*)&dest[destTileIndex * 8];
+    int* sourceTile = (int*)&dest[convert_tile_address_buffer(sourceTileIndex)];
+    int* destTile = (int*)&dest[convert_tile_address_buffer(destTileIndex)];
+    
+    //Copy the first part, no matter what
     destTile[0] = sourceTile[0];
-    destTile[1] = sourceTile[1];
+    //Handle the 4 different cases
+    if(((sourceTileIndex - *tile_offset) & 0x20) == 0)
+    {
+        if(((destTileIndex - *tile_offset) & 0x20) == 0)
+            destTile[1] = sourceTile[1];
+    }
+    else
+    {
+        if(((destTileIndex - *tile_offset) & 0x20) == 0)
+            destTile[1] = 0;
+    }
+    
 }
 
 // x,y: tile coordinates

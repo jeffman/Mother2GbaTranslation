@@ -27,3 +27,6 @@ void __attribute__((naked)) load_pixels_overworld() {}
 void __attribute__((naked)) generic_reprinting_first_menu_talk_to_highlight() {}
 void __attribute__((naked)) m12_dim_palette(short* palette, int total, int dimmingFactor) {}
 int __attribute__((naked)) m2_jump_to_offset(byte* character) {}
+byte* __attribute__((naked)) m2_malloc(int size) {}
+void __attribute__((naked)) m2_title_teardown() {}
+void __attribute__((naked)) vblank() {}

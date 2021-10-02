@@ -26,6 +26,7 @@ $input_c_files =
     "src/c/battle.c",
     "src/c/equip.c",
     "src/c/psi.c",
+    "src/c/title.c",
     "src/c/luminehall.c",
     "src/c/custom_codes.c"
 

@@ -1,0 +1,255 @@
+// Load intro screen
+
+// 82D6AA8: structs of size 0x38
+// Offset       Length      Description
+// ------------------------------------
+// 0            4           BG0 graphics pointer (compressed)
+// 4            4           Sprite graphics pointer (compressed)
+// 8            4           BG palette pointer (compressed)
+// C            4           Sprite palette pointer (compressed)
+// 10           4           BG0 tilemap pointer (compressed)
+// 14           2           BG0 attributes
+// 16           2           Unused?
+// 18           4           BG1 tilemap pointer (compressed)
+// 1C           2           BG1 attributes
+// 1E           2           Unused?
+// 20           2           DISPCNT
+// 22           2           Some kind of index into a jump table (negative values are special)
+// 24           4           Unused?
+// 28           16          Four-entry jump table
+//                          [0]:   called at the start of the animation
+//                          [1,2]: called for each frame (seems to be setup and then commit)
+//                          [3]:   called at the end of the animation
+
+// Dump:
+// -----
+// #   BG0gfx   OBJgfx   BGpal    OBJpal   BG0map   BG0attr   BG1map   BG1attr   DISP jump -        Start    Setup    Commit   End
+// ------------------------------------------------------------------------------------------------------------------------------------
+// [0] 08714840 00000000 087147E4 00000000 087143FC 000B 0000 00000000 0000 0000 1100 0000 00000000 0801200D 080120B1 08012035 08012011
+// [1] 00000000 00000000 00000000 00000000 08714538 000B 0000 00000000 0000 0000 1100 0001 00000000 0801200D 080120B1 08012035 08012011
+// [2] 00000000 00000000 00000000 00000000 08714688 000B 0000 00000000 0000 0000 1100 0001 00000000 0801200D 080120B1 08012035 08012011
+// [3] 0870F580 08711280 087126CC 087127E8 087128EC 000A 0000 08712CD8 010B 0000 1000 FFFF 00000000 080113F5 080115A9 08011499 08011495
+// [4] 0870F580 08711280 087126CC 087127E8 087128EC 000A 0000 08712CD8 010B 0000 1300 0001 00000000 080113F5 08011F05 08011499 08011495
+// [5] 0870F580 08711280 087126CC 087127E8 087128EC 000A 0000 08712CD8 010B 0000 1300 0001 00000000 080113F5 08011BFD 08011499 08011495
+// [6] 0871325C 00000000 08713210 00000000 08712FB8 000A 0000 00000000 0000 0000 0100 0001 00000000 0801200D 0801214D 08012035 08012011
+
+// r0: screen key
+//      0 = Nintendo
+//      1 = APE
+//      2 = HALKEN
+//      3 = Title screen (full)
+//      5 = Title screen (quick)
+
+// 0x18 byte struct: ($2028008)
+// Offset       Length      Description
+// ------------------------------------
+// 0            4           Animation number
+// 4            4           Current frame
+// 8            4           ?
+// C            4           ?
+// 10           4           ?
+// 14           4           Pointer to giant 0x2E0 byte struct used in $80113F5
+
+080111D0 (T)  push    r4-r7,r14
+080111D2 (T)  mov     r7,r9
+080111D4 (T)  mov     r6,r8
+080111D6 (T)  push    r6,r7
+080111D8 (T)  add     sp,-4h
+080111DA (T)  mov     r5,r0
+080111DC (T)  ldr     r4,=3000370h
+080111DE (T)  mov     r0,18h
+080111E0 (T)  bl      8005B9Ch              // malloc 0x18 bytes for some struct
+080111E4 (T)  str     r0,[r4]
+080111E6 (T)  str     r5,[r0]
+080111E8 (T)  mov     r7,0h
+080111EA (T)  str     r7,[r0,14h]
+080111EC (T)  str     r7,[r0,4h]
+080111EE (T)  str     r7,[r0,10h]           // zero out the struct
+080111F0 (T)  ldr     r6,=82D6AA8h
+080111F2 (T)  lsl     r0,r5,3h
+080111F4 (T)  sub     r0,r0,r5
+080111F6 (T)  lsl     r4,r0,3h              // r4 = r5 * 0x38
+080111F8 (T)  add     r0,r4,r6
+080111FA (T)  ldr     r0,[r0]
+080111FC (T)  cmp     r0,0h
+080111FE (T)  beq     801120Ch
+08011200 (T)  mov     r1,80h
+08011202 (T)  lsl     r1,r1,12h
+08011204 (T)  mov     r2,40h
+08011206 (T)  lsl     r2,r2,8h
+08011208 (T)  bl      8005D34h
+0801120C (T)  add     r0,r6,4
+0801120E (T)  add     r0,r4,r0
+08011210 (T)  ldr     r0,[r0]
+08011212 (T)  cmp     r0,0h
+08011214 (T)  beq     8011220h
+08011216 (T)  ldr     r1,=2008000h
+08011218 (T)  mov     r2,80h
+0801121A (T)  lsl     r2,r2,8h
+0801121C (T)  bl      8005D34h
+08011220 (T)  mov     r0,r6
+08011222 (T)  add     r0,8h
+08011224 (T)  add     r0,r4,r0
+08011226 (T)  ldr     r3,[r0]
+08011228 (T)  cmp     r3,0h
+0801122A (T)  beq     801126Ch
+0801122C (T)  mov     r0,1h
+0801122E (T)  neg     r0,r0
+08011230 (T)  cmp     r3,r0
+08011232 (T)  bne     8011260h
+08011234 (T)  str     r7,[sp]
+08011236 (T)  ldr     r1,=40000D4h
+08011238 (T)  mov     r0,r13
+0801123A (T)  str     r0,[r1]
+0801123C (T)  ldr     r0,=2010000h
+0801123E (T)  str     r0,[r1,4h]
+08011240 (T)  ldr     r0,=85000080h
+08011242 (T)  str     r0,[r1,8h]
+08011244 (T)  ldr     r0,[r1,8h]
+08011246 (T)  b       801126Ch
+08011248 (T)  lsl     r0,r6,0Dh
+0801124A (T)  lsl     r0,r0,0Ch
+0801124C (T)  ldr     r0,[r5,28h]
+0801124E (T)  lsr     r5,r5,20h
+08011250 (T)  strh    r0,[r0]
+08011252 (T)  lsl     r0,r0,8h
+08011254 (T)  lsl     r4,r2,3h
+08011256 (T)  lsl     r0,r0,10h
+08011258 (T)  lsl     r0,r0,0h
+0801125A (T)  lsl     r1,r0,8h
+0801125C (T)  lsl     r0,r0,2h
+0801125E (T)  strh    r0,[r0,28h]
+08011260 (T)  ldr     r1,=2010000h
+08011262 (T)  mov     r2,80h
+08011264 (T)  lsl     r2,r2,2h
+08011266 (T)  mov     r0,r3
+08011268 (T)  bl      8005D34h
+0801126C (T)  ldr     r1,=82D6AA8h
+0801126E (T)  mov     r9,r1
+08011270 (T)  lsl     r0,r5,3h
+08011272 (T)  sub     r0,r0,r5
+08011274 (T)  lsl     r7,r0,3h
+08011276 (T)  mov     r0,r9
+08011278 (T)  add     r0,0Ch
+0801127A (T)  add     r0,r7,r0
+0801127C (T)  ldr     r0,[r0]
+0801127E (T)  cmp     r0,0h
+08011280 (T)  beq     801128Ch
+08011282 (T)  ldr     r1,=2010200h
+08011284 (T)  mov     r2,80h
+08011286 (T)  lsl     r2,r2,2h
+08011288 (T)  bl      8005D34h
+0801128C (T)  mov     r0,r9
+0801128E (T)  add     r0,10h
+08011290 (T)  add     r0,r7,r0
+08011292 (T)  ldr     r0,[r0]
+08011294 (T)  cmp     r0,0h
+08011296 (T)  beq     80112A2h
+08011298 (T)  ldr     r1,=2010400h
+0801129A (T)  mov     r2,80h
+0801129C (T)  lsl     r2,r2,4h
+0801129E (T)  bl      8005D34h
+080112A2 (T)  mov     r0,r9
+080112A4 (T)  add     r0,18h
+080112A6 (T)  add     r0,r7,r0
+080112A8 (T)  ldr     r0,[r0]
+080112AA (T)  cmp     r0,0h
+080112AC (T)  beq     80112B8h
+080112AE (T)  ldr     r1,=2010C00h
+080112B0 (T)  mov     r2,80h
+080112B2 (T)  lsl     r2,r2,4h
+080112B4 (T)  bl      8005D34h
+080112B8 (T)  ldr     r0,=2010000h
+080112BA (T)  mov     r8,r0
+080112BC (T)  mov     r0,0h
+080112BE (T)  mov     r1,r8
+080112C0 (T)  strh    r0,[r1]
+080112C2 (T)  bl      80F47E4h
+080112C6 (T)  bl      800E5E4h
+080112CA (T)  ldr     r4,=40000D4h
+080112CC (T)  mov     r0,80h
+080112CE (T)  lsl     r0,r0,12h
+080112D0 (T)  str     r0,[r4]
+080112D2 (T)  ldr     r0,=6008000h
+080112D4 (T)  str     r0,[r4,4h]
+080112D6 (T)  ldr     r5,=84001000h
+080112D8 (T)  str     r5,[r4,8h]
+080112DA (T)  ldr     r0,[r4,8h]
+080112DC (T)  ldr     r6,=4000006h
+080112DE (T)  ldrh    r0,[r6]
+080112E0 (T)  bl      80F47E4h
+080112E4 (T)  bl      800E5E4h
+080112E8 (T)  ldr     r0,=2004000h
+080112EA (T)  str     r0,[r4]
+080112EC (T)  ldr     r0,=600C000h
+080112EE (T)  str     r0,[r4,4h]
+080112F0 (T)  str     r5,[r4,8h]
+080112F2 (T)  ldr     r0,[r4,8h]
+080112F4 (T)  ldrh    r0,[r6]
+080112F6 (T)  bl      80F47E4h
+080112FA (T)  bl      800E5E4h
+080112FE (T)  ldr     r1,=4000008h
+08011300 (T)  mov     r0,r9
+08011302 (T)  add     r5,r7,r0
+08011304 (T)  ldrh    r0,[r5,14h]
+08011306 (T)  strh    r0,[r1]
+08011308 (T)  add     r1,2h
+0801130A (T)  ldrh    r0,[r5,1Ch]
+0801130C (T)  strh    r0,[r1]
+0801130E (T)  mov     r1,r8
+08011310 (T)  str     r1,[r4]
+08011312 (T)  mov     r0,0A0h
+08011314 (T)  lsl     r0,r0,13h
+08011316 (T)  str     r0,[r4,4h]
+08011318 (T)  ldr     r0,=84000080h
+0801131A (T)  mov     r9,r0
+0801131C (T)  str     r0,[r4,8h]
+0801131E (T)  ldr     r0,[r4,8h]
+08011320 (T)  ldr     r0,=2010400h
+08011322 (T)  str     r0,[r4]
+08011324 (T)  mov     r0,0C0h
+08011326 (T)  lsl     r0,r0,13h
+08011328 (T)  str     r0,[r4,4h]
+0801132A (T)  ldr     r1,=84000200h
+0801132C (T)  mov     r8,r1
+0801132E (T)  str     r1,[r4,8h]
+08011330 (T)  ldr     r0,[r4,8h]
+08011332 (T)  ldrh    r0,[r6]
+08011334 (T)  bl      80F47E4h
+08011338 (T)  bl      800E5E4h
+0801133C (T)  ldr     r0,=2008000h
+0801133E (T)  str     r0,[r4]
+08011340 (T)  ldr     r0,=6010000h
+08011342 (T)  str     r0,[r4,4h]
+08011344 (T)  ldr     r0,=84002000h
+08011346 (T)  str     r0,[r4,8h]
+08011348 (T)  ldr     r0,[r4,8h]
+0801134A (T)  ldrh    r0,[r6]
+0801134C (T)  bl      80F47E4h
+08011350 (T)  bl      800E5E4h
+08011354 (T)  mov     r1,80h
+08011356 (T)  lsl     r1,r1,13h
+08011358 (T)  ldrh    r0,[r5,20h]
+0801135A (T)  strh    r0,[r1]
+0801135C (T)  ldr     r0,=2010200h
+0801135E (T)  str     r0,[r4]
+08011360 (T)  ldr     r0,=5000200h
+08011362 (T)  str     r0,[r4,4h]
+08011364 (T)  mov     r0,r9
+08011366 (T)  str     r0,[r4,8h]
+08011368 (T)  ldr     r0,[r4,8h]
+0801136A (T)  ldr     r0,=2010C00h
+0801136C (T)  str     r0,[r4]
+0801136E (T)  ldr     r0,=6000800h
+08011370 (T)  str     r0,[r4,4h]
+08011372 (T)  mov     r1,r8
+08011374 (T)  str     r1,[r4,8h]
+08011376 (T)  ldr     r0,[r4,8h]
+08011378 (T)  ldrh    r0,[r6]
+0801137A (T)  add     sp,4h
+0801137C (T)  pop     r3,r4
+0801137E (T)  mov     r8,r3
+08011380 (T)  mov     r9,r4
+08011382 (T)  pop     r4-r7
+08011384 (T)  pop     r0
+08011386 (T)  bx      r0
