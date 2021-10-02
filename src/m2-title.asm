@@ -1,5 +1,9 @@
 //---------------------------------------------------------
 title_initializer:
+
+// Normally the game enables BG0 in sequence 8, but we want
+// it enabled from the start so copy that code to here
+
 push    {r1}
 ldr     r0,=0x3001B20
 mov     r1,8        // BG0 X offset
@@ -7,6 +11,12 @@ strh    r1,[r0]
 ldr     r0,=0x30012DC
 mov     r1,8*6      // BG0 Y offset
 strh    r1,[r0]
+ldr     r0,=0x3000370
+ldr     r1,[r0,#0]
+add     r1,0x98
+mov     r0,0x88
+lsl     r0,r0,5
+strh    r0,[r1]
 pop     {r1}
 ldr     r0,=0x80113F4
 mov     pc,r0       // Run the existing routine
@@ -57,14 +67,7 @@ pop     {r1,pc}
 //---------------------------------------------------------
 title_sequence_00:
 
-// Normally the game enables BG0 in sequence 8, but we want
-// it enabled from the start so copy that code to here
 push    {r3}
-mov     r1,r9
-add     r1,0x78
-mov     r0,0x88
-lsl     r0,r0,5
-strh    r0,[r1]
 
 // Copy static palette to BG pal 8
 ldr     r3,[r3]
