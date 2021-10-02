@@ -1969,10 +1969,24 @@ nop
     .org 0x82D6BE8 :: dw title_initializer + 1
 
 // Setup hacks:
+
     // Remove the M2's shines
-    
     .org 0x8011D9C :: nop :: mov r0,#1
     .org 0x8011DD2 :: nop :: mov r0,#1
+    
+    // Change the amount of loaded letters
+    .org 0x8011C86 :: cmp r6,#8
+    .org 0x8011E14 :: mov r6,#8
+    
+    // Change how the letters coords are loaded
+    .org 0x8011C04 :: add sp,#-0x48
+    .org 0x8011E2E :: add sp,#0x48
+    .org 0x8011C12 :: ldmia [r0]!,r2-r4 :: stmia [r1]!,r2-r4
+    .org 0x8011C16 :: add r4,sp,#0x24
+    .org 0x8011C26 :: ldmia [r0]!,r2-r4 :: stmia [r1]!,r2-r4
+    
+    // Change the location of the coords
+    .org 0x8011C8C :: dw m2_title_quick_text_coords_y :: dw m2_title_quick_text_coords_x
 
 .org 0x801170C :: dw m2_title_text_constants
 .org 0x8011710 :: dw m2_title_text_constants + 12
@@ -2260,6 +2274,14 @@ m2_title_quick_foreground_pal:
 .incbin "data/m2-title-quick-foreground-pal.c.bin"
 
 .align 4
+m2_title_quick_text_coords_x:
+.incbin "data/m2-title-quick-text-coords-x.bin"
+
+.align 4
+m2_title_quick_text_coords_y:
+.incbin "data/m2-title-quick-text-coords-y.bin"
+
+.align 4
 m2_title_background_pal_copyright:
 dw 0x100 :: .incbin "data/m2-title-background-pal-copyright.c.bin"
 
@@ -2339,7 +2361,7 @@ disclaimer_map:
 .definelabel m2_insert_default_name ,0x8005708
 .definelabel m2_malloc              ,0x8005B9C
 .definelabel m2_get_hall_address    ,0x800D7BC
-.definelabel m2_title_quick         ,0x8011BFC
+.definelabel m2_title_quick_setup   ,0x8011BFC
 .definelabel m12_dim_palette        ,0x80137DC
 .definelabel m2_enable_script       ,0x80A1F6C
 .definelabel m2_sub_a334c           ,0x80A334C
