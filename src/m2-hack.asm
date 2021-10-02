@@ -1957,6 +1957,19 @@ nop
 // --- Animation 5 (quick title screen) ---
 .org 0x82D6BD4 :: dh 0x008A   // Enable 8-bit BG0
 .org 0x82D6BE0 :: dh 0x1100   // Disable BG1
+.org 0x82D6BC8 :: dw m2_title_quick_background_pal
+.org 0x82D6BCC :: dw m2_title_quick_foreground_pal
+
+// Initializer hacks
+
+    // Point to custom initializer routine
+    .org 0x82D6BE8 :: dw title_initializer + 1
+
+// Setup hacks:
+    // Remove the M2's shines
+    
+    .org 0x8011D9C :: nop :: mov r0,#1
+    .org 0x8011DD2 :: nop :: mov r0,#1
 
 .org 0x801170C :: dw m2_title_text_constants
 .org 0x8011710 :: dw m2_title_text_constants + 12
@@ -2231,31 +2244,35 @@ m2_end_frame1:
 optimized_byte_4bpp_to_1bpp_table:
 .incbin "data/optimized-byte-4bpp-to-1bpp-table.bin"
 
+.align 4
 m12_cartridge_palettes_dimmed:
 .incbin "data/m12-cartridge-palettes-dimmed.bin"
 
 .align 4
+m2_title_quick_background_pal:
+.incbin "data/m2-title-quick-background-pal.c.bin"
 
+.align 4
+m2_title_quick_foreground_pal:
+.incbin "data/m2-title-quick-foreground-pal.c.bin"
+
+.align 4
 m2_title_background_pal_copyright:
 dw 0x100 :: .incbin "data/m2-title-background-pal-copyright.c.bin"
 
 .align 4
-
 m2_title_background_pal_glow:
 dw 0x280 :: .incbin "data/m2-title-background-pal-glow.c.bin"
 
 .align 4
-
 m2_title_text_pal_animated:
 dw 0x1C0 :: .incbin "data/m2-title-text-pal-animated.c.bin"
 
 .align 4
-
 m2_title_text_pal_static:
 dw 0x20 :: .incbin "data/m2-title-text-pal-static.c.bin"
 
 .align 4
-
 m2_title_text_constants:
 .incbin "data/m2-title-text-constants.bin"
 
@@ -2319,6 +2336,7 @@ disclaimer_map:
 .definelabel m2_insert_default_name ,0x8005708
 .definelabel m2_malloc              ,0x8005B9C
 .definelabel m2_get_hall_address    ,0x800D7BC
+.definelabel m2_title_quick         ,0x8011BFC
 .definelabel m12_dim_palette        ,0x80137DC
 .definelabel m2_enable_script       ,0x80A1F6C
 .definelabel m2_sub_a334c           ,0x80A334C
