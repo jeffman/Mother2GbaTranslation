@@ -34,5 +34,6 @@ extern byte *m2_items_strings;
 extern unsigned short *name_header_tiles;
 extern byte *character_general_data;
 extern PSIPrintInfo *psi_print_info;
+extern int *title_counter;
 
 #endif
