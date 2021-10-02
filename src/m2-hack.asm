@@ -1962,6 +1962,9 @@ nop
 
 // Initializer hacks
 
+    // Make it so the first entry of the first palette isn't cleared
+    .org 0x80112BE :: bl _112be_remove_pal_blanking_quick_title
+
     // Point to custom initializer routine
     .org 0x82D6BE8 :: dw title_initializer + 1
 

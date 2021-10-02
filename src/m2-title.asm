@@ -22,6 +22,21 @@ ldr     r0,=0x80113F4
 mov     pc,r0       // Run the existing routine
 
 //---------------------------------------------------------
+_112be_remove_pal_blanking_quick_title:
+
+// Normally the game clears the first entry of the first palette
+// when showing animations. We don't want that for the quick version
+// of the title.
+
+cmp     r5,#5       // Is it the quick version of the title?
+beq     @@rmv_pal_qt_end
+mov     r1,r8       // If not, blank out the first entry
+strh    r0,[r1,#0]
+
+@@rmv_pal_qt_end:
+bx      lr
+
+//---------------------------------------------------------
 title_setup_clamp:
 mov     r1,250
 cmp     r0,r1
