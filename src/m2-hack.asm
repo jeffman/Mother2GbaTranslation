@@ -780,6 +780,10 @@ b       0x80D3178
 // D31F8 hacks (print money balance)
 //---------------------------------------------------------
 
+// Saturn weld entry
+.org    0x80D3256
+bl      weld_entry_saturn
+
 .org 0x80D327E
 ldrb    r0,[r7]
 bl      decode_character
