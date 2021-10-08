@@ -2385,21 +2385,21 @@ pop     {pc}
 //==============================================================================
 //It sets things up to make it so the target window is only printed once
 b8db4_psi_inner_window:
-push    {lr}
-ldrb    r1,[r0,#3]
+push    {r4,lr}
+mov     r4,r0
+ldrb    r1,[r4,#3]
 push    {r1}
-ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
+ldrh    r1,[r4,#0x36] //Stores the cursor's Y of the window
 push    {r1}
-ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
+ldrh    r1,[r4,#0x34] //Stores the cursor's X of the window
 push    {r1}
 bl      PSITargetWindowInput //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
 pop     {r2}
-ldr     r3,[r4,0x24] //Target window
-ldrh    r1,[r3,#0x34] //Stores the cursor's X of the window
+ldrh    r1,[r4,#0x34] //Stores the cursor's X of the window
 cmp     r1,r2
 bne     @@store_buffer_first
 pop     {r2}
-ldrh    r1,[r3,#0x36] //Stores the cursor's Y of the window
+ldrh    r1,[r4,#0x36] //Stores the cursor's Y of the window
 cmp     r1,r2
 bne     @@store_buffer_second
 pop     {r2}
@@ -2423,11 +2423,10 @@ cmp     r0,#0
 beq     @@ending
 
 mov     r2,#0 //Sets vwf_skip to false since the window is changed
-ldr     r1,[r4,0x24] //Target window
-strb    r2,[r1,#3]
+strb    r2,[r4,#3]
 
 @@ending:
-pop     {pc}
+pop     {r4,pc}
 
 .pool
 

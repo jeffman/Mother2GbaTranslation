@@ -151,6 +151,9 @@ mov     r3,6
 .org 0x80B8D22 :: bl psiWindow_buffer
 .org 0x80B8E44 :: bl initWindow_buffer
 .org 0x80B8E62 :: bl baec6_psi_window_print_buffer
+.org 0x80B8F3E :: bl initWindow_buffer
+.org 0x80B8F4E :: bl initWindow_buffer
+.org 0x80B8F62 :: bl psiWindow_buffer
 .org 0x80B9222 :: bl initWindow_buffer
 .org 0x80B922E :: bl psiTargetWindow_buffer
 .org 0x80B916E :: bl initWindow_buffer
