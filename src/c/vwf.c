@@ -2051,6 +2051,18 @@ int check_overworld_buffer()
     return address;
 }
 
+void free_overworld_buffer()
+{
+    int address = *((int*)(OVERWORLD_BUFFER_POINTER));
+    if(address != 0)
+    {
+        int tmp_counter = m2_buffer_counter;
+        m2_free((int*)address);
+        *((int*)(OVERWORLD_BUFFER_POINTER)) = 0;
+        m2_buffer_counter = tmp_counter;
+    }
+}
+
 void load_pixels_overworld_buffer()
 {
     int tile = *tile_offset;
