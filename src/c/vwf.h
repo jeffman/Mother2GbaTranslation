@@ -172,7 +172,6 @@ extern int m2_div(int dividend, int divisor);
 extern int m2_remainder(int dividend, int divisor);
 extern void m2_soundeffect(int index);
 extern void m2_printstr(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight);
-extern int customcodes_parse_generic(int code, char* parserAddress, WINDOW* window, byte* dest);
 extern int m2_jump_to_offset(byte* character);
 extern void m2_sub_d3c50();
 extern void m2_sub_d6844();

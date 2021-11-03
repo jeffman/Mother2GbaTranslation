@@ -2,6 +2,7 @@
 #include "status.h"
 #include "number-selector.h"
 #include "locs.h"
+#include "custom_codes.h"
 
 void printNumberOfStatus(int maxLength, int value, int blankX, int y, int strX, int width)
 {
@@ -234,7 +235,7 @@ int statusWindowText(WINDOW* window)
             byte *str = window->text_start + window->text_offset;
             if((*(str + 1)) == 0xFF)
             {
-                int returnedLength = customcodes_parse_generic(*str, str, window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
+                int returnedLength = custom_codes_parse_generic(*str, str, window, (byte*)(OVERWORLD_BUFFER - ((*tile_offset) * TILESET_OFFSET_BUFFER_MULTIPLIER)));
                 if(returnedLength != 0)
                 {
                     if(returnedLength < 0)

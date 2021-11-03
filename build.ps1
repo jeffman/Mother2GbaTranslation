@@ -27,7 +27,8 @@ $input_c_files =
     "src/c/equip.c",
     "src/c/psi.c",
     "src/c/title.c",
-    "src/c/luminehall.c"
+    "src/c/luminehall.c",
+    "src/c/custom_codes.c"
 
 $base_c_address         = 0x83755B8;
 $scripttool_cmd         = "bin/ScriptTool/ScriptTool.dll"

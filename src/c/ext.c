@@ -13,16 +13,18 @@ void __attribute__((naked)) m2_soundeffect(int index) {}
 int __attribute__((naked)) m2_div(int dividend, int divisor) {}
 int __attribute__((naked)) m2_remainder(int dividend, int divisor) {}
 void __attribute__((naked)) m2_formatnumber(int value, byte* strDest, int length) {}
-int __attribute__((naked)) m2_sub_a334c(int value) {}
+int __attribute__((naked)) m2_store_to_win_memory(int value) {}
 int __attribute__((naked)) m2_sub_a3384(int value) {}
 void __attribute__((naked)) m2_sub_d3c50() {}
 void __attribute__((naked)) m2_sub_d6844() {}
+byte __attribute__((naked)) m2_sub_daf84(short value) {}
 int __attribute__((naked)) m2_setupwindow(WINDOW* window, short window_x, short window_y, short window_width, short window_height) {}
 int __attribute__((naked)) m2_clearwindowtiles(WINDOW* window) {}
-int __attribute__((naked)) customcodes_parse_generic(int code, char* parserAddress, WINDOW* window, int* dest) {}
 void __attribute__((naked)) m2_printstr(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight) {}
 void __attribute__((naked)) m2_setupbattlename(short value) {}
 void __attribute__((naked)) store_pixels_overworld() {}
+void __attribute__((naked)) load_pixels_overworld() {}
+void __attribute__((naked)) generic_reprinting_first_menu_talk_to_highlight() {}
 void __attribute__((naked)) m12_dim_palette(short* palette, int total, int dimmingFactor) {}
 int __attribute__((naked)) m2_jump_to_offset(byte* character) {}
 byte* __attribute__((naked)) m2_malloc(int size) {}

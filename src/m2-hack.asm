@@ -985,20 +985,9 @@ pop     {r4,pc}
 .org 0x80DB0D2 :: strb r5,[r4,2]
 .org 0x80DB0D6 :: strb r0,[r4,3]
 
-// "The" flag checks
-.org 0x80DB084 :: bl db04c_theflag :: nop :: nop
-.org 0x80DB110 :: bl dae9c_king_0_the
-.org 0x80DB156 :: bl db156_party_0_the //Not needed anymore, but is a good measure
-.org 0x80DAE30 :: bl db04c_theflag :: nop :: nop
-.org 0x80DAE9C :: bl dae9c_king_0_the
-.org 0x80DAEDA :: bl daeda_party_0_the //Not needed anymore, but is a good measure
-.org 0x80EC93C :: bl ec93c_party_0_the //Leveling up - Not needed anymore, but is a good measure
+// "The" flag checks - for target window
 .org 0x80DCD5C :: bl dcd5c_theflag :: nop :: nop
-.org 0x80DB08E :: bl db08e_theflagflag
-.org 0x80DAE3A :: bl db08e_theflagflag
 .org 0x80DCD66 :: bl db08e_theflagflag
-.org 0x80C9C58 :: bl c9c58_9f_ad_minThe
-.org 0x80C9C84 :: bl c9c58_9f_ad_minThe
 .org 0x80CA442 :: bl ca442_store_letter
 
 // Ignore the hard-coded Japanese "and cohorts"
@@ -2335,7 +2324,9 @@ disclaimer_map:
 //==============================================================================
 
 .definelabel buffer_subtractor      ,0x0000800
+.definelabel m2_btl_enemies_size    ,0x2025038
 .definelabel m2_hall_line_size      ,0x3000374
+.definelabel m2_source_pc           ,0x30009FB
 .definelabel m2_ness_data           ,0x3001D54
 .definelabel m2_ness_name           ,0x3001F10
 .definelabel m2_old_paula_name      ,0x3001F16
@@ -2351,12 +2342,16 @@ disclaimer_map:
 .definelabel m2_old_rockin          ,0x3001F3A
 .definelabel m2_rockin              ,0x3001F3C
 .definelabel m2_old_japanese_name   ,0x3001F42
+.definelabel m2_cstm_last_pc        ,0x3001F4E
 .definelabel m2_cstm_last_printed   ,0x3001F4F
 .definelabel m2_player1             ,0x3001F50
 .definelabel m2_buffer_counter      ,0x3002A4C
 .definelabel m2_script_readability  ,0x3004F08
 .definelabel m2_psi_exist           ,0x300525C
 .definelabel m2_active_window_pc    ,0x3005264
+.definelabel m2_is_battle           ,0x3005344
+.definelabel m2_btl_user_ptr        ,0x300538C
+.definelabel m2_btl_target_ptr      ,0x3005390
 .definelabel m2_setup_naming_mem    ,0x8001D5C
 .definelabel m2_soundeffect         ,0x8001720
 .definelabel m2_copy_names_perm_mem ,0x8002088
@@ -2371,7 +2366,7 @@ disclaimer_map:
 .definelabel m2_title_quick_setup   ,0x8011BFC
 .definelabel m12_dim_palette        ,0x80137DC
 .definelabel m2_enable_script       ,0x80A1F6C
-.definelabel m2_sub_a334c           ,0x80A334C
+.definelabel m2_store_to_win_memory ,0x80A334C
 .definelabel m2_sub_a3384           ,0x80A3384
 .definelabel m2_jump_to_offset      ,0x80A6C24
 .definelabel m2_get_selected_item   ,0x80A469C
@@ -2400,6 +2395,7 @@ disclaimer_map:
 .definelabel m2_hpwindow_up         ,0x80D3F0C
 .definelabel m2_curhpwindow_down    ,0x80D41D8
 .definelabel m2_sub_d6844           ,0x80D6844
+.definelabel m2_sub_daf84           ,0x80DAF84
 .definelabel m2_setupbattlename     ,0x80DCD00
 .definelabel m2_stat_symb_checker   ,0x8B0EDA4
 .definelabel vblank                 ,0x80F47E4
@@ -2424,7 +2420,6 @@ disclaimer_map:
 .include "m2-vwf-entries.asm"
 .include "m2-bugfixes.asm"
 .include "m2-formatting.asm"
-.include "m2-customcodes.asm"
 .include "m2-compiled.asm"
 .include "m2-flyover.asm"
 .include "m12-intro.asm"
