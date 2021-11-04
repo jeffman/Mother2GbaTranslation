@@ -28,7 +28,13 @@ $input_c_files =
     "src/c/psi.c",
     "src/c/title.c",
     "src/c/luminehall.c",
-    "src/c/custom_codes.c"
+    "src/c/custom_codes.c",
+    "src/c/first_func.c",
+    "src/c/tests/main_test.c",
+    "src/c/tests/debug_printf/test_print.c",
+    "src/c/tests/debug_printf/mgba.c",
+    "src/c/tests/debug_printf/printf.c",
+    "src/c/tests/debug_printf/help_funcs.c"
 
 $base_c_address         = 0x83755B8;
 $scripttool_cmd         = "bin/ScriptTool/ScriptTool.dll"

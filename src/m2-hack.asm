@@ -2026,6 +2026,12 @@ m12_cartridge_palettes:
 .incbin "data/m2-cartridge-palettes.bin"
 
 //==============================================================================
+// First function hacks
+//==============================================================================
+
+.org m12_first_call_def :: dw main_func+1
+
+//==============================================================================
 // Data files
 //==============================================================================
 
@@ -2352,6 +2358,9 @@ disclaimer_map:
 .definelabel m2_is_battle           ,0x3005344
 .definelabel m2_btl_user_ptr        ,0x300538C
 .definelabel m2_btl_target_ptr      ,0x3005390
+.definelabel start_game             ,0x80000C0
+.definelabel m12_first_call_def     ,0x80001B0
+.definelabel m12_first_function     ,0x80001B8
 .definelabel m2_setup_naming_mem    ,0x8001D5C
 .definelabel m2_soundeffect         ,0x8001720
 .definelabel m2_copy_names_perm_mem ,0x8002088
