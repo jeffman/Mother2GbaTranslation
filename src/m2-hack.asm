@@ -2362,6 +2362,7 @@ disclaimer_map:
 .definelabel m2_copy_name_temp_mem  ,0x8004E34
 .definelabel m2_insert_default_name ,0x8005708
 .definelabel m2_malloc              ,0x8005B9C
+.definelabel m2_free                ,0x8005BD4
 .definelabel m2_get_hall_address    ,0x800D7BC
 .definelabel m2_title_quick_setup   ,0x8011BFC
 .definelabel m12_dim_palette        ,0x80137DC

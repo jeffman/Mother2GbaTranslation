@@ -185,6 +185,11 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
             inv_window->pixel_x = 0xFF;
             addedSize = 2;
             break;
+            
+        case RESET_WRITE_BUFFER:
+            // 58 FF: Reset the writing buffer to avoid crashes
+            free_overworld_buffer();
+            break;
         
         default:
             break;
