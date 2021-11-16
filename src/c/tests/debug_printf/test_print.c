@@ -10,6 +10,12 @@ void test_printf(const char* ptr, ...) {
 	va_end(args);
 }
 
+void assert_print(bool condition, const char* file, int line)
+{
+    if(!condition)
+        test_printf("FAIL! File: %s - Line: %d", file, line);
+}
+
 void start_session()
 {
     mgba_open();

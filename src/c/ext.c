@@ -12,7 +12,9 @@ void __attribute__((naked)) m2_hpwindow_up(int character) {}
 bool __attribute__((naked)) m2_isequipped(int item_index) {}
 void __attribute__((naked)) m2_soundeffect(int index) {}
 int __attribute__((naked)) m2_div(int dividend, int divisor) {}
+int __attribute__((naked)) __aeabi_uidiv(int dividend, int divisor) {}
 int __attribute__((naked)) m2_remainder(int dividend, int divisor) {}
+int __attribute__((naked)) __aeabi_uidivmod(int dividend, int divisor) {}
 void __attribute__((naked)) m2_formatnumber(int value, byte* strDest, int length) {}
 int __attribute__((naked)) m2_store_to_win_memory(int value) {}
 int __attribute__((naked)) m2_sub_a3384(int value) {}

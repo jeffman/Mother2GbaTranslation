@@ -38,8 +38,7 @@ $input_c_test_files =
     "src/c/tests/main_test.c",
     "src/c/tests/debug_printf/test_print.c",
     "src/c/tests/debug_printf/mgba.c",
-    "src/c/tests/debug_printf/printf.c",
-    "src/c/tests/debug_printf/help_funcs.c"
+    "src/c/tests/debug_printf/printf.c"
 
 $base_c_address         = 0x83755B8;
 $scripttool_cmd         = "bin/ScriptTool/ScriptTool.dll"
