@@ -1,8 +1,8 @@
 #include "mgba.h"
 #include "stdbool.h"
 
+#define NULL (0)
 #define MAX_STR_SIZE 0x100
-#define NULL 0
 
 #define assert(condition) assert_print(condition, __FILE__, __LINE__, NULL)
 #define assert_message(condition, format, ...) assert_print(condition, __FILE__, __LINE__, format, __VA_ARGS__)

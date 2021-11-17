@@ -1,6 +1,6 @@
 $test_rom_file = "bin/m12test.gba"
 $log_file      = "bin/test.log"
-$sleep_time    = 10
+$sleep_time    = 60
 $failure_text  = "FAIL"
 $end_text      = "Done!"
 $mgba_name     = "mgba-sdl"

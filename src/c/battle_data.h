@@ -17,4 +17,10 @@ typedef struct BATTLE_DATA {
     short enemy_id;     //0x92
 } BATTLE_DATA;
 
+typedef struct ENEMY_DATA {
+    byte unknown[0x14];
+    char* encounter_text;
+    byte unknown_2[0x28];
+} ENEMY_DATA;
+
 #endif

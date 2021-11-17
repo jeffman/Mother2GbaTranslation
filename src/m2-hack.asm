@@ -2406,6 +2406,8 @@ disclaimer_map:
 .definelabel m2_curhpwindow_down    ,0x80D41D8
 .definelabel m2_sub_d6844           ,0x80D6844
 .definelabel m2_sub_daf84           ,0x80DAF84
+.definelabel m2_battletext_loadstr  ,0x80DB168
+.definelabel m2_set_enemy_name      ,0x80DB04C
 .definelabel m2_setupbattlename     ,0x80DCD00
 .definelabel m2_stat_symb_checker   ,0x8B0EDA4
 .definelabel vblank                 ,0x80F47E4
@@ -2415,6 +2417,7 @@ disclaimer_map:
 .definelabel m2_cast_roll_pointers  ,0x82DB25C
 .definelabel m2_items               ,0x8B1D62C
 .definelabel m2_default_names       ,0x82B9330
+.definelabel m2_enemies             ,0x8739D1C
 .definelabel m2_psi_print_table     ,0x8B2A9C0
 .definelabel m2_title_teardown      ,0x8000C28
 
