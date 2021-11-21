@@ -3401,3 +3401,18 @@ mov     r0,r4
 pop     {r4,pc}
 
 .pool
+
+//==============================================================================
+// Returns in r0 the result of m2_div, and in r1 the result of m2_remainder
+__aeabi_uidiv:
+__aeabi_uidivmod:
+push    {r4,lr}
+push    {r0,r1}
+bl      m2_remainder
+mov     r4,r0
+pop     {r0,r1}
+bl      m2_div
+mov     r1,r4
+pop     {r4,pc}
+
+.pool

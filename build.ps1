@@ -3,6 +3,7 @@
 #Region Variables
 $input_rom_file     = "bin/m12fresh.gba"
 $output_rom_file    = "bin/m12.gba"
+$test_rom_file      = "bin/m12test.gba"
 $eb_rom_file        = "bin/eb.smc"
 $working_dir        = "working"
 $give_dir           = "working/m12-give-strings"
@@ -14,6 +15,8 @@ $staff_credits_file = "working/staff_text.md"
 $compiled_asm_file  = "src/m2-compiled.asm"
 $includes_asm_file  = "m12-includes.asm"    # implicitly rooted in working_dir
 $hack_asm_file      = "m2-hack.asm"         # implicitly rooted in src_dir
+$file_hack_asm_file = "src/m2-file.asm"
+$file_inc_asm_file  = "working/m2-file.asm"
 
 $input_c_files =
     "src/c/ext.c",
@@ -28,7 +31,15 @@ $input_c_files =
     "src/c/psi.c",
     "src/c/title.c",
     "src/c/luminehall.c",
-    "src/c/custom_codes.c"
+    "src/c/custom_codes.c",
+    "src/c/first_func.c"
+    
+$input_c_test_files = 
+    "src/c/tests/main_test.c",
+    "src/c/tests/battle_test.c",
+    "src/c/tests/debug_printf/test_print.c",
+    "src/c/tests/debug_printf/mgba.c",
+    "src/c/tests/debug_printf/printf.c"
 
 $base_c_address         = 0x83755B8;
 $scripttool_cmd         = "bin/ScriptTool/ScriptTool.dll"
@@ -49,7 +60,12 @@ ElseIf ($IsLinux -or $IsMacOS) { $asm_cmd = "bin/armips" }
 
 $includes_sym_file   = [IO.Path]::ChangeExtension($includes_asm_file, "sym")
 $output_rom_sym_file = [IO.Path]::ChangeExtension($output_rom_file, "sym")
+$test_rom_sym_file   = [IO.Path]::ChangeExtension($test_rom_file, "sym")
 $hack_sym_file       = [IO.Path]::ChangeExtension($hack_asm_file, "sym")
+
+$build_possible_args =
+    "-t",
+    ""
 
 $scripttool_args =
     "-compile",
@@ -77,6 +93,9 @@ $gcc_args =
     "-mthumb",
     "-ffixed-r12",
     "-mno-long-calls"
+
+$gcc_test_args=
+    "-DTEST"
 
 $combine_script_contents =
 "SECTIONS { .text 0x$($base_c_address.ToString('X')) : { *(.text .rodata) } }"
@@ -358,6 +377,17 @@ is to separate the compiling and linking stages of the C code.
 
 $timer = [System.Diagnostics.StopWatch]::StartNew()
 
+#------------------------- HANDLE TEST COMPILING --------------------
+
+if ($args.count -ne 0) {
+    if($args[0] -eq $build_possible_args[0]) {
+        $input_c_files += $input_c_test_files
+        $gcc_args += $gcc_test_args
+        $output_rom_file = $test_rom_file
+        $output_rom_sym_file = $test_rom_sym_file
+        }
+}
+
 # ------------------------- COMPILE GAME TEXT -----------------------
 "Copying $input_rom_file to $output_rom_file..."
 Copy-Item -Path $input_rom_file -Destination $output_rom_file
@@ -379,8 +409,10 @@ if ($LASTEXITCODE -ne 0) { exit -1 }
 
 # ------------------------ ASSEMBLE GAME TEXT -----------------------
 "Assembling game text..."
+"m12_rom equ `"../$output_rom_file`"" | Out-File -FilePath $file_inc_asm_file
 & $asm_cmd -root $working_dir -sym $includes_sym_file $includes_asm_file
 if ($LASTEXITCODE -ne 0) { exit -1 }
+Remove-Item -Path $file_inc_asm_file
 
 # ----------------------------- COMPILE C ---------------------------
 $obj_files = @()
@@ -419,8 +451,10 @@ $exported_symbols | Sort-Object -Property Name | ForEach-Object { ".definelabel 
 
 # ------------------------ ASSEMBLE HACK CODE -----------------------
 "Assembling $hack_asm_file..."
+"m12_rom equ `"../$output_rom_file`"" | Out-File -FilePath $file_hack_asm_file
 & $asm_cmd -root $src_dir -sym $hack_sym_file $hack_asm_file
 if ($LASTEXITCODE -ne 0) { exit -1 }
+Remove-Item -Path $file_hack_asm_file
 
 # ------------------- GENERATE FINAL LINKER SCRIPT ------------------
 "Writing $link_script..."

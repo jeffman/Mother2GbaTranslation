@@ -1,5 +1,6 @@
 .gba
-.open "../bin/m12.gba",0x8000000
+.include "m2-file.asm"
+.open m12_rom,0x8000000
 
 //==============================================================================
 // Relocation hacks
@@ -2026,6 +2027,12 @@ m12_cartridge_palettes:
 .incbin "data/m2-cartridge-palettes.bin"
 
 //==============================================================================
+// First function hacks
+//==============================================================================
+
+.org m12_first_call_def :: dw main_func+1
+
+//==============================================================================
 // Data files
 //==============================================================================
 
@@ -2352,6 +2359,9 @@ disclaimer_map:
 .definelabel m2_is_battle           ,0x3005344
 .definelabel m2_btl_user_ptr        ,0x300538C
 .definelabel m2_btl_target_ptr      ,0x3005390
+.definelabel start_game             ,0x80000C0
+.definelabel m12_first_call_def     ,0x80001B0
+.definelabel m12_first_function     ,0x80001B8
 .definelabel m2_setup_naming_mem    ,0x8001D5C
 .definelabel m2_soundeffect         ,0x8001720
 .definelabel m2_copy_names_perm_mem ,0x8002088
@@ -2397,6 +2407,8 @@ disclaimer_map:
 .definelabel m2_curhpwindow_down    ,0x80D41D8
 .definelabel m2_sub_d6844           ,0x80D6844
 .definelabel m2_sub_daf84           ,0x80DAF84
+.definelabel m2_battletext_loadstr  ,0x80DB168
+.definelabel m2_set_enemy_name      ,0x80DB04C
 .definelabel m2_setupbattlename     ,0x80DCD00
 .definelabel m2_stat_symb_checker   ,0x8B0EDA4
 .definelabel vblank                 ,0x80F47E4
@@ -2406,6 +2418,7 @@ disclaimer_map:
 .definelabel m2_cast_roll_pointers  ,0x82DB25C
 .definelabel m2_items               ,0x8B1D62C
 .definelabel m2_default_names       ,0x82B9330
+.definelabel m2_enemies             ,0x8739D1C
 .definelabel m2_psi_print_table     ,0x8B2A9C0
 .definelabel m2_title_teardown      ,0x8000C28
 

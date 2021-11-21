@@ -1,5 +1,6 @@
 #include "window.h"
 
+void __attribute__((naked)) m12_first_function() {}
 void __attribute__((naked)) cpufastset(void *source, void *dest, int mode) {}
 void __attribute__((naked)) cpuset(void *source, void *dest, int mode) {}
 byte* __attribute__((naked)) m2_strlookup(int *offset_table, byte *strings, int index) {}
@@ -11,13 +12,17 @@ void __attribute__((naked)) m2_hpwindow_up(int character) {}
 bool __attribute__((naked)) m2_isequipped(int item_index) {}
 void __attribute__((naked)) m2_soundeffect(int index) {}
 int __attribute__((naked)) m2_div(int dividend, int divisor) {}
+int __attribute__((naked)) __aeabi_uidiv(int dividend, int divisor) {}
 int __attribute__((naked)) m2_remainder(int dividend, int divisor) {}
+int __attribute__((naked)) __aeabi_uidivmod(int dividend, int divisor) {}
 void __attribute__((naked)) m2_formatnumber(int value, byte* strDest, int length) {}
 int __attribute__((naked)) m2_store_to_win_memory(int value) {}
 int __attribute__((naked)) m2_sub_a3384(int value) {}
 void __attribute__((naked)) m2_sub_d3c50() {}
 void __attribute__((naked)) m2_sub_d6844() {}
 byte __attribute__((naked)) m2_sub_daf84(short value) {}
+byte __attribute__((naked)) m2_battletext_loadstr(char* string) {}
+void __attribute__((naked)) m2_set_enemy_name(int val) {}
 int __attribute__((naked)) m2_setupwindow(WINDOW* window, short window_x, short window_y, short window_width, short window_height) {}
 int __attribute__((naked)) m2_clearwindowtiles(WINDOW* window) {}
 void __attribute__((naked)) m2_printstr(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight) {}

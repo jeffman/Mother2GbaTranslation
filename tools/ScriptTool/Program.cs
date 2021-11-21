@@ -74,7 +74,8 @@ namespace ScriptTool
                     using (IncludeFile = File.CreateText(Path.Combine(options.WorkingDirectory, "m12-includes.asm")))
                     {
                         IncludeFile.WriteLine(".gba");
-                        IncludeFile.WriteLine(".open \"../bin/m12.gba\",0x8000000");
+                        IncludeFile.WriteLine(".include \"m2-file.asm\"");
+                        IncludeFile.WriteLine(".open m12_rom,0x8000000");
 
                         // Compile main string tables
                         if (options.DoMainText)

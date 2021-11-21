@@ -152,7 +152,6 @@ extern byte m12_other_str6[];
 extern byte m12_other_str7[];
 extern byte m12_other_str8[];
 extern byte m2_cstm_last_printed[];
-extern byte *m2_script_readability;
 extern unsigned short m12_cartridge_palettes[];
 extern unsigned short m12_cartridge_palettes_dimmed[];
 extern int overworld_buffer;
