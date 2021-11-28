@@ -14,7 +14,7 @@ if ($LASTEXITCODE -ne 0) { exit -1 }
 Remove-Item -Path $log_file
 
 "Starting the emulator..."
-& $mgba_cmd -l 16 -C logToFile=1 -C logFile=$log_file $test_rom_file &
+& $mgba_cmd -l 16 -C logLevel.gba.bios=0 -C logToFile=1 -C logFile=$log_file $test_rom_file &
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
 "Sleeping for $sleep_time seconds..."
