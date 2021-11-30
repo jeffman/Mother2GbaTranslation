@@ -18,9 +18,33 @@ typedef struct BATTLE_DATA {
 } BATTLE_DATA;
 
 typedef struct ENEMY_DATA {
-    byte unknown[0x14];
-    char* encounter_text;
-    byte unknown_2[0x28];
+  /*  0 */ byte unk0[6];
+  /*  6 */ unsigned short hp;
+  /*  8 */ unsigned short pp;
+  /*  A */ byte unkA[2];
+  /*  C */ unsigned int exp;
+  /* 10 */ unsigned short money;
+  /* 12 */ unsigned short overworldAnim;
+  /* 14 */ char *encounter_text;
+  /* 18 */ char *death_text;
+  /* 1C */ byte palette;
+  /* 1D */ byte level;
+  /* 1E */ byte bgm;
+  /* 1F */ byte offense;
+  /* 20 */ byte defense;
+  /* 21 */ byte unk21;
+  /* 22 */ byte speed;
+  /* 23 */ byte guts;
+  /* 24 */ byte luck;
+  /* 25 */ byte unk25[3];
+  /* 28 */ unsigned short actions[4];
+  /* 30 */ unsigned short finalAction;
+  /* 32 */ unsigned short actionArgs[4];
+  /* 3A */ byte unk3A[2];
+  /* 3C */ byte unk3C;
+  /* 3D */ byte itemDropped;
+  /* 3E */ byte unk3E;
+  /* 3F */ byte mirrorSuccess;
 } ENEMY_DATA;
 
 #endif

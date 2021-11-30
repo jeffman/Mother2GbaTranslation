@@ -64,9 +64,10 @@ void setup_battle_tests()
     setup_king_name();
     m2_is_battle = 1;
     (*(byte*)(0x3005050)) = 0xFF;
-    (*(short*)(0x30023DC)) = 0;        //Default delay between prints
+    (*(short*)(0x30023DC)) = 0;                  // Default delay between prints
     (*(int*)(0x3005220)) = 0x2028820;
     *tilemap_pointer= (unsigned short*)0x2028018;
+    (*(unsigned short*)(0x500001E)) = 0x7FFF;    // Make it so it's easy to check what's being written
     m2_script_readability = false;
 }
 
