@@ -22,7 +22,8 @@ void __attribute__((naked)) m2_sub_d3c50() {}
 void __attribute__((naked)) m2_sub_d6844() {}
 byte __attribute__((naked)) m2_sub_daf84(short value) {}
 byte __attribute__((naked)) m2_battletext_loadstr(char* string) {}
-void __attribute__((naked)) m2_set_enemy_name(int val) {}
+void __attribute__((naked)) m2_set_user_name(int val) {}
+void __attribute__((naked)) m2_set_target_name() {}
 int __attribute__((naked)) m2_setupwindow(WINDOW* window, short window_x, short window_y, short window_width, short window_height) {}
 int __attribute__((naked)) m2_clearwindowtiles(WINDOW* window) {}
 void __attribute__((naked)) m2_printstr(WINDOW* window, byte* str, unsigned short x, unsigned short y, bool highlight) {}

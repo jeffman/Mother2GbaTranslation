@@ -2407,7 +2407,8 @@ disclaimer_map:
 .definelabel m2_sub_d6844           ,0x80D6844
 .definelabel m2_sub_daf84           ,0x80DAF84
 .definelabel m2_battletext_loadstr  ,0x80DB168
-.definelabel m2_set_enemy_name      ,0x80DB04C
+.definelabel m2_set_user_name       ,0x80DB04C
+.definelabel m2_set_target_name     ,0x80DAE00
 .definelabel m2_setupbattlename     ,0x80DCD00
 .definelabel m2_stat_symb_checker   ,0x8B0EDA4
 .definelabel vblank                 ,0x80F47E4

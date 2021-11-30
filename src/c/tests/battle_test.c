@@ -7,6 +7,7 @@ bool text_stayed_inside(WINDOW* window);
 void test_encounter_text()
 {
     m2_btl_user_ptr->is_enemy = true;
+    m2_btl_user_ptr->letter = 1;
     for(int i = 1; i <= 3; i++)
     {
         m2_btl_enemies_size = i;
@@ -14,16 +15,47 @@ void test_encounter_text()
         for(int j = 0; j <= 230; j++)
         {
             m2_btl_user_ptr->id = j;
-            m2_set_enemy_name(1);
+            m2_btl_user_ptr->enemy_id = j;
+            m2_set_user_name(1);
             m2_battletext_loadstr(m2_enemies[j].encounter_text);
             if(m2_btl_enemies_size == 1)
-                assert_message(text_stayed_inside(window_pointers[2]), "Enemy %d", j);
+                assert_message(text_stayed_inside(window_pointers[2]), "Encounter text for Enemy %d", j);
             else if (m2_btl_enemies_size == 2)
-                assert_message(text_stayed_inside(window_pointers[2]), "Enemy %d - cohort", j);
+                assert_message(text_stayed_inside(window_pointers[2]), "Encounter text for Enemy %d - cohort", j);
             else
-                assert_message(text_stayed_inside(window_pointers[2]), "Enemy %d - cohorts", j);
+                assert_message(text_stayed_inside(window_pointers[2]), "Encounter text for Enemy %d - cohorts", j);
         }
     }
+}
+
+void test_death_text()
+{
+    m2_btl_user_ptr->is_enemy = true;
+    m2_btl_enemies_size = 1;
+    m2_btl_user_ptr->letter = 1;
+    m2_btl_user_ptr->unknown_3[0] = 1;
+
+    for(int j = 0; j <= 230; j++)
+    {
+        m2_btl_user_ptr->id = j;
+        m2_btl_user_ptr->enemy_id = j;
+        m2_set_target_name();
+        m2_battletext_loadstr(m2_enemies[j].death_text);
+        assert_message(text_stayed_inside(window_pointers[2]), "Death text for Enemy %d", j);
+    }
+    
+    m2_btl_user_ptr->letter = 0x17;
+    m2_btl_user_ptr->unknown_3[0] = 0;
+
+    for(int j = 0; j <= 230; j++)
+    {
+        m2_btl_user_ptr->id = j;
+        m2_btl_user_ptr->enemy_id = j;
+        m2_set_target_name();
+        m2_battletext_loadstr(m2_enemies[j].death_text);
+        assert_message(text_stayed_inside(window_pointers[2]), "Death text for Enemy %d - W", j);
+    }
+    
 }
 
 bool text_stayed_inside(WINDOW* window)
@@ -74,6 +106,7 @@ void setup_battle_tests()
 void do_battle_tests()
 {
     test_encounter_text();
+    test_death_text();
 }
 
 void start_battle_tests()
