@@ -15,4 +15,5 @@ extern short m2_is_battle;
 extern byte m2_btl_enemies_size;
 extern BATTLE_DATA* m2_btl_user_ptr;
 extern BATTLE_DATA* m2_btl_target_ptr;
-extern void m2_set_enemy_name(int val);
+extern void m2_set_user_name(int val);
+extern void m2_set_target_name();
