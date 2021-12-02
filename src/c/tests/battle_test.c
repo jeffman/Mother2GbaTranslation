@@ -1,8 +1,6 @@
 #include "battle_test.h"
+#include "utils.h"
 #include "debug_printf/test_print.h"
-#include "../locs.h"
-
-bool text_stayed_inside(WINDOW* window);
 
 void test_encounter_text()
 {
@@ -44,7 +42,7 @@ void test_death_text()
         assert_message(text_stayed_inside(window_pointers[2]), "Death text for Enemy %d", j);
     }
     
-    m2_btl_user_ptr->letter = 0x17;
+    m2_btl_user_ptr->letter = W_LETTER - INITIAL_SYMBOL_ENEMY;
     m2_btl_user_ptr->unknown_3[0] = 0;
 
     for(int j = 0; j <= 230; j++)
@@ -58,38 +56,10 @@ void test_death_text()
     
 }
 
-bool text_stayed_inside(WINDOW* window)
-{
-    for(int i = 0; i < window->window_height; i++)
-        if((*tilemap_pointer)[(0x20*(window->window_y + i))+window->window_x + window->window_width] != RIGHT_BORDER_TILE)
-            return false;
-    return true;
-}
-
-void setup_ness_name()
-{
-    for(int i = 0; i < 5; i++)
-        *(pc_names + i) = W_LETTER;
-    *(pc_names + 5) = 0;
-    *(pc_names + 6) = 0xFF;
-}
-
-void setup_king_name()
-{
-    for(int i = 0; i < 6; i++)
-        *(pc_names + KING_OFFSET + i) = W_LETTER;
-    *(pc_names + KING_OFFSET + 6) = 0;
-    *(pc_names + KING_OFFSET + 7) = 0xFF;
-}
-
-void setup_battle_tests()
+static void _setup()
 {
     (window_pointers[2]) = (struct WINDOW*)0x2029F88;
-    (window_pointers[2])->window_x = 4;
-    (window_pointers[2])->window_y = 1;
-    (window_pointers[2])->window_width = 0x16;
-    (window_pointers[2])->window_height = 4;
-    (window_pointers[2])->window_area = (window_pointers[2])->window_width * (window_pointers[2])->window_height;
+    m2_setupwindow((window_pointers[2]), 4, 1, 0x16, 4);
     m2_btl_user_ptr = (BATTLE_DATA*)0x2021110;
     m2_btl_target_ptr = (BATTLE_DATA*)0x2021110;
     setup_ness_name();
@@ -103,14 +73,8 @@ void setup_battle_tests()
     m2_script_readability = false;
 }
 
-void do_battle_tests()
-{
-    test_encounter_text();
-    test_death_text();
-}
-
 void start_battle_tests()
 {
-    setup_battle_tests();
-    do_battle_tests();
+    run_test(test_encounter_text);
+    run_test(test_death_text);
 }

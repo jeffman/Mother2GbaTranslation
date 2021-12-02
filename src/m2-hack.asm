@@ -2390,11 +2390,14 @@ disclaimer_map:
 .definelabel m2_psitargetwindow     ,0x80B8AE0
 .definelabel m2_isequipped          ,0x80BC670
 .definelabel m2_swapwindowbuf       ,0x80BD7AC
-.definelabel m2_setup_window        ,0x80BD844
+.definelabel m2_setup_bg_window     ,0x80BD844
+.definelabel m2_setupwindow         ,0x80BE188
 .definelabel m2_strlookup           ,0x80BE260
 .definelabel m2_initwindow          ,0x80BE458
+.definelabel m2_resetwindow         ,0x80BE490
 .definelabel m2_initwindow_cursor   ,0x80BE4C8
 .definelabel m2_statuswindow_numbers,0x80C0A5C
+.definelabel m2_menuwindow          ,0x80C1C98
 .definelabel m2_psiwindow           ,0x80C1FBC
 .definelabel m2_drawwindow          ,0x80C87D0
 .definelabel m2_print_window        ,0x80C8BE4
@@ -2405,9 +2408,6 @@ disclaimer_map:
 .definelabel m2_scrolltext          ,0x80CA4BC
 .definelabel m2_formatnumber        ,0x80CA65C
 .definelabel m2_clearwindowtiles    ,0x80CA834
-.definelabel m2_menuwindow          ,0x80C1C98
-.definelabel m2_setupwindow         ,0x80BE188
-.definelabel m2_resetwindow         ,0x80BE490
 .definelabel m2_sub_d3c50           ,0x80D3C50
 .definelabel m2_hpwindow_up         ,0x80D3F0C
 .definelabel m2_curhpwindow_down    ,0x80D41D8
