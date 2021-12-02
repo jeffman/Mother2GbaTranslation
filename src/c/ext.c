@@ -36,3 +36,4 @@ int __attribute__((naked)) m2_jump_to_offset(byte* character) {}
 byte* __attribute__((naked)) m2_malloc(int size) {}
 void __attribute__((naked)) m2_title_teardown() {}
 void __attribute__((naked)) vblank() {}
+void __attribute__((naked)) reg_ram_reset(int flag) {}
