@@ -526,6 +526,17 @@ mov     r0,0x50
 //Do not redraw unless it is needed
 .org 0x80E079A :: bl e079a_battle_psi_window
 
+//Handle background window
+.org 0x80E079E :: bl e06ec_clear_window
+.org 0x80E0888 :: bl e06ec_redraw_psi
+.org 0x80E0A16 :: bl e06ec_redraw_bash_psi
+
+//Handle coming back from the "Not enough PP!" window
+.org 0x80E0B10 :: bl initWindow_buffer
+.org 0x80E0B2A :: bl initWindow_cursor_buffer
+.org 0x80E0B30 :: bl print_window_with_buffer
+.org 0x80E0B34 :: bl e0b34_psi_not_enough_pp_reverse_windows :: b 0x80E0B52
+
 //---------------------------------------------------------
 // C4B2C hacks (Equip window render)
 //---------------------------------------------------------
@@ -852,10 +863,6 @@ b       0x80D3A14
 
 .org 0x80DCC36 :: mov r2,2 // "to X" position
 .org 0x80DCCE0 :: mov r2,2 // "to the Front Row" position
-
-.org 0x80E079E :: bl e06ec_clear_window
-.org 0x80E0888 :: bl e06ec_redraw_psi
-.org 0x80E0A16 :: bl e06ec_redraw_bash_psi
 
 //---------------------------------------------------------
 // Equipment number printing in dialogue window
@@ -2411,6 +2418,7 @@ disclaimer_map:
 .definelabel m2_set_target_name     ,0x80DAE00
 .definelabel m2_setupbattlename     ,0x80DCD00
 .definelabel m2_stat_symb_checker   ,0x8B0EDA4
+.definelabel reg_ram_reset          ,0x80F47CC
 .definelabel vblank                 ,0x80F47E4
 .definelabel m2_div                 ,0x80F49D8
 .definelabel m2_remainder           ,0x80F4A70

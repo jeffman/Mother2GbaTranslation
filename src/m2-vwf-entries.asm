@@ -2343,6 +2343,30 @@ pop     {r4,pc}
 .pool
 
 //==============================================================================
+//Reverses the order in which the target window and the psi window are printed
+//when the "Not enough PP!" message goes away in battle in order to make it so
+//the graphics are properly stored.
+e0b34_psi_not_enough_pp_reverse_windows:
+push    {lr}
+ldr     r0,[r4,#0x24] //Initializes the target window
+mov     r1,#0
+mov     r2,#0
+bl      initWindow_buffer
+ldr     r0,[r4,#0x1C] //Target window printing
+bl      0x80C438C
+
+ldr     r0,[r4,#0x20] //PSI window printing, grab the type from the types menu
+ldrh    r0,[r0,#0x36]
+add     r0,#1
+lsl     r0,r0,#0x10
+asr     r0,r0,#0x10
+bl      0x80BAE98 //Do the printing
+
+pop     {pc}
+
+.pool
+
+//==============================================================================
 _4092_print_window:
 push    {lr}
 push    {r0-r4}
