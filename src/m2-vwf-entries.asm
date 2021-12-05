@@ -2297,21 +2297,21 @@ pop     {r4,pc}
 //==============================================================================
 //It sets things up to make it so the target window is only printed once
 e0854_psi_inner_window_battle:
-push    {lr}
-ldrb    r1,[r0,#3]
+push    {r4,lr}
+mov     r4,r0
+ldrb    r1,[r4,#3]
 push    {r1}
-ldrh    r1,[r0,#0x36] //Stores the cursor's Y of the window
+ldrh    r1,[r4,#0x36] //Stores the cursor's Y of the window
 push    {r1}
-ldrh    r1,[r0,#0x34] //Stores the cursor's X of the window
+ldrh    r1,[r4,#0x34] //Stores the cursor's X of the window
 push    {r1}
 bl      PSITargetWindowInput //Input management, target printing and header printing function. Now the function takes the cursor's Y and X as arguments too in the stack
 pop     {r2}
-ldr     r3,[r4,0x24] //Target window
-ldrh    r1,[r3,#0x34] //Stores the cursor's X of the window
+ldrh    r1,[r4,#0x34] //Stores the cursor's X of the window
 cmp     r1,r2
 bne     @@store_buffer_first
 pop     {r2}
-ldrh    r1,[r3,#0x36] //Stores the cursor's Y of the window
+ldrh    r1,[r4,#0x36] //Stores the cursor's Y of the window
 cmp     r1,r2
 bne     @@store_buffer_second
 pop     {r2}
@@ -2334,11 +2334,34 @@ bl      store_pixels_overworld_psi_window
 cmp     r0,#0
 beq     @@ending
 
-mov     r2,#0 //Sets vwf_skip to false since the window is change
-ldr     r1,[r5,0x24] //Target window
-strb    r2,[r1,#3]
+mov     r2,#0 //Sets vwf_skip to false since the window is changed
+strb    r2,[r4,#3]
 
 @@ending:
+pop     {r4,pc}
+
+.pool
+
+//==============================================================================
+//Reverses the order in which the target window and the psi window are printed
+//when the "Not enough PP!" message goes away in battle in order to make it so
+//the graphics are properly stored.
+e0b34_psi_not_enough_pp_reverse_windows:
+push    {lr}
+ldr     r0,[r4,#0x24] //Initializes the target window
+mov     r1,#0
+mov     r2,#0
+bl      initWindow_buffer
+ldr     r0,[r4,#0x1C] //Target window printing
+bl      0x80C438C
+
+ldr     r0,[r4,#0x20] //PSI window printing, grab the type from the types menu
+ldrh    r0,[r0,#0x36]
+add     r0,#1
+lsl     r0,r0,#0x10
+asr     r0,r0,#0x10
+bl      0x80BAE98 //Do the printing
+
 pop     {pc}
 
 .pool

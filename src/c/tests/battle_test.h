@@ -1,9 +1,7 @@
 #include "../battle_data.h"
 #include "debug_printf/test_print.h"
 
-#define W_LETTER 0x87
-#define KING_OFFSET 0x1C
-#define RIGHT_BORDER_TILE 0x0095
+#define INITIAL_SYMBOL_ENEMY 0x70
 
 void start_battle_tests();
 
