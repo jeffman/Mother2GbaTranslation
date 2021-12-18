@@ -1,19 +1,7 @@
-#include "utils.h"
+#include "test_m2_utils.h"
 
-#define CPUFASTSET_FILL (0x1000000)
-#define IWRAM (0x3000000)
-#define IWRAM_SIZE (0x8000-0x2000)
-
-#define NON_IWRAM_RESET 0xFD
-
-#define RIGHT_BORDER_TILE 0x0095
-
-void blank_memory()
-{
-    int blank_value = 0;
-    cpufastset(&blank_value, (void*)IWRAM, CPUFASTSET_FILL | (IWRAM_SIZE >> 2));
-    reg_ram_reset(NON_IWRAM_RESET);
-}
+#define RIGHT_BORDER_TILE              0x0095
+#define OVERWORLD_BUFFER_LIMIT         0x2028000
 
 void setup_ness_name()
 {
@@ -41,4 +29,9 @@ bool text_stayed_inside(WINDOW* window)
             return false;
         
     return true;
+}
+
+void setup_overworld_buffer()
+{
+    *((int*)(OVERWORLD_BUFFER_POINTER)) = OVERWORLD_BUFFER_LIMIT - OVERWORLD_BUFFER_SIZE;
 }

@@ -1,5 +1,10 @@
-#include "../battle_data.h"
+#include "test_utils.h"
+#include "test_m2_utils.h"
 #include "debug_printf/test_print.h"
+
+#include "../battle_data.h"
+#include "../battle.h"
+#include "../vwf.h"
 
 #define INITIAL_SYMBOL_ENEMY 0x70
 

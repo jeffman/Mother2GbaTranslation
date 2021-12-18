@@ -36,7 +36,8 @@ $input_c_files =
     
 $input_c_test_files = 
     "src/c/tests/main_test.c",
-    "src/c/tests/utils.c",
+    "src/c/tests/test_utils.c",
+    "src/c/tests/test_m2_utils.c",
     "src/c/tests/battle_test.c",
     "src/c/tests/debug_printf/test_print.c",
     "src/c/tests/debug_printf/mgba.c",
