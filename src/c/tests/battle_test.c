@@ -81,7 +81,15 @@ void test_target_text()
         store_pixels_overworld_buffer(0x10);     // This is just for visualization purposes
         assert_message(text_stayed_inside(window_pointers[3]), "Target text for Enemy %d - W", j);
     }
-    
+
+    printTargetOfAttack(0,-1);                   // To the front row
+    store_pixels_overworld_buffer(0x10);         // This is just for visualization purposes
+    assert(text_stayed_inside(window_pointers[3]));
+
+    printTargetOfAttack(1,-1);                   // To the back row
+    store_pixels_overworld_buffer(0x10);         // This is just for visualization purposes
+    assert(text_stayed_inside(window_pointers[3]));
+
 }
 
 static void _setup()
