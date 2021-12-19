@@ -2400,6 +2400,7 @@ disclaimer_map:
 .definelabel m2_statuswindow_numbers,0x80C0A5C
 .definelabel m2_menuwindow          ,0x80C1C98
 .definelabel m2_psiwindow           ,0x80C1FBC
+.definelabel m2_set_equippables     ,0x80C51A0
 .definelabel m2_drawwindow          ,0x80C87D0
 .definelabel m2_print_window        ,0x80C8BE4
 .definelabel m2_print_alphabet      ,0x80C8FFC
