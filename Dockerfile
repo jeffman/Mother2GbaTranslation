@@ -11,7 +11,6 @@ RUN chmod +x dotnet-install.sh
 RUN ./dotnet-install.sh -c 2.1
 ENV PATH="${PATH}:/root/.dotnet/tools"
 RUN echo "-------------------Installing armips------------------"
-WORKDIR /opt/dep
 RUN git clone --recursive https://github.com/Kingcom/armips.git
 WORKDIR /opt/dep/armips
 RUN mkdir -p bld

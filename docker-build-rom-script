@@ -9,4 +9,4 @@ echo "Starting to build rom"
 echo "Copying rom to output"
 cp ./bin/m12.gba /opt/out
 
-echo "Build successful please review the folder out for the resulted rom"
+echo "Build successful please review the folder "./out/m12.gba" for the resulted rom"
