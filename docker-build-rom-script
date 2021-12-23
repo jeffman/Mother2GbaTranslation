@@ -1,0 +1,12 @@
+#!/bin/pwsh
+$Env:PATH += ":/root/.dotnet"
+echo "Starting to build tools"
+./build-tools.ps1
+
+echo "Starting to build rom"
+./build.ps1
+
+echo "Copying rom to output"
+cp ./bin/m12.gba /opt/out
+
+echo "Build successful please review the folder out for the resulted rom"
