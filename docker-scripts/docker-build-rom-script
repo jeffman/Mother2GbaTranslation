@@ -1,0 +1,16 @@
+#!/bin/pwsh
+
+$Env:PATH += ":/home/m2gba/.dotnet:/home/m2gba/.dotnet/tools"
+Copy-Item -Path "\home\m2gba\src\*" -Destination "\opt\src" -Recurse -Force
+
+"Starting to build tools"
+./build-tools.ps1
+
+"Starting to build rom"
+./build.ps1
+
+"Copying rom to output"
+New-Item -Path "\home\m2gba\src" -Name "out" -ItemType "directory" -Force
+Copy-Item -Path ".\bin\m12.gba" "\home\m2gba\src\out"
+
+"Build successful, please review the folder ./out/m12.gba for the resulting rom"

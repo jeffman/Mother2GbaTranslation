@@ -9,6 +9,7 @@
 *.ld
 Thumbs.db
 snapshots/
+out/
 saves/
 working/*.asm
 working/*.bin
