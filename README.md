@@ -29,7 +29,15 @@ This project aims to both complete the VWF codebase and to provide a tool for tr
 ## Screenshots
 ![](./screenshots/itshappening2.png) ![](./screenshots/itshappening4.png) ![](./screenshots/itshappening5.png) ![](./screenshots/m2-status2.png) ![](./screenshots/m2-battle-slugs.png) ![](./screenshots/m2-fileselect.png)
 
-# Building
+# Building with Docker
+Docker allows easily building without having to install the dependencies.
+
+1. Put a MOTHER 1+2 ROM in `bin/m12fresh.gba`
+2. While in the root of the project, run: `docker run --rm -it -v $PWD:/home/m2gba/src lorenzooone/m2gba_translation:builder`
+
+The output will be inside the newly created `out` folder.
+
+# Manually Building
 
 ## Dependencies
 - [.NET Core 2.1 or later](https://dotnet.microsoft.com/download)
@@ -60,7 +68,7 @@ This project aims to both complete the VWF codebase and to provide a tool for tr
     2. `dotnet build tools/ScriptToolGui -o bin/ScriptToolGui`
     3. Run with `dotnet bin/ScriptToolGui/ScriptToolGui.dll` (or just run the EXE file directly).
 
-# Testing
+# Manually Testing
 
 ## Dependencies
 - [mGBA 0.9.3 or later, or nightly built after Nov 29, 2021](https://mgba.io/downloads.html)
