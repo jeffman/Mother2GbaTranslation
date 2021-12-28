@@ -29,7 +29,9 @@ This project aims to both complete the VWF codebase and to provide a tool for tr
 ## Screenshots
 ![](./screenshots/itshappening2.png) ![](./screenshots/itshappening4.png) ![](./screenshots/itshappening5.png) ![](./screenshots/m2-status2.png) ![](./screenshots/m2-battle-slugs.png) ![](./screenshots/m2-fileselect.png)
 
-# Building with Docker
+# Building
+
+## Building with Docker
 Docker allows easily building without having to install the dependencies.
 
 1. Put a MOTHER 1+2 ROM in `bin/m12fresh.gba`
@@ -37,9 +39,9 @@ Docker allows easily building without having to install the dependencies.
 
 The output will be inside the newly created `out` folder.
 
-# Manually Building
+## Manually Building
 
-## Dependencies
+### Dependencies
 - [.NET Core 2.1 or later](https://dotnet.microsoft.com/download)
 - [PowerShell Core 6.0 or later](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-6)
 - [GNU Arm Embedded Toolchain](https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads)
@@ -68,9 +70,17 @@ The output will be inside the newly created `out` folder.
     2. `dotnet build tools/ScriptToolGui -o bin/ScriptToolGui`
     3. Run with `dotnet bin/ScriptToolGui/ScriptToolGui.dll` (or just run the EXE file directly).
 
-# Manually Testing
+# Testing
 
-## Dependencies
+## Testing with Docker
+Docker allows easily building without having to install the dependencies.
+
+1. Put a MOTHER 1+2 ROM in `bin/m12fresh.gba`
+2. While in the root of the project, run: `docker run --rm -it -v $PWD:/home/m2gba/src lorenzooone/m2gba_translation:tester`
+
+## Manually Testing
+
+### Dependencies
 - [mGBA 0.9.3 or later, or nightly built after Nov 29, 2021](https://mgba.io/downloads.html)
 - [Building dependencies](#Building)
 
