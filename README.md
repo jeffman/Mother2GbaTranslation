@@ -35,7 +35,7 @@ This project aims to both complete the VWF codebase and to provide a tool for tr
 Docker allows easily building without having to install the dependencies.
 
 1. Put a MOTHER 1+2 ROM in `bin/m12fresh.gba`
-2. While in the root of the project, run: `docker run --rm -it -v $PWD:/home/m2gba/src lorenzooone/m2gba_translation:builder`
+2. While in the root of the project, run: `docker run --rm -it -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:builder`
 
 The output will be inside the newly created `out` folder.
 
@@ -76,7 +76,7 @@ The output will be inside the newly created `out` folder.
 Docker allows easily testing without having to install the dependencies.
 
 1. Put a MOTHER 1+2 ROM in `bin/m12fresh.gba`
-2. While in the root of the project, run: `docker run --rm -it -v $PWD:/home/m2gba/src lorenzooone/m2gba_translation:tester`
+2. While in the root of the project, run: `docker run --rm -it -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:tester`
 
 ## Manually Testing
 
