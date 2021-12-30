@@ -49,8 +49,8 @@ RUN cd mgba && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr
 FROM builder AS tester
 USER root
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends xvfb pulseaudio alsa-utils libsdl2-dev \
-    libzip-dev libavcodec-dev libavfilter-dev x11-utils && \
+    apt-get install -y --no-install-recommends pulseaudio alsa-utils libsdl2-dev \
+    libzip-dev libavcodec-dev libavfilter-dev && \
     apt-get autoremove -y && apt-get clean
 WORKDIR /opt/src
 USER m2gba

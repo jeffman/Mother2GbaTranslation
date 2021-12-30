@@ -1,9 +1,7 @@
 #!/bin/pwsh
 
 "Starting Dummy services"
-Xvfb :1 -screen 0 1024x768x16 &
-$Env:DISPLAY = ":1.0"
-bash /home/m2gba/src/docker-scripts/xvfb_ready.sh
+$Env:SDL_VIDEODRIVER = "dummy"
 pulseaudio -D --exit-idle-time=-1
 pactl load-module module-null-sink sink_name=SpeakerOutput sink_properties=device.description="Dummy_Output"
 
