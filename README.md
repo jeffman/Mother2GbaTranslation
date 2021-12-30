@@ -73,7 +73,7 @@ The output will be inside the newly created `out` folder.
 # Testing
 
 ## Testing with Docker
-Docker allows easily building without having to install the dependencies.
+Docker allows easily testing without having to install the dependencies.
 
 1. Put a MOTHER 1+2 ROM in `bin/m12fresh.gba`
 2. While in the root of the project, run: `docker run --rm -it -v $PWD:/home/m2gba/src lorenzooone/m2gba_translation:tester`
