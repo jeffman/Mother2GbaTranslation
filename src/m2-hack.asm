@@ -2323,6 +2323,10 @@ m2_title_text_params:
 .org m2_title_text_params + 0xA4 :: dw m2_title_text_params + 0x64
 .org m2_title_text_params + 0xAC :: dw m2_title_text_params + 0x68
 
+.org 0x87099FC
+m2_gas_station:
+.incbin "data/m2-gas-station_[c].bin"
+
 .org 0x8FEE000
 disclaimer_palette:
 .incbin "data/intro-screen-pal.bin"
