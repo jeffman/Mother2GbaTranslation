@@ -2034,6 +2034,12 @@ m12_cartridge_palettes:
 .incbin "data/m2-cartridge-palettes.bin"
 
 //==============================================================================
+// Gas station screen hacks
+//==============================================================================
+
+.org 0x8012BF4 :: dw m2_gas_station
+
+//==============================================================================
 // First function hacks
 //==============================================================================
 
@@ -2219,6 +2225,10 @@ dw      give_dead_full
 m2InsaneCultist:
 .incbin "data/m2-insane-cultist.bin"
 
+.align 4
+m2_gas_station:
+.incbin "data/m2-gas-station_[c].bin"
+
 .align 2
 m2_coord_table_file:
 .incbin "data/m2-coord-table-file-select.bin"
@@ -2322,10 +2332,6 @@ m2_title_text_params:
 .org m2_title_text_params + 0x9C :: dw m2_title_text_params + 0x60
 .org m2_title_text_params + 0xA4 :: dw m2_title_text_params + 0x64
 .org m2_title_text_params + 0xAC :: dw m2_title_text_params + 0x68
-
-.org 0x87099FC
-m2_gas_station:
-.incbin "data/m2-gas-station_[c].bin"
 
 .org 0x8FEE000
 disclaimer_palette:
