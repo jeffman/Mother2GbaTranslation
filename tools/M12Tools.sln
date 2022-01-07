@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScriptToolGui", "ScriptTool
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenderCastRoll", "RenderCastRoll\RenderCastRoll.csproj", "{DD1C607C-5A74-4921-81A4-6BF530A191D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderStaffCredits", "RenderStaffCredits\RenderStaffCredits.csproj", "{D4885175-8BD3-4B91-B905-6BA845DBDC2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenderStaffCredits", "RenderStaffCredits\RenderStaffCredits.csproj", "{D4885175-8BD3-4B91-B905-6BA845DBDC2F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SetDefaultNames", "SetDefaultNames\SetDefaultNames.csproj", "{0218AFDB-9AF2-4A24-A082-2578DC8E9BE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D4885175-8BD3-4B91-B905-6BA845DBDC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4885175-8BD3-4B91-B905-6BA845DBDC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4885175-8BD3-4B91-B905-6BA845DBDC2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0218AFDB-9AF2-4A24-A082-2578DC8E9BE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0218AFDB-9AF2-4A24-A082-2578DC8E9BE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0218AFDB-9AF2-4A24-A082-2578DC8E9BE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0218AFDB-9AF2-4A24-A082-2578DC8E9BE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,88 @@
+{
+  "NamesEntries": [
+    {
+      "entry": "Ness",
+      "defaultNames": [
+        "Ness",
+        "Alec",
+        "Roger",
+        "Will",
+        "Brian",
+        "Tyler",
+        "Lane"
+      ]
+    },
+    {
+      "entry": "Paula",
+      "defaultNames": [
+        "Paula",
+        "Nancy",
+        "Skye",
+        "Paige",
+        "Marie",
+        "Holly",
+        "Jane"
+      ]
+    },
+    {
+      "entry": "Jeff",
+      "defaultNames": [
+        "Jeff",
+        "Dan",
+        "Henry",
+        "Isaac",
+        "Ralph",
+        "Sean",
+        "Rob"
+      ]
+    },
+    {
+      "entry": "Poo",
+      "defaultNames": [
+        "Poo",
+        "Kato",
+        "Kai",
+        "Omar",
+        "Ramin",
+        "Aziz",
+        "Lado"
+      ]
+    },
+    {
+      "entry": "Dog",
+      "defaultNames": [
+        "King",
+        "Peach",
+        "Sparky",
+        "Rex",
+        "Baby",
+        "Rover",
+        "Misty"
+      ]
+    },
+    {
+      "entry": "Favourite Food",
+      "defaultNames": [
+        "Steak",
+        "Pie",
+        "Pasta",
+        "Cake",
+        "Eggs",
+        "Bread",
+        "Salmon"
+      ]
+    },
+    {
+      "entry": "Favourite Thing",
+      "defaultNames": [
+        "Rockin",
+        "Hammer",
+        "Love",
+        "Gifts",
+        "Slime",
+        "Gaming",
+        "Boxing"
+      ]
+    }
+  ]
+}

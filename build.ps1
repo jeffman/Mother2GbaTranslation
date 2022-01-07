@@ -11,6 +11,7 @@ $src_dir            = "src"
 $data_dir           = "src/data"
 $give_new_dir       = "src/m12-give-strings"
 $cast_roll_file     = "working/cast_roll.json"
+$default_names_file = "working/default_names.json"
 $staff_credits_file = "working/staff_text.md"
 $compiled_asm_file  = "src/m2-compiled.asm"
 $includes_asm_file  = "m12-includes.asm"    # implicitly rooted in working_dir
@@ -47,6 +48,7 @@ $input_c_test_files =
 $base_c_address         = 0x83755B8;
 $scripttool_cmd         = "bin/ScriptTool/ScriptTool.dll"
 $rendercastroll_cmd     = "bin/RenderCastRoll/RenderCastRoll.dll"
+$setdefaultnames_cmd    = "bin/SetDefaultNames/SetDefaultNames.dll"
 $renderstaffcredits_cmd = "bin/RenderStaffCredits/RenderStaffCredits.dll"
 $gcc_cmd                = "arm-none-eabi-gcc"
 $ld_cmd                 = "arm-none-eabi-ld"
@@ -80,6 +82,10 @@ $scripttool_args =
     
 $rendercastroll_args =
     $cast_roll_file,
+    $data_dir
+    
+$setdefaultnames_args =
+    $default_names_file,
     $data_dir
     
 $renderstaffcredits_args =
@@ -401,6 +407,10 @@ if ($LASTEXITCODE -ne 0) { exit -1 }
 
 "Copying give strings to src folder..."
 Copy-Item -Path $give_dir -Destination $give_new_dir -Recurse
+
+"Preparing default names..."
+& dotnet $setdefaultnames_cmd $setdefaultnames_args
+if ($LASTEXITCODE -ne 0) { exit -1 }
 
 "Pre-rendering cast roll..."
 & dotnet $rendercastroll_cmd $rendercastroll_args
