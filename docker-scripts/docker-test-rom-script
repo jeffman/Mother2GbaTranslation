@@ -1,0 +1,22 @@
+#!/bin/pwsh
+
+"Starting Dummy services"
+$Env:SDL_VIDEODRIVER = "dummy"
+pulseaudio -D --exit-idle-time=-1
+pactl load-module module-null-sink sink_name=SpeakerOutput sink_properties=device.description="Dummy_Output"
+
+$Env:PATH += ":/home/m2gba/.dotnet:/home/m2gba/.dotnet/tools"
+Copy-Item -Path "\home\m2gba\src\*" -Destination "\opt\src" -Recurse -Force
+
+"Starting to build tools"
+./build-tools.ps1
+
+"Starting to build test rom"
+./test.ps1
+
+"Copying test log to output"
+New-Item -Path "\home\m2gba\src" -Name "out" -ItemType "directory" -Force
+Copy-Item -Path ".\bin\test.log" "\home\m2gba\src\out"
+Copy-Item -Path ".\bin\m12test.gba" "\home\m2gba\src\out"
+
+"Test ran successfully, please review the ./out folder for the resulting logs and test rom"
