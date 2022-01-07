@@ -2034,6 +2034,12 @@ m12_cartridge_palettes:
 .incbin "data/m2-cartridge-palettes.bin"
 
 //==============================================================================
+// Gas station screen hacks
+//==============================================================================
+
+.org 0x8012BF4 :: dw m2_gas_station
+
+//==============================================================================
 // First function hacks
 //==============================================================================
 
@@ -2218,6 +2224,10 @@ dw      give_dead_full
 .align 4
 m2InsaneCultist:
 .incbin "data/m2-insane-cultist.bin"
+
+.align 4
+m2_gas_station:
+.incbin "data/m2-gas-station_[c].bin"
 
 .align 2
 m2_coord_table_file:
