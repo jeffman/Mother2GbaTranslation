@@ -825,10 +825,15 @@ void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground)
     int x = window->pixel_x + (window->window_x + window->text_x) * 8;
     int y = (window->window_y + window->text_y) * 8;
 
-    x += print_character_formatted(chr, x, y, font, foreground);
-
+    if(!window->inside_width_calc)
+        x += print_character_formatted(chr, x, y, font, foreground);
+    else
+        x += (m2_widths_table[font][chr] & 0xFF);
+        
     window->pixel_x = x & 7;
     window->text_x = (x >> 3) - window->window_x;
+    if(window->inside_width_calc && window->text_x >= window->window_width)
+        window->text_x = window->window_width;
 }
 
 // Returns: ____XXXX = number of characters printed
@@ -1520,10 +1525,16 @@ void weld_entry_custom_buffer(WINDOW *window, byte *str, int font, int foregroun
     int x = window->pixel_x + (window->window_x + window->text_x) * 8;
     int y = (window->window_y + window->text_y) * 8;
 
-    x += print_character_formatted_buffer(chr, x, y, font, foreground, dest);
+    if(!window->inside_width_calc)
+        x += print_character_formatted_buffer(chr, x, y, font, foreground, dest);
+    else
+        x += (m2_widths_table[font][chr] & 0xFF);
 
     window->pixel_x = x & 7;
     window->text_x = (x >> 3) - window->window_x;
+    if(window->inside_width_calc && window->text_x >= window->window_width)
+        window->text_x = window->window_width;
+        
 }
 
 void handle_first_window_buffer(WINDOW* window, byte* dest)

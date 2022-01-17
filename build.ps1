@@ -33,7 +33,8 @@ $input_c_files =
     "src/c/title.c",
     "src/c/luminehall.c",
     "src/c/custom_codes.c",
-    "src/c/first_func.c"
+    "src/c/first_func.c",
+    "src/c/window.c"
     
 $input_c_test_files = 
     "src/c/tests/main_test.c",

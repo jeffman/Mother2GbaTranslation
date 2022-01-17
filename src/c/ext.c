@@ -39,3 +39,4 @@ void __attribute__((naked)) m2_title_teardown() {}
 void __attribute__((naked)) vblank() {}
 int __attribute__((naked)) m2_set_equippables(WINDOW* window, unsigned short choice, byte* index_list) {}
 void __attribute__((naked)) reg_ram_reset(int flag) {}
+void __attribute__((naked)) m2_printnextch(WINDOW* window) {}
