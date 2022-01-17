@@ -205,7 +205,7 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
             else
                 if(!window->inside_width_calc) {
                     WINDOW w;
-                    int possible_return_addresses = 4;
+                    int possible_return_addresses = 10;
                     int return_addresses[possible_return_addresses];
                     int nreturns = *((int*)(0x3005078));
                     cpuset((int*)(0x3005080), return_addresses, possible_return_addresses * 2);
