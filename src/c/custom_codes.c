@@ -133,7 +133,7 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
                 
                 case IS_NEWLINE:
                     // 5E FF 06 : Load whether it's a newline or not
-                    val_to_store = (window->text_y != 0) && (window->pixel_x == 0) ? 1 : 2;
+                    val_to_store = (window->text_y != 0) && (window->pixel_x == 0) && (window->text_x == 0) ? 1 : 2;
                     store = true;
                     break;
                 
