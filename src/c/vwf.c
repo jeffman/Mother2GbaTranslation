@@ -803,6 +803,12 @@ void clear_window_arrows(WINDOW *window)
     (*tilemap_pointer)[x + 1 + (y * 32)] = tile;
 }
 
+// Confirms the text breaks the boundaries
+bool text_overflows_window(WINDOW* window)
+{
+    return (window->text_x > window->window_width) || ((window->text_x == window->window_width) && (window->pixel_x > 0));
+}
+
 void weld_entry(WINDOW *window, byte *str)
 {
     weld_entry_custom(window, str, 0, 0xF);
@@ -832,8 +838,8 @@ void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground)
         
     window->pixel_x = x & 7;
     window->text_x = (x >> 3) - window->window_x;
-    if(window->inside_width_calc && window->text_x >= window->window_width)
-        window->text_x = window->window_width;
+    if(window->inside_width_calc && text_overflows_window(window))
+        window->text_x = window->window_width + 1;
 }
 
 // Returns: ____XXXX = number of characters printed
@@ -1532,8 +1538,8 @@ void weld_entry_custom_buffer(WINDOW *window, byte *str, int font, int foregroun
 
     window->pixel_x = x & 7;
     window->text_x = (x >> 3) - window->window_x;
-    if(window->inside_width_calc && window->text_x >= window->window_width)
-        window->text_x = window->window_width;
+    if(window->inside_width_calc && text_overflows_window(window))
+        window->text_x = window->window_width + 1;
         
 }
 

@@ -66,6 +66,7 @@ void copy_name_header(WINDOW *window, int character_index);
 void clear_name_header(WINDOW* window);
 void draw_window_arrows(WINDOW *window, bool big);
 void clear_window_arrows(WINDOW *window);
+bool text_overflows_window(WINDOW* window);
 void weld_entry(WINDOW *window, byte *str);
 int weld_entry_saturn(WINDOW *window, byte *str);
 void weld_entry_custom(WINDOW *window, byte *str, int font, int foreground);
