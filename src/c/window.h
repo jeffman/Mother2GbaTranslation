@@ -25,7 +25,8 @@ typedef struct WINDOW {
     unsigned int flags_unknown3b : 4; // 0xF000
     byte pixel_x;
     bool vwf_skip : 1;
-    unsigned int vwf_unused : 7;
+    bool inside_width_calc : 1;
+    unsigned int vwf_unused : 6;
     byte* text_start;
     byte* text_start2;
     byte* menu_text;
@@ -65,5 +66,7 @@ typedef struct WINDOW {
     int unknown10;
     int unknown11;
 } WINDOW;
+
+void copy_window(WINDOW* source, WINDOW* destination);
 
 #endif

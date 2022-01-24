@@ -24,7 +24,12 @@
 #define BATTLE_TARGET_THE 3
 #define BATTLE_USER_GENDER 4
 #define BATTLE_TARGET_GENDER 5
+#define IS_NEWLINE 6
 
+#define CALC_WIDTH_START 0
+#define CALC_WIDTH_END 1
+
+#define CHECK_WIDTH_OVERFLOW  0x57
 #define RESET_WRITE_BUFFER    0x58
 #define RESET_STORED_GOODS    0x59
 #define RESTORE_DIALOGUE      0x5A
@@ -43,6 +48,7 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
 extern void load_pixels_overworld();
 extern void generic_reprinting_first_menu_talk_to_highlight();
 extern byte m2_sub_daf84(short value);
+extern void m2_printnextch(WINDOW* window);
 
 extern unsigned short m2_enemy_attributes[];
 extern short m2_is_battle;

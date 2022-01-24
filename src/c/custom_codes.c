@@ -130,7 +130,13 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
                     val_to_store = load_gender_user_target(m2_btl_target_ptr);
                     store = true;
                     break;
-                    
+                
+                case IS_NEWLINE:
+                    // 5E FF 06 : Load whether it's a newline or not
+                    val_to_store = (window->text_y != 0) && (window->pixel_x == 0) && (window->text_x == 0) ? 1 : 2;
+                    store = true;
+                    break;
+                
                 default:
                     break;
             }
@@ -189,6 +195,35 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
         case RESET_WRITE_BUFFER:
             // 58 FF: Reset the writing buffer to avoid crashes
             free_overworld_buffer();
+            break;
+        
+        case CHECK_WIDTH_OVERFLOW:
+            // 57 FF: Start/End width calculation.
+            // Jump to newline if it would go over the window's boundaries
+            if((byte)parserAddress[2] == CALC_WIDTH_END)
+                window->inside_width_calc = false;
+            else
+                if(!window->inside_width_calc) {
+                    WINDOW w;
+                    int possible_return_addresses = 10;
+                    int return_addresses[possible_return_addresses];
+                    int nreturns = *((int*)(0x3005078));
+                    cpuset((int*)(0x3005080), return_addresses, possible_return_addresses * 2);
+                    copy_window(window, &w);
+                    window->text_offset += 3;
+                    window->inside_width_calc = true;
+                    while(window->inside_width_calc)
+                        m2_printnextch(window);
+                    if(text_overflows_window(window)) {
+                        w.text_x = 0;
+                        w.pixel_x = 0;
+                        w.text_y += 2;
+                    }
+                    copy_window(&w, window);
+                    (*((int*)(0x3005078))) = nreturns;
+                    cpuset(return_addresses, (int*)(0x3005080), possible_return_addresses * 2);
+                }
+            addedSize = 3;
             break;
         
         default:
