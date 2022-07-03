@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      	with:
+          path: extractor
       - name: Unpack the required data for the tests
         run: |
           gpg --quiet --batch --yes --decrypt --passphrase="$TESTING_PASSPHRASE" --output extractor/bin/testing_required_data.zip extractor/bin/testing_required_data.zip.gpg
@@ -17,8 +19,8 @@ jobs:
         env:
           TESTING_PASSPHRASE: ${{ secrets.TESTING_PASSPHRASE }}
       - uses: actions/checkout@v3
-        name: Test the code
         ref: ${{ github.event.pull_request.head.sha }}
+      - name: Test the code
         run: |
           cp extractor/bin/* bin/
           docker run --rm -u root -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:tester
