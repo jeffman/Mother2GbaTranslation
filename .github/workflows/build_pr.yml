@@ -1,0 +1,19 @@
+name: Build PR
+on:
+  pull_request:
+    branches: develop
+
+jobs:
+  build:
+    name: Patch building
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the patch
+        run: "docker run --rm -u root -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:patch_builder"
+      - name: Archive resulting patch
+        uses: actions/upload-artifact@v3
+        with:
+          name: m12-patch
+          path: out/m12.ips
+

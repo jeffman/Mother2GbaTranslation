@@ -1,0 +1,39 @@
+name: Build
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - develop
+jobs:
+  build:
+    name: Patch building
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the patch
+        run: "docker run --rm -u root -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:patch_builder"
+      - name: Archive resulting patch
+        uses: actions/upload-artifact@v3
+        with:
+          name: m12-patch
+          path: out/m12.ips
+
+  publish:
+    name: Patch publishing
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: m12-patch
+      - name: Auto-Release the patch
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "nightly-latest"
+          prerelease: true
+          title: "Automatic Build"
+          files: |
+            m12.ips

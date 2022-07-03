@@ -30,6 +30,10 @@ WORKDIR /opt/src
 USER m2gba
 CMD /home/m2gba/src/docker-scripts/docker-build-rom-script
 
+#--------------------- Building patch ------------------------
+FROM builder AS patch_builder
+CMD /home/m2gba/src/docker-scripts/docker-build-patch-script
+
 #---------------------- Building mgba ------------------------
 FROM builder AS mgba_builder
 USER root

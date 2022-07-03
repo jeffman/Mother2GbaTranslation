@@ -15,6 +15,7 @@ working/*.asm
 working/*.bin
 working/m12-labels.txt
 armips.exe
+testing_required_data.zip.gpg
 *.sym
 m2-compiled.asm
 
