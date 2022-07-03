@@ -1,7 +1,7 @@
 | Branch | Status |
 | --- | --- |
-| `master` | [![Build master](https://github.com/Lorenzooone/Mother2GbaTranslation/actions/workflows/build_master.yml/badge.svg)](https://github.com/Lorenzooone/Mother2GbaTranslation/actions/workflows/build_master.yml) |
-| `master` | [![Test master](https://github.com/Lorenzooone/Mother2GbaTranslation/actions/workflows/test_master.yml/badge.svg)](https://github.com/Lorenzooone/Mother2GbaTranslation/actions/workflows/test_master.yml) |
+| `master` | [![Build](https://github.com/Lorenzooone/Mother2GbaTranslation/actions/workflows/build_master.yml/badge.svg)](https://github.com/Lorenzooone/Mother2GbaTranslation/actions/workflows/build_master.yml) |
+| `master` | [![Test](https://github.com/Lorenzooone/Mother2GbaTranslation/actions/workflows/test_master.yml/badge.svg)](https://github.com/Lorenzooone/Mother2GbaTranslation/actions/workflows/test_master.yml) |
 
 # MOTHER 2 Translation for the GBA
 This is a work-in-progress translation patch for MOTHER 2 on the GBA.
