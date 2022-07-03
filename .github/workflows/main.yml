@@ -19,5 +19,5 @@ jobs:
           prerelease: true
           title: "Automatic Build"
           files: |
-            LICENSE.txt
+            LICENSE
             out/m12.ips
