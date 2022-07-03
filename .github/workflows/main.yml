@@ -1,4 +1,4 @@
-name: An introductory GitHub Action
+name: Build & Test master
 on:
   # Trigger the workflow on push or pull request,
   # but only for the master branch
@@ -7,7 +7,7 @@ on:
       - develop
 jobs:
   build:
-    name: Hello world action
+    name: Patch building & Publishing
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -23,3 +23,16 @@ jobs:
           files: |
             LICENSE
             out/m12.ips
+  build:
+    name: Testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Unpack the required data for the tests
+        run: |
+          gpg --quiet --batch --yes --decrypt --passphrase="$TESTING_PASSPHRASE" --output bin/testing_required_data.zip bin/testing_required_data.zip.gpg
+          sudo apt install unzip
+          unzip -q bin/testing_required_data.zip -d bin
+        env: TESTING_PASSPHRASE: ${{ secrets.TESTING_PASSPHRASE }}
+      - name: Test the code
+        run: "docker run --rm -u root -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:tester"
