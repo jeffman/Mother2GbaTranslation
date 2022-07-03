@@ -12,5 +12,3 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: "docker run --rm -it -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:builder"
-    container:
-      image: lorenzooone/m2gba_translation:builder
