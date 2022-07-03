@@ -8,8 +8,10 @@ jobs:
     name: Testing
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        path: extractor
+      - name: Checkout master
+        uses: actions/checkout@v3
+        with:
+          path: extractor
       - name: Unpack the required data for the tests
         run: |
           gpg --quiet --batch --yes --decrypt --passphrase="$TESTING_PASSPHRASE" --output extractor/bin/testing_required_data.zip extractor/bin/testing_required_data.zip.gpg
@@ -17,8 +19,10 @@ jobs:
           unzip -q extractor/bin/testing_required_data.zip -d extractor/bin
         env:
           TESTING_PASSPHRASE: ${{ secrets.TESTING_PASSPHRASE }}
-      - uses: actions/checkout@v3
-        ref: ${{ github.event.pull_request.head.sha }}
+      - name: Checkout other
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Test the code
         run: |
           cp extractor/bin/* bin/
