@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      	with:
-          path: extractor
       - name: Unpack the required data for the tests
         run: |
           gpg --quiet --batch --yes --decrypt --passphrase="$TESTING_PASSPHRASE" --output extractor/bin/testing_required_data.zip extractor/bin/testing_required_data.zip.gpg
