@@ -212,7 +212,7 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
                     copy_window(window, &w);
                     window->text_offset += 3;
                     window->inside_width_calc = true;
-                    while(window->inside_width_calc)
+                    while(false && window->inside_width_calc)
                         m2_printnextch(window);
                     if(text_overflows_window(window)) {
                         w.text_x = 0;
