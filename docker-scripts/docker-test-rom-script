@@ -14,7 +14,6 @@ if ($LASTEXITCODE -ne 0) { exit -1 }
 
 "Starting to build test rom"
 ./test.ps1
-if ($LASTEXITCODE -ne 0) { exit -1 }
 
 "Copying test log to output"
 New-Item -Path "\home\m2gba\src" -Name "out" -ItemType "directory" -Force

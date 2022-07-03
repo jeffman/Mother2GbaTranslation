@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build the patch
         run: "docker run --rm -u root -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:patch_builder"
-      - name: Archive code coverage results
+      - name: Archive resulting patch
         uses: actions/upload-artifact@v3
         with:
           name: m12-patch
@@ -56,4 +56,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test-report
-          path: out/log.txt
+          path: out/test.log
