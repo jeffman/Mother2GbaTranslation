@@ -1,4 +1,4 @@
-name: Build & Test master
+name: Build master
 on:
   # Trigger the workflow on push or pull request,
   # but only for the master branch
@@ -37,23 +37,3 @@ jobs:
           title: "Automatic Build"
           files: |
             m12.ips
-
-  test:
-    name: Testing
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Unpack the required data for the tests
-        run: |
-          gpg --quiet --batch --yes --decrypt --passphrase="$TESTING_PASSPHRASE" --output bin/testing_required_data.zip bin/testing_required_data.zip.gpg
-          sudo apt install unzip
-          unzip -q bin/testing_required_data.zip -d bin
-        env:
-          TESTING_PASSPHRASE: ${{ secrets.TESTING_PASSPHRASE }}
-      - name: Test the code
-        run: "docker run --rm -u root -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:tester"
-      - name: Archive test results
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-report
-          path: out/test.log
