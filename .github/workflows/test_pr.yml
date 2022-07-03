@@ -8,19 +8,30 @@ jobs:
     name: Testing
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout master
+        uses: actions/checkout@v3
+        with:
+          path: extractor
       - name: Unpack the required data for the tests
         run: |
-          gpg --quiet --batch --yes --decrypt --passphrase="$TESTING_PASSPHRASE" --output bin/testing_required_data.zip bin/testing_required_data.zip.gpg
+          gpg --quiet --batch --yes --decrypt --passphrase="$TESTING_PASSPHRASE" --output extractor/bin/testing_required_data.zip extractor/bin/testing_required_data.zip.gpg
           sudo apt install unzip
-          unzip -q bin/testing_required_data.zip -d bin
+          unzip -q extractor/bin/testing_required_data.zip -d extractor/bin
         env:
           TESTING_PASSPHRASE: ${{ secrets.TESTING_PASSPHRASE }}
+      - name: Checkout other
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: pr_code
       - name: Test the code
-        run: "docker run --rm -u root -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:tester"
+        run: |
+          cp extractor/bin/* pr_code/bin/
+          cd pr_code
+          docker run --rm -u root -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:tester
       - name: Archive test results
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: test-report
-          path: out/test.log
+          path: pr_code/out/test.log
