@@ -214,7 +214,7 @@ int custom_codes_parse_generic(int code, char* parserAddress, WINDOW* window, by
                     window->inside_width_calc = true;
                     while(window->inside_width_calc)
                         m2_printnextch(window);
-                    if(false && text_overflows_window(window)) {
+                    if(false && false && text_overflows_window(window)) {
                         w.text_x = 0;
                         w.pixel_x = 0;
                         w.text_y += 2;
