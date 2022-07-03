@@ -20,4 +20,4 @@ jobs:
           title: "Development Build"
           files: |
             LICENSE.txt
-            *.ips
+            out/m12.ips
