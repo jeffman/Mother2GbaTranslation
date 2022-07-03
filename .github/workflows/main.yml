@@ -11,8 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: "docker run --rm -u root -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:patch_builder"
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Build the patch
+        run: "docker run --rm -u root -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:patch_builder"
+      - name: Auto-Release the patch
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "nightly-latest"
