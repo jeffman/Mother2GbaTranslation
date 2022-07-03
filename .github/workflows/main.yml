@@ -11,5 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # Looks for action in <PROJECT_ROOT_DIRECTORY>/action-a
-      - uses: ./build.ps1
+      - run: "docker run --rm -it -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:builder"
+    container:
+      image: lorenzooone/m2gba_translation:builder
