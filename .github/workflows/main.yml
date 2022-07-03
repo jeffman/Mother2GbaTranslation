@@ -1,0 +1,15 @@
+name: An introductory GitHub Action
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - develop
+jobs:
+  build:
+    name: Hello world action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # Looks for action in <PROJECT_ROOT_DIRECTORY>/action-a
+      - uses: ./build.ps1
