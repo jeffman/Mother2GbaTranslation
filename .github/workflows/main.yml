@@ -23,7 +23,7 @@ jobs:
           files: |
             LICENSE
             out/m12.ips
-  build:
+  test:
     name: Testing
     runs-on: ubuntu-latest
     steps:
