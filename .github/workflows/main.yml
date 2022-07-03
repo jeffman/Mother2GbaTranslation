@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: "docker run --rm -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:build_patcher"
+      - run: "docker run --rm -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:patch_builder"
