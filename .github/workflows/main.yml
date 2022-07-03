@@ -11,11 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Prepare data
-        run: |
-          echo ${{ secrets.BASE_0 }} > file.7z_64
-          base64 -d file.7z_64 > bin/file.7z
-          cd bin
-          sudo apt install p7zip-full
-          7z e file.7z
-      - run: "docker run --rm -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:builder"
+      - run: "docker run --rm -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:build_patcher"

@@ -8,11 +8,11 @@ Copy-Item -Path "\home\m2gba\src\*" -Destination "\opt\src" -Recurse -Force
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
 "Starting to build rom"
-./build.ps1
+./build-appveyor.ps1
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
-"Copying rom to output"
+"Copying patch to output"
 New-Item -Path "\home\m2gba\src" -Name "out" -ItemType "directory" -Force
-Copy-Item -Path ".\bin\m12.gba" "\home\m2gba\src\out"
+Copy-Item -Path ".\bin\m12.ips" "\home\m2gba\src\out"
 
-"Build successful, please review the folder ./out/m12.gba for the resulting rom"
+"Build successful, please review the folder ./out/m12.ips for the resulting patch"
