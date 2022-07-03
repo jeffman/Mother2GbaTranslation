@@ -12,202 +12,104 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Prepare data
-        env:
-          BASE_0: ${{ secrets.BASE_0 }}
-          BASE_1: ${{ secrets.BASE_1 }}
-          BASE_2: ${{ secrets.BASE_2 }}
-          BASE_3: ${{ secrets.BASE_3 }}
-          BASE_4: ${{ secrets.BASE_4 }}
-          BASE_5: ${{ secrets.BASE_5 }}
-          BASE_6: ${{ secrets.BASE_6 }}
-          BASE_7: ${{ secrets.BASE_7 }}
-          BASE_8: ${{ secrets.BASE_8 }}
-          BASE_9: ${{ secrets.BASE_9 }}
-          BASE_10: ${{ secrets.BASE_10 }}
-          BASE_11: ${{ secrets.BASE_11 }}
-          BASE_12: ${{ secrets.BASE_12 }}
-          BASE_13: ${{ secrets.BASE_13 }}
-          BASE_14: ${{ secrets.BASE_14 }}
-          BASE_15: ${{ secrets.BASE_15 }}
-          BASE_16: ${{ secrets.BASE_16 }}
-          BASE_17: ${{ secrets.BASE_17 }}
-          BASE_18: ${{ secrets.BASE_18 }}
-          BASE_19: ${{ secrets.BASE_19 }}
-          BASE_20: ${{ secrets.BASE_20 }}
-          BASE_21: ${{ secrets.BASE_21 }}
-          BASE_22: ${{ secrets.BASE_22 }}
-          BASE_23: ${{ secrets.BASE_23 }}
-          BASE_24: ${{ secrets.BASE_24 }}
-          BASE_25: ${{ secrets.BASE_25 }}
-          BASE_26: ${{ secrets.BASE_26 }}
-          BASE_27: ${{ secrets.BASE_27 }}
-          BASE_28: ${{ secrets.BASE_28 }}
-          BASE_29: ${{ secrets.BASE_29 }}
-          BASE_30: ${{ secrets.BASE_30 }}
-          BASE_31: ${{ secrets.BASE_31 }}
-          BASE_32: ${{ secrets.BASE_32 }}
-          BASE_33: ${{ secrets.BASE_33 }}
-          BASE_34: ${{ secrets.BASE_34 }}
-          BASE_35: ${{ secrets.BASE_35 }}
-          BASE_36: ${{ secrets.BASE_36 }}
-          BASE_37: ${{ secrets.BASE_37 }}
-          BASE_38: ${{ secrets.BASE_38 }}
-          BASE_39: ${{ secrets.BASE_39 }}
-          BASE_40: ${{ secrets.BASE_40 }}
-          BASE_41: ${{ secrets.BASE_41 }}
-          BASE_42: ${{ secrets.BASE_42 }}
-          BASE_43: ${{ secrets.BASE_43 }}
-          BASE_44: ${{ secrets.BASE_44 }}
-          BASE_45: ${{ secrets.BASE_45 }}
-          BASE_46: ${{ secrets.BASE_46 }}
-          BASE_47: ${{ secrets.BASE_47 }}
-          BASE_48: ${{ secrets.BASE_48 }}
-          BASE_49: ${{ secrets.BASE_49 }}
-          BASE_50: ${{ secrets.BASE_50 }}
-          BASE_51: ${{ secrets.BASE_51 }}
-          BASE_52: ${{ secrets.BASE_52 }}
-          BASE_53: ${{ secrets.BASE_53 }}
-          BASE_54: ${{ secrets.BASE_54 }}
-          BASE_55: ${{ secrets.BASE_55 }}
-          BASE_56: ${{ secrets.BASE_56 }}
-          BASE_57: ${{ secrets.BASE_57 }}
-          BASE_58: ${{ secrets.BASE_58 }}
-          BASE_59: ${{ secrets.BASE_59 }}
-          BASE_60: ${{ secrets.BASE_60 }}
-          BASE_61: ${{ secrets.BASE_61 }}
-          BASE_62: ${{ secrets.BASE_62 }}
-          BASE_63: ${{ secrets.BASE_63 }}
-          BASE_64: ${{ secrets.BASE_64 }}
-          BASE_65: ${{ secrets.BASE_65 }}
-          BASE_66: ${{ secrets.BASE_66 }}
-          BASE_67: ${{ secrets.BASE_67 }}
-          BASE_68: ${{ secrets.BASE_68 }}
-          BASE_69: ${{ secrets.BASE_69 }}
-          BASE_70: ${{ secrets.BASE_70 }}
-          BASE_71: ${{ secrets.BASE_71 }}
-          BASE_72: ${{ secrets.BASE_72 }}
-          BASE_73: ${{ secrets.BASE_73 }}
-          BASE_74: ${{ secrets.BASE_74 }}
-          BASE_75: ${{ secrets.BASE_75 }}
-          BASE_76: ${{ secrets.BASE_76 }}
-          BASE_77: ${{ secrets.BASE_77 }}
-          BASE_78: ${{ secrets.BASE_78 }}
-          BASE_79: ${{ secrets.BASE_79 }}
-          BASE_80: ${{ secrets.BASE_80 }}
-          BASE_81: ${{ secrets.BASE_81 }}
-          BASE_82: ${{ secrets.BASE_82 }}
-          BASE_83: ${{ secrets.BASE_83 }}
-          BASE_84: ${{ secrets.BASE_84 }}
-          BASE_85: ${{ secrets.BASE_85 }}
-          BASE_86: ${{ secrets.BASE_86 }}
-          BASE_87: ${{ secrets.BASE_87 }}
-          BASE_88: ${{ secrets.BASE_88 }}
-          BASE_89: ${{ secrets.BASE_89 }}
-          BASE_90: ${{ secrets.BASE_90 }}
-          BASE_91: ${{ secrets.BASE_91 }}
-          BASE_92: ${{ secrets.BASE_92 }}
-          BASE_93: ${{ secrets.BASE_93 }}
-          BASE_94: ${{ secrets.BASE_94 }}
-          BASE_95: ${{ secrets.BASE_95 }}
-          BASE_96: ${{ secrets.BASE_96 }}
         run: |
-          echo $BASE_0 > file.7z_64
-          echo $BASE_1 >> file.7z_64
-          echo $BASE_2 >> file.7z_64
-          echo $BASE_3 >> file.7z_64
-          echo $BASE_4 >> file.7z_64
-          echo $BASE_5 >> file.7z_64
-          echo $BASE_6 >> file.7z_64
-          echo $BASE_7 >> file.7z_64
-          echo $BASE_8 >> file.7z_64
-          echo $BASE_9 >> file.7z_64
-          echo $BASE_10 >> file.7z_64
-          echo $BASE_11 >> file.7z_64
-          echo $BASE_12 >> file.7z_64
-          echo $BASE_13 >> file.7z_64
-          echo $BASE_14 >> file.7z_64
-          echo $BASE_15 >> file.7z_64
-          echo $BASE_16 >> file.7z_64
-          echo $BASE_17 >> file.7z_64
-          echo $BASE_18 >> file.7z_64
-          echo $BASE_19 >> file.7z_64
-          echo $BASE_20 >> file.7z_64
-          echo $BASE_21 >> file.7z_64
-          echo $BASE_22 >> file.7z_64
-          echo $BASE_23 >> file.7z_64
-          echo $BASE_24 >> file.7z_64
-          echo $BASE_25 >> file.7z_64
-          echo $BASE_26 >> file.7z_64
-          echo $BASE_27 >> file.7z_64
-          echo $BASE_28 >> file.7z_64
-          echo $BASE_29 >> file.7z_64
-          echo $BASE_30 >> file.7z_64
-          echo $BASE_31 >> file.7z_64
-          echo $BASE_32 >> file.7z_64
-          echo $BASE_33 >> file.7z_64
-          echo $BASE_34 >> file.7z_64
-          echo $BASE_35 >> file.7z_64
-          echo $BASE_36 >> file.7z_64
-          echo $BASE_37 >> file.7z_64
-          echo $BASE_38 >> file.7z_64
-          echo $BASE_39 >> file.7z_64
-          echo $BASE_40 >> file.7z_64
-          echo $BASE_41 >> file.7z_64
-          echo $BASE_42 >> file.7z_64
-          echo $BASE_43 >> file.7z_64
-          echo $BASE_44 >> file.7z_64
-          echo $BASE_45 >> file.7z_64
-          echo $BASE_46 >> file.7z_64
-          echo $BASE_47 >> file.7z_64
-          echo $BASE_48 >> file.7z_64
-          echo $BASE_49 >> file.7z_64
-          echo $BASE_50 >> file.7z_64
-          echo $BASE_51 >> file.7z_64
-          echo $BASE_52 >> file.7z_64
-          echo $BASE_53 >> file.7z_64
-          echo $BASE_54 >> file.7z_64
-          echo $BASE_55 >> file.7z_64
-          echo $BASE_56 >> file.7z_64
-          echo $BASE_57 >> file.7z_64
-          echo $BASE_58 >> file.7z_64
-          echo $BASE_59 >> file.7z_64
-          echo $BASE_60 >> file.7z_64
-          echo $BASE_61 >> file.7z_64
-          echo $BASE_62 >> file.7z_64
-          echo $BASE_63 >> file.7z_64
-          echo $BASE_64 >> file.7z_64
-          echo $BASE_65 >> file.7z_64
-          echo $BASE_66 >> file.7z_64
-          echo $BASE_67 >> file.7z_64
-          echo $BASE_68 >> file.7z_64
-          echo $BASE_69 >> file.7z_64
-          echo $BASE_70 >> file.7z_64
-          echo $BASE_71 >> file.7z_64
-          echo $BASE_72 >> file.7z_64
-          echo $BASE_73 >> file.7z_64
-          echo $BASE_74 >> file.7z_64
-          echo $BASE_75 >> file.7z_64
-          echo $BASE_76 >> file.7z_64
-          echo $BASE_77 >> file.7z_64
-          echo $BASE_78 >> file.7z_64
-          echo $BASE_79 >> file.7z_64
-          echo $BASE_80 >> file.7z_64
-          echo $BASE_81 >> file.7z_64
-          echo $BASE_82 >> file.7z_64
-          echo $BASE_83 >> file.7z_64
-          echo $BASE_84 >> file.7z_64
-          echo $BASE_85 >> file.7z_64
-          echo $BASE_86 >> file.7z_64
-          echo $BASE_87 >> file.7z_64
-          echo $BASE_88 >> file.7z_64
-          echo $BASE_89 >> file.7z_64
-          echo $BASE_90 >> file.7z_64
-          echo $BASE_91 >> file.7z_64
-          echo $BASE_92 >> file.7z_64
-          echo $BASE_93 >> file.7z_64
-          echo $BASE_94 >> file.7z_64
-          echo $BASE_95 >> file.7z_64
-          echo $BASE_96 >> file.7z_64
+          echo ${{ secrets.BASE_0 }} > file.7z_64
+          echo ${{ secrets.BASE_1 }} >> file.7z_64
+          echo ${{ secrets.BASE_2 }} >> file.7z_64
+          echo ${{ secrets.BASE_3 }} >> file.7z_64
+          echo ${{ secrets.BASE_4 }} >> file.7z_64
+          echo ${{ secrets.BASE_5 }} >> file.7z_64
+          echo ${{ secrets.BASE_6 }} >> file.7z_64
+          echo ${{ secrets.BASE_7 }} >> file.7z_64
+          echo ${{ secrets.BASE_8 }} >> file.7z_64
+          echo ${{ secrets.BASE_9 }} >> file.7z_64
+          echo ${{ secrets.BASE_10 }} >> file.7z_64
+          echo ${{ secrets.BASE_11 }} >> file.7z_64
+          echo ${{ secrets.BASE_12 }} >> file.7z_64
+          echo ${{ secrets.BASE_13 }} >> file.7z_64
+          echo ${{ secrets.BASE_14 }} >> file.7z_64
+          echo ${{ secrets.BASE_15 }} >> file.7z_64
+          echo ${{ secrets.BASE_16 }} >> file.7z_64
+          echo ${{ secrets.BASE_17 }} >> file.7z_64
+          echo ${{ secrets.BASE_18 }} >> file.7z_64
+          echo ${{ secrets.BASE_19 }} >> file.7z_64
+          echo ${{ secrets.BASE_20 }} >> file.7z_64
+          echo ${{ secrets.BASE_21 }} >> file.7z_64
+          echo ${{ secrets.BASE_22 }} >> file.7z_64
+          echo ${{ secrets.BASE_23 }} >> file.7z_64
+          echo ${{ secrets.BASE_24 }} >> file.7z_64
+          echo ${{ secrets.BASE_25 }} >> file.7z_64
+          echo ${{ secrets.BASE_26 }} >> file.7z_64
+          echo ${{ secrets.BASE_27 }} >> file.7z_64
+          echo ${{ secrets.BASE_28 }} >> file.7z_64
+          echo ${{ secrets.BASE_29 }} >> file.7z_64
+          echo ${{ secrets.BASE_30 }} >> file.7z_64
+          echo ${{ secrets.BASE_31 }} >> file.7z_64
+          echo ${{ secrets.BASE_32 }} >> file.7z_64
+          echo ${{ secrets.BASE_33 }} >> file.7z_64
+          echo ${{ secrets.BASE_34 }} >> file.7z_64
+          echo ${{ secrets.BASE_35 }} >> file.7z_64
+          echo ${{ secrets.BASE_36 }} >> file.7z_64
+          echo ${{ secrets.BASE_37 }} >> file.7z_64
+          echo ${{ secrets.BASE_38 }} >> file.7z_64
+          echo ${{ secrets.BASE_39 }} >> file.7z_64
+          echo ${{ secrets.BASE_40 }} >> file.7z_64
+          echo ${{ secrets.BASE_41 }} >> file.7z_64
+          echo ${{ secrets.BASE_42 }} >> file.7z_64
+          echo ${{ secrets.BASE_43 }} >> file.7z_64
+          echo ${{ secrets.BASE_44 }} >> file.7z_64
+          echo ${{ secrets.BASE_45 }} >> file.7z_64
+          echo ${{ secrets.BASE_46 }} >> file.7z_64
+          echo ${{ secrets.BASE_47 }} >> file.7z_64
+          echo ${{ secrets.BASE_48 }} >> file.7z_64
+          echo ${{ secrets.BASE_49 }} >> file.7z_64
+          echo ${{ secrets.BASE_50 }} >> file.7z_64
+          echo ${{ secrets.BASE_51 }} >> file.7z_64
+          echo ${{ secrets.BASE_52 }} >> file.7z_64
+          echo ${{ secrets.BASE_53 }} >> file.7z_64
+          echo ${{ secrets.BASE_54 }} >> file.7z_64
+          echo ${{ secrets.BASE_55 }} >> file.7z_64
+          echo ${{ secrets.BASE_56 }} >> file.7z_64
+          echo ${{ secrets.BASE_57 }} >> file.7z_64
+          echo ${{ secrets.BASE_58 }} >> file.7z_64
+          echo ${{ secrets.BASE_59 }} >> file.7z_64
+          echo ${{ secrets.BASE_60 }} >> file.7z_64
+          echo ${{ secrets.BASE_61 }} >> file.7z_64
+          echo ${{ secrets.BASE_62 }} >> file.7z_64
+          echo ${{ secrets.BASE_63 }} >> file.7z_64
+          echo ${{ secrets.BASE_64 }} >> file.7z_64
+          echo ${{ secrets.BASE_65 }} >> file.7z_64
+          echo ${{ secrets.BASE_66 }} >> file.7z_64
+          echo ${{ secrets.BASE_67 }} >> file.7z_64
+          echo ${{ secrets.BASE_68 }} >> file.7z_64
+          echo ${{ secrets.BASE_69 }} >> file.7z_64
+          echo ${{ secrets.BASE_70 }} >> file.7z_64
+          echo ${{ secrets.BASE_71 }} >> file.7z_64
+          echo ${{ secrets.BASE_72 }} >> file.7z_64
+          echo ${{ secrets.BASE_73 }} >> file.7z_64
+          echo ${{ secrets.BASE_74 }} >> file.7z_64
+          echo ${{ secrets.BASE_75 }} >> file.7z_64
+          echo ${{ secrets.BASE_76 }} >> file.7z_64
+          echo ${{ secrets.BASE_77 }} >> file.7z_64
+          echo ${{ secrets.BASE_78 }} >> file.7z_64
+          echo ${{ secrets.BASE_79 }} >> file.7z_64
+          echo ${{ secrets.BASE_80 }} >> file.7z_64
+          echo ${{ secrets.BASE_81 }} >> file.7z_64
+          echo ${{ secrets.BASE_82 }} >> file.7z_64
+          echo ${{ secrets.BASE_83 }} >> file.7z_64
+          echo ${{ secrets.BASE_84 }} >> file.7z_64
+          echo ${{ secrets.BASE_85 }} >> file.7z_64
+          echo ${{ secrets.BASE_86 }} >> file.7z_64
+          echo ${{ secrets.BASE_87 }} >> file.7z_64
+          echo ${{ secrets.BASE_88 }} >> file.7z_64
+          echo ${{ secrets.BASE_89 }} >> file.7z_64
+          echo ${{ secrets.BASE_90 }} >> file.7z_64
+          echo ${{ secrets.BASE_91 }} >> file.7z_64
+          echo ${{ secrets.BASE_92 }} >> file.7z_64
+          echo ${{ secrets.BASE_93 }} >> file.7z_64
+          echo ${{ secrets.BASE_94 }} >> file.7z_64
+          echo ${{ secrets.BASE_95 }} >> file.7z_64
+          echo ${{ secrets.BASE_96 }} >> file.7z_64
           base64 -d file.7z_64 > bin/file.7z
           cd bin
           sudo apt install p7zip-full
