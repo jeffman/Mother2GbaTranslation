@@ -23,13 +23,15 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          path: pr_code
       - name: Test the code
         run: |
-          cp extractor/bin/* bin/
+          cp extractor/bin/* pr_code/bin/
+          cd pr_code
           docker run --rm -u root -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:tester
       - name: Archive test results
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: test-report
-          path: out/test.log
+          path: pr_code/out/test.log
