@@ -14,10 +14,13 @@ if ($LASTEXITCODE -ne 0) { exit -1 }
 
 "Starting to build test rom"
 ./test.ps1
+$LAST_VAL = $LASTEXITCODE
 
 "Copying test log to output"
 New-Item -Path "\home\m2gba\src" -Name "out" -ItemType "directory" -Force
 Copy-Item -Path ".\bin\test.log" "\home\m2gba\src\out"
 Copy-Item -Path ".\bin\m12test.gba" "\home\m2gba\src\out"
+
+if ($LAST_VAL -ne 0) { exit -1 }
 
 "Test ran successfully, please review the ./out folder for the resulting logs and test rom"

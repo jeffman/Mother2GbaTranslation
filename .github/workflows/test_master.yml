@@ -21,6 +21,7 @@ jobs:
       - name: Test the code
         run: "docker run --rm -u root -v ${PWD}:/home/m2gba/src lorenzooone/m2gba_translation:tester"
       - name: Archive test results
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: test-report
