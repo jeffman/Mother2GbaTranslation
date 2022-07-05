@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - master
+
+permissions: read-all
+
 jobs:
   build:
     name: Patch building
@@ -23,6 +26,8 @@ jobs:
     name: Patch publishing
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      contents: write
     steps:
       - name: Download a single artifact
         uses: actions/download-artifact@v3
