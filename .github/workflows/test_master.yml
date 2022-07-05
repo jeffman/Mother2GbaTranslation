@@ -1,10 +1,13 @@
 name: Test
 on:
-  # Trigger the workflow on push or pull request,
+  # Trigger the workflow on push,
   # but only for the master branch
   push:
     branches:
       - master
+    
+permissions: read-all
+
 jobs:
   test:
     name: Testing
@@ -26,12 +29,24 @@ jobs:
         with:
           name: test-report
           path: out/test.log
-      - name: Create Issue for Test failure
-        if: failure()
+
+  issue_creation:
+    name: Create issue on failure
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    needs: test
+    if: failure()
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: test-report
+      - name: Create the issue
         uses: peter-evans/create-issue-from-file@v4
         with:
           title: Test failure
-          content-filepath: out/test.log
+          content-filepath: test.log
           labels: |
             report
             automated issue
