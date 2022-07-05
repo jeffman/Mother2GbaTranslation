@@ -2,6 +2,8 @@ name: Test PR
 on:
   pull_request_target:
     branches: master
+    
+permissions: read-all
 
 jobs:
   test:
