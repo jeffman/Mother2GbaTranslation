@@ -12,6 +12,5 @@ void start_tests()
     
     end_session();
     
-    while(1)
-        vblank();
+    stop(0);
 }

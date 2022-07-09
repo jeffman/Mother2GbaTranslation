@@ -1,9 +1,9 @@
 $test_rom_file = "bin/m12test.gba"
 $log_file      = "bin/test.log"
-$sleep_time    = 120
+$sleep_time    = 300
 $failure_text  = "FAIL"
 $end_text      = "Done!"
-$mgba_name     = "mgba-sdl"
+$mgba_name     = "mgba-rom-test"
 
 If     ($IsWindows)            { $mgba_cmd = "bin/$mgba_name.exe" }
 ElseIf ($IsLinux -or $IsMacOS) { $mgba_cmd = "bin/$mgba_name" }
@@ -13,15 +13,8 @@ ElseIf ($IsLinux -or $IsMacOS) { $mgba_cmd = "bin/$mgba_name" }
 if ($LASTEXITCODE -ne 0) { exit -1 }
 Remove-Item -Path $log_file
 
-"Starting the emulator..."
-& $mgba_cmd -l 16 -C logLevel.gba.bios=0 -C logToFile=1 -C logFile=$log_file $test_rom_file &
-if ($LASTEXITCODE -ne 0) { exit -1 }
-
-"Sleeping for $sleep_time seconds..."
-Start-Sleep $sleep_time
-
-"Closing the emulator..."
-Stop-Process -Name $mgba_name
+"Starting the emulator... And closing it after $sleep_time seconds if it hasn't finished by then"
+& timeout --preserve-status $sleep_time $mgba_cmd -l 16 -C logLevel.gba.bios=0 -C logToStdout=0 -C logToFile=1 -C logFile=$log_file $test_rom_file
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
 $fails = Select-String -Path $log_file -Pattern $failure_text

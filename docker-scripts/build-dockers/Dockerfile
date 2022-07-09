@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/powershell:ubuntu-20.04 AS builder
 RUN echo "------------------Updating System------------------"
-RUN apt update
-RUN apt upgrade
+RUN apt update -y
+RUN apt upgrade -y
 RUN apt install -y wget gcc-arm-none-eabi cmake build-essential tar git
 RUN echo "------------------Installing dotnet core------------------"
 RUN mkdir -p /opt/dep
@@ -37,7 +37,7 @@ CMD /home/m2gba/src/docker-scripts/docker-build-patch-script
 #---------------------- Building mgba ------------------------
 FROM builder AS mgba_builder
 USER root
-RUN apt-get update && \
+RUN apt-get update -y && \
     apt-get install -y --no-install-recommends build-essential ccache cmake \
         git libavcodec-dev libavfilter-dev libavformat-dev libavresample-dev \
         libavutil-dev libcmocka-dev libedit-dev libelf-dev libpng-dev \
@@ -47,17 +47,17 @@ RUN apt-get update && \
 WORKDIR /home/m2gba
 USER m2gba
 RUN git clone https://github.com/mgba-emu/mgba.git
-RUN cd mgba && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .. && make
+RUN cd mgba && mkdir build && cd build && cmake -DBUILD_ROM_TEST:BOOL=ON -DBUILD_QT:BOOL=OFF -DBUILD_SDL:BOOL=OFF -DCMAKE_INSTALL_PREFIX:PATH=/usr .. && make
 
 #------------------- Building the Tester ---------------------
 FROM builder AS tester
 USER root
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends pulseaudio alsa-utils libsdl2-dev \
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends libgl1-mesa-glx \
     libzip-dev libavcodec-dev libavfilter-dev && \
     apt-get autoremove -y && apt-get clean
 WORKDIR /opt/src
 USER m2gba
-COPY --from=mgba_builder /home/m2gba/mgba/build/sdl/mgba ./bin/mgba-sdl
+COPY --from=mgba_builder /home/m2gba/mgba/build/test/mgba-rom-test ./bin/mgba-rom-test
 COPY --from=mgba_builder /home/m2gba/mgba/build/libmgba* ./
 CMD /home/m2gba/src/docker-scripts/docker-test-rom-script

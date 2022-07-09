@@ -1,10 +1,6 @@
 #!/bin/pwsh
 
-"Starting Dummy services"
-$Env:SDL_VIDEODRIVER = "dummy"
-pulseaudio -D --exit-idle-time=-1
-pactl load-module module-null-sink sink_name=SpeakerOutput sink_properties=device.description="Dummy_Output"
-
+$Env:LD_LIBRARY_PATH += "/opt/src"
 $Env:PATH += ":/home/m2gba/.dotnet:/home/m2gba/.dotnet/tools"
 Copy-Item -Path "\home\m2gba\src\*" -Destination "\opt\src" -Recurse -Force
 
@@ -13,7 +9,7 @@ Copy-Item -Path "\home\m2gba\src\*" -Destination "\opt\src" -Recurse -Force
 if ($LASTEXITCODE -ne 0) { exit -1 }
 
 "Starting to build test rom"
-./test.ps1
+./test-fast.ps1
 $LAST_VAL = $LASTEXITCODE
 
 "Copying test log to output"
