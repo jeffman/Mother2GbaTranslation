@@ -2,4 +2,4 @@
 
 void start_tests();
 
-extern void vblank();
+extern void stop(int);
